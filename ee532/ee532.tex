@@ -244,44 +244,45 @@
                     \item $\nabla p$: Gradiente de Densidade de Lacunas;
                     \item $\nabla n$: Gradiente de Densidade de Elétrons;
                 \end{enumerate}
+\newpage
 
-        \subsection{Junção PN}
-            \paragraph{Definição}Junção de semicondutores extrínsecos do tipo N, excesso de elétrons, e semicondutores extrínsecos do tipo P, excesso de lácunas. Nesta configuração a energia só poderá fluir em um sentido, sendo bloqueada no sentido contrário, comumente representado por um Diodo como mostrado a seguir:
-                \begin{figure}[H]
-                    \centering
-                    \begin{circuitikz}
-                        \ctikzset{component text=left}
-                        \draw
-                        (0,0) to[empty diode, o-o] (-2,0);
-                    \end{circuitikz} 
-                    \caption{Representação de Diodo}
-                \end{figure}
+    \section{Diodo}
+        \paragraph{Definição}Junção de semicondutores extrínsecos do tipo N, excesso de elétrons, e semicondutores extrínsecos do tipo P, excesso de lácunas. Nesta configuração a energia só poderá fluir em um sentido, sendo bloqueada no sentido contrário, comumente representado por um Diodo como mostrado a seguir:
+            \begin{figure}[H]
+                \centering
+                \begin{circuitikz}
+                    \ctikzset{component text=left}
+                    \draw
+                    (0,0) to[empty diode, o-o] (-2,0);
+                \end{circuitikz} 
+                \caption{Representação de Diodo}
+            \end{figure}
 
-            \paragraph{Região de Depleção}Inicialmente os materiais dopados serão eletroneutros, apresentaram cargas elétricas em equilíbrio. Correntes de difusão trocam elétrons e lacunas na interface de acordo com o gradiente de concentração. Ao longo do tempo, esgotam-se portadores livres, criando uma barreira para o fluxo de energia. Nesta região a junção se comporta como um capacitor controlado por tensão cuja largura $W$ será dada pela seguinte relação:
+        \paragraph{Região de Depleção}Inicialmente os materiais dopados serão eletroneutros, apresentaram cargas elétricas em equilíbrio. Correntes de difusão trocam elétrons e lacunas na interface de acordo com o gradiente de concentração. Ao longo do tempo, esgotam-se portadores livres, criando uma barreira para o fluxo de energia. Nesta região a junção se comporta como um capacitor controlado por tensão cuja largura $W$ será dada pela seguinte relação:
+            \begin{equation}
+                \boxed{
+                    W = \sqrt{\frac{2\epsilon_{Si}}{q} (V_{0} - V_{a}) \frac{N_{A} + N_{D}}{N_{A} N_{D}}}
+                    \hspace{5mm}
+                    \begin{cases}
+                        V_{A} > 0, & \text{W diminui}\\
+                        V_{A} < 0, & \text{W aumenta}
+                    \end{cases}
+                }
+            \end{equation}
+
+        \paragraph{Potencial Interno}Representa a diferença de potencial $V_{0}$ entre a região N e a região P quando a Corrente de Deriva, \eqref{eq:3}, e a Corrente de Difusão, \eqref{eq:6}, se anulam, calculado através das seguintes equações:
+            \begin{multicols}{2}
                 \begin{equation}
                     \boxed{
-                        W = \sqrt{\frac{2\epsilon_{Si}}{q} (V_{0} - V_{a}) \frac{N_{A} + N_{D}}{N_{A} N_{D}}}
-                        \hspace{5mm}
-                        \begin{cases}
-                            V_{A} > 0, & \text{W diminui}\\
-                            V_{A} < 0, & \text{W aumenta}
-                        \end{cases}
+                        V_{0} = V_{T} \ln\left(\frac{N_{A}N_{D}}{n_{i}^{2}}\right)
                     }
                 \end{equation}
-
-            \paragraph{Potencial Interno}Representa a diferença de potencial $V_{0}$ entre a região N e a região P quando a Corrente de Deriva, \eqref{eq:3}, e a Corrente de Difusão, \eqref{eq:6}, se anulam, calculado através das seguintes equações:
-                \begin{multicols}{2}
-                    \begin{equation}
-                        \boxed{
-                            V_{0} = V_{T} \ln\left(\frac{N_{A}N_{D}}{n_{i}^{2}}\right)
-                        }
-                    \end{equation}
-                    \begin{equation}
-                        \boxed{
-                            V_{T} = \frac{kT}{q}
-                        }
-                    \end{equation}
-                \end{multicols}
+                \begin{equation}
+                    \boxed{
+                        V_{T} = \frac{kT}{q}
+                    }
+                \end{equation}
+            \end{multicols}
 
 
         \subsection{Polarização Direta}
