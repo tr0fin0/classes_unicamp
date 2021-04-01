@@ -203,4 +203,111 @@
                             \item \texttt{Furo:} IT11 à IT16;
                         \end{enumerate}
                 \end{enumerate}
+
+        \subsection{Cálculos de Tolerâncias}
+            \paragraph{Definição}Primeiramente será necessário identificar qual a faixa da dimensão avaliada de acordo com a seguinte tabela:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}[]{c | c}\hline
+                        $d_{i} \text{ [mm]}$ & $d_{s} \text{ [mm]}$\\[1mm]\hline
+                        0         & 1\\
+                        1         & 3\\
+                        3         & 6\\
+                        6         & 10\\
+                        10        & 18\\
+                        18        & 30\\
+                        30        & 50\\\hline
+                    \end{tabular}
+                    \hspace{20mm}
+                    \begin{tabular}[]{c | c}\hline
+                        $d_{i} \text{ [mm]}$ & $d_{s} \text{ [mm]}$\\[1mm]\hline
+                        50        & 80\\
+                        80        & 120\\
+                        120       & 180\\
+                        180       & 250\\
+                        250       & 315\\
+                        315       & 400\\
+                        400       & 500\\\hline
+                    \end{tabular}
+                    \caption{Quadro de Dimensões}\label{table:dimesion}
+                \end{table} \noindent
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item $d_{i}$, Distância Inferior: Exclusiva;
+                    \item $d_{s}$, Distância Superior: Inclusiva;
+                \end{enumerate}
+            Em seguida será necessário identificar qual a tolerância-padrão empregada e realizar, a partir dos ajustes mais exigentes, as seguintes operações:
+                \[
+                    \begin{cases}
+                        IT01 &= 0,3 + 0,001 \cdot D, \text{ [$\mu$m]};\\
+                        IT0  &= 0,5 + 0,012 \cdot D, \text{ [$\mu$m]};\\
+                        IT1  &= 0,8 + 0,020 \cdot D, \text{ [$\mu$m]};\\
+                    \end{cases}
+                \]
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item $D$: \textbf{Média Geométrica}, em milímetros, dos valores extremos da faixa de dimensão avaliada em \ref{table:dimesion}:
+                        \begin{equation}
+                            \boxed{
+                                D = \sqrt{d_{i} \cdot d_{s}}
+                            }
+                        \end{equation}
+                \end{enumerate}
+            Note que as tolerâncias-padrões entre IT2 e IT4 são obtidos como termos de uma progressão geométrica formada pelos termos IT1 e IT5, mostradas nas seguintes equações:
+                \[
+                    \begin{cases}
+                        IT1 = 0,8 + 0,020 \cdot D, & \text{ [$\mu$m]};\\
+                        IT2 = IT1 \cdot q^{1},     & \text{ [$\mu$m]};\\
+                        IT3 = IT1 \cdot q^{2},     & \text{ [$\mu$m]};\\
+                        IT4 = IT1 \cdot q^{3},     & \text{ [$\mu$m]};\\
+                        IT5 = 7i,                  & \text{ [$\mu$m]};\\
+                    \end{cases}
+                    \hspace{15mm}
+                    \boxed{
+                        q = \sqrt[n-1]{\frac{a_{n}}{a_{1}}} = \sqrt[4]{\frac{a_{5}}{a_{1}}}
+                    }
+                \]
+            Note que as tolerância-padrão entre IT5 e IT18 são obtidos de acordo com a seguinte tabela:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}[]{c | c}\hline
+                        TP   & Função \\[1mm]\hline
+                        IT5  & 7i \\
+                        IT6  & 10i\\
+                        IT7  & 16i\\
+                        IT8  & 25i\\
+                        IT9  & 40i\\
+                        IT10 & 64i\\\hline
+                    \end{tabular}
+                    \hspace{10mm}
+                    \begin{tabular}[]{c | c}\hline
+                        TP   & Função \\[1mm]\hline
+                             & \\
+                        IT11 & 100i\\
+                        IT12 & 160i\\
+                        IT13 & 250i\\
+                        IT14 & 400i\\
+                        IT15 & 640i\\\hline
+                    \end{tabular}
+                    \hspace{10mm}
+                    \begin{tabular}[]{c | c}\hline
+                        TP   & Função \\[1mm]\hline
+                             & \\
+                        IT17 & 1000i\\
+                        IT18 & 1600i\\
+                         & \\
+                         & \\
+                         & \\\hline
+                    \end{tabular}
+                    \caption{Quadro de Tolerância Padrão IT5 à IT18}\label{table:tolerance}
+                \end{table}\noindent
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item $i$: \textbf{Fator de Tolerância-Padrão}, dos valores extremos da faixa de dimensão avaliada em \ref{table:tolerance}:
+                        \begin{equation}
+                            \boxed{
+                                i = 0,45 \cdot \sqrt[3]{D} + 0,001 \cdot D
+                            }
+                        \end{equation}
+                \end{enumerate}
 \end{document}
