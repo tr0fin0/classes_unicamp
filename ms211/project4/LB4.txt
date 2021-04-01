@@ -1,0 +1,75 @@
+function [x,a,b] = Bissecao(a,b,f,e1,e2,maxiter)
+  aux = a;
+  x = b;
+  iter = 0;
+  while ( ((abs(f(x))>=e1) || (abs(aux - x)>=e2)) && (iter < maxiter))
+    aux = x;
+    x = 0.5*(a+b);
+    
+    if (f(a)*f(x) < 0)
+      b = x;
+    else
+      a = x;
+    endif
+    iter++;
+  
+endwhile
+  printf("\n")
+  display(sprintf('Bisseccao-> x: %2.8f - f(x): %2.8f - Erro em x: %2.8f - Numero de Interacoes: %2.8f', x, f(x), abs(aux-x), iter));
+endfunction
+
+
+function [x,a,b] = Secante(a,b,f,e1,e2,maxiter)
+  aux = a;
+  x = b;
+  iter = 0;
+  while ( ((abs(f(x))>=e1) || (abs(aux - x)>=e2)) && (iter < maxiter))
+    aux = x;
+    x = (a*f(b) - b*f(a))/(f(b)-f(a));
+    
+    if (f(a)*f(x) < 0)
+      b = x;
+    else
+      a = x;
+    endif
+    iter++;
+  
+endwhile
+  printf("\n")
+  display(sprintf('Secante-> x: %2.8f - f(x): %2.8f - Erro em x: %2.8f - Numero de Interacoes: %2.8f', x, f(x), abs(aux-x), iter));
+endfunction
+
+function [x,a] = NewtonRapshon(a,f,df,e1,maxiter)
+  x = a; iter = 0;
+  while ( (abs(f(x))>=e1) && (iter < maxiter) )
+    x = (x - (f(x)/df(x)));
+    iter++;
+  
+endwhile
+
+  printf("\n")
+  display(sprintf('Newton-Rapshon-> x: %2.8f - f(x): %2.8f - Numero de Interacoes: %2.8f', x, f(x), iter));
+endfunction
+
+f = @(x) 1000*exp(-log(10)*exp(-0.025*x))-500;
+fplot(f, [0 100]);
+
+a = 40; b = 60;
+erro = 10^(-8); maxiter = 10^(6)
+[x,a,b] = Bissecao(a,b,f,erro,erro,maxiter)
+
+f = @(x) sqrt(20.^2-x.^2)-8*(1-sqrt(20.^2 - x.^2))./sqrt((30.^2 - x.^2));
+fplot(f, [-30 30]);
+
+a = 15; b = 20;
+erro = 10^(-8); maxiter = 10^(8);
+[x,a,b] = Bissecao(a,b,f,erro,erro,maxiter)
+
+a = 18; b = 20;
+erro = 10^(-8); maxiter = 10^(8);
+[x,a,b] = Secante(a,b,f,erro,erro,maxiter)
+
+df = @(x) (4*((2*x*(400 - x^2))/(900 - x^2)^2 - (2*x)/(900 - x^2)))/sqrt((400 - x^2)/(900 - x^2)) - x/sqrt(400 - x^2);
+a = 5;
+erro = 10^(-8); maxiter = 10^(8);
+[x,a] = NewtonRapshon(a,f,df,erro,maxiter)
