@@ -448,10 +448,10 @@
                     \begin{circuitikz}
                         \ctikzset{component text=left}
                         \draw
-                        (0,2) to[battery1] (0,0)
-                        (0,2) to[resistor] (4,2)
-                        (4,2) to[empty diode] (4,0)
-                        (4,0) -- (0,0);
+                        (0,3) to[battery1, l=$V$] (0,0)
+                        (0,3) to[resistor, l=$R$] (3,3)
+                        (3,3) to[empty diode, l=$D$] (3,0)
+                        (3,0) -- (0,0);
                     \end{circuitikz} 
                     \caption{Circuito Básico}
                 \end{figure} \noindent
@@ -536,6 +536,53 @@
                                 \end{cases}
                             }
                         \]
+
+                    \item \textbf{Modelo Pequenos Sinais:}\\
+                    Empregado quando os circuitos possuem uma amplitude de operação, ou seja, a fonte de tensão apresenta um valor de operação fixo e uma parcela variável, normalmente simétrica, como representado no seguinte circuito:
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}
+                                \ctikzset{component text=left}
+                                \draw
+                                (0,2) to[battery1, l=$V$] (0,0)
+                                (0,2) to[sV, l=$v_{S}$] (0,4)
+                                (0,4) to[resistor, l=$R$] (4,4)
+                                (4,4) to[empty diode, l=$D$] (4,0)
+                                (4,0) -- (0,0);
+                            \end{circuitikz} 
+                            \caption{Circuito com Amplitude de Operação}
+                        \end{figure} \noindent
+                    Neste cenário será necessário analisar separadamente cada fonte e realizar a supreposição dos resultados. O circuito a esquerda poderá ser analisado utilizando qualquer um dos métodos acima, enquanto o circuito a direita utilizará Pequenos Sinais.
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}
+                                \ctikzset{component text=left}
+                                \draw
+                                (0,3) to[battery1, l=$V$] (0,0)
+                                (0,3) to[resistor, l=$R$] (3,3)
+                                (3,3) to[empty diode, l=$D$] (3,0)
+                                (3,0) -- (0,0);
+                            \end{circuitikz} \hspace{20mm}
+                            \centering
+                            \begin{circuitikz}
+                                \ctikzset{component text=left}
+                                \draw
+                                (0,0) to[sV, l=$v_{S}$] (0,3)
+                                (0,3) to[resistor, l=$R$] (3,3)
+                                (3,3) to[resistor, l=$r_{d}$] (3,0)
+                                (3,0) -- (0,0);
+                            \end{circuitikz} 
+                        \end{figure} \noindent
+                    Pequenos Sinais aproximam um sinal do Ponto de Operação através de retas tangentes de tal forma que os resultados obtidos sejam simétricos. Assim a tangente é aproximada pela expansão pela expansão de Séries Taylor de primeira ordem obtendo:
+                        \[
+                            \frac{1}{r_{d}} =
+                            \diff{I_{D}}{V_{D}} =
+                            \frac{I_{S}}{V_{T}} e^{\frac{V_{D}}{V_{T}}} =
+                            \frac{I_{D}}{V_{T}}\to
+                            \boxed{
+                                r_{d} = \frac{V_{T}}{I_{D}}
+                            }
+                        \]
                 \end{enumerate}
 
         \subsection{Retificadores de Onda}
@@ -550,7 +597,7 @@
                                 \draw
                                 (0,0) to[sV, l=$V$] (0,2)
                                 (0,2) to[empty diode, l=$D$] (4,2)
-                                (4,2) to[resistor, l=$R$] (4,0)
+                                (4,2) to[resistor, o-o, l=$R$] (4,0)
                                 (4,0) -- (0,0);
                             \end{circuitikz} 
                             \caption{Retificador de Meia Onda Positiva}
@@ -564,7 +611,7 @@
                                 \draw
                                 (0,0) to[sV, l=$V$] (0,2)
                                 (0,2) to[resistor, l=$R$] (4,2)
-                                (4,2) to[empty diode, l=$D$] (4,0)
+                                (4,2) to[empty diode, o-o, l=$D$] (4,0)
                                 (4,0) -- (0,0);
                             \end{circuitikz} 
                             \caption{Retificador de Meia Onda Negativa}
@@ -578,8 +625,8 @@
                                 \draw
                                 (0,0) to[sV, l=$V_{1}$] (0,4)
                                 (0,4) to[resistor, l=$R$] (4,4)
-                                (4,4) to[empty diode, l=$D$] (4,2)
-                                (4,2) to[battery1, l=$V_{B}$] (4,0)
+                                (4,4) to[empty diode, o-, l=$D$] (4,2)
+                                (4,2) to[battery1, -o, l=$V_{B}$] (4,0)
                                 (4,0) -- (0,0);
                             \end{circuitikz} 
                             \caption{Retificador Limitador}
