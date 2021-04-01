@@ -1,0 +1,362 @@
+\documentclass{article}
+
+\usepackage[a4paper, hmargin={20mm, 20mm}, vmargin={25mm, 30mm}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english, main=portuguese]{babel}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{bookmark}
+\usepackage{cancel}
+\usepackage{comment}
+
+\usepackage{array}
+\usepackage{indentfirst}
+\usepackage{multicol}
+\usepackage{subfiles}
+
+\usepackage{titlesec}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{systeme}
+\usepackage{float}
+\usepackage{enumitem}
+\restylefloat{table}
+
+\usepackage{graphicx}
+\graphicspath{ {./IMAGENS/} }
+
+% Pacote para a definição de novas cores
+\usepackage{xcolor}
+% Definindo novas cores
+\definecolor{darkgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{darkpurple}{rgb}{0.74, 0.2, 0.64}
+\definecolor{darkblue}{rgb}{0.0, 0.28, 0.67}
+
+% Configurando layout para mostrar codigos Java
+\usepackage{listings}
+
+
+\newcommand{\myStyle}{
+\lstset{
+    language=Octave,                            % the language of the code
+    basicstyle=\ttfamily\small,               % the size of the fonts that are used for the code
+    keywordstyle=\color{darkpurple}\bfseries, %
+    stringstyle=\color{darkblue},             %
+    commentstyle=\color{darkgreen},           %
+    morecomment=[s][\color{blue}]{/**}{*/},   %
+    extendedchars=true,                       %
+    showtabs=false,                           % show tabs within strings adding particular underscores
+    showspaces=false,                         % show spaces adding particular underscores
+    showstringspaces=false,                   % underline spaces within strings
+    numbers=left,                             % where to put the line-numbers
+    numberstyle=\tiny\color{gray},            % the style that is used for the line-numbers
+    stepnumber=1,                             % the step between two line-numbers. If it's 1, each line will be numbered
+    numbersep=5pt,                            % how far the line-numbers are from the code
+    frame=single,                             % adds a frame around the code
+    rulecolor=\color{black},                  % if not set, the frame-color may be changed on line-breaks within not-black text
+    breaklines=true,                          % sets automatic line breaking
+    backgroundcolor=\color{white},            % choose the background color
+    breakatwhitespace=true,                   % sets if automatic breaks should only happen at whitespace
+    breakautoindent=false,                    %
+    captionpos=b,                             % sets the caption-position to bottom
+    xleftmargin=0pt,                          %
+    tabsize=2,                                % sets default tabsize to 2 spaces
+}}
+
+%\titleformat{<command>}[<shape>]{<format>}{<label>}{<sep>}{<before-code>}[<after-code>]
+\titleformat
+{\section} %comand
+[block]  %shape
+{\normalfont\LARGE} %format
+{\thesection. } %label
+{0mm} %sep
+{} %before-code
+[{\titlerule[0.1mm]}] %after-code
+
+\titlespacing*{\section}{0mm}{0mm}{15mm}
+
+\titleformat
+{\subsection} %comand
+[block]  %shape
+{\normalfont\Large} %format
+{\thesubsection. } %label
+{0mm} %sep
+{} %before-code
+[] %after-code
+
+\titlespacing*{\subsection}{0mm}{5mm}{2.5mm}
+
+
+\begin{document}
+    \begin{titlepage}
+        \begin{center}
+            \rule{450pt}{0.5pt}\\[4mm]
+            {\Huge MS211 - Cálculo Numérico}\\
+            \rule{450pt}{0.5pt}\\[2mm]
+            {\Large Laboratório 08}\\[200mm]
+            \today\\
+            \rule{250pt}{0.5pt}\\
+            {\large Guilherme Nunes Trofino}\\
+            {\large 217276}\\
+        \end{center}
+    \end{titlepage}
+\newpage
+
+    \section{Questão}
+        \subsection{Introdução}
+            \paragraph{Problema}Notou-se que a dimensão de certo problema estava relacionada com o tempo necessário para solucioná-lo de acordo com seguinte gráfico:
+                \begin{figure}[h]
+                    \includegraphics[width = 12cm]{graphic1.png}
+                    \centering
+                    \caption{Dimensão pelo Tempo de Execução}
+                \end{figure}
+
+            \paragraph{Determine}
+                \begin{enumerate}[noitemsep]
+                    \item Polinômio de grau 4 que melhor se ajusta aos dados obtidos; 
+                    \item Estime o tempo necessário para resolver problemas de dimensão 500 e 1000;
+                \end{enumerate}
+
+        \subsection{Desenvolvimento}
+            \paragraph{Teoria}Suponha que os valores $x_{1}, x_{2}, \dots, x_{n}$ do intervalo $[a,b]$ estejam relacionados respectivamente com $y_{1}, y_{2}, \dots, y_{n}$ de acordo com a seguinte tabela:
+                \[
+                    \begin{array}{c | c c c c}
+                        \text{x} & x_{1} & x_{2} & \cdots & x_{n}\\\hline
+                        \text{y} & y_{1} & y_{2} & \cdots & y_{n}\\
+                    \end{array}
+                \]
+            Deseja-se encontrar os coeficientes $\alpha_{1}, \alpha_{2}, \dots, \alpha_{n}$ tais que as funções, preferencialmente contínuas, $g_{1}, g_{2}, \dots, g_{n}$, escolhidas observando o gráfico, satisfaçam a seguinte equação:
+                \[\boxed{y(x) \approx \varphi(x) = \alpha_{1} g_{1}(x) + \alpha_{2} g_{2}(x) + \cdots + \alpha_{n} g_{n}(x)}\]
+
+            \paragraph{Mínimos Quadrados}Selecionando as funções $g_{1}, g_{2}, \dots, g_{n}$ de tal forma que o \textbf{Resíduo}, a soma dos quadrados dos desvios, seja mínimo:
+                \[\boxed{R(\alpha_{1}, \dots, \alpha_{n}) = \sum_{i=1}^{k} (y_{i} - (\alpha_{1} g_{1}(x_{i}) + \alpha_{2} g_{2}(x_{i}) + \cdots + \alpha_{n} g_{n}(x_{i})))^{2}}\]
+            Isto ocorre quando o gradiente $\nabla R (\alpha_{1}, \dots, \alpha_{n}) = 0$. Desta maneira cada derivada parcial deverá ser zero, implicando na seguinte família de equações:
+                \[
+                    \begin{split}\frac{\partial R}{\partial\alpha_{i}}(\alpha_{1}, \dots, \alpha_{n})
+                        &= \sum_{i=1}^{k} -2g_{j}(x_{i})[y_{i} - [\alpha_{1} g_{1}(x_{i}) +
+                                                                  \cdots +
+                                                                  \alpha_{n} g_{n}(x_{i})]]\\
+                        &= -2\sum_{i=1}^{k} y_{i}g_{j}(x_{i}) +
+                            2\sum_{i=1}^{k} g_{j}(x_{i})[\alpha_{1} g_{1}(x_{i}) +
+                                                         \cdots +
+                                                         \alpha_{n} g_{n}(x_{i})]\\
+                    \end{split}
+                \]
+            Desta maneira, o gradiente poderá ser representado matricialmente pelas seguintes matrizes:
+                \[\boxed{\nabla R(\alpha_{1}, \dots, \alpha_{n}) = 0 = -2A^{T}y + 2A^{T}A\alpha}\]
+                \[
+                    \underbrace{
+                    \begin{bmatrix}
+                        g_{1}(x_{1}) & g_{1}(x_{2}) & \cdots & g_{1}(x_{k})\\
+                        g_{2}(x_{1}) & g_{2}(x_{2}) & \cdots & g_{2}(x_{k})\\
+                        \vdots       & \vdots       & \ddots & \vdots\\
+                        g_{n}(x_{1}) & g_{n}(x_{2}) & \cdots & g_{n}(x_{k})\\
+                    \end{bmatrix}}_{A^{T}}
+                    \underbrace{
+                    \begin{bmatrix}
+                        y_{1}\\ y_{2}\\ \vdots\\ y_{k}\\
+                    \end{bmatrix}}_{y} =
+                    \underbrace{
+                    \begin{bmatrix}
+                        g_{1}(x_{1}) & g_{1}(x_{2}) & \cdots & g_{1}(x_{k})\\
+                        g_{2}(x_{1}) & g_{2}(x_{2}) & \cdots & g_{2}(x_{k})\\
+                        \vdots       & \vdots       & \ddots & \vdots\\
+                        g_{n}(x_{1}) & g_{n}(x_{2}) & \cdots & g_{n}(x_{k})\\
+                    \end{bmatrix}}_{A^{T}}
+                    \underbrace{
+                    \begin{bmatrix}
+                        g_{1}(x_{1}) & g_{2}(x_{1}) & \cdots & g_{n}(x_{1})\\
+                        g_{1}(x_{2}) & g_{2}(x_{2}) & \cdots & g_{n}(x_{2})\\
+                        \vdots       & \vdots       & \ddots & \vdots\\
+                        g_{1}(x_{k}) & g_{2}(x_{k}) & \cdots & g_{n}(x_{k})\\
+                    \end{bmatrix}}_{A}
+                    \underbrace{
+                    \begin{bmatrix}
+                        \alpha_{1}\\ \alpha_{2}\\ \vdots\\ \alpha_{n}\\
+                    \end{bmatrix}}_{\alpha}
+                \]
+
+            \paragraph{Escolha de Funções}Devem ser selecionadas de acordo com o gráfico dos pontos analisados. Funções polinomiais são aproximações suficiente eficientes para maioria dos casos. Desta maneira, temos que:
+                \[\boxed{
+                    y(x) \approx\underbrace{a_{1} 1}_{\alpha_{0} g_{0}(x)} +
+                                \underbrace{a_{2} x}_{\alpha_{1} g_{1}(x)} +
+                                \cdots +
+                                \underbrace{a_{n-1} x^{n-1}}_{\alpha_{n} g_{n}(x)}
+                                \underbrace{a_{n}   x^{n}  }_{\alpha_{n} g_{n}(x)}}\]
+
+
+        \subsection{Solução}
+            \paragraph{Formulação de Ajuste de Dados}Definiu-se que as funções necessárias para aproximar o polinômio de grau 4 seriam as diferentes potências da função. Assim o polinômio de grau 4 que melhor se ajusta as dados obtidos será:
+                \[
+                    \boxed{
+                        \varphi(x) = (0.000074423 \cdot x^{4} +
+                                      0.017349587 \cdot x^{3} +
+                                      0.162313064 \cdot x^{2}
+                                     -2.225595244 \cdot x^{1}
+                                     -0.223032780)\cdot 10^{-5}}
+                \]
+            Considerando essa aproximação são necessários \textbf{68.596} e \textbf{919.33} segundos para solucionar problemas de dimensão 500 e 1000, respectivamente.
+                \begin{figure}[h]
+                    \includegraphics[width = 12cm]{graphic2.png}
+                    \centering
+                    \caption{Dimensão pelo Tempo de Execução com Aproximação}
+                \end{figure}
+\newpage
+
+        \subsection{Códigos}
+            \begin{scriptsize}
+                \myStyle
+                \lstinputlisting{AT8_1.m}
+            \end{scriptsize}
+\newpage
+
+    \section{Questão}
+        \subsection{Introdução}
+            \paragraph{Problema}Casos graves de COVID19 por semana em Campinas, representados na tabela abaixo, não contém dados para os dias 27/12, 03/01, 10/01 e 17/01.
+                \[
+                    \begin{tabular}{c | c c}
+                        Data  & Casos\\ \hline
+                        02/08 & 170 & $x_{1 }$\\
+                        09/08 & 162 & $x_{2 }$\\
+                        16/08 & 145 & $x_{3 }$\\
+                        23/08 & 124 & $x_{4 }$\\
+                        30/08 & 127 & $x_{5 }$\\
+                        06/09 & 116 & $x_{6 }$\\
+                        13/09 & 126 & $x_{7 }$\\
+                        20/09 & 106 & $x_{8 }$\\
+                        27/09 & 95  & $x_{9 }$\\
+                        04/10 & 77  & $x_{10}$\\
+                        11/10 & 45  & $x_{11}$\\
+                        18/10 & 67  & $x_{12}$\\
+                        25/10 & 48  & $x_{13}$\\
+                        01/11 & 50  & $x_{14}$\\
+                        08/11 & 83  & $x_{15}$\\
+                        15/11 & 101 & $x_{16}$\\
+                        22/11 & 101 & $x_{17}$\\
+                        29/11 & 100 & $x_{18}$\\
+                        06/12 & 116 & $x_{19}$\\
+                        13/12 & 71  & $x_{20}$\\
+                        20/12 & 80  & $x_{21}$\\
+                        27/12 & ?   & $x_{22}$\\
+                        03/01 & ?   & $x_{23}$\\
+                        10/01 & ?   & $x_{24}$\\
+                        17/01 & ?   & $x_{25}$\\
+                    \end{tabular}
+                \]
+
+            \paragraph{Determine}Utilizando o modelo auto-regressivo linear:
+                \begin{enumerate}[noitemsep]
+                    \item Considerando $k = 4$, estime o valor dos coeficientes $\alpha_{0}, \alpha_{1}, \alpha_{2}, \alpha_{3}$ e $\alpha_{4}$ do modelo auto-regressivo linear usando o método dos quadrados mínimos, utilizando todos os valores da tabela.
+                    \item Utilizando os coeficientes determinados no item anterior, estime o número de casos nos dias 27/12, 03/01, 10/01 e 17/01.
+                \end{enumerate}
+
+        \subsection{Desenvolvimento}
+            \paragraph{Teoria}Considera-se que os dados em um \textbf{Modelo Auto-Regressivo Linear} podem ser modelados pela seguinte relação:
+                \[\boxed{
+                    x_{n} = \alpha_{0} + \alpha_{1}x_{n-1} + \cdots + \alpha_{k-1}x_{n-k+1} + \alpha_{k}x_{n-k}, 
+                    \hspace{5mm} \forall n\geq k+1}
+                \]
+
+                \paragraph{Mínimos Quadrados}Selecionando as funções $g_{1}, g_{2}, \dots, g_{n}$ de tal forma que o \textbf{Resíduo}, a soma dos quadrados dos desvios, seja mínimo:
+                \[\boxed{R(\alpha_{1}, \dots, \alpha_{n}) = \sum_{i=1}^{k} (y_{i} - (\alpha_{1} g_{1}(x_{i}) + \alpha_{2} g_{2}(x_{i}) + \cdots + \alpha_{n} g_{n}(x_{i})))^{2}}\]
+                Isto ocorre quando o gradiente $\nabla R (\alpha_{1}, \dots, \alpha_{n}) = 0$. Desta maneira cada derivada parcial deverá ser zero, implicando na seguinte família de equações:
+                    \[
+                        \begin{split}\frac{\partial R}{\partial\alpha_{i}}(\alpha_{1}, \dots, \alpha_{n})
+                            &= \sum_{i=1}^{k} -2g_{j}(x_{i})[y_{i} - [\alpha_{1} g_{1}(x_{i}) +
+                                                                    \cdots +
+                                                                    \alpha_{n} g_{n}(x_{i})]]\\
+                            &= -2\sum_{i=1}^{k} y_{i}g_{j}(x_{i}) +
+                                2\sum_{i=1}^{k} g_{j}(x_{i})[\alpha_{1} g_{1}(x_{i}) +
+                                                            \cdots +
+                                                            \alpha_{n} g_{n}(x_{i})]\\
+                        \end{split}
+                    \]
+                Desta maneira, o gradiente poderá ser representado matricialmente pelas seguintes matrizes:
+                    \[\boxed{\nabla R(\alpha_{1}, \dots, \alpha_{n}) = 0 = -2A^{T}y + 2A^{T}A\alpha}\]
+                    \[
+                        \underbrace{
+                        \begin{bmatrix}
+                            g_{1}(x_{1}) & g_{1}(x_{2}) & \cdots & g_{1}(x_{k})\\
+                            g_{2}(x_{1}) & g_{2}(x_{2}) & \cdots & g_{2}(x_{k})\\
+                            \vdots       & \vdots       & \ddots & \vdots\\
+                            g_{n}(x_{1}) & g_{n}(x_{2}) & \cdots & g_{n}(x_{k})\\
+                        \end{bmatrix}}_{A^{T}}
+                        \underbrace{
+                        \begin{bmatrix}
+                            y_{1}\\ y_{2}\\ \vdots\\ y_{k}\\
+                        \end{bmatrix}}_{y} =
+                        \underbrace{
+                        \begin{bmatrix}
+                            g_{1}(x_{1}) & g_{1}(x_{2}) & \cdots & g_{1}(x_{k})\\
+                            g_{2}(x_{1}) & g_{2}(x_{2}) & \cdots & g_{2}(x_{k})\\
+                            \vdots       & \vdots       & \ddots & \vdots\\
+                            g_{n}(x_{1}) & g_{n}(x_{2}) & \cdots & g_{n}(x_{k})\\
+                        \end{bmatrix}}_{A^{T}}
+                        \underbrace{
+                        \begin{bmatrix}
+                            g_{1}(x_{1}) & g_{2}(x_{1}) & \cdots & g_{n}(x_{1})\\
+                            g_{1}(x_{2}) & g_{2}(x_{2}) & \cdots & g_{n}(x_{2})\\
+                            \vdots       & \vdots       & \ddots & \vdots\\
+                            g_{1}(x_{k}) & g_{2}(x_{k}) & \cdots & g_{n}(x_{k})\\
+                        \end{bmatrix}}_{A}
+                        \underbrace{
+                        \begin{bmatrix}
+                            \alpha_{1}\\ \alpha_{2}\\ \vdots\\ \alpha_{n}\\
+                        \end{bmatrix}}_{\alpha}
+                    \]
+
+            \paragraph{Sistema}Considerando o método de auto-regressão, tomando $k = 4$, aplicado a todos os dados do problema tem-se o seguinte sistema de equações:
+                \[
+                    \left\{
+                    \begin{array}{r c l}
+                        x_{5}   & = &\alpha_{0} + \alpha_{1}x_{4} + \alpha_{2}x_{3} + \alpha_{3}x_{2} + \alpha_{4}x_{1}\\
+                        x_{6}   & = &\alpha_{0} + \alpha_{1}x_{5} + \alpha_{2}x_{4} + \alpha_{3}x_{3} + \alpha_{4}x_{2}\\
+                                & \vdots &\\
+                        x_{20}  & = & \alpha_{0} + \alpha_{1}x_{19} + \alpha_{2}x_{18} + \alpha_{3}x_{17} + \alpha_{4}x_{16}\\
+                        x_{21}  & = & \alpha_{0} + \alpha_{1}x_{20} + \alpha_{2}x_{19} + \alpha_{3}x_{18} + \alpha_{4}x_{17}\\
+                    \end{array}
+                    \right.
+                \]
+            Este sistema poderá ser simplesmente representado matricialmente pela seguinte equação:
+                \[
+                    \begin{bmatrix}
+                        1      & x_{ 4} & x_{ 3} & x_{ 2} & x_{ 1}\\ 
+                        1      & x_{ 5} & x_{ 4} & x_{ 3} & x_{ 2}\\ 
+                        \vdots & \vdots & \vdots & \vdots & \vdots\\ 
+                        1      & x_{19} & x_{18} & x_{17} & x_{16}\\ 
+                        1      & x_{20} & x_{19} & x_{18} & x_{17}\\ 
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        \alpha_{0}\\ \alpha_{1}\\ \alpha_{2}\\ \alpha_{3}\\ \alpha_{4}\\
+                    \end{bmatrix} =
+                    \begin{bmatrix}
+                        x_{5}\\ x_{6}\\ \vdots\\ x_{20}\\ x_{21}\\
+                    \end{bmatrix}
+                \]
+
+        \subsection{Solução}
+            \paragraph{Método Auto-Regressivo}Nota-se que o sistema de equações, solucionado através do método dos mínimos quadrados, possui os seguintes coeficientes:
+                \[
+                    \alpha_{0} = 27.55601, \hspace{2.5mm}
+                    \alpha_{1} =  0.59273, \hspace{2.5mm}
+                    \alpha_{2} =  0.21653, \hspace{2.5mm}
+                    \alpha_{3} =  0.13406, \hspace{2.5mm}
+                    \alpha_{4} = -0.26193
+                \]
+            Conhecidos os coeficientes, estima-se que o número de casos graves nos respectivos dias serão aproximadamente:
+                \[
+                    27/12 =  79.706, \hspace{2.5mm}
+                    03/01 =  71.257, \hspace{2.5mm}
+                    10/01 =  79.179, \hspace{2.5mm}
+                    17/01 =  79.648
+                \]
+\newpage
+
+        \subsection{Códigos}
+            \begin{scriptsize}
+                \myStyle
+                \lstinputlisting{AT8_2.m}
+            \end{scriptsize}
+\newpage
+\end{document}
