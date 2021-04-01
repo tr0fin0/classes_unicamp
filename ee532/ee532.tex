@@ -42,6 +42,8 @@
 % Configurando pacote de circuitos
 \usepackage{circuitikz}
 
+%Configurando pacote de Gráficos
+\usepackage{tikz}
 
 % Configurando layout para mostrar códigos
 \usepackage{listings}
@@ -428,4 +430,14 @@
 
         \subsection{Avalanche}
             \paragraph{Definição}Ocorre quando o diodo está submetido a um campo elétrico elevado, causando cruzamentos de portadores minoritários na região de depleção que poderá acelerar elétrons até que estes rompam ligações covalentes
+
+        \subsection{Modelagem}
+            \paragraph{Definição}Conhecida o comportamento e estrutura dos diodos será necessário definir modelos adequados as aplicações empregadas. Desta maneira, utilizam-se as seguinte aproximações para seu funcionamento:
+
+            \begin{tikzpicture}[domain=0:2]
+                \draw[thick,color=gray,step=.5cm,dashed] (-0.5,-.5) grid (3,3);
+                \draw[->] (-1,0) -- (3.5,0)node[below right] {$x$};
+                \draw[->] (0,-1) -- (0,3.5)node[left] {$y$};
+                \draw plot[id=x] function{x*x};
+            \end{tikzpicture}
 \end{document}
