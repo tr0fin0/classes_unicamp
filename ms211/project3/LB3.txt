@@ -1,0 +1,102 @@
+%====================Q1A====================
+load("1138_bus.mat"); %carregamento dos problemas fornecidos
+A = Problem.A; %atribuição da matriz A
+spy(A); %visualização da distribuição de elementos de A
+
+[m, n_A] = size(A); %obtendo tamanho de A
+qtde = nnz(A); %obtendo quantidade de elementos não vazios de A
+padrao_esparso = qtde/(n_A*n_A)*100 %porcentagem de elementos não nulos em A
+printf("\n");
+
+%====================Q1B====================
+C = chol(A); %teste se A é simétrica e definida positiva
+
+%====================Q1C====================
+xsol = 0.5 + sin( 2*pi*(0:n_A-1)'/(n_A-1)); %atribuição de sistema auxiliar
+b = A*xsol; %atribuição do vetor de resultados
+
+condicao_A = cond(A) %obtendo a condição de A
+tic; xn = A\b; tempo_controle = toc %resolvendo o sistema de maneira exata
+residuo_controle = norm(b-A*xn)/norm(b) %calculando o resíduo das operações
+erro_controle = norm(xsol-xn)/norm(xsol) %calculando o erro das operações
+
+erro_controle <= condicao_A*residuo_controle %avaliando a relação entre os dados
+printf("\n")
+
+%====================Q1D====================
+xsol = 0.5 + sin( 2*pi*(0:n_A-1)'/(n_A-1));
+b = A*xsol;
+
+%execução sobrescrita dos mesmos comandos anteriores para dados iguais
+condicao_A = cond(A)
+tic; y = C'\b; xn = C\y; tempo_cholesky = toc
+residuo_cholesky = norm(b-A*xn)/norm(b)
+erro_cholesky = norm(xsol-xn)/norm(xsol)
+printf("\n")
+
+relacao_tempo = tempo_controle/tempo_cholesky %relação do tempo 
+relacao_residuo = residuo_controle/residuo_cholesky %relação do residuo
+relacao_erro = erro_controle/erro_cholesky %relação do erro
+printf("\n")
+
+%====================Q2A====================
+load("sherman1.mat")
+A1 = Problem.A; b1 = Problem.b; %spy(A1);
+[m, n_A1] = size(A1);
+qtde_A1 = nnz(A1);
+padrao_esparso_A1 = qtde_A1/(n_A1*n_A1)*100
+
+load("sherman2.mat")
+A2 = Problem.A; b2 = Problem.b; %spy(A2);
+[m, n_A2] = size(A2);
+qtde_A2 = nnz(A2);
+padrao_esparso_A2 = qtde_A2/(n_A2*n_A2)*100
+
+load("sherman3.mat")
+A3 = Problem.A; b3 = Problem.b; %spy(A3);
+[m, n_A3] = size(A3);
+qtde_A3 = nnz(A3);
+padrao_esparso_A3 = qtde_A3/(n_A3*n_A3)*100
+
+load("sherman4.mat")
+A4 = Problem.A; b4 = Problem.b; %spy(A4);
+[m, n_A4] = size(A4);
+qtde_A4 = nnz(A4);
+padrao_esparso_A4 = qtde_A4/(n_A4*n_A4)*100
+
+load("sherman5.mat")
+A5 = Problem.A; b5 = Problem.b; %spy(A5);
+[m, n_A5] = size(A5);
+qtde_A5 = nnz(A5);
+padrao_esparso_A5 = qtde_A5/(n_A5*n_A5)*100
+printf("\n")
+
+%====================Q2B====================
+Ax = A1;
+bx = b1;
+n = n_A1;
+x = zeros(n,1);
+normVal=Inf; tol=1e-5; 
+itr=0; itr_max = 50;
+
+while normVal>tol && itr<itr_max
+    x_old=x;
+    
+    for i=1:n
+        
+        sigma=0;
+        
+        for j=1:i-1
+                sigma=sigma+Ax(i,j)*x(j);
+        end
+        
+        for j=i+1:n
+                sigma=sigma+Ax(i,j)*x_old(j);
+        end
+        
+        x(i)=(1/Ax(i,i))*(bx(i)-sigma);
+    end
+    
+    itr=itr+1;
+    normVal=norm(x_old-x);
+end
