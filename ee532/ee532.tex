@@ -432,12 +432,67 @@
             \paragraph{Definição}Ocorre quando o diodo está submetido a um campo elétrico elevado, causando cruzamentos de portadores minoritários na região de depleção que poderá acelerar elétrons até que estes rompam ligações covalentes
 
         \subsection{Modelagem}
-            \paragraph{Definição}Conhecida o comportamento e estrutura dos diodos será necessário definir modelos adequados as aplicações empregadas. Desta maneira, utilizam-se as seguinte aproximações para seu funcionamento:
+            \paragraph{Definição}Conhecido o comportamento e estrutura dos diodos será necessário definir modelos adequados para as aplicações empregadas. O circuito utilizado como referência para o restante do desenvolvimento será o seguinte:
 
-            \begin{tikzpicture}[domain=0:2]
-                \draw[thick,color=gray,step=.5cm,dashed] (-0.5,-.5) grid (3,3);
-                \draw[->] (-1,0) -- (3.5,0)node[below right] {$x$};
-                \draw[->] (0,-1) -- (0,3.5)node[left] {$y$};
-                \draw plot[id=x] function{x*x};
-            \end{tikzpicture}
+            % \begin{tikzpicture}[domain=0:2]
+            %     \draw[thick,color=gray,step=.5cm,dashed] (-0.5,-.5) grid (3,3);
+            %     \draw[->] (-1,0) -- (3.5,0)node[below right] {$x$};
+            %     \draw[->] (0,-1) -- (0,3.5)node[left] {$y$};
+            %     \draw plot[id=x] function{x*x};
+            % \end{tikzpicture}
+
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        (0,2) to[battery1] (0,0)
+                        (0,2) to[resistor] (4,2)
+                        (4,2) to[empty diode] (4,0)
+                        (4,0) -- (0,0);
+                    \end{circuitikz} 
+                    \caption{Circuito Básico}
+                \end{figure} \noindent
+            Onde: $V_{DD} = 5V$, $V_{T} = 26mV$, $R = 1000\Omega$ e $I_{S} = 10^{-14}A$. Desta maneira, utilizam-se as seguinte aproximações para seu funcionamento:
+
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Modelo Ideal:}\\
+                    Considera-se que quando em polarização direta o diodo se comporta como uma chave fechada enquanto quando em polarização reversa o diodo se comporta como uma chave aberta.
+                        \[
+                            \begin{cases}
+                                R_{D} \to \infty \hspace{2.5mm} I_{D} = 0, &
+                                \text{Polarização Revera}\\
+                                R_{D} = 0 \hspace{2.5mm} I_{D} \to \infty, &
+                                \text{Polarização Direta}
+                            \end{cases}
+                        \]
+                    Obtendo os seguintes resultados:
+                        \[
+                            \boxed{
+                                \begin{cases}
+                                    I_{D} = 5 mA\\
+                                    V_{D} = 0 V
+                                \end{cases}
+                            }
+                        \]
+
+                    \item \textbf{Modelo Exponencial:}\\
+                    Partindo das equações para o Diodo será necessário uma segunda equação, obtida pela Lei das Malhas no Circuito básico.
+                        \[
+                            \begin{cases}
+                                I_{D} = I_{S} \cdot (e^{\frac{V_{D}}{V_{T}}} - 1)\\
+                                I_{D} = \frac{V_{DD} - V_{D}}{R}
+                            \end{cases} \to \hspace{2.5mm}
+                            \frac{V_{DD} - V_{D}}{R} - I_{S} \cdot e^{\left(\frac{V_{D}}{V_{T}} - 1\right)} = 0
+                        \]
+                    Este conjunto de equações não possuem solução analítica, sendo necessário empregar um método iterativo para sua resolução, obtendo os seguintes resultados:
+                        \[
+                            \boxed{
+                                \begin{cases}
+                                    I_{D} = 4,3035 mA\\
+                                    V_{D} = 0,6965 V
+                                \end{cases}
+                            }
+                        \]
+                \end{enumerate}
 \end{document}
