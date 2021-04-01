@@ -430,7 +430,9 @@
 
         \subsection{Avalanche}
             \paragraph{Definição}Ocorre quando o diodo está submetido a um campo elétrico elevado, causando cruzamentos de portadores minoritários na região de depleção que poderá acelerar elétrons até que estes rompam ligações covalentes
+\newpage
 
+    \section{Aplicações Diodo}
         \subsection{Modelagem}
             \paragraph{Definição}Conhecido o comportamento e estrutura dos diodos será necessário definir modelos adequados para as aplicações empregadas. O circuito utilizado como referência para o restante do desenvolvimento será o seguinte:
 
@@ -476,6 +478,8 @@
                             }
                         \]
 
+
+
                     \item \textbf{Modelo Exponencial:}\\
                     Partindo das equações para o Diodo será necessário uma segunda equação, obtida pela Lei das Malhas no Circuito básico.
                         \[
@@ -494,5 +498,53 @@
                                 \end{cases}
                             }
                         \]
+                \end{enumerate}
+
+        \subsection{Retificadores de Onda}
+            \paragraph{Definição}
+
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Retificador de Meia Onda Positiva:}\\
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}
+                                \ctikzset{component text=left}
+                                \draw
+                                (0,0) to[sV, l=$V$] (0,2)
+                                (0,2) to[empty diode, l=$D$] (4,2)
+                                (4,2) to[resistor, l=$R$] (4,0)
+                                (4,0) -- (0,0);
+                            \end{circuitikz} 
+                            \caption{Retificador de Meia Onda Positiva}
+                        \end{figure} \noindent
+
+                    \item \textbf{Retificador de Meia Onda Negativo:}\\
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}
+                                \ctikzset{component text=left}
+                                \draw
+                                (0,0) to[sV, l=$V$] (0,2)
+                                (0,2) to[resistor, l=$R$] (4,2)
+                                (4,2) to[empty diode, l=$D$] (4,0)
+                                (4,0) -- (0,0);
+                            \end{circuitikz} 
+                            \caption{Retificador de Meia Onda Negativa}
+                        \end{figure} \noindent
+
+                    \item \textbf{Retificador de Meia Onda Negativa Limitador:}\\
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}
+                                \ctikzset{component text=left}
+                                \draw
+                                (0,0) to[sV, l=$V_{1}$] (0,4)
+                                (0,4) to[resistor, l=$R$] (4,4)
+                                (4,4) to[empty diode, l=$D$] (4,2)
+                                (4,2) to[battery1, l=$V_{B}$] (4,0)
+                                (4,0) -- (0,0);
+                            \end{circuitikz} 
+                            \caption{Retificador Limitador}
+                        \end{figure} \noindent
                 \end{enumerate}
 \end{document}
