@@ -1,0 +1,942 @@
+\documentclass{article}
+
+\usepackage[a4paper, hmargin={20mm, 20mm}, vmargin={25mm, 30mm}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english, main=portuguese]{babel}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{bookmark}
+\usepackage{cancel}
+\usepackage{comment}
+
+\usepackage{array}
+\usepackage{indentfirst}
+\usepackage{multicol}
+\usepackage{subfiles}
+
+\usepackage{titlesec}
+
+\usepackage{amsmath}
+\usepackage{esdiff}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{enumitem}
+\restylefloat{table}
+
+
+%\titleformat{<command>}[<shape>]{<format>}{<label>}{<sep>}{<before-code>}[<after-code>]
+\titleformat
+{\section} %comand
+[block]  %shape
+{\normalfont\LARGE} %format
+{\thesection. } %label
+{0mm} %sep
+{} %before-code
+[{\titlerule[0.1mm]}] %after-code
+
+\titlespacing*{\section}{0mm}{0mm}{10mm}
+
+\titleformat
+{\subsection} %comand
+[block]  %shape
+{\normalfont\large} %format
+{\thesubsection. } %label
+{0mm} %sep
+{} %before-code
+[] %after-code
+
+\titlespacing*{\subsection}{0mm}{5mm}{2.5mm}
+
+
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+        \rule{450pt}{0.5pt}\\[4mm]
+        {\Huge MA327 - Álgebra Linear}\\
+        \rule{450pt}{0.5pt}\\[2mm]
+        {\Large Resumo Teórico}\\[198mm]
+        \today\\
+        \rule{250pt}{0.5pt}\\
+        {\large Guilherme Nunes Trofino}\\
+        {\large 217276}\\
+    \end{center}
+\end{titlepage}
+\newpage
+
+    \tableofcontents
+\newpage
+
+    \section{Matrizes}
+        \subsection{Matriz Inversa}
+            \paragraph{Definição}Uma matriz quadrada $A_{n}$ será inversível se houver uma única matriz quadrada $B_{n}$ que satisfaz a operação abaixo, onde $I_{n}$ será a matriz identidade quadrada de tamanho $n$:
+                \[\boxed{A \times B = I}\]
+
+            \paragraph{Propriedade}Considerando que uma matriz $A$ é inversível e que $B = A^{-1}$ temos que:
+                \begin{enumerate}
+                    \item Se $A$ e $B$ são inversíveis o produto $AB$ também seré inversível;
+                        \[\boxed{(AB)^{-1} = B^{-1}A^{-1}}\]
+                    \item Transposição e Inversão são comutativos;
+                        \[\boxed{(A^{T})^{-1} = (A^{-1})^{T}}\]
+                \end{enumerate}
+                
+        \subsection{Operações Elementares}
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Permutação} da \textit{i-ésina} linha pela \textit{j-ésima} linha;
+                        \[l_{i} \leftrightarrow l{j}\]
+                    \item \textbf{Multiplicação} da \textit{i-ésima} linha por um escalar $\lambda \neq 0$;
+                        \[l_{i} = l_{i} \cdot \lambda\]
+                    \item \textbf{Substituição} da \textit{i-ésima} linha pela soma da \textit{i-ésima} linha com a \textit{j-ésima} linha multiplicada por $\lambda$;
+                        \[l_{i} = l_{i} + l_{j} \cdot \lambda\]
+                \end{enumerate}
+            
+            \paragraph{Definição}Sejam $A_{n}$ e $B_{n}$, dizemos que $A$ e $B$ serão equivalentes se  $B$ é  obtida de A através de operações elementares.
+
+            \paragraph{Definição}Dada uma matriz $A_{m \times n}$ e $R$, a forma escada de $A$, definimos o \textit{Posto} de $A$ como sendo o $N^{o}$ de linhas não nulas de $R$. Detona-se o posto de $A$ por $p(A)$.
+
+            \paragraph{Definição}Dada uma matriz $A_{m \times n}$, com seus elementos denotados por $A=[a_{ij}]$ está será anti-simétrica se $A^{T}=-A$.
+
+        \subsection{Sistemas Lineares}
+            \paragraph{Definição}Seja $A=(a_{ij})$ uma matriz $m \times n$ e $y_{1}, \cdots, y_{n}$ escalares então um \textit{Sistema Linear} com n-equações e n-incógnitas é dada pela família:
+                \[
+                    \left\{
+                    \begin{matrix}
+                        a_{11}x_{1} + a_{12}x_{2} + & \cdots & + a_{1n}x_{n} & =      & y_{1}\\
+                        a_{21}x_{1} + a_{22}x_{2} + & \cdots & + a_{2n}x_{n} & =      & y_{2}\\
+                                                    &        &               & \vdots & \\
+                        a_{m1}x_{1} + a_{m2}x_{2} + & \cdots & + a_{mn}x_{n} & =      & y_{n}
+                    \end{matrix}
+                    \right.
+                \]
+
+            \paragraph{Classificação}Sistemas, em alguns casos, permitem interpretações geométricas, pois as soluções podem representam a intersecção das equações.
+                \begin{enumerate}[noitemsep]
+                    \item O \textit{Sistema Possível e Determinado} representam equações com solução única;
+                    \item O \textit{Sistema Possível e Indeterminado} representam equações com infinitas soluções;
+                    \item O \textit{Sistema Impossível} representam equações que não apresentam solução;
+                \end{enumerate}
+            
+            \paragraph{Teorema}Seja $A_{m \times n}$, $Y_{m \times 1}$ e $X_{1 \times n}$ então:
+                \begin{enumerate}[noitemsep]
+                    \item O \textit{Sistema Possível e Determinado} se $p([A|Y])=p(A)=n$
+                    \item O \textit{Sistema Possível e Indeterminado} se $p([A|Y])=p(A)<n$
+                    \item O \textit{Sistema Impossível} se $p(A)<p([A|Y])$;
+                \end{enumerate}
+\newpage
+
+    \section{Corpos}
+        \paragraph{Definição}Um corpo será um conjunto $\mathbb{F}$ de elementos abritários que apresente 2 operações básicas, normalmente referidas como a soma e o produto, e possua as propriedades derivadas enuciadas abaixo:
+            \begin{enumerate}[noitemsep]
+                \item $+$: $\mathbb{F}\times\mathbb{F}\rightarrow\mathbb{F}$, usalmente soma;
+                    \begin{enumerate}[noitemsep]
+                        \item Associatividade: $(x+y)+z = x+(y+z)$;
+                        \item Comutatividade: $x+y=y+x$;
+                        \item Elemento Neuro: $\exists! 0 \in \mathbb{F}: x+0=x, x\in\mathbb{F}$;
+                        \item Elemento Inverso: Dado $x\in\mathbb{F};\exists!x\in\mathbb{F}; x+(-x)=0$;
+                    \end{enumerate}
+                \item $\cdot$: $\mathbb{F}\times\mathbb{F}\rightarrow\mathbb{F}$, usalmente produto;
+                \begin{enumerate}[noitemsep]
+                    \item Associatividade: $(x\cdot y)\cdot z = x\cdot(y\cdot z)$;
+                    \item Comutatividade: $x\cdot y=y\cdot x$;
+                    \item Elemento Neutro: $\exists! 1 \in \mathbb{F}: 1 \cdot x=x, \forall x\in\mathbb{F}$;
+                    \item Elemento Inverso: Dado $x\in\mathbb{F}; x\neq 0,\exists!x^{-1}; x\cdot(x^{-1})=1$;
+                \end{enumerate}
+                \item Propriedade comum as operações $\forall x,y,z \in \mathbb{F}; x\cdot(y+z)=x\cdot y+ x\cdot z$;
+            \end{enumerate}
+\newpage
+
+    \section{Espaços Vetorias}
+        \paragraph{Definição}Considerando um conjunto que satisfaz as seguintes propriedades:
+            \begin{enumerate}[noitemsep]
+                \item Conjunto $V$ não vazio;
+                \item Corpo $\mathbb{F}$ de escalares, usualmente os $\mathbb{R}$ ou $\mathbb{C}$;
+                \item Duas operaçõs:
+                    \begin{enumerate}[noitemsep]
+                        \item Soma Vetorial: $+: V\times V \rightarrow V$;
+                        \item Multiplicação por Escalar: $\cdot: \mathbb{F}\times V \rightarrow V$;
+                    \end{enumerate}
+                \item Propriedades Internas
+                    \begin{enumerate}[noitemsep]
+                        \item Associatividade: $u+(r+w)=(u+v)+w$;
+                        \item Comutatividade: $u+r=r+u$;
+                        \item Elemento Neutro: $\exists 0_{V}; u+0_{V}=u$;
+                        \item Elemento Inverso: Dado $u\in\mathbb{V}; \exists -u\in\mathbb{V}; u+(-u)=0_{V}$;
+                    \end{enumerate}
+                \item Propriedades Externas
+                    \begin{enumerate}[noitemsep]
+                        \item Asso. entre Escalar e Vetor: $(\alpha \beta)\cdot u = \alpha(\beta\cdot u)$
+                        \item Asso. entre Escalar e Vetor: $\alpha(\beta + u) = \alpha\beta + \alpha u$
+                        \item Asso. entre Escalar e Vetor: $(\alpha+\beta)u = \alpha u + \beta u$
+                        \item Elemento Neutro: $1\cdot u = u, \forall u \in \mathbb{V}$
+                    \end{enumerate}
+            \end{enumerate}
+        
+        \paragraph{Nomenclatura}Se $\mathbb{F}=\mathbb{R}$ dizemos que $\mathbb{V}$ é \textit{Espaço Vetorial Real} enquanto se $\mathbb{F}=\mathbb{C}$ dizemos que $\mathbb{V}$ é \textit{Espaço Vetorial Complexo}
+        
+        \paragraph{Teorema}Dado um espaço vetorial $\mathbb{V}$, o \textit{Elemento Inverso} e o \textit{Elemento Neutro} são únicos.
+
+        \paragraph{Teorema}As seguintes equações são válidas:
+            \begin{enumerate}[noitemsep]
+                \item Cancelamento: $u+v=w+v \rightarrow u=w$
+                \item $0_{\mathbb{F}}v=0_{\mathbb{V}}$
+                \item $\alpha 0_{\mathbb{V}}=0_{\mathbb{V}}$
+                \item $(-\alpha)v=-(\alpha v)=\alpha(-v)$
+                \item Se $\alpha u = 0$, então $\alpha=0_{\mathbb{F}}$ ou $u=0_{V}$
+                \item Se $\alpha u = \alpha v$ e $\alpha \neq 0_{\mathbb{F}} \rightarrow u=v$
+                \item Se $\alpha v = \beta v$ e $v\neq 0_{\mathbb{V}} \rightarrow \alpha =\beta$
+                \item $-(u+v)=-u+(-v)=-u-v$
+            \end{enumerate}
+        
+        \subsection{Subespaços Vetoriais}
+            \paragraph{Definição}Seja $\mathbb{V}$ em espaço vetorial sobre um corpo $\mathbb{F}$. Um \textit{Subespaço Vetorial} de $\mathbb{V}$ é um conjunto $\mathbb{W} \subset \mathbb{V}$ dotado das seguintes propriedades:
+                \begin{enumerate}[noitemsep]
+                    \item O subespaço vetorial não poderá ser vazio;
+                    \item O subespaço vetorial $V$ deve ser fechado para soma;
+                    \item O subespaço vetorial $V$ deve ser fechado para multiplicação por escalar;
+                \end{enumerate}
+
+            \paragraph{Teorema}Um subconjunto $\mathbb{W}$ de um espaço vetorial $\mathbb{V}$ é um subespaço vetorial de $\mathbb{F}$ se, e somente se:
+                \[\alpha u + \beta v \in \mathbb{W}\] \[\forall \alpha,\beta \in \mathbb{F}\] \[\forall v, u \in \mathbb{W}\]
+\newpage
+
+    \section{Combinação Linear}
+        \paragraph{Definição}Seja $V$ um espaço vetorial sobre $\mathbb{F}$. Dizemos que $u\in V$ será \textit{Combinação Linear} de $v_{1}, \dots, v_{n} \in V$ se existem escalares $\alpha_{1}, \dots, \alpha{n} \in \mathbb{F};$
+            \[u = \alpha_{1}v_{1} + \alpha_{2}v_{2} + \cdots + \alpha_{n}v_{n}\]
+        Seja $S={v_{1},\dots,v_{n}}$ o subconjunto ${u \in V; u=\alpha_{1},v_{1}+\cdots+\alpha_{n}v_{n}, \alpha_{i}\in\mathbb{F}}$ é um subespaço vetorial de $V$, denominado \textit{Subespaço Gerado} por $S$. O cojunto $S$ é dito ser os \textit{Geradores}, ou \textit{Sistema de Geradores}. O conjunto denotado é representado por:
+            \[\boxed{[S]; \hspace{5mm} [v_{1},\dots v_{n}]; \hspace{5mm} \langle S\rangle}\]
+
+        \paragraph{Definição}Dizemos que um espaço vetorial $V$ é \textit{Finitamente Gerado} se existe $S={v_{1},\dots,v_{n}}\subset V$ tal que $V=[S]$.
+
+        \subsection{Soma e Intersecção de Subespaços}
+            \paragraph{Teorema 1}Seja $V$ espaço vetorial sobre $\mathbb{F}$ e $U, W$ subespaços de $U$. Então o conjunto $U\cap W =\{v\in V: v\in U, v\in W\}$ é um subespaço vetorial.
+
+            \paragraph{Corolário}A interseção de uma coleção arbritária de subespaços vetoriais é um subespaço vetorial.
+
+            \paragraph{Teorema 2}Sejam $V$ espaço vetorial sobre $\mathbb{F}$ e $U,W$ subespaços vetoriais. O conjunto $V = U+W$ definido como $\{v \in V$ onde $v = u + w$, com $ u\in U$ e $w\in W$ tal que $v=u+w\}$ é subespaço vetorial de $\mathbb{F}$.
+
+            \paragraph{Definição}O conjunto $U+W$ acima é denominado como \textit{Soma de $U$ e $W$}. A soma de $U+W$ é dita \textit{Soma Direta} se $U\cap W = {0_{v}}$, representada por:
+                \[\boxed{U\oplus W}\]
+
+            \paragraph{Proposição}Sejam $U,W$ subespaços vetoriais de $V$. Então $V=U\oplus W$ se, e somente se, todo $v\in V$ tem decomposição $v=u+w$ tais que $u\in U$ e $w\in W$ única.
+
+            \paragraph{Definição}Considerando $S_{U}$ e $S_{V}$ como os sistemas de geradores de $U$ e $V$, respectivamente, então o conjunto definido por $U+V$ terá $[S_{U}\cup S_{V}]$ como sistema de geradores.
+\newpage
+
+    \section{Dependência e Independência Linear}
+        \paragraph{Definição}Sejam $V$ um espaço vetorial sobre $\mathbb{F}$ e $S={u_{1},\dots, u_{n}}\subset V$. Dizemos que $S$ é \textit{Linearmente Independente} se a combinação linear:
+            \[\alpha_{1}u_{1}+\alpha_{2}u_{2}+\cdots+\alpha_{n}u_{n}=0_{V}\]
+        Onde $\alpha_{i}\in\mathbb{F}$ implica que:
+            \[\alpha_{1}=\alpha_{2}=\cdots=\alpha_{n}=0_{\mathbb{F}}\]
+        Dizemos que $S$ é \textit{Linearmente Dependente} se não é linearmente independente, ou seja, existem $\alpha_{1},\alpha_{2},\dots,\alpha_{n}\in\mathbb{F}$ não nulos tais que:
+            \[\alpha_{1}u_{1}+\alpha_{2}u_{2}+\cdots+\alpha_{n}u_{n}=0_{V}\]
+        
+        \paragraph{Propriedades}Sejam $S={u_{1},\dots, u_{n}}$ conjunto finito em $V$, então temos que:
+            \begin{enumerate}[noitemsep]
+                \item Todo conjunto que contém um subconjunto LD será LD;
+                \item Todo subconjunto de um conjunto LI será LI;
+                \item Todo conjunto que contém o elemento neutro, $0_{V}$, é LD;
+                \item Um conjunto será LI se, e somente se, todos os seus subconjuntos forem LI;
+                \item O conjunto vazio é considerado LI;
+            \end{enumerate}
+
+        \paragraph{Teorema 1}Sejam $V$ espaço vetorial sobre $\mathbb{F}$ e $S={u_1,\dots,u_n}\subset V$. Então $S$ é linearmente dependente se, e somente se, um elemento de $S$ for combinação linear dos demais.
+
+        \paragraph{Teorema 2}Sejam $f_{1},\dots, f_{n} \in C^{n}([a,b])$, então o conjunto $S = \{f_{1},\dots, f_{n}\}$ é linearmente dependente se, e somente se, $W(f_{1},\dots, f_{n})(x) = 0$ onde o Wronskiano é dado por:
+            \[\boxed{W(f_{1},\dots, f_{n})(x) = 
+            \begin{vmatrix}
+                f_{1}(x)       & f_{2}(x)       & \cdots & f_{n}(x)\\
+                f^{1}_{1}(x)   & f^{1}_{2}(x)   & \cdots & f^{1}_{n}(x)\\
+                \vdots         & \vdots         & \ddots & \vdots\\
+                f^{n-1}_{1}(x) & f^{n-1}_{2}(x) & \cdots & f^{n-1}_{n}(x)\\
+            \end{vmatrix}=0, \hspace{5mm}\forall x \in [a,b]}\]
+
+        \subsection{Bases e Dimensão}
+            \paragraph{Definição}Seja $V$ um espaço vetorial sobre $\mathbb{F}$. Uma base de $V$ é um conjunto de elementos linearmente independentes que gera $V$.
+
+            \paragraph{Teorema 2.2}Seja $V$ um espaço vetorial sobre $\mathbb{F}$. Se $V$ é gerado por $S=\{u_{1},\dots,u_{n}\}$, então podemos extrair uma base de $S$.
+
+            \paragraph{Teorema 2.3}Seja $V$ um espaço vetorial finitamente gerado $S=\{u_{1},\dots,u_{n}\}$. Então, todo conjunto linearmente independente de $V$ é finito e tem no máximo $n$ elementos.
+
+            \paragraph{Definição}Um espaço vetorial $V$ sobre $\mathbb{F}$ é dito ter \textit{Dimensões Finita} se possui uma base finita. A \textit{Dimensão} de $V$, denotada por $dim(V)$, é por definição o número de elementos de uma base de $V$.
+
+            \paragraph{Teorema 2.4}Seja $V$ espaço vetorial de dimensão finita. Se $s\subset V$ é um subconjunto linearmente independente finito, então $s$ é parte de uma base de $V$.
+
+            \paragraph{Definição}Seja $V$ um espaço vetorial sobre $\mathbb{F}$ e $U, W$ sejam subconjuntos do espaço $V$. A dimensão da soma pode ser obtida através da seguinte relação:
+                \[\boxed{dim(U+W) = dim(U) + dim(W) - dim(U\cap W)}\]
+\newpage
+
+    \section{Mudança de Coordenadas}
+        \paragraph{Definição}Seja $\beta = \{ v_{1}, \dots, v_{n} \}$ base ordenada de um espaço vetorial $\mathbb{V}$, a \textit{Matriz de Coordenadas} de $v\cap V$, se e somente se $v=\alpha_{1}v_{1}+\cdots+\alpha_{n}v_{n}$, será:
+            \[[v]_{\beta}=\begin{bmatrix}\alpha_{1}\\ \vdots\\ \alpha_{n}\end{bmatrix}\]
+
+        \paragraph{Teorema 1.1}Seja $\mathbb{V}$ um espaço vetorial de dimensão finita sobre uma base $\mathbb{F}$ e $\beta = \{v_{1},\dots,v_{n}\}$, $\gamma = \{w_{1},\dots,w_{n}\}$ bases ordenadas de $\mathbb{V}$. Então existe uma \textbf{única} matriz $P=M_{n}(\mathbb{F})$, inversível como consequência da reciprocidade, tal que:
+            \begin{enumerate}[noitemsep]
+                \item $[v]_{\gamma} = P \cdot [v]_{\beta}$
+                \item $[v]_{\beta} = P^{-1} \cdot [v]_{\gamma}$
+            \end{enumerate}
+
+        \paragraph{Definição}Sejaqm $V$ e $W$ espaços vetorias sobre $\mathbb{F}$ com dimensão finita. Se $\alpha = \{v_{1},\dots,v_{n}\}$ e $\beta = \{w_{1},\dots,w_{n}\}$ formam bases de $V$ e $W$ respectivamente então a \textit{Matriz Mudança de Base} será definida, onde $[w_{i}]_{\alpha}$ são vetores da base $\beta$ escritos na base $\alpha$, como:
+            \[[I]^{\beta}_{\alpha} = 
+                \begin{bmatrix}
+                    \vrule           &        & \vrule\\
+                    [w_{1}]_{\alpha} & \cdots & [w_{n}]_{\alpha}\\
+                    \vrule           &        & \vrule\\
+                \end{bmatrix}\]
+
+        \subsection{Transformações Lineares}
+            \paragraph{Definição}Dizemos que uma função $T: V\rightarrow W$, onde $V$ e $W$ são espaços vetorias sobre $\mathbb{F}$, será \textit{Transformação Linear} se não influenciar as propriedades básicas de espações vetorias descritos a seguir $\forall v, w\in V$ e $\lambda\in\mathbb{F}$:
+                \begin{enumerate}[noitemsep]
+                    \item Fechado para soma: $T(v+w) = T(v) + T(w)$;
+                    \item Fechado para multiplicação por escalar: $T(\lambda v) = \lambda T(v)$;
+                    \item Distributiva: $T(av+bw) = aT(v) + bT(w)$;
+                \end{enumerate}
+
+            \paragraph{Propriedades}Consequentemente temos que $\forall v_{1},\dots,v_{n}\in V$ e $\lambda\in\mathbb{F}$
+                \begin{enumerate}[noitemsep]
+                    \item $T(0_{v})=0_{w}$;
+                    \item $T\left(\sum\limits_{i=1}^{n}a_{i}v_{i}\right) = \sum\limits_{i=1}^{n}a_{i}T(v_{i})$;
+                \end{enumerate}
+            Necessário resaltar que uma transformação será linear se $T(0_{v})=0_{w}$, entretanto isso não implica que se $T(v) = 0_{w}$ então $v =0_{v}$.
+
+            \paragraph{Transformações Usuais}Considere $\mathbb{R}^{2}$ como espaço vetorial. Então as seguintes transformações serão lineares:
+                \begin{enumerate}[noitemsep]
+                    \item Dado $\lambda\in\mathbb{R}$, $T_{\lambda}:\mathbb{R}^{2}\rightarrow\mathbb{R}^{2}$ então $T_{\lambda}(x_{\lambda},y_{\lambda})=\lambda(x,y)$ será dita \textit{Produto por Escalar};
+                        \begin{enumerate}[noitemsep]
+                            \item Se $\lambda>1$ então $T_{\lambda}$ realiza uma \textit{Expansão};
+                            \item Se $0<\lambda<1$ então $T_{\lambda}$ realiza uma \textit{Contração};
+                            \item Se $-1<\lambda<0$ então $T_{\lambda}$ realiza uma \textit{Contração com Reversão};
+                            \item Se $\lambda<-1$ então $T_{\lambda}$ realiza uma \textit{Expansão com Reversão};
+                        \end{enumerate}
+                    \item A transformação $I_{v}:V\rightarrow V$ dada por $I_{v}(w)=w$ será a operação \textit{Identidade};
+                    \item A transformação $I_{v}:V\rightarrow V$ dada por $T(v)=0_{V}$ será a operação \textit{Nula};
+                    \item Dado $c=\{c_{1},\dots,c_{n}\}\in\mathbb{R}^{n}$ conjunto fixo, então $T_{c}(x_{1},\dots,x_{n})=\sum\limits_{i=1}^{n}c_{i}x_{i}$ será dita \textit{Produto Escalar} de $x$ por $c$;
+                \end{enumerate}
+
+            \paragraph{Teorema}Sejam $V$ e $W$ espaços vetoriais sobre $\mathbb{F}$ com $dim(V)=n$. Se $\beta=\{v_{1},\dots,v_{n}\}$ é base ordenada de $V$ e $w_{1},\dots,w_{n}\in W$ são elementos arbitrários, então existe uma \textit{única} transformação linear $T:V\rightarrow W$ tal que $T(v_{i})=w_{i}$, $\forall i=1,\dots,n$.
+\newpage
+
+    \section{Transformações}
+        \subsection{Núcleo}
+            \paragraph{Definição}Seja $T: V\rightarrow W$ uma transformação linear entre subsespaços vetorias $V$ e $W$ então define-se o \textit{Núcleo} como o conjunto de todos os zeros da transformação $T$, formalmente descrito como:
+                \[\boxed{Ker(T) = \{v\in V; \hspace{2.5mm} T(v) = 0_{W}\}}\]
+            \paragraph{Definição}Sejam $V$ e $W$ espaços vetoriais sobre o corpo $\mathbb{F}$ e a transformação $T: V\rightarrow W$ linear então define-se a \textit{Nulidade} de $T$ como:
+                \[\boxed{dim(Ker(T))}\]
+
+        \subsection{Imagem}
+            \paragraph{Definição}Seja $T: V\rightarrow W$ uma transformação linear entre subsespaços vetorias $V$ e $W$ então define-se a \textit{Imagem} como o conjunto de todos os elementos de $W$ obtidos através da transformação de um dos elementos de $V$, formalmente descrito como:
+                \[\boxed{Im(T) = \{w\in W; \hspace{2.5mm} T(v) = w\}}\]
+            \paragraph{Definição}Sejam $V$ e $W$ espaços vetoriais sobre o corpo $\mathbb{F}$ e a transformação $T: V\rightarrow W$ linear então define-se o \textit{Posto} de $T$ como:
+                \[\boxed{dim(Im(T))}\]
+
+        \subsection{Injeção}
+            \paragraph{Definição}Sejam $V$ e $W$ espaços vetoriais sobre o corpo $\mathbb{F}$ e a transformação $T: V\rightarrow W$ linear então $T$ será \textit{Injetora} se, e somente se, $T(u) = T(v) \iff u = v \hspace{2.5mm} \forall u, v\in V$, implicando:
+                \begin{enumerate}[noitemsep]
+                    \item $Ker(T) = \{0_{W}\}$, ou seja, $dim(Ker(T)) = 0$;
+                \end{enumerate}
+
+        \subsection{Sobrejeção}
+            \paragraph{Definição}Sejam $V$ e $W$ espaços vetoriais sobre o corpo $\mathbb{F}$ e a transformação $T: V\rightarrow W$ linear então $T$ será \textit{Sobrejetora} se, e somente se, $\forall w\in W \hspace{2.5mm} \exists v\in V \hspace{2.5mm} T(v) = w$, implicando:
+                \begin{enumerate}[noitemsep]
+                    \item $Im(T) = W$, ou seja, $dim(Im(T)) = dim(W)$;
+                \end{enumerate}
+
+        \subsection{Bijeção}
+            \paragraph{Definição}Uma transformação $T: V \rightarrow W$ linear será um \textit{Isomorfismo} se $T$ for injetora e sobrejetora, isto é, \textit{Bijetora}. Neste caso $V$ e $W$ são \textit{Isomorfos}. Assim define-se a \textit{Transformação Inversa} $T^{-1}: W \rightarrow U$ tal que $T^{-1}(w) = v \iff T(v) = w$.
+
+            \paragraph{Teorema}Sejam $V$ e $W$ espaços vetoriais sobre o corpo $\mathbb{F}$ e se a transformação linear $T: V \rightarrow W$ for um isomorfismo, então $T^{-1}$ também será um isomorfismo.
+
+            \paragraph{Teorema}Sejam $V$ e $W$ espaços vetoriass sobre o corpo $\mathbb{F}$. Então $V$ e $W$ são isomorfos se, e somente se, $dim(V) = dim(W)$.
+
+            \paragraph{Teorema}Sejam $V$ e $W$ espaços vetoriais sobre o corpo $\mathbb{F}$. Se $dim(V) = dim(W)$, então a transformação linear $T: V \rightarrow W$ será injetora se, e somente se, for sobrejetora.
+
+        \subsection{Teorema do Núcleo e da Imagem}
+            \paragraph{Teorema}Sejam $V$ e $W$ espaços vetoriais sobre o corpo $\mathbb{F}$ onde $V$ apresente dimensão finita. Caso $T: V \rightarrow W$ seja linear então:
+                \[\boxed{dim(V) = dim(Ker(T)) + dim(Im(T))}\]
+                \begin{enumerate}[noitemsep]
+                    \item Dimensão Real $\mathbb{R}^{n}$:
+                        \[\boxed{dim(\mathbb{R}^{n}) = n}\]
+                    \item Dimensão Complexa $\mathbb{C}^{n}$:
+                        \[\boxed{dim(\mathbb{C}^{n}) = 2n}\]
+                    \item Dimensão Polinomial $P_{n}(\mathbb{R})$:
+                        \[\boxed{dim(P_{n}(\mathbb{R})) = n+1}\]
+                    \item Dimensão Matricial $M_{n}(\mathbb{R})$:
+                        \[\boxed{dim(M_{n}(\mathbb{R})) = 2n}\]
+                \end{enumerate}
+
+            \paragraph{Corolário}Sejam $V$ e $W$ espaços vetoriais sobre o corpo $\mathbb{F}$ e $T: V \rightarrow W$ uma transformação linear onde $dim(V) = dim(W)$ então $T$ será injetora se, e somente se, for sobrejetora.
+
+        \subsection{Matriz de Transformação}
+            \paragraph{Definição}Sejam $V$ e $W$ espaços vetoriais sobre o corpo $\mathbb{F}$ com $\alpha = \{v_{1},\dots,v_{n}\}$ e $\beta = \{w_{1},\dots,w_{n}\}$ respectivamente bases de $V$ e $W$ e $T: V \rightarrow W$ uma transformação linear unicamente determinada pelos seus valores em $\alpha$, podendo ser escrita como:
+                \[\boxed{T(v_{j}) = \sum\limits_{i=1}^{n} a_{ij}w_{i} \text{, onde }
+                [T]^{\alpha}_{\beta} = 
+                \begin{bmatrix}
+                    \vrule          &        & \vrule\\
+                    [v_{1}]_{\beta} & \cdots & [v_{n}]_{\beta}\\
+                    \vrule          &        & \vrule\\
+                \end{bmatrix}}\]
+            Onde $a_{ij} \in \mathbb{F}$ e $[T]^{\alpha}_{\beta} = (a_{ij})$ representa a \textit{Matriz de Transformação} da base $\alpha$ para base $\beta$ de $T$. Assim pode-se representar a transformação, em termo de matriciais, como:
+                \[\boxed{[T(v)]_{\beta} = [T]_{\beta}^{\alpha}[v]_{\beta}}\]
+
+            \paragraph{Teorema}Sejam $V$ e $W$ espaços vetoriais sobre o corpo $\mathbb{F}$ com dimensão finita e $\alpha$ e $\beta$ bases ordenadas respectivamente de $V$ e $W$. Se as transformações $T, P: V\rightarrow W$ forem lineares então:
+                \begin{enumerate}[noitemsep]
+                    \item $[T + P]_{\beta}^{\alpha} = [T]_{\beta}^{\alpha} + [P]_{\beta}^{\alpha}$;
+                    \item $[\lambda T]_{\beta}^{\alpha} = \lambda [T]_{\beta}^{\alpha}$;
+                    \item Se $V = W$, então: $[I_{V}]_{\beta}^{\alpha} = [I_{W}]_{\beta}^{\alpha}$;
+                \end{enumerate}
+
+            \paragraph{Teorema}Sejam $U$, $V$ e $W$ espaços vetorias sobre o corpo $\mathbb{F}$ com dimensão finita e $\gamma$, $\beta$ e $\alpha$ bases ordenadas respectivamente de $U$, $V$ e $W$. Se as transformações $T: U \rightarrow V$ e $P: V \rightarrow W$ forem lineares então a transformação composta $P \cdot T: U \rightarrow W$ será linear e representada por:
+                \[\boxed{[P\circ T]_{\alpha}^{\gamma} = [P]_{\alpha}^{\beta}[T]_{\beta}^{\gamma}}\]
+
+            \paragraph{Corolário}Sejam $U$ e $W$ espaços vetorias sobre o corpo $\mathbb{F}$ se $T: U\rightarrow W$ for um isomorfismo então:
+                \[\boxed{[T^{-1}]_{\beta}^{\gamma} = \left([T]_{\gamma}^{\beta}\right)^{-1}}\]
+\newpage
+
+    \section{Produto Interno}
+        \paragraph{Definição}Seja $V$ um espaço vetorial, apenas real ou complexo, então o \textit{Produto Interno} será uma operação definida por $\langle\cdot,\cdot\rangle: V\times V \rightarrow$, $\mathbb{R}$ ou $\mathbb{C}$, se satisfizer as seguintes propriedades:
+            \begin{enumerate}[noitemsep]
+                \item Simetria: $\langle u, v \rangle = \langle v, u \rangle$, caso $\mathbb{R}$, ou $\langle u, v \rangle = \overline{\langle v, u \rangle}$, caso $\mathbb{C}$;
+                \item Positividade: $\langle u, u \rangle \geq 0 \hspace{2.5mm} \forall u \in U \rightarrow \langle u, u \rangle = 0$ se, e somente se, $u=0$;
+                \item Linearidade: $\langle u+v, w \rangle = \langle u, w \rangle + \langle v, w \rangle \hspace{2.5mm} \forall u, v, w \in V$;
+                \item Associatividade: $\langle \lambda u, v \rangle = \lambda\langle u, v \rangle$;
+            \end{enumerate}
+
+        \subsection{Produto Interno Usual}
+            \paragraph{Definição}Considerando os seguintes espaços vetoriais, define-se os \textit{Produtos Internos Usuais} como as seguintes operações sobre as condições necessárias enuciadas acima:
+                \begin{enumerate}[noitemsep]
+                    \item Espaços Vetoriais Reais $\mathbb{R}^{n}$, Produto Interno Euclidiano:
+                        \[\boxed{\langle x, y \rangle = \sum\limits_{i = 1}^{n} x_{i}\cdot y_{i}}\]
+                    \item Espaços Vetoriais Complexos $\mathbb{C}^{n}$:
+                        \[\boxed{\langle x, y \rangle = \sum\limits_{i = 1}^{n} x_{i}\cdot \overline{y_{i}}}\]
+                    \item Espaços Vetoriais Polinomiais Continuas $C([a,b])$:
+                        \[\boxed{\langle f, g \rangle = \int\limits_{a}^{b} f(x) g(x) dx}\]
+                    \item Espaços Vetoriais Matriciais $\mathbb{M}_{n}(\mathbb{R})$:
+                        \[\boxed{\langle A, B \rangle = tr(B^{T} \times A) = \sum\limits_{i = 1}^{n} \sum\limits_{j = 1}^{n} a_{ij}b_{ij}}\]  
+                \end{enumerate}
+
+        \subsection{Matriz de Produto Interno}
+            \paragraph{Definição}Seja $V$ um espaço vetorial, real ou complexo, com $\langle\cdot,\cdot\rangle$ um produto interno em $V$ e seja $\beta = \{v_{1}, \dots, v_{n}\}$ uma base de $V$.\\
+            Então considerando $v = \sum\limits_{i = 1}^{n} a_{i} v_{i}$ e $u = \sum\limits_{j = 1}^{n} b_{j} v_{j}$ pode-se definir a \textit{Matriz do Produto Interno} com relação a base $\beta$ como:
+                \[\boxed{\langle u, v\rangle = 
+                    \underbrace{
+                        \begin{bmatrix} \overline{a_{1}} & \cdots & \overline{a_{n}} \end{bmatrix}}_{\bar{[v]_{\beta}}^{T}}
+                        \underbrace{
+                            \begin{bmatrix}
+                                \langle v_{1}, v_{1}\rangle & \cdots & \langle v_{n}, v_{1}\rangle\\
+                                \vdots                      & \ddots & \vdots\\
+                                \langle v_{1}, v_{n}\rangle & \cdots & \langle v_{n}, v_{n}\rangle
+                            \end{bmatrix}
+                        }_{\text{A = $[a_{ij}]$ = $[\langle v_{j}, v_{i}\rangle]$}}
+                    \underbrace{
+                        \begin{bmatrix} b_{1}\\ \vdots\\ b_{n} \end{bmatrix}}_{[u]_{\beta}} \text{, onde }
+                [v]_{\beta} = \begin{bmatrix} a_{1}\\ \vdots\\ a_{n} \end{bmatrix} \text{e } 
+                [u]_{\beta} = \begin{bmatrix} b_{1}\\ \vdots\\ b_{n} \end{bmatrix}}\]
+
+        \subsection{Desigualdade de Cauchy Schwarz}
+            \paragraph{Definição}Seja $V$ um espaço vetorail real com produto interno $\langle\cdot,\cdot\rangle$. Então, dados $u, v \in V$ teremos a seguinte desigualdade:
+                \[\boxed{
+                    \langle u, v\rangle^{2} \leq \langle u, u\rangle\langle v, v\rangle \hspace{5mm}
+                    |\langle u, v\rangle| \leq ||u||\cdot||v|| \hspace{5mm}
+                    \langle u, v\rangle^{2} \leq ||u||^{2}\cdot||v||^{2}}\]
+            Em que a igualdade será possível se, e somente se, $u$ e $v$ forem L.D..
+\newpage
+
+    \section{Norma}
+        \paragraph{Definição}Seja $V$ um espaço vetorial sobre o corpo $\mathbb{F}$, então sua \textit{Norma} em $V$ será a aplicação da seguinte transformação linear, satisfazendo as propriedades abaixo:
+            \[\boxed{||\cdot||: V \rightarrow \mathbb{R}^{+}}\]
+            \begin{enumerate}[noitemsep]
+                \item Positividade: $||u||>0$, $u \neq 0$ e $||u|| = 0 \iff u = 0$;
+                \item Associatividade: $||\lambda \cdot u|| = |\lambda|\cdot||u||$, $\forall u \in V$ e $\lambda \in \mathbb{F}$;
+                \item Deesigualdade Triangular: $||u + v|| \geq ||u|| + ||v||$;
+            \end{enumerate}
+
+        \subsection{Normas Usuais}
+            \paragraph{Definição}Considerando o espaço $\mathbb{R}^{n}$ define-se genericamente \textit{Norma P} como a equação abaixo, sendo usualmente utilizadas as normas descritas abaixo:
+                \[\boxed{||x||_{p} = \left[\sum\limits_{i = 1}^{n} |x_{i}|^{p}\right]^{\frac{1}p{}} \hspace{2.5mm} p \in \mathbb{N}_{*}}\]
+                \begin{enumerate}[noitemsep]
+                    \item Norma Infinita:
+                        \[\boxed{||x||_{\infty} = max\{|x_{i}|; 1 \leq i \leq n\}}\]
+                    \item Norma Pitagórica:
+                        \[\boxed{||x||_{2} = \sqrt{|x_{1}|^{2} + \cdots + |x_{n}|^{2}}}\]
+                    \item Norma Unitária:
+                        \[\boxed{||x||_{1} = \sum\limits_{i = 1}^{n}|x_{i}|}\]
+                \end{enumerate}
+
+            \paragraph{Teorema}Seja $V$ um espaço vetorial com produto interno $\langle\cdot,\cdot\rangle$, então a aplicação $\delta : V \rightarrow \mathbb{R}$ tal que  $\delta(u) = \sqrt{\langle u, u\rangle}$ será por definição uma \textit{Norma}.
+                \[\boxed{||u|| = \sqrt{\langle u, u \rangle}}\]
+
+        \subsection{Distância}
+            \paragraph{Definição}Seja $V$ um espaço vetorial sobre o corpo $\mathbb{F}$ dotado de uma aplicação que satisfaça as propriedades abaixo, então esta será denominada \textit{Métrica ou Distância} e será definida por:
+                \[\boxed{d: V\times V \rightarrow \mathbb{R}}\]
+                \begin{enumerate}[noitemsep]
+                    \item Positividade: $d(u,v) \geq 0$ com $d(u,v) = 0$ se, e somente se, $u = v$;
+                    \item Linearidade: $d(u,v) = d(v,u)$;
+                    \item Desigualdade Triangular: $d(u,v) \geq d(u,w) + d(w,v) \hspace{2.5mm} \forall u,v,w \in V$;
+                \end{enumerate}
+
+            \paragraph{Teorema}Seja $V$ um espaço vetorial normado, isto é, dotado de $||\cdot||$ em $V$, então a seguinte relação será uma métrica:
+                \[\boxed{d(u,v) = ||u-v||}\]
+\newpage
+
+    \section{Ângulo entre Vetores}
+        \paragraph{Definição}Seja $V$ um espaço vetorial com produto interno definido $\langle\cdot,\cdot\rangle$, então, utilizando Cauchy-Schwarz, temos a seguinte relação:
+            \[-1 \leq \frac{\langle u, v \rangle}{||u||\cdot||v||} \leq 1 \hspace{5mm} \forall u, v \in V \text{ tais que } u \neq 0 \neq v\]
+        Isso implica que existe um único $\theta \in [0, \pi]$ que representa o ângulo entre dois vetores não nulos $u$ e $v$ e este será dado por:
+            \[\boxed{\cos\theta = \frac{\langle u, v \rangle}{||u||\cdot||v||}}\]
+            \begin{enumerate}[noitemsep]
+                \item Ortogonalidade: Se $\langle u, v \rangle = 0$, então $u$ e $v$ são ortogonais e representados por $\bot$;
+                \item Nulidade: Se $v\bot u \hspace{2.5mm} \forall u \in V \rightarrow v = 0_{V}$, pois $0_{V} \bot v \hspace{2.5mm} \forall v\in V$;
+                \item Comutatividade: $u\bot v \rightarrow v\bot u$;
+                \item Associatividade: Se $v\bot w$ e $u\bot w$ então $v + u\bot w$
+                \item Linearidade: Se $v\bot u$ então $\lambda v\bot u \hspace{2.5mm} \forall\lambda\mathbb{F}$
+            \end{enumerate}
+
+        \subsection{Ortogonalidade}
+            \paragraph{Definição}Seja um conjunto $S = \{v_{1},\dots,v_{n}\}$ de um espaço vetorial $V$ com produto interno $\langle\cdot,\cdot\rangle$, este será \textit{Ortogonal} se cada combinação dois a dois for ortogonal, ou seja, $\langle v_{i}, v_{j} \rangle = 0 \hspace{2.5mm} \forall i \neq j$ e $\langle v_{i}, v_{i} \rangle \neq 0 \hspace{2.5mm} \forall i$, e será \textit{Ortonormal} se for ortogonal e $\langle v_{i}, v_{i} \rangle = 1 \hspace{2.5mm} \forall i$.
+
+            \paragraph{Teorema}Seja $V$ um espaço vetorial com produto interno $\langle\cdot,\cdot\rangle$ e $S$ seja um conjunto ortogonal, então $S$ será L.I.. 
+
+        \subsection{Pitágoras}
+            \paragraph{Definição}Se $u, v \in V$ são ortogonais, então:
+                \[\boxed{||u + v||^{2} = ||u||^{2} + ||v||^{2}}\]
+
+        \subsection{Lei do Paralelogramo}
+            \paragraph{Definição}Seja $V$ um espaço vetorial com produto interno $\langle\cdot,\cdot\rangle$, então a norma associada satisfaz:
+                \[\boxed{||u + v||^{2} + ||u - v||^{2} = 2 \left(||u||^{2} + ||v||^{2}\right)}\]
+
+        \subsection{Lei dos Cossenos}
+            \paragraph{Definição}Se $u\cdot u$ é norma induzida por um produto interno $\langle\cdot,\cdot\rangle$, então:
+                \[\boxed{||u\pm v||^{2} = ||u||^{2} + ||v||^{2} \pm 2||u||\cdot||v||\cos\theta}\]
+\newpage
+
+    \section{Base Ortogonal}
+        \paragraph{Definição}Seja $V$ um espaço vetorial de dimensão finita com produto interno $\langle\cdot,\cdot\rangle$, então uma base $\beta = \{v_{1}, \cdots, v_{n}\}$ será \textit{Ortogonal}, se atender aos dois primeiros requisitos, ou \textit{Ortonormal}, se atender a todos os resquisitos.
+            \begin{enumerate}[noitemsep]
+                \item $\langle v_{i}, v_{j} \rangle = 0 \hspace{2.5mm} \forall i \neq j$;
+                \item $\langle v_{i}, v_{i} \rangle \neq 0 \hspace{2.5mm} \forall i$;
+                \item $\langle v_{i}, v_{i} \rangle = 1 \hspace{2.5mm} \forall i$;
+            \end{enumerate}
+
+        \paragraph{Definição}Se $V$ é um espaço vetorial de dimensão finita com produto interno $\langle\cdot,\cdot\rangle$ e com base ortogonal $\beta = \{v_{1}, \cdots, v_{n}\}$ então dado $u \in V$ temos que as coordenadas de $u$ são relacionadas a base $\beta$ através dos \textit{Coeficientes de Fourier} denotados abaixo:
+            \[\boxed{\alpha_{i} = \frac{\langle u, v_{i}\rangle}{\langle v_{i}, v_{i}\rangle}}\]
+
+        \paragraph{Teorema}Se $V$ é um espaço vetorial de dimensão finita com produto interno $\langle\cdot,\cdot\rangle$ e com base ortogonal $\beta = \{v_{1}, \cdots, v_{n}\}$ então dado $u \in V$ temos que as coordenadas de $u$ são relacionadas a base $\beta$ como segue:
+            \[\boxed{u = \frac{\langle u, v_{1}\rangle}{\langle v_{1}, v_{1}\rangle}v_{1} + \cdots + \frac{\langle u, v_{n}\rangle}{\langle v_{n}, v_{n}\rangle}v_{n}}\]
+
+        \paragraph{Definição}Se $A\in \mathbb{M}_{n}(\mathbb{R})$, então está será \textit{Ortogonal} se suas colunas, consequentemente suas linhas pela transposição, formam conjuntos ortogonais, ou seja, $A^{T} = A^{-1}$.
+
+        \subsection{Projeção Ortogonal}
+            \paragraph{Definição}Seja $S \in V$ um subespaço vetorial de dimensão finita do espaço vetorial $V$, também com dimensão finita, com produto interno $\langle\cdot,\cdot\rangle$, então a \textit{Projeção Ortogonal} de $V$ em $S$ será uma transformação linear $P: V \rightarrow S$ descrita abaixo onde $\{u_{1}, \cdots, u_{n}\} \in S$ é base ortogonal:
+                \[\boxed{P(V) = \sum\limits_{i = 1}^{n} \frac{\langle v, u_{i} \rangle}{\langle u_{i}, u_{i} \rangle} u_{i}}\]
+            Pela unicidade da decomposição da soma direta o resultado dessa transformação será unicamente determinado, satisfazendo as seguintes propriedades:
+                \begin{enumerate}[noitemsep]
+                    \item $P \circ P = P$;
+                    \item $\langle P(v), w\rangle = \langle v, P(w)\rangle$
+                \end{enumerate}
+
+        \subsection{Processo de Gram-Schmidt}
+            \paragraph{Definição}Considere $V$ um espaço vetorial com produto interno $\langle\cdot,\cdot\rangle$ e seja uma base $\alpha = \{\alpha_{1}, \cdots, \alpha_{n}\}$ em $V$, então existe uma base ortogonal, única a menos de um escalar, $\beta = \{\beta_{1}, \cdots, \beta_{n}\}$ L.I. obtidos recursivamente:
+                \[\begin{array}{l c l}
+                    \beta_{1} & = & \alpha_{1}\\
+                    \beta_{2} & = & \alpha_{2} - \frac{\langle \alpha_{2}, \beta_{1} \rangle}{\langle \beta_{1}, \beta_{1} \rangle}\beta_{1}\\
+                    \beta_{3} & = & \alpha_{3} - \frac{\langle \alpha_{3}, \beta_{2} \rangle}{\langle \beta_{2}, \beta_{2} \rangle}\beta_{2}
+                                               - \frac{\langle \alpha_{3}, \beta_{1} \rangle}{\langle \beta_{1}, \beta_{1} \rangle}\beta_{1}\\
+                              & \vdots & \\
+                    \beta_{n} & = & \alpha_{n} - \frac{\langle \alpha_{n}, \beta_{n-1} \rangle}{\langle \beta_{n-1}, \beta_{n-1} \rangle}\beta_{n-1}
+                                               - \cdots
+                                               - \frac{\langle \alpha_{2}, \beta_{1} \rangle}{\langle \beta_{1}, \beta_{1} \rangle}\beta_{1}\\
+                \end{array}\vspace{5mm}\]
+                \[\boxed{\beta_{i} = \alpha_{i} - \sum\limits_{j = 1}^{i-1} \frac{\langle \alpha_{i}, \beta_{j} \rangle}{\langle \beta_{j}, \beta_{j} \rangle}\beta_{j}}\]
+
+            \paragraph{Corolário}Todo espaço $V$ de dimensão finita com produto interno e base ortogonal $\alpha = \{\alpha_{1}, \dots, \alpha_{n}\}$ admite base ortonormal $\beta$, encontrada através da ortonormalização da base $\alpha$ como segue:
+                \[\boxed{\beta = \left\{\frac{\alpha_{1}}{||\alpha_{1}||_{2}}, \dots, \frac{\alpha_{n}}{||\alpha_{n}||_{2}}\right\}}\]
+
+        \subsection{Complemento Ortogonal}
+            \paragraph{Definição}Seja $V$ um espaço vetorial com produto interno $\langle\cdot,\cdot\rangle$, define-se $S\subset V$ como um conjunto não vazio e denota-se \textit{S Perpendicular} como o conjunto:
+                \[\boxed{S^{\bot} = \{v\in V; \hspace{2.5mm} \langle v, u\rangle = 0; \hspace{2.5mm} \forall u\in S\}}\]
+            Se $S$ é um subespaço vetorial então $S^{\bot}$, espaço composto apenas por elementos perpendiculares aos elementos de $S$, será denominado \textit{Complemento Ortogonal} de $S$.
+
+            \paragraph{Teorema}Seja $V$ um espaço vetorial com produto interno $\langle\cdot,\cdot\rangle$, define-se $S\in V$ como um conjunto não vazio, temos que $S^{\bot}$ será subespaço vetorial.
+
+            \paragraph{Teorema}Seja $V$ um espaço vetorial de dimensão finita e $U, W \in V$ são subespaços, então:
+                \[\boxed{(U+W)^{\bot} = U^{\bot} \cap W^{\bot}}\]
+
+        \subsection{Decomposição Ortogonal}
+            \paragraph{Teorema}Seja $V$ um espaço vetorial com produto interno $\langle\cdot,\cdot\rangle$, define-se $S\in V$ como subespaço de dimensão finita, então:
+                \[\boxed{V = S \oplus S^{\bot}}\]
+            Isso implica que se $U \in V$ puder ser escrito como $U = U_{1} + U_{2} \in S + S^{\bot}$, então:   
+                \[\boxed{||U||^{2} = ||U_{1}||^{2} + ||U_{2}||^{2}}\]
+
+            \paragraph{Corolário}Considerando que $dim(V)< +\infty$, então:
+                \[\boxed{dim(V) = dim(S) + dim(S^{\bot})}\]
+
+            \paragraph{Teorema}Considerando que $dim(V) < +\infty$, então:
+                \begin{enumerate}[noitemsep]
+                    \item $(U^{\bot})^{\bot} = U$
+                    \item $(U \cap W)^{\bot} = U^{\bot} + W^{\bot}$
+                \end{enumerate}
+\newpage
+
+    \section{Transformação Adjunta}
+        \paragraph{Proposição}Seja $V$ um espaço vetorial com dimensão finita e produto interno $\langle\cdot,\cdot\rangle$ e $f: V \rightarrow \mathbb{F}$ linear, ou seja, $f$ é um \textit{Funcional Linear}, uma transformação linear de subespaço vetorial para um corpo qualquer, então existe um único $u \in V$ tal que $f(v) = \langle v, u\rangle \hspace{2.5mm} \forall v \in V$.
+
+        \paragraph{Definição}Seja $T: V \rightarrow W$ uma transformação linear, onde $V$ e $W$ são espaços vetoriais de dimensão finita com produtos internos $\langle\cdot,\cdot\rangle_{V}$ e $\langle\cdot,\cdot\rangle_{W}$ respectivamente. Assim a \textit{Adjunta de T} será a única transformação $T^{*}: W \rightarrow V$ definida por:
+            \[\boxed{\langle T(v), w\rangle_{W} = \langle v, T^{*}(w)\rangle_{V} \hspace{5mm} \forall v\in V \hspace{2.5mm} \forall w\in W}\]
+        Se $\beta = \{v_{1}, \cdots, v_{n}\}$ e $\gamma = \{w_{1}, \cdots, w_{m}\}$ são bases ortonormais de $V$ e $W$ respectivamente então:
+            \begin{enumerate}[noitemsep]
+                \item $[T]_{\gamma}^{\beta} = \left[\langle T(v_{j}), w_{i} \rangle\right]$; 
+                \item $[T^{*}]_{\beta}^{\gamma} = \left[\overline{[T]_{\gamma}^{\beta}}\right]^{t}$;
+            \end{enumerate}
+
+        \paragraph{Propriedades}
+            \begin{enumerate}[noitemsep]
+                \item $(S + T)^{*} = S^{*} + T^{*}$;
+                \item $(\alpha T)^{*} = \overline{\alpha} T^{*}$;
+                \item $(S \circ T)^{*} = T^{*} \circ S^{*}$;
+                \item $(T^{*})^{*} = T$;
+                \item $I^{*} = I$;
+            \end{enumerate}
+
+        \paragraph{Teorema}Toda transformação linear entre espaços vetoriais de dimensão finita com produtos internos admite adjunta.
+
+        \paragraph{Teorema}Sejam $V$ e $W$ são espaços vetoriais de dimensão finita com produtos internos complexo, caso seja real pode-se desconsiderar o asterisco, $\langle\cdot,\cdot\rangle_{V}$ e $\langle\cdot,\cdot\rangle_{W}$ respectivamente e a transformação linear $T^{*}: W \rightarrow V$ então:
+            \[\boxed{Ker(T) = Im(T^{*})^{\bot} \text{ e } V = Ker(T) \oplus Im(T^{*})}\]
+            \[\boxed{Ker(T^{*}) = Im(T)^{\bot} \text{ e } W = Ker(T^{*}) \oplus Im(T)}\]
+
+        \subsection{Transformações Simétricas e Hermitianas}
+            \paragraph{Definição}Sejam $V\in W$ espaços vetoriais reais, ou complexos, com dimensão finita, então a transformação linear $T: V \rightarrow W$ será \textit{Simétrica}, ou \textit{Hermitiana} se $T = T^{*}$, implicando:
+                \[\boxed{\langle T(v), w \rangle = \langle v, T(w) \rangle \hspace{5mm} \forall v\in V \hspace{2.5mm} \forall w\in W}\]
+
+            \paragraph{Teorema}Seja $V$ espaço vetoria de dimensão finita com produto interno $\langle\cdot,\cdot\rangle$ e seja $\beta$ base ortonormal de $V$, então a transformação linear $T: V \rightarrow V$ será simétrica, ou hermitiana, se, e somente se, a matriz $[T]_{\beta}^{\beta}$ for simétrica.
+
+            \paragraph{Teorema}Os autovalores desta transformação são reais.
+
+        \subsection{Transformações Anti-Simétricas e Anti-Hermitianas}
+            \paragraph{Definição}Seja $V$ espaço vetorial de dimensão finita com produto interno $\langle\cdot,\cdot\rangle$ e seja $\beta$ base ortonormal de $V$, então a transformação linear $T: V \rightarrow V$ será \textit{Anti-Simétrica}, ou \textit{Anti-Hermitiana}, se $T^{*} = - T$.
+                \[\boxed{\langle T(v), w \rangle = - \langle v, T(w) \rangle \hspace{5mm} \forall v\in V \hspace{2.5mm} \forall w\in V}\]
+
+            \paragraph{Teorema}Seja a transformação linear $T: V \rightarrow V$ no espaço vetorial de dimensão finita $V$ com produto interno $\langle\cdot,\cdot\rangle$. $T$ será anti-simétrica, ou anti-hermitiana, se, somente se, a matriz $[T]_{\beta}^{\beta}$ for anti-simétrica, ou anti-hermitiana, para alguma base $\beta$ ortonormal.
+
+            \paragraph{Teorema}Os autovalores desta transformação são imaginários puros.
+
+        \subsection{Transformações Ortogonais}
+            \paragraph{Definição}Seja a transformação linear $T: V \rightarrow W$ nos espaços vetoriais $U$ e $W$ com produto interno $\langle\cdot,\cdot\rangle$ será \textit{Ortogonal} se o produto escalar, consequentemente o ângulo, for preservado:
+                \[\boxed{\langle T(v), T(w)\rangle = \langle v, w\rangle \hspace{5mm} \forall v\in V \hspace{2.5mm} \forall w\in V}\]
+            Sendo notável:
+                \begin{enumerate}[noitemsep]
+                    \item $T$ será isomorfismo, caso $dim(V)$ seja finita;
+                    \item $T$ será isometria, isto é, $||T(v)|| = ||v|| \hspace{2.5mm} \forall v$;
+                    \item No caso complexo: $T^{*} = T^{-1}$. No caso real: $T^{T} = T^{-1}$;
+                \end{enumerate}
+
+            \paragraph{Teorema}Seja a transformação linear $T: V \rightarrow V$ ortogonal se, e somente se, $[T]_{\beta}^{\beta}$ for ortogonal, se $A\times A^{T}$, para alguma base $\beta$ ortonormal. 
+\newpage
+
+    \section{Autovalores e Autovetores}
+        \paragraph{Definição}Seja $V$ um espaço vetorial sobre o corpo $\mathbb{F}$ e a transformação linear $T: V \rightarrow V$, então o escalar $\lambda \in \mathbb{F}$ será \textbf{Autovalor} de $T$ se existe vetor $v \neq 0 \in V$, denominado \textbf{Autovetor} de $T$, tal que:
+            \[\boxed{T(v) = \lambda v}\]
+        Autovalores são solução do \textbf{Polinômio Característico} de $T$ em uma base $\alpha$ qualquer, enquanto o subespaço vetorial $V_{\lambda}$ será \textbf{Autoespaço} associado a um autovalor $\lambda$ de $T$. Demonstrados nas seguintes equações:
+            \[
+                \boxed{p(\lambda) = det([T]_{\alpha}^{\alpha} - \lambda I_{n}) = 0}
+                \hspace{5mm}
+                \boxed{V_{\lambda} = \{ v\in V; \hspace{2.5mm} T(v) = \lambda v\}}
+            \]
+            \begin{enumerate}[noitemsep]
+                \item \textbf{Multiplicidade Algébrica}: Repetições de um autovalor $\lambda$ de $T$ como raíz;
+                \item \textbf{Multiplicidade Geométrica}: Dimensão de $V_{\lambda}$;5
+            \end{enumerate}
+\newpage
+
+    \section{Matrizes Especiais}
+        \paragraph{Definição}Dado $x\in\mathbb{R}^{n}$, então $x = (x_{1}, \dots, x_{n})$ pode ser representado com relação a base canônica $\beta = \{e_{1}, \dots, e_{n}\}$ por combinação linear. Desse modo, o produto interno usual será dado por:
+            \[
+                \boxed{
+                    \langle x, y \rangle =
+                    \sum_{i = 1}^{n} x_{i}\overline{y}_{i} =
+                    \begin{bmatrix}\overline{y}_{1}, \cdots, \overline{y}_{n}\end{bmatrix} \times 
+                    \begin{bmatrix} x_{1}\\ \vdots\\ x_{n}\end{bmatrix} = Y^{*}X
+                }
+            \]
+
+        \subsection{Matriz Hermitiana}
+            \paragraph{Definição}Sejam $A\in\mathbb{M}_{n}(\mathbb{C})$ e $X, Y \in\mathbb{C}^{n}$. Caso $A$ seja \textbf{Hermitiana}, ou \textbf{Auto-Adujunta}, seus autovalores são reais e seus autovetores associados a autovalores distintos são ortogonais, então:
+                \[
+                    \boxed{\langle AX, Y \rangle = \langle X, A^{*}Y \rangle} \text{, caso $A$ seja \textbf{Hermitiana}: } 
+                    \boxed{\langle AX, Y \rangle = \langle X, AY \rangle}
+                \]
+                \[\text{Matriz \textbf{Hermitiana}:} \hspace{2.5mm} \boxed{A = \overline{A^{T}}}\]
+
+        \subsection{Matriz Simétrica}
+            \paragraph{Definição}Sejam $A\in\mathbb{M}_{n}(\mathbb{R})$ e $X, Y \in\mathbb{R}^{n}$. Caso $A$ seja \textbf{Simétrica}, ou \textbf{Auto-Adujunta}, seus autovalores são reais e seus autovetores associados a autovalores distintos são ortogonais, então:
+                \[
+                    \boxed{\langle AX, Y \rangle = \langle X, A^{T}Y \rangle} \text{, caso $A$ seja \textbf{Simétrica}: }
+                    \boxed{\langle AX, Y \rangle = \langle X, AY \rangle}
+                \]
+                \[\text{Matriz \textbf{Simétrica}:} \hspace{2.5mm} \boxed{A = A^{T}}\]
+
+        \subsection{Matriz Unitária}
+            \paragraph{Definição}Seja $A\in\mathbb{M}_{n}(\mathbb{C})$ e $X, Y \in\mathbb{C}^{n}$. Caso $A$ seja \textbf{Unitária}, seus autovalores são $|\lambda| = 1$, pois $\det(A) = \pm 1$, e seus autovetores associados a autovalores distintos são ortogonais, então:
+                \[
+                    \boxed{\langle AX, AY \rangle = \langle X, Y \rangle} \text{, caso $A$ seja \textbf{Unitária}: }
+                    \boxed{||Ax|| = ||x||}
+                \]
+                \[\text{Matriz \textbf{Unitária}:} \hspace{2.5mm} \boxed{A^{-1} = \overline{A^{T}}}\]
+
+        \subsection{Matriz Ortogonal}
+            \paragraph{Definição}Seja $A\in\mathbb{M}_{n}(\mathbb{R})$ e $X, Y \in\mathbb{R}^{n}$. Caso $A$ seja \textbf{Ortogonal}, seus autovalores são $|\lambda| = 1$, pois $\det(A) = \pm 1$, e seus autovetores associados a autovalores distintos são ortogonais, então:
+            \[
+                \boxed{\langle AX, AY \rangle = \langle X, Y \rangle} \text{, caso $A$ seja \textbf{Ortogonal}: }
+                \boxed{||Ax|| = ||x||}
+            \]
+            \[\text{Matriz \textbf{Ortogonal}:} \hspace{2.5mm} \boxed{A^{-1} = A^{T}}\]
+
+        \subsection{Matriz Idempontente}
+            \paragraph{Definição}Seja $A\in\mathbb{M}(\mathbb{F})$. Caso $A$ seja \textbf{Idempotente}, seus autovalores são 0 e 1, então:
+                \[\text{Matriz \textbf{Idempontente}:} \hspace{2.5mm} \boxed{A \times A = A}\]
+
+        \subsection{Matriz Reflexiva}
+            \paragraph{Definição}Seja $A\in\mathbb{M}(\mathbb{F})$. Caso $A$ seja \textbf{Reflexiva}, seus autovalores são $\pm 1$, então:
+            \[\text{Matriz \textbf{Reflexiva}:} \hspace{2.5mm} \boxed{A \times A = I}\]
+
+        \subsection{Matriz Positiva Definida}
+            \paragraph{Definição}Seja $A\in\mathbb{M}_{n}(\mathbb{C})$ Hermitiana, $A$ será \textit{Positiva Definida} se, e somente se, seus autovalores são todos positivos, e \textit{Positiva Semi-Definida}, respectivamente, se:
+                \[
+                    \langle AX, X \rangle    > 0, \hspace{2.5mm}
+                    \langle AX, X \rangle \geq 0, \hspace{10mm} \forall X\neq 0\in\mathbb{C}^{n}
+                \]
+
+        \subsection{Matrizes Semelhantes}
+            \paragraph{Definição}Sejam $A, B \in M_{n}(\mathbb{F})$, então $A$ e $B$ são \textbf{Semelhantes} se $\exists P\in M_{n}(\mathbb{F})$ invertível tal que:
+                \[\boxed{B = P^{-1} A P}\]
+\newpage
+
+    \section{Diagonalização}
+        \paragraph{Teorema}Seja $A\in\mathbb{M}(\mathbb{F})$ e $\gamma$ uma base ordenada de $\mathbb{F}_{n}$. Se $T_{A}$ é a transformação linear associada à $A$, então:
+            \[\boxed{[T_{A}]_{\alpha}^{\alpha} = P^{-1} A P}\]
+        Onde $P$ é uma matriz mudança da base $\gamma$ para a base canônica $\beta$.
+
+        \paragraph{Teorema}Seja $V$ espaço vetorial de dimensão finita sobre o corpo $\mathbb{F}$ e $\beta$ uma base ordenada de $V$. Se $T: V \rightarrow V$ é linear e $B \in \mathbb{M}_{n}(\mathbb{F})$ é uma matriz semelhante a $[T]_{\beta}^{\beta}$. Então existe base $\beta$ de $V$ tal que $[T]_{\gamma}^{\gamma} = B$.
+
+        \paragraph{Definição}Uma transformação linear $T: V \rightarrow V$ é dita ser \textbf{Diagonalizável} se existe base $\beta$ de V tal que $[T]_{\beta}^{\beta}$ é diagonal.
+
+        \paragraph{Corolário}A matriz $A \in \mathbb{M}_{n}(\mathbb{F})$ é diagonalizável se, e somente se, $T_{A}$ for diagonalizável.
+
+        \paragraph{Definição}A matriz $A \in \mathbb{M}_{n}(\mathbb{F})$ é dita ser \textbf{Simples} se possui um conjunto de vetores linearmente independentes. Isso ocorre se, e somente se, $A$ for diagonalizável.
+
+        \paragraph{Teorema}Seja $V$ um espaço vetorial sobre o corpo $\mathbb{F}$ e $T: V \rightarrow V$ uma transformação linear. Se $\lambda_{1}, \dots, \lambda_{n}$ são autovalores de $T$ com autovetores associados $v_{1}, \dots, v_{n}$, então ${v_{1}, \dots, v_{n}}$ será linearmente independente.
+
+        \paragraph{Corolário}Se $dim(V) < \infty$ e $T: V \rightarrow V$ uma transformação linear que possui $dim(V)$ autovalores distintos, então $T$ será diagonalizável.
+
+        \paragraph{Teorema}A transformação $T$ será diagonalizável se, e somente se, $V$ possuir base de autovetores de $T$ se, e somente se, a soma das multiplicidades geométricas for igual a $dim(V)$.
+
+        \subsection{Teorema Espectral Complexo}
+            \paragraph{Definição}Seja $A\in M_{n}(\mathbb{C})$ uma matriz \textbf{Hermitiana}, ou seja $A = \overline{A^{T}}$, portanto diagonalizável, então existe uma matriz \textbf{Unitária} $P$, ou seja $A^{-1} = \overline{A^{T}}$, composta pelos autovetores de $A$, e uma matriz \textbf{Diagonal} D, ou seja $d_{ij} = 0 \hspace{2.5mm} \forall i\neq j$, composta pelos autovalores de $A$, tal que:
+                \[P^{-1} A P = D \rightarrow A = P D \overline{P^{T}}\]
+                \[
+                    \boxed{
+                        A =
+                        \begin{bmatrix}
+                            \begin{bmatrix}
+                                \\ V_{\lambda_{1}} \\ \\
+                            \end{bmatrix} &
+                            \cdots &
+                            \begin{bmatrix}
+                                \\ V_{\lambda_{n}} \\ \\
+                            \end{bmatrix}
+                        \end{bmatrix} 
+                        \begin{bmatrix}
+                            \lambda_{1} & \cdots & 0\\
+                            \vdots      & \ddots & \vdots\\
+                            0           & \cdots & \lambda_{n}\\
+                        \end{bmatrix}
+                        \begin{bmatrix}
+                            \begin{bmatrix}
+                                & \overline{V_{\lambda_{1}}} & \\
+                            \end{bmatrix}\\
+                            \vdots\\
+                            \begin{bmatrix}
+                                & \overline{V_{\lambda_{n}}} & \\
+                            \end{bmatrix}
+                        \end{bmatrix}
+                    }
+                \]
+
+        \subsection{Teorema Espectral Real}
+            \paragraph{Definição}Seja $A\in M_{n}(\mathbb{R})$ uma matriz \textbf{Simétrica}, ou seja $A = A^{T}$, portanto diagonalizável, então existe uma matriz \textbf{Ortogonal} $P$, ou seja $A^{-1} = A^{T}$, composta pelos autovetores de $A$, e uma matriz \textbf{Diagonal} D, ou seja $d_{ij} = 0 \hspace{2.5mm} \forall i\neq j$, composta pelos autovalores de $A$, tal que:
+                \[P^{-1} A P = D \rightarrow A = P D P^{T}\]
+                \[
+                    \boxed{
+                        A =
+                        \begin{bmatrix}
+                            \begin{bmatrix}
+                                \\ V_{\lambda_{1}} \\ \\
+                            \end{bmatrix} &
+                            \cdots &
+                            \begin{bmatrix}
+                                \\ V_{\lambda_{n}} \\ \\
+                            \end{bmatrix}
+                        \end{bmatrix} 
+                        \begin{bmatrix}
+                            \lambda_{1} & \cdots & 0\\
+                            \vdots      & \ddots & \vdots\\
+                            0           & \cdots & \lambda_{n}\\
+                        \end{bmatrix}
+                        \begin{bmatrix}
+                            \begin{bmatrix}
+                                & V_{\lambda_{1}} & \\
+                            \end{bmatrix}\\
+                            \vdots\\
+                            \begin{bmatrix}
+                                & V_{\lambda_{n}} & \\
+                            \end{bmatrix}
+                        \end{bmatrix}
+                    }
+                \]
+\newpage
+
+    \section{Interpretação de Autovalores e Autovetores}
+
+        \subsection{Classificação de Pontos Críticos}
+            \paragraph{Definição}Seja $f: \mathbb{R}^{2} \rightarrow \mathbb{R}$ uma função qualquer, seus máximos ou mínimos locais podem ser determinados a partir dos pontos críticos, obtidos pela seguinte equação:
+                \[\boxed{\nabla f(x, y) = \left(\diffp{f}{x}(x, y), \diffp{f}{y}(x, y)\right) = 0}\]
+            Estes pontos são classificados através da \textbf{Matriz Hessiana} como descrito a seguir:
+                \[
+                    H(x, y) =
+                    \begin{bmatrix}
+                        \diffp[2]{f}{x} & \diffp{f}{xy}\\
+                        \diffp{f}{yx}   & \diffp[2]{f}{x}\\
+                    \end{bmatrix},
+                    \hspace{2.5mm}\text{onde: }
+                    \diffp{f}{xy} = \diffp{f}{yx}
+                \]
+
+            \paragraph{Reformulação}Note que esta matriz é simétrica e, portanto, diagonalizável. Assim os resultados de autovalores e autovetores são válidos. Considerando a aproximação de Taylor para um ponto crítico $(x_{c}, y_{c})$ temos que:
+                \[
+                    f(x, y) - f(x_{c}, y_{c}) \approx \frac{1}{2} \langle H(x_{c}, y_{c}) (x, y), (x, y) \rangle
+                                              = \frac{1}{2}
+                                              \begin{bmatrix} x & y \end{bmatrix}
+                                              H(x_{c}, y_{c})
+                                              \begin{bmatrix} x \\ y\end{bmatrix}\]
+            Pontos máximos e mínimos poderão ser diferenciados pelos autovalores da matriz Hessiana. Desta maneira, estes pontos são classificados pela seguinte equação:
+                \[
+                    \lambda_{H(x_{c}, y_{c})}
+                    \begin{cases}
+                        \text{Estritamente Positivos}, & \text{Ponto de Mínimo}\\
+                        \text{Estritamente Negativos}, & \text{Ponto de Máximo}\\
+                        \text{Positivos e Negativos},  & \text{Ponto de Cela}\\
+                    \end{cases}
+                \]
+
+        \subsection{Cônicas}
+            \paragraph{Definição}Seja um conjunto de pontos $(x, y) \in \mathbb{R}^{2}$, representando diferente cortes de um cone por um plano. Ou seja, satisfazendo a seguinte equação:
+                \[\boxed{ax^{2} + bxy + cy^{2} + dx + ey + f = 0}\]
+            Esta equação poderá ser representada matricialmente da seguinte maneira:
+                \[
+                    \begin{bmatrix}
+                        x & y
+                    \end{bmatrix}
+                    \underbrace{
+                        \begin{bmatrix}
+                        a           & \frac{b}{2}\\
+                        \frac{b}{2} & c\\
+                    \end{bmatrix}
+                    }_{A}
+                    \underbrace{
+                    \begin{bmatrix}
+                        x\\
+                        y\\
+                    \end{bmatrix}
+                     }_{X} +
+                    \underbrace{
+                    \begin{bmatrix}
+                        d & e\\
+                    \end{bmatrix}
+                    }_{B}
+                    \begin{bmatrix}
+                        x\\
+                        y\\
+                    \end{bmatrix} +
+                    f I_{2} = 0
+                \]
+
+            \paragraph{Reformulação}Nota-se que $A$ é simétrica e, portanto, será diagonalizável. Se $\alpha = \{e_{1}, e_{2}\}$ é a base canônica de $\mathbb{R}^{2}$, então existe $\beta = \{v_{1}, v_{2}\}$ base ortonormal de $\mathbb{R}^{2}$ tal que a seguinte expressão seja \textbf{Ortogonal}:
+                \[
+                    I^{\alpha}_{\beta} A I^{\beta}_{\alpha} = D = \begin{bmatrix} \lambda_{1} & 0\\ 0 & \lambda_{2}\\ \end{bmatrix}
+                \]
+            Deseja-se simplificar a expressão inicial para sua equivalente rotacionada de tal forma que a equação característica seja canônica. Assim, considera-se $v\in\mathbb{R}^{2}$, pertencente a cônica, tal que $v = x_{1} v_{1} + y_{1} v_{2}$, então:
+                \[
+                    [v]_{\alpha}
+                    = I_{\alpha}^{\beta} [v]_{\beta}
+                    \rightarrow
+                    \boxed{
+                        \begin{bmatrix}x \\ y\end{bmatrix}
+                        = I_{\alpha}^{\beta} \begin{bmatrix}x_{1} \\ y_{1}\end{bmatrix}
+                    }
+                \]
+                \[
+                    \begin{bmatrix}x & y\end{bmatrix}
+                    = \begin{bmatrix}x \\ y\end{bmatrix}^T
+                    = \left(I_{\alpha}^{\beta}\begin{bmatrix}x_{1} \\ y_{1}\end{bmatrix}\right)^T
+                    \rightarrow
+                    \boxed{
+                        \begin{bmatrix}x & y\end{bmatrix}
+                        = \begin{bmatrix}x_{1} & y_{1}\end{bmatrix} I_{\beta}^{\alpha}
+                    }
+                \]
+            Note que $I_{\beta}^{\alpha} = (I_{\alpha}^{\beta})^{-1} = (I_{\alpha}^{\beta})^{T}$, pois, como as bases $\alpha$ e $\beta$ são ortonormais, $I_{\beta}^{\alpha}$ será ortonormal. Assim, aplicando estas substituições temos o seguinte equação:
+                \[
+                    \begin{bmatrix}x_{1} & y_{1}\end{bmatrix}
+                    I_{\beta}^{\alpha}
+                    A
+                    I_{\alpha}^{\beta}
+                    \begin{bmatrix}x_{1}\\ y_{1}\end{bmatrix} +
+                    \begin{bmatrix}d & e\end{bmatrix}
+                    I_{\alpha}^{\beta}
+                    \begin{bmatrix}x_{1}\\ y_{1}\end{bmatrix} +
+                    f I_{2} = 0
+                \]
+            Toma-se as substituições $D = I^{\alpha}_{\beta} A I^{\beta}_{\alpha}$ e $\begin{bmatrix}g & h\end{bmatrix} = \begin{bmatrix}d & e\end{bmatrix} I_{\alpha}^{\beta}$ temos:
+                \[
+                    \begin{bmatrix}x_{1} & y_{1}\end{bmatrix}
+                    D
+                    \begin{bmatrix}x_{1}\\ y_{1}\end{bmatrix} +
+                    \begin{bmatrix}g & h\end{bmatrix}
+                    \begin{bmatrix}x_{1}\\ y_{1}\end{bmatrix} +
+                    f I_{2} = 0
+                \]
+            Finalmente, a equação genérica das cônicas, após rotação, pode ser expressa, em função das respectivas bases e autovalores, pela seguinte equação:
+                \[
+                    \boxed{\lambda_{1} x_{1}^{2} + gx_{1} + \lambda_{2} y_{1}^{2} + hy_{1} + f = 0}
+                \]
+
+            \paragraph{Casos}Diferentes combinações de autovalores geram diferentes cônicas, como descrito a seguir:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Autovalores} $\lambda_{1} \neq 0$ e $\lambda_{2} \neq 0$: 
+                        \begin{enumerate}
+                            \item Caso $\lambda_{1} \cdot \lambda_{2}>0$, a cônica será uma eclipse, sua forma degenerada; um ponto, ou vazio;
+                            \item Caso $\lambda_{1} \cdot \lambda_{2}<0$, a cônica será uma hipérbole, sua forma degenerada; um par de retas concorrentes, ou vazio.;
+                        \end{enumerate}
+                        Completando quadrados:
+                        \[
+                            \lambda_{1}\underbrace{\left(x_{1} + \frac{g}{2\lambda_{1}}\right)^2}_{x_{2}} +
+                            \lambda_{2}\underbrace{\left(y_{1} + \frac{h}{2\lambda_{2}}\right)^2}_{y_{2}} +
+                            \underbrace{f - \frac{g^{2}}{4\lambda_{1}} - \frac{h^{2}}{4\lambda_{2}}}_{r} = 0
+                        \]
+                    Realizando as substituições acima, obtêm-se:
+                        \[
+                            \boxed{\lambda_{1}x_{2}^{2} + \lambda_{2}y_{2}^{2} + r = 0}
+                        \]
+                    \item \textbf{Autovalores} $\lambda_{1} \neq 0$ e $\lambda_{2} = 0$ ou $\lambda_{1} = 0$ e $\lambda_{2} \neq 0$: Neste caso a cônica será uma parábola, sua forma degenerada; uma reta ou duas retas paralelas, ou vazio. Completando quadrados:
+                        \[ 
+                            \lambda_{1}\underbrace{\left(x_{1} + \frac{g}{2\lambda_{1}}\right)^2}_{x_{2}} + h\underbrace{y_{1}}_{y_{2}} +
+                            \underbrace{f - \frac{g^{2}}{4\lambda_{1}}}_{r} = 0
+                            \hspace{10mm}
+                            g\underbrace{x_{1}}_{x_{2}} + \lambda_{2}\underbrace{\left(y_{1} + \frac{h}{2\lambda_{2}}\right)^2}_{y_{2}} +
+                            \underbrace{f - \frac{h^{2}}{4\lambda_{2}}}_{r} = 0
+                        \]
+                    Realizando as substituições acima, obtêm-se:
+                        \[
+                            \boxed{\lambda_{1}x_{2}^{2} + h y_{2} + r = 0}
+                            \hspace{40mm}
+                            \boxed{g x_{2} + \lambda_{2}y_{2}^{2} + r = 0}
+                        \]
+                \end{enumerate}
+\end{document}
