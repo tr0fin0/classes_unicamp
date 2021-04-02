@@ -26,7 +26,7 @@
 \restylefloat{table}
 
 \usepackage{graphicx}
-\graphicspath{ {./IMAGENS/} }
+\graphicspath{ {./images/} }
 
 % Pacote para a definição de novas cores
 \usepackage{xcolor}
@@ -271,7 +271,7 @@
                 \begin{table}[H]
                     \centering
                     \begin{tabular}[]{c | c}\hline
-                        TP   & Função \\[1mm]\hline
+                        IT   & Função \\[1mm]\hline
                         IT5  & 7i \\
                         IT6  & 10i\\
                         IT7  & 16i\\
@@ -281,7 +281,7 @@
                     \end{tabular}
                     \hspace{10mm}
                     \begin{tabular}[]{c | c}\hline
-                        TP   & Função \\[1mm]\hline
+                        IT   & Função \\[1mm]\hline
                              & \\
                         IT11 & 100i\\
                         IT12 & 160i\\
@@ -291,7 +291,7 @@
                     \end{tabular}
                     \hspace{10mm}
                     \begin{tabular}[]{c | c}\hline
-                        TP   & Função \\[1mm]\hline
+                        IT   & Função \\[1mm]\hline
                              & \\
                         IT17 & 1000i\\
                         IT18 & 1600i\\
@@ -309,5 +309,81 @@
                                 i = 0,45 \cdot \sqrt[3]{D} + 0,001 \cdot D
                             }
                         \end{equation}
+                \end{enumerate}
+\newpage
+
+    \section{Campos de Tolerância}
+        \subsection{Afastamento Fundamental}
+            \paragraph{Definição}Posição relativa a partir da qual referência-se o \textbf{Campo de Tolerância}, região entre a medição máxima e mínima aceitável pelo ajuste, com relação a linha mais próxima, superior ou inferior, do afastamento zero. Estes afastamentos são representados por letras como descritos a seguir:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Furos:} A, B, C, ..., X, Y, Z, ZA, ZB, ZC;
+                    \item \textbf{Eixos:} a, b, c, ..., x, y, z, za, zb, zc;
+                \end{enumerate}
+
+        \subsection{Posição dos Campos de Tolerância}
+            \paragraph{Definição}Divisão de Campos de Tolerância ao longo da linha de afastamento zero divida entre eixos e furos com afastamentos superiores e inferiores, apresentando Afastamentos Fundamentais distintos como descritos a seguir:
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[height = 6cm]{ima0.png}
+                    \caption{Posição dos Campos de Tolerância}\label{fig:fields}
+                \end{figure} \noindent
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Furos:} Ajustes Fundamentais serão obtidos através da seguinte tabela.
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{c c c c | c c c}\hline
+                                            & A  & ... & H  & J  & ... & Zc\\\hline
+                                Superior    & As & ... & Hs & Js & ... & Zcs\\
+                                Inferior    & Ai & ... & Hi & Ji & ... & Zci\\\hline
+                                Fundamental & Ai & ... & Hi & Js & ... & Zcs\\\hline
+                            \end{tabular}
+                            \caption{Ajuste Fundamental para Furos}\label{table:holes}
+                        \end{table}
+                    \item \textbf{Eixos:} Ajustes Fundamentais serão obtidos através da seguinte tabela.
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{c c c c | c c c}\hline
+                                            & a  & ... & h  & j  & ... & zc\\\hline
+                                Superior    & as & ... & hs & js & ... & zcs\\
+                                Inferior    & ai & ... & hi & ji & ... & zci\\\hline
+                                Fundamental & as & ... & hs & ji & ... & zci\\\hline
+                            \end{tabular}
+                            \caption{Ajuste Fundamental para Eixos}\label{table:axis}
+                        \end{table}
+                \end{enumerate}
+            Apesar das tabelas representarem os ajustes mostrados na figura \ref{fig:fields} há exceções, sendo as mais relevantes demonstradas a seguir:
+                \begin{enumerate}
+                    \item \textbf{Eixos:} Utilizada quando o afastamento js terá seu afastamento fundamental dado por $\pm 0,5 \cdot t$ onde t será a Tolerância dada por:
+                        \begin{equation}
+                            \boxed{
+                                t = As - Ai
+                            }
+                            \hspace{10mm}
+                            \boxed{
+                                t = as - ai
+                            }
+                        \end{equation}
+                    \item \textbf{Rolamentos:} Utilizada nestas peças que possuiram As = 0 para N9 à N16;
+                    \item \textbf{Regra Especial:} Utilizada para furos com dimensões superiores a 3 mm sobre as seguintes condições, onde n é a Qualidade de Trabalho:
+                        \begin{equation}
+                            \boxed{
+                                As_{(n)} = - ai_{(n)} + [ IT(n) - IT(n-1) ]
+                            }
+                        \end{equation}
+                        \begin{enumerate}[noitemsep]
+                            \item Campos tolerâncias de K à N com Tolerância Padrão até IT8 inclusive; 
+                            \item Campos tolerâncias de P à Zc com Tolerância Padrão até IT7 inclusive; 
+                        \end{enumerate}
+                    \item \textbf{Simetria:} Utilizada quando o acoplamento possuir a mesma letra, sobre as seguintes condições:
+                        \begin{equation}
+                            \boxed{
+                                Ai = - as
+                            }
+                        \end{equation}
+                        \begin{enumerate}[noitemsep]
+                            \item Furos de A à H; 
+                            \item Furos fora da Regra Especial de M à Zc com dimensões superiores a 3mm; 
+                        \end{enumerate}
                 \end{enumerate}
 \end{document}
