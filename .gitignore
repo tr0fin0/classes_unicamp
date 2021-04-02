@@ -1,6 +1,7 @@
 *.synctex.gz
 *.pdf
 *.png
+*.jpg
 *.zip
 *.x.gnuplot
 symbolic-2.9.0
