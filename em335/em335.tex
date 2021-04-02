@@ -26,6 +26,7 @@
 \restylefloat{table}
 
 \usepackage{graphicx}
+\usepackage{subcaption}
 \graphicspath{ {./images/} }
 
 % Pacote para a definição de novas cores
@@ -386,4 +387,50 @@
                             \item Furos fora da Regra Especial de M à Zc com dimensões superiores a 3mm; 
                         \end{enumerate}
                 \end{enumerate}
+\newpage
+
+    \section{Seleção de Ajustes}
+        \subsection{Sistemas de Ajustes}
+            \paragraph{Definição}Configuração do acoplamento entre um eixo e um furo, analisando o comportamento dos Campos de Tolerância das peças como descritos a seguir:
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[height = 4cm]{ima1.png}
+                    \caption{Posição dos Sistemas de Ajustes}\label{fig:ajusts}
+                \end{figure} \noindent
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Ajustes com Folga:} ;
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Furo-Base:} H acoplados com Eixos de a à h;
+                            \item \texttt{Eixo-Base:} h acoplados com Furos de A à H;
+                        \end{enumerate}
+                    \item \textbf{Ajustes Incertos:} ;
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Furo-Base:} H acoplados com Eixos de j à n;
+                            \item \texttt{Eixo-Base:} h acoplados com Furos de J à N;
+                        \end{enumerate}
+                    \item \textbf{Ajustes com Interferência:} ;
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Furo-Base:} H acoplados com Eixos de p à zc;
+                            \item \texttt{Eixo-Base:} h acoplados com Furos de P à Zc;
+                        \end{enumerate}
+                \end{enumerate}
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Furo-Base:} Associação de várias classes de tolerâncias de eixos com uma única classe de tolerância de furo: Ai = 0;
+                    \item \textbf{Eixo-Base:} Associação de várias classes de tolerâncias de furos com uma única classe de tolerância de eixo: as = 0;
+                \end{enumerate}
+            Como descritos nas figuras a seguir:
+                \begin{figure}[h]
+                    \begin{subfigure}[t]{0.5\textwidth}
+                        \centering
+                        \includegraphics[height = 3cm]{ima2.png}
+                        \caption{Sistema Furo Base}
+                    \end{subfigure}
+                    \begin{subfigure}[t]{0.5\textwidth}
+                        \centering
+                        \includegraphics[height = 3cm]{ima3.png}
+                        \caption{Sistema Eixo Base}
+                    \end{subfigure}
+                    \caption{Sistemas de Acoplamento}
+                \end{figure}
 \end{document}
