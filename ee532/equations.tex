@@ -121,7 +121,7 @@
     \section{Introdução}
         \[
             x_{RMS} = \sqrt{\frac{1}{T_{2} - T_{1}} \int_{T_{1}}^{T_{2}} f^{2}(t) dt}
-        \]
+        \]\\
         \[
             v_{s}(t) = V_{m} \cdot \sin(\omega \cdot t) \to
             v_{s}(t) = v_{d}(t) \to
@@ -131,52 +131,10 @@
             v_{0}(t) = i(t) \cdot R \to
             i(t) = \frac{v_{0}(t)}{R} \to
             i(t) = \frac{V_{m}(t)}{R} \cdot \sin(\omega \cdot t)
-        \]
+        \]\\
         \[
             i_{RMS} = \sqrt{\frac{1}{T_{2} - T_{1}} \int_{T_{1}}^{T_{2}} i^{2}(t) dt}
-        \]
-        \[
-            i_{RMS} = \sqrt{\frac{1}{2\pi - 0} \int_{0}^{2\pi} i^{2}(t) dt}
-                    =   \sqrt{
-                            \left[\frac{1}{2\pi - \pi} \int_{\pi}^{2\pi} i^{2}(t) dt \right] +
-                            \left[\frac{1}{ \pi -   0} \int_{  0}^{ \pi} i^{2}(t) dt \right]
-                        }
-                    =   \sqrt{
-                            \left[\frac{1}{ \pi -   0} \int_{  0}^{ \pi} i^{2}(t) dt \right]
-                        }
-        \]
-        \[
-            i_{RMS} = 
-                    \sqrt{
-                        \left[
-                            \frac{1}{\pi} \int_{  0}^{ \pi} {
-                                \left(
-                                    \frac{V_{m}}{R} \cdot \sin(\omega \cdot t)
-                                \right)}^{2} dt 
-                        \right]
-                    }
-                    = \frac{V_{m}}{R} \cdot
-                    \sqrt{
-                        \frac{1}{\pi} \cdot \int_{0}^{ \pi} {
-                            \sin^{2}(\omega \cdot t)
-                        } dt
-                    }
-                    = 
-        \]
-        \[
-            i_{RMS} = \sqrt{\frac{1}{2\pi - 0} \int_{0}^{2\pi} i^{2}(t) dt}
-                    =   \sqrt{ \frac{1}{2\pi}
-                            \left[
-                                \int_{\pi}^{2\pi} i^{2}(t) dt +
-                                \int_{  0}^{ \pi} i^{2}(t) dt
-                            \right]
-                        }
-                    =   \sqrt{ \frac{1}{ 2\pi}
-                            \left[
-                                \int_{0}^{ \pi} i^{2}(t) dt
-                            \right]
-                        }
-        \]
+        \]\\
         \[
             i_{RMS} = 
                     \sqrt{ \frac{1}{2 \pi}
@@ -187,7 +145,8 @@
                                 \right)}^{2} dt 
                         \right]
                     }
-                    = \frac{V_{m}}{R} \cdot
+                    \to
+                    \frac{V_{m}}{R} \cdot
                     \sqrt{ \frac{1}{2 \pi}
                         \left[
                             \int_{0}^{ \pi} {
@@ -195,13 +154,14 @@
                             } dt
                         \right]
                     }
-                    = \frac{V_{m}}{R} \cdot
+                    \to
+                    \frac{V_{m}}{R} \cdot
                     \sqrt{ \frac{1}{2 \pi}
                         \left[
                             \pi - \frac{1}{2}\left(\pi + \frac{1}{2 \omega} \sin(2 \pi \omega)\right)
                         \right]
                     }
-        \]
+        \]\\
         \[
             i_{RMS} = 
                     \frac{V_{m}}{R} \cdot
@@ -210,7 +170,7 @@
                             \pi - \frac{\pi}{2}
                         \right]
                     }
-                    = 
+                    \to 
                     \frac{V_{m}}{R} \cdot
                     \sqrt{
                         \frac{1}{4}
@@ -218,7 +178,7 @@
                     = 
                     \frac{1}{2}
                     \frac{V_{m}}{R}
-        \]
+        \]\\
         \[
             v_{s} = V_{m} \sin(\omega \cdot t + \theta)
         \]
