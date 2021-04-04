@@ -348,6 +348,32 @@
                     }
                 \end{equation}
 
+        \subsection{Amostragem}
+            \paragraph{Definição}Seleção de elementos de um conjunto amostral que, de acordo com a seleção, terá melhores ou piores chances de representar o conjunto em sua completude, sendo classificados como descrito a seguir:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Amostragem Aleatória Simples com Reposição:} 
+                        \begin{equation}
+                            \boxed{
+                                N^{n}
+                            }
+                        \end{equation}
+                    \item \textbf{Amostragem Aleatória Simples sem Reposição:} 
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Caso Não Ordenado:} 
+                                \begin{equation}
+                                    \boxed{
+                                        \binom{N}{n}
+                                    }
+                                \end{equation}
+                            \item \texttt{Caso Ordenado:} 
+                                \begin{equation}
+                                    \boxed{
+                                        \frac{N!}{(N - n)!}
+                                    }
+                                \end{equation}
+                        \end{enumerate}
+                \end{enumerate}
+
 \newpage
 
     \section{Probabilidade}
