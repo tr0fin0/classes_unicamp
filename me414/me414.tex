@@ -204,18 +204,16 @@
 
                 \begin{enumerate}
                     \item \textbf{Etapa:} Organize os dados em ordem crescente;
-                        \begin{filecontents}{dataShort.tex}
-                            \begin{table}[H]
-                                \centering
-                                \begin{tabular}[]{cccccccc}\hline
-                                     98 &  99 & 100 & 100 & 103 & 103 & 104 & 105\\
-                                    106 & 106 & 109 & 109 & 111 & 111 & 113 & 114\\
-                                    115 & 117 & 117 & 118 & 119 & 120 & 121 & 122\\
-                                    125 & 127 & 128 & 130 & 130 & 133 & 134 & 141\\\hline
-                                \end{tabular}
-                                \caption{Distribuição de Dados Ordenados}\label{table:dataShort}
-                            \end{table}
-                        \end{filecontents}
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{cccccccc}\hline
+                                98 &  99 & 100 & 100 & 103 & 103 & 104 & 105\\
+                                106 & 106 & 109 & 109 & 111 & 111 & 113 & 114\\
+                                115 & 117 & 117 & 118 & 119 & 120 & 121 & 122\\
+                                125 & 127 & 128 & 130 & 130 & 133 & 134 & 141\\\hline
+                            \end{tabular}
+                            \caption{Distribuição de Dados Ordenados}\label{table:dataShort}
+                        \end{table}
                     \item \textbf{Etapa:} Defina intervalos disjuntos, cada ocorrência em um único intervalo aberto à esquerda e fechado à direita;
                     \item \textbf{Etapa:} Construa uma tabela de frequências;
                         \begin{table}[H]
@@ -275,4 +273,28 @@
 
         \subsection{Ramo-e-Folhas}
             \paragraph{Definição}Representação Gráfica de uma contínua que agrupada os valores separando-os em duas partes: ramo, colocado a esquerda, e folhas, colocado a direita; mantendo as informações, construídos como mostrado no exemplo a seguir:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}[]{cccccccc}\hline
+                        98 &  99 & 100 & 100 & 103 & 103 & 104 & 105\\
+                        106 & 106 & 109 & 109 & 111 & 111 & 113 & 114\\
+                        115 & 117 & 117 & 118 & 119 & 120 & 121 & 122\\
+                        125 & 127 & 128 & 130 & 130 & 133 & 134 & 141\\\hline
+                    \end{tabular}
+                    \caption{Distribuição de Dados Ordenados}\label{table:dataLeafs}
+                \end{table}
+            Em sequência separa-se os valores entre as dezenas e unidades, obtendo a tabela a seguir:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}[]{r|l}\hline
+                        Ramo & Folha\\\hline
+                         9   & 8 9\\
+                        10   & 0 0 3 3 4 5 6 6 9 9\\
+                        11   & 1 1 3 4 5 7 7 8 9\\
+                        12   & 0 1 2 5 7 8\\
+                        13   & 0 0 3 4\\
+                        14   & 1\\\hline
+                    \end{tabular}
+                    \caption{Distribuição de Ramos-e-Folhas}\label{table:leafs}
+                \end{table}
 \end{document}
