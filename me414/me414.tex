@@ -46,8 +46,11 @@
 %Configurando pacote de circuitos
 \usepackage{circuitikz}
 
-% Configurando layout para mostrar códigos
+%Configurando layout para mostrar códigos
 \usepackage{listings}
+
+%Configurando multiple files
+\usepackage{filecontents}
 
 \newcommand{\myStyle}{
 \lstset{
@@ -201,16 +204,18 @@
 
                 \begin{enumerate}
                     \item \textbf{Etapa:} Organize os dados em ordem crescente;
-                        \begin{table}[H]
-                            \centering
-                            \begin{tabular}[]{cccccccc}\hline
-                                 98 &  99 & 100 & 100 & 103 & 103 & 104 & 105\\
-                                106 & 106 & 109 & 109 & 111 & 111 & 113 & 114\\
-                                115 & 117 & 117 & 118 & 119 & 120 & 121 & 122\\
-                                125 & 127 & 128 & 130 & 130 & 133 & 134 & 141\\\hline
-                            \end{tabular}
-                            \caption{Distribuição de Dados Ordenados}\label{table:dataShort}
-                        \end{table}
+                        \begin{filecontents}{dataShort.tex}
+                            \begin{table}[H]
+                                \centering
+                                \begin{tabular}[]{cccccccc}\hline
+                                     98 &  99 & 100 & 100 & 103 & 103 & 104 & 105\\
+                                    106 & 106 & 109 & 109 & 111 & 111 & 113 & 114\\
+                                    115 & 117 & 117 & 118 & 119 & 120 & 121 & 122\\
+                                    125 & 127 & 128 & 130 & 130 & 133 & 134 & 141\\\hline
+                                \end{tabular}
+                                \caption{Distribuição de Dados Ordenados}\label{table:dataShort}
+                            \end{table}
+                        \end{filecontents}
                     \item \textbf{Etapa:} Defina intervalos disjuntos, cada ocorrência em um único intervalo aberto à esquerda e fechado à direita;
                     \item \textbf{Etapa:} Construa uma tabela de frequências;
                         \begin{table}[H]
