@@ -186,15 +186,85 @@
 
     \section{Ferramentas de Análise}
         \subsection{Histograma}
-            \paragraph{Definição}Representação gráfica de uma variável contínua agrupada em intervalos, abertos em uma extremidade e fechados na outra, regulares de acordo com as frequências dos dados, construídos como mostrado a seguir:
+            \paragraph{Definição}Representação gráfica de uma variável contínua agrupada em intervalos, abertos em uma extremidade e fechados na outra, regulares de acordo com as frequências dos dados, construídos como mostrado no exemplo a seguir:
+
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}[]{cccccccc}\hline
+                        114 & 122 & 103 & 118 &  99 & 105 & 134 & 125\\
+                        117 & 106 & 109 & 104 & 111 & 127 & 133 & 111\\
+                        117 & 103 & 120 &  98 & 100 & 130 & 141 & 119\\
+                        128 & 106 & 109 & 115 & 113 & 121 & 100 & 130\\\hline
+                    \end{tabular}
+                    \caption{Distribuição de Dados Inicial}\label{table:data}
+                \end{table}
+
                 \begin{enumerate}
-                    \item \textbf{Etapa:}\\
-                    Organize os dados em ordem crescente;
-                    \item \textbf{Etapa:}\\
-                    Defina intervalos disjuntos, cada ocorrência em um único intervalo aberto à esquerda e fechado à direita;
-                    \item \textbf{Etapa:}\\
-                    Construa uma tabela de frequências;
-                    \item \textbf{Etapa:}\\
-                    Desenhe o gráfico com a frequência na ordenada e os intervalos na abscissas;
+                    \item \textbf{Etapa:} Organize os dados em ordem crescente;
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{cccccccc}\hline
+                                 98 &  99 & 100 & 100 & 103 & 103 & 104 & 105\\
+                                106 & 106 & 109 & 109 & 111 & 111 & 113 & 114\\
+                                115 & 117 & 117 & 118 & 119 & 120 & 121 & 122\\
+                                125 & 127 & 128 & 130 & 130 & 133 & 134 & 141\\\hline
+                            \end{tabular}
+                            \caption{Distribuição de Dados Ordenados}\label{table:dataShort}
+                        \end{table}
+                    \item \textbf{Etapa:} Defina intervalos disjuntos, cada ocorrência em um único intervalo aberto à esquerda e fechado à direita;
+                    \item \textbf{Etapa:} Construa uma tabela de frequências;
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{c|c}\hline
+                                Intervalo  & Frequência\\\hline
+                                ( 95, 100] & 4\\
+                                (100, 105] & 4\\
+                                (105, 110] & 4\\
+                                (110, 115] & 5\\
+                                (115, 120] & 5\\\hline
+                            \end{tabular}
+                            \hspace{10mm}
+                            \begin{tabular}[]{c|c}\hline
+                                Intervalo  & Frequência\\\hline
+                                (120, 125] & 3\\
+                                (125, 130] & 4\\
+                                (130, 135] & 2\\
+                                (135, 140] & 0\\
+                                (140, 145] & 1\\\hline
+                            \end{tabular}
+                            \caption{Intervalos e Frequências}\label{table:dataFinal}
+                        \end{table}
+                    \item \textbf{Etapa:} Desenhe o gráfico com a frequência na ordenada e os intervalos na abscissas;
                 \end{enumerate}
+
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                                xmin = 90,
+                                xmax = 150,
+                                ymin = 0, 
+                                ymax = 8,
+                                minor y tick num = 6,
+                                minor x tick num = 6,
+                                area style,
+                                width = 12cm,
+                                height = 6cm,
+                            ]
+                            \addplot+[ybar interval,mark=no] plot coordinates {
+                                ( 95, 4) 
+                                (100, 4) 
+                                (105, 4) 
+                                (110, 5) 
+                                (115, 5) 
+                                (120, 3)
+                                (125, 4)
+                                (130, 2)
+                                (135, 0)
+                                (140, 1)
+                                (145, 0)
+                            };
+                        \end{axis}
+                    \end{tikzpicture}
+                \end{figure} \noindent
 \end{document}
