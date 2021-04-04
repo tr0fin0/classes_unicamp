@@ -315,4 +315,51 @@
                 \begin{displayquote}[][]
                     Se um evento de probabilidade p é observado repetidamente em ocasiões independentes, a proporção da frequência observada deste evento em relação ao número total de repetições converge em direção a p à medida que o número de repetições se torna arbitrariamente grande.
                 \end{displayquote}
+
+        \subsection{Espaço Amostral}
+            \paragraph{Definição}Conjunto que agrega todas os possíveis resultados do experimento realidade, sendo denotado como mostrado a seguir:
+                \begin{equation}
+                    \boxed{
+                        \Omega = \{\omega_{1}, ... , \omega_{n} \}
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Espaço Amostral:} Conjunto de todos os eventos, $\Omega$;
+                    \item \textbf{Evento:} Subconjunto do espaço amostra denotado por letras, A, B, ...;
+                    \item \textbf{Elemento:} Acontecimento registrado, $\omega_{i}$;
+                \end{enumerate}
+            Nota-se que cada evento ou elemento possuirá uma probabilidade de ocorrer, definindo-se como mostrado a seguir:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Equiprobabilidade:} Todos os elementos do espaço amostral possuem a mesma chance de ocorrer, formalmente descrito de acordo com a seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                P(\omega_{i}) = \frac{1}{n},
+                                \hspace{5mm}
+                                \forall i = 1, ..., n
+                            }
+                        \end{equation}
+                    \item \textbf{Probabilidade do Evento A:} Seja $A = \{ \omega_{1}, ..., \omega_{m} \}$ um evento em $\Omega$ com $m \le n$ elementos amostrais, então a probabilidade do evento $A$, $P(A)$, ocorrer será:
+                        \begin{equation}
+                            \boxed{
+                                P(A) = \frac{m}{n}
+                            }
+                        \end{equation}
+                    \item \textbf{Probabilidade do Elemento i:} Seja $\omega_{i}$ um elemento amostral em $\Omega$, então a probabilidade do elemento $i$, $P(\omega_{i})$, ocorrer será:
+                        \begin{equation}
+                            \boxed{
+                                0 \le P(\omega_{i}) \le 1
+                                \hspace{2.5mm}
+                                \begin{cases}
+                                    P(\omega_{i}) = 1, & \text{Elemento Certo};\\
+                                    P(\omega_{i}) = 0, & \text{Elemento Impossível};
+                                \end{cases}
+                            }
+                        \end{equation}
+                        \begin{equation}
+                            \boxed{
+                                \sum_{i=1}^{n} P(\omega_{i}) = 1
+                            }
+                        \end{equation}
+                \end{enumerate}
 \end{document}
