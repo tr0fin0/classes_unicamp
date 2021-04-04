@@ -321,18 +321,26 @@
                 \end{equation}
 
         \subsection{Arranjo}
-            \paragraph{Definição}Suponha que tenhamos uma coleção $\Omega = \{ \omega_{1}, ..., \omega_{n} \}$ de $n$ finitos objetos que devem ser separadas em $r$ grupos, então:
+            \paragraph{Definição}Suponha que tenhamos uma coleção $\Omega = \{ \omega_{1}, ..., \omega_{n} \}$ de $n$ finitos objetos que devem ser separadas em $k$ grupos, então:
                 \begin{displayquote}[][]
-                    Haverá $n$ opções disponíveis para a primeira escolha, na sequência, haverá $n-1$ opções disponíveis para a segunda escolha e assim suscetivamente até que reste $n-r$ objetos da coleção. Isso ocorre, pois o \textbf{Arranjo} permite separar elementos de uma coleção em grupos independente de sua ordem.
+                    Haverá $n$ opções disponíveis para a primeira escolha, na sequência, haverá $n-1$ opções disponíveis para a segunda escolha e assim suscetivamente até que reste $n-k$ objetos da coleção. Isso ocorre, pois o \textbf{Arranjo} permite separar elementos de uma coleção em grupos considerando sua ordem.
                 \end{displayquote}
                 \begin{equation}
                     \boxed{
-                        A(n, r) = \frac{n!}{(n - r)!} = n \times (n - 1) \times \cdots \times (n - r + 1)
+                        A(n, k) = \frac{n!}{(n - k)!} = n \times (n - 1) \times \cdots \times (n - k + 1)
                     }
                 \end{equation}
 
         \subsection{Combinação}
-            \paragraph{Definição}
+            \paragraph{Definição}Suponha que tenhamos uma coleção $\Omega = \{ \omega_{1}, ..., \omega_{n} \}$ de $n$ finitos objetos que devem ser separadas em $k$ grupos desconsiderando repetições, então:
+                \begin{displayquote}[][]
+                    Haverá $n$ opções disponíveis para a primeira escolha, na sequência, haverá $n-1$ opções disponíveis para a segunda escolha e assim suscetivamente até que reste $n-k$ objetos da coleção. Isso ocorre, pois a \textbf{Combinação} permite separar elementos de uma coleção em grupos desconsiderando sua ordem.
+                \end{displayquote}
+                \begin{equation}
+                    \boxed{
+                        C(n, k) = \binom{n}{k} = \frac{n!}{k! \cdot (n - k)!}
+                    }
+                \end{equation}
 
 \newpage
 
