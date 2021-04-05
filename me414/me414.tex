@@ -256,8 +256,14 @@
                                 area style,
                                 width = 12cm,
                                 height = 6cm,
+                                ylabel = {Frequência},
+                                xlabel = {Quantidade},
                             ]
-                            \addplot+[ybar interval,mark=no] plot coordinates {
+                            \addplot+[
+                                fill = white,
+                                draw = black,
+                                ybar interval,
+                                mark = no] plot coordinates {
                                 ( 95, 4) 
                                 (100, 4) 
                                 (105, 4) 
