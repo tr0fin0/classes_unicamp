@@ -194,7 +194,7 @@
 \newpage
 
     \section{Projeto 1}
-        \subsection{AND}
+        \subsection{NOT}
             \paragraph{Definição}[Funcionamento]
 
             \paragraph{Tabela Verdade}[Descrição]
@@ -207,7 +207,7 @@
                         0 & 1 & 1\\
                         0 & 1 & 1\\\hline
                     \end{tabular}
-                    \caption{Tabela Verdade AND}
+                    \caption{Tabela Verdade NOT}
                 \end{table}
 
             \paragraph{Representação}Circuito:
@@ -216,18 +216,17 @@
                     \begin{circuitikz}
                         \ctikzset{component text=left}
                         \draw
-                        (0,0) node[and port] (myPort) {AND}
-                        (myPort.in 1) node [anchor = east] {a}
-                        (myPort.in 2) node [anchor = east] {b}
+                        (0,0) node[not port] (myPort) {NOT}
+                        (myPort.in 1) node [anchor = east] {in}
                         (myPort.out)  node [anchor = west] {out};
                     \end{circuitikz} 
-                    \caption{Porta Lógica AND}
+                    \caption{Porta Lógica NOT}
                 \end{figure} \noindent
 
             \paragraph{Implementação}Código:
                 \begin{scriptsize}
                     \myStyleVHDL
-                    \lstinputlisting{./nand2tetris/projects/01/And.hdl}
+                    \lstinputlisting{./nand2tetris/projects/01/Not.hdl}
                 \end{scriptsize}
 \newpage
 
@@ -265,6 +264,43 @@
                 \begin{scriptsize}
                     \myStyleVHDL
                     \lstinputlisting{./nand2tetris/projects/01/And.hdl}
+                \end{scriptsize}
+\newpage
+
+        \subsection{OR}
+            \paragraph{Definição}[Funcionamento]
+
+            \paragraph{Tabela Verdade}[Descrição]
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}[]{cc|c}\hline
+                        a & b & out\\\hline
+                        0 & 1 & 1\\
+                        0 & 1 & 1\\
+                        0 & 1 & 1\\
+                        0 & 1 & 1\\\hline
+                    \end{tabular}
+                    \caption{Tabela Verdade OR}
+                \end{table}
+
+            \paragraph{Representação}Circuito:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        (0,0) node[or port] (myPort) {OR}
+                        (myPort.in 1) node [anchor = east] {a}
+                        (myPort.in 2) node [anchor = east] {b}
+                        (myPort.out)  node [anchor = west] {out};
+                    \end{circuitikz} 
+                    \caption{Porta Lógica OR}
+                \end{figure} \noindent
+
+            \paragraph{Implementação}Código:
+                \begin{scriptsize}
+                    \myStyleVHDL
+                    \lstinputlisting{./nand2tetris/projects/01/Or.hdl}
                 \end{scriptsize}
 \newpage
 
