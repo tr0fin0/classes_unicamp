@@ -339,20 +339,24 @@
                 \end{scriptsize}
 \newpage
 
-        \subsection{MUX}
+        \subsection{Mux}
             \paragraph{Definição}[Funcionamento]
 
             \paragraph{Tabela Verdade}Esta porta lógica possuirá a seguinte tabela verdade:
                 \begin{table}[H]
                     \centering
-                    \begin{tabular}[]{cc|c}\hline
-                        a & b & out\\\hline
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\\hline
+                    \begin{tabular}[]{ccc|c}\hline
+                        s & a & b & out\\\hline
+                        0 & \textcolor{red}{0} & \textcolor{blue}{0} & \textcolor{red}{0}\\
+                        0 & \textcolor{red}{0} & \textcolor{blue}{1} & \textcolor{red}{0}\\
+                        0 & \textcolor{red}{1} & \textcolor{blue}{0} & \textcolor{red}{1}\\
+                        0 & \textcolor{red}{1} & \textcolor{blue}{1} & \textcolor{red}{1}\\
+                        1 & \textcolor{red}{0} & \textcolor{blue}{0} & \textcolor{blue}{0}\\
+                        1 & \textcolor{red}{0} & \textcolor{blue}{1} & \textcolor{blue}{1}\\
+                        1 & \textcolor{red}{1} & \textcolor{blue}{0} & \textcolor{blue}{0}\\
+                        1 & \textcolor{red}{1} & \textcolor{blue}{1} & \textcolor{blue}{1}\\
                     \end{tabular}
-                    \caption{Tabela Verdade MUX}
+                    \caption{Tabela Verdade Mux}
                 \end{table}
 
             \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguinte circuito:
@@ -361,12 +365,12 @@
                     \begin{circuitikz}
                         \ctikzset{component text=left}
                         \draw
-                        (0,0) node[muxdemux] (myPort) {MUX};
+                        (0,0) node[muxdemux] (myPort) {mux};
                         % (myPort.in 1) node [anchor = east] {a}
                         % (myPort.in 2) node [anchor = east] {b}
                         % (myPort.out)  node [anchor = west] {out};
                     \end{circuitikz} 
-                    \caption{Porta Lógica MUX}
+                    \caption{Porta Lógica Mux}
                 \end{figure} \noindent
 
             \paragraph{Implementação}Esta porta lógica pode ser implementada de acordo com o seguinte código:
