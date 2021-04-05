@@ -188,29 +188,27 @@
                     \begin{lstlisting}
     cd classes/mc404/nand2tetris/tools/
     chmod 755 HardwareSimulator.sh
-    chmod 755 HardwareSimulator.sh
+    ./HardwareSimulator.sh 
                     \end{lstlisting}
                 \end{scriptsize}
 \newpage
 
     \section{Projeto 1}
-        \subsection{NOT}
+        \subsection{Not}
             \paragraph{Definição}[Funcionamento]
 
             \paragraph{Tabela Verdade}[Descrição]
                 \begin{table}[H]
-                    \centering
-                    \begin{tabular}[]{cc|c}\hline
-                        a & b & out\\\hline
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\\hline
+                    \centering  
+                    \begin{tabular}[]{c|c}\hline
+                        in & out\\\hline
+                        0  & 1\\
+                        1  & 0\\\hline
                     \end{tabular}
-                    \caption{Tabela Verdade NOT}
+                    \caption{Tabela Verdade Not}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -246,7 +244,7 @@
                     \caption{Tabela Verdade AND}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -283,7 +281,7 @@
                     \caption{Tabela Verdade OR}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -320,7 +318,7 @@
                     \caption{Tabela Verdade XOR}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -357,7 +355,7 @@
                     \caption{Tabela Verdade MUX}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -394,7 +392,7 @@
                     \caption{Tabela Verdade DMUX}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -431,7 +429,7 @@
                     \caption{Tabela Verdade NOT16}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -467,7 +465,7 @@
                 \caption{Tabela Verdade AND16}
             \end{table}
 
-        \paragraph{Representação}Circuito:
+        \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
             \begin{figure}[H]
                 \centering
                 \begin{circuitikz}
@@ -504,7 +502,7 @@
                     \caption{Tabela Verdade OR16}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -541,7 +539,7 @@
                 \caption{Tabela Verdade MUX16}
             \end{table}
 
-        \paragraph{Representação}Circuito:
+        \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
             \begin{figure}[H]
                 \centering
                 \begin{circuitikz}
@@ -578,7 +576,7 @@
                     \caption{Tabela Verdade OR8WAY}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -615,7 +613,7 @@
                     \caption{Tabela Verdade MUX4WAY16}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -652,7 +650,7 @@
                     \caption{Tabela Verdade MUX8WAY16}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -689,7 +687,7 @@
                     \caption{Tabela Verdade DMUX4WAY}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -726,7 +724,7 @@
                     \caption{Tabela Verdade DMUX8WAY}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -754,17 +752,17 @@
             \paragraph{Tabela Verdade}[Descrição]
                 \begin{table}[H]
                     \centering
-                    \begin{tabular}[]{cc|c}\hline
-                        a & b & out\\\hline
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\\hline
+                    \begin{tabular}[]{cc|cc}\hline
+                        a & b & sum & out\\\hline
+                        0 & 0 & 0   & 0\\
+                        0 & 1 & 1   & 0\\
+                        1 & 0 & 1   & 0\\
+                        1 & 1 & 0   & 1\\\hline
                     \end{tabular}
                     \caption{Tabela Verdade HalfAdder}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -801,7 +799,7 @@
                     \caption{Tabela Verdade FullAdder}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -838,7 +836,7 @@
                     \caption{Tabela Verdade Add16}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -875,7 +873,7 @@
                     \caption{Tabela Verdade Inc16}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -896,7 +894,7 @@
                 \end{scriptsize}
 \newpage
 
-        \subsection{ALUp}
+        \subsection{ALU}
             \paragraph{Definição}[Funcionamento]
 
             \paragraph{Tabela Verdade}[Descrição]
@@ -909,10 +907,10 @@
                         0 & 1 & 1\\
                         0 & 1 & 1\\\hline
                     \end{tabular}
-                    \caption{Tabela Verdade ALUp}
+                    \caption{Tabela Verdade ALU}
                 \end{table}
 
-            \paragraph{Representação}Circuito:
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguir:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -923,13 +921,13 @@
                         % (myPort.in 2) node [anchor = east] {b}
                         % (myPort.out)  node [anchor = west] {out};
                     \end{circuitikz} 
-                    \caption{Porta Lógica ALUp}
+                    \caption{Porta Lógica ALU}
                 \end{figure} \noindent
 
             \paragraph{Implementação}Código:
                 \begin{scriptsize}
                     \myStyleVHDL
-                    \lstinputlisting{./nand2tetris/projects/02/ALU-nostat.hdl}
+                    \lstinputlisting{./nand2tetris/projects/02/ALU.hdl}
                 \end{scriptsize}
 \newpage
 \end{document}
