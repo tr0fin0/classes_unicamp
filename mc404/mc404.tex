@@ -46,6 +46,21 @@
 %Configurando pacote de circuitos
 \usepackage{circuitikz}
 
+\tikzset{
+    mux2by1/.style={
+        muxdemux,
+        muxdemux def={
+            Lh=4,
+            Rh=3,
+            NL=2,
+            NR=1
+            NB=1,
+            NT=0,
+            w=2,
+        }
+    }
+}
+
 
 %Configurando multiple files
 \usepackage{filecontents}
@@ -365,7 +380,7 @@
                     \begin{circuitikz}
                         \ctikzset{component text=left}
                         \draw
-                        (0,0) node[muxdemux] (myPort) {mux};
+                        node[mux2by1] (myPort) {mux};
                         % (myPort.in 1) node [anchor = east] {a}
                         % (myPort.in 2) node [anchor = east] {b}
                         % (myPort.out)  node [anchor = west] {out};
