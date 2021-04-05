@@ -302,7 +302,7 @@
                 \end{scriptsize}
 \newpage
 
-        \subsection{XOR}
+        \subsection{Xor}
             \paragraph{Definição}[Funcionamento]
 
             \paragraph{Tabela Verdade}Esta porta lógica possuirá a seguinte tabela verdade:
@@ -310,12 +310,12 @@
                     \centering
                     \begin{tabular}[]{cc|c}\hline
                         a & b & out\\\hline
+                        0 & 0 & 0\\
                         0 & 1 & 1\\
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\\hline
+                        1 & 0 & 1\\
+                        1 & 1 & 0\\\hline
                     \end{tabular}
-                    \caption{Tabela Verdade XOR}
+                    \caption{Tabela Verdade Xor}
                 \end{table}
 
             \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguinte circuito:
@@ -324,12 +324,12 @@
                     \begin{circuitikz}
                         \ctikzset{component text=left}
                         \draw
-                        (0,0) node[xor port] (myPort) {XOR}
+                        (0,0) node[xor port] (myPort) {xor}
                         (myPort.in 1) node [anchor = east] {a}
                         (myPort.in 2) node [anchor = east] {b}
                         (myPort.out)  node [anchor = west] {out};
                     \end{circuitikz} 
-                    \caption{Porta Lógica XOR}
+                    \caption{Porta Lógica Xor}
                 \end{figure} \noindent
 
             \paragraph{Implementação}Esta porta lógica pode ser implementada de acordo com o seguinte código:
