@@ -4,4 +4,6 @@
 *.jpg
 *.zip
 *.x.gnuplot
-symbolic-2.9.0
+*/books
+*/octavePackages
+*/nand2tetris
