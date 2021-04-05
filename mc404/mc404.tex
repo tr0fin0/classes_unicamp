@@ -214,11 +214,11 @@
                     \begin{circuitikz}
                         \ctikzset{component text=left}
                         \draw
-                        (0,0) node[not port] (myPort) {NOT}
+                        (0,0) node[not port] (myPort) {not}
                         (myPort.in 1) node [anchor = east] {in}
                         (myPort.out)  node [anchor = west] {out};
                     \end{circuitikz} 
-                    \caption{Porta Lógica NOT}
+                    \caption{Porta Lógica Not}
                 \end{figure} \noindent
 
             \paragraph{Implementação}Esta porta lógica pode ser implementada de acordo com o seguinte código:
@@ -228,7 +228,7 @@
                 \end{scriptsize}
 \newpage
 
-        \subsection{AND}
+        \subsection{And}
             \paragraph{Definição}[Funcionamento]
 
             \paragraph{Tabela Verdade}Esta porta lógica possuirá a seguinte tabela verdade:
@@ -236,12 +236,12 @@
                     \centering
                     \begin{tabular}[]{cc|c}\hline
                         a & b & out\\\hline
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\\hline
+                        0 & 0 & 0\\
+                        0 & 1 & 0\\
+                        1 & 0 & 0\\
+                        1 & 1 & 1\\\hline
                     \end{tabular}
-                    \caption{Tabela Verdade AND}
+                    \caption{Tabela Verdade And}
                 \end{table}
 
             \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguinte circuito:
@@ -250,12 +250,12 @@
                     \begin{circuitikz}
                         \ctikzset{component text=left}
                         \draw
-                        (0,0) node[and port] (myPort) {AND}
+                        (0,0) node[and port] (myPort) {And}
                         (myPort.in 1) node [anchor = east] {a}
                         (myPort.in 2) node [anchor = east] {b}
                         (myPort.out)  node [anchor = west] {out};
                     \end{circuitikz} 
-                    \caption{Porta Lógica AND}
+                    \caption{Porta Lógica And}
                 \end{figure} \noindent
 
             \paragraph{Implementação}Esta porta lógica pode ser implementada de acordo com o seguinte código:
