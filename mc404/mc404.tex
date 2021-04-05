@@ -450,4 +450,41 @@
                     \lstinputlisting{./nand2tetris/projects/01/Not16.hdl}
                 \end{scriptsize}
 \newpage
+
+    \subsection{AND16}
+        \paragraph{Definição}[Funcionamento]
+
+        \paragraph{Tabela Verdade}[Descrição]
+            \begin{table}[H]
+                \centering
+                \begin{tabular}[]{cc|c}\hline
+                    a & b & out\\\hline
+                    0 & 1 & 1\\
+                    0 & 1 & 1\\
+                    0 & 1 & 1\\
+                    0 & 1 & 1\\\hline
+                \end{tabular}
+                \caption{Tabela Verdade AND16}
+            \end{table}
+
+        \paragraph{Representação}Circuito:
+            \begin{figure}[H]
+                \centering
+                \begin{circuitikz}
+                    \ctikzset{component text=left}
+                    \draw
+                    (0,0) node[and port] (myPort) {AND16}
+                    (myPort.in 1) node [anchor = east] {a}
+                    (myPort.in 2) node [anchor = east] {b}
+                    (myPort.out)  node [anchor = west] {out};
+                \end{circuitikz} 
+                \caption{Porta Lógica AND6}
+            \end{figure} \noindent
+
+        \paragraph{Implementação}Código:
+            \begin{scriptsize}
+                \myStyleVHDL
+                \lstinputlisting{./nand2tetris/projects/01/And16.hdl}
+            \end{scriptsize}
+\newpage
 \end{document}
