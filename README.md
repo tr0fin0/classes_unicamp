@@ -6,7 +6,7 @@ my LaTeX notebooks and exercises solutions of my classes in Control and Automati
 
 ## Subjects
 
-- EE532: Eletrônica Aplica;
+- EE532: Eletrônica Aplicada;
 - EM360: Termodinâmica I;
 - EM404: Dinâmica;
 - MA327: Álgebra Linear;
