@@ -185,7 +185,7 @@
                 \end{enumerate}
 
         \subsection{Coordenadas Polares}
-            \paragraph{Definição}Decomposição vetorial das variáveis envolvidas no movimento da partícula a uma distância radial $r$, medida a partir de um ponto fixo $O(a,b)$, e por um ângulo $\theta$ da linha radial, onde os sentidos são descritos a seguir:
+            \paragraph{Definição}Decomposição vetorial das variáveis envolvidas no movimento da partícula a uma distância radial $r$, medida a partir de um ponto fixo $O$, e por um ângulo $\theta$ da linha radial, onde os sentidos são descritos a seguir:
                 \begin{enumerate}[noitemsep]
                     \item \textbf{Direção Angular:} Positivo em direção antihorária;
                         \begin{enumerate}
@@ -213,6 +213,38 @@
                                 }
                             \]
                         \end{enumerate}
+                \end{enumerate}
+            Assim pode-se definir as seguintes variáveis:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Velocidade:} Diferenciando o espaço com $\vec{r} = r \vec{e_{r}}$:
+                        \begin{equation}
+                            \boxed{
+                                v = \sqrt{v_{r}^{2} + v_{\theta}^{2}} =
+                                \begin{cases}
+                                    v_{r} = \dot{r}\\
+                                    v_{\theta} = r\dot{\theta}\\
+                                \end{cases}
+                            }
+                            \hspace{20mm}
+                            \boxed{
+                                \vec{v} = \dot{\vec{r}} = \dot{r}\vec{e_{r}} + r\dot{\theta}\vec{e_{\theta}}
+                            }
+                        \end{equation}
+
+                    \item \textbf{Aceleração:} Diferenciando a velocidade:
+                        \begin{equation}
+                            \boxed{
+                                a = \sqrt{a_{r}^{2} + a_{\theta}^{2}} =
+                                \begin{cases}
+                                    a_{r} = \ddot{r} - r\dot{\theta}^{2}\\
+                                    a_{\theta} = r\ddot{\theta} + 2\dot{r}\dot{\theta}\\
+                                \end{cases}
+                            }
+                            \hspace{20mm}
+                            \boxed{
+                                \vec{a} = \diff{v}{t} = \diff{v\dot{\vec{e_{t}}}}{t} = v \dot{\vec{e_{t}}} + \dot{v}\vec{e_{t}} = \frac{v^{2}}{\rho}\vec{e_{n}} + \dot{v}\vec{e_{t}}
+                            }
+                        \end{equation}
                 \end{enumerate}
 \newpage
 
