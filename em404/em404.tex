@@ -144,11 +144,11 @@
                     \item \textbf{Velocidade:} 
                         \begin{equation}
                             \boxed{
-                                v = \diff{s}{t} = \rho \diff{\beta}{t}
+                                v = \diff{s}{t} = \rho \diff{\beta}{t} = \rho \dot{\beta}
                             }
                             \hspace{20mm}
                             \boxed{
-                                \vec{v} = \diff{s}{t} = \rho \diff{\beta}{t} \vec{e_{t}}
+                                \vec{v} = \rho \diff{\beta}{t} \vec{e_{t}} = \rho \dot{\beta} \vec{e_{t}}
                             }
                         \end{equation}
                     Onde:
@@ -156,6 +156,34 @@
                             \item $\vec{e_{t}}$: \texttt{Vetor Unitário Tangencial};
                             \item $\beta$: \texttt{Ângulo Percorrido na Curvatura};
                             \item $\rho$: \texttt{Raio de Curvatura da Trajetória};
+                        \end{enumerate}
+
+                    \item \textbf{Aceleração:} 
+                        \begin{equation}
+                            \boxed{
+                                a = \sqrt{a_{n}^{2} + a_{t}^{2}} =
+                                \begin{cases}
+                                    a_{n} = \frac{v^{2}}{\rho} = v \beta\\
+                                    a_{t} = \dot{v} = \ddot{s}\\
+                                \end{cases}
+                            }
+                            \hspace{20mm}
+                            \boxed{
+                                \vec{a} = \diff{v}{t} = \diff{v\dot{\vec{e_{t}}}}{t} = v \dot{\vec{e_{t}}} + \dot{v}\vec{e_{t}} = \frac{v^{2}}{\rho}\vec{e_{n}} + \dot{v}\vec{e_{t}}
+                            }
+                        \end{equation}
+                    Onde:
+                        \begin{enumerate}[noitemsep]
+                            \item $\vec{e_{n}}$: \texttt{Vetor Unitário Normal};
+                                \[
+                                    \boxed{
+                                        \diff{\vec{e_{t}}}{\beta} = \vec{e_{n}}
+                                    }
+                                    \hspace{20mm}
+                                    \boxed{
+                                        \dot{\vec{e_{t}}} = \dot{\beta}\vec{e_{n}}
+                                    }
+                                \]
                         \end{enumerate}
                 \end{enumerate}
 \newpage
