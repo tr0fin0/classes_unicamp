@@ -253,19 +253,40 @@
 
         \subsection{Movimento Circular}
             \paragraph{Definição}Caso especial do movimento curvilíneo plano em que o raio de curvatura $\rho$ será constante durante toda trajetória, um círculo de raio $r$, e seu ângulo $\beta$ será dado pelo ângulo $\theta$ a partir de um referência conveniente, sendo descritos pelas seguintes equações:
-                \begin{equation}
-                    \boxed{
-                        v = r \dot{\theta}
-                    }
-                    \hspace{20mm}
-                    \boxed{
-                        a = 
-                        \begin{cases}
-                            a_{n} = v \dot{\theta}\\
-                            a_{t} = r \ddot{\theta}\\
-                        \end{cases}
-                    }
-                \end{equation}
+                \begin{enumerate}
+                    \item \textbf{Coordenadas Normal e Tangencial:}
+                        \begin{equation}
+                            \boxed{
+                                v = r \dot{\theta}
+                            }
+                            \hspace{20mm}
+                            \boxed{
+                                a = 
+                                \begin{cases}
+                                    a_{n} = v \dot{\theta}\\
+                                    a_{t} = r \ddot{\theta}\\
+                                \end{cases}
+                            }
+                        \end{equation}
+                    \item \textbf{Coordenadas Polares:}
+                        \begin{equation}
+                            \boxed{
+                                v = 
+                                \begin{cases}
+                                    v_{r} = 0\\
+                                    v_{\theta} = r \dot{\theta}\\
+                                \end{cases}
+                            }
+                            \hspace{20mm}
+                            \boxed{
+                                a = 
+                                \begin{cases}
+                                    a_{r} = - r\dot{\theta}^{2}\\
+                                    a_{\theta} = r \ddot{\theta}\\
+                                \end{cases}
+                            }
+                        \end{equation}
+                \end{enumerate}
 \newpage
 
 \end{document}
