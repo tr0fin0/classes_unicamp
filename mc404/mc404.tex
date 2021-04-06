@@ -46,20 +46,21 @@
 %Configurando pacote de circuitos
 \usepackage{circuitikz}
 
-\tikzset{
-    mux2by1/.style={
-        muxdemux,
-        muxdemux def={
-            Lh=4,
-            Rh=3,
-            NL=2,
-            NR=1
-            NB=1,
-            NT=0,
-            w=2,
-        }
-    }
-}
+\tikzset{mux4by2/.style={muxdemux,3muxdemux def={Lh=4, NL=4, Rh=3,4NB=2, w=2, square pins=1}}}
+% \tikzset{
+%     mux2by1/.style={
+%         muxdemux,
+%         muxdemux def={
+%             Lh=4,
+%             Rh=3,
+%             NL=2,
+%             NR=1
+%             NB=1,
+%             NT=0,
+%             w=2,
+%         }
+%     }
+% }
 
 
 %Configurando multiple files
@@ -379,8 +380,8 @@
                     \centering
                     \begin{circuitikz}
                         \ctikzset{component text=left}
-                        \draw
-                        node[mux2by1] (myPort) {mux};
+                        \draw;
+                        %\node[mux4by2] (myPort) {mux};
                         % (myPort.in 1) node [anchor = east] {a}
                         % (myPort.in 2) node [anchor = east] {b}
                         % (myPort.out)  node [anchor = west] {out};
