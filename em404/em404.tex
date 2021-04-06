@@ -306,6 +306,24 @@
                             \vec{v} = \dot{\vec{R}} &= \dot{r}\vec{e_{r}} + r\dot{\theta}\vec{e_{\theta}} + \dot{z}\vec{k}\\
                             \vec{a} = \dot{\vec{v}} = \ddot{\vec{R}} &= (\ddot{r} - r\dot{\theta}^{2})\vec{e_{r}} + (r\ddot{\theta} + 2\dot{r}\dot{\theta})\vec{j} + \ddot{z}\vec{k}\\
                         \end{align*}
+                    \item \textbf{Coordenadas Esféricas:}
+                        \[
+                            \vec{v} = v_{R}\vec{e_{R}} + v_{\theta}\vec{e_{\theta}} + v_{\phi}\vec{e_{\phi}}
+                            \hspace{2.5mm}
+                            \begin{cases}
+                                v_{R} = \dot{R}\\
+                                v_{\theta} = R\dot{\theta}\cos(\phi)\\
+                                v_{\phi} = R\dot{\phi}\\
+                            \end{cases}
+                            \hspace{5mm}
+                            \vec{a} = d_{R}\vec{e_{R}} + a_{\theta}\vec{e_{\theta}} + a_{\phi}\vec{e_{\phi}}
+                            \hspace{2.5mm}
+                            \begin{cases}
+                                a_{R} = \ddot{R} - R\dot{\phi}^{2} - R\dot{\theta}^{2}\cos^{2}(\phi)\\
+                                a_{\theta} = \frac{\cos(\phi)}{R} \frac{d(R^{2} \dot{\theta})}{dt} - 2R\dot{\theta}\dot{\phi}\sin(\phi)\\
+                                a_{\phi} = \frac{1}{R} \frac{dR^{2}\dot{\phi}}{dt} + R\dot{\theta}^{2}\sin(\phi)\cos(\phi)\\
+                            \end{cases}
+                        \]
                 \end{enumerate}
 \newpage
 
