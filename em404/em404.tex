@@ -134,7 +134,7 @@
                 \begin{enumerate}[noitemsep]
                     \item \textbf{Direção Normal:} Positivo em direção ao centro de curvatura;
                         \begin{enumerate}[noitemsep]
-                            \item $\vec{e_{n}}$: \texttt{Vetor Unitário Normal};
+                            \item $\vec{e_{n}}$, \texttt{Vetor Unitário Normal}: Cuja derivada será dada por:
                                 \[
                                     \boxed{
                                         \diff{\vec{e_{t}}}{\beta} = \vec{e_{n}}
@@ -192,7 +192,11 @@
                             \item $\vec{e_{\theta}}$, \texttt{Vetor Unitário Angular}: Cuja derivada será dada por:
                             \[
                                 \boxed{
-                                    d\vec{e_{r}} = \vec{e_{\theta}} d\theta
+                                    \diff{\vec{e_{r}}}{\theta} = \vec{e_{\theta}}
+                                }
+                                \hspace{20mm}
+                                \boxed{
+                                    \dot{\vec{e_{r}}} = \dot{\theta} \vec{e_{\theta}}
                                 }
                             \]
                         \end{enumerate}
@@ -201,7 +205,11 @@
                             \item $\vec{e_{r}}$, \texttt{Vetor Unitário Radial}: Cuja derivada será dada por:
                             \[
                                 \boxed{
-                                    d\vec{e_{\theta}} = -\vec{e_{r}} d\theta
+                                    \diff{\vec{e_{\theta}}}{\theta} = - \vec{e_{r}}
+                                }
+                                \hspace{20mm}
+                                \boxed{
+                                    \dot{\vec{e_{\theta}}} = -\dot{\theta} \vec{e_{r}}
                                 }
                             \]
                         \end{enumerate}
