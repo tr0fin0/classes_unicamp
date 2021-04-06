@@ -133,7 +133,22 @@
             \paragraph{Definição}Decomposição vetorial das variáveis envolvidas no movimento da partícula ao longo da tangente, $t$, e ao longo da normal, $n$, da trajetória percorrida, onde os sentidos são descritos a seguir:
                 \begin{enumerate}[noitemsep]
                     \item \textbf{Direção Normal:} Positivo em direção ao centro de curvatura;
+                        \begin{enumerate}[noitemsep]
+                            \item $\vec{e_{n}}$: \texttt{Vetor Unitário Normal};
+                                \[
+                                    \boxed{
+                                        \diff{\vec{e_{t}}}{\beta} = \vec{e_{n}}
+                                    }
+                                    \hspace{20mm}
+                                    \boxed{
+                                        \dot{\vec{e_{t}}} = \dot{\beta}\vec{e_{n}}
+                                    }
+                                \]
+                        \end{enumerate}
                     \item \textbf{Direção Tangencial:} Positivo em direção ao movimento;
+                        \begin{enumerate}[noitemsep]
+                            \item $\vec{e_{t}}$: \texttt{Vetor Unitário Tangencial};
+                        \end{enumerate}
                 \end{enumerate}
             Assim pode-se definir as seguintes variáveis:
                 \begin{enumerate}[noitemsep]
@@ -149,7 +164,6 @@
                         \end{equation}
                     Onde:
                         \begin{enumerate}[noitemsep]
-                            \item $\vec{e_{t}}$: \texttt{Vetor Unitário Tangencial};
                             \item $\beta$: \texttt{Ângulo Percorrido na Curvatura};
                             \item $\rho$: \texttt{Raio de Curvatura da Trajetória};
                         \end{enumerate}
@@ -168,19 +182,6 @@
                                 \vec{a} = \diff{v}{t} = \diff{v\dot{\vec{e_{t}}}}{t} = v \dot{\vec{e_{t}}} + \dot{v}\vec{e_{t}} = \frac{v^{2}}{\rho}\vec{e_{n}} + \dot{v}\vec{e_{t}}
                             }
                         \end{equation}
-                    Onde:
-                        \begin{enumerate}[noitemsep]
-                            \item $\vec{e_{n}}$: \texttt{Vetor Unitário Normal};
-                                \[
-                                    \boxed{
-                                        \diff{\vec{e_{t}}}{\beta} = \vec{e_{n}}
-                                    }
-                                    \hspace{20mm}
-                                    \boxed{
-                                        \dot{\vec{e_{t}}} = \dot{\beta}\vec{e_{n}}
-                                    }
-                                \]
-                        \end{enumerate}
                 \end{enumerate}
 
         \subsection{Coordenadas Polares}
