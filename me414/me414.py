@@ -1,7 +1,14 @@
 import numpy as np
 
-val = np.array([16,17,18,19,20])
-freq = np.array([12,9,13,8,9])
+aux = [25,13,25,26,27,10,23,16,15,2,8]
+end = []
+mul = 1
+
+for i in range(len(aux)):
+    end.append(aux[i]*mul)
+
+val = np.array(end)
+freq = np.array([1,1,1,1,1,1,1,1,1,1,1])
 data = np.repeat(val, freq)
 
 print(data)
