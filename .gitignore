@@ -1,3 +1,4 @@
+*.json
 *.synctex.gz
 *.pdf
 *.png
