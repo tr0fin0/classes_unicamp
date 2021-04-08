@@ -458,31 +458,57 @@
                 \end{equation}
             Onde:
                 \begin{enumerate}[noitemsep]
-                    \item \textbf{Trabalho Força Elástica:} Considerando esta força, obtém-se a seguinte equação:
-                        \[
-                            \boxed{
-                                U_{1-2} = \int_{1}^{2} \vec{F} \cdot d\vec{r}
-                                        = \int_{1}^{2} (-kx\vec{i})\cdot dx \vec{i}
-                                        = \frac{1}{2} k (x_{1}^2 - x_{2}^2)
-                            }
-                        \]
-                    \item \textbf{Trabalho Força Gravitacional:} Considerando esta força, obtém-se a seguinte equação:
-                        \[
-                            \boxed{
-                                U_{1-2} = \int_{1}^{2} \vec{F} \cdot d\vec{r}
-                                        = \int_{1}^{2} (-mg\vec{j})\cdot dy \vec{j}
-                                        = mg (y_{1} - y_{2})
-                            }
-                        \]
-                    \item \textbf{Trabalho Força Gravitacional:} Considerando esta força, obtém-se a seguinte equação:
-                        \[
-                            \boxed{
-                                U_{1-2} = \int_{1}^{2} \vec{F} \cdot d\vec{r}
-                                        = \int_{1}^{2} mvdv
-                                        = \frac{1}{2} m (v_{2}^{2} - v_{1}^{2})
-                                        = T_{2} - T_{1}
-                            }
-                        \]
+                    \item \textbf{Força Elástica:} Considerando esta força, obtém-se a seguinte equação:
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Trabalho:}
+                                \[
+                                    \boxed{
+                                        U_{1-2} = \int_{1}^{2} \vec{F} \cdot d\vec{r}
+                                                = \int_{1}^{2} (-kx\vec{i})\cdot dx \vec{i}
+                                                = \frac{1}{2} k (x_{1}^2 - x_{2}^2)
+                                    }
+                                \]
+                            \item \texttt{Energia:}
+                                \begin{equation}
+                                    \boxed{
+                                        V_{e} = \frac{1}{2} k x^{2}
+                                    }
+                                \end{equation}
+                        \end{enumerate}
+                    \item \textbf{Força Gravitacional:} Considerando esta força, obtém-se a seguinte equação:
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Trabalho:}
+                                \[
+                                    \boxed{
+                                        U_{1-2} = \int_{1}^{2} \vec{F} \cdot d\vec{r}
+                                                = \int_{1}^{2} (-mg\vec{j})\cdot dy \vec{j}
+                                                = mg (y_{1} - y_{2})
+                                    }
+                                \]
+                            \item \texttt{Energia:}
+                                \begin{equation}
+                                    \boxed{
+                                        V_{g} = mgh
+                                    }
+                                \end{equation}
+                        \end{enumerate}
+                    \item \textbf{Força Cinética:} Considerando esta força, obtém-se a seguinte equação:
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Trabalho:}
+                                \[
+                                    \boxed{
+                                        U_{1-2} = \int_{1}^{2} \vec{F} \cdot d\vec{r}
+                                                = \int_{1}^{2} mvdv
+                                                = \frac{1}{2} m (v_{2}^{2} - v_{1}^{2})
+                                    }
+                                \]
+                            \item \texttt{Energia:}
+                                \begin{equation}
+                                    \boxed{
+                                        T = \frac{1}{2} m v^{2}
+                                    }
+                                \end{equation}
+                        \end{enumerate}
                 \end{enumerate}
             Assim, pelo \textbf{Princípio do Trabalho e Energia Cinética}, o trabalho total realizado por todas as forças agindo sobre uma partícula enquanto se move do ponto 1 para o ponto 2 será igual a variação da energia cinética, formalmente descrita pela seguinte equação:
                 \begin{equation}
