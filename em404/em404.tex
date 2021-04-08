@@ -271,7 +271,7 @@
                             \item \texttt{Velocidade Instantânea:}
                                 \begin{equation}
                                     \boxed{
-                                        v = \lim_{\Delta\to 0} \frac{\Delta s}{\Delta t} = \diff{s}{t} =\dot{s}
+                                        v = \lim_{\Delta t \to 0} \frac{\Delta s}{\Delta t} = \diff{s}{t} =\dot{s}
                                     }
                                 \end{equation}
                             \item \texttt{Aceleração Média:}
@@ -283,11 +283,36 @@
                             \item \texttt{Aceleração Instantânea:}
                                 \begin{equation}
                                     \boxed{
-                                        a = \lim_{\Delta\to 0} \frac{\Delta v}{\Delta t} = \diff{v}{t} =\dot{v} = \ddot{s}
+                                        a = \lim_{\Delta t \to 0} \frac{\Delta v}{\Delta t} = \diff{v}{t} =\dot{v} = \ddot{s}
                                     }
                                 \end{equation}
+                            Onde:
+                                \begin{enumerate}[noitemsep]
+                                    \item \textbf{Aceleração Constante:}
+                                        \[
+                                            \boxed{
+                                                v = v_{0} + a \cdot t
+                                            }
+                                        \]
+                                        \[
+                                            \boxed{
+                                                v^{2} = v_{0}^{2} + 2 a (s - s_{0})
+                                            }
+                                        \]
+                                        \[
+                                            \boxed{
+                                                s = s_{0} + v_{0} \cdot t + \frac{1}{2} a t^{2}
+                                            }
+                                        \]
+                                \end{enumerate}
                         \end{enumerate}
                 \end{enumerate}
+            Onde:
+                \begin{equation}
+                    \boxed{
+                        \dot{s} d\dot{s} = \ddot{s} ds
+                    }
+                \end{equation}
 
         \subsection{Movimento Circular}
             \paragraph{Definição}Caso especial do movimento curvilíneo plano em que o raio de curvatura $\rho$ será constante durante toda trajetória, um círculo de raio $r$, e seu ângulo $\beta$ será dado pelo ângulo $\theta$ a partir de um referência conveniente, sendo descritos pelas seguintes equações:
