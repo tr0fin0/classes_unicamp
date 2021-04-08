@@ -129,10 +129,6 @@
     \tableofcontents
 \newpage
 
-    \section{Introdução}
-        \subsection{Conceitos Básiscos}
-\newpage
-
     \section{Coordenadas}
         \subsection{Coordenadas Retangulares}
             \paragraph{Definição}Decomposição vetorial das vairáveis envolvidas no movimento da partícula ao longo do plano cartesiano, abssissas $x$ e ordenadas $y$, sendo descritos pelas seguintes equações:
@@ -317,11 +313,19 @@
 
         \subsection{Movimento Curvilíneo Plano}
             \paragraph{Definição}Caso geral do movimento de uma partícula ao longo de uma curva em um plano com suas variáveis decompostas nas coordenadas cartesianas, sendo descrito pelas seguintes equações:
-                \begin{align*}
-                    \vec{r} &= x\vec{i} + y\vec{j}\\
-                    \vec{v} = \dot{\vec{r}} &= \dot{x}\vec{i} + \dot{y}\vec{j}\\
-                    \vec{a} = \dot{\vec{v}} = \ddot{\vec{r}} &= \ddot{x}\vec{i} + \ddot{y}\vec{j}\\
-                \end{align*}
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Coordenadas Retangulares:} Comumente aplicada quando se tratam de lançamentos oblíquos:
+                        \[
+                            \boxed{x = x_{0} + v_{0_{x}} \cdot t}
+                        \]
+                        \[
+                            \boxed{v_{y} = v_{0_{y}} - g \cdot t}
+                            \hspace{10mm}
+                            \boxed{y = y_{0} + v_{0_{y}} \cdot t - \frac{1}{2}g t^{2}}
+                            \hspace{10mm}
+                            \boxed{v_{y}^{2} = v_{0_{y}}^{2} - 2g(y - y_{0})}
+                        \]
+                \end{enumerate}
 
         \subsection{Movimento Circular}
             \paragraph{Definição}Caso especial do movimento curvilíneo plano em que o raio de curvatura $\rho$ será constante durante toda trajetória, um círculo de raio $r$, e seu ângulo $\beta$ será dado pelo ângulo $\theta$ a partir de um referência conveniente, sendo descritos pelas seguintes equações:
@@ -411,6 +415,9 @@
                     }
                 \end{equation}
             O \textbf{Sistema Inercial} ocorre quando a velocidade do sistema for constante.
+
+        \subsection{Movimento Restritro de Partículas Conectadas}
+            \paragraph{Definição}
 \newpage
 
     \section{Cinética}
