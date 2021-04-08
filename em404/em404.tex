@@ -258,7 +258,7 @@
 
     \section{Cinemática}
         \subsection{Movimento Retilíneo}
-            \paragraph{Definição}Caso geral do movimento de uma partícula ao longo de uma linha reta, onde sua posição em qualquer instante $t$ poderá ser determinada por sua distância $s$ a partir de um referêncial fixo $O$ sobre a linha, sendo descritos pelas seguintes equações:
+            \paragraph{Definição}Caso geral do movimento de uma partícula ao longo de uma linha reta, onde sua posição em qualquer instante $t$ poderá ser determinada por sua distância $s$ a partir de um referêncial fixo $O$ sobre a linha, sendo descrito pelas seguintes equações:
                 \begin{enumerate}[noitemsep]
                     \item \textbf{Coordenadas Retangulares:}
                         \begin{enumerate}[noitemsep]
@@ -290,41 +290,23 @@
                                 \begin{enumerate}[noitemsep]
                                     \item \textbf{Aceleração Constante:}
                                         \[
-                                            \boxed{
-                                                v = v_{0} + a \cdot t
-                                            }
-                                        \]
-                                        \[
-                                            \boxed{
-                                                v^{2} = v_{0}^{2} + 2 a (s - s_{0})
-                                            }
-                                        \]
-                                        \[
-                                            \boxed{
-                                                s = s_{0} + v_{0} \cdot t + \frac{1}{2} a t^{2}
-                                            }
+                                            \boxed{v = v_{0} + a \cdot t}
+                                            \hspace{10mm}
+                                            \boxed{v^{2} = v_{0}^{2} + 2 a (s - s_{0})}
+                                            \hspace{10mm}
+                                            \boxed{s = s_{0} + v_{0} \cdot t + \frac{1}{2} a t^{2}}
                                         \]
                                     \item \textbf{Aceleração Função do Tempo:}
                                         \[
-                                            \boxed{
-                                                v = v_{0} + \int_{0}^{t} f(t) dt
-                                            }
-                                        \]
-                                        \[
-                                            \boxed{
-                                                s = s_{0} + \int_{0}^{t} v dt
-                                            }
+                                            \boxed{v = v_{0} + \int_{0}^{t} f(t) dt}
+                                            \hspace{10mm}
+                                            \boxed{s = s_{0} + \int_{0}^{t} v dt}
                                         \]
                                     \item \textbf{Aceleração Função da Velocidade:}
                                         \[
-                                            \boxed{
-                                                t = \int_{v_{0}}^{v} \frac{dv}{f(v)}
-                                            }
-                                        \]
-                                        \[
-                                            \boxed{
-                                                s = s_{0} + \int_{v_{0}}^{v} \frac{v dv}{f(v)}
-                                            }
+                                            \boxed{t = \int_{v_{0}}^{v} \frac{dv}{f(v)}}
+                                            \hspace{10mm}
+                                            \boxed{s = s_{0} + \int_{v_{0}}^{v} \frac{v dv}{f(v)}}
                                         \]
                                 \end{enumerate}
                         \end{enumerate}
@@ -335,6 +317,14 @@
                         \dot{s} d\dot{s} = \ddot{s} ds
                     }
                 \end{equation}
+
+        \subsection{Movimento Curvilíneo Plano}
+            \paragraph{Definição}Caso geral do movimento de uma partícula ao longo de uma curva em um plano com suas variáveis decompostas nas coordenadas cartesianas, sendo descrito pelas seguintes equações:
+                \begin{align*}
+                    \vec{r} &= x\vec{i} + y\vec{j}\\
+                    \vec{v} = \dot{\vec{r}} &= \dot{x}\vec{i} + \dot{y}\vec{j}\\
+                    \vec{a} = \dot{\vec{v}} = \ddot{\vec{r}} &= \ddot{x}\vec{i} + \ddot{y}\vec{j}\\
+                \end{align*}
 
         \subsection{Movimento Circular}
             \paragraph{Definição}Caso especial do movimento curvilíneo plano em que o raio de curvatura $\rho$ será constante durante toda trajetória, um círculo de raio $r$, e seu ângulo $\beta$ será dado pelo ângulo $\theta$ a partir de um referência conveniente, sendo descritos pelas seguintes equações:
@@ -372,9 +362,6 @@
                             }
                         \end{equation}
                 \end{enumerate}
-
-        \subsection{Movimento Curvilíneo Plano}
-            \paragraph{Definição}
 
         \subsection{Movimento Curvilíneo Espacial}
             \paragraph{Definição}Caso geral de movimento tridimensional de uma partícula ao longo de uma curva espacial, sendo descrito pelas seguintes equações:
