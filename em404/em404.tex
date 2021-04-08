@@ -135,7 +135,12 @@
 
     \section{Coordenadas}
         \subsection{Coordenadas Retangulares}
-            \paragraph{Definição}
+            \paragraph{Definição}Decomposição vetorial das vairáveis envolvidas no movimento da partícula ao longo do plano cartesiano, abssissas $x$ e ordenadas $y$, sendo descritos pelas seguintes equações:
+                \begin{align*}
+                    \vec{r} &= x\vec{i} + y\vec{j}\\
+                    \vec{v} = \dot{\vec{r}} &= \dot{x}\vec{i} + \dot{y}\vec{j}\\
+                    \vec{a} = \dot{\vec{v}} = \ddot{\vec{r}} &= \ddot{x}\vec{i} + \ddot{y}\vec{j}\\
+                \end{align*}
 
         \subsection{Coordenadas Normal e Tangencial}
             \paragraph{Definição}Decomposição vetorial das variáveis envolvidas no movimento da partícula ao longo da tangente, $t$, e ao longo da normal, $n$, da trajetória percorrida, onde os sentidos são descritos a seguir:
@@ -163,11 +168,15 @@
                     \item \textbf{Velocidade:} Sempre será tangente a trajetória, sendo descrita pelas seguintes equações:
                         \begin{equation}
                             \boxed{
-                                v = \diff{s}{t} = \rho \diff{\beta}{t} = \rho \dot{\beta}
+                                v = \sqrt{v_{n}^{2} + v_{t}^{2}} =
+                                \begin{cases}
+                                    v_{n} = 0\\
+                                    v_{t} = \rho \diff{\beta}{t} = \rho \dot{\beta}\\
+                                \end{cases}
                             }
                             \hspace{20mm}
                             \boxed{
-                                \vec{v} = \rho \diff{\beta}{t} \vec{e_{t}} = \rho \dot{\beta} \vec{e_{t}}
+                                \vec{v} = \diff{s}{t} = \rho \diff{\beta}{t} \vec{e_{t}} = \rho \dot{\beta} \vec{e_{t}}
                             }
                         \end{equation}
                     Onde:
@@ -235,7 +244,7 @@
                             }
                             \hspace{20mm}
                             \boxed{
-                                \vec{v} = \dot{\vec{r}} = \dot{r}\vec{e_{r}} + r\dot{\theta}\vec{e_{\theta}}
+                                \vec{v} = \diff{s}{t} = \diff{r \vec{e_{r}}}{t} = \dot{r}\vec{e_{r}} + r\dot{\theta}\vec{e_{\theta}}
                             }
                         \end{equation}
 
@@ -262,22 +271,10 @@
                 \begin{enumerate}[noitemsep]
                     \item \textbf{Coordenadas Retangulares:}
                         \begin{enumerate}[noitemsep]
-                            \item \texttt{Velocidade Média:}
-                                \begin{equation}
-                                    \boxed{
-                                        v_{m} = \frac{\Delta s}{\Delta t}
-                                    }
-                                \end{equation}
                             \item \texttt{Velocidade Instantânea:}
                                 \begin{equation}
                                     \boxed{
                                         v = \lim_{\Delta t \to 0} \frac{\Delta s}{\Delta t} = \diff{s}{t} =\dot{s}
-                                    }
-                                \end{equation}
-                            \item \texttt{Aceleração Média:}
-                                \begin{equation}
-                                    \boxed{
-                                        a_{m} = \frac{\Delta v}{\Delta t}
                                     }
                                 \end{equation}
                             \item \texttt{Aceleração Instantânea:}
