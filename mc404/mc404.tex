@@ -1023,4 +1023,41 @@
                     \lstinputlisting{./nand2tetris/projects/03/a/Register.hdl}
                 \end{scriptsize}
 \newpage
+
+    \subsection{RAM8}
+        \paragraph{Definição}[Funcionamento]
+
+        \paragraph{Tabela Verdade}Esta porta lógica possuirá a seguinte tabela verdade:
+            \begin{table}[H]
+                \centering
+                \begin{tabular}[]{cc|c}\hline
+                    a & b & out\\\hline
+                    0 & 1 & 1\\
+                    0 & 1 & 1\\
+                    0 & 1 & 1\\
+                    0 & 1 & 1\\\hline
+                \end{tabular}
+                \caption{Tabela Verdade RAM8}
+            \end{table}
+
+        \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguinte circuito:
+            \begin{figure}[H]
+                \centering
+                \begin{circuitikz}
+                    \ctikzset{component text=left}
+                    \draw;
+                    % (0,0) node[demux] (myPort) {HalfAdder};
+                    % (myPort.in 1) node [anchor = east] {a}
+                    % (myPort.in 2) node [anchor = east] {b}
+                    % (myPort.out)  node [anchor = west] {out};
+                \end{circuitikz} 
+                \caption{Porta Lógica RAM8}
+            \end{figure} \noindent
+
+        \paragraph{Implementação}Esta porta lógica pode ser implementada de acordo com o seguinte código:
+            \begin{scriptsize}
+                \myStyleVHDL
+                \lstinputlisting{./nand2tetris/projects/03/a/RAM8.hdl}
+            \end{scriptsize}
+\newpage
 \end{document}
