@@ -585,7 +585,7 @@
                         \]
                 \end{enumerate}
 
-        \subsection{Retificador de Onda Meia Onda}
+        \subsection{Retificador de Meia Onda}
             \paragraph{Definição}Circuito responsável por converter um sinal de tensão alternada, AC, em um sinal de tensão contínua, DC. Considera-se o modelo de tensão constante para o diodo, assim este dispositivo pode ser obtido pelo seguinte circuito:
                 \begin{figure}[H]
                     \centering
@@ -626,7 +626,7 @@
                         (6,3) to[resistor, o-o, l=$R$] (6,0)
                         (6,0) -- (3,0);
                     \end{circuitikz} 
-                    \caption{Retificador de Meia Onda Positiva com Filtro e Carga}
+                    \caption{Retificador de Meia Onda com Filtro e Carga}
                 \end{figure} \noindent
             Esta configuração apresentará um decaimento na tensão inversamente proporcional ao tamanho do capacitor, sendo expressa pelas seguintes equações:
                 \begin{equation}
@@ -657,6 +657,46 @@
                         \]
                         \[
                             I_{D_{P}} = i_{R} \left(1 + 2\pi \cdot \sqrt{\frac{2V_{C}}{V_{R}}}\right)
+                        \]
+                \end{enumerate}
+
+
+        \subsection{Retificador de Onda Completa}
+            \paragraph{Definição}Circuito responsável por converter um sinal de tensão alternada, AC, em um sinal de tensão contínua, DC. Considera-se o modelo de tensão constante para o diodo, assim este dispositivo pode ser obtido pelo seguinte circuito:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        (0,0) to[sV, l=$V$] (0,4)
+                        (0,4) -- (4,4)
+                        (2,2) to[empty diode, l=$D4$] (4,4)
+                        (4,4) to[empty diode, l=$D1$] (6,2)
+                        (2,2) to[empty diode, l=$D2$] (4,0)
+                        (4,0) to[empty diode, l=$D3$] (6,2)
+                        (2,2) to[resistor, o-o, l=$R$] (6,2)
+                        (0,0) -- (4,0);
+                    \end{circuitikz} 
+                    \caption{Retificador de Onda Completa e Carga}
+                \end{figure} \noindent
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item $V_{max}$, \textbf{Tensão Máxima Retificada};
+                    \item $V_{min}$, \textbf{Tensão Mínima Retificada};
+                    \item $V_{p}$, \textbf{Tensão de Pico Alternada};
+                    \item $V_{D_{on}}$, \textbf{Tensão do Diodo Ligado};
+                    \item $V_{R}$, \textbf{Tensão de Ripple};
+                        \begin{equation}
+                            \boxed{
+                                V_{R} = \frac{V_{p}}{ 2 \cdot R \cdot C\cdot f}
+                            }
+                        \end{equation}
+                    \item $i_{D}$, \textbf{Corrente no Diodo};
+                        \[
+                            I_{D_{M}} = i_{R} \left(1 + \pi \cdot \sqrt{\frac{V_{p}}{2 V_{R}}}\right)
+                        \]
+                        \[
+                            I_{D_{P}} = i_{R} \left(1 + 2\pi \cdot \sqrt{\frac{V_{p}}{2 V_{R}}}\right)
                         \]
                 \end{enumerate}
 \end{document}
