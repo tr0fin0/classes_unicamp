@@ -120,17 +120,19 @@
 
     \section{Introdução}
         \[
-            x_{RMS} = \sqrt{\frac{1}{T_{2} - T_{1}} \int_{T_{1}}^{T_{2}} f^{2}(t) dt}
+            x_{RMS} = \sqrt{\frac{1}{T_{2} - T_{1}} \int_{T_{1}}^{T_{2}} [A \cdot \cos(\omega\cdot t + \theta)]^{2} dt}
         \]\\
         \[
-            v_{s}(t) = V_{m} \cdot \sin(\omega \cdot t) \to
-            v_{s}(t) = v_{d}(t) \to
+            v_{s}(t) = V_{m} \cdot \sin(\omega \cdot t) \hspace{2.5mm} \to \hspace{2.5mm}
+            v_{s}(t) = v_{d}(t) \hspace{2.5mm} \to \hspace{2.5mm}
             v_{s}(t) = v_{0}(t)
         \]
         \[
-            v_{0}(t) = i(t) \cdot R \to
-            i(t) = \frac{v_{0}(t)}{R} \to
-            i(t) = \frac{V_{m}(t)}{R} \cdot \sin(\omega \cdot t)
+            v_{0}(t) = i(t) \cdot R \hspace{2.5mm} \to \hspace{2.5mm}
+            i(t) = \frac{v_{0}(t)}{R} \hspace{2.5mm} \to \hspace{2.5mm}
+        \]\\
+        \[
+            \boxed{i(t) = \frac{V_{m}(t)}{R} \cdot \sin(\omega \cdot t)}
         \]\\
         \[
             i_{RMS} = \sqrt{\frac{1}{T_{2} - T_{1}} \int_{T_{1}}^{T_{2}} i^{2}(t) dt}
@@ -180,6 +182,6 @@
                     \frac{V_{m}}{R}
         \]\\
         \[
-            v_{s} = V_{m} \sin(\omega \cdot t + \theta)
+            \boxed{i_{RMS} = \frac{V_{m}}{2R}}
         \]
 \end{document}
