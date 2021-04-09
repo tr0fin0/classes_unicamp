@@ -585,51 +585,78 @@
                         \]
                 \end{enumerate}
 
-        \subsection{Retificadores de Onda}
-            \paragraph{Definição}
-
+        \subsection{Retificador de Onda Meia Onda}
+            \paragraph{Definição}Circuito responsável por converter um sinal de tensão alternada, AC, em um sinal de tensão contínua, DC. Considera-se o modelo de tensão constante para o diodo, assim este dispositivo pode ser obtido pelo seguinte circuito:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        (0,0) to[sV, l=$V$] (0,3)
+                        (0,3) to[empty diode, l=$D$] (3,3)
+                        (3,3) to[resistor, o-o, l=$R$] (3,0)
+                        (3,0) -- (0,0);
+                    \end{circuitikz} 
+                    \caption{Retificador de Meia Onda Positiva}
+                \end{figure} \noindent
+            Entretanto, este apresentaria uma tensão com grande amplitude, pois durante pouco mais da metade da frequência da fonte alternada o circuito possuiria tensão e no restante do período estaria desligado. Desta maneira a introdução de um capacitor no local do resistor permite um sinal cause contínuo, podendo ser obtido pelo seguinte circuito:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        (0,0) to[sV, l=$V$] (0,3)
+                        (0,3) to[empty diode, l=$D$] (3,3)
+                        (3,3) to[capacitor, o-o, l=$R$] (3,0)
+                        (3,0) -- (0,0);
+                    \end{circuitikz} 
+                    \caption{Retificador de Meia Onda Positiva com Filtro}
+                \end{figure} \noindent
+            Isso seria um cenário idealizado, pois a saída não apresentaria carga. Em situações usuais haverá presença de uma resistência paralela ao capacitor que fará com que este descarregue ao longo do tempo, podendo ser obtido pelo seguinte circuito:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        (0,0) to[sV, l=$V$] (0,3)
+                        (0,3) to[empty diode, l=$D$] (3,3)
+                        (3,3) to[capacitor, l=$C$] (3,0)
+                        (3,0) -- (0,0)
+                        (3,3) -- (6,3)
+                        (6,3) to[resistor, o-o, l=$R$] (6,0)
+                        (6,0) -- (3,0);
+                    \end{circuitikz} 
+                    \caption{Retificador de Meia Onda Positiva com Filtro e Carga}
+                \end{figure} \noindent
+            Esta configuração apresentará um decaimento na tensão inversamente proporcional ao tamanho do capacitor, sendo expressa pelas seguintes equações:
+                \begin{equation}
+                    \boxed{V_{max} = V_{p} - V_{D_{on}}}
+                    \hspace{20mm}
+                    \boxed{V_{R} = V_{max} - V_{min}}
+                \end{equation}
+            Onde:
                 \begin{enumerate}[noitemsep]
-                    \item \textbf{Retificador de Meia Onda Positiva:}\\
-                        \begin{figure}[H]
-                            \centering
-                            \begin{circuitikz}
-                                \ctikzset{component text=left}
-                                \draw
-                                (0,0) to[sV, l=$V$] (0,2)
-                                (0,2) to[empty diode, l=$D$] (4,2)
-                                (4,2) to[resistor, o-o, l=$R$] (4,0)
-                                (4,0) -- (0,0);
-                            \end{circuitikz} 
-                            \caption{Retificador de Meia Onda Positiva}
-                        \end{figure} \noindent
-
-                    \item \textbf{Retificador de Meia Onda Negativo:}\\
-                        \begin{figure}[H]
-                            \centering
-                            \begin{circuitikz}
-                                \ctikzset{component text=left}
-                                \draw
-                                (0,0) to[sV, l=$V$] (0,2)
-                                (0,2) to[resistor, l=$R$] (4,2)
-                                (4,2) to[empty diode, o-o, l=$D$] (4,0)
-                                (4,0) -- (0,0);
-                            \end{circuitikz} 
-                            \caption{Retificador de Meia Onda Negativa}
-                        \end{figure} \noindent
-
-                    \item \textbf{Retificador de Meia Onda Negativa Limitador:}\\
-                        \begin{figure}[H]
-                            \centering
-                            \begin{circuitikz}
-                                \ctikzset{component text=left}
-                                \draw
-                                (0,0) to[sV, l=$V_{1}$] (0,4)
-                                (0,4) to[resistor, l=$R$] (4,4)
-                                (4,4) to[empty diode, o-, l=$D$] (4,2)
-                                (4,2) to[battery1, -o, l=$V_{B}$] (4,0)
-                                (4,0) -- (0,0);
-                            \end{circuitikz} 
-                            \caption{Retificador Limitador}
-                        \end{figure} \noindent
+                    \item $V_{max}$, \textbf{Tensão Máxima Retificada};
+                    \item $V_{min}$, \textbf{Tensão Mínima Retificada};
+                    \item $V_{p}$, \textbf{Tensão de Pico Alternada};
+                    \item $V_{D_{on}}$, \textbf{Tensão do Diodo Ligado};
+                    \item $V_{R}$, \textbf{Tensão de Ripple};
+                        \begin{equation}
+                            \boxed{
+                                V_{R} \approx \frac{V_{p} - V_{D_{on}}}{R} \cdot \frac{T}{C} \approx \frac{i_{R}}{ C\cdot f}
+                            }
+                        \end{equation}
+                    \item $i_{D}$, \textbf{Corrente no Diodo};
+                        \begin{equation}
+                            \boxed{
+                                i_{D} = i_{D} + i_{R} \to i_{D} = C\diff{v_{0}}{t} + i_{R}
+                            }
+                        \end{equation}
+                        \[
+                            I_{D_{M}} = i_{R} \left(1 + \frac{1}{2\pi} \cdot \sqrt{\frac{2V_{R}}{V_{C}}}\right)
+                        \]
+                        \[
+                            I_{D_{P}} = i_{R} \left(1 + 2\pi \cdot \sqrt{\frac{2V_{C}}{V_{R}}}\right)
+                        \]
                 \end{enumerate}
 \end{document}
