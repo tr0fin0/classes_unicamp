@@ -499,5 +499,26 @@
             \paragraph{Definição}Neste método a precisão necessária final de uma peça será determinada alterando as dimensões de um componente de compensação, menos relevante a montagem e facilmente ajustável para que as especificações do projeto sejam atendidas.
 
         \subsection{Intercambialidade Estatística}
-            \paragraph{Definição}Peças devem possuir dimensões dentro das tolerâncias definidas pelo projeto, gerando uma distribuição normal, ao longo de uma gaussiana. Desta maneira, quando três desvios padrões forem considerados, a probabilidade de uma peça individual ser rejeitada é de aproximadamente $0,27\%$.
+            \paragraph{Definição}Peças devem possuir dimensões dentro das tolerâncias definidas pelo projeto, gerando uma distribuição normal, ao longo de uma gaussiana. Desta maneira, quando três desvios padrões forem considerados, a probabilidade de uma peça individual ser rejeitada é de aproximadamente $0,27\%$, obtendo as seguintes equações:
+                \begin{equation}
+                    \boxed{
+                        t_{t} = \sqrt{\sum_{i=1}^{n} (t_{i})^{2}}
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item $\sigma$, \textbf{Variância};
+                    \item $k$, \textbf{Distribuição de Frequência das Tolerâncias:} Obtido pela seguinte relação:
+                        \[
+                            \boxed{
+                                k = \frac{t}{\sigma}
+                            }
+                        \]
+                    Onde:
+                        \begin{enumerate}[noitemsep]
+                            \item $k^{2} = 3$: \texttt{Distribuição Retangular};
+                            \item $k^{2} = 6$: \texttt{Distribuição Triangular};
+                            \item $k^{2} = 9$: \texttt{Distribuição Normal};
+                        \end{enumerate}
+                \end{enumerate}
 \end{document}
