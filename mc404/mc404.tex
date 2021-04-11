@@ -51,21 +51,42 @@
 %Configurando pacote de circuitos
 \usepackage{circuitikz}
 
-\tikzset{mux4by2/.style={muxdemux,3muxdemux def={Lh=4, NL=4, Rh=3,4NB=2, w=2, square pins=1}}}
-% \tikzset{
-%     mux2by1/.style={
-%         muxdemux,
-%         muxdemux def={
-%             Lh=4,
-%             Rh=3,
-%             NL=2,
-%             NR=1
-%             NB=1,
-%             NT=0,
-%             w=2,
-%         }
-%     }
-% }
+\tikzset{
+    mux2by1/.style={
+        muxdemux, muxdemux def={
+            Lh=4,
+            Rh=2,
+            w=2,
+            NL=2,
+            NB=1,
+            NR=1,
+            NT=0,
+            inset Lh=0,
+            inset Rh=0,
+            inset w=0,
+            square pins=0
+        }
+    }
+}
+
+\tikzset{
+    demux2by1/.style={
+        muxdemux, muxdemux def={
+            Lh=2,
+            Rh=4,
+            w=2,
+            NL=1,
+            NB=1,
+            NR=2,
+            NT=0,
+            inset Lh=0,
+            inset Rh=0,
+            inset w=0,
+            square pins=0
+        }
+    }
+}
+
 
 
 %Configurando multiple files
@@ -383,11 +404,12 @@
                     \centering
                     \begin{circuitikz}
                         \ctikzset{component text=left}
-                        %\draw
-                        %node[mux4by2] (myPort) {mux};
-                        % (myPort.in 1) node [anchor = east] {a}
-                        % (myPort.in 2) node [anchor = east] {b}
-                        % (myPort.out)  node [anchor = west] {out};
+                        \draw
+                        (0,0) node[mux2by1] (myPort) {mux}
+                        (myPort.lpin 1) node [anchor = east] {a}
+                        (myPort.lpin 2) node [anchor = east] {b}
+                        (myPort.bpin 1) node [anchor = north] {s}
+                        (myPort.rpin 1)  node [anchor = west] {out};
                     \end{circuitikz} 
                     \caption{Porta Lógica Mux}
                 \end{figure} \noindent
@@ -399,7 +421,7 @@
                 \end{scriptsize}
 \newpage
 
-        \subsection{DMUX}
+        \subsection{DMux}
             \paragraph{Definição}[Funcionamento]
 
             \paragraph{Tabela Verdade}Esta porta lógica possuirá a seguinte tabela verdade:
@@ -412,7 +434,7 @@
                         0 & 1 & 1\\
                         0 & 1 & 1\\\hline
                     \end{tabular}
-                    \caption{Tabela Verdade DMUX}
+                    \caption{Tabela Verdade DMux}
                 \end{table}
 
             \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguinte circuito:
@@ -421,12 +443,13 @@
                     \begin{circuitikz}
                         \ctikzset{component text=left}
                         \draw
-                        (0,0) node[demux] (myPort) {DMUX};
-                        % (myPort.in 1) node [anchor = east] {a}
-                        % (myPort.in 2) node [anchor = east] {b}
-                        % (myPort.out)  node [anchor = west] {out};
+                        (0,0) node[demux2by1] (myPort) {dmux}
+                        (myPort.rpin 1) node [anchor = west] {a}
+                        (myPort.rpin 2) node [anchor = west] {b}
+                        (myPort.bpin 1) node [anchor = north] {s}
+                        (myPort.lpin 1)  node [anchor = east] {in};
                     \end{circuitikz} 
-                    \caption{Porta Lógica DMUX}
+                    \caption{Porta Lógica DMux}
                 \end{figure} \noindent
 
             \paragraph{Implementação}Esta porta lógica pode ser implementada de acordo com o seguinte código:
