@@ -702,6 +702,45 @@
 
         \subsection{Deslocadores de Tensão}
             \paragraph{Definição}
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                        \draw
+                        (0,2) to[resistor, o-, l=$R$] (2,2)
+                        (2,2) to[empty diode, l=$D$] (2,0)
+                        (2,2) -- (4,2)
+                        (0,0) -- (4,0);
+                    \end{circuitikz} 
+                    \caption{Limitador de Tensão Positivo}
+                \end{figure} \noindent
+
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                        \draw
+                        (0,2) to[resistor, o-, l=$R$] (2,2)
+                        (2,0) to[empty diode, l=$D$] (2,2)
+                        (2,2) -- (4,2)
+                        (0,0) -- (4,0);
+                    \end{circuitikz} 
+                    \caption{Limitador de Tensão Negativa}
+                \end{figure} \noindent
+
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                        \draw
+                        (0,2) to[resistor, o-, l=$R$] (2,2)
+                        (2,0) to[empty diode, l=$D_{1}$] (2,2)
+                        (4,2) to[empty diode, l=$D_{2}$] (4,0)
+                        (2,2) -- (6,2)
+                        (0,0) -- (6,0);
+                    \end{circuitikz} 
+                    \caption{Limitador de Tensão}
+                \end{figure} \noindent
 
         \subsection{Clamper de Tensão}
             \paragraph{Definição}
@@ -716,7 +755,7 @@
                         (2,2) -- (4,2)
                         (0,0) -- (4,0);
                     \end{circuitikz} 
-                    \caption{Duplicador de Tensão}
+                    \caption{Clamper de Tensão}
                 \end{figure} \noindent
 
         \subsection{Duplicador de Tensão}
