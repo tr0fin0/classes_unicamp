@@ -705,6 +705,19 @@
 
         \subsection{Clamper de Tensão}
             \paragraph{Definição}
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                        \draw
+                        (0,0) to[sV, l=$v_{in}$] (0,2)
+                        (0,2) to[capacitor, l=$C_{1}$] (2,2)
+                        (2,0) to[empty diode, l=$D_{1}$] (2,2)
+                        (2,2) -- (4,2)
+                        (0,0) -- (4,0);
+                    \end{circuitikz} 
+                    \caption{Duplicador de Tensão}
+                \end{figure} \noindent
 
         \subsection{Duplicador de Tensão}
             \paragraph{Definição}
