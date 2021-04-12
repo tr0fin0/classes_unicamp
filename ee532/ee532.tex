@@ -699,8 +699,26 @@
                             I_{D_{P}} = i_{R} \left(1 + 2\pi \cdot \sqrt{\frac{V_{p}}{2 V_{R}}}\right)
                         \]
                 \end{enumerate}
+\newpage
 
     \section{Diodo Zener}
-        \paragraph{Definição}
+        \paragraph{Definição}Quando diretamente polarizado este apresentará o mesmo funcionamento de um diodo comum, entretanto quando inversamente polarizado , representado pelo seguinte circuito:
+            \begin{figure}[H]
+                \centering
+                \begin{circuitikz}
+                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                    \draw
+                    (0,0) to[empty Zener diode, l=$D$] (0,3)
+
+                    (3,3) to[empty diode, l=$D_{1}$] (3,2)
+                    (3,2) to[battery1, l=$V_{Z}$] (3,1)
+                    (3,1) to[resistor, l=$R_{Z}$] (3,0)
+                    (3,3) -- (6,3)
+                    (6,0) to[empty diode, l=$D_{2}$] (6,3)
+                    (3,0) -- (6,0);
+                \end{circuitikz} 
+                \caption{Equivalente Zener}
+            \end{figure} \noindent
+
         \subsection{}
 \end{document}
