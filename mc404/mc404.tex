@@ -459,20 +459,18 @@
                 \end{scriptsize}
 \newpage
 
-        \subsection{NOT16}
+        \subsection{Not16}
             \paragraph{Definição}[Funcionamento]
 
             \paragraph{Tabela Verdade}Esta porta lógica possuirá a seguinte tabela verdade:
                 \begin{table}[H]
                     \centering
-                    \begin{tabular}[]{cc|c}\hline
-                        a & b & out\\\hline
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\
-                        0 & 1 & 1\\\hline
+                    \begin{tabular}[]{c|c}\hline
+                        in[i] & out[i]\\\hline
+                        0     & 1\\
+                        1     & 0\\\hline
                     \end{tabular}
-                    \caption{Tabela Verdade NOT16}
+                    \caption{Tabela Verdade Not16}
                 \end{table}
 
             \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguinte circuito:
@@ -481,11 +479,11 @@
                     \begin{circuitikz}
                         \ctikzset{component text=left}
                         \draw
-                        (0,0) node[not port] (myPort) {NOT16}
-                        (myPort.in 1) node [anchor = east] {in}
-                        (myPort.out)  node [anchor = west] {out};
+                        (0,0) node[not port] (myPort) {not16}
+                        (myPort.in 1) node [anchor = east] {in[0..15]}
+                        (myPort.out)  node [anchor = west] {out[0..15]};
                     \end{circuitikz} 
-                    \caption{Porta Lógica NOT16}
+                    \caption{Porta Lógica Not16}
                 \end{figure} \noindent
 
             \paragraph{Implementação}Esta porta lógica pode ser implementada de acordo com o seguinte código:
