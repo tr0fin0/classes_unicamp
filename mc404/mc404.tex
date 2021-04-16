@@ -1406,17 +1406,18 @@
                                     \begin{tabular}[]{l|l|ccc}\hline
                                         Operação      & Resultado          & j1& j2& j3\\\hline
                                         \texttt{null} & no jump            & 0 & 0 & 0\\
-                                        \texttt{JGT}  & if out $>$    jump & 0 & 0 & 1\\
-                                        \texttt{JEQ}  & if out $=$    jump & 0 & 1 & 0\\
-                                        \texttt{JGE}  & if out $\ge$  jump & 0 & 1 & 1\\
-                                        \texttt{JLT}  & if out $<$    jump & 1 & 0 & 0\\
-                                        \texttt{JNE}  & if out $\neq$ jump & 1 & 0 & 1\\
-                                        \texttt{JLE}  & if out $\le$  jump & 1 & 1 & 0\\
+                                        \texttt{JGT}  & if out $>0$    jump & 0 & 0 & 1\\
+                                        \texttt{JEQ}  & if out $=0$    jump & 0 & 1 & 0\\
+                                        \texttt{JGE}  & if out $\ge 0$  jump & 0 & 1 & 1\\
+                                        \texttt{JLT}  & if out $<0$    jump & 1 & 0 & 0\\
+                                        \texttt{JNE}  & if out $\neq 0$ jump & 1 & 0 & 1\\
+                                        \texttt{JLE}  & if out $\le 0$  jump & 1 & 1 & 0\\
                                         \texttt{JMP}  & unconditional jump & 1 & 1 & 1\\\hline
                                     \end{tabular}
                                     \caption{Condições de \texttt{jump}}
                                 \end{table}\noindent
                             Note que estas entradas corresponderam respectivamente aos resultados da \texttt{ALU}; \texttt{not(ng) = j1}, \texttt{zr = j2} e \texttt{ng = j3}.
                         \end{enumerate}
+                        1 11 1 010011 010 100
                 \end{enumerate}
 \end{document}
