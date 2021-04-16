@@ -1378,24 +1378,23 @@
                                                      & A$-$D      & M$-$D      & 0 & 0 & 0 & 1 & 1 & 1\\
                                         \texttt{AND} & D\&A       & D\&M       & 0 & 0 & 0 & 0 & 0 & 0\\
                                         \texttt{OR}  & D $\mid$ A & D $\mid$ M & 0 & 1 & 0 & 1 & 0 & 1\\\hline
-                                                     & a==0       & a==1       &   &   &   &   &   &\\\hline
-
+                                                     & a==0       & a==1       &   &   &   &   &   &  \\\hline
                                     \end{tabular}
                                     \caption{Operações \texttt{ALU}}
                                 \end{table}
                             \item \texttt{dest}: Representa o destino do resultado da operação realizada, expressa a seguir:
                                 \begin{table}[H]
                                     \centering
-                                    \begin{tabular}[]{l|l}\hline
-                                        Operação      & Resultado\\\hline
-                                        \texttt{null} & Descarta Resultado\\
-                                        \texttt{M}    & Armazena na Memória\\
-                                        \texttt{D}    & Armazena no Registrador D\\
-                                        \texttt{MD}   & Armazena na Memnória e no Registrador D\\
-                                        \texttt{A}    & Armazena em A\\
-                                        \texttt{AM}   & Armazena em A e na Memória\\
-                                        \texttt{AD}   & Armazena em A e no Registrador D\\
-                                        \texttt{AMD}  & Armazena em A, na Memória e no Registrador D\\\hline
+                                    \begin{tabular}[]{l|l|ccc}\hline
+                                        Operação      & Resultado                                      & d1& d2& d3\\\hline
+                                        \texttt{null} & Descarta Resultado                             & 0 & 0 & 0\\
+                                        \texttt{M}    & \texttt{RAM[A]}                                & 0 & 0 & 1\\
+                                        \texttt{D}    & Registrador D                                  & 0 & 1 & 0\\
+                                        \texttt{MD}   & \texttt{RAM[A]} e Registrador D                & 0 & 1 & 1\\
+                                        \texttt{A}    & Registrador A                                  & 1 & 0 & 0\\
+                                        \texttt{AM}   & Registrador A e \texttt{RAM[A]}                & 1 & 0 & 1\\
+                                        \texttt{AD}   & Registrador A e Registrador D                  & 1 & 1 & 0\\
+                                        \texttt{AMD}  & Registrador A, \texttt{RAM[A]} e Registrador D & 1 & 1 & 1\\\hline
                                     \end{tabular}
                                     \caption{Destinos de \texttt{C}}
                                 \end{table}
