@@ -182,7 +182,7 @@
 
 \newcommand{\myStyleAssembler}{
 \lstset{
-    language=Assembler,                       % the language of the code
+    language=[x86masm]Assembler,                       % the language of the code
     basicstyle=\ttfamily\small,               % the size of the fonts that are used for the code
     keywordstyle=\color{darkpurple}\bfseries, %
     stringstyle=\color{darkblue},             %
@@ -1303,11 +1303,19 @@
         \subsection{Linguagem de Máquina Hack}
             \paragraph{Definição}Linguagem básica utilizada para manipular as portas lógicas implementadas anteriormente, consistindo de comandos binários com palavras de 16-bit. Há duas possíveis instruções suportadas por esta linguagem, descritas a seguir:
                 \begin{enumerate}[noitemsep]
-                    \item \textbf{A Instructions:} ;
+                    \item \textbf{A Instructions:} Registrador A assume o valor de value;
                         \begin{scriptsize}
-                            \myStyleVHDL
-
+                            \myStyleAssembler
+                            \begin{lstlisting}
+    @value
+                            \end{lstlisting}
                         \end{scriptsize}
                     \item \textbf{C Instructions:} ;
+                        \begin{scriptsize}
+                            \myStyleAssembler
+                            \begin{lstlisting}
+    @value
+                            \end{lstlisting}
+                        \end{scriptsize}
                 \end{enumerate}
 \end{document}
