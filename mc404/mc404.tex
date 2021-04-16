@@ -1322,22 +1322,38 @@
                             \item \texttt{comp}: Representa todas as possíveis operações que a \texttt{ALU} poderá realizar, expressas a seguir:
                                 \begin{table}[H]
                                     \centering
-                                    \begin{tabular}[]{c|rrrr}\hline
+                                    \begin{tabular}[]{l|rrrr}\hline
                                         Operação     & Resultado & & &\\\hline
-                                        Tornar Zero  & 0        &          &       &\\
-                                        Tornar Um    & 1        &          &       &\\
-                                        Tornar $-$Um & $-$1     &          &       &\\
-                                        Manter       & D        &  A       &  M    &\\
-                                        Negar        &!D        & !A       & !M    &\\
-                                        Oposto       &-D        & $-$A     & $-$M  &\\
-                                        Incrementar  & D+1      & A+1      & M+1   &\\
-                                        Decrementar  & D$-$1    & A$-$1    & M$-$1 &\\
-                                        Somar        & D+A      & D+M      &       &\\
-                                        Subtrair     & D$-$A    & D$-$M    & A$-$D & M$-$D\\
-                                        \texttt{AND} & D\&A     & D\&M     &       &\\
-                                        \texttt{OR}  & D$\mid$A & D$\mid$M &       &\\\hline
+                                        Tornar Zero  & 0          &            &       &\\
+                                        Tornar Um    & 1          &            &       &\\
+                                        Tornar $-$Um & $-$1       &            &       &\\
+                                        Manter       & D          &  A         &  M    &\\
+                                        Negar        &!D          & !A         & !M    &\\
+                                        Oposto       &-D          & $-$A       & $-$M  &\\
+                                        Incrementar  & D+1        & A+1        & M+1   &\\
+                                        Decrementar  & D$-$1      & A$-$1      & M$-$1 &\\
+                                        Somar        & D+A        & D+M        &       &\\
+                                        Subtrair     & D$-$A      & D$-$M      & A$-$D & M$-$D\\
+                                        \texttt{AND} & D\&A       & D\&M       &       &\\
+                                        \texttt{OR}  & D $\mid$ A & D $\mid$ M &       &\\\hline
                                     \end{tabular}
                                     \caption{Operações \texttt{ALU}}
+                                \end{table}
+                            \item \texttt{dest}: Representa o destino do resultado da operação realizada, expressa a seguir:
+                                \begin{table}[H]
+                                    \centering
+                                    \begin{tabular}[]{l|l}\hline
+                                        Operação      & Resultado\\\hline
+                                        \texttt{null} & Descarta Resultado\\
+                                        \texttt{M}    & Armazena na Memória\\
+                                        \texttt{D}    & Armazena no Registrador D\\
+                                        \texttt{MD}   & Armazena na Memnória e no Registrador D\\
+                                        \texttt{A}    & Armazena em A\\
+                                        \texttt{AM}   & Armazena em A e na Memória\\
+                                        \texttt{AD}   & Armazena em A e no Registrador D\\
+                                        \texttt{AMD}  & Armazena em A, na Memória e no Registrador D\\
+                                    \end{tabular}
+                                    \caption{Destinos de \texttt{C}}
                                 \end{table}
                         \end{enumerate}
                 \end{enumerate}
