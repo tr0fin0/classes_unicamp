@@ -1303,20 +1303,56 @@
         \subsection{Linguagem de Máquina Hack}
             \paragraph{Definição}Linguagem básica utilizada para manipular as portas lógicas implementadas anteriormente, consistindo de comandos binários com palavras de 16-bit. Há duas possíveis instruções suportadas por esta linguagem, descritas a seguir:
                 \begin{enumerate}[noitemsep]
-                    \item \textbf{A Instructions:} Registrador A assume o valor de \texttt{value};
+                    \item \textbf{A Instructions:} Registrador A assume o valor de \texttt{value}, representado pelo seguinte comando:
                         \begin{scriptsize}
                             \myStyleAssembler
                             \begin{lstlisting}
     @value
                             \end{lstlisting}
                         \end{scriptsize}
-                    \item \textbf{C Instructions:} Realiza a operação \texttt{comp}, armazena o resultado em \texttt{dest} e ;
+                    Este comando também possuirá uma representação em binário de 16-bit, descrito pela seguinte notação:
+                        \begin{equation}
+                            \boxed{
+                            \underbrace{0}_{
+                                    \text{instrução \texttt{A}}
+                                }
+                                \hspace{5mm}
+                                \underbrace{000000000000000}_{
+                                    \text{\texttt{value} representado em 15-bit}
+                                }
+                            }
+                        \end{equation}
+                    \item \textbf{C Instructions:} Realiza a operação \texttt{comp}, armazena o resultado em \texttt{dest} e poderá realizar um deslocamento de acordo com a condição imposta por \texttt{jump};
                         \begin{scriptsize}
                             \myStyleAssembler
                             \begin{lstlisting}
     dest = comp ; jump
                             \end{lstlisting}
                         \end{scriptsize}
+                    Este comando também possuirá uma representação em binário de 16-bit, descrito pela seguinte notação:
+                        \begin{equation}
+                            \boxed{
+                            \underbrace{1}_{
+                                    \text{instrução \texttt{C}}
+                                }
+                                \hspace{5mm}
+                                \underbrace{11}_{
+                                    \text{não utilizado}
+                                }
+                                \hspace{5mm}
+                                \underbrace{\textcolor{darkblue}{\text{a c1 c2 c3 c4 c5 c6}}}_{
+                                    \text{\texttt{comp} bits}
+                                }
+                                \hspace{5mm}
+                                \underbrace{\textcolor{darkpurple}{\text{d1 d2 d3}}}_{
+                                    \text{\texttt{dest} bits}
+                                }
+                                \hspace{5mm}
+                                \underbrace{\textcolor{darkgreen}{\text{j1 j2 j3}}}_{
+                                    \text{\texttt{jump} bits}
+                                }
+                            }
+                        \end{equation}
                     Onde:
                         \begin{enumerate}[noitemsep]
                             \item \texttt{comp}: Representa todas as possíveis operações que a \texttt{ALU} poderá realizar, expressas a seguir:
