@@ -1354,7 +1354,7 @@
                             }
                         \end{equation}
                     Onde:
-                        \begin{enumerate}[noitemsep]
+                        \begin{enumerate}
                             \item \texttt{comp}: Representa todas as possíveis operações que a \texttt{ALU} poderá realizar, expressas a seguir:
                                 \begin{table}[H]
                                     \centering
@@ -1381,7 +1381,8 @@
                                                      & a==0       & a==1       &   &   &   &   &   &  \\\hline
                                     \end{tabular}
                                     \caption{Operações \texttt{ALU}}
-                                \end{table}
+                                \end{table}\noindent
+                            Note que estas entradas corresponderam as entradas da \texttt{ALU}.
                             \item \texttt{dest}: Representa o destino do resultado da operação realizada, expressa a seguir:
                                 \begin{table}[H]
                                     \centering
@@ -1397,7 +1398,8 @@
                                         \texttt{AMD}  & Registrador A, \texttt{RAM[A]} e Registrador D & 1 & 1 & 1\\\hline
                                     \end{tabular}
                                     \caption{Destinos de \texttt{C}}
-                                \end{table}
+                                \end{table}\noindent
+                            Note que estas entradas corresponderam respectivamente aos loads de cada armazenador; \texttt{A.load = d1}, \texttt{D.load = d2} e \texttt{M.load = d3}.
                             \item \texttt{jump}: Representa qual a condição para o fluxo do programa, expresso a seguir:
                                 \begin{table}[H]
                                     \centering
@@ -1413,7 +1415,8 @@
                                         \texttt{JMP}  & unconditional jump & 1 & 1 & 1\\\hline
                                     \end{tabular}
                                     \caption{Condições de \texttt{jump}}
-                                \end{table}
+                                \end{table}\noindent
+                            Note que estas entradas corresponderam respectivamente aos resultados da \texttt{ALU}; \texttt{not(ng) = j1}, \texttt{zr = j2} e \texttt{ng = j3}.
                         \end{enumerate}
                 \end{enumerate}
 \end{document}
