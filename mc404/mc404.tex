@@ -180,6 +180,33 @@
     tabsize=2,                                % sets default tabsize to 2 spaces
 }}
 
+\newcommand{\myStyleAssembler}{
+\lstset{
+    language=Assembler,                       % the language of the code
+    basicstyle=\ttfamily\small,               % the size of the fonts that are used for the code
+    keywordstyle=\color{darkpurple}\bfseries, %
+    stringstyle=\color{darkblue},             %
+    commentstyle=\color{darkgreen},           %
+    morecomment=[s][\color{blue}]{/**}{*/},   %
+    extendedchars=true,                       %
+    showtabs=false,                           % show tabs within strings adding particular underscores
+    showspaces=false,                         % show spaces adding particular underscores
+    showstringspaces=false,                   % underline spaces within strings
+    numbers=left,                             % where to put the line-numbers
+    numberstyle=\tiny\color{gray},            % the style that is used for the line-numbers
+    stepnumber=1,                             % the step between two line-numbers. If it's 1, each line will be numbered
+    numbersep=5pt,                            % how far the line-numbers are from the code
+    frame=single,                             % adds a frame around the code
+    rulecolor=\color{black},                  % if not set, the frame-color may be changed on line-breaks within not-black text
+    breaklines=true,                          % sets automatic line breaking
+    backgroundcolor=\color{white},            % choose the background color
+    breakatwhitespace=true,                   % sets if automatic breaks should only happen at whitespace
+    breakautoindent=false,                    %
+    captionpos=b,                             % sets the caption-position to bottom
+    xleftmargin=0pt,                          %
+    tabsize=2,                                % sets default tabsize to 2 spaces
+}}
+
 %\titleformat{<command>}[<shape>]{<format>}{<label>}{<sep>}{<before-code>}[<after-code>]
 \titleformat
 {\section} %comand
@@ -1277,6 +1304,10 @@
             \paragraph{Definição}Linguagem básica utilizada para manipular as portas lógicas implementadas anteriormente, consistindo de comandos binários com palavras de 16-bit. Há duas possíveis instruções suportadas por esta linguagem, descritas a seguir:
                 \begin{enumerate}[noitemsep]
                     \item \textbf{A Instructions:} ;
+                        \begin{scriptsize}
+                            \myStyleVHDL
+
+                        \end{scriptsize}
                     \item \textbf{C Instructions:} ;
                 \end{enumerate}
 \end{document}
