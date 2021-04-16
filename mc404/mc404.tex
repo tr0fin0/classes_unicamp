@@ -1303,19 +1303,42 @@
         \subsection{Linguagem de Máquina Hack}
             \paragraph{Definição}Linguagem básica utilizada para manipular as portas lógicas implementadas anteriormente, consistindo de comandos binários com palavras de 16-bit. Há duas possíveis instruções suportadas por esta linguagem, descritas a seguir:
                 \begin{enumerate}[noitemsep]
-                    \item \textbf{A Instructions:} Registrador A assume o valor de value;
+                    \item \textbf{A Instructions:} Registrador A assume o valor de \texttt{value};
                         \begin{scriptsize}
                             \myStyleAssembler
                             \begin{lstlisting}
     @value
                             \end{lstlisting}
                         \end{scriptsize}
-                    \item \textbf{C Instructions:} ;
+                    \item \textbf{C Instructions:} Realiza a operação \texttt{comp}, armazena o resultado em \texttt{dest} e ;
                         \begin{scriptsize}
                             \myStyleAssembler
                             \begin{lstlisting}
-    @value
+    dest = comp ; jump
                             \end{lstlisting}
                         \end{scriptsize}
+                    Onde:
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{comp}: Representa todas as possíveis operações que a \texttt{ALU} poderá realizar, expressas a seguir:
+                                \begin{table}[H]
+                                    \centering
+                                    \begin{tabular}[]{c|rrrr}\hline
+                                        Operação     & Resultado & & &\\\hline
+                                        Tornar Zero  & 0        &          &       &\\
+                                        Tornar Um    & 1        &          &       &\\
+                                        Tornar $-$Um & $-$1     &          &       &\\
+                                        Manter       & D        &  A       &  M    &\\
+                                        Negar        &!D        & !A       & !M    &\\
+                                        Oposto       &-D        & $-$A     & $-$M  &\\
+                                        Incrementar  & D+1      & A+1      & M+1   &\\
+                                        Decrementar  & D$-$1    & A$-$1    & M$-$1 &\\
+                                        Somar        & D+A      & D+M      &       &\\
+                                        Subtrair     & D$-$A    & D$-$M    & A$-$D & M$-$D\\
+                                        \texttt{AND} & D\&A     & D\&M     &       &\\
+                                        \texttt{OR}  & D$\mid$A & D$\mid$M &       &\\\hline
+                                    \end{tabular}
+                                    \caption{Operações \texttt{ALU}}
+                                \end{table}
+                        \end{enumerate}
                 \end{enumerate}
 \end{document}
