@@ -1351,9 +1351,25 @@
                                         \texttt{A}    & Armazena em A\\
                                         \texttt{AM}   & Armazena em A e na Memória\\
                                         \texttt{AD}   & Armazena em A e no Registrador D\\
-                                        \texttt{AMD}  & Armazena em A, na Memória e no Registrador D\\
+                                        \texttt{AMD}  & Armazena em A, na Memória e no Registrador D\\\hline
                                     \end{tabular}
                                     \caption{Destinos de \texttt{C}}
+                                \end{table}
+                            \item \texttt{jump}: Representa qual a condição para o fluxo do programa, expresso a seguir:
+                                \begin{table}[H]
+                                    \centering
+                                    \begin{tabular}[]{l|l}\hline
+                                        Operação      & Resultado\\\hline
+                                        \texttt{null} & Descarta Resultado\\
+                                        \texttt{JGT}  & Jump Greater Than\\
+                                        \texttt{JEQ}  & Jump Equal\\
+                                        \texttt{JGE}  & Jump Greater Equal\\
+                                        \texttt{JLT}  & Jump Less Than\\
+                                        \texttt{JNE}  & Jump Not Equal\\
+                                        \texttt{JLE}  & Jump Less Equal\\
+                                        \texttt{JMP}  & Jump\\\hline
+                                    \end{tabular}
+                                    \caption{Condições de \texttt{jump}}
                                 \end{table}
                         \end{enumerate}
                 \end{enumerate}
