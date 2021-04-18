@@ -118,7 +118,7 @@
     \tableofcontents
 \newpage
 
-    \section{Introdução}
+    \section{Projeto 1}
         \[
             x_{RMS} = \sqrt{\frac{1}{T_{2} - T_{1}} \int_{T_{1}}^{T_{2}} [A \cdot \cos(\omega\cdot t + \theta)]^{2} dt}
         \]\\
@@ -184,4 +184,39 @@
         \[
             \boxed{i_{RMS} = \frac{V_{m}}{2R}}
         \]
+\newpage
+        \[
+            i_{RMS} = \sqrt{\frac{1}{T_{2} - T_{1}} \int_{T_{1}}^{T_{2}} i^{2}(t) dt}
+            \hspace{2.5mm}
+            \to
+            \hspace{2.5mm}
+            i_{RMS} = \sqrt{\frac{1}{T_{2} - T_{1}} \left[ \int_{T_{1}}^{\beta} i^{2}(t) dt + \int_{\beta}^{T_{2}} i^{2}(t) dt \right]}
+        \]\\
+        \[
+            i_{RMS} = 
+                    \sqrt{ \frac{1}{2 \pi}
+                        \left[
+                            \int_{0}^{\beta} {
+                                \left(
+                                    \frac{V_{m}}{R} \cdot (\sin(\omega \cdot t - \theta) + \sin(\theta) \cdot e^{\frac{\omega t}{\omega \tau}} )
+                                \right)}^{2} dt 
+                        \right]
+                    }
+        \]\\
+        \[
+            \boxed{
+                i_{RMS} = 
+                    \sqrt{
+                        \frac{1}{2\pi}
+                            \left[
+                                \int_{0}^{\beta}
+                                    \frac{V_{m}^{2}}{Z^{2}} \cdot \sin^{2}(\omega t - \theta) dt +
+                                \int_{0}^{\beta}
+                                    \frac{2 V_{m}^{2}}{Z^{2}} \cdot \sin(\theta) \cdot \sin(\omega t - \theta) \cdot e^{-\frac{\omega t}{\omega \tau}} dt +
+                                \int_{0}^{\beta}
+                                    \frac{V_{m}^{2}}{Z^{2}} \cdot \sin^{2}(\theta) \cdot e^{-\frac{2\omega t}{\omega \tau}} dt +
+                            \right]
+                    }
+            }
+        \]\\
 \end{document}
