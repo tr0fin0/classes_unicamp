@@ -180,7 +180,7 @@
     tabsize=2,                                % sets default tabsize to 2 spaces
 }}
 
-\newcommand{\myStyleAssembler}{
+\newcommand{\myStyleAssembly}{
 \lstset{
     language=[x86masm]Assembler,                       % the language of the code
     basicstyle=\ttfamily\small,               % the size of the fonts that are used for the code
@@ -1305,7 +1305,7 @@
                 \begin{enumerate}[noitemsep]
                     \item \textbf{A Instructions:} Registrador A assume o valor de \texttt{value}, representado pelo seguinte comando:
                         \begin{scriptsize}
-                            \myStyleAssembler
+                            \myStyleAssembly
                             \begin{lstlisting}
     @value
                             \end{lstlisting}
@@ -1324,7 +1324,7 @@
                         \end{equation}
                     \item \textbf{C Instructions:} Realiza a operação \texttt{comp}, armazena o resultado em \texttt{dest} e poderá realizar um deslocamento de acordo com a condição imposta por \texttt{jump};
                         \begin{scriptsize}
-                            \myStyleAssembler
+                            \myStyleAssembly
                             \begin{lstlisting}
     dest = comp ; jump
                             \end{lstlisting}
@@ -1426,7 +1426,7 @@
 
             \paragraph{Implementação}Esta porta lógica pode ser implementada de acordo com o seguinte código:
                 \begin{scriptsize}
-                    \myStyleVHDL
+                    \myStyleAssembly
                     \lstinputlisting{./nand2tetris/projects/04/mult/mult.asm}
                 \end{scriptsize}
 \newpage
@@ -1436,7 +1436,7 @@
 
             \paragraph{Implementação}Esta porta lógica pode ser implementada de acordo com o seguinte código:
                 \begin{scriptsize}
-                    \myStyleVHDL
+                    \myStyleAssembly
                     \lstinputlisting{./nand2tetris/projects/04/fill/Fill.asm}
                 \end{scriptsize}
 \end{document}
