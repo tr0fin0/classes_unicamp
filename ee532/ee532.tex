@@ -25,7 +25,9 @@
 \usepackage[thinc]{esdiff} %parcial derivatives
 \restylefloat{table}
 
+\usepackage{wrapfig}
 \usepackage{graphicx}
+\usepackage{subcaption}
 \graphicspath{ {./IMAGENS/} }
 
 % Pacote para a definição de novas cores
@@ -797,7 +799,33 @@
 \newpage
 
     \section{Transistor Bipolar de Junção}
-        \paragraph{Definição}Dispositivo elétrico capaz de controlar uma corrente de saída através de uma tensão na entrada. Este será obtido através da combinação em série de diodos classificados de acordo com as ligações realizados, sendo representados a seguir:
-
+        \paragraph{Definição}Dispositivo elétrico capaz de controlar corrente em sua saída através de uma tensão na entrada. Construída através da combinação em série de duas junções de semicondutores positivamente e negativamente dopados classificados de acordo com as ligações realizados, comumente representados como mostrado a seguir:
+            \begin{figure}[H]
+                \centering
+                \begin{subfigure}[t]{0.45\textwidth}
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        node[npn] (myComp) {Q}
+                        (myComp.B) node [anchor = east] {B}
+                        (myComp.C) node [anchor = south] {C}
+                        (myComp.E) node [anchor = north] {E};
+                    \end{circuitikz} 
+                    \caption{Transistor NPN}
+                \end{subfigure}
+                \begin{subfigure}[t]{0.45\textwidth}
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        node[pnp] (myComp) {Q}
+                        (myComp.B) node [anchor = east] {B}
+                        (myComp.C) node [anchor = north] {C}
+                        (myComp.E) node [anchor = south] {E};
+                    \end{circuitikz} 
+                    \caption{Transistor PNP}
+                \end{subfigure}
+            \end{figure} \noindent
 
 \end{document}
