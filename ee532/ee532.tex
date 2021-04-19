@@ -40,6 +40,10 @@
 % Configurando espaços entre paragrafos
 %\setlength{\parskip}{0.5em}
 
+%Configurando numeração de objetos; figuras, equações e etc., em ambientes; section, subsection e etc..
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{equation}{subsection}
 
 % Configurando pacote de circuitos
 \usepackage{circuitikz}
@@ -865,7 +869,7 @@
                         \begin{equation}
                             \boxed{
                                 I_{C} \approx I_{E} \approx I_{S} \cdot (e^{\frac{V_{BE}}{V_{T}}})
-                                \hspace{2.5mm}
+                                \hspace{5mm}
                                 \text{ quando $V_{BE} \gg V_{T}$}
                             }
                         \end{equation}
