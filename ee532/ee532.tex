@@ -831,7 +831,7 @@
             \end{figure} \noindent
 
         \subsection{Transistores NPN}
-            \paragraph{Definição}Transistores em que a região central será composta por uma região P, positivamente dopada, apresentando o seguinte comportamento:
+            \paragraph{Definição}Transistores em que a região central será composta por uma região P, positivamente dopada, ligada em duas regiões N, negativamente dopadas, apresentando as seguintes tensões:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -841,11 +841,18 @@
                         (myComp.B) node [anchor = east] {B}
                         (myComp.C) node [anchor = south] {C}
                         (myComp.E) node [anchor = north] {E}
-                        (myComp.E) to[open, v^>=$v_{CE}$] (myComp.C)
+                        (myComp.C) to[open, v^<=$v_{CE}$] (myComp.E)
                         (myComp.E) to[open, v^>=$v_{BE}$] (myComp.B)
                         (myComp.B) to[open, v^>=$v_{CB}$] (myComp.C);
                     \end{circuitikz} 
                     \caption{Tensões Transistor NPN}
                 \end{figure} \noindent
+            Este componente apresentará 4 situações de operação, obtidas através das direntes combinações entre a polarização direta e indireta dos diodos intrínsecos, sendo descritas abaixo:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Região de Corte:} Ocorre quando $v_{BE}$ e $v_{BC}$ são inversamente polarizados;
+                    \item \textbf{Região de Saturação:} Ocorre quando $v_{BE}$ e $v_{BC}$ são diretamente polarizados;
+                    \item \textbf{Região Ativa:} Ocorre quando $v_{BE}$ está diretamente polaraizada e $v_{BC}$ está inversamente polarizada;
+                    \item \textbf{Região Ativa Inversa:} Ocorre quando $v_{BE}$ está inversamente polaraizada e $v_{BC}$ está diretamente polarizada;
+                \end{enumerate}
 
 \end{document}
