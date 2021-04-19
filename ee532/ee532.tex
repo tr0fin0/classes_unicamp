@@ -830,4 +830,22 @@
                 \caption{Transistores Bipolares de Junção}
             \end{figure} \noindent
 
+        \subsection{Transistores NPN}
+            \paragraph{Definição}Transistores em que a região central será composta por uma região P, positivamente dopada, apresentando o seguinte comportamento:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        node[npn] (myComp) {}
+                        (myComp.B) node [anchor = east] {B}
+                        (myComp.C) node [anchor = south] {C}
+                        (myComp.E) node [anchor = north] {E}
+                        (myComp.E) to[open, v^>=$v_{CE}$] (myComp.C)
+                        (myComp.E) to[open, v^>=$v_{BE}$] (myComp.B)
+                        (myComp.B) to[open, v^>=$v_{CB}$] (myComp.C);
+                    \end{circuitikz} 
+                    \caption{Tensões Transistor NPN}
+                \end{figure} \noindent
+
 \end{document}
