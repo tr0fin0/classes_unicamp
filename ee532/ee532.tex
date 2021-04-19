@@ -799,7 +799,7 @@
 \newpage
 
     \section{Transistor Bipolar de Junção}
-        \paragraph{Definição}Dispositivo elétrico capaz de controlar corrente em sua saída através de uma tensão na entrada. Construída através da combinação em série de duas junções de semicondutores positivamente e negativamente dopados classificados de acordo com as ligações realizados, comumente representados como mostrado a seguir:
+        \paragraph{Definição}Dispositivo elétrico capaz de controlar corrente em sua saída através de uma tensão na entrada. Construído através da combinação em série de duas junções de semicondutores positivamente e negativamente dopados classificados de acordo com as ligações realizados, comumente representados como mostrado a seguir:
             \begin{figure}[H]
                 \centering
                 \begin{subfigure}[t]{0.45\textwidth}
@@ -807,7 +807,7 @@
                     \begin{circuitikz}
                         \ctikzset{component text=left}
                         \draw
-                        node[npn] (myComp) {Q}
+                        node[npn] (myComp) {$Q_{1}$}
                         (myComp.B) node [anchor = east] {B}
                         (myComp.C) node [anchor = south] {C}
                         (myComp.E) node [anchor = north] {E};
@@ -819,13 +819,15 @@
                     \begin{circuitikz}
                         \ctikzset{component text=left}
                         \draw
-                        node[pnp] (myComp) {Q}
+                        node[pnp] (myComp) {$Q_{2}$}
                         (myComp.B) node [anchor = east] {B}
                         (myComp.C) node [anchor = north] {C}
                         (myComp.E) node [anchor = south] {E};
+                        %(myComp.E) to[open, v^>=$v_o(t)$] (myComp.C)
                     \end{circuitikz} 
                     \caption{Transistor PNP}
                 \end{subfigure}
+                \caption{Transistores Bipolares de Junção}
             \end{figure} \noindent
 
 \end{document}
