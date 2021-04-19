@@ -861,18 +861,28 @@
                 \begin{enumerate}
                     \item \textbf{Região de Corte:} Ocorre quando $V_{BE}$ e $V_{BC}$ são inversamente polarizados;
                     \item \textbf{Região de Saturação:} Ocorre quando $V_{BE}$ e $V_{BC}$ são diretamente polarizados;
-                    \item \textbf{Região Ativa:} Ocorre quando $V_{BE}$ está diretamente polaraizada e $v_{BC}$ está inversamente polarizada, assim a corrente através do Emissor será dada como a corrente através de um diodo como representado na seguinte equação:
+                    \item \textbf{Região Ativa:} Ocorre quando $V_{BE}$ está diretamente polaraizada e $V_{BC}$ está inversamente polarizada, haverá um pequeno fluxo de corrente vinda da Base que diminui as regiões de depleção entre o Coletor e o Emissor, possibilitando assim o fluxo de corrente entre estes terminais dada como a corrente através de um diodo como representado na seguinte equação:
                         \[
                             I_{D} = I_{S} \cdot (e^{\frac{V_{D}}{V_{T}}} - 1)
                         \]
-                    Esta poderá ser simplicada para a seguinte equação:
+                    Esta poderá ser simplicada pela a seguinte equação:
                         \begin{equation}
-                            \boxed{
-                                I_{C} \approx I_{E} \approx I_{S} \cdot (e^{\frac{V_{BE}}{V_{T}}})
-                                \hspace{5mm}
-                                \text{ quando $V_{BE} \gg V_{T}$}
-                            }
+                            I_{C} \approx I_{E} \approx I_{S} \cdot (e^{\frac{V_{BE}}{V_{T}}})
+                            \hspace{5mm}
+                            \text{quando $V_{BE} \gg V_{T}$}
                         \end{equation}
+                    Entretato, esta modelagem desconsidera o fluxo de corrente através da Base. Uma abordagem completa será descrita abaixo:
+                        \begin{align}
+                            \boxed{
+                                \begin{cases}
+                                    I_{E} = I_{B} + I_{C}\\
+                                    I_{C} = \beta \cdot I_{B}\\
+                                    I_{C} = \alpha \cdot I_{E}\\
+                                \end{cases}
+                                \hspace{5mm}
+                                \text{onde: $\beta = 50 \sim 200$ e $\alpha = \frac{\beta}{\beta + 1} \approx 0,99$}
+                            }
+                        \end{align}
                     \item \textbf{Região Ativa Inversa:} Ocorre quando $v_{BE}$ está inversamente polaraizada e $v_{BC}$ está diretamente polarizada;
                 \end{enumerate}
 
