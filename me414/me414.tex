@@ -505,7 +505,32 @@
                         \end{axis}
                     \end{tikzpicture}
                     \caption{Representação de Boxplot}
-                \end{figure}
+                \end{figure} \noindent
+            Neste diagrama temos, medidos da esquerda para direito, as seguintes informações sobre os dados apresentados:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Limite Inferior:} Representa o valor mínimo da amostra, caso não hajam outliers, ou, caso hajam outliers, será obtido pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                Q_{1} - 1.5 \times IQ
+                            }
+                        \end{equation}
+                    \item $Q_{1}$, \textbf{Primeiro Quartil};
+                    \item $Q_{2}$, \textbf{Segundo Quartil};
+                    \item $Q_{3}$, \textbf{Terceiro Quartil};
+                    \item $IQ$, \textbf{Intervalo Interquartílico:} Intervalo que compreende 50\% dos dados da amostra, será obtido pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                IQ = Q_{3} - Q_{1}
+                            }
+                        \end{equation}
+                    \item \textbf{Limite Superior:} Representa o valor máximo da amostra, caso não hajam outliers, ou, caso hajam outliers, será obtido pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                Q_{3} + 1.5 \times IQ
+                            }
+                        \end{equation}
+
+                \end{enumerate}
 \newpage
 
     \section{Análise Combinatória}
