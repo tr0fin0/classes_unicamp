@@ -80,8 +80,10 @@ if(True):
     #seguindo a fórmula
     CCxy = (
             np.sum(
-                ((x - x.mean())/(np.std(x, ddof=1))*
-                 (y - y.mean())/(np.std(y, ddof=1)))
+                (
+                    (x - x.mean())/(np.std(x, ddof=1))*
+                    (y - y.mean())/(np.std(y, ddof=1))
+                )
             )
             )/(x.size - 1)
 
