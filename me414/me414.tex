@@ -317,124 +317,124 @@
                     \end{tikzpicture}
                 \end{figure} \noindent
         Estes gráficos possibilitam expressar dados de maneira eficiente, pois conclusões visuais auxiliam na análise dos dados apresentados. Há diferentes classificações de Histogramas, sendo apresentados abaixo:
-        \begin{figure}[H]
-            \centering
-            \begin{subfigure}[t]{0.3\textwidth}
+            \begin{figure}[H]
                 \centering
-                \begin{tikzpicture}
-                    \begin{axis}[
-                            xmin = 0,
-                            xmax = 11,
-                            ymin = 0, 
-                            ymax = 10,
-                            minor x tick num = 4,
-                            minor y tick num = 1,
-                            area style,
-                            width  = 5cm,
-                            height = 5cm,
-                            %ylabel = {Frequência},
-                            %xlabel = {Quantidade},
-                        ]
-                        \addplot+[
-                            fill = white,
-                            draw = black,
-                            ybar interval,
-                            mark = no
-                        ] 
-                            plot coordinates {
-                            (1,5) 
-                            (2,7) 
-                            (3,9) 
-                            (4,7) 
-                            (5,5) 
-                            (6,4)
-                            (7,3)
-                            (8,2)
-                            (9,1)
-                            (10,1)
-                        };
-                    \end{axis}
-                \end{tikzpicture}
-                \caption{Assimétrico à Esquerda}
-            \end{subfigure}
-            \begin{subfigure}[t]{0.3\textwidth}
-                \centering
-                \begin{tikzpicture}
-                    \begin{axis}[
-                            xmin = 0,
-                            xmax = 11,
-                            ymin = 0, 
-                            ymax = 10,
-                            minor x tick num = 4,
-                            minor y tick num = 1,
-                            area style,
-                            width  = 5cm,
-                            height = 5cm,
-                            %ylabel = {Frequência},
-                            %xlabel = {Quantidade},
-                        ]
-                        \addplot+[
-                            fill = white,
-                            draw = black,
-                            ybar interval,
-                            mark = no
-                        ] 
-                            plot coordinates {
-                            (1,1) 
-                            (2,3) 
-                            (3,5) 
-                            (4,7) 
-                            (5,9) 
-                            (6,7)
-                            (7,5)
-                            (8,3)
-                            (9,1)
-                            (10,1)
-                        };
-                    \end{axis}
-                \end{tikzpicture}
-                \caption{Perfeitamente Simétrico}
-            \end{subfigure}
-            \begin{subfigure}[t]{0.3\textwidth}
-                \centering
-                \begin{tikzpicture}
-                    \begin{axis}[
-                            xmin = 0,
-                            xmax = 11,
-                            ymin = 0, 
-                            ymax = 10,
-                            minor x tick num = 4,
-                            minor y tick num = 1,
-                            area style,
-                            width  = 5cm,
-                            height = 5cm,
-                            %ylabel = {Frequência},
-                            %xlabel = {Quantidade},
-                        ]
-                        \addplot+[
-                            fill = white,
-                            draw = black,
-                            ybar interval,
-                            mark = no
-                        ] 
-                            plot coordinates {
-                            (1,1) 
-                            (2,2) 
-                            (3,3) 
-                            (4,4) 
-                            (5,5) 
-                            (6,7)
-                            (7,9)
-                            (8,7)
-                            (9,5)
-                            (10,3)
-                        };
-                    \end{axis}
-                \end{tikzpicture}
-                \caption{Assimétrico à Direita}
-            \end{subfigure}
-            \caption{Simétria de Distribuição}
-        \end{figure} \noindent
+                \begin{subfigure}[t]{0.3\textwidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                                xmin = 0,
+                                xmax = 11,
+                                ymin = 0, 
+                                ymax = 10,
+                                minor x tick num = 4,
+                                minor y tick num = 1,
+                                area style,
+                                width  = 5cm,
+                                height = 5cm,
+                                %ylabel = {Frequência},
+                                %xlabel = {Quantidade},
+                            ]
+                            \addplot+[
+                                fill = white,
+                                draw = black,
+                                ybar interval,
+                                mark = no
+                            ] 
+                                plot coordinates {
+                                (1,5) 
+                                (2,7) 
+                                (3,9) 
+                                (4,7) 
+                                (5,5) 
+                                (6,4)
+                                (7,3)
+                                (8,2)
+                                (9,1)
+                                (10,1)
+                            };
+                        \end{axis}
+                    \end{tikzpicture}
+                    \caption{Assimétrico à Esquerda}
+                \end{subfigure}
+                \begin{subfigure}[t]{0.3\textwidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                                xmin = 0,
+                                xmax = 11,
+                                ymin = 0, 
+                                ymax = 10,
+                                minor x tick num = 4,
+                                minor y tick num = 1,
+                                area style,
+                                width  = 5cm,
+                                height = 5cm,
+                                %ylabel = {Frequência},
+                                %xlabel = {Quantidade},
+                            ]
+                            \addplot+[
+                                fill = white,
+                                draw = black,
+                                ybar interval,
+                                mark = no
+                            ] 
+                                plot coordinates {
+                                (1,1) 
+                                (2,3) 
+                                (3,5) 
+                                (4,7) 
+                                (5,9) 
+                                (6,7)
+                                (7,5)
+                                (8,3)
+                                (9,1)
+                                (10,1)
+                            };
+                        \end{axis}
+                    \end{tikzpicture}
+                    \caption{Perfeitamente Simétrico}
+                \end{subfigure}
+                \begin{subfigure}[t]{0.3\textwidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                                xmin = 0,
+                                xmax = 11,
+                                ymin = 0, 
+                                ymax = 10,
+                                minor x tick num = 4,
+                                minor y tick num = 1,
+                                area style,
+                                width  = 5cm,
+                                height = 5cm,
+                                %ylabel = {Frequência},
+                                %xlabel = {Quantidade},
+                            ]
+                            \addplot+[
+                                fill = white,
+                                draw = black,
+                                ybar interval,
+                                mark = no
+                            ]
+                                plot coordinates {
+                                (1,1) 
+                                (2,2) 
+                                (3,3) 
+                                (4,4) 
+                                (5,5) 
+                                (6,7)
+                                (7,9)
+                                (8,7)
+                                (9,5)
+                                (10,3)
+                            };
+                        \end{axis}
+                    \end{tikzpicture}
+                    \caption{Assimétrico à Direita}
+                \end{subfigure}
+                \caption{Simétria de Distribuição}
+            \end{figure} \noindent
 
         \subsection{Ramo-e-Folhas}
             \paragraph{Definição}Representação Gráfica de uma contínua que agrupada os valores separando-os em duas partes: ramo, colocado a esquerda, e folhas, colocado a direita; mantendo as informações, construídos como mostrado no exemplo a seguir:
