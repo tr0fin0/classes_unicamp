@@ -170,6 +170,23 @@
         \subsection{Moda}
             \paragraph{Definição}Métrica com maior número de ocorrências na amostra;
 
+        \subsection{Variância}
+            \paragraph{Definição}Medida de dispersão em que a média dos desvios ao quadrado será dada pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        s^{2} = \frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \overline{x})^{2}
+                    }
+                \end{equation}
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Coeficiente de Variação:} Normaliza o desvio padrão com relação a média do conjunto de dados de tal forma que os desvios padrões de diferentes amostras possam ser comparadas, será dado pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                CV = \frac{s}{\overline{x}}
+                            }
+                        \end{equation}
+                \end{enumerate}
+
+
                 \begin{enumerate}[noitemsep]
                     \item \textbf{Métricas Quantitativas:} Resultados numéricos consolidados, como:
                         \begin{enumerate}[noitemsep]
@@ -177,20 +194,7 @@
 
                         \item \texttt{Mediana:} 
                             \item \texttt{Moda:}
-                            \item \texttt{Variância:} Medida de dispersão em que a média dos desvios ao quadrado será dada pela seguinte equação:
-                                \begin{equation}
-                                    \boxed{
-                                        s^{2} = \frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \overline{x})^{2}
-                                    }
-                                \end{equation}
-                                \begin{enumerate}[noitemsep]
-                                    \item \textbf{Coeficiente de Variação:} Normaliza o desvio padrão com relação a média do conjunto de dados de tal forma que os desvios padrões de diferentes amostras possam ser comparadas, será dado pela seguinte equação:
-                                        \begin{equation}
-                                            \boxed{
-                                                CV = \frac{s}{\overline{x}}
-                                            }
-                                        \end{equation}
-                                \end{enumerate}
+                            \item \texttt{Variância:} 
                             \item \texttt{Desvio Padrão:} Medida de dispersão em que a raiz quadrada da variância será dada pela seguinte equação:
                                 \begin{equation}
                                     \boxed{
