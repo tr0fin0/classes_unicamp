@@ -6,10 +6,11 @@ if(False):
     end = [] #base de dados final
     mul = 1 #multiplicador para os valores
 
-    # multiplica valores do aux, usado para calcular os valores quando a base é modificada por uma multiplicação
+    #multiplica valores do aux, usado para calcular os valores quando a base é modificada por uma multiplicação
     for i in range(len(aux)):
         end.append(aux[i]*mul)
 
+    #caso hajam valores estes deve ser incluidos na tabela de frequência, do contrário será necessário modificar a variável
     val = np.array(end)
     freq = np.array([1,1,1,1,1,1,1,1,1,1,1])
     data = np.repeat(val, freq)
@@ -30,8 +31,8 @@ if(True):
     # data = np.array([5, 14, 23, 27, 27, 19, 12, 18, 8, 11, 30, 10, 15])
     data = np.array(
         [
-            1.77, 2.31, 2.21, 2.05, 1.16, 1.19, 2.09,
-            1.8, 1.89, 1, 2.54, 2.24, 2.85, 1.65, 1.2
+            2.26, 1.8, 2.5, 1.12, 2.76, 2.64, 1.47,
+            1.25, 2.11, 1.94, 1.25, 1.83, 2.89, 1.66
         ]
     )
     data.sort()
@@ -39,6 +40,7 @@ if(True):
     # Q1, Q2, Q3 = np.quantile(data, [0.25, 0.5, 0.75]) # Método diferente do implementado pela professora? o que está acontecendo aqui?
 
 
+    #quartis
     meio = int(data.size/2)
     l1 = data[:meio]
     l2 = data[-meio:]
@@ -70,3 +72,14 @@ if(True):
     print("Limite superior teorico: {:.2f}".format(Lim_sup))
     print("Limite inferior real: {:.2f}".format(lim_inf_box))
     print("Limite superior real: {:.2f}".format(lim_sup_box))
+
+    #coeficiente de correlação
+    x = np.array([1.03, -0.62, 0.46, 0.01, 0.1, -0.2, 1.5, 1.63, -1.21, -1.37, 0.14, 0.2, 0.72, 0.33])
+    y = np.array([0.58, -0.8, -0.27, -0.8, 0.03, 0.04, 0.55, 1.5, -0.88, -0.09, 0.93, 0.32, 1.13, 0.36])
+    Rxy = np.correlate(x, y)
+
+    print("média x: {:.2f}".format(x.mean()))
+    print("média y: {:.2f}".format(y.mean()))
+    print("desvio padrão x: {:.2f}".format(np.std(x, ddof=1)))
+    print("desvio padrão y: {:.2f}".format(np.std(y, ddof=1)))
+    print("coeficiente de correlação: {:.2f}".format(Rxy[0]))
