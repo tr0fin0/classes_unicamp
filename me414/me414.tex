@@ -177,7 +177,7 @@
                         s^{2} = \frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \overline{x})^{2}
                     }
                 \end{equation}
-                \begin{enumerate}[noitemsep]
+                \begin{enumerate}[rightmargin=\leftmargin, noitemsep]
                     \item \textbf{Coeficiente de Variação:} Normaliza o desvio padrão com relação a média do conjunto de dados de tal forma que os desvios padrões de diferentes amostras possam ser comparadas, será dado pela seguinte equação:
                         \begin{equation}
                             \boxed{
@@ -192,15 +192,6 @@
                     s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \overline{x})^{2}}
                 }
             \end{equation}
-
-        \subsection{Quartis}
-            \paragraph{Definição}Medida que divide o conjunto de dados em 4 partes iguais: primeiro quartil, $Q_{1}$; segundo quartil, $Q_{2}$; e terceiro quartil, $Q_{3}$. Obtidos através do seguinte procedimento:
-                \begin{enumerate}[noitemsep]
-                    \item \textbf{Ordenação:} Organizar os dados do conjunto amostral;
-                    \item \textbf{Segundo Quartil:} Obter a mediana deste conjunto, $Q_{2}$;
-                    \item \textbf{Primeiro Quartil:} Obter a mediana do conjunto inferior a $Q_{2}$, $Q_{1}$;
-                    \item \textbf{Terceiro Quartil:} Obter a mediana do conjunto superior a $Q_{2}$, $Q_{3}$;
-                \end{enumerate}
 
         \subsection{Análise Descritiva Univariada}
             \paragraph{Descrição}Análise individual de cada variável presente no estudo, buscando classificá-la e obter métricas adequadas para resumi-lá. Recomenda-se as seguintes métricas para cada categoria analisada:
@@ -389,6 +380,15 @@
                     \end{tabular}
                     \caption{Distribuição de Ramos-e-Folhas}\label{table:leafs}
                 \end{table}
+
+        \subsection{Quartis}
+            \paragraph{Definição}Medida que divide o conjunto de dados em 4 partes iguais: primeiro quartil, $Q_{1}$; segundo quartil, $Q_{2}$; e terceiro quartil, $Q_{3}$. Obtidos através do seguinte procedimento:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Ordenação:} Organizar os dados do conjunto amostral;
+                    \item \textbf{Segundo Quartil:} Obter a mediana deste conjunto, $Q_{2}$;
+                    \item \textbf{Primeiro Quartil:} Obter a mediana do conjunto inferior a $Q_{2}$, $Q_{1}$;
+                    \item \textbf{Terceiro Quartil:} Obter a mediana do conjunto superior a $Q_{2}$, $Q_{3}$;
+                \end{enumerate}
 \newpage
 
     \section{Análise Combinatória}
