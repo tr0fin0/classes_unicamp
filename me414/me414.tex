@@ -39,6 +39,11 @@
 % Configurando espaços entre paragrafos
 %\setlength{\parskip}{0.5em}
 
+%Configurando numeração de objetos; figuras, equações e etc., em ambientes; section, subsection e etc..
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{equation}{subsection}
+
 %Configurando pacote de Gráficos plots
 \usepackage{pgfplots}
 \usepackage{tikz}
