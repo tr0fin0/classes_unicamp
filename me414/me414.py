@@ -74,12 +74,17 @@ if(True):
     print("Limite superior real: {:.2f}".format(lim_sup_box))
 
     #coeficiente de correlação
-    x = np.array([1.03, -0.62, 0.46, 0.01, 0.1, -0.2, 1.5, 1.63, -1.21, -1.37, 0.14, 0.2, 0.72, 0.33])
-    y = np.array([0.58, -0.8, -0.27, -0.8, 0.03, 0.04, 0.55, 1.5, -0.88, -0.09, 0.93, 0.32, 1.13, 0.36])
-    Rxy = np.correlate(x, y)
+    x = np.array([0.63,1.83,0.13,0.21,-1.30,-0.26,0.77,2.79,-1.13,0.60,-0.63,-0.03,0.43 ,0.12,0.03,-1.39,-0.68,0.20])
+    y = np.array([0.78,1.97,0.34,0.30,-0.12,-0.04,0.49,1.43,-1.63,0.33,-0.63,0.01 ,-0.47,0.03,1.17,-2.44,-1.08,0.77])
+
+    #seguindo a fórmula
+    CCxy = (np.sum(((x - x.mean())/(np.std(x, ddof=1))*(y - y.mean())/(np.std(y, ddof=1)))))/(x.size - 1)
+
 
     print("média x: {:.2f}".format(x.mean()))
     print("média y: {:.2f}".format(y.mean()))
     print("desvio padrão x: {:.2f}".format(np.std(x, ddof=1)))
     print("desvio padrão y: {:.2f}".format(np.std(y, ddof=1)))
-    print("coeficiente de correlação: {:.2f}".format(Rxy[0]))
+    print("coeficiente de correlação: {:.2f}".format(CCxy))
+
+
