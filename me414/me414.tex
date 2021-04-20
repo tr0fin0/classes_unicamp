@@ -155,21 +155,24 @@
                     }
                 \end{equation}
 
+        \subsection{Mediana}
+            \paragraph{Definição}Medida de posição central em que divide o conjunto de dados em dois grupos, cada um com 50\% das observações, sendo dada pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        Q_{2} =
+                        \begin{cases}
+                            x_{(\frac{n+1}{2})},  & \text{se $n$ é ímpar};\vspace{2.5mm}\\
+                            \frac{x_{(\frac{n}{2})} + x_{(\frac{n}{2} + 1)}}{2},  & \text{se $n$ é par};\\
+                        \end{cases}
+                    }
+                \end{equation}
+
                 \begin{enumerate}[noitemsep]
                     \item \textbf{Métricas Quantitativas:} Resultados numéricos consolidados, como:
                         \begin{enumerate}[noitemsep]
                             \item \texttt{Média:} 
 
-                        \item \texttt{Mediana:} Medida de posição central em que divide o conjunto de dados em dois grupos, cada um com 50\% das observações, sendo dada pela seguinte equação:
-                                \begin{equation}
-                                    \boxed{
-                                        Q_{2} =
-                                        \begin{cases}
-                                            x_{(\frac{n+1}{2})},  & \text{se $n$ é ímpar};\vspace{2.5mm}\\
-                                            \frac{x_{(\frac{n}{2})} + x_{(\frac{n}{2} + 1)}}{2},  & \text{se $n$ é par};\\
-                                        \end{cases}
-                                    }
-                                \end{equation}
+                        \item \texttt{Mediana:} 
                             \item \texttt{Moda:} Métrica com maior número de ocorrências na amostra;
                             \item \texttt{Variância:} Medida de dispersão em que a média dos desvios ao quadrado será dada pela seguinte equação:
                                 \begin{equation}
