@@ -619,15 +619,15 @@
             Entretanto, como todas as forças internas ocorrem aos pares de mesmas direção e módulo, porém com sentidos opostos estas se cancelam. Assim, considera-se, pelo \textbf{Princípio de Movimento do Centro de Massa}, a força e aceleração resultantes podem ser analisadas com relação ao centro de massa do corpo, obtendo as seguintes equações:
                 \begin{equation}
                     \boxed{
-                        \sum\vec{F_{x}} = m \overline{\vec{a_{x}}}
+                        \sum\vec{F_{x}} = m \vec{\overline{a}_{x}}
                     }
                     \hspace{10mm}
                     \boxed{
-                        \sum\vec{F_{y}} = m \overline{\vec{a_{y}}}
+                        \sum\vec{F_{y}} = m \vec{\overline{a}_{y}}
                     }
                     \hspace{10mm}
                     \boxed{
-                        \sum\vec{F_{z}} = m \overline{\vec{a_{z}}}
+                        \sum\vec{F_{z}} = m \vec{\overline{a}_{z}}
                     }
                 \end{equation}
 
@@ -648,12 +648,27 @@
                 \end{equation}
             Onde:
                 \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                    \item $T_{i}$, \textbf{Energia Cinética};
+                    \item $T_{i}$, \textbf{Energia Cinética:} Analisa-se o sistemas coordenadas e, pelo movimento relativo, obtém-se que a velocidade da partícula será:
+                        \begin{equation}
+                            \vec{v_{i}} = \vec{\overline{v}} + \dot{\rho_{i}}
+                        \end{equation}
+                    Onde:
+                        \begin{enumerate}[noitemsep]
+                            \item $\vec{v_{i}}$, \texttt{Velocidade Total da Partícula};
+                            \item $\vec{\overline{v}}$, \texttt{Velocidade do Centro de Massa};
+                            \item $\dot{\rho_{i}}$, \texttt{Velocidade Relativa ao Centro de Massa};
+                        \end{enumerate}
+                    Quando substituida na definição o termo $\sum m_{i}\rho_{i} = 0$, desta maneira a energia cinética total para o conjunto de partículas será:
+                        \begin{equation}
+                            \boxed{
+                                T = \frac{1}{2} m \vec{\overline{v}}^{2} + \sum \frac{1}{2} m_{i} |\dot{\rho}_{i}|^{2}
+                            }
+                        \end{equation}
                     \item $V_{i}$, \textbf{Energia Potencial};
-                    \begin{enumerate}[noitemsep]
-                        \item $V_{ig}$, \textbf{Gravitacional};
-                        \item $V_{ie}$, \textbf{Elástica};
-                    \end{enumerate}
+                        \begin{enumerate}[noitemsep]
+                            \item $V_{ig}$, \texttt{Gravitacional};
+                            \item $V_{ie}$, \texttt{Elástica};
+                        \end{enumerate}
                 \end{enumerate}
 
 \end{document}
