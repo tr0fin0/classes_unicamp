@@ -603,17 +603,29 @@
         \paragraph{Definição}Análise dos princípios dinâmicos de movimento para sistemas gerais compostos por partículas, onde as equações discutidas se aplicam a mais casos estudados.
 
         \subsection{2\textsuperscript{a} Lei de Newton}
-            \paragraph{Definição}Modelagem de um corpo através de $n$ partículas, de massa $m_{i}$, limitadas por uma superfície fechada no espaço, sofrendo ação tanto de forças externas, $F_{i}$, quanto de forças internas, $F_{i}$, a partir de um sistema de coordenadas inercial, sendo desrita pela seguinte equação:
+            \paragraph{Definição}Modelagem de um corpo através de $n$ partículas, de massa $m_{i}$, limitadas por uma superfície fechada no espaço, sofrendo ação tanto de forças externas, $F_{i}$, quanto de forças internas, $f_{i}$, a partir de um sistema de coordenadas inercial, sendo desrita pela seguinte equação:
                 \begin{equation}
-                    \boxed{
-                        m\vec{\overline{r}} = \sum m_{i}\vec{\ddot{r_{i}}}
-                    }
+                    m\vec{\overline{r}} = \sum m_{i}\vec{\ddot{r_{i}}}
                 \end{equation}
             Onde:
                 \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
                     \item $\vec{\overline{r}}$, \textbf{Vetor Direção CM:} Medido a partir do referencial inercial até o centro de massa do corpo;
                     \item $\vec{\ddot{r_{i}}}$, \textbf{Vetor Direção Partícula:} Medido a partir do referencial inercial até a partícula analisada;
                 \end{enumerate}
+            Logo, considerando as forças que agem sobre cada partícula obtêm-se o seguinte resultado:
+                \begin{equation}
+                    \sum F_{i} + \sum f_{i} = \sum m_{i}\vec{\ddot{r_{i}}}
+                \end{equation}
+            Entretanto, como todas as forças internas ocorrem aos pares de mesmas direção e módulo, porém com sentidos opostos estas se cancelam. Assim, considera-se, pelo \textbf{Princípio de Movimento do Centro de Massa}, a força e aceleração resultantes podem ser analisadas com relação ao centro de massa do corpo, obtendo as seguintes equações:
+                \begin{equation}
+                    \boxed{
+                        \sum\vec{F_{x}} = m \vec{a_{x}}
+                        \hspace{10mm}
+                        \sum\vec{F_{y}} = m \vec{a_{y}}
+                        \hspace{10mm}
+                        \sum\vec{F_{z}} = m \vec{a_{z}}
+                    }
+                \end{equation}
 
 
 
