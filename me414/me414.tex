@@ -195,7 +195,7 @@
             \end{equation}
 
         \subsection{Coeficiente de Correlação}
-            \paragraph{Definição}Quantificação da relação linear entre duas variáveis quantitativas, avaliando como cada uma delas estará deslocada proporcionalmente da média da amostra. Formalmente descrita pela seguinte equação:
+            \paragraph{Definição}Quantificação da relação linear entre duas variáveis quantitativas, avaliando como cada uma delas estará deslocada proporcionalmente da média da amostra com $n$ observações. Formalmente descrita pela seguinte equação:
                 \begin{equation}
                     \boxed{
                         C_{C}(x,y) = \frac{1}{n-1} \sum_{i=1}^{n} 
@@ -205,8 +205,17 @@
                     }
                 \end{equation}
             Onde:
-                \begin{enumerate}
-                    \item 
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Desvio Padronizado:} Define-se que a operação realizada representa quão distante uma observação $x_{i}$, ou $y_{i}$, está afastada de sua respectiva média $\overline{x}$, ou $\overline{y}$, sendo descrita pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                z_{x_{i}} = \frac{x_{i}-\overline{x}}{s_{x}}
+                            }
+                            \hspace{20mm}
+                            \boxed{
+                                z_{y_{i}} = \frac{y_{i}-\overline{y}}{s_{y}}
+                            }
+                        \end{equation}
                 \end{enumerate}
 
         \subsection{Análise Descritiva Univariada}
