@@ -465,7 +465,7 @@
                 \end{table}
 
         \subsection{Quartis}
-            \paragraph{Definição}Medida que divide o conjunto de dados em 4 partes iguais: primeiro quartil, $Q_{1}$; segundo quartil, $Q_{2}$; e terceiro quartil, $Q_{3}$. Obtidos através do seguinte procedimento:
+            \paragraph{Definição}Representação gráfica que divide o conjunto de dados em 4 partes iguais: primeiro quartil, $Q_{1}$; segundo quartil, $Q_{2}$; e terceiro quartil, $Q_{3}$. Obtidos através do seguinte procedimento:
                 \begin{enumerate}[noitemsep]
                     \item \textbf{Ordenação:} Organizar os dados do conjunto amostral;
                     \item \textbf{Segundo Quartil:} Obter a mediana deste conjunto, $Q_{2}$;
@@ -474,7 +474,7 @@
                 \end{enumerate}
 
         \subsection{Boxplot}
-            \paragraph{Definição}
+            \paragraph{Definição}Representação gráfica que permite resumir visualmente o esquema de 5 números, possibilitando analisar posição, dispersão, assimetria e outliers. Obtidos como repressentado abaixo:
                 \begin{figure}[H]
                     \centering
                     \begin{tikzpicture}
@@ -483,22 +483,23 @@
                                 xmin = 0,
                                 xmax = 5,
                                 ymin = 0, 
-                                ymax = 5,
-                                minor x tick num = 4,
+                                ymax = 2,
+                                minor x tick num = 3,
                                 minor y tick num = 1,
-                                area style,
+                                %area style,
                                 width  = 5cm,
                                 height = 5cm,
                                 %ylabel = {Frequência},
                                 %xlabel = {Quantidade},
                             ]
                           \addplot+[
+                              color = black,
                           boxplot prepared={
-                            median=1,
-                            upper quartile=1.2,
-                            lower quartile=0.4,
-                            upper whisker=1.5,
-                            lower whisker=0.2
+                            median=2,
+                            upper quartile= 3.5,
+                            lower quartile= 1.5,
+                            upper whisker = 4.5,
+                            lower whisker = 0.5
                           },
                           ] coordinates {};
                         \end{axis}
