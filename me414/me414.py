@@ -73,11 +73,11 @@ if(True):
     print("Limite inferior real: {:.2f}".format(lim_inf_box))
     print("Limite superior real: {:.2f}".format(lim_sup_box))
 
-    #coeficiente de correlação
+    #dados
     x = np.array([0.63,1.83,0.13,0.21,-1.30,-0.26,0.77,2.79,-1.13,0.60,-0.63,-0.03,0.43 ,0.12,0.03,-1.39,-0.68,0.20])
     y = np.array([0.78,1.97,0.34,0.30,-0.12,-0.04,0.49,1.43,-1.63,0.33,-0.63,0.01 ,-0.47,0.03,1.17,-2.44,-1.08,0.77])
 
-    #seguindo a fórmula
+    #coeficiente de correlação
     def ccxy(x, y):
         if(x.size != y.size):
             return 2
