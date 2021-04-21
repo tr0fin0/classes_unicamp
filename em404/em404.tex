@@ -690,7 +690,7 @@
         \subsection{Impulso e Quantidade de Movimento Angular}
             \paragraph{Definição}Modelagem de um corpo através de $n$ partículas, de massa $m_{i}$, limitadas por uma superfície fechada no espaço com momento causado pela quantidade de movimento linear sobre um sistema de coordenadas inercial avaliado em diferentes pontos, sendo descritos pelas seguintes equações:
                 \begin{enumerate}[rightmargin = \leftmargin]
-                    \item \textbf{Origem do Sistema Inercial:} Somatório dos momentos das quantidades de movimento em torno de $O$, descritos pelas seguintes equações:
+                    \item \textbf{Origem do Sistema Inercial:} Somatório dos momentos das quantidades de movimento linear em torno de $O$, descritos pelas seguintes equações:
                         \begin{equation}
                             \boxed{
                                 \vec{H}_{O} = \sum \vec{r}_{i}\times m_{i}\vec{v}_{i}
@@ -701,7 +701,8 @@
                             }
                         \end{equation}
                     Note que um dos termos resultantes da derivada será nula por apresentar vetores paralelos.
-                    \item \textbf{Origem do Sistema Inercial:} Somatório dos momentos das quantidades de movimento em torno do centro de massa $G$, descritos pelas seguintes equações:
+
+                    \item \textbf{Centro de Massa:} Somatório dos momentos das quantidades de movimento linear em torno do centro de massa $G$, descritos pelas seguintes equações:
                         \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
                             \item \texttt{Quantidade de Movimento Angular Absoluta}
                                 \begin{equation}
@@ -731,6 +732,19 @@
                                 \vec{\dot{H}}_{G} = 
                                 \sum\rho_{i}\times m_{i}\vec{\ddot{r}}_{i} = 
                                 \sum\rho_{i}\times\vec{F}_{i}
+                            }
+                        \end{equation}
+
+                    \item \textbf{Ponto Arbitrário:} Somatório dos momentos das quantidades de movimento linear em torno de um ponto arbitrário $P$ que pode apresentar movimento, descritos pelas seguintes equações:
+                        \begin{equation}
+                            \boxed{
+                                \vec{H}_{P} = 
+                                \sum(\overline{\rho} + \rho_{i})\times m_{i}\vec{\dot{r}}_{i} = 
+                                \vec{H}_{G} + \overline{\rho}\times m_{i}\vec{\overline{v}}_{i}
+                            }
+                            \hspace{10mm}
+                            \boxed{
+                                \sum\vec{M}_{P} = \vec{\dot{H}}_{G} + \overline{\rho}\times m \vec{\overline{a}}
                             }
                         \end{equation}
                 \end{enumerate}
