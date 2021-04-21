@@ -78,20 +78,30 @@ if(True):
     y = np.array([0.78,1.97,0.34,0.30,-0.12,-0.04,0.49,1.43,-1.63,0.33,-0.63,0.01 ,-0.47,0.03,1.17,-2.44,-1.08,0.77])
 
     #seguindo a fórmula
-    CCxy = (
-            np.sum(
-                (
-                    (x - x.mean())/(np.std(x, ddof=1))*
-                    (y - y.mean())/(np.std(y, ddof=1))
-                )
-            )
-            )/(x.size - 1)
+    def ccxy(x, y):
+        if(x.size != y.size):
+            return 2
+
+        n = x.size
+
+        xm = x.mean()
+        ym = y.mean()
+
+        sx = np.std(x, ddof=1)
+        sy = np.std(y, ddof=1)
+
+        zx = (x - xm)/sx
+        zy = (y - ym)/sy
+
+        ccxy = np.sum(zx*zy)/(n-1)
+
+        return ccxy
 
 
     print("média x: {:.2f}".format(x.mean()))
     print("média y: {:.2f}".format(y.mean()))
     print("desvio padrão x: {:.2f}".format(np.std(x, ddof=1)))
     print("desvio padrão y: {:.2f}".format(np.std(y, ddof=1)))
-    print("coeficiente de correlação: {:.2f}".format(CCxy))
+    print("coeficiente de correlação: {:.2f}".format(ccxy(x,y)))
 
 
