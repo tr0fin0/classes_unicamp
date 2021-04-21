@@ -690,39 +690,16 @@
                             \item \textbf{Interseção de Eventos:} Elementos que pertencem simultaneamente ao evento $A$ e ao evento $B$, $A \cap B$;
 
                             \item \textbf{União de Eventos:} Elementos que pertencem ao evento $A$ ou ao evento $B$, $A \cup B$;
-                                \begin{equation}
-                                    \boxed{
-                                        P(A \cup B) = P(A) + P(B) - P(A \cap B)
-                                    }
-                                \end{equation}
-        
                                 \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
                                     \item \texttt{Eventos Disjuntos:} Nenhum elemento do evento $A$ pertence ao evento $B$ e vice-versa, $A \cap B = \emptyset$
                                 \end{enumerate}
 
-                            \item \textbf{Evento Complementar:} Evento $A$ complementará o evento $B$, $A = B^{C}$, se atende as seguintes restrições:
-                                \begin{equation}
-                                    \boxed{
-                                        A \cap B = \emptyset
-                                    }
-                                    \hspace{5mm}
-                                    \text{e}
-                                    \hspace{5mm}
-                                    \boxed{
-                                        A \cup B = \Omega
-                                    }
-                                    \hspace{5mm}
-                                    \to
-                                    \hspace{5mm}
-                                    \boxed{
-                                        P(A) + P(B) = 1
-                                    }
-                                \end{equation}
+                            \item \textbf{Evento Complementar:} Se o evento $A$ e $B$ possuem $A\cap B = \emptyset$ e $A \cup B = \Omega$, então são complementares, $A = B^{C}$.
                         \end{enumerate}
                 \end{enumerate}
             Nota-se que cada evento ou elemento possuirá uma probabilidade, uma chance, de ocorrer.
 
-        \subsection{Probabilidade do Elemento}
+        \subsection{Probabilidade Elemento}
             \paragraph{Definição}Seja $\omega_{i}$ um elemento amostral em $\Omega$, então a probabilidade do elemento $i$, $P(\omega_{i})$, ocorrer será:
                 \begin{equation}
                     \boxed{
@@ -750,11 +727,19 @@
                         \end{equation}
                 \end{enumerate}
 
-        \subsection{Probabilidade do Evento}
+        \subsection{Probabilidade Evento}
             \paragraph{Definição}Seja $A = \{ \omega_{1}, ..., \omega_{m} \}$ um evento em $\Omega$ com $m \le n$ elementos amostrais, então a probabilidade do evento $A$, $P(A)$, ocorrer será:
                 \begin{equation}
                     \boxed{
                         P(A) = \frac{m}{n}
+                    }
+                \end{equation}
+
+        \subsection{Probabilidade União}
+            \paragraph{Definição}Sejam $A$ e $B$ eventos de um espaço amostral $\Omega$, então a probabilidade da união dos eventos $A$ e $B$ ocorrer será:
+                \begin{equation}
+                    \boxed{
+                        P(A \cup B) = P(A) + P(B) - P(A \cap B)
                     }
                 \end{equation}
 
