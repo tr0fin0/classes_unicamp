@@ -760,4 +760,20 @@
                         \end{equation} 
                 \end{enumerate}
 
+        \subsection{Teorema de Bayes}
+            \paragraph{Definição}Seja $\{B_{1}, ... , B_{n}\}$ uma partição de eventos de $\Omega$ e $A$ mutuamente exclusivos cujo a união destes é $\Omega$, então a probabilidade de $A$ pode ser descrita pela seguinte expressão:
+                \[
+                    P(A) = \sum_{i=1}^{n} P(A\cap B_{i})
+                \]
+            Onde, aplicando probabilidade condicional, poderá ser reescrito como:
+                \[
+                    P(A) = \sum_{i=1}^{n} P(A|B_{i})\cdot P(B_{i})
+                \]
+            Assim, a probabilidade de um destes eventos da partição de $A$, $B_{i}$, ocorrer será dada pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        P(B_{i} | A) = \frac{P(A | B_{i}) \cdot P(B_{i})}{\sum\limits_{i=1}^{n} \left(P(A | B_{i}) \cdot P(B_{i})\right)}
+                    }
+                \end{equation}
+
 \end{document}
