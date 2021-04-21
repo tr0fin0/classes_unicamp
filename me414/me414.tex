@@ -680,10 +680,45 @@
                     }
                 \end{equation}
             Onde:
-                \begin{enumerate}[noitemsep]
-                    \item \textbf{Espaço Amostral:} Conjunto de todos os eventos, $\Omega$;
-                    \item \textbf{Evento:} Subconjunto do espaço amostra denotado por letras, A, B, ...;
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
                     \item \textbf{Elemento:} Acontecimento registrado, $\omega_{i}$;
+
+                    \item \textbf{Espaço Amostral:} Conjunto de todos os eventos, $\Omega$;
+
+                    \item \textbf{Evento:} Subconjunto do espaço amostra denotado por letras, A, B, ...;
+                        \begin{enumerate}[rightmargin = \leftmargin]
+                            \item \textbf{Interseção de Eventos:} Elementos que pertencem simultaneamente ao evento $A$ e ao evento $B$, $A \cap B$;
+
+                            \item \textbf{União de Eventos:} Elementos que pertencem ao evento $A$ ou ao evento $B$, $A \cup B$;
+                                \begin{equation}
+                                    \boxed{
+                                        P(A \cup B) = P(A) + P(B) - P(A \cap B)
+                                    }
+                                \end{equation}
+        
+                                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                                    \item \texttt{Eventos Disjuntos:} Nenhum elemento do evento $A$ pertence ao evento $B$ e vice-versa, $A \cap B = \emptyset$
+                                \end{enumerate}
+
+                            \item \textbf{Evento Complementar:} Evento $A$ complementará o evento $B$, $A = B^{C}$, se atende as seguintes restrições:
+                                \begin{equation}
+                                    \boxed{
+                                        A \cap B = \emptyset
+                                    }
+                                    \hspace{5mm}
+                                    \text{e}
+                                    \hspace{5mm}
+                                    \boxed{
+                                        A \cup B = \Omega
+                                    }
+                                    \hspace{5mm}
+                                    \to
+                                    \hspace{5mm}
+                                    \boxed{
+                                        P(A) + P(B) = 1
+                                    }
+                                \end{equation}
+                        \end{enumerate}
                 \end{enumerate}
             Nota-se que cada evento ou elemento possuirá uma probabilidade, uma chance, de ocorrer.
 
@@ -725,35 +760,5 @@
 
         \subsection{Evento}
             \paragraph{Definição}Subconjunto do espaço amostral composto por alguns de seus elementos, apresentando as seguintes operações possíveis:
-                \begin{enumerate}[noitemsep]
-                    \item \textbf{Interseção de Eventos:} Elementos que pertencem simultaneamente ao evento $A$ e ao evento $B$, $A \cap B$;
-                    \item \textbf{União de Eventos:} Elementos que pertencem ao evento $A$ ou ao evento $B$, $A \cup B$;
-                        \begin{equation}
-                            \boxed{
-                                P(A \cup B) = P(A) + P(B) - P(A \cap B)
-                            }
-                        \end{equation}
 
-                        \begin{enumerate}[noitemsep]
-                            \item \texttt{Eventos Disjuntos:} Nenhum elemento do evento $A$ pertence ao evento $B$ e vice-versa, $A \cap B = \emptyset$
-                        \end{enumerate}
-                    \item \textbf{Evento Complementar:} Evento $A$ complementará o evento $B$, $A = B^{C}$, se atende as seguintes restrições:
-                        \begin{equation}
-                            \boxed{
-                                A \cap B = \emptyset
-                            }
-                            \hspace{5mm}
-                            \text{e}
-                            \hspace{5mm}
-                            \boxed{
-                                A \cup B = \Omega
-                            }
-                            \hspace{5mm}
-                            \to
-                            \hspace{5mm}
-                            \boxed{
-                                P(A) + P(B) = 1
-                            }
-                        \end{equation}
-                \end{enumerate}
 \end{document}
