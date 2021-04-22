@@ -23,7 +23,7 @@ if(False):
 
 
 # parte 3 e 4
-if(True):
+if(False):
     val = np.array([20.35, 26.75, 23.2, 20.3])
     freq = np.array([16, 9, 6, 8])
     data = np.repeat(val, freq)
@@ -104,4 +104,20 @@ if(True):
     print("desvio padrão y: {:.2f}".format(np.std(y, ddof=1)))
     print("coeficiente de correlação: {:.2f}".format(ccxy(x,y)))
 
+#parte 5 a 8
+if(True):
+    # 6: 1 2 3 4 5 6, 6
+    # 5: 2 3 4 5 6,   5
+    # 4: 3 4 5 6,     4
+    # 3: 4 5 6,       3
+    # 2: 5 6          2
+    # 1: 6            1 -> 21/36
 
+    # soma <= 11
+    # 6: 1 2 3 4 5
+    # 5: 1 2 3 4 5 6
+    # 4: 1 2 3 4 5 6
+    # 3: 1 2 3 4 5 6
+    # 2: 1 2 3 4 5 6
+    # 1: 1 2 3 4 5 6
+    a = 0
