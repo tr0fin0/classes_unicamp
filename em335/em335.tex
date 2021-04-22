@@ -957,9 +957,20 @@
                         \item \texttt{Batimento};
                         \item \texttt{Rugosidade};
                     \end{enumerate}
-            \end{enumerate}
 
-            \tol{type=position,3,2,1,modifier=M}
+                \item \textbf{Representação:} Utiliza-se a seguinte organização para representar como será utilizada a tolerância:
+                    \begin{center}
+                        \tol{type=position,0.2,A,B,C}
+                    \end{center}
+                Onde, os compartimentos são numerados da esquerda para direita:
+                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                        \item \texttt{1\textsuperscript{o} Compartimento:} Símbolo de Tolerância;
+                        \item \texttt{2\textsuperscript{o} Compartimento:} Valor de Tolerância;
+                        \item \texttt{3\textsuperscript{o}, 
+                            4\textsuperscript{o} e 
+                            5\textsuperscript{o} Compartimentos:} Informações sobre as Referências;
+                    \end{enumerate}
+            \end{enumerate}
 
         \paragraph{Condição de Máximo Material}Cenário onde a peça possuirá sua massa máxima dentro das tolerâncias especificadas no projeto.
 
