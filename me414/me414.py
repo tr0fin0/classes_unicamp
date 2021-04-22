@@ -120,4 +120,35 @@ if(True):
     # 3: 1 2 3 4 5 6
     # 2: 1 2 3 4 5 6
     # 1: 1 2 3 4 5 6
-    a = 0
+
+    aIb   = 0.4958
+    acIb  = 0.2442
+    aIbc  = 0.1742
+    acIbc = 0.0858
+
+    a = aIb + aIbc
+    b = aIb + acIb
+    aUb = aIbc + aIb + acIb
+    
+    acUb = 1 - a + aIb
+    aUbc = 1 - b + aIb
+    acUbc = 1 - aIb
+
+    ba = aIb/a
+    acbc = acIbc/(1-b)
+ 
+    acb = acIb/b
+    bca = aIbc/a
+    bac = acIb/(1-a)
+
+    print("P(A):       {:.2f}".format(a))
+    print("P(B):       {:.2f}".format(b))
+    print("P(A  U B):  {:.4f}".format(aUb))
+    print("P(Ac U B):  {:.4f}".format(acUb))
+    print("P(A  U Bc): {:.4f}".format(aUbc))
+    print("P(Ac U Bc): {:.4f}".format(acUbc))
+    print("P(B  | A):  {:.2f}".format(ba))
+    print("P(Ac | Bc): {:.2f}".format(acbc))
+    print("P(Ac | B):  {:.2f}".format(acb))
+    print("P(Bc | A):  {:.2f}".format(bca))
+    print("P(B  | Ac): {:.2f}".format(bac))
