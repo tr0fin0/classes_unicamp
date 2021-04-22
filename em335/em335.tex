@@ -46,6 +46,423 @@
 %Configurando pacote de Gráficos
 \usepackage{tikz}
 
+%Configurando pacote com Posicionamentos
+\usetikzlibrary{chains}
+\usetikzlibrary{positioning}
+\usepackage{xstring}
+
+\makeatletter
+\pgfdeclareshape{tolposition}{
+  \inheritsavedanchors[from=rectangle]
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{%
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfpathmoveto{\pgfpoint{-\pgf@xb}{0pt}}
+    \pgfpathlineto{\pgfpoint{\pgf@xb}{0pt}}
+    \pgfpathmoveto{\pgfpointadd{\pgfpointorigin}{\pgfpoint{0pt}{-\pgf@yb}}}
+    \pgfpathlineto{\pgfpoint{0pt}{\pgf@yb}}
+    \pgfusepath{stroke}
+    \pgfpathcircle{\pgfpointorigin}{0.6\pgf@yb}
+ }
+}
+
+\pgfdeclareshape{tolstraightness}{
+  \inheritsavedanchors[from=rectangle]
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{%
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfpathmoveto{\pgfpointadd{\pgfpointorigin}{\pgfpoint{-0.6\pgf@xb}{0pt}}}
+    \pgfpathlineto{\pgfpoint{0.6\pgf@xb}{0pt}}
+ }
+}
+
+\pgfdeclareshape{tolflatness}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{%
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{-0.6\pgf@xb}{-0.3\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.3\pgf@xb}{-0.3\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.6\pgf@xb}{0.3\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{-0.3\pgf@xb}{0.3\pgf@yb}}
+    \pgfpathclose
+ }
+}
+
+
+\pgfdeclareshape{tolcircularity}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{%
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathcircle{\pgfpointorigin}{0.6\pgf@yb}
+ }
+}
+
+\pgfdeclareshape{tolcylindricity}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    {
+        \pgftransformrotate{60}
+        \pgfpathmoveto{\pgfpoint{-\pgf@xb}{0.4\pgf@yb}}
+        \pgfpathlineto{\pgfpoint{0.6\pgf@xb}{0.4\pgf@yb}}
+        \pgfpathmoveto{\pgfpoint{-0.6\pgf@xb}{-0.4\pgf@yb}}
+        \pgfpathlineto{\pgfpoint{\pgf@xb}{-0.4\pgf@yb}}
+    }
+    \pgfusepath{stroke}
+    \pgfpathcircle{\pgfpointorigin}{0.4\pgf@yb}
+ }
+}
+
+\pgfdeclareshape{tolprofile line}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{%
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{-0.6\pgf@yb}{-0.3\pgf@yb}}
+    \pgfpatharc{180}{0}{0.6\pgf@yb}
+ }
+}
+
+\pgfdeclareshape{tolprofile surface}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{-0.6\pgf@yb}{-0.3\pgf@yb}}
+    \pgfpatharc{180}{0}{0.6\pgf@yb}
+    \pgfpathclose
+ }
+}
+
+
+\pgfdeclareshape{tolperpendicularity}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfpathmoveto{\pgfpoint{-0.6\pgf@yb}{-0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.6\pgf@yb}{-0.6\pgf@yb}}
+    \pgfpathmoveto{\pgfpoint{0pt}{-0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0pt}{0.6\pgf@yb}}
+ }
+}
+
+\pgfdeclareshape{tolangularity}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{0.6\pgf@yb}{0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{-0.6\pgf@yb}{-0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.6\pgf@yb}{-0.6\pgf@yb}}
+ }
+}
+
+
+\pgfdeclareshape{tolparallelism}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{-0.5\pgf@yb}{-0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0pt}{0.6\pgf@yb}}
+    \pgfpathmoveto{\pgfpoint{0pt}{-0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.5\pgf@yb}{0.6\pgf@yb}}
+ }
+}
+
+
+\pgfdeclareshape{tolsymmetry}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfpathmoveto{\pgfpoint{-0.4\pgf@yb}{-0.4\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.4\pgf@yb}{-0.4\pgf@yb}}
+    \pgfpathmoveto{\pgfpoint{-0.6\pgf@yb}{0pt}}
+    \pgfpathlineto{\pgfpoint{0.6\pgf@yb}{0pt}}
+    \pgfpathmoveto{\pgfpoint{-0.4\pgf@yb}{0.4\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.4\pgf@yb}{0.4\pgf@yb}}
+ }
+}
+
+\pgfdeclareshape{tolconcentricity}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    {\pgfpathcircle{\pgfpointorigin}{0.6\pgf@yb}}
+    \pgfpathcircle{\pgfpointorigin}{0.4\pgf@yb}
+ }
+}
+
+\pgfdeclareshape{tolcircular runout}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpointadd
+        {\pgfpoint{0pt}{0pt}}
+        {\pgfpointpolar{50}{0.2\pgf@yb}}
+    }
+    \pgfpathlineto{\pgfpointadd
+        {\pgfpoint{0pt}{0pt}}
+        {\pgfpointpolar{50}{-0.7\pgf@yb}}
+    }
+    \pgfusepath{stroke}
+    {\pgftransformrotate{-40}
+    \pgfpathmoveto{\pgfpoint{-0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0pt}{0.7\pgf@yb}}
+    \pgfpathclose
+    \pgfusepath{fill}
+    }
+ }
+}
+
+\pgfdeclareshape{toltotal runout}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpointadd
+        {\pgfpoint{-0.3\pgf@yb}{0pt}}
+        {\pgfpointpolar{50}{0.2\pgf@yb}}
+    }
+    \pgfpathlineto{\pgfpointadd
+        {\pgfpoint{-0.3\pgf@yb}{0pt}}
+        {\pgfpointpolar{50}{-0.7\pgf@yb}}
+    }
+    \pgfpathlineto{\pgfpointadd
+        {\pgfpoint{0.3\pgf@yb}{0pt}}
+        {\pgfpointpolar{50}{-0.7\pgf@yb}}
+    }
+    \pgfpathlineto{\pgfpointadd
+        {\pgfpoint{0.3\pgf@yb}{0pt}}
+        {\pgfpointpolar{50}{0.2\pgf@yb}}
+    }
+    \pgfusepath{stroke}
+    {
+    \pgftransformxshift{-0.3\pgf@yb}
+    \pgftransformrotate{-40}
+    \pgfpathmoveto{\pgfpoint{-0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0pt}{0.7\pgf@yb}}
+    \pgfpathclose
+    \pgfusepath{fill}
+    }
+    {
+    \pgftransformxshift{0.3\pgf@yb}
+    \pgftransformrotate{-40}
+    \pgfpathmoveto{\pgfpoint{-0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0pt}{0.7\pgf@yb}}
+    \pgfpathclose
+    \pgfusepath{fill}
+    }
+ }
+}
+
+\pgfdeclareshape{tolmodifier}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{% this is new
+    % store lower right in xa/ya and upper right in xb/yb
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    % construct main path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathcircle{\pgfpointlineattime{0.5}{\southwest}{\northeast}}{0.55\pgf@yb}
+ }
+}
+
+\makeatother
+
+
+
+\tikzset{
+    tolstyle/.style={
+        draw,
+        on chain=going right,
+        inner ysep=0pt,
+        minimum height=1.7em
+    },
+    type/.style={tol#1},
+    modifier/.style={tolmodifier,font=#1}
+}
+
+\newcommand{\tol}[1]{%
+    \begin{tikzpicture}[baseline=-0.3em,
+        start chain,
+        node distance=-\pgflinewidth
+    ]
+        \foreach \content in {#1} {
+            \IfSubStr{\content}{type}{
+                \edef\donode{%
+                    \noexpand\node[
+                        tolstyle,
+                        minimum width=\noexpand\pgfkeysvalueof{/pgf/minimum height},
+                        \content
+                    ]{};
+                }
+                \donode
+            }{
+                \IfSubStr{\content}{modifier}{
+                \edef\donode{\noexpand\node[tolstyle,tolmodifier,minimum width=\noexpand\pgfkeysvalueof{/pgf/minimum height},\content]{};}
+                \donode
+            }
+                \node[tolstyle]{\content};
+            }
+        }
+    \end{tikzpicture}%
+}
+
+
 % Configurando layout para mostrar códigos
 \usepackage{listings}
 
@@ -541,6 +958,8 @@
                         \item \texttt{Rugosidade};
                     \end{enumerate}
             \end{enumerate}
+
+            \tol{type=position,3,2,1,modifier=M}
 
         \paragraph{Condição de Máximo Material}Cenário onde a peça possuirá sua massa máxima dentro das tolerâncias especificadas no projeto.
 
