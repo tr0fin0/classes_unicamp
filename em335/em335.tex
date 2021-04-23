@@ -1059,34 +1059,32 @@
                         \item \texttt{Rugosidade:} Pequenas variações no perfil, alta frequência de imperfeições;
                     \end{enumerate}
 
-                \item \textbf{Medição:} Diferentes métodos são empregados, utilizando menos ou mais tempo. Atualmente o mais usado será descrito:
-                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                        \item \texttt{Sistema M:} Disposição de uma linha horizontal em que as áreas superiores e inferiores seja iguais;
-                            \begin{figure}[H]
-                                \centering
-                                \includegraphics[height = 4cm]{ima5.png}
-                                \caption{Posição Referências}\label{fig:sistemaM}
-                            \end{figure} \noindent
-                        Onde:
-                            \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                                \item $I_{V}$ \textbf{Percurso Inicial:} Medição inicial do equipamento, descartada pelo transiente inicial do sistema;
-                                \item $I_{N}$ \textbf{Percurso de Avaliação:} Extensão útil do perfil de rugosidade utilizada na avaliação;
-                                \item $I_{F}$ \textbf{Percurso Final:} Medição final do equipamento, descartada pelo transiente final do sistema;\vspace{5mm}
-                                \item $I_{T}$ \textbf{Percurso Total:} Somatório da extensão analisada pelo equipamento, incluindo trechos descartados:
-                                    \begin{equation}
-                                        \boxed{
-                                            I_{T} = I_{V} + I_{N} + I_{F}
-                                        }
-                                    \end{equation}
-                                \item $I_{E}$ \textbf{Comprimento Amostral:} Amostra parcial do percurso de avaliação necessária para análise, considerando apenas a rugosidadel;
-                                    \begin{equation}
-                                        \boxed{
-                                            I_{E} = \frac{I_{N}}{5}
-                                        }
-                                    \end{equation}
-                            \end{enumerate}
-                    \end{enumerate}
+                \item \textbf{Medição:} Diferentes métodos são empregados, utilizando menos ou mais tempo. Atualmente o mais usado é o Sistema M:
             \end{enumerate}
 
-        \subsection{}
+        \subsection{Sistema M}
+            \paragraph{Definição}Disposição de uma linha horizontal em que as áreas superiores e inferiores seja iguais, como ilustrado a seguinte figura:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 4cm]{ima5.png}
+                        \caption{Posição Referências}\label{fig:sistemaM}
+                    \end{figure} \noindent
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item $I_{V}$ \textbf{Percurso Inicial:} Medição inicial do equipamento, descartada pelo transiente inicial do sistema;
+                    \item $I_{N}$ \textbf{Percurso de Avaliação:} Extensão útil do perfil de rugosidade utilizada na avaliação;
+                    \item $I_{F}$ \textbf{Percurso Final:} Medição final do equipamento, descartada pelo transiente final do sistema;\vspace{5mm}
+                    \item $I_{T}$ \textbf{Percurso Total:} Somatório da extensão analisada pelo equipamento, incluindo trechos descartados:
+                        \begin{equation}
+                            \boxed{
+                                I_{T} = I_{V} + I_{N} + I_{F}
+                            }
+                        \end{equation}
+                    \item $I_{E}$ \textbf{Comprimento Amostral:} Amostra parcial do percurso de avaliação necessária para análise, considerando apenas a rugosidadel;
+                        \begin{equation}
+                            \boxed{
+                                I_{E} = \frac{I_{N}}{5}
+                            }
+                        \end{equation}
+                \end{enumerate}
 \end{document}
