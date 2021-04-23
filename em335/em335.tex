@@ -1071,20 +1071,33 @@
                     \end{figure} \noindent
             Onde:
                 \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                    \item $I_{V}$ \textbf{Percurso Inicial:} Medição inicial do equipamento, descartada pelo transiente inicial do sistema;
-                    \item $I_{N}$ \textbf{Percurso de Avaliação:} Extensão útil do perfil de rugosidade utilizada na avaliação;
-                    \item $I_{F}$ \textbf{Percurso Final:} Medição final do equipamento, descartada pelo transiente final do sistema;\vspace{5mm}
-                    \item $I_{T}$ \textbf{Percurso Total:} Somatório da extensão analisada pelo equipamento, incluindo trechos descartados:
+                    \item $I_{V}$, \textbf{Percurso Inicial:} Medição inicial do equipamento, descartada pelo transiente inicial do sistema;
+                    \item $I_{N}$, \textbf{Percurso de Avaliação:} Extensão útil do perfil de rugosidade utilizada na avaliação;
+                    \item $I_{F}$, \textbf{Percurso Final:} Medição final do equipamento, descartada pelo transiente final do sistema;\vspace{5mm}
+                    \item $I_{T}$, \textbf{Percurso Total:} Somatório da extensão analisada pelo equipamento, incluindo trechos descartados:
                         \begin{equation}
                             \boxed{
                                 I_{T} = I_{V} + I_{N} + I_{F}
                             }
                         \end{equation}
-                    \item $I_{E}$ \textbf{Comprimento Amostral:} Amostra parcial do percurso de avaliação necessária para análise, considerando apenas a rugosidadel;
+                    \item $I_{E}$, \textbf{Comprimento Amostral:} Amostra parcial do percurso de avaliação necessária para análise, considerando apenas a rugosidadel;
                         \begin{equation}
                             \boxed{
                                 I_{E} = \frac{I_{N}}{5}
                             }
                         \end{equation}
                 \end{enumerate}
+            Determinado o comprimento de amostragem, define-se outros parâmetros necessários para análise estatística representados na seguinte figura:
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[height = 4cm]{ima6.png}
+                    \caption{Comprimento Amostral}\label{fig:comprimentoA}
+                \end{figure} \noindent
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item $R_{P}$, \textbf{Máximo Pico:} Máxima altura de pico no comprimento amostra entre os $Z_{P_{i}}$ picos;
+                    \item $R_{V}$, \textbf{Mínimo Vale:} Mínima altura de vale no comprimento amostra entre os $Z_{V_{i}}$ vales;
+                    \item $R_{Z}$, \textbf{Máxima Variação:} Somatório entre os valores absolutos de máximo pico e mínimo vale;
+                \end{enumerate}
+            
 \end{document}
