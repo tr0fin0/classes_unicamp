@@ -977,6 +977,7 @@
                         \item \texttt{B, C e D:} Base do símbolo conectado à superfície;
                         \item \texttt{E, F e G:} Base do símbolo à um quadro de controle;
                     \end{enumerate}
+
                     \begin{figure}[H]
                         \centering
                         \includegraphics[height = 4cm]{ima4.png}
@@ -984,10 +985,31 @@
                     \end{figure} \noindent
             \end{enumerate}
 
+            \tol{type=straightness}
+            \tol{type=flatness}
+            \tol{type=circularity} 
+            \tol{type=cylindricity}
+            \tol{type=profile line}
+            \tol{type=profile surface}
+            \tol{type=perpendicularity}
+            \tol{type=angularity}
+            \tol{type=parallelism}
+            \tol{type=symmetry}
+            \tol{type=position}
+            \tol{type=concentricity}
+            \tol{type=circular runout}
+            \tol{type=total runout}
+
         \paragraph{Condição de Máximo Material}Cenário onde a peça possuirá sua massa máxima dentro das tolerâncias especificadas no projeto.
 
         \subsection{Tolerâncias de Forma}
             \paragraph{Definição}Tolerâncias admitidas aos elementos em relação à sua forma geométrica teórica, classificadas como demonstrado na sequência:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \tol{type=straightness} \textbf{Retitude:} ;
+                    \item \tol{type=flatness} \textbf{Planeza:} ;
+                    \item \tol{type=circularity} \textbf{Circularidade:} ;
+                    \item \tol{type=cylindricity} \textbf{Cilindricidade:} ;
+                \end{enumerate}
 
         \subsection{Tolerâncias de Orientação}
             \paragraph{Definição}Tolerâncias admitiadas dos elementos em relação aos demais, partindo de uma referência, classificadas como demonstrado na sequência:
