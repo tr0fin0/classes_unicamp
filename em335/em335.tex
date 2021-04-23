@@ -1095,9 +1095,29 @@
                 \end{figure} \noindent
             Onde:
                 \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                    \item $R_{P}$, \textbf{Máximo Pico:} Máxima altura de pico no comprimento amostra entre os $Z_{P_{i}}$ picos;
-                    \item $R_{V}$, \textbf{Mínimo Vale:} Mínima altura de vale no comprimento amostra entre os $Z_{V_{i}}$ vales;
-                    \item $R_{Z}$, \textbf{Máxima Variação:} Somatório entre os valores absolutos de máximo pico e mínimo vale;
+                    \item $R_{P_{i}}$, \textbf{Máximo Pico:} Máxima altura de pico no comprimento amostra entre os $Z_{P_{i}}$ picos;
+
+                    \item $R_{V_{i}}$, \textbf{Mínimo Vale:} Mínima altura de vale no comprimento amostra entre os $Z_{V_{i}}$ vales;
+
+                    \item $R_{Z_{i}}$, \textbf{Máxima Variação:} Somatório entre os valores absolutos de $R_{P_{i}}$ e $R_{V_{i}}$:
+                        \begin{equation}
+                            \boxed{
+                                R_{Z_{i}} = R_{P_{i}} + R_{V_{i}}
+                            }
+                        \end{equation}
+
+                    \item $R_{T}$, \textbf{Altura Total do Perfil:} Máximo entre os $R_{Z_{i}}$:
+                        \begin{equation}
+                            \boxed{
+                                R_{T} = \max(R_{Z_{i}})
+                            }
+                        \end{equation}
                 \end{enumerate}
+            Este procedimento deverá ser reproduzido nos demais comprimentos amostrais obtidos da divisão do percurso de avaliação para que os valores absolutos para amostra possam ser obtidos através da seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        R_{Z} = \frac{1}{5} \sum_{i=1}^{5} R_{Z_{i}}
+                    }
+                \end{equation}
             
 \end{document}
