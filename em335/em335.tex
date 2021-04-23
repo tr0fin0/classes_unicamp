@@ -1067,6 +1067,24 @@
                                 \includegraphics[height = 4cm]{ima5.png}
                                 \caption{Posição Referências}\label{fig:sistemaM}
                             \end{figure} \noindent
+                        Onde:
+                            \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                                \item $I_{V}$ \textbf{Percurso Inicial:} Medição inicial do equipamento, descartada pelo transiente inicial do sistema;
+                                \item $I_{N}$ \textbf{Percurso de Avaliação:} Extensão útil do perfil de rugosidade utilizada na avaliação;
+                                \item $I_{F}$ \textbf{Percurso Final:} Medição final do equipamento, descartada pelo transiente final do sistema;\vspace{5mm}
+                                \item $I_{T}$ \textbf{Percurso Total:} Somatório da extensão analisada pelo equipamento, incluindo trechos descartados:
+                                    \begin{equation}
+                                        \boxed{
+                                            I_{T} = I_{V} + I_{N} + I_{F}
+                                        }
+                                    \end{equation}
+                                \item $I_{E}$ \textbf{Comprimento Amostral:} Amostra parcial do percurso de avaliação necessária para análise, considerando apenas a rugosidadel;
+                                    \begin{equation}
+                                        \boxed{
+                                            I_{E} = \frac{I_{N}}{5}
+                                        }
+                                    \end{equation}
+                            \end{enumerate}
                     \end{enumerate}
             \end{enumerate}
 
