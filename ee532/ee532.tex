@@ -944,11 +944,11 @@
                                     \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
                                     \draw
                                     (-2,2) node [ocirc, anchor = west] {B} -- (-1,2)
-                                    (-1,2) to[resistor, l=$r_{\pi}$, v<=$V_{BE}$] (-1,0)
+                                    (-1,2) to[resistor, l=$r_{\pi}$, v<=$v_{BE}$] (-1,0)
                                     
                                     (4,2) node [ocirc, anchor = east] {C} -- ( 1,2)
-                                    (1,2) to[cI, v^>=${I_{C}}$] (1,0)
-                                    (3,2) to[resistor, l=$R_{O}$] (3,0)
+                                    (1,2) to[cI, v^>=${i_{C}}$] (1,0)
+                                    (3,2) to[resistor, l=$r_{O}$] (3,0)
     
                                     (-1,0) -- (3,0)
                                     (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
@@ -957,7 +957,7 @@
                             \end{subfigure}
                             \caption{Modelagem Linear de Early para Transistor NPN}
                         \end{figure} \noindent
-                    Assim, considerando o modelo de grande sinais temos:
+                    Pelo modelo de grandes sinais temos:
                         \begin{equation}
                             \boxed{
                                 I_{C} \approx I_{E} = I_{S} \cdot (e^\frac{V_{BE}}{V_{T}})\cdot \left(1 + \frac{V_{CE}}{V_{A}}\right)
@@ -969,6 +969,20 @@
                             \hspace{10mm}
                             \boxed{
                                 \beta_{O} = \beta \left(1 + \frac{V_{CE}}{V_{A}}\right)
+                            }
+                        \end{equation}
+                    Pelo modelo de pequenos sinais temos:
+                        \begin{equation}
+                            \boxed{
+                                i_{C} = I_{C} + \frac{I_{C}}{V_{A}}\cdot v_{ce}
+                            }
+                            \hspace{10mm}
+                            \boxed{
+                                r_{O} = \frac{V_{A}}{I_{C}}
+                            }
+                            \hspace{10mm}
+                            \boxed{
+                                g_{m} = \frac{I_{C}}{V_{T}}
                             }
                         \end{equation}
 
