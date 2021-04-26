@@ -934,16 +934,20 @@
                                 (-1,0) -- (3,0)
                                 (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
                             \end{circuitikz} 
-                            \caption{Modelagem Linear de Early para Transistor NPN}
+                            \caption{Modelagem Linear de Early para Grandes Sinais para Transistor NPN}
                         \end{figure} \noindent
                     Assim, considerando o modelo de grande sinais temos:
                         \begin{equation}
                             \boxed{
-                                I_{C} \approx I_{E} = I_{S} \cdot (e^\frac{v_{BE}}{V_{T}})\cdot \left(1 + \frac{v_{CE}}{V_{A}}\right)
+                                I_{C} \approx I_{E} = I_{S} \cdot (e^\frac{V_{BE}}{V_{T}})\cdot \left(1 + \frac{V_{CE}}{V_{A}}\right)
                             }
                             \hspace{10mm}
                             \boxed{
-                                R_{O} = \frac{V_{A}}{I_{S} \cdot e^{\frac{v_{BE}}{V_{T}}}}
+                                R_{O} = \frac{V_{A}}{I_{S} \cdot e^{\frac{V_{BE}}{V_{T}}}}
+                            }
+                            \hspace{10mm}
+                            \boxed{
+                                \beta_{O} = \beta \left(1 + \frac{V_{CE}}{V_{A}}\right)
                             }
                         \end{equation}
 
