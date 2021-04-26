@@ -1521,4 +1521,28 @@
                     \myStyleVHDL
                     \lstinputlisting{./nand2tetris/projects/05/CPU.hdl}
                 \end{scriptsize}
+\newpage
+
+        \subsection{Computer}
+            \paragraph{Definição}[Funcionamento]
+
+            \paragraph{Representação}Este componente pode ser expressa pelo seguinte circuito:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw;
+                        % (0,0) node[demux] (myPort) {HalfAdder};
+                        % (myPort.in 1) node [anchor = east] {a}
+                        % (myPort.in 2) node [anchor = east] {b}
+                        % (myPort.out)  node [anchor = west] {out};
+                    \end{circuitikz} 
+                    \caption{Computer}
+                \end{figure} \noindent
+
+            \paragraph{Implementação}Este componente pode ser implementada de acordo com o seguinte código:
+                \begin{scriptsize}
+                    \myStyleVHDL
+                    \lstinputlisting{./nand2tetris/projects/05/Computer.hdl}
+                \end{scriptsize}
 \end{document}
