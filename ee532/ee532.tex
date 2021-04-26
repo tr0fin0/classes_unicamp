@@ -892,142 +892,169 @@
         \subsection{Modelagem}
             \paragraph{Definição}
 
-            \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                \item \textbf{Modelo Linear:}\\
-                Quando o transistor estiver na região ativa seu comportamento poderá ser descrito por meio do seguinte recurso:
-                    \begin{figure}[H]
-                        \centering
-                        \begin{circuitikz}
-                            \ctikzset{component text=left}
-                            \draw
-                            (-2,2) node [ocirc, anchor = west] {B} -- (-1,2)
-                            (-1,2) to[empty diode, v<=$V_{BE}$] (-1,0)
-                            
-                            ( 2,2) node [ocirc, anchor = east] {C} -- ( 1,2)
-                            ( 1,2) to[cI, v^>=${I_{C}}$] (1,0)
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Modelo Linear:}\\
+                    Quando o transistor estiver na região ativa seu comportamento poderá ser descrito por meio do seguinte recurso:
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}
+                                \ctikzset{component text=left}
+                                \draw
+                                (-2,2) node [ocirc, anchor = west] {B} -- (-1,2)
+                                (-1,2) to[empty diode, v<=$V_{BE}$] (-1,0)
+                                
+                                ( 2,2) node [ocirc, anchor = east] {C} -- ( 1,2)
+                                ( 1,2) to[cI, v^>=${I_{C}}$] (1,0)
 
-                            (-1,0) -- (1,0)
-                            (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
-                        \end{circuitikz} 
-                        \caption{Modelagem Linear para Transistor NPN}
-                    \end{figure} \noindent
-                Onde:
-                    \begin{equation}
-                        \boxed{
-                            I_{C} = I_{S} \cdot e^{\frac{V_{BE}}{V_{T}}}
-                        }
-                    \end{equation}
+                                (-1,0) -- (1,0)
+                                (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
+                            \end{circuitikz} 
+                            \caption{Modelagem Linear para Transistor NPN}
+                        \end{figure} \noindent
+                    Onde:
+                        \begin{equation}
+                            \boxed{
+                                I_{C} = I_{S} \cdot e^{\frac{V_{BE}}{V_{T}}}
+                            }
+                        \end{equation}
 
-                \item \textbf{Modelo Linear de Early:}\\
-                \
-
-                \item \textbf{Modelo Pequenos Sinais:}\\
-                Empregado quando os circuitos possuem uma amplitude de operação, ou seja, a fonte de tensão apresenta um valor de operação fixo e uma parcela variável, normalmente simétrica, como representada no seguinte circuito:
-                    \begin{figure}[H]
-                        \centering
-                        \begin{subfigure}[t]{0.3\textwidth}
+                    \item \textbf{Modelo Linear de Early:}\\
+                    Quando analisado transistores percebe-se que o haverá influência por uma Tensão de Early, normalmente desprezada por sua pequena magnitude, gerando uma pequena variação linear como representado pelo seguinte circuito:
+                        \begin{figure}[H]
                             \centering
                             \begin{circuitikz}
                                 \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
                                 \draw
-                                (-2,1) to[battery1, l=$V_{B}$] (-2,0)
-                                (-2,2) to[sV, l=$v_{b}$] (-2,1)
-    
-                                (0,2) node[npn] (myComp) {}
-                                (myComp.B) -- (-2,2)
-                                (myComp.C) -- (0,3)
-                                (myComp.E) -- (0,0)
+                                (-2,2) node [ocirc, anchor = west] {B} -- (-1,2)
+                                (-1,2) to[empty diode, v<=$V_{BE}$] (-1,0)
                                 
-                                (0,3) to[resistor, l=$R$] (0,4)
-                                (0,4) node[vcc]{}
-                                (-2,0) node[tlground]{}
-                                (0,0)  node[tlground]{};
-                            \end{circuitikz}
-                            \caption{Circuito Completo}
-                        \end{subfigure}
-                        \begin{subfigure}[t]{0.3\textwidth}
-                            \centering
-                            \begin{circuitikz}
-                                \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
-                                \draw
-                                (-2,2) to[battery1, l=$V_{B}$] (-2,0)
-    
-                                (0,2) node[npn] (myComp) {}
-                                (myComp.B) -- (-2,2)
-                                (myComp.C) -- (0,3)
-                                (myComp.E) -- (0,0)
-                                
-                                (0,3) to[resistor, l=$R$] (0,4)
-                                (0,4) node[vcc]{}
-                                (-2,0) node[tlground]{}
-                                (0,0)  node[tlground]{};
-                            \end{circuitikz}
-                            \caption{Circuito com Fonte Constante}
-                        \end{subfigure}
-                        \begin{subfigure}[t]{0.3\textwidth}
-                            \centering
-                            \begin{circuitikz}
-                                \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
-                                \draw
-                                (-2,2) to[sV, l=$v_{B}$] (-2,0)
-    
-                                (0,2) node[npn] (myComp) {}
-                                (myComp.B) -- (-2,2)
-                                (myComp.C) -- (0,3)
-                                (myComp.E) -- (0,0)
-                                
-                                (0,3) to[resistor, l=$R$] (0,4)
-                                (0,4) node[vcc]{}
-                                (-2,0) node[tlground]{}
-                                (0,0)  node[tlground]{};
-                            \end{circuitikz}
-                            \caption{Circuito com Fonte Variável}
-                        \end{subfigure}
-                        \caption{Modelagem de Pequenos Sinais para Transistor NPN}
-                    \end{figure} \noindent
-                Considera-se que uma reta tangente a exponencial, onde sua inclinação será dada pela derivada da curva em qualquer ponto, realizando as equações obtêm-se:
-                    \[
-                        \diff{i_{E}}{v_{BE}} = \frac{I_{S}}{V_{T}}\cdot e^{\frac{v_{BE}}{V_{T}}}
-                        \to
-                        i_{E} - I_{S}\cdot e^{\frac{V_{BE}}{V_{T}}} = \frac{I_{S}}{V_{T}}\cdot e^{\frac{v_{BE}}{V_{T}}}\cdot\underbrace{(v_{BE} - V_{BE})}_{v_{be}}
-                    \]
-                Como $V_{BE} \gg v_{be}$ pode-se desconsiderar sua interferência no circuito, utilizando a seguinte aproximação:
-                    \[
-                        i_{E} = I_{S}\cdot e^{\frac{V_{BE}}{V_{T}}} + \frac{I_{S}}{V_{T}}\cdot e^{\frac{v_{BE}}{V_{T}}}\cdot v_{be}
-                        \approx
-                        i_{E} = I_{S}\cdot e^{\frac{V_{BE}}{V_{T}}} + \frac{I_{S}}{V_{T}}\cdot e^{\frac{V_{BE}}{V_{T}}}\cdot v_{be}
-                    \]
-                Desta maneira, como $i_{E} \approx i_{C}$ e $I_{C} = \beta I_{B}$, obtém-se a seguintes relações:
-                    \begin{equation}
-                        \boxed{
-                            i_{E} = I_{E} + \frac{I_{E}}{V_{T}}\cdot v_{be}
-                        }
-                        \hspace{10mm}
-                        \boxed{
-                            i_{C} = I_{C} + g_{m}\cdot v_{be}
-                        }
-                        \hspace{10mm}
-                        \boxed{
-                            i_{B} = I_{B} + \frac{v_{be}}{r_{\pi}}
-                        }
-                    \end{equation}
-                Onde:
-                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                        \item \texttt{Transcondutância:} Capacidade da junção de conduzir corrente elétrica;
-                            \begin{equation}
-                                \boxed{
-                                    g_{m} = \frac{I_{C}}{V_{T}}
-                                }
-                            \end{equation}
+                                (4,2) node [ocirc, anchor = east] {C} -- ( 1,2)
+                                (1,2) to[cI, v^>=${I_{C}}$] (1,0)
+                                (3,2) to[resistor, l=$R_{O}$] (3,0)
 
-                        \item \texttt{Resistência $\pi$};
-                            \begin{equation}
-                                \boxed{
-                                    \frac{1}{r_{\pi}} = \frac{g_{m}}{\beta}
-                                }
-                            \end{equation}
-                    \end{enumerate}
-            \end{enumerate}
+                                (-1,0) -- (3,0)
+                                (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
+                            \end{circuitikz} 
+                            \caption{Modelagem Linear de Early para Transistor NPN}
+                        \end{figure} \noindent
+                    Assim, considerando o modelo de grande sinais temos:
+                        \begin{equation}
+                            \boxed{
+                                I_{C} \approx I_{E} = I_{S} \cdot (e^\frac{v_{BE}}{V_{T}})\cdot \left(1 + \frac{v_{CE}}{V_{A}}\right)
+                            }
+                            \hspace{10mm}
+                            \boxed{
+                                R_{O} = \frac{V_{A}}{I_{S} \cdot e^{\frac{v_{BE}}{V_{T}}}}
+                            }
+                        \end{equation}
+
+                    \item \textbf{Modelo Pequenos Sinais:}\\
+                    Empregado quando os circuitos possuem uma amplitude de operação, ou seja, a fonte de tensão apresenta um valor de operação fixo e uma parcela variável, normalmente simétrica, como representada no seguinte circuito:
+                        \begin{figure}[H]
+                            \centering
+                            \begin{subfigure}[t]{0.3\textwidth}
+                                \centering
+                                \begin{circuitikz}
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (-2,1) to[battery1, l=$V_{B}$] (-2,0)
+                                    (-2,2) to[sV, l=$v_{b}$] (-2,1)
+        
+                                    (0,2) node[npn] (myComp) {}
+                                    (myComp.B) -- (-2,2)
+                                    (myComp.C) -- (0,3)
+                                    (myComp.E) -- (0,0)
+                                    
+                                    (0,3) to[resistor, l=$R$] (0,4)
+                                    (0,4) node[vcc]{}
+                                    (-2,0) node[tlground]{}
+                                    (0,0)  node[tlground]{};
+                                \end{circuitikz}
+                                \caption{Circuito Completo}
+                            \end{subfigure}
+                            \begin{subfigure}[t]{0.3\textwidth}
+                                \centering
+                                \begin{circuitikz}
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (-2,2) to[battery1, l=$V_{B}$] (-2,0)
+        
+                                    (0,2) node[npn] (myComp) {}
+                                    (myComp.B) -- (-2,2)
+                                    (myComp.C) -- (0,3)
+                                    (myComp.E) -- (0,0)
+                                    
+                                    (0,3) to[resistor, l=$R$] (0,4)
+                                    (0,4) node[vcc]{}
+                                    (-2,0) node[tlground]{}
+                                    (0,0)  node[tlground]{};
+                                \end{circuitikz}
+                                \caption{Circuito com Fonte Constante}
+                            \end{subfigure}
+                            \begin{subfigure}[t]{0.3\textwidth}
+                                \centering
+                                \begin{circuitikz}
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (-2,2) to[sV, l=$v_{B}$] (-2,0)
+        
+                                    (0,2) node[npn] (myComp) {}
+                                    (myComp.B) -- (-2,2)
+                                    (myComp.C) -- (0,3)
+                                    (myComp.E) -- (0,0)
+                                    
+                                    (0,3) to[resistor, l=$R$] (0,4)
+                                    (0,4) node[vcc]{}
+                                    (-2,0) node[tlground]{}
+                                    (0,0)  node[tlground]{};
+                                \end{circuitikz}
+                                \caption{Circuito com Fonte Variável}
+                            \end{subfigure}
+                            \caption{Modelagem de Pequenos Sinais para Transistor NPN}
+                        \end{figure} \noindent
+                    Considera-se que uma reta tangente a exponencial, onde sua inclinação será dada pela derivada da curva em qualquer ponto, realizando as equações obtêm-se:
+                        \[
+                            \diff{i_{E}}{v_{BE}} = \frac{I_{S}}{V_{T}}\cdot e^{\frac{v_{BE}}{V_{T}}}
+                            \to
+                            i_{E} - I_{S}\cdot e^{\frac{V_{BE}}{V_{T}}} = \frac{I_{S}}{V_{T}}\cdot e^{\frac{v_{BE}}{V_{T}}}\cdot\underbrace{(v_{BE} - V_{BE})}_{v_{be}}
+                        \]
+                    Como $V_{BE} \gg v_{be}$ pode-se desconsiderar sua interferência no circuito, utilizando a seguinte aproximação:
+                        \[
+                            i_{E} = I_{S}\cdot e^{\frac{V_{BE}}{V_{T}}} + \frac{I_{S}}{V_{T}}\cdot e^{\frac{v_{BE}}{V_{T}}}\cdot v_{be}
+                            \approx
+                            i_{E} = I_{S}\cdot e^{\frac{V_{BE}}{V_{T}}} + \frac{I_{S}}{V_{T}}\cdot e^{\frac{V_{BE}}{V_{T}}}\cdot v_{be}
+                        \]
+                    Desta maneira, como $i_{E} \approx i_{C}$ e $I_{C} = \beta I_{B}$, obtém-se a seguintes relações:
+                        \begin{equation}
+                            \boxed{
+                                i_{E} = I_{E} + \frac{I_{E}}{V_{T}}\cdot v_{be}
+                            }
+                            \hspace{10mm}
+                            \boxed{
+                                i_{C} = I_{C} + g_{m}\cdot v_{be}
+                            }
+                            \hspace{10mm}
+                            \boxed{
+                                i_{B} = I_{B} + \frac{v_{be}}{r_{\pi}}
+                            }
+                        \end{equation}
+                    Onde:
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item \texttt{Transcondutância:} Capacidade da junção de conduzir corrente elétrica;
+                                \begin{equation}
+                                    \boxed{
+                                        g_{m} = \frac{I_{C}}{V_{T}}
+                                    }
+                                \end{equation}
+
+                            \item \texttt{Resistência $\pi$};
+                                \begin{equation}
+                                    \boxed{
+                                        \frac{1}{r_{\pi}} = \frac{g_{m}}{\beta}
+                                    }
+                                \end{equation}
+                        \end{enumerate}
+                \end{enumerate}
 
 
 \end{document}
