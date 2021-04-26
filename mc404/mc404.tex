@@ -1473,11 +1473,12 @@
                 \end{enumerate}
 
             \paragraph{Fetching}Armazenar a localização da próxima instrução na entrada do endereço de memória e obter a instrução através da leitura dessa memória alocada.
+\newpage
 
         \subsection{Memory}
             \paragraph{Definição}[Funcionamento]
 
-            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguinte circuito:
+            \paragraph{Representação}Este componente pode ser expressa pelo seguinte circuito:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -1491,9 +1492,33 @@
                     \caption{Memory}
                 \end{figure} \noindent
 
-            \paragraph{Implementação}Esta porta lógica pode ser implementada de acordo com o seguinte código:
+            \paragraph{Implementação}Este componente pode ser implementada de acordo com o seguinte código:
                 \begin{scriptsize}
                     \myStyleVHDL
                     \lstinputlisting{./nand2tetris/projects/05/Memory.hdl}
+                \end{scriptsize}
+\newpage
+
+        \subsection{CPU}
+            \paragraph{Definição}[Funcionamento]
+
+            \paragraph{Representação}Este componente pode ser expressa pelo seguinte circuito:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw;
+                        % (0,0) node[demux] (myPort) {HalfAdder};
+                        % (myPort.in 1) node [anchor = east] {a}
+                        % (myPort.in 2) node [anchor = east] {b}
+                        % (myPort.out)  node [anchor = west] {out};
+                    \end{circuitikz} 
+                    \caption{CPU}
+                \end{figure} \noindent
+
+            \paragraph{Implementação}Este componente pode ser implementada de acordo com o seguinte código:
+                \begin{scriptsize}
+                    \myStyleVHDL
+                    \lstinputlisting{./nand2tetris/projects/05/CPU.hdl}
                 \end{scriptsize}
 \end{document}
