@@ -921,20 +921,41 @@
                     Quando analisado transistores percebe-se que o haverá influência por uma Tensão de Early, normalmente desprezada por sua pequena magnitude, gerando uma pequena variação linear como representado pelo seguinte circuito:
                         \begin{figure}[H]
                             \centering
-                            \begin{circuitikz}
-                                \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
-                                \draw
-                                (-2,2) node [ocirc, anchor = west] {B} -- (-1,2)
-                                (-1,2) to[empty diode, v<=$V_{BE}$] (-1,0)
-                                
-                                (4,2) node [ocirc, anchor = east] {C} -- ( 1,2)
-                                (1,2) to[cI, v^>=${I_{C}}$] (1,0)
-                                (3,2) to[resistor, l=$R_{O}$] (3,0)
-
-                                (-1,0) -- (3,0)
-                                (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
-                            \end{circuitikz} 
-                            \caption{Modelagem Linear de Early para Grandes Sinais para Transistor NPN}
+                            \begin{subfigure}[t]{0.45\textwidth}
+                                \centering
+                                \begin{circuitikz}
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (-2,2) node [ocirc, anchor = west] {B} -- (-1,2)
+                                    (-1,2) to[empty diode, v<=$V_{BE}$] (-1,0)
+                                    
+                                    (4,2) node [ocirc, anchor = east] {C} -- ( 1,2)
+                                    (1,2) to[cI, v^>=${I_{C}}$] (1,0)
+                                    (3,2) to[resistor, l=$R_{O}$] (3,0)
+    
+                                    (-1,0) -- (3,0)
+                                    (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
+                                \end{circuitikz} 
+                                \caption{Grandes Sinais}
+                            \end{subfigure}
+                            \begin{subfigure}[t]{0.45\textwidth}
+                                \centering
+                                \begin{circuitikz}
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (-2,2) node [ocirc, anchor = west] {B} -- (-1,2)
+                                    (-1,2) to[resistor, l=$r_{\pi}$, v<=$V_{BE}$] (-1,0)
+                                    
+                                    (4,2) node [ocirc, anchor = east] {C} -- ( 1,2)
+                                    (1,2) to[cI, v^>=${I_{C}}$] (1,0)
+                                    (3,2) to[resistor, l=$R_{O}$] (3,0)
+    
+                                    (-1,0) -- (3,0)
+                                    (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
+                                \end{circuitikz} 
+                                \caption{Pequenos Sinais}
+                            \end{subfigure}
+                            \caption{Modelagem Linear de Early para Transistor NPN}
                         \end{figure} \noindent
                     Assim, considerando o modelo de grande sinais temos:
                         \begin{equation}
