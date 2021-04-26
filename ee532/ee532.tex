@@ -858,7 +858,7 @@
                     \caption{Tensões Transistor NPN}
                 \end{figure} \noindent
             Este componente apresentará 4 situações de operação, obtidas através das direntes combinações entre a polarização direta e indireta dos diodos intrínsecos, sendo descritas abaixo:
-                \begin{enumerate}
+                \begin{enumerate}[rightmargin = \leftmargin]
                     \item \textbf{Região de Corte:} Ocorre quando $V_{BE}$ e $V_{BC}$ são inversamente polarizados;
                     \item \textbf{Região de Saturação:} Ocorre quando $V_{BE}$ e $V_{BC}$ são diretamente polarizados;
                     \item \textbf{Região Ativa:} Ocorre quando $V_{BE}$ está diretamente polaraizada e $V_{BC}$ está inversamente polarizada, haverá um pequeno fluxo de corrente vinda da Base que diminui as regiões de depleção entre o Coletor e o Emissor, possibilitando assim o fluxo de corrente entre estes terminais dada como a corrente através de um diodo como representado na seguinte equação:
@@ -885,5 +885,24 @@
                         \end{align}
                     \item \textbf{Região Ativa Inversa:} Ocorre quando $v_{BE}$ está inversamente polaraizada e $v_{BC}$ está diretamente polarizada;
                 \end{enumerate}
+
+        \subsection{Modelagem}
+            \paragraph{Definição}Quando o transistor estiver na região ativa seu comportamento poderá ser descrito por meio do seguinte recurso:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        (-2,2) node [ocirc, anchor = west] {B} -- (-1,2)
+                        (-1,2) to[empty diode, v<=$V_{BE}$] (-1,0)
+                        
+                        ( 2,2) node [ocirc, anchor = east] {C} -- ( 1,2)
+                        ( 1,2) to[cI, v^>=${I_{C} = I_{S} \cdot e^{\frac{V_{BE}}{V_{T}}}}$] (1,0)
+
+                        (-1,0) -- (1,0)
+                        (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
+                    \end{circuitikz} 
+                    \caption{Modelagem Transistor NPN}
+                \end{figure} \noindent
 
 \end{document}
