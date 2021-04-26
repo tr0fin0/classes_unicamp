@@ -887,7 +887,11 @@
                 \end{enumerate}
 
         \subsection{Modelagem}
-            \paragraph{Definição}Quando o transistor estiver na região ativa seu comportamento poderá ser descrito por meio do seguinte recurso:
+            \paragraph{Definição}
+
+            \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                \item \textbf{Modelo Linear:}\\
+                Quando o transistor estiver na região ativa seu comportamento poderá ser descrito por meio do seguinte recurso:
                 \begin{figure}[H]
                     \centering
                     \begin{circuitikz}
@@ -904,5 +908,104 @@
                     \end{circuitikz} 
                     \caption{Modelagem Transistor NPN}
                 \end{figure} \noindent
+
+                \item \textbf{Modelo Pequenos Sinais:}\\
+                Empregado quando os circuitos possuem uma amplitude de operação, ou seja, a fonte de tensão apresenta um valor de operação fixo e uma parcela variável, normalmente simétrica, como representada no seguinte circuito:
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                            \draw
+                            (-2,1) to[battery1, l=$V_{B}$] (-2,0)
+                            (-2,2) to[sV, l=$v_{b}$] (-2,1)
+
+                            (0,2) node[npn] (myComp) {}
+                            (myComp.B) -- (-2,2)
+                            (myComp.C) -- (0,3)
+                            (myComp.E) -- (0,0)
+                            
+                            (0,3) to[resistor, l=$R$] (0,4)
+                            (0,4) node[vcc]{}
+                            (-2,0) node[tlground]{}
+                            (0,0)  node[tlground]{};
+                        \end{circuitikz}
+                        \hspace{20mm}
+                        \begin{circuitikz}
+                            \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                            \draw
+                            (-2,2) to[battery1, l=$V_{B}$] (-2,0)
+
+                            (0,2) node[npn] (myComp) {}
+                            (myComp.B) -- (-2,2)
+                            (myComp.C) -- (0,3)
+                            (myComp.E) -- (0,0)
+                            
+                            (0,3) to[resistor, l=$R$] (0,4)
+                            (0,4) node[vcc]{}
+                            (-2,0) node[tlground]{}
+                            (0,0)  node[tlground]{};
+                        \end{circuitikz}
+                        \hspace{20mm}
+                        \begin{circuitikz}
+                            \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                            \draw
+                            (-2,2) to[sV, l=$v_{B}$] (-2,0)
+
+                            (0,2) node[npn] (myComp) {}
+                            (myComp.B) -- (-2,2)
+                            (myComp.C) -- (0,3)
+                            (myComp.E) -- (0,0)
+                            
+                            (0,3) to[resistor, l=$R$] (0,4)
+                            (0,4) node[vcc]{}
+                            (-2,0) node[tlground]{}
+                            (0,0)  node[tlground]{};
+                        \end{circuitikz}
+                        \caption{Modelagem Transistor NPN}
+                    \end{figure} \noindent
+                Realizando as equações obtêm-se:
+                    \[
+                        \diff{i_{E}}{v_{BE}} = \frac{I_{S}}{V_{T}}\cdot e^{\frac{v_{BE}}{V_{T}}}
+                        \to
+                        i_{E} - I_{S}\cdot e^{\frac{V_{BE}}{V_{T}}} = \frac{I_{S}}{V_{T}}\cdot e^{\frac{v_{BE}}{V_{T}}}\cdot\underbrace{(v_{BE} - V_{BE})}_{v_{be}}
+                    \]
+                Como $V_{BE} \gg v_{be}$ pode-se utilizar a seguinte aproximação:
+                    \[
+                        i_{E} = I_{S}\cdot e^{\frac{V_{BE}}{V_{T}}} + \frac{I_{S}}{V_{T}}\cdot e^{\frac{v_{BE}}{V_{T}}}\cdot v_{be}
+                        \approx
+                        i_{E} = I_{S}\cdot e^{\frac{V_{BE}}{V_{T}}} + \frac{I_{S}}{V_{T}}\cdot e^{\frac{V_{BE}}{V_{T}}}\cdot v_{be}
+                    \]
+                Desta maneira, como $i_{E} \approx i_{C}$ e $I_{C} = \beta I_{B}$, obtém-se a seguintes relações:
+                    \begin{equation}
+                        \boxed{
+                            i_{E} = I_{E} + \frac{I_{E}}{V_{T}}\cdot v_{be}
+                        }
+                        \hspace{10mm}
+                        \boxed{
+                            i_{C} = I_{C} + g_{m}\cdot v_{be}
+                        }
+                        \hspace{10mm}
+                        \boxed{
+                            i_{B} = I_{B} + \frac{v_{be}}{r_{\pi}}
+                        }
+                    \end{equation}
+                Onde:
+                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                        \item \texttt{Transcondutância:} ;
+                            \begin{equation}
+                                \boxed{
+                                    g_{m} = \frac{I_{C}}{V_{T}}
+                                }
+                            \end{equation}
+
+                        \item \texttt{Resitência $\pi$:} ;
+                            \begin{equation}
+                                \boxed{
+                                    \frac{1}{r_{\pi}} = \frac{g_{m}}{\beta}
+                                }
+                            \end{equation}
+                    \end{enumerate}
+            \end{enumerate}
+
 
 \end{document}
