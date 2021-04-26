@@ -1398,7 +1398,7 @@
                                         \texttt{A}    & Registrador A                                  & 1 & 0 & 0\\
                                         \texttt{AM}   & Registrador A e \texttt{RAM[A]}                & 1 & 0 & 1\\
                                         \texttt{AD}   & Registrador A e Registrador D                  & 1 & 1 & 0\\
-                                        \texttt{AMD}  & Registrador A, \texttt{RAM[A]} e Registrador D & 1 & 1 & 1\\\hline
+                                        \texttt{ADM}  & Registrador A, \texttt{RAM[A]} e Registrador D & 1 & 1 & 1\\\hline
                                     \end{tabular}
                                     \caption{Destinos de \texttt{C}}
                                 \end{table}\noindent
@@ -1473,4 +1473,27 @@
                 \end{enumerate}
 
             \paragraph{Fetching}Armazenar a localização da próxima instrução na entrada do endereço de memória e obter a instrução através da leitura dessa memória alocada.
+
+        \subsection{Memory}
+            \paragraph{Definição}[Funcionamento]
+
+            \paragraph{Representação}Esta porta lógica pode ser expressa pelo seguinte circuito:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw;
+                        % (0,0) node[demux] (myPort) {HalfAdder};
+                        % (myPort.in 1) node [anchor = east] {a}
+                        % (myPort.in 2) node [anchor = east] {b}
+                        % (myPort.out)  node [anchor = west] {out};
+                    \end{circuitikz} 
+                    \caption{Memory}
+                \end{figure} \noindent
+
+            \paragraph{Implementação}Esta porta lógica pode ser implementada de acordo com o seguinte código:
+                \begin{scriptsize}
+                    \myStyleVHDL
+                    \lstinputlisting{./nand2tetris/projects/05/Memory.hdl}
+                \end{scriptsize}
 \end{document}
