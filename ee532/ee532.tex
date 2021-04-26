@@ -1048,21 +1048,26 @@
                                 \end{circuitikz}
                                 \caption{Circuito com Fonte Variável}
                             \end{subfigure}
+                            \par\bigskip
+                            \begin{subfigure}[t]{0.3\textwidth}
+                                \centering
+                                \begin{circuitikz}
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (-2,2) node [ocirc, anchor = west] {B} -- (-1,2)
+                                    (-1,2) to[resistor, l=$r_{\pi}$, v<=$V_{BE}$] (-1,0)
+                                    
+                                    ( 2,2) node [ocirc, anchor = east] {C} -- ( 1,2)
+                                    ( 1,2) to[cI, v^>=${I_{C}}$] (1,0)
+    
+                                    (-1,0) -- (1,0)
+                                    (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
+                                \end{circuitikz} 
+                                \caption{Pequenos Sinais Linear}
+                            \end{subfigure}
                             \caption{Modelagem de Pequenos Sinais para Transistor NPN}
                         \end{figure} \noindent
-                    Considera-se que uma reta tangente a exponencial, onde sua inclinação será dada pela derivada da curva em qualquer ponto, realizando as equações obtêm-se:
-                        \[
-                            \diff{i_{E}}{v_{BE}} = \frac{I_{S}}{V_{T}}\cdot e^{\frac{v_{BE}}{V_{T}}}
-                            \to
-                            i_{E} - I_{S}\cdot e^{\frac{V_{BE}}{V_{T}}} = \frac{I_{S}}{V_{T}}\cdot e^{\frac{v_{BE}}{V_{T}}}\cdot\underbrace{(v_{BE} - V_{BE})}_{v_{be}}
-                        \]
-                    Como $V_{BE} \gg v_{be}$ pode-se desconsiderar sua interferência no circuito, utilizando a seguinte aproximação:
-                        \[
-                            i_{E} = I_{S}\cdot e^{\frac{V_{BE}}{V_{T}}} + \frac{I_{S}}{V_{T}}\cdot e^{\frac{v_{BE}}{V_{T}}}\cdot v_{be}
-                            \approx
-                            i_{E} = I_{S}\cdot e^{\frac{V_{BE}}{V_{T}}} + \frac{I_{S}}{V_{T}}\cdot e^{\frac{V_{BE}}{V_{T}}}\cdot v_{be}
-                        \]
-                    Desta maneira, como $i_{E} \approx i_{C}$ e $I_{C} = \beta I_{B}$, obtém-se a seguintes relações:
+                    Considera-se que uma reta tangente a exponencial, onde sua inclinação será dada pela derivada da curva. Como $V_{BE} \gg v_{be}$ pode-se considerar que $V_{BE} \approx v_{BE}$, desconsiderando sua interferência no circuito. Desta maneira, como $i_{E} \approx i_{C}$ e $I_{C} = \beta I_{B}$, obtém-se a seguintes relações:
                         \begin{equation}
                             \boxed{
                                 i_{E} = I_{E} + \frac{I_{E}}{V_{T}}\cdot v_{be}
