@@ -12,7 +12,7 @@
 \usepackage{array}
 \usepackage{indentfirst}
 \usepackage{multicol}
-\setlength{\multicolsep}{2pt}% 50% of original values
+\setlength{\multicolsep}{8.0pt plus 3.0pt minus 2.25pt}% 75% of original values
 \usepackage{subfiles}
 
 \usepackage{titlesec}
@@ -1255,7 +1255,7 @@
                             \begin{equation}
                                 \boxed{
                                     \overline{\overline{x}} = \frac{1}{m} \sum_{i=1}^{m} \overline{x}_{i}
-                                }
+                                }\label{eq.mediaGlobal}
                             \end{equation}
     
                         \item \textbf{Amplitude Média:} Média entre as Amplitudes Amostrais;
@@ -1335,7 +1335,7 @@
                     \item \textbf{Capacidade de Processo:} Possibilidade do processo produzir 99,73\% das peças dentro da tolerância estabelecida;
                         \begin{equation}
                             \boxed{
-                                CP = \frac{t}{6\cdot\sigma}
+                                CP = \frac{t}{6\sigma}
                                 \qquad
                                 \begin{cases}
                                     CP > 1.33, & \text{Processo \texttt{Capaz}}\\
@@ -1344,10 +1344,26 @@
                                 \end{cases}
                             }
                         \end{equation}
+
+                    \item \textbf{Capabilidade de Processo:} Possibilidade do processo produzir peças sem ajustes a média ou ao desvio padrão;
+                        \begin{equation}
+                            \boxed{
+                                CPK = \min\left( \frac{\overline{\overline{x}} - LIE}{3\sigma}; \frac{LSE - \overline{\overline{x}}}{3\sigma} \right)
+                                \qquad
+                                \begin{cases}
+                                    CPK > 1.33, & \text{Capabilidade \texttt{Boa}}\\
+                                    1.0 \le CPK \le 1.33, & \text{Capabilidade \texttt{Razoável}}\\
+                                    CPK \le 1.0, & \text{Capabilidade \texttt{Ruim}}\\
+                                \end{cases}
+                            }
+                        \end{equation}
                     Onde:
                         \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
                             \item $t$, \texttt{Tolerância Dimensional do Processo};
                             \item $\sigma$, \texttt{Desvio Padrão: \ref{eq.desvP}};
+                            \item $\overline{\overline{x}}$, \texttt{Média Global: \ref{eq.mediaGlobal}};
+                            \item $LSE$, \texttt{Tolerância Superior};
+                            \item $LIE$, \texttt{Tolerância Inferior};
                         \end{enumerate}
                 \end{enumerate}
 \end{document}
