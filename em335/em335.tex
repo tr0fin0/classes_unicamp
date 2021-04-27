@@ -1331,7 +1331,25 @@
 
         \subsection{Capacidade de Produção}
             \paragraph{Definição}Além dos dados estatísticos serão necessários determinar se o processo será possível dentro das exigências impostas tanto pela produção quanto pelo cliente. Assim estabelecem os seguintes parâmetros:
-
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Capacidade de Processo:} Possibilidade do processo produzir 99,73\% das peças dentro da tolerância estabelecida;
+                        \begin{equation}
+                            \boxed{
+                                CP = \frac{t}{6\cdot\sigma}
+                                \qquad
+                                \begin{cases}
+                                    CP > 1.33, & \text{Processo \texttt{Capaz}}\\
+                                    1.0 \le CP \le 1.33, & \text{Processo \texttt{Razoável}}\\
+                                    CP \le 1.0, & \text{Processo \texttt{Incapaz}}\\
+                                \end{cases}
+                            }
+                        \end{equation}
+                    Onde:
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item $t$, \texttt{Tolerância Dimensional do Processo};
+                            \item $\sigma$, \texttt{Desvio Padrão: \ref{eq.desvP}};
+                        \end{enumerate}
+                \end{enumerate}
 \end{document}
 % \begin{multicols}{2}
     
