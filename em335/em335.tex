@@ -49,6 +49,7 @@
 \usepackage{chngcntr}
 \counterwithin{figure}{section}
 \counterwithin{equation}{subsection}
+\counterwithin{table}{section}
 
 %Configurando pacote com Posicionamentos
 \usetikzlibrary{chains}
@@ -1295,6 +1296,38 @@
                     \caption{Constantes de Análise}
                 \end{table}
 
+        \subsection{Limites Estatísticos}
+            \paragraph{Definição}Dados são normalmente analisados através de ferramentas visuais como gráficos, tanto para as médias quanto para as amplitudes. Estes limites estabelecem um intervalo em que os dados possam estar contidos e identificar outliers como descritos abaixo:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Limmites Superiores de Controle:} Estabelece o valor máximo aceitável para as medições;
+                        \begin{equation}
+                            \boxed{
+                                LSC = 
+                                \overline{\overline{x}} + \frac{3\cdot\overline{R}}{d_{2}\cdot\sqrt{n}} = 
+                                \overline{\overline{x}} + A_{2}\cdot\overline{R}
+                            }
+                            \qquad
+                            \boxed{
+                                LSC = 
+                                \overline{R} + \frac{3\cdot d_{3}\cdot\overline{R}}{d_{2}} = 
+                                D_{4}\cdot\overline{R}
+                            }
+                        \end{equation}
+                    \item \textbf{Limmites Inferiores de Controle:} Estabelece o valor mínimo aceitável para as medições;
+                        \begin{equation}
+                            \boxed{
+                                LIC = 
+                                \overline{\overline{x}} - \frac{3\cdot\overline{R}}{d_{2}\cdot\sqrt{n}} = 
+                                \overline{\overline{x}} - A_{2}\cdot\overline{R}
+                            }
+                            \qquad
+                            \boxed{
+                                LIC = 
+                                \overline{R} - \frac{3\cdot d_{3}\cdot\overline{R}}{d_{2}} = 
+                                D_{3}\cdot\overline{R}
+                            }
+                        \end{equation}
+                \end{enumerate}
 \end{document}
 % \begin{multicols}{2}
     
