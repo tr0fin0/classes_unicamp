@@ -986,7 +986,7 @@
                                 \tol{type=circular runout}
                                 \tol{type=total runout}
                             \end{center}
-                        \item \texttt{2\textsuperscript{o} Compartimento:} Valor de Tolerância;
+                        \item \texttt{2\textsuperscript{o} Compartimento:} Valor de Tolerância [mm];
                         \item \texttt{3\textsuperscript{o}, 
                             4\textsuperscript{o} e 
                             5\textsuperscript{o} Compartimentos:} Informações sobre as Referências;
@@ -1025,7 +1025,7 @@
                 \end{enumerate}
 
         \subsection{Tolerâncias de Orientação}
-            \paragraph{Definição}Tolerâncias admitiadas dos elementos em relação aos demais, partindo de uma referência, classificadas como demonstrado na sequência:
+            \paragraph{Definição}Tolerâncias admitidas dos elementos em relação aos demais, partindo de uma referência, classificadas como demonstrado na sequência:
                 \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
                     \item \tol{type=angularity} \textbf{Inclinação:} Superfície indicada à un ângulo fixo da referência;
                     \item \tol{type=perpendicularity} \textbf{Perpendicularidade:} Superfície indicada à 90\textsuperscript{o} da referência;
@@ -1139,7 +1139,7 @@
                     \item $R_{T}$, \textbf{Altura Total do Perfil:} Máximo entre os $R_{Z_{i}}$:
                         \begin{equation}
                             \boxed{
-                                R_{T} = \max(R_{Z_{i}})
+                                R_{T} = \max(R_{Z_{1}}, ..., R_{Z_{i}})
                             }
                         \end{equation}
                 \end{enumerate}
@@ -1164,7 +1164,7 @@
                     \includegraphics[height = 4cm]{ima7.png}
                     \caption{Desvio Aritmético}\label{fig:desvioA}
                 \end{figure} \noindent
-            Os perfils de amostragem são padronizados de acordo com a periodicidade, ou não, do processo produtivo. Processos como torneamento são periódicos, considera-se a distância aproximada entre os sulcos, enquanto processos como retificação não são períodicos, considera-se $R_{A}$ e $R_{Z}$. 
+            Os perfils de amostragem são padronizados de acordo com a periodicidade, ou não, do processo produtivo. Processos como torneamento são periódicos, considera-se a distância aproximada entre os sulcos, enquanto processos como retificação não são períodicos, considera-se $R_{A}$ e $R_{Z}$. Assim pode-se determinar comprimentos de análise através da seguinte tabela:
                 \begin{table}[H]
                     \centering
                     \begin{tabular}[]{l | c c}\hline
