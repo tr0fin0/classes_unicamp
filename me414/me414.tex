@@ -777,15 +777,44 @@
                 \end{equation}
 \newpage
 
-        \section{Variáveis Aleatórias}
-            \paragraph{Definição}Experimento aleatório que resultada em uma quantidade numérica como resultado, ou seja, o evento em si não será prioridade. Caso uma função $X$ seja utilizada para relacionar os elementos do espaço amostral a um conjunto enumerável de pontos da reta real então está será uma \textbf{Variável Aleatória Discreta}. Assim defini-se a probabilidade desta variável ocorrer como:
+    \section{Variáveis Aleatórias}
+        \paragraph{Definição}Experimento aleatório que resultada em uma quantidade numérica como resultado, ou seja, o evento em si não será prioridade. Caso uma função $X$ seja utilizada para relacionar os elementos do espaço amostral a um conjunto enumerável de pontos da reta real então está será uma \textbf{Variável Aleatória Discreta}. Assim defini-se a probabilidade desta variável ocorrer como:
+            \begin{equation}
+                \boxed{
+                    \sum_{i=1}^{n} P(X = x_{i}) = 1
+                }
+                \qquad
+                \boxed{
+                    0 \le P(X = x_{i}) \le 1
+                }
+            \end{equation}
+
+        \subsection{Função de Distribuição Acumulada}
+            \paragraph{Definição}Representação do somatório dos valores da probabilidade de uma variável aleatória $X$ até um certo intervalos $\{x_{1}, ..., x_{n}\}$, como representado na seguinte equação:
                 \begin{equation}
                     \boxed{
-                        \sum_{i=1}^{n} P(X = x_{i}) = 1
+                        F(x) = P(X \le x), \quad x\in\mathbb{R}
                     }
+                \end{equation}
+            Pode-se representar essa variável, seguindo a seguinte notação:
+                \begin{equation}
+                    \begin{cases}
+                        F(x_{1}) &= P(X = x_{1})\\
+                        \vdots   & \vdots\\
+                        F(x_{i}) &= P(X = x_{1}) + \cdots + P(X = x_{i}\\
+                        \vdots   & \vdots\\
+                        F(x_{n}) &= P(X = x_{1}) + \cdots + P(X = x_{n})\\
+                    \end{cases}
                     \qquad
                     \boxed{
-                        0 \le P(X = x_{i}) \le 1
+                        F(x) =
+                        \begin{cases}
+                            F(x_{1}), & x \le x_{1} \\
+                            \vdots    & \\
+                            F(x_{i}), & x_{i-1} \le x \le x_{i}\\
+                            \vdots    & \\
+                            F(x_{n}), & x_{n-1} \le x \le x_{n}\\
+                        \end{cases}
                     }
                 \end{equation}
 
