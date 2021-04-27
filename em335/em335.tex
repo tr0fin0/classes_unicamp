@@ -1233,5 +1233,42 @@
 
         \subsection{Análise de Dados}
             \paragraph{Definição}Nesta abordagem dados serão coletados e analisado através de diferentes métodos estatísticos para que decisões seja \textbf{Data Driven}, possibilitando soluções planejadas e direcionadas. Utilizam-se as seguinte métrica nesta análise:
-                
+
+                \begin{multicols}{2}
+                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                        \item \textbf{Média Amostral:} Cada amostra possuirá cerca de 5 observações;
+                            \begin{equation}
+                                \boxed{
+                                    \overline{x} = \frac{1}{n} \sum_{i=1}^{n} x_{i}
+                                }
+                            \end{equation}
+    
+                        \item \textbf{Amplitude Amostral:} Diferença entre máximos e mínimos do conjunto amostral;
+                            \begin{equation}
+                                \boxed{
+                                    R_{i} = x_{\max} - x_{\min}
+                                }
+                            \end{equation}
+                    \columnbreak
+                        \item \textbf{Média Global:} Cada conjunto possuirá cerca de 25 amostras;
+                            \begin{equation}
+                                \boxed{
+                                    \overline{\overline{x}} = \frac{1}{m} \sum_{i=1}^{m} \overline{x}_{i}
+                                }
+                            \end{equation}
+    
+                        \item \textbf{Amplitude Média:} Média entre as Amplitudes Amostrais;
+                            \begin{equation}
+                                \boxed{
+                                    \overline{R} = \frac{1}{m} \sum_{i=1}^{m} R_{i}
+                                }
+                            \end{equation}
+                    \end{enumerate}
+                \end{multicols}
 \end{document}
+% \begin{multicols}{2}
+    
+% \end{multicols}
+% \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+%     \item 
+% \end{enumerate}
