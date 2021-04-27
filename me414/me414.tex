@@ -822,8 +822,18 @@
             \paragraph{Definição}Conhecido em inglês como \textbf{Expected Value}, representa qual seria o valor ponderado entre as probabilidades de todos os possíveis valores de $X$, podendo resultar em um valor impossível. Formalmente representada pela seguinte equação:
                 \begin{equation}
                     \boxed{
-                        E(X) = \sum_{i=1}^{n} x_{i} \cdot P(X = x_{i})
+                        E(X) = \mu = 
+                        \sum_{i=1}^{n} x_{i} \cdot P(X = x_{i})
                     }
                 \end{equation}
 
+        \subsection{Variância}
+            \paragraph{Definição}Quantificação do quão distantes os valores de uma variável aleatória $X$ estão de sua esperança, novamente uma métrica numérica que desconsidera o evento em si. Formalmente representada pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        V(x) = \sigma^{2} = 
+                        E[(X - E(X))^{2}] =
+                        E(X^{2}) - (E(X))^{2}
+                    }
+                \end{equation}
 \end{document}
