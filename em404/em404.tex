@@ -771,7 +771,7 @@
                 \end{equation}
 
         \subsection{Escoamento em Regime Permanente}
-            \paragraph{Definição}Quantidade de massa fluidindo a uma taxa constante ao longo de um recipiente, ou superfície, podendo possuir diversas entradas e saídas, sendo descrito pela seguinte equação:
+            \paragraph{Definição}Quantidade de massa fluidindo a uma taxa constante ao longo da fronteira do sistema, podendo possuir diversas entradas e saídas, sendo descrito pela seguinte equação:
                 \begin{equation}
                     \boxed{
                         \dot{m} = \rho_{1} A_{1} V_{1}
@@ -799,6 +799,29 @@
                     \hspace{10mm}
                     \boxed{
                         \Sigma \vec{M}_{O} = \dot{m} (\vec{d}_{2}\times\vec{v}_{2} - \vec{d}_{1}\times\vec{v}_{1})
+                    }
+                \end{equation}
+
+        \subsection{Escoamento}
+            \paragraph{Definição}Quantidade de massa fluindo a uma taxa não constante ao longo da fronteira do sistema, podendo possuir diversas entradas e saídas, sendo descrito pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        R = \dot{m} (v - v_{0}) = \dot{m} u
+                        \quad
+                        [\text{N}]
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item $R$, \textbf{Forças de Reação:} Par ação e reação entre os corpos envolvidos;
+                    \item $v$, \textbf{Velocidade do Corpo};
+                    \item $v_{0}$, \textbf{Velocidade da Massa:} Absorvida ou Expelida pelo corpo;
+                    \item $m$, \textbf{Massa do Corpo};
+                \end{enumerate}
+            Assim, aplicando a 2\textsuperscript{a} Lei de Newton para a equação de movimento de $m$, tanto quando massa é absorvida quanto quando massa é expelida será válida a seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        \Sigma F = m \dot{v} + \dot{m} u
                     }
                 \end{equation}
 
