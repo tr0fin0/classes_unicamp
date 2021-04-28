@@ -848,34 +848,47 @@
 
                     \item \textbf{Rotação:} Qualquer movimento angular em torno de um eixo fixo, onde todas as partículas do corpo se deslocam em trajetórias circulares, girando do mesmo ângulo ao mesmo tempo;
 
-                    \item \textbf{Geral:} Combinação entre a translação e a rotação simultaneamente ao longo do corpo;
+                    \item \textbf{Geral:} Combinação entre a translação e a rotação simultaneamente ao longo do corpo, definindo as seguintes equações para o movimento angular realizado pelo corpo:
+                        \begin{equation}
+                            \boxed{
+                                \omega = \diff{\theta}{t} = \dot{\theta}
+                            }
+                            \qquad
+                            \boxed{
+                                \omega d \omega =\alpha d\theta
+                            }
+                            \qquad
+                            \boxed{
+                                \alpha = \diff{\theta}{t} = \dot{\omega} = \ddot{\theta}
+                            }
+                        \end{equation}
+                    Quando a aceleração angular for constante, integrando as equações acima obtêm-se:
+                        \begin{equation}
+                            \boxed{
+                                \omega = \omega_{0} + \alpha t
+                            }
+                            \qquad
+                            \boxed{
+                                \omega^{2} = \omega^{2}_{0} + 2\alpha(\theta - \theta_{0})
+                            }
+                            \qquad
+                            \boxed{
+                                \theta = \theta_{0} + \omega_{0} t + \frac{1}{2}\alpha t^{2}
+                            }
+                        \end{equation}
                 \end{enumerate}
-            Assim, pode-se definir as seguintes equações para o movimento angular realizado pelo corpo:
+            Quando o corpo rígido girando em torno de um eixo fixo normal ao plano da figura pode-se escrever, utilizando a notação vetorial, as seguintes equações de movimento em coordenadas normal e tangencial:
                 \begin{equation}
                     \boxed{
-                        \omega = \diff{\theta}{t} = \dot{\theta}
+                        \vec{v} = \vec{\dot{r}} = \vec{\omega}\times\vec{r}
                     }
                     \qquad
                     \boxed{
-                        \omega d \omega =\alpha d\theta
+                        \vec{a}_{n} = \vec{\omega} \times (\vec{\omega}\times\vec{r})
                     }
                     \qquad
                     \boxed{
-                        \alpha = \diff{\theta}{t} = \dot{\omega} = \ddot{\theta}
-                    }
-                \end{equation}
-            Quando a aceleração angular for constante, integrando as equações acima obtêm-se:
-                \begin{equation}
-                    \boxed{
-                        \omega = \omega_{0} + \alpha t
-                    }
-                    \qquad
-                    \boxed{
-                        \theta = \theta_{0} + \omega_{0} t + \frac{1}{2}\alpha t^{2}
-                    }
-                    \qquad
-                    \boxed{
-                        \omega^{2} = \omega^{2}_{0} + 2\alpha(\theta - \theta_{0})
+                        \vec{a}_{t} = \vec{\alpha} \times \vec{r}
                     }
                 \end{equation}
 \end{document}
