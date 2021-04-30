@@ -905,9 +905,21 @@
                     \boxed{
                         P(X=x) = 
                         \begin{cases}
-                            p, \text{se \textbf{Sucesso}, $x=1$}\\
-                            1-p, \text{se  \textbf{Fracasso}, $x=0$}\\
+                            p,   & \text{\textbf{Sucesso} se $x=1$}\\
+                            1-p, & \text{\textbf{Fracasso} se $x=0$}\\
                         \end{cases}
+                        \qquad
+                        P(X=x)=p^{x}(1 - p)^{1-x}
+                    }
+                \end{equation}
+            Assim tem-se os seguintes resultados:
+                \begin{equation}
+                    \boxed{
+                        E(X) = p
+                    }
+                    \qquad
+                    \boxed{
+                        V(X) = p(1 - p)
                     }
                 \end{equation}
 \end{document}
