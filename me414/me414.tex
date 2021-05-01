@@ -976,4 +976,19 @@
                         V(X) = \frac{nr}{N} \left(1 - \frac{r}{N}\right)\frac{(N-n)}{(N-1)}
                     }
                 \end{equation}
+
+        \subsection{Modelo de Poisson}
+            \paragraph{Definição}Aproximação para distribuição binomial apresenta $n\to\infty$ e $p\to 0$, geralmente considera-se os seguintes critérios, $np\le 7$ ou $n\ge 20$ e $p\le 0.05$. Assim a probabilidade desta aproximação será dada pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        P(X = x) = \binom{n}{x} p^{x}(1-p)^{n-x} \approx
+                        \frac{e^{-np}(np)^{x}}{x!}
+                    }
+                \end{equation}
+            Assim tem-se os seguintes resultados:
+                \begin{equation}
+                    \boxed{
+                        E(X) = V(X) = np = \lambda
+                    }
+                \end{equation}
 \end{document}
