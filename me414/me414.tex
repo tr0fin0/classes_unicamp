@@ -958,4 +958,22 @@
                         V(X) = \frac{1-p}{p^{2}}
                     }
                 \end{equation}
+
+        \subsection{Modelo Hipergeométrico}
+            \paragraph{Definição}Modelo em que a população de $N$ objetos é divida em duas características, $r$ tem a caraterística $A$ e $N-r$ tem a caraterística $B$, e realiza-se $n$ extrações sem reposição. Assim a probabilidade de que neste grupo com $n$ elementos possua $x$ elementos da característica $A$ será dada pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        P(X = x) = \frac{\binom{r}{x}\binom{N-r}{n-x}}{\binom{N}{n}}
+                    }
+                \end{equation}
+            Assim tem-se os seguintes resultados:
+                \begin{equation}
+                    \boxed{
+                        E(X) = \frac{nr}{N}
+                    }
+                    \qquad
+                    \boxed{
+                        V(X) = \frac{nr}{N} \left(1 - \frac{r}{N}\right)\frac{(N-n)}{(N-1)}
+                    }
+                \end{equation}
 \end{document}
