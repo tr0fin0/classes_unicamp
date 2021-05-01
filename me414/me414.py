@@ -105,7 +105,7 @@ if(False):
     print("coeficiente de correlação: {:.2f}".format(ccxy(x,y)))
 
 #parte 5 a 8
-if(True):
+if(False):
     # 6: 1 2 3 4 5 6, 6
     # 5: 2 3 4 5 6,   5
     # 4: 3 4 5 6,     4
@@ -152,3 +152,35 @@ if(True):
     print("P(Ac | B):  {:.2f}".format(acb))
     print("P(Bc | A):  {:.2f}".format(bca))
     print("P(B  | Ac): {:.2f}".format(bac))
+
+#partes 9 à 11
+if(True):
+    values = np.array([-7, -4, -2, 0, 6, 8])
+    weight = np.array([12/49, 11/49, 6/49, 2/49, 8/49, 10/49])
+
+    expectedValue = np.sum(values*weight)
+    varianceValue = np.sum((values*values)*weight) - expectedValue**2
+
+    #function: Y = aX + b, when necessary
+    a = 8
+    b = 15
+    expectedValueY    = a*expectedValue + b
+    varianceValueY    = (a**2)*varianceValue
+    standardDeviation = varianceValueY**(1/2)
+
+    print("esperança: {:.4f}".format(expectedValueY))
+    print("variância: {:.4f}".format(varianceValueY))
+    print("desvio padrão: {:.4f}".format(standardDeviation))
+
+
+    #combine expected value
+    x1 = 2.38
+    x2 = 17.3
+    a1 = -6
+    a2 = -18
+
+    expectedValueR = a1*x1 + a2*x2
+    varianceValueR = (a1**2)*x1 + (a2**2)*x2
+
+    print("esperança resultante: {:.4f}".format(expectedValueR))
+    print("variância resultante: {:.4f}".format(varianceValueR))
