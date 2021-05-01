@@ -940,4 +940,22 @@
                         V(X) = np(1-p)
                     }
                 \end{equation}
+
+        \subsection{Modelo Geométrico}
+            \paragraph{Definição}Modelo de ensaios de Bernoulli independentes com mesma probabilidade $p$ de sucesso que sejam repetidos até que o primeiro sucesso seja obtido. Assim a probabilidade de se observar $x$ será dada pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        P(X = x) = (1-p)^{x-1}p
+                    }
+                \end{equation}
+            Assim tem-se os seguintes resultados:
+                \begin{equation}
+                    \boxed{
+                        E(X) = \frac{1}{p}
+                    }
+                    \qquad
+                    \boxed{
+                        V(X) = \frac{1-p}{p^{2}}
+                    }
+                \end{equation}
 \end{document}
