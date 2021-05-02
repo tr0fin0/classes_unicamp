@@ -39,9 +39,15 @@
 % Configurando espaços entre paragrafos
 %\setlength{\parskip}{0.5em}
 
+%Configurando numeração de objetos; figuras, equações e etc., em ambientes; section, subsection e etc..
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{equation}{subsection}
+
 %Configurando pacote de Gráficos plots
 \usepackage{pgfplots}
 \usepackage{tikz}
+\usepgfplotslibrary{statistics}
 
 %Configurando pacote de circuitos
 \usepackage{circuitikz}
@@ -124,7 +130,9 @@
     \tableofcontents
 \newpage
 
-    \section{Introdução}
+    \section{Análise Descritiva}
+        \paragraph{Definição}Métodos para resumir e sintetizar dados obtidos de uma amostra, podendo ser resumidos através de diferentes métricas, adequadas as variáveis analisadas.
+
         \subsection{Estrutura dos Dados}
             \paragraph{Definição}Organição das condições de um elemento estudado de acordo com sua estrutura e atributos, classificados por sua semelhança como mostrados a seguir:
                 \begin{enumerate}[noitemsep]
@@ -140,46 +148,86 @@
                         \end{enumerate}
                 \end{enumerate}
 
-        \subsection{Análise Descritiva}
-            \paragraph{Definição}Métodos para resumir e sintetizar dados obtidos de uma amostra, podendo ser resumidos através de diferentes métricas, adequadas as variáveis analisadas, como mostradas a seguir:
-                \begin{enumerate}[noitemsep]
-                    \item \textbf{Métricas Quantitativas:} Resultados numéricos consolidados, como:
-                        \begin{enumerate}[noitemsep]
-                            \item \texttt{Média:} Se $x_{1}, \cdots, x_{n}$ são $n$ observações, a média aritmética será dada pela seguinte equação:
-                                \begin{equation}
-                                    \boxed{
-                                        \overline{x} = \frac{1}{n} \sum_{i = 1}^{n} x_{i}
-                                    }
-                                \end{equation}
-                        \item \texttt{Mediana:} Divide o conjunto de dados em dois grupos, cada um com 50\% das observações, sendo dada pela seguinte equação:
-                                \begin{equation}
-                                    \boxed{
-                                        Q_{2} =
-                                        \begin{cases}
-                                            x_{(\frac{n+1}{2})},  & \text{se $n$ é ímpar};\vspace{2.5mm}\\
-                                            \frac{x_{(\frac{n}{2})} + x_{(\frac{n}{2} + 1)}}{2},  & \text{se $n$ é par};\\
-                                        \end{cases}
-                                    }
-                                \end{equation}
-                            \item \texttt{Moda:} Métrica com maior número de ocorrências na amostra;
-                            \item \texttt{Variação:} Média dos desvios ao quadrado será dada pela seguinte equação:
-                                \begin{equation}
-                                    \boxed{
-                                        s^{2} = \frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \overline{x})^{2}
-                                    }
-                                \end{equation}
-                            \item \texttt{Desvio Padrão:} Raiz quadrada da variância será dada pela seguinte equação:
-                                \begin{equation}
-                                    \boxed{
-                                        s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \overline{x})^{2}}
-                                    }
-                                \end{equation}
-                        \end{enumerate}
-                    \item \textbf{Métricas Visuais:} Resultados visualmente consolidados, como:
-                        \begin{enumerate}[noitemsep]
-                            \item \texttt{Gráficos:} 
-                            \item \texttt{Figuras:} 
-                        \end{enumerate}
+        \subsection{Média}
+            \paragraph{Definição}Medida de posição central em que se $x_{1}, \cdots, x_{n}$ são $n$ observações, a média aritmética será dada pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        \overline{x} = \frac{1}{n} \sum_{i = 1}^{n} x_{i}
+                    }
+                \end{equation}
+
+        \subsection{Mediana}
+            \paragraph{Definição}Medida de posição central em que divide o conjunto de dados em dois grupos, cada um com 50\% das observações, sendo dada pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        Q_{2} =
+                        \begin{cases}
+                            x_{(\frac{n+1}{2})},  & \text{se $n$ é ímpar};\vspace{2.5mm}\\
+                            \frac{x_{(\frac{n}{2})} + x_{(\frac{n}{2} + 1)}}{2},  & \text{se $n$ é par};\\
+                        \end{cases}
+                    }
+                \end{equation}
+
+        \subsection{Moda}
+            \paragraph{Definição}Métrica com maior número de ocorrências na amostra;
+
+        \subsection{Variância}
+            \paragraph{Definição}Medida de dispersão em que a média dos desvios ao quadrado será dada pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        s^{2} = \frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \overline{x})^{2}
+                    }
+                \end{equation}
+                \begin{enumerate}[rightmargin=\leftmargin, noitemsep]
+                    \item \textbf{Coeficiente de Variação:} Normaliza o desvio padrão com relação a média do conjunto de dados de tal forma que os desvios padrões de diferentes amostras possam ser comparadas, será dado pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                C_{V} = \frac{s}{\overline{x}}
+                            }
+                        \end{equation}
+                \end{enumerate}
+
+        \subsection{Desvio Padrão}
+            \paragraph{Definição}Medida de dispersão em que a raiz quadrada da variância será dada pela seguinte equação:
+            \begin{equation}
+                \boxed{
+                    s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \overline{x})^{2}}
+                }
+            \end{equation}
+
+        \subsection{Coeficiente de Correlação}
+            \paragraph{Definição}Quantificação da relação linear entre duas variáveis quantitativas, avaliando como cada uma delas estará deslocada proporcionalmente da média da amostra com $n$ observações. Formalmente descrita pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        -1 \le
+                        C_{C}(x,y) = \frac{1}{n-1} \sum_{i=1}^{n} 
+                        \left(\frac{x_{i}-\overline{x}}{s_{x}}\right)
+                        \cdot
+                        \left(\frac{y_{i}-\overline{y}}{s_{y}}\right)
+                        \le 1
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Desvio Padronizado:} Define-se que a operação realizada representa quão distante uma observação $x_{i}$, ou $y_{i}$, está afastada de sua respectiva média $\overline{x}$, ou $\overline{y}$, sendo descrita pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                z_{x_{i}} = \frac{x_{i}-\overline{x}}{s_{x}}
+                            }
+                            \hspace{20mm}
+                            \boxed{
+                                z_{y_{i}} = \frac{y_{i}-\overline{y}}{s_{y}}
+                            }
+                        \end{equation}
+                \end{enumerate}
+            Assim classifica-se a relação entre duas variáveis de acordo com o coeficiente de correlação:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Positivamente Associadas:} Quando as variáveis apresentam associação linear crescente, ou seja, apresentam um coeficiente de correlação:
+                        \[\boxed{0 < C_{C}(x,y) \le 1}\]
+                    \item \textbf{Negativamente Associadas:} Quando as variáveis apresentam associação linear decrescente, ou seja, apresentam um coeficiente de correlação:
+                        \[\boxed{-1 \le C_{C}(x,y) < 0}\]
+                    \item \textbf{Não Associadas:} Quando as variáveis não apresentam associação linear, ou seja, apresentam um coeficiente de correlação:
+                        \[\boxed{C_{C}(x,y) = 0}\]
                 \end{enumerate}
 
         \subsection{Análise Descritiva Univariada}
@@ -214,9 +262,24 @@
                                 \end{enumerate}
                         \end{enumerate}
                 \end{enumerate}
+
+        \subsection{Análise Descritiva Bivariada}
+            \paragraph{Definição}Análise conjunta de dois conjuntos de variáveis presente no estudo, buscando classificá-las, relacioná-las e obter métricas para resumi-las. Recomenda-se as seguintes métrica para cada categoria analisada:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Qualitativas:} Comparação dos dados independentes em relações proporcionais aos diferentes subconjuntos dos dados;
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Porcentagens Relativas};
+                            \item \texttt{Gráficos de Barras};
+                        \end{enumerate}
+                    \item \textbf{Quantitativas:} Compação relacional entre as variáveis procurando explorar como uma influencia a outra;
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Coeficiente de Correlação:} Gráfico relacionando as diferente variáveis em diferentes eixos;
+                            \item \texttt{Gráfico de Dispersão:} Medida que representa a associação linear entre variáveis quantitativas;
+                        \end{enumerate}
+                \end{enumerate}
 \newpage
 
-    \section{Ferramentas de Análise Descritiva}
+    \section{Ferramentas Gráficas}
         \subsection{Histograma}
             \paragraph{Definição}Representação gráfica de uma variável contínua que agrupada os valores em intervalos, abertos em uma extremidade e fechados na outra, regulares de acordo com as frequências dos dados, construídos como mostrado no exemplo a seguir:
 
@@ -305,6 +368,125 @@
                         \end{axis}
                     \end{tikzpicture}
                 \end{figure} \noindent
+        Estes gráficos possibilitam expressar dados de maneira eficiente, pois conclusões visuais auxiliam na análise dos dados apresentados. Há diferentes classificações de Histogramas, sendo apresentados abaixo:
+            \begin{figure}[H]
+                \centering
+                \begin{subfigure}[t]{0.3\textwidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                                xmin = 0,
+                                xmax = 11,
+                                ymin = 0, 
+                                ymax = 10,
+                                minor x tick num = 4,
+                                minor y tick num = 1,
+                                area style,
+                                width  = 5cm,
+                                height = 5cm,
+                                %ylabel = {Frequência},
+                                %xlabel = {Quantidade},
+                            ]
+                            \addplot+[
+                                fill = white,
+                                draw = black,
+                                ybar interval,
+                                mark = no
+                            ] 
+                                plot coordinates {
+                                (1,5) 
+                                (2,7) 
+                                (3,9) 
+                                (4,7) 
+                                (5,5) 
+                                (6,4)
+                                (7,3)
+                                (8,2)
+                                (9,1)
+                                (10,1)
+                            };
+                        \end{axis}
+                    \end{tikzpicture}
+                    \caption{Assimétrico à Esquerda}
+                \end{subfigure}
+                \begin{subfigure}[t]{0.3\textwidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                                xmin = 0,
+                                xmax = 11,
+                                ymin = 0, 
+                                ymax = 10,
+                                minor x tick num = 4,
+                                minor y tick num = 1,
+                                area style,
+                                width  = 5cm,
+                                height = 5cm,
+                                %ylabel = {Frequência},
+                                %xlabel = {Quantidade},
+                            ]
+                            \addplot+[
+                                fill = white,
+                                draw = black,
+                                ybar interval,
+                                mark = no
+                            ] 
+                                plot coordinates {
+                                (1,1) 
+                                (2,3) 
+                                (3,5) 
+                                (4,7) 
+                                (5,9) 
+                                (6,7)
+                                (7,5)
+                                (8,3)
+                                (9,1)
+                                (10,1)
+                            };
+                        \end{axis}
+                    \end{tikzpicture}
+                    \caption{Perfeitamente Simétrico}
+                \end{subfigure}
+                \begin{subfigure}[t]{0.3\textwidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                                xmin = 0,
+                                xmax = 11,
+                                ymin = 0, 
+                                ymax = 10,
+                                minor x tick num = 4,
+                                minor y tick num = 1,
+                                area style,
+                                width  = 5cm,
+                                height = 5cm,
+                                %ylabel = {Frequência},
+                                %xlabel = {Quantidade},
+                            ]
+                            \addplot+[
+                                fill = white,
+                                draw = black,
+                                ybar interval,
+                                mark = no
+                            ]
+                                plot coordinates {
+                                (1,1) 
+                                (2,2) 
+                                (3,3) 
+                                (4,4) 
+                                (5,5) 
+                                (6,7)
+                                (7,9)
+                                (8,7)
+                                (9,5)
+                                (10,3)
+                            };
+                        \end{axis}
+                    \end{tikzpicture}
+                    \caption{Assimétrico à Direita}
+                \end{subfigure}
+                \caption{Simétria de Distribuição}
+            \end{figure} \noindent
 
         \subsection{Ramo-e-Folhas}
             \paragraph{Definição}Representação Gráfica de uma contínua que agrupada os valores separando-os em duas partes: ramo, colocado a esquerda, e folhas, colocado a direita; mantendo as informações, construídos como mostrado no exemplo a seguir:
@@ -332,6 +514,74 @@
                     \end{tabular}
                     \caption{Distribuição de Ramos-e-Folhas}\label{table:leafs}
                 \end{table}
+
+        \subsection{Quartis}
+            \paragraph{Definição}Representação gráfica que divide o conjunto de dados em 4 partes iguais: primeiro quartil, $Q_{1}$; segundo quartil, $Q_{2}$; e terceiro quartil, $Q_{3}$. Obtidos através do seguinte procedimento:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Ordenação:} Organizar os dados do conjunto amostral;
+                    \item \textbf{Segundo Quartil:} Obter a mediana deste conjunto, $Q_{2}$;
+                    \item \textbf{Primeiro Quartil:} Obter a mediana do conjunto inferior a $Q_{2}$, $Q_{1}$;
+                    \item \textbf{Terceiro Quartil:} Obter a mediana do conjunto superior a $Q_{2}$, $Q_{3}$;
+                \end{enumerate}
+
+        \subsection{Boxplot}
+            \paragraph{Definição}Representação gráfica que permite resumir visualmente o esquema de 5 números, possibilitando analisar posição, dispersão, assimetria e outliers. Obtidos como repressentado abaixo:
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}
+                            [
+                                xmin = 0,
+                                xmax = 5,
+                                ymin = 0, 
+                                ymax = 2,
+                                minor x tick num = 3,
+                                minor y tick num = 1,
+                                %area style,
+                                width  = 5cm,
+                                height = 5cm,
+                                %ylabel = {Frequência},
+                                %xlabel = {Quantidade},
+                            ]
+                          \addplot+[
+                              color = black,
+                          boxplot prepared={
+                            median=2,
+                            upper quartile= 3.5,
+                            lower quartile= 1.5,
+                            upper whisker = 4.5,
+                            lower whisker = 0.5
+                          },
+                          ] coordinates {};
+                        \end{axis}
+                    \end{tikzpicture}
+                    \caption{Representação de Boxplot}
+                \end{figure} \noindent
+            Neste diagrama temos, medidos da esquerda para direito, as seguintes informações sobre os dados apresentados:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Limite Inferior:} Representa o valor mínimo da amostra, caso não hajam outliers, ou, caso hajam outliers, será obtido pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                Q_{1} - 1.5 \times IQ
+                            }
+                        \end{equation}
+                    \item $Q_{1}$, \textbf{Primeiro Quartil};
+                    \item $Q_{2}$, \textbf{Segundo Quartil};
+                    \item $Q_{3}$, \textbf{Terceiro Quartil};
+                    \item $IQ$, \textbf{Intervalo Interquartílico:} Intervalo que compreende 50\% dos dados da amostra, será obtido pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                IQ = Q_{3} - Q_{1}
+                            }
+                        \end{equation}
+                    \item \textbf{Limite Superior:} Representa o valor máximo da amostra, caso não hajam outliers, ou, caso hajam outliers, será obtido pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                Q_{3} + 1.5 \times IQ
+                            }
+                        \end{equation}
+
+                \end{enumerate}
 \newpage
 
     \section{Análise Combinatória}
@@ -430,13 +680,43 @@
                     }
                 \end{equation}
             Onde:
-                \begin{enumerate}[noitemsep]
-                    \item \textbf{Espaço Amostral:} Conjunto de todos os eventos, $\Omega$;
-                    \item \textbf{Evento:} Subconjunto do espaço amostra denotado por letras, A, B, ...;
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
                     \item \textbf{Elemento:} Acontecimento registrado, $\omega_{i}$;
+
+                    \item \textbf{Espaço Amostral:} Conjunto de todos os eventos, $\Omega$;
+
+                    \item \textbf{Evento:} Subconjunto do espaço amostra denotado por letras, A, B, ...;
+                        \begin{enumerate}[rightmargin = \leftmargin]
+                            \item \textbf{Interseção de Eventos:} Elementos que pertencem simultaneamente ao evento $A$ e ao evento $B$, $A \cap B$;
+
+                            \item \textbf{União de Eventos:} Elementos que pertencem ao evento $A$ ou ao evento $B$, $A \cup B$;
+                                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                                    \item \texttt{Eventos Disjuntos:} Nenhum elemento do evento $A$ pertence ao evento $B$ e vice-versa, $A \cap B = \emptyset$
+                                \end{enumerate}
+
+                            \item \textbf{Evento Complementar:} Se o evento $A$ e $B$ possuem $A\cap B = \emptyset$ e $A \cup B = \Omega$, então são complementares, $A = B^{C}$.
+                        \end{enumerate}
                 \end{enumerate}
-            Nota-se que cada evento ou elemento possuirá uma probabilidade de ocorrer, definindo-se como mostrado a seguir:
-                \begin{enumerate}[noitemsep]
+            Nota-se que cada evento ou elemento possuirá uma probabilidade, uma chance, de ocorrer.
+
+        \subsection{Probabilidade Elemento}
+            \paragraph{Definição}Seja $\omega_{i}$ um elemento amostral em $\Omega$, então a probabilidade do elemento $i$, $P(\omega_{i})$, ocorrer será:
+                \begin{equation}
+                    \boxed{
+                        \sum_{i=1}^{n} P(\omega_{i}) = 1
+                    }
+                    \hspace{10mm}
+                    \boxed{
+                        0 \le P(\omega_{i}) \le 1
+                        \hspace{2.5mm}
+                        \begin{cases}
+                            P(\omega_{i}) = 1, & \text{Elemento Certo};\\
+                            P(\omega_{i}) = 0, & \text{Elemento Impossível};
+                        \end{cases}
+                    }
+                    \end{equation}
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
                     \item \textbf{Equiprobabilidade:} Todos os elementos do espaço amostral possuem a mesma chance de ocorrer, formalmente descrito de acordo com a seguinte equação:
                         \begin{equation}
                             \boxed{
@@ -445,61 +725,189 @@
                                 \forall i = 1, ..., n
                             }
                         \end{equation}
-                    \item \textbf{Probabilidade do Evento A:} Seja $A = \{ \omega_{1}, ..., \omega_{m} \}$ um evento em $\Omega$ com $m \le n$ elementos amostrais, então a probabilidade do evento $A$, $P(A)$, ocorrer será:
+                \end{enumerate}
+
+        \subsection{Probabilidade Evento}
+            \paragraph{Definição}Seja $A = \{ \omega_{1}, ..., \omega_{m} \}$ um evento em $\Omega$ com $m \le n$ elementos amostrais, então a probabilidade do evento $A$, $P(A)$, ocorrer será:
+                \begin{equation}
+                    \boxed{
+                        P(A) = \frac{m}{n}
+                    }
+                \end{equation}
+
+        \subsection{Probabilidade União}
+            \paragraph{Definição}Sejam $A$ e $B$ eventos de um espaço amostral $\Omega$, então a probabilidade da união dos eventos $A$ e $B$ ocorrer será:
+                \begin{equation}
+                    \boxed{
+                        P(A \cup B) = P(A) + P(B) - P(A \cap B)
+                    }
+                \end{equation}
+
+        \subsection{Probabilidade Condicional}
+            \paragraph{Definição}Sejam $A$ e $B$ eventos, então a probabilidade de que $B$ ocorra dado que $A$ ocorreu será:
+                \begin{equation}
+                    \boxed{
+                        P(B|A) = \frac{P(A\cap B)}{P(A)}
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Independência:} Quando informação sobre $A$ não influência a probabilidade do evento $B$, implicando:
                         \begin{equation}
                             \boxed{
-                                P(A) = \frac{m}{n}
+                                P(A\cap B) = P(A) \cdot P(B)
+                            }
+                        \end{equation} 
+                \end{enumerate}
+
+        \subsection{Teorema de Bayes}
+            \paragraph{Definição}Seja $\{B_{1}, ... , B_{n}\}$ uma partição de eventos de $\Omega$ e $A$ mutuamente exclusivos cujo a união destes é $\Omega$, então a probabilidade de $A$ pode ser descrita pela seguinte expressão:
+                \[
+                    P(A) = \sum_{i=1}^{n} P(A\cap B_{i})
+                \]
+            Onde, aplicando probabilidade condicional, poderá ser reescrito como:
+                \[
+                    P(A) = \sum_{i=1}^{n} P(A|B_{i})\cdot P(B_{i})
+                \]
+            Assim, a probabilidade de um destes eventos da partição de $A$, $B_{i}$, ocorrer será dada pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        P(B_{i} | A) = \frac{P(A | B_{i}) \cdot P(B_{i})}{\sum\limits_{i=1}^{n} \left(P(A | B_{i}) \cdot P(B_{i})\right)}
+                    }
+                \end{equation}
+\newpage
+
+    \section{Variáveis Aleatórias}
+        \paragraph{Definição}Experimento aleatório que resultada em uma quantidade numérica como resultado, ou seja, o evento em si não será prioridade. Caso uma função $X$ seja utilizada para relacionar os elementos do espaço amostral a um conjunto enumerável de pontos da reta real então está será uma \textbf{Variável Aleatória Discreta}. Assim defini-se a probabilidade desta variável ocorrer como:
+            \begin{equation}
+                \boxed{
+                    \sum_{i=1}^{n} P(X = x_{i}) = 1
+                }
+                \qquad
+                \boxed{
+                    0 \le P(X = x_{i}) \le 1
+                }
+            \end{equation}
+
+        \subsection{Função de Distribuição Acumulada}
+            \paragraph{Definição}Representação do somatório dos valores da probabilidade de uma variável aleatória $X$ até um certo intervalos $\{x_{1}, ..., x_{n}\}$, como representado na seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        F(x) = P(X \le x), \quad x\in\mathbb{R}
+                    }
+                \end{equation}
+            Pode-se representar essa variável, seguindo a seguinte notação:
+                \begin{equation}
+                    \begin{cases}
+                        F(x_{1}) &= P(X = x_{1})\\
+                        \vdots   & \vdots\\
+                        F(x_{i}) &= P(X = x_{1}) + \cdots + P(X = x_{i})\\
+                        \vdots   & \vdots\\
+                        F(x_{n}) &= P(X = x_{1}) + \cdots + P(X = x_{n})\\
+                    \end{cases}
+                    \qquad
+                    \boxed{
+                        F(x) =
+                        \begin{cases}
+                            F(x_{1}), & x \le x_{1} \\
+                            \vdots    & \\
+                            F(x_{i}), & x_{i-1} \le x \le x_{i}\\
+                            \vdots    & \\
+                            F(x_{n}), & x_{n-1} \le x \le x_{n}\\
+                        \end{cases}
+                    }
+                \end{equation}
+
+        \subsection{Esperança}
+            \paragraph{Definição}Conhecido em inglês como \textbf{Expected Value}, representa qual seria o valor ponderado entre as probabilidades de todos os possíveis valores de $X$, podendo resultar em um valor impossível. Formalmente representada pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        E(X) = \mu = 
+                        \sum_{i=1}^{n} x_{i} \cdot P(X = x_{i})
+                    }
+                \end{equation}
+            Obedecendo as seguintes propriedades:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item Se $X$ é uma variável aleatória e constantes $a$ e $b$, então:
+                        \begin{equation}
+                            \boxed{
+                                E(a X + b) = a E(X) + b
                             }
                         \end{equation}
-                    \item \textbf{Probabilidade do Elemento i:} Seja $\omega_{i}$ um elemento amostral em $\Omega$, então a probabilidade do elemento $i$, $P(\omega_{i})$, ocorrer será:
+                    \item Se $X_{1}$, ..., $X_{n}$ são variáveis aleatórias:
                         \begin{equation}
                             \boxed{
-                                0 \le P(\omega_{i}) \le 1
-                                \hspace{2.5mm}
-                                \begin{cases}
-                                    P(\omega_{i}) = 1, & \text{Elemento Certo};\\
-                                    P(\omega_{i}) = 0, & \text{Elemento Impossível};
-                                \end{cases}
-                            }
-                        \end{equation}
-                        \begin{equation}
-                            \boxed{
-                                \sum_{i=1}^{n} P(\omega_{i}) = 1
+                                E \left( \sum_{i=1}^{n} X_{i} \right) = \sum_{i=1}^{n} E(X_{i})
                             }
                         \end{equation}
                 \end{enumerate}
 
-        \subsection{Evento}
-            \paragraph{Definição}Subconjunto do espaço amostral composto por alguns de seus elementos, apresentando as seguintes operações possíveis:
-                \begin{enumerate}[noitemsep]
-                    \item \textbf{Interseção de Eventos:} Elementos que pertencem simultaneamente ao evento $A$ e ao evento $B$, $A \cap B$;
-                    \item \textbf{União de Eventos:} Elementos que pertencem ao evento $A$ ou ao evento $B$, $A \cup B$;
+        \subsection{Mediana}
+            \paragraph{Definição}Representa o valor de uma variável aleatória que a divide em dois conjuntos de igual probabilidade de ocorre, ou seja, atende a seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        P(X\ge Md) \ge \frac{1}{2}
+                    }
+                    \quad
+                    \text{e}
+                    \quad
+                    \boxed{
+                        P(X\le Md) \ge \frac{1}{2}
+                    }
+                \end{equation}
+
+        \subsection{Moda}
+            \paragraph{Definição}Representa o valor da variável $X$ com maior probabilidade de ocorrer, podendo ser mais do que um. Formalmente descrito pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        P(X = Mo) = \max\{ p_{1}, ..., p_{n} \}
+                    }
+                \end{equation}
+
+        \subsection{Variância}
+            \paragraph{Definição}Quantificação do quão distantes os valores de uma variável aleatória $X$ estão de sua esperança, novamente uma métrica numérica que desconsidera o evento em si. Formalmente representada pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        V(x) = \sigma^{2} = 
+                        E[(X - E(X))^{2}] =
+                        E(X^{2}) - (E(X))^{2}
+                    }
+                \end{equation}
+            Obedecendo as seguintes propriedades:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item Se $X$ é uma variável aleatória e constantes $a$ e $b$, então:
                         \begin{equation}
                             \boxed{
-                                P(A \cup B) = P(A) + P(B) - P(A \cap B)
+                                V(a X + b) = a^{2} V(X)
                             }
                         \end{equation}
-
-                        \begin{enumerate}[noitemsep]
-                            \item \texttt{Eventos Disjuntos:} Nenhum elemento do evento $A$ pertence ao evento $B$ e vice-versa, $A \cap B = \emptyset$
-                        \end{enumerate}
-                    \item \textbf{Evento Complementar:} Evento $A$ complementará o evento $B$, $A = B^{C}$, se atende as seguintes restrições:
+                    \item Se $X_{1}$, ..., $X_{n}$ são variáveis aleatórias:
                         \begin{equation}
                             \boxed{
-                                A \cap B = \emptyset
-                            }
-                            \hspace{5mm}
-                            \text{e}
-                            \hspace{5mm}
-                            \boxed{
-                                A \cup B = \Omega
-                            }
-                            \hspace{5mm}
-                            \to
-                            \hspace{5mm}
-                            \boxed{
-                                P(A) + P(B) = 1
+                                V \left( \sum_{i=1}^{n} X_{i} \right) = \sum_{i=1}^{n} V(X_{i})
                             }
                         \end{equation}
                 \end{enumerate}
+
+        \subsection{Variável Aleatória Discreta Uniforme}
+            \paragraph{Definição}Quando uma variável aleatória discreta assume valores $x_{1}$, ... , $x_{k}$ possuam a mesma probabilidade de ocorrer, sendo descrita pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        P(X = x_{i}) = p(x_{i}) = \frac{1}{k},
+                        \qquad
+                        \forall 1 \le i \le k
+                    }
+                \end{equation}
+
+        \subsection{Modelo de Bernoulli}
+            \paragraph{Definição}Modelagem de experimentos aleatórios em que hajam apenas 2 resultados possíveis: \textbf{Sucesso} ou \textbf{Fracasso}. Denota-se assim, considerando que $p$ seja a probabilidade de sucesso,  a seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        P(X=x) = 
+                        \begin{cases}
+                            p, \text{se \textbf{Sucesso}, $x=1$}\\
+                            1-p, \text{se  \textbf{Fracasso}, $x=0$}\\
+                        \end{cases}
+                    }
+                \end{equation}
 \end{document}

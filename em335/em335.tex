@@ -12,7 +12,7 @@
 \usepackage{array}
 \usepackage{indentfirst}
 \usepackage{multicol}
-\setlength{\multicolsep}{2pt}% 50% of original values
+\setlength{\multicolsep}{8.0pt plus 3.0pt minus 2.25pt}% 75% of original values
 \usepackage{subfiles}
 
 \usepackage{titlesec}
@@ -45,6 +45,428 @@
 
 %Configurando pacote de Gráficos
 \usepackage{tikz}
+
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{equation}{subsection}
+\counterwithin{table}{section}
+
+%Configurando pacote com Posicionamentos
+\usetikzlibrary{chains}
+\usetikzlibrary{positioning}
+\usepackage{xstring}
+
+\makeatletter
+\pgfdeclareshape{tolposition}{
+  \inheritsavedanchors[from=rectangle]
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{%
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfpathmoveto{\pgfpoint{-\pgf@xb}{0pt}}
+    \pgfpathlineto{\pgfpoint{\pgf@xb}{0pt}}
+    \pgfpathmoveto{\pgfpointadd{\pgfpointorigin}{\pgfpoint{0pt}{-\pgf@yb}}}
+    \pgfpathlineto{\pgfpoint{0pt}{\pgf@yb}}
+    \pgfusepath{stroke}
+    \pgfpathcircle{\pgfpointorigin}{0.6\pgf@yb}
+ }
+}
+
+\pgfdeclareshape{tolstraightness}{
+  \inheritsavedanchors[from=rectangle]
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{%
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfpathmoveto{\pgfpointadd{\pgfpointorigin}{\pgfpoint{-0.6\pgf@xb}{0pt}}}
+    \pgfpathlineto{\pgfpoint{0.6\pgf@xb}{0pt}}
+ }
+}
+
+\pgfdeclareshape{tolflatness}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{%
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{-0.6\pgf@xb}{-0.3\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.3\pgf@xb}{-0.3\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.6\pgf@xb}{0.3\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{-0.3\pgf@xb}{0.3\pgf@yb}}
+    \pgfpathclose
+ }
+}
+
+
+\pgfdeclareshape{tolcircularity}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{%
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathcircle{\pgfpointorigin}{0.6\pgf@yb}
+ }
+}
+
+\pgfdeclareshape{tolcylindricity}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    {
+        \pgftransformrotate{60}
+        \pgfpathmoveto{\pgfpoint{-\pgf@xb}{0.4\pgf@yb}}
+        \pgfpathlineto{\pgfpoint{0.6\pgf@xb}{0.4\pgf@yb}}
+        \pgfpathmoveto{\pgfpoint{-0.6\pgf@xb}{-0.4\pgf@yb}}
+        \pgfpathlineto{\pgfpoint{\pgf@xb}{-0.4\pgf@yb}}
+    }
+    \pgfusepath{stroke}
+    \pgfpathcircle{\pgfpointorigin}{0.4\pgf@yb}
+ }
+}
+
+\pgfdeclareshape{tolprofile line}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{%
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{-0.6\pgf@yb}{-0.3\pgf@yb}}
+    \pgfpatharc{180}{0}{0.6\pgf@yb}
+ }
+}
+
+\pgfdeclareshape{tolprofile surface}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{-0.6\pgf@yb}{-0.3\pgf@yb}}
+    \pgfpatharc{180}{0}{0.6\pgf@yb}
+    \pgfpathclose
+ }
+}
+
+
+\pgfdeclareshape{tolperpendicularity}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfpathmoveto{\pgfpoint{-0.6\pgf@yb}{-0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.6\pgf@yb}{-0.6\pgf@yb}}
+    \pgfpathmoveto{\pgfpoint{0pt}{-0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0pt}{0.6\pgf@yb}}
+ }
+}
+
+\pgfdeclareshape{tolangularity}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{0.6\pgf@yb}{0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{-0.6\pgf@yb}{-0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.6\pgf@yb}{-0.6\pgf@yb}}
+ }
+}
+
+
+\pgfdeclareshape{tolparallelism}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{-0.5\pgf@yb}{-0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0pt}{0.6\pgf@yb}}
+    \pgfpathmoveto{\pgfpoint{0pt}{-0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.5\pgf@yb}{0.6\pgf@yb}}
+ }
+}
+
+
+\pgfdeclareshape{tolsymmetry}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfpathmoveto{\pgfpoint{-0.4\pgf@yb}{-0.4\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.4\pgf@yb}{-0.4\pgf@yb}}
+    \pgfpathmoveto{\pgfpoint{-0.6\pgf@yb}{0pt}}
+    \pgfpathlineto{\pgfpoint{0.6\pgf@yb}{0pt}}
+    \pgfpathmoveto{\pgfpoint{-0.4\pgf@yb}{0.4\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.4\pgf@yb}{0.4\pgf@yb}}
+ }
+}
+
+\pgfdeclareshape{tolconcentricity}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    {\pgfpathcircle{\pgfpointorigin}{0.6\pgf@yb}}
+    \pgfpathcircle{\pgfpointorigin}{0.4\pgf@yb}
+ }
+}
+
+\pgfdeclareshape{tolcircular runout}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpointadd
+        {\pgfpoint{0pt}{0pt}}
+        {\pgfpointpolar{50}{0.2\pgf@yb}}
+    }
+    \pgfpathlineto{\pgfpointadd
+        {\pgfpoint{0pt}{0pt}}
+        {\pgfpointpolar{50}{-0.7\pgf@yb}}
+    }
+    \pgfusepath{stroke}
+    {\pgftransformrotate{-40}
+    \pgfpathmoveto{\pgfpoint{-0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0pt}{0.7\pgf@yb}}
+    \pgfpathclose
+    \pgfusepath{fill}
+    }
+ }
+}
+
+\pgfdeclareshape{toltotal runout}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpointadd
+        {\pgfpoint{-0.3\pgf@yb}{0pt}}
+        {\pgfpointpolar{50}{0.2\pgf@yb}}
+    }
+    \pgfpathlineto{\pgfpointadd
+        {\pgfpoint{-0.3\pgf@yb}{0pt}}
+        {\pgfpointpolar{50}{-0.7\pgf@yb}}
+    }
+    \pgfpathlineto{\pgfpointadd
+        {\pgfpoint{0.3\pgf@yb}{0pt}}
+        {\pgfpointpolar{50}{-0.7\pgf@yb}}
+    }
+    \pgfpathlineto{\pgfpointadd
+        {\pgfpoint{0.3\pgf@yb}{0pt}}
+        {\pgfpointpolar{50}{0.2\pgf@yb}}
+    }
+    \pgfusepath{stroke}
+    {
+    \pgftransformxshift{-0.3\pgf@yb}
+    \pgftransformrotate{-40}
+    \pgfpathmoveto{\pgfpoint{-0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0pt}{0.7\pgf@yb}}
+    \pgfpathclose
+    \pgfusepath{fill}
+    }
+    {
+    \pgftransformxshift{0.3\pgf@yb}
+    \pgftransformrotate{-40}
+    \pgfpathmoveto{\pgfpoint{-0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0pt}{0.7\pgf@yb}}
+    \pgfpathclose
+    \pgfusepath{fill}
+    }
+ }
+}
+
+\pgfdeclareshape{tolmodifier}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{% this is new
+    % store lower right in xa/ya and upper right in xb/yb
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    % construct main path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathcircle{\pgfpointlineattime{0.5}{\southwest}{\northeast}}{0.55\pgf@yb}
+ }
+}
+
+\makeatother
+
+
+
+\tikzset{
+    tolstyle/.style={
+        draw,
+        on chain=going right,
+        inner ysep=0pt,
+        minimum height=1.7em
+    },
+    type/.style={tol#1},
+    modifier/.style={tolmodifier,font=#1}
+}
+
+\newcommand{\tol}[1]{%
+    \begin{tikzpicture}[baseline=-0.3em,
+        start chain,
+        node distance=-\pgflinewidth
+    ]
+        \foreach \content in {#1} {
+            \IfSubStr{\content}{type}{
+                \edef\donode{%
+                    \noexpand\node[
+                        tolstyle,
+                        minimum width=\noexpand\pgfkeysvalueof{/pgf/minimum height},
+                        \content
+                    ]{};
+                }
+                \donode
+            }{
+                \IfSubStr{\content}{modifier}{
+                \edef\donode{\noexpand\node[tolstyle,tolmodifier,minimum width=\noexpand\pgfkeysvalueof{/pgf/minimum height},\content]{};}
+                \donode
+            }
+                \node[tolstyle]{\content};
+            }
+        }
+    \end{tikzpicture}%
+}
+
 
 % Configurando layout para mostrar códigos
 \usepackage{listings}
@@ -420,13 +842,13 @@
                     \item \textbf{Eixo-Base:} Associação de várias classes de tolerâncias de furos com uma única classe de tolerância de eixo: as = 0;
                 \end{enumerate}
             Como descritos nas figuras a seguir:
-                \begin{figure}[h]
-                    \begin{subfigure}[t]{0.5\textwidth}
+                \begin{figure}[H]
+                    \begin{subfigure}[t]{0.45\textwidth}
                         \centering
                         \includegraphics[height = 3cm]{ima2.png}
                         \caption{Sistema Furo Base}
                     \end{subfigure}
-                    \begin{subfigure}[t]{0.5\textwidth}
+                    \begin{subfigure}[t]{0.45\textwidth}
                         \centering
                         \includegraphics[height = 3cm]{ima3.png}
                         \caption{Sistema Eixo Base}
@@ -519,6 +941,429 @@
                             \item $k^{2} = 3$: \texttt{Distribuição Retangular};
                             \item $k^{2} = 6$: \texttt{Distribuição Triangular};
                             \item $k^{2} = 9$: \texttt{Distribuição Normal};
+                        \end{enumerate}
+                \end{enumerate}
+\newpage
+
+    \section{Tolerância Geométrica}
+        \paragraph{Definição}Especificação da forma necessária para uma peça, impedindo que distorções dentro das cotas dimensões especificadas sejam causadas pelo equipamento.
+            \begin{enumerate}[rightmargin = \leftmargin]
+                \item \textbf{Aplicação:} Deve-se indicar tolerâncias geométricas nos seguintes cenários:
+                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                        \item \texttt{Exatidão de Forma:} Não garantida pela fabricação;
+                        \item \texttt{Coincidência, ou aproximada, de Superfícies:} Montagens de precisão;
+                    \end{enumerate}
+
+                \item \textbf{Classificação:} Define-se diferentes faixas admissíveis para diferentes relações geométricas, como indicado abaixo:
+                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                        \item \texttt{Forma};
+                        \item \texttt{Orientação};
+                        \item \texttt{Localização};
+                        \item \texttt{Batimento};
+                        \item \texttt{Rugosidade};
+                    \end{enumerate}
+
+                \item \textbf{Representação:} Utiliza-se a seguinte organização para representar como será utilizada a tolerância:
+                    \begin{center}
+                        \tol{type=position,0.2,A,B,C}
+                    \end{center}
+                Onde, os compartimentos são numerados da esquerda para direita:
+                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                        \item \texttt{1\textsuperscript{o} Compartimento:} Símbolo de Tolerância;
+                            \begin{center}
+                                \tol{type=straightness}
+                                \tol{type=flatness}
+                                \tol{type=circularity} 
+                                \tol{type=cylindricity}
+                                \tol{type=profile line}
+                                \tol{type=profile surface}
+                                \tol{type=angularity}
+                                \tol{type=perpendicularity}
+                                \tol{type=parallelism}
+                                \tol{type=position}
+                                \tol{type=concentricity}
+                                \tol{type=symmetry}
+                                \tol{type=circular runout}
+                                \tol{type=total runout}
+                            \end{center}
+                        \item \texttt{2\textsuperscript{o} Compartimento:} Valor de Tolerância [mm];
+                        \item \texttt{3\textsuperscript{o}, 
+                            4\textsuperscript{o} e 
+                            5\textsuperscript{o} Compartimentos:} Informações sobre as Referências;
+                    \end{enumerate}
+
+                \item \textbf{Referências:} Quando necessárias um ponto, plano ou eixo recebem a denominação de primária, secundária ou terciária dependendo de suas características indicadas abaixo:
+                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                        \item \texttt{A:} Base do símbolo à uma linha de extensão da superfície;
+                        \item \texttt{B, C e D:} Base do símbolo conectado à superfície;
+                        \item \texttt{E, F e G:} Base do símbolo à um quadro de controle;
+                    \end{enumerate}
+
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 4cm]{ima4.png}
+                        \caption{Posição Referências}\label{fig:referência}
+                    \end{figure} \noindent
+            \end{enumerate}
+
+        \paragraph{Condição de Máximo Material}Cenário onde a peça possuirá sua massa máxima dentro das tolerâncias especificadas no projeto.
+
+        \subsection{Tolerâncias de Forma}
+            \paragraph{Definição}Tolerâncias admitidas aos elementos em relação à sua forma geométrica teórica, classificadas como demonstrado na sequência:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \tol{type=straightness} \textbf{Retitude:} Variação entorno de uma linha reta;
+                    \item \tol{type=flatness} \textbf{Planeza:} Variação entre dois planos coplanares;
+                    \item \tol{type=circularity} \textbf{Circularidade:} Variação entre dois círculos concêntricos;
+                    \item \tol{type=cylindricity} \textbf{Cilindricidade:} Variação entre dois cílindros coaxiais;
+                \end{enumerate}
+
+        \subsection{Tolerância de Perfil}
+            \paragraph{Definição}Tolerâncias admitidas aos elementos em relação à sua forma superficial geométrica teórica, classificadas como demonstrado na sequência:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \tol{type=profile line} \textbf{Perfil de Curva:} Variação entorno de círculos concêntricos;
+                    \item \tol{type=profile surface} \textbf{Perfil de uma Superfície:} Variação entre esferas concêntricas;
+                \end{enumerate}
+
+        \subsection{Tolerâncias de Orientação}
+            \paragraph{Definição}Tolerâncias admitidas dos elementos em relação aos demais, partindo de uma referência, classificadas como demonstrado na sequência:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \tol{type=angularity} \textbf{Inclinação:} Superfície indicada à un ângulo fixo da referência;
+                    \item \tol{type=perpendicularity} \textbf{Perpendicularidade:} Superfície indicada à 90\textsuperscript{o} da referência;
+                    \item \tol{type=parallelism} \textbf{Paralelismo:} Superfície indicada paralela a referência;
+                \end{enumerate}
+
+        \subsection{Tolerâncias de Localização}
+            \paragraph{Definição}Tolerâncias admitiadas aos elementos em relação a si próprio, classificadas como demonstrado na sequência:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \tol{type=position} \textbf{Posição:} Localização teórica do elemento;
+                    \item \tol{type=concentricity} \textbf{Concentricidade:} Diâmetros com centros concidentes;
+                    \item \tol{type=symmetry} \textbf{Simetria:} Plano médio dos elementos é concidente;
+                \end{enumerate}
+
+        \subsection{Tolerâncias de Batimento}
+            \paragraph{Definição}Tolerâncias admitiadas aos elementos em relação a revolução do sistema, classificadas como demonstrado na sequência:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \tol{type=circular runout} \textbf{Batimento:} Tolerância para o giro de uma peça;
+                    \item \tol{type=total runout} \textbf{Batimento Total:} Tolerância para o giro de uma peça rotacionada;
+                \end{enumerate}
+            
+        \subsection{Tolerâncias de Rugosidade}
+            \paragraph{Definição}Tolerâncias admitiadas aos elementos em relação a seu acabamento, classificadas como demonstrado na sequência:
+\newpage
+
+    \section{Rugosidade}
+        \paragraph{Definição}Desvios micro geométricos presentes nas superfícies das peças causadas tanto por desvios de produção e quanto pelas tolerâncias empregadas, considerando a qualidade desejada para o projeto e o tempo necessário para que tais demandas sejam atendidas.
+            \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                \item \textbf{Classificação:} Diferencia-se as imperfeições presentes nas peças de acordo com sua característica:
+                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                        \item \texttt{Ondulação:} Grandes variações no perfil, baixa frequência de imperfeições;
+                        \item \texttt{Rugosidade:} Pequenas variações no perfil, alta frequência de imperfeições;
+                    \end{enumerate}
+
+                \item \textbf{Medição:} Diferentes métodos são empregados, utilizando menos ou mais tempo. Atualmente o mais usado é o Sistema M;
+
+                \item \textbf{Representação:} Desenhos técnicos utilizaram a seguinte notação para representar rugosidade:
+                    \begin{figure}[H]
+                        \begin{subfigure}[t]{0.60\textwidth}
+                            \centering
+                            \includegraphics[height = 6cm]{ima8.png}
+                            \caption{Descrição Símbolos}
+                        \end{subfigure}
+                        \begin{subfigure}[t]{0.30\textwidth}
+                            \centering
+                            \includegraphics[height = 6cm]{ima10.png}
+                            \caption{Direções}
+                        \end{subfigure}
+                        \caption{Complementos Rugosidade}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 2cm]{ima9.png}
+                        \caption{Representação Rugosidade}\label{fig:rugosidade}
+                    \end{figure} \noindent
+                Onde:
+                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                        \item \texttt{Rugosidade:} N1 até N12;
+                        \item \texttt{Fabricação};
+                        \item \texttt{Comprimento de Amostra};
+                        \item \texttt{Direção Estrias};
+                        \item \texttt{Sobrematerial:} Medida em [mm];
+                        \item \texttt{Complemento};
+                    \end{enumerate}
+            \end{enumerate}
+
+        \subsection{Sistema M}
+            \paragraph{Definição}Disposição de uma linha horizontal em que as áreas superiores e inferiores seja iguais, como ilustrado a seguinte figura:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 4cm]{ima5.png}
+                        \caption{Posição Referências}\label{fig:sistemaM}
+                    \end{figure} \noindent
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item $I_{V}$, \textbf{Percurso Inicial:} Medição inicial do equipamento, descartada pelo transiente inicial do sistema;
+                    \item $I_{N}$, \textbf{Percurso de Avaliação:} Extensão útil do perfil de rugosidade utilizada na avaliação;
+                    \item $I_{F}$, \textbf{Percurso Final:} Medição final do equipamento, descartada pelo transiente final do sistema;\vspace{5mm}
+                    \item $I_{T}$, \textbf{Percurso Total:} Somatório da extensão analisada pelo equipamento, incluindo trechos descartados:
+                        \begin{equation}
+                            \boxed{
+                                I_{T} = I_{V} + I_{N} + I_{F}
+                            }
+                        \end{equation}
+                    \item $I_{E}$, \textbf{Comprimento Amostral:} Amostra parcial do percurso de avaliação necessária para análise, considerando apenas a rugosidadel;
+                        \begin{equation}
+                            \boxed{
+                                I_{E} = \frac{I_{N}}{5}
+                            }
+                        \end{equation}
+                \end{enumerate}
+            Determinado o comprimento de amostragem, define-se outros parâmetros necessários para análise estatística representados na seguinte figura:
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[height = 4cm]{ima6.png}
+                    \caption{Comprimento Amostral}\label{fig:comprimentoA}
+                \end{figure} \noindent
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item $R_{P_{i}}$, \textbf{Máximo Pico:} Máxima altura de pico no comprimento amostra entre os $Z_{P_{i}}$ picos;
+
+                    \item $R_{V_{i}}$, \textbf{Mínimo Vale:} Mínima altura de vale no comprimento amostra entre os $Z_{V_{i}}$ vales;
+
+                    \item $R_{Z_{i}}$, \textbf{Máxima Variação:} Somatório entre os valores absolutos de $R_{P_{i}}$ e $R_{V_{i}}$:
+                        \begin{equation}
+                            \boxed{
+                                R_{Z_{i}} = R_{P_{i}} + R_{V_{i}}
+                            }
+                        \end{equation}
+
+                    \item $R_{T}$, \textbf{Altura Total do Perfil:} Máximo entre os $R_{Z_{i}}$:
+                        \begin{equation}
+                            \boxed{
+                                R_{T} = \max(R_{Z_{1}}, ..., R_{Z_{i}})
+                            }
+                        \end{equation}
+                \end{enumerate}
+            Este procedimento deverá ser reproduzido nos demais comprimentos amostrais obtidos da divisão do percurso de avaliação para que os valores absolutos para amostra possam ser obtidos através da seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        R_{Z} = \frac{1}{5} \sum_{i=1}^{5} R_{Z_{i}}
+                    }
+                \end{equation}
+
+            \paragraph{Desvio Médio Aritmético}Representa a média aritmética dos valores absolutos das alturas com relação a linha média ao longo do comprimento de avaliação, obtido pela seguinte figura e equação:
+                \begin{equation}
+                    \boxed{
+                        R_{A} = 
+                        \frac{1}{I_{N}} \int_{0}^{I_{N}} |y| dx = 
+                        \frac{A}{I_{N}} \approx 
+                        \frac{1}{n} \sum_{i=0}^{n} |y_{i}|
+                    }
+                \end{equation}
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[height = 4cm]{ima7.png}
+                    \caption{Desvio Aritmético}\label{fig:desvioA}
+                \end{figure} \noindent
+            Os perfils de amostragem são padronizados de acordo com a periodicidade, ou não, do processo produtivo. Processos como torneamento são periódicos, considera-se a distância aproximada entre os sulcos, enquanto processos como retificação não são períodicos, considera-se $R_{A}$ e $R_{Z}$. Assim pode-se determinar comprimentos de análise através da seguinte tabela:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}[]{l | c c}\hline
+                        Dist. Sulco [mm] & $I_{E}$ & $I_{M}$\\\hline
+                        $(0.01, 0.032]$  & 0.08    & 0.40\\
+                        $(0.032,  0.1]$  & 0.25    & 1.25\\
+                        $(0.1,   0.32]$  & 0.80    & 4.00\\
+                        $(0.32,     1]$  & 2.50    & 12.50\\
+                        $(1,      3.2]$  & 8.00    & 40.00\\\hline
+                    \end{tabular}
+                    \hspace{5mm}
+                    \begin{tabular}[]{l | c c}\hline
+                        Rug. $R_{A}$ $[\mu m]$ & $I_{E}$ & $I_{M}$\\\hline
+                        $(0,  0.1]$            & 0.25    & 1.25\\
+                        $(0.1,  2]$            & 0.80    & 4.00\\
+                        $(2,   10]$            & 2.50    & 12.50\\
+                        $(10,    ]$            & 8.00    & 40.00\\
+                                               &         & \\\hline
+                    \end{tabular}
+                    \hspace{5mm}
+                    \begin{tabular}[]{l | c c}\hline
+                        Rug. $R_{Z}$ $[\mu m]$ & $I_{E}$ & $I_{M}$\\\hline
+                        $(0,  0.5]$            & 0.25    & 1.25\\
+                        $(0.5, 10]$            & 0.80    & 4.00\\
+                        $(10,  50]$            & 2.50    & 12.50\\
+                        $(50,    ]$            & 8.00    & 40.00\\
+                                               &         & \\\hline
+                    \end{tabular}
+                    \caption{Determinação do Comprimento de Amostragem}
+                \end{table}
+
+            \paragraph{Classificação}Utiliza-se o desvio médio aritmético como referência para as diferentes classes possíveis de rugosidade, sendo representadas pela seguinte tabela:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}[]{c | c}\hline
+                        Classe Rugosidade & $R_{A}$ $[\mu m]$\\\hline
+                        N12               & 50.00\\
+                        N11               & 25.00\\
+                        N10               & 12.50\\
+                        N9                &  6.30\\
+                        N8                &  3.20\\
+                        N7                &  1.60\\
+                        N6                &  0.80\\
+                        N5                &  0.40\\
+                        N4                &  0.20\\
+                        N3                &  0.10\\
+                        N2                &  0.05\\
+                        N1                &  0.03\\\hline
+                    \end{tabular}
+                    \caption{Classificação de Rugosidade}
+                \end{table}
+
+    \section{Controle Estatístico de Processo}
+        \paragraph{Definição}Análise estatística dos processos produtivos através do feedback tanto do processo e quanto do cliente para dimensionamento e gestão de recursos de entrada, transformações e serviços. Nesta abordagem será necessário estudar o processo através dos seguintes tópicos:
+            \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                \item \textbf{Causas:} Analisa-se os dados, procurando compreender como problemas na produção possam afetar os resultados, diferenciados de acordo quanto sua regularidade:
+                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                        \item \texttt{Comuns:} Interferências aleatórias de pequena magnitude afetando a maioria das medições, se não todas;
+                        \item \texttt{Especiais:} Interferências pontuais de pequena ou grande magnitude em uma parcela reduzida das medições;
+                    \end{enumerate}
+                \item \textbf{Ações:} Soluções que visam solucionar os problemas de maneira pontual ou sistemática de acordo com as causa identificadas:
+                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                        \item \texttt{Sistemáticas:} Ações que afetam todo o processo, visando corrigir causas comuns do sistema, resultados mais expressivos;
+                        \item \texttt{Locais:} Ações que afetam poucas amostras do processo, visando corrigir causas especias do sistema, resultados menos expressivos;
+                    \end{enumerate}
+            \end{enumerate}
+
+        \subsection{Análise de Dados}
+            \paragraph{Definição}Nesta abordagem dados serão coletados e analisado através de diferentes métodos estatísticos para que decisões seja \textbf{Data Driven}, possibilitando soluções planejadas e direcionadas. Utilizam-se as seguinte métrica nesta análise:
+
+                \begin{multicols}{2}
+                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                        \item \textbf{Média Amostral:} Cada amostra possuirá cerca de 5 observações;
+                            \begin{equation}
+                                \boxed{
+                                    \overline{x} = \frac{1}{n} \sum_{i=1}^{n} x_{i}
+                                }
+                            \end{equation}
+    
+                        \item \textbf{Amplitude Amostral:} Diferença entre máximos e mínimos do conjunto amostral;
+                            \begin{equation}
+                                \boxed{
+                                    R_{i} = x_{\max} - x_{\min}
+                                }
+                            \end{equation}
+                    \columnbreak
+                        \item \textbf{Média Global:} Cada conjunto possuirá cerca de 25 amostras;
+                            \begin{equation}
+                                \boxed{
+                                    \overline{\overline{x}} = \frac{1}{m} \sum_{i=1}^{m} \overline{x}_{i}
+                                }\label{eq.mediaGlobal}
+                            \end{equation}
+    
+                        \item \textbf{Amplitude Média:} Média entre as Amplitudes Amostrais;
+                            \begin{equation}
+                                \boxed{
+                                    \overline{R} = \frac{1}{m} \sum_{i=1}^{m} R_{i}
+                                }
+                            \end{equation}
+                    \end{enumerate}
+                \end{multicols} \noindent
+            Nesta análise também utiliza-se a seguinte definição de \textbf{Desvio Padrão}:
+                \begin{equation}
+                    \boxed{
+                        \sigma = \frac{\overline{R}}{d_{2}}
+                    }\label{eq.desvP}
+                \end{equation}
+            Onde $d_{2}$ é uma constante tabelada com relação ao número de amostras utilizadas no conjuto de dados. Essa e diversas constantes necessárias para os demais cálculos podem ser encontrados através da seguinte tabela:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}[]{c | c c c c}\hline
+                        Amostras & A2    & D3    & D4    & d2\\\hline
+                        2        & 1,880 & 0     & 3,267 & 1,128\\
+                        3        & 1,023 & 0     & 2,575 & 1,693\\
+                        4        & 0,729 & 0     & 2,282 & 2,059\\
+                        5        & 0,577 & 0     & 2,115 & 2,326\\
+                        6        & 0,483 & 0     & 2,004 & 2,534\\
+                        7        & 0,419 & 0,076 & 1,924 & 2,704\\
+                        8        & 0,373 & 0,136 & 1,864 & 2,847\\
+                        9        & 0,337 & 0,184 & 1,816 & 2,970\\
+                        10       & 0,308 & 0,223 & 1,777 & 3,078\\
+                        11       & 0,285 & 0,256 & 1,744 & 3,173\\
+                        12       & 0,266 & 0,283 & 1,717 & 3,258\\
+                        13       & 0,249 & 0,307 & 1,693 & 3,336\\
+                        14       & 0,235 & 0,328 & 1,672 & 3,407\\
+                        15       & 0,223 & 0,347 & 1,653 & 3,472\\
+                        20       & 0,180 & 0,415 & 1,585 & 3,735\\\hline
+                    \end{tabular}
+                    \caption{Constantes de Análise}
+                \end{table}
+
+        \subsection{Limites Estatísticos}
+            \paragraph{Definição}Dados são normalmente analisados através de ferramentas visuais como gráficos, tanto para as médias quanto para as amplitudes. Estes limites estabelecem um intervalo em que os dados possam estar contidos e identificar outliers como descritos abaixo:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Limmites Superiores de Controle:} Estabelece o valor máximo aceitável para as medições;
+                        \begin{equation}
+                            \boxed{
+                                LSC = 
+                                \overline{\overline{x}} + \frac{3\cdot\overline{R}}{d_{2}\cdot\sqrt{n}} = 
+                                \overline{\overline{x}} + A_{2}\cdot\overline{R}
+                            }
+                            \qquad
+                            \boxed{
+                                LSC = 
+                                \overline{R} + \frac{3\cdot d_{3}\cdot\overline{R}}{d_{2}} = 
+                                D_{4}\cdot\overline{R}
+                            }
+                        \end{equation}
+                    \item \textbf{Limmites Inferiores de Controle:} Estabelece o valor mínimo aceitável para as medições;
+                        \begin{equation}
+                            \boxed{
+                                LIC = 
+                                \overline{\overline{x}} - \frac{3\cdot\overline{R}}{d_{2}\cdot\sqrt{n}} = 
+                                \overline{\overline{x}} - A_{2}\cdot\overline{R}
+                            }
+                            \qquad
+                            \boxed{
+                                LIC = 
+                                \overline{R} - \frac{3\cdot d_{3}\cdot\overline{R}}{d_{2}} = 
+                                D_{3}\cdot\overline{R}
+                            }
+                        \end{equation}
+                \end{enumerate}
+
+        \subsection{Capacidade de Produção}
+            \paragraph{Definição}Além dos dados estatísticos serão necessários determinar se o processo será possível dentro das exigências impostas tanto pela produção quanto pelo cliente. Assim estabelecem os seguintes parâmetros:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Capacidade de Processo:} Possibilidade do processo produzir 99,73\% das peças dentro da tolerância estabelecida;
+                        \begin{equation}
+                            \boxed{
+                                CP = \frac{t}{6\sigma}
+                                \qquad
+                                \begin{cases}
+                                    CP > 1.33, & \text{Processo \texttt{Capaz}}\\
+                                    1.0 \le CP \le 1.33, & \text{Processo \texttt{Razoável}}\\
+                                    CP \le 1.0, & \text{Processo \texttt{Incapaz}}\\
+                                \end{cases}
+                            }
+                        \end{equation}
+
+                    \item \textbf{Capabilidade de Processo:} Possibilidade do processo produzir peças sem ajustes a média ou ao desvio padrão;
+                        \begin{equation}
+                            \boxed{
+                                CPK = \min\left( \frac{\overline{\overline{x}} - LIE}{3\sigma}; \frac{LSE - \overline{\overline{x}}}{3\sigma} \right)
+                                \qquad
+                                \begin{cases}
+                                    CPK > 1.33, & \text{Capabilidade \texttt{Boa}}\\
+                                    1.0 \le CPK \le 1.33, & \text{Capabilidade \texttt{Razoável}}\\
+                                    CPK \le 1.0, & \text{Capabilidade \texttt{Ruim}}\\
+                                \end{cases}
+                            }
+                        \end{equation}
+                    Onde:
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item $t$, \texttt{Tolerância Dimensional do Processo};
+                            \item $\sigma$, \texttt{Desvio Padrão: \ref{eq.desvP}};
+                            \item $\overline{\overline{x}}$, \texttt{Média Global: \ref{eq.mediaGlobal}};
+                            \item $LSE$, \texttt{Tolerância Superior};
+                            \item $LIE$, \texttt{Tolerância Inferior};
                         \end{enumerate}
                 \end{enumerate}
 \end{document}

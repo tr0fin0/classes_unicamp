@@ -25,7 +25,9 @@
 \usepackage[thinc]{esdiff} %parcial derivatives
 \restylefloat{table}
 
+\usepackage{wrapfig}
 \usepackage{graphicx}
+\usepackage{subcaption}
 \graphicspath{ {./IMAGENS/} }
 
 % Pacote para a definição de novas cores
@@ -38,6 +40,10 @@
 % Configurando espaços entre paragrafos
 %\setlength{\parskip}{0.5em}
 
+%Configurando numeração de objetos; figuras, equações e etc., em ambientes; section, subsection e etc..
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{equation}{subsection}
 
 % Configurando pacote de circuitos
 \usepackage{circuitikz}
@@ -430,6 +436,25 @@
 
         \subsection{Avalanche}
             \paragraph{Definição}Ocorre quando o diodo está submetido a um campo elétrico elevado, causando cruzamentos de portadores minoritários na região de depleção que poderá acelerar elétrons até que estes rompam ligações covalentes
+
+        \subsection{Diodo Zener}
+            \paragraph{Definição}Quando diretamente polarizado este apresentará o mesmo funcionamento de um diodo comum, entretanto quando inversamente polarizado este se comportará como um regulador de tensão, representado pelo seguinte circuito:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                        \draw
+                        (0,0) to[empty Zener diode, l=$D_{Z}$] (0,3)
+    
+                        (3,3) to[empty diode, l=$D_{1}$] (3,2)
+                        (3,2) to[battery1, l=$V_{Z}$] (3,1)
+                        (3,1) to[resistor, l=$R_{Z}$] (3,0)
+                        (3,3) -- (6,3)
+                        (6,0) to[empty diode, l=$D_{2}$] (6,3)
+                        (3,0) -- (6,0);
+                    \end{circuitikz} 
+                    \caption{Equivalente Zener}
+                \end{figure} \noindent
 \newpage
 
     \section{Aplicações Diodo}
@@ -700,7 +725,7 @@
                         \]
                 \end{enumerate}
 
-        \subsection{Deslocadores de Tensão}
+        \subsection{Deslocador de Tensão}
             \paragraph{Definição}
                 \begin{figure}[H]
                     \centering
@@ -777,25 +802,302 @@
                 \end{figure} \noindent
 \newpage
 
-    \section{Diodo Zener}
-        \paragraph{Definição}Quando diretamente polarizado este apresentará o mesmo funcionamento de um diodo comum, entretanto quando inversamente polarizado este se comportará como um regulador de tensão, representado pelo seguinte circuito:
+    \section{Transistor Bipolar de Junção}
+        \paragraph{Definição}Dispositivo elétrico capaz de controlar corrente em sua saída através de uma tensão na entrada. Construído através da combinação em série de duas junções de semicondutores positivamente e negativamente dopados classificados de acordo com as ligações realizados, comumente representados como mostrado a seguir:
             \begin{figure}[H]
                 \centering
-                \begin{circuitikz}
-                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
-                    \draw
-                    (0,0) to[empty Zener diode, l=$D$] (0,3)
-
-                    (3,3) to[empty diode, l=$D_{1}$] (3,2)
-                    (3,2) to[battery1, l=$V_{Z}$] (3,1)
-                    (3,1) to[resistor, l=$R_{Z}$] (3,0)
-                    (3,3) -- (6,3)
-                    (6,0) to[empty diode, l=$D_{2}$] (6,3)
-                    (3,0) -- (6,0);
-                \end{circuitikz} 
-                \caption{Equivalente Zener}
+                \begin{subfigure}[t]{0.45\textwidth}
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        node[npn] (myComp) {$Q_{1}$}
+                        (myComp.B) node [anchor = east] {B}
+                        (myComp.C) node [anchor = south] {C}
+                        (myComp.E) node [anchor = north] {E};
+                    \end{circuitikz} 
+                    \caption{Transistor NPN}
+                \end{subfigure}
+                \begin{subfigure}[t]{0.45\textwidth}
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        node[pnp] (myComp) {$Q_{2}$}
+                        (myComp.B) node [anchor = east] {B}
+                        (myComp.C) node [anchor = north] {C}
+                        (myComp.E) node [anchor = south] {E};
+                        %(myComp.E) to[open, v^>=$v_o(t)$] (myComp.C)
+                    \end{circuitikz} 
+                    \caption{Transistor PNP}
+                \end{subfigure}
+                \caption{Transistores Bipolares de Junção}
             \end{figure} \noindent
+        Onde:
+            \begin{enumerate}[noitemsep]
+                \item \textbf{B:} Base do Transistor;
+                \item \textbf{C:} Coletor do Transistor;
+                \item \textbf{E:} Emissor do Transistor;
+            \end{enumerate}
 
-        \subsection{Regulador de Tensão}
-            \paragraph{Definição}Quando reversamente polarizados os diodos zener podem ser empregados como reguladores de tensão, pois permanece um liminar estável.
+        \subsection{Transistores NPN}
+            \paragraph{Definição}Transistores em que a região central será composta por uma região P, positivamente dopada, ligada em duas regiões N, negativamente dopadas, apresentando as seguintes tensões:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        node[npn] (myComp) {}
+                        (myComp.B) node [anchor = east] {B}
+                        (myComp.C) node [anchor = south] {C}
+                        (myComp.E) node [anchor = north] {E}
+                        (myComp.C) to[open, v^<=$V_{CE}$] (myComp.E)
+                        (myComp.E) to[open, v^>=$V_{BE}$] (myComp.B)
+                        (myComp.B) to[open, v^>=$V_{CB}$] (myComp.C);
+                    \end{circuitikz} 
+                    \caption{Tensões Transistor NPN}
+                \end{figure} \noindent
+            Este componente apresentará 4 situações de operação, obtidas através das direntes combinações entre a polarização direta e indireta dos diodos intrínsecos, sendo descritas abaixo:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Região de Corte:} Ocorre quando $V_{BE}$ e $V_{BC}$ são inversamente polarizados;
+                    \item \textbf{Região de Saturação:} Ocorre quando $V_{BE}$ e $V_{BC}$ são diretamente polarizados;
+                    \item \textbf{Região Ativa:} Ocorre quando $V_{BE}$ está diretamente polaraizada e $V_{BC}$ está inversamente polarizada, haverá um pequeno fluxo de corrente vinda da Base que diminui as regiões de depleção entre o Coletor e o Emissor, possibilitando assim o fluxo de corrente entre estes terminais dada como a corrente através de um diodo como representado na seguinte equação:
+                        \[
+                            I_{D} = I_{S} \cdot (e^{\frac{V_{D}}{V_{T}}} - 1)
+                        \]
+                    Esta poderá ser simplicada pela a seguinte equação:
+                        \begin{equation}
+                            I_{C} \approx I_{E} \approx I_{S} \cdot (e^{\frac{V_{BE}}{V_{T}}})
+                            \hspace{5mm}
+                            \text{quando $V_{BE} \gg V_{T}$}
+                        \end{equation}
+                    Entretato, esta modelagem desconsidera o fluxo de corrente através da Base. Uma abordagem completa será descrita abaixo:
+                        \begin{align}
+                            \boxed{
+                                \begin{cases}
+                                    I_{E} = I_{B} + I_{C}\\
+                                    I_{C} = \beta \cdot I_{B}\\
+                                    I_{C} = \alpha \cdot I_{E}\\
+                                \end{cases}
+                                \hspace{5mm}
+                                \text{onde: $\beta = 50 \sim 200$ e $\alpha = \frac{\beta}{\beta + 1} \approx 0,99$}
+                            }
+                        \end{align}
+                    \item \textbf{Região Ativa Inversa:} Ocorre quando $v_{BE}$ está inversamente polaraizada e $v_{BC}$ está diretamente polarizada;
+                \end{enumerate}
+
+        \subsection{Efeito de Early}
+            \paragraph{Definição}Descoberto por James M. Early, descrevendo como a largura de banda da base do transistor se altera com a variação de tensão aplicada entre base e coletor. Normalmente está influência será desconsiderada para simulações e cálculos, entretanto poderá ser visualizada em gráficos presentes nos datasheets, onde as curvas não são perfeitamente retas e sim anguladas.
+
+        \subsection{Modelagem}
+            \paragraph{Definição}Cada diferente circuito possuirá uma possível modelagem que incluirá, ou excluirá, informações dos transistores. Entre as principais modelagens estão as descritas abaixo:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Modelo Linear:}\\
+                    Quando o transistor estiver na região ativa seu comportamento poderá ser descrito por meio do seguinte recurso:
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}
+                                \ctikzset{component text=left}
+                                \draw
+                                (-2,2) node [ocirc, anchor = west] {B} -- (-1,2)
+                                (-1,2) to[empty diode, v<=$V_{BE}$] (-1,0)
+                                
+                                ( 2,2) node [ocirc, anchor = east] {C} -- ( 1,2)
+                                ( 1,2) to[cI, v^>=${I_{C}}$] (1,0)
+
+                                (-1,0) -- (1,0)
+                                (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
+                            \end{circuitikz} 
+                            \caption{Modelagem Linear para Transistor NPN}
+                        \end{figure} \noindent
+                    Onde:
+                        \begin{equation}
+                            \boxed{
+                                I_{C} = I_{S} \cdot e^{\frac{V_{BE}}{V_{T}}}
+                            }
+                        \end{equation}
+
+                    \item \textbf{Modelo Linear de Early:}\\
+                    Quando analisado transistores percebe-se que o haverá influência por uma Tensão de Early, normalmente desprezada por sua pequena magnitude, gerando uma pequena variação linear como representado pelo seguinte circuito:
+                        \begin{figure}[H]
+                            \centering
+                            \begin{subfigure}[t]{0.45\textwidth}
+                                \centering
+                                \begin{circuitikz}
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (-2,2) node [ocirc, anchor = west] {B} -- (-1,2)
+                                    (-1,2) to[empty diode, v<=$V_{BE}$] (-1,0)
+                                    
+                                    (4,2) node [ocirc, anchor = east] {C} -- ( 1,2)
+                                    (1,2) to[cI, v^>=${I_{C}}$] (1,0)
+                                    (3,2) to[resistor, l=$R_{O}$] (3,0)
+    
+                                    (-1,0) -- (3,0)
+                                    (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
+                                \end{circuitikz} 
+                                \caption{Grandes Sinais}
+                            \end{subfigure}
+                            \begin{subfigure}[t]{0.45\textwidth}
+                                \centering
+                                \begin{circuitikz}
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (-2,2) node [ocirc, anchor = west] {B} -- (-1,2)
+                                    (-1,2) to[resistor, l=$r_{\pi}$, v<=$v_{BE}$] (-1,0)
+                                    
+                                    (4,2) node [ocirc, anchor = east] {C} -- ( 1,2)
+                                    (1,2) to[cI, v^>=${i_{C}}$] (1,0)
+                                    (3,2) to[resistor, l=$r_{O}$] (3,0)
+    
+                                    (-1,0) -- (3,0)
+                                    (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
+                                \end{circuitikz} 
+                                \caption{Pequenos Sinais}
+                            \end{subfigure}
+                            \caption{Modelagem Linear de Early para Transistor NPN}
+                        \end{figure} \noindent
+                    Pelo modelo de grandes sinais temos:
+                        \begin{equation}
+                            \boxed{
+                                I_{C} \approx I_{E} = I_{S} \cdot (e^\frac{V_{BE}}{V_{T}})\cdot \left(1 + \frac{V_{CE}}{V_{A}}\right)
+                            }
+                            \hspace{10mm}
+                            \boxed{
+                                R_{O} = \frac{V_{A}}{I_{S} \cdot e^{\frac{V_{BE}}{V_{T}}}}
+                            }
+                            \hspace{10mm}
+                            \boxed{
+                                \beta_{O} = \beta \left(1 + \frac{V_{CE}}{V_{A}}\right)
+                            }
+                        \end{equation}
+                    Pelo modelo de pequenos sinais temos:
+                        \begin{equation}
+                            \boxed{
+                                i_{C} = I_{C} + \frac{I_{C}}{V_{A}}\cdot v_{ce}
+                            }
+                            \hspace{10mm}
+                            \boxed{
+                                r_{O} = \frac{V_{A}}{I_{C}}
+                            }
+                            \hspace{10mm}
+                            \boxed{
+                                g_{m} = \frac{I_{C}}{V_{T}}
+                            }
+                        \end{equation}
+
+                    \item \textbf{Modelo Pequenos Sinais:}\\
+                    Empregado quando os circuitos possuem uma amplitude de operação, ou seja, a fonte de tensão apresenta um valor de operação fixo e uma parcela variável, normalmente simétrica, como representada no seguinte circuito:
+                        \begin{figure}[H]
+                            \centering
+                            \begin{subfigure}[t]{0.3\textwidth}
+                                \centering
+                                \begin{circuitikz}
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (-2,1) to[battery1, l=$V_{B}$] (-2,0)
+                                    (-2,2) to[sV, l=$v_{b}$] (-2,1)
+        
+                                    (0,2) node[npn] (myComp) {}
+                                    (myComp.B) -- (-2,2)
+                                    (myComp.C) -- (0,3)
+                                    (myComp.E) -- (0,0)
+                                    
+                                    (0,3) to[resistor, l=$R$] (0,4)
+                                    (0,4) node[vcc]{}
+                                    (-2,0) node[tlground]{}
+                                    (0,0)  node[tlground]{};
+                                \end{circuitikz}
+                                \caption{Circuito Completo}
+                            \end{subfigure}
+                            \begin{subfigure}[t]{0.3\textwidth}
+                                \centering
+                                \begin{circuitikz}
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (-2,2) to[battery1, l=$V_{B}$] (-2,0)
+        
+                                    (0,2) node[npn] (myComp) {}
+                                    (myComp.B) -- (-2,2)
+                                    (myComp.C) -- (0,3)
+                                    (myComp.E) -- (0,0)
+                                    
+                                    (0,3) to[resistor, l=$R$] (0,4)
+                                    (0,4) node[vcc]{}
+                                    (-2,0) node[tlground]{}
+                                    (0,0)  node[tlground]{};
+                                \end{circuitikz}
+                                \caption{Circuito com Fonte Constante}
+                            \end{subfigure}
+                            \begin{subfigure}[t]{0.3\textwidth}
+                                \centering
+                                \begin{circuitikz}
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (-2,2) to[sV, l=$v_{B}$] (-2,0)
+        
+                                    (0,2) node[npn] (myComp) {}
+                                    (myComp.B) -- (-2,2)
+                                    (myComp.C) -- (0,3)
+                                    (myComp.E) -- (0,0)
+                                    
+                                    (0,3) to[resistor, l=$R$] (0,4)
+                                    (0,4) node[vcc]{}
+                                    (-2,0) node[tlground]{}
+                                    (0,0)  node[tlground]{};
+                                \end{circuitikz}
+                                \caption{Circuito com Fonte Variável}
+                            \end{subfigure}
+                            \par\bigskip
+                            \begin{subfigure}[t]{0.3\textwidth}
+                                \centering
+                                \begin{circuitikz}
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (-2,2) node [ocirc, anchor = west] {B} -- (-1,2)
+                                    (-1,2) to[resistor, l=$r_{\pi}$, v<=$V_{BE}$] (-1,0)
+                                    
+                                    ( 2,2) node [ocirc, anchor = east] {C} -- ( 1,2)
+                                    ( 1,2) to[cI, v^>=${I_{C}}$] (1,0)
+    
+                                    (-1,0) -- (1,0)
+                                    (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
+                                \end{circuitikz} 
+                                \caption{Pequenos Sinais Linear}
+                            \end{subfigure}
+                            \caption{Modelagem de Pequenos Sinais para Transistor NPN}
+                        \end{figure} \noindent
+                    Considera-se que uma reta tangente a exponencial, onde sua inclinação será dada pela derivada da curva. Como $V_{BE} \gg v_{be}$ pode-se considerar que $V_{BE} \approx v_{BE}$, desconsiderando sua interferência no circuito. Desta maneira, como $i_{E} \approx i_{C}$ e $I_{C} = \beta I_{B}$, obtém-se a seguintes relações:
+                        \begin{equation}
+                            \boxed{
+                                i_{E} = I_{E} + \frac{I_{E}}{V_{T}}\cdot v_{be}
+                            }
+                            \hspace{10mm}
+                            \boxed{
+                                i_{C} = I_{C} + g_{m}\cdot v_{be}
+                            }
+                            \hspace{10mm}
+                            \boxed{
+                                i_{B} = I_{B} + \frac{v_{be}}{r_{\pi}}
+                            }
+                        \end{equation}
+                    Onde:
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item \texttt{Transcondutância:} Capacidade da junção de conduzir corrente elétrica;
+                                \begin{equation}
+                                    \boxed{
+                                        g_{m} = \frac{I_{C}}{V_{T}}
+                                    }
+                                \end{equation}
+
+                            \item \texttt{Resistência $\pi$};
+                                \begin{equation}
+                                    \boxed{
+                                        \frac{1}{r_{\pi}} = \frac{g_{m}}{\beta}
+                                    }
+                                \end{equation}
+                        \end{enumerate}
+                \end{enumerate}
+
+
 \end{document}
