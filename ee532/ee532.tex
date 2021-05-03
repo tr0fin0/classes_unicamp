@@ -1105,7 +1105,29 @@
 
         \subsection{Polarização do Transistor}
             \paragraph{Definição}Afim de se contornar eventuais restrições para a operação direita de transistores em circuitos que possuam condições fora das necessidades da configuração, empregam-se os diferentes circuitos representados abaixo:
-                
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Alimentação Comum:} Fonte de tensão comum em que os resistores abaixam o nível de tensão. Será necessário supor resultados para os pontos do circuito e realizar operações interativas até que a solução esteja estável;
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}
+                                \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                \draw
+                                (0,1) node[npn] (myComp) {}
+                                (myComp.B) -- (-1,1)
+                                (myComp.C) -- (0,2)
+                                (myComp.E) -- (0,0)
+                                (0,0)  node[tlground]{}
+                                
+                                (0,2) to[resistor, l=$R$] (0,3)
+                                (0,3) node[vcc]{VCC}
+                                
+                                (-1,2) to[resistor, l=$R$] (-1,3)
+                                (-1,1) -- (-1,2)
+                                (-1,3) node[vcc]{VCC};
+                            \end{circuitikz}
+                            \caption{Alimentação para Transistor NPN}
+                        \end{figure} \noindent
+                \end{enumerate}
 
 
 \end{document}
