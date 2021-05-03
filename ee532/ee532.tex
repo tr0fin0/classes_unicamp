@@ -1058,7 +1058,7 @@
                                     (-1,2) to[resistor, l=$r_{\pi}$, v<=$V_{BE}$] (-1,0)
                                     
                                     ( 2,2) node [ocirc, anchor = east] {C} -- ( 1,2)
-                                    ( 1,2) to[cI, v^>=${I_{C}}$] (1,0)
+                                    ( 1,2) to[cI, v^>=${g_{m}v_{be}}$] (1,0)
     
                                     (-1,0) -- (1,0)
                                     (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
@@ -1098,6 +1098,14 @@
                                 \end{equation}
                         \end{enumerate}
                 \end{enumerate}
+\newpage
+
+    \section{Aplicação Transistor Bipolar de Junção}
+        \paragraph{Definição}Há diferentes maneiras de aplicar os transistores para que estes operem dentro da região ativa. Entretanto essa configuração demanda parâmetros mínimos, principalmente para Base, que podem não ser atingidos nas circunstâncias desejadas, inviabilizando sua operação. 
+
+        \subsection{Polarização do Transistor}
+            \paragraph{Definição}Afim de se contornar eventuais restrições para a operação direita de transistores em circuitos que possuam condições fora das necessidades da configuração, empregam-se os diferentes circuitos representados abaixo:
+                
 
 
 \end{document}
