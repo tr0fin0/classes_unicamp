@@ -155,15 +155,18 @@ if(False):
 
 #partes 9 à 11
 if(True):
-    values = np.array([-7, -4, -2, 0, 6, 8])
-    weight = np.array([12/49, 11/49, 6/49, 2/49, 8/49, 10/49])
+    #==========================
+    #expectedValue and variance
+    print("="*35)
+    values = np.array([0, 49, 62])
+    weight = np.array([0.48, 0.45, 0.07])
 
     expectedValue = np.sum(values*weight)
     varianceValue = np.sum((values*values)*weight) - expectedValue**2
 
     #function: Y = aX + b, when necessary
-    a = 8
-    b = 15
+    a = 1
+    b = 0
     expectedValueY    = a*expectedValue + b
     varianceValueY    = (a**2)*varianceValue
     standardDeviation = varianceValueY**(1/2)
@@ -172,8 +175,9 @@ if(True):
     print("variância: {:.4f}".format(varianceValueY))
     print("desvio padrão: {:.4f}".format(standardDeviation))
 
-
+    #======================
     #combine expected value
+    print("\n"+"="*35)
     x1 = 2.38
     x2 = 17.3
     a1 = -6
@@ -184,3 +188,87 @@ if(True):
 
     print("esperança resultante: {:.4f}".format(expectedValueR))
     print("variância resultante: {:.4f}".format(varianceValueR))
+
+    #===============
+    #square variable
+    print("\n"+"="*35)
+    expectedValue = -20
+    varianceValue = 13.2
+
+    #V(X) = E(X^2) - (E(X))^2
+    expectedValue2 = varianceValue + expectedValue**2
+    expectedValue2 = 417.3 #comment this line when variance is given
+    varianceValue = expectedValue2 - expectedValue**2
+
+    print("esperança quadrado: {:.4f}".format(expectedValue2))
+    print("variância: {:.4f}".format(varianceValue))
+
+    #===========
+    #air company
+    print("\n"+"="*35)
+    passageiros = 104
+    mala1 = 44
+    mala2 = mala1 + 55
+
+    X = np.array([0, 1, 2])
+    values = np.array([0, mala1, mala2])
+    weight = np.array([0.35, 0.33, 0.32])
+
+    expectedX = np.sum(X*weight)
+    expectedValue = np.sum(values*weight)
+    varianceValue = np.sum((values*values)*weight) - expectedValue**2
+    standardDeviation = varianceValue**(1/2)
+
+    print("esperança mala passageiro: {:.4f}".format(expectedX))
+    print("esperança mala total: {:.4f}".format(expectedX*passageiros))
+    print("esperança ganho passageiro: {:.4f}".format(expectedValue))
+    print("esperança ganho total: {:.4f}".format(expectedValue*passageiros))
+    print("desvio padrão ganho passageiro: {:.4f}".format(standardDeviation))
+    print("desvio padrão ganho total: {:.4f}".format(standardDeviation*(passageiros)**(1/2)))
+
+    #=====================
+    #binomial distribution
+    print("\n"+"="*35)
+
+    def Combination(n, k):
+        if n<k:
+            return 0
+
+        fatorialN = np.math.factorial(n)
+        fatorialK = np.math.factorial(k)
+        fatorialNK = np.math.factorial(n-k)
+
+        cnk = fatorialN/(fatorialK*fatorialNK)
+
+        return cnk
+
+    def Binomial(x, n, p):
+        cnx = Combination(n, x)
+
+        pxg = 0
+        pxl = 0
+        px = cnx*(p**(x))*((1-p)**(n-x))
+
+        for i in range(n+1):
+            cni = Combination(n, i)
+            if(i > x):
+                pxg += cni*(p**(i))*((1-p)**(n-i))
+            if(i < x):
+                pxl += cni*(p**(i))*((1-p)**(n-i))
+
+        print("P(X= {}) = {:.4f}".format(x, px))
+        print("P(X<={}) = {:.4f}".format(x, px+pxl))
+        print("P(X>={}) = {:.4f}".format(x, px+pxg))
+        print("P(X< {}) = {:.4f}".format(x, pxl))
+        print("P(X> {}) = {:.4f}".format(x, pxg)+"\n")
+
+        return px
+
+    a = Binomial(7, 7, 0.7)
+    a = Binomial(3, 7, 0.7)
+    a = Binomial(2, 5, 0.4)
+    a = Binomial(3, 5, 0.4)
+    a = Binomial(14, 15, 0.3)
+    a = Binomial(9, 15, 0.3)
+    a = Binomial(2, 13, 0.5)
+    a = Binomial(0, 13, 0.5)
