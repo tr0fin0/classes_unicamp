@@ -1112,20 +1112,89 @@
                             \begin{circuitikz}
                                 \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
                                 \draw
-                                (0,1) node[npn] (myComp) {}
-                                (myComp.B) -- (-1,1)
-                                (myComp.C) -- (0,2)
-                                (myComp.E) -- (0,0)
-                                (0,0)  node[tlground]{}
+                                (0,0) node[npn] (myNPN) {}
+                                (myNPN.B) -- (-2,0)
+                                (myNPN.E) -- (0,-2)
                                 
-                                (0,2) to[resistor, l=$R$] (0,3)
-                                (0,3) node[vcc]{VCC}
+                                (-2,0) to[resistor, l=$R_{1}$] (-2,2)
+                                (-2,2) node[vcc]{VCC}
+                    
+                                (myNPN.C) to[resistor, l=$R_{C}$] (0,2)
+                                (0,2) node[vcc]{VCC}
                                 
-                                (-1,2) to[resistor, l=$R$] (-1,3)
-                                (-1,1) -- (-1,2)
-                                (-1,3) node[vcc]{VCC};
+                                (0,-2) node[tlground]{};
                             \end{circuitikz}
                             \caption{Alimentação para Transistor NPN}
+                        \end{figure} \noindent
+
+                    \item \textbf{Divisor Resistivo:} Fonte de tensão comum em que a associação dos resistores abaixam o nível de tensão. Esta abordagem apresentará instabilidade de corrente na base, assim recomenda-se a inclusão de um \textbf{Resistor Degenerático};
+                        \begin{figure}[H]
+                            \centering
+                            \begin{subfigure}[t]{0.3\textwidth}
+                                \centering
+                                \begin{circuitikz}
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (0,0) node[npn] (myNPN) {}
+                                    (myNPN.B) -- (-2,0)
+                                    (myNPN.E) -- (0,-2)
+                                    
+                                    (-2,0) to[resistor, l=$R_{1}$] (-2,2)
+                                    (-2,2) node[vcc]{VCC}
+                                    
+                                    (-2,0) to[resistor, l_=$R_{2}$] (-2,-2)
+                                    (-2,-2) node[tlground]{}
+                        
+                                    (myNPN.C) to[resistor, l=$R_{C}$] (0,2)
+                                    (0,2) node[vcc]{VCC}
+                                    
+                                    (0,-2) node[tlground]{};
+                                \end{circuitikz}
+                                \caption{Divisor de Tensão}
+                            \end{subfigure}
+                            \begin{subfigure}[t]{0.3\textwidth}
+                                \centering
+                                \begin{circuitikz}
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (0,0) node[npn] (myNPN) {}
+                                    (myNPN.B) -- (-2,0)
+                                    
+                                    (-2,0) to[resistor, l=$R_{1}$] (-2,2)
+                                    (-2,2) node[vcc]{VCC}
+                                    
+                                    (-2,0) to[resistor, l_=$R_{2}$] (-2,-2)
+                                    (-2,-2) node[tlground]{}
+                        
+                                    (myNPN.C) to[resistor, l=$R_{C}$] (0,2)
+                                    (0,2) node[vcc]{VCC}
+                        
+                                    (myNPN.E) to[resistor, l_=$R_{E}$] (0,-2)
+                                    (0,-2) node[tlground]{};
+                                \end{circuitikz}
+                                \caption{Inclusão Resistor Degenerativo}
+                            \end{subfigure}
+                            \begin{subfigure}[t]{0.3\textwidth}
+                                \centering
+                                \begin{circuitikz}
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (0,0) node[npn] (myNPN) {}
+                                    (myNPN.B) -- (-1,0)
+                                    (myNPN.E) -- (0,-2)
+                                    (myNPN.C) -- (0,1)
+
+                                    (-1,0) to[resistor, l=$R_{1}$] (-1,1)
+                                    (-1,1) -- (0,1)
+
+                                    (0,1) to[resistor, o- , l=$R_{C}$] (0,2)
+                                    (0,2) node[vcc]{VCC}
+
+                                    (0,-2) node[tlground]{};
+                                \end{circuitikz}
+                                \caption{Alternativa ao Divisor}
+                            \end{subfigure}
+                            \caption{Divisor Resistivo para Transistor NPN}
                         \end{figure} \noindent
                 \end{enumerate}
 
