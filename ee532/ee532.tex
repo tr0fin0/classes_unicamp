@@ -1198,5 +1198,83 @@
                         \end{figure} \noindent
                 \end{enumerate}
 
+        \subsection{Amplificadores}
+            \paragraph{Definição}Circuito que potencializa o sinal de saída com base no sinal de entrada a partir de uma relação entre os demais componentes que o constituem, estes podem ser construídos com transistores em diferentes configurações:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}[]{c | c c c}\hline
+                          & B & C & E\\\hline
+                        B & X & 1 & 2\\
+                        C & X & X & X\\
+                        E & X & 3 & X\\\hline
+                    \end{tabular}
+                    \caption{Possibilidades de Ligações}
+                \end{table}
+            Assim, define-se as possíveis organizações como:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Emissor Comum:} ;
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}[american]
+                                \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                \draw
+                                (0,2) node[npn] (myNPN) {}
+                                (myNPN.B) -- (-2,2)
+                                (myNPN.C) -- (0,3)
+                                (myNPN.E) -- (0,0)
+
+                                (myNPN.C) to[short, -o] (0.5,2.75)
+                                (0.5, 2.75) node[right]{$v_{o}$}
+
+                                (-2,0) to[sV<=$v_{i}$] (-2,2)
+
+                                (-2,0) node[tlground]{}
+                                (0,0)  node[tlground]{};
+                            \end{circuitikz}
+                            \caption{Configuração de Emissor Comum}
+                        \end{figure}
+
+                    \item \textbf{Coletor Comum:} ;
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}[american]
+                                \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                \draw
+                                (0,2) node[npn] (myNPN) {}
+                                (myNPN.B) -- (-2,2)
+                                (myNPN.C) -- (0,3)
+                                (myNPN.E) -- (0,1)
+
+                                (myNPN.E) to[short, -o] (0.5,1.25)
+                                (0.5, 1.25) node[right]{$v_{o}$}
+
+                                (-2,0) to[sV<=$v_{i}$] (-2,2)
+
+                                (-2,0) node[tlground]{};
+                            \end{circuitikz}
+                            \caption{Configuração de Coletor Comum}
+                        \end{figure}
+
+                    \item \textbf{Base Comum:} ;
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}[american]
+                                \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                \draw
+                                (0,2) node[npn] (myNPN) {}
+                                (myNPN.B) -- (-1,2)
+                                (myNPN.C) -- (0,3)
+
+                                (myNPN.C) to[short, -o] (0.5,2.75)
+                                (0.5, 2.75) node[right]{$v_{o}$}
+
+                                (0,0) to[sV<=$v_{i}$] (myNPN.E)
+
+                                (0,0)  node[tlground]{};
+                            \end{circuitikz}
+                            \caption{Configuração de Base Comum}
+                        \end{figure}
+                \end{enumerate}
+
 
 \end{document}
