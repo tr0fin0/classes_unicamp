@@ -1062,7 +1062,7 @@
     
                                     (-1,0) -- (1,0)
                                     (0,-1) node [ocirc, anchor = south] {E} -- (0,0);
-                                \end{circuitikz} 
+                                \end{circuitikz}
                                 \caption{Pequenos Sinais Linear}
                             \end{subfigure}
                             \caption{Modelagem de Pequenos Sinais para Transistor NPN}
@@ -1216,22 +1216,53 @@
                     \item \textbf{Emissor Comum:} Base como entrada, Coletor como saída e Emissor ligado ao negativo, como representado pelo circuito abaixo:
                         \begin{figure}[H]
                             \centering
-                            \begin{circuitikz}[american]
-                                \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
-                                \draw
-                                (0,2) node[npn] (myNPN) {}
-                                (myNPN.B) -- (-2,2)
-                                (myNPN.C) -- (0,3)
-                                (myNPN.E) -- (0,0)
+                            \begin{subfigure}[t]{0.45\textwidth}
+                                \centering
+                                \begin{circuitikz}[american]
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (0,2) node[npn] (myNPN) {}
+                                    (myNPN.B) -- (-2,2)
+                                    (myNPN.E) -- (0,0)
+    
+                                    (myNPN.C) to[short, -o] (0.5,2.75)
+                                    (0.5, 2.75) node[right]{$v_{o}$}
+    
+                                    (myNPN.C) to[resistor, l=$R_{C}$] (0,4)
+                                    (0,4) node[vcc]{VCC}
+    
+                                    (-2,0) to[sV<=$v_{i}$] (-2,2)
+    
+                                    (-2,0) node[tlground]{}
+                                    (0,0)  node[tlground]{};
+                                \end{circuitikz}
+                                \caption{Emissor Comum Geral}
+                            \end{subfigure}
+                            \begin{subfigure}[t]{0.45\textwidth}
+                                \centering
+                                \begin{circuitikz}[american]
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (-3,0) to[sV<=$v_{i}$] (-3,2)
+                                    (-3,2) -- (-2,2)
+                                    (-3,0) node[tlground]{}
 
-                                (myNPN.C) to[short, -o] (0.5,2.75)
-                                (0.5, 2.75) node[right]{$v_{o}$}
+                                    (-2,2) node [ocirc, anchor = west] {B} -- (-1,2)
+                                    (-1,2) to[resistor, l=$r_{\pi}$, v=$V_{\pi}$] (-1,0)
 
-                                (-2,0) to[sV<=$v_{i}$] (-2,2)
+                                    (-1,0) -- (1,0)
+                                    (0,-1) node [ocirc, anchor = south] {E} -- (0,0)
+                                    (0,-1) node[tlground]{}
 
-                                (-2,0) node[tlground]{}
-                                (0,0)  node[tlground]{};
-                            \end{circuitikz}
+                                    ( 2,2) node [ocirc, anchor = east] {C} -- ( 1,2)
+                                    ( 1,2) to[cI, v^>=${g_{m}v_{\pi}}$] (1,0)
+                                    
+                                    (3,0) to[resistor, l_=$R_{C}$] (3,2)
+                                    (2,2) -- (3,2)
+                                    (3,0) node[tlground]{};
+                                \end{circuitikz}
+                                \caption{Equivalente Pequenos Sinais}
+                            \end{subfigure}
                             \caption{Configuração de Emissor Comum}
                         \end{figure}
 
