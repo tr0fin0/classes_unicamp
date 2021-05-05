@@ -1199,7 +1199,33 @@
                 \end{enumerate}
 
         \subsection{Amplificadores}
-            \paragraph{Definição}Circuito que potencializa o sinal de saída com base no sinal de entrada a partir de uma relação entre os demais componentes que o constituem, estes podem ser construídos com transistores em diferentes configurações:
+            \paragraph{Definição}Circuito que potencializa o sinal de saída com base no sinal de entrada a partir de uma relação entre os demais componentes que o constituem. Genericamente amplificadores são representados da seguinte forma:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}[american]
+                        \ctikzset{component text=center, resistors/width=0.25, resistors/zigs=1}
+                        \draw
+    
+                        (0,0) node[plain mono amp] (AMP) {amp}
+                        (AMP.in) node[anchor = east] {in}
+                        (AMP.out) node[anchor = west] {out};
+                    \end{circuitikz}
+                    \caption{Representação Amplificador}
+                \end{figure}\noindent
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item $v_{i}$, \textbf{Tensão de Entrada};
+                    \item $v_{o}$, \textbf{Tensão de Saída};
+                    \item $r_{i}$, \textbf{Impedância de Entrada:} Idealmente deseja-se que $r_{i}\to\infty$;
+                    \item $r_{o}$, \textbf{Impedância de Saída:} Idealmente deseja-se que $r_{o}\to 0$;
+                    \item $G$, \textbf{Ganho:} Relação entre a proporcão do sinal de entrada com o sinal de saída, formalmente representada pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                G = \frac{v_{o}}{v_{i}}
+                            }
+                        \end{equation}
+                \end{enumerate}
+            Transistores NPN podem ser utilizados para construir amplificadores, cada configuração resultará em um comportamento distintos com restrições. Entradas e Saídas não podem estar no mesmo pino, Base não poderá ser uma saída e Coletor não poderá ser uma entrada. Restando assim as seguintes configurações possíveis:
                 \begin{table}[H]
                     \centering
                     \begin{tabular}[]{c c | c c c}\hline
