@@ -226,8 +226,8 @@ if(True):
     print("desvio padrão ganho passageiro: {:.4f}".format(standardDeviation))
     print("desvio padrão ganho total: {:.4f}".format(standardDeviation*(passageiros)**(1/2)))
 
-    #=====================
-    #binomial distribution
+    #===================
+    #distribution models
     print("\n"+"="*35)
 
     def Combination(n, k):
@@ -255,6 +255,26 @@ if(True):
 
         return px
 
+    def Geometric(x, p):
+        #x: number of trials to sucess
+        #p: probability of sucess
+
+        px = p*(1-p)**(x-1)
+        pxl = 0
+        for i in range(1,x):
+            pxl += p*(1-p)**(i-1)
+
+        print("\nGeometric Distribution")
+        print("p   = {:.4f}".format(p))
+        print("1/p = {:.4f}".format(1/p))
+        print("P(X ={}) = {:.4f}".format(x, px))
+        print("P(X<={}) = {:.4f}".format(x, px+pxl))
+        print("P(X>={}) = {:.4f}".format(x, 1-pxl))
+        print("P(X< {}) = {:.4f}".format(x, pxl))
+        print("P(X> {}) = {:.4f}".format(x, 1-px-pxl))
+
+        return px
+
     def Binomial(x, n, p):
         #x: number of sucesses
         #n: number of trials
@@ -272,12 +292,16 @@ if(True):
             if(i < x):
                 pxl += cni*Bernoulli(i, n, p)
 
+        print("\nBinomal Distribution")
+        print("p = {:.4f}".format(p))
+        print("n = {:.4f}".format(n))
         print("P(X ={}) = {:.4f}".format(x, px))
         print("P(X<={}) = {:.4f}".format(x, px+pxl))
         print("P(X>={}) = {:.4f}".format(x, px+pxg))
         print("P(X< {}) = {:.4f}".format(x, pxl))
-        print("P(X> {}) = {:.4f}".format(x, pxg)+"\n")
+        print("P(X> {}) = {:.4f}".format(x, pxg))
 
         return px
 
-    a = Binomial(5, 9, 0.53)
+    b = Binomial(5, 9, 0.53)
+    g = Geometric(14, 1/9)
