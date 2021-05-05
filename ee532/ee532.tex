@@ -1202,17 +1202,18 @@
             \paragraph{Definição}Circuito que potencializa o sinal de saída com base no sinal de entrada a partir de uma relação entre os demais componentes que o constituem, estes podem ser construídos com transistores em diferentes configurações:
                 \begin{table}[H]
                     \centering
-                    \begin{tabular}[]{c | c c c}\hline
-                          & B & C & E\\\hline
-                        B & X & 1 & 2\\
-                        C & X & X & X\\
-                        E & X & 3 & X\\\hline
+                    \begin{tabular}[]{c c | c c c}\hline
+                           &   &   & out &\\
+                           &   & B & C   & E\\\hline
+                           & B & X & 1   & 2\\
+                        in & C & X & X   & X\\
+                           & E & X & 3   & X\\\hline
                     \end{tabular}
                     \caption{Possibilidades de Ligações}
-                \end{table}
+                \end{table}\noindent
             Assim, define-se as possíveis organizações como:
                 \begin{enumerate}[rightmargin = \leftmargin]
-                    \item \textbf{Emissor Comum:} ;
+                    \item \textbf{Emissor Comum:} Base como entrada, Coletor como saída e Emissor ligado ao negativo, como representado pelo circuito abaixo:
                         \begin{figure}[H]
                             \centering
                             \begin{circuitikz}[american]
@@ -1234,7 +1235,7 @@
                             \caption{Configuração de Emissor Comum}
                         \end{figure}
 
-                    \item \textbf{Coletor Comum:} ;
+                    \item \textbf{Coletor Comum:} Base como entrada, Coletor ligado ao negativo e Emissor como saída, como representado pelo circuito abaixo:
                         \begin{figure}[H]
                             \centering
                             \begin{circuitikz}[american]
@@ -1260,7 +1261,7 @@
                             \caption{Configuração de Coletor Comum}
                         \end{figure}
 
-                    \item \textbf{Base Comum:} ;
+                    \item \textbf{Base Comum:} Base ligada ao negativo, Coletor como saída e Emissor como entrada, como representado pelo circuito abaixo:;
                         \begin{figure}[H]
                             \centering
                             \begin{circuitikz}[american]
