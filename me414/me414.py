@@ -231,6 +231,9 @@ if(True):
     print("\n"+"="*35)
 
     def Combination(n, k):
+        #n: number of objects
+        #k: number of groups
+
         if n<k:
             return 0
 
@@ -242,21 +245,34 @@ if(True):
 
         return cnk
 
+    def Bernoulli(x, n, p):
+        #x: = 1, sucess
+        #   = 0, fail
+        #p: probability of sucess
+        #n: number of trials
+
+        px = (p**(x))*((1-p)**(n-x))
+
+        return px
+
     def Binomial(x, n, p):
+        #x: number of sucesses
+        #n: number of trials
+        #n: probability of sucess
         cnx = Combination(n, x)
 
         pxg = 0
         pxl = 0
-        px = cnx*(p**(x))*((1-p)**(n-x))
+        px = cnx*Bernoulli(x, n, p)
 
         for i in range(n+1):
             cni = Combination(n, i)
             if(i > x):
-                pxg += cni*(p**(i))*((1-p)**(n-i))
+                pxg += cni*Bernoulli(i, n, p)
             if(i < x):
-                pxl += cni*(p**(i))*((1-p)**(n-i))
+                pxl += cni*Bernoulli(i, n, p)
 
-        print("P(X= {}) = {:.4f}".format(x, px))
+        print("P(X ={}) = {:.4f}".format(x, px))
         print("P(X<={}) = {:.4f}".format(x, px+pxl))
         print("P(X>={}) = {:.4f}".format(x, px+pxg))
         print("P(X< {}) = {:.4f}".format(x, pxl))
@@ -264,11 +280,4 @@ if(True):
 
         return px
 
-    a = Binomial(7, 7, 0.7)
-    a = Binomial(3, 7, 0.7)
-    a = Binomial(2, 5, 0.4)
-    a = Binomial(3, 5, 0.4)
-    a = Binomial(14, 15, 0.3)
-    a = Binomial(9, 15, 0.3)
-    a = Binomial(2, 13, 0.5)
-    a = Binomial(0, 13, 0.5)
+    a = Binomial(5, 9, 0.53)
