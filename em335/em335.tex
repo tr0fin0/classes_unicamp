@@ -1417,69 +1417,68 @@
                             \item \texttt{Desvantagens:} Baixa flexibilidade de produção, alto tempo de implementação da célula e baixa mobilidade das máquinas;
                         \end{enumerate}
                 \end{enumerate}
+\newpage
 
-        \subsection{Processos de Fabricação}
-            \paragraph{Definição}Realização de atividades que modifiquem o produto com a finalidade de incrementar o valor pago pelo cliente. Estes procedimentos são dividos nas seguintes categorias:
+    \section{Processos Mecânicos de Fabricação}
+        \paragraph{Definição}Realização de atividades que modifiquem, pela aplicação de tensões externas, o produto com a finalidade de incrementar o valor pago pelo cliente. Estes procedimentos são dividos nas seguintes categorias:
+
+        \subsection{Conformação Plástica}
+            \paragraph{Definição}Aplicação de forças sem remoção de material do corpo, não superando a tensão de ruptura $\sigma_{r}$, agindo na região plástica do material
                 \begin{enumerate}[rightmargin = \leftmargin]
-                    \item \textbf{Processos Mecânicos:} Modificações provocadas pela aplicação de tensões externas sobre os corpos, sendo classificados da seguinte maneira:
-                        \begin{enumerate}[rightmargin = \leftmargin]
-                            \item $\sigma < \sigma_{r}$, \texttt{Conformação Plástica:} Aplicação de forças sem remoção de material do corpo, não superando a tensão de ruptura $\sigma_{r}$, agindo na região plástica do material;
-                                \begin{enumerate}[rightmargin = \leftmargin]
-                                    \item \textbf{Estampagem:} Corte ou dobra de chapas. \texttt{Exemplo}: Arruela;
-                                    \item \textbf{Extrusão:} Direta se o a pressão e a saída possuem o mesmo sentido e Indireta caso contrário. \texttt{Exemplo}: Perfil de Alumínio;
-                                    \item \textbf{Forjamento:} Quanto melhor sua qualidade menos processos de usinagem serão necessários. \texttt{Exemplo}: Virabrequim;
-                                        \begin{enumerate}[rightmargin = \leftmargin]
-                                            \item \texttt{Forjamento a Quente:} Requer mais etapas, requer mais trabalhos posteriores;
-                                            \item \texttt{Forjamento a Frio:} Requer menos etapas, requer menos trabalhos posteriores;
-                                        \end{enumerate}
-                                    \item \textbf{Trefilação:} Tração do material, geralmente com excelente qualidade superficial e acabamento. \texttt{Exemplo}: Fios;
-                                    \item \textbf{Laminação:} Menor redução, maior qualidade, pode ser realizada a quente ou a frio. \texttt{Exemplo}: Chapas;
-                                \end{enumerate}
-                            Trabalho será a \textbf{Quente}, suporta mais deformação porém terá pior acabamento, quando o processo trabalhar acima da linha recristalização e será a \textbf{Frio}, suporta menos deformação porém terá melhor acabamento, quando o processo trabalhar abaixo.
+                    \item \textbf{Estampagem:} Corte ou dobra de chapas. \texttt{Exemplo}: Arruela;
 
-                            \item $\sigma > \sigma_{r}$, \texttt{Usinagem:} Aplicação de forças com remoção de material do corpo, cavaco, superando a tensão de ruptura $\sigma_{r}$, possibilitando grande flexibilidade produtiva. Conceitos empregados em usinagem:
-                                \begin{enumerate}[rightmargin = \leftmargin]
-                                    \item \textbf{Movimento de Corte:} Movimento em direção a peça para remoção única de material;
-                                    \item \textbf{Movimento de Avanço:} Movimento ao longo da peça para remoção contínua de material;
-                                    \item \textbf{Direção de Corte:} Vetor da direção de corte instantânea;
-                                    \item \textbf{Direção de Avanço:} Vetor da direção de avanço instantânea;
-                                    \item \textbf{Velocidade Corte:} Velocidade instantânea na aresta de corte, descrita pela seguinte equação:
-                                        \begin{equation}
-                                            \boxed{
-                                                V_{C} = \frac{\pi d n }{1000}
-                                                \qquad
-                                                \left[
-                                                    \frac{\text{m}}{\text{min}}\right]
-                                            }
-                                        \end{equation}
-                                    Onde:
-                                        \begin{enumerate}
-                                            \item $d$, \texttt{Diâmetro da Peça} em mm;
-                                            \item $n$, \texttt{Rotação} em RPM;
-                                        \end{enumerate}
-                                    \item \textbf{Avanço:} Distância percorrida na direção de avanço em $\frac{\text{mm}}{\text{rotação}}$.
-                                    \item \textbf{Profundidade de Corte:} Distância de penetração da aresta de corte;
-                                \end{enumerate}
+                    \item \textbf{Extrusão:} Direta se o a pressão e a saída possuem o mesmo sentido e Indireta caso contrário. \texttt{Exemplo}: Perfil de Alumínio;
+
+                    \item \textbf{Forjamento:} Quanto melhor sua qualidade menos processos de usinagem serão necessários. \texttt{Exemplo}: Virabrequim;
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item \texttt{Forjamento a Quente:} Requer mais etapas, requer mais trabalhos posteriores;
+                            \item \texttt{Forjamento a Frio:} Requer menos etapas, requer menos trabalhos posteriores;
                         \end{enumerate}
 
-                    \item \textbf{Processos Metalúrgicos:} Modificações relacionadas a altas temperaturas sobre os corpos, sendo classificados da seguinte maneira:
-                        \begin{enumerate}[rightmargin = \leftmargin]
-                            \item $T < T_{f}$, \texttt{Solidificação:} Aplicação de temperaturas que não alteram a fase do corpo, não superando a temperatura de fusão $T_{f}$;
-                            \item $T > T_{f}$, \texttt{Metalurgia do Pó:} Aplicação de temperaturas que alteram a fase do corpo, superando a temperatura de fusão $T_{f}$;
+                    \item \textbf{Trefilação:} Tração do material, geralmente com excelente qualidade superficial e acabamento. \texttt{Exemplo}: Fios;
+
+                    \item \textbf{Laminação:} Menor redução, maior qualidade, pode ser realizada a quente ou a frio. \texttt{Exemplo}: Chapas;
+                \end{enumerate}
+            Trabalho será a \textbf{Quente}, suporta mais deformação porém terá pior acabamento, quando o processo trabalhar acima da linha recristalização e será a \textbf{Frio}, suporta menos deformação porém terá melhor acabamento, quando o processo trabalhar abaixo.
+
+        \subsection{Usinagem}
+            \paragraph{Definição}Aplicação de forças com remoção de material do corpo, cavaco, superando a tensão de ruptura $\sigma_{r}$, possibilitando grande flexibilidade produtiva. Conceitos empregados em usinagem:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Movimento de Corte:} Movimento em direção a peça para remoção única de material;
+                    \item \textbf{Movimento de Avanço:} Movimento ao longo da peça para remoção contínua de material;
+                    \item \textbf{Direção de Corte:} Vetor da direção de corte instantânea;
+                    \item \textbf{Direção de Avanço:} Vetor da direção de avanço instantânea;
+                    \item \textbf{Velocidade Corte:} Velocidade instantânea na aresta de corte, descrita pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                V_{C} = \frac{\pi d n }{1000}
+                                \qquad
+                                \left[
+                                    \frac{\text{m}}{\text{min}}\right]
+                            }
+                        \end{equation}
+                    Onde:
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item $d$, \texttt{Diâmetro da Peça} em mm;
+                            \item $n$, \texttt{Rotação} em RPM;
                         \end{enumerate}
+                    \item \textbf{Avanço:} Distância percorrida na direção de avanço em $\frac{\text{mm}}{\text{rotação}}$.
+                    \item \textbf{Profundidade de Corte:} Distância de penetração da aresta de corte;
+                \end{enumerate}
 
-                    \item \textbf{Processos de Fundição:} Criação de corpos através da solidificação do material no interior de um molde, sendo classificados da seguinte maneira:
-                        \begin{enumerate}[rightmargin = \leftmargin]
-                            \item \texttt{Molde de Areia:} Utilização de areia para criação do molde, geralmente aplicados em pequena escala com as seguintes características:
-
-                            \item \texttt{Molde de Casca:} Utilização de uma resina fenólica para criação do molde com as seguintes características:
-
-                            \item \texttt{Molde Permanente:} Utilização de metal ou grafite para criação do molde com as seguintes características:
-
-                            \item \texttt{Coquilha:} Utilização de metal para criação do molde onde o metal é vazado sob pressão com as seguintes características:
-
-                            \item \texttt{Cera Perdida:} Utilização de cera para criação do molde que se desintegra após confecção com as seguintes características:
-                        \end{enumerate}
+            
+        \subsection{Processos de Fundição}
+            \paragraph{Definição}Criação de corpos através da solidificação do material no interior de um molde, sendo classificados da seguinte maneira:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Molde de Areia:} Utilização de areia para criação do molde, geralmente aplicados em pequena escala com as seguintes características:
+            
+                    \item \textbf{Molde de Casca:} Utilização de uma resina fenólica para criação do molde com as seguintes características:
+            
+                    \item \textbf{Molde Permanente:} Utilização de metal ou grafite para criação do molde com as seguintes características:
+            
+                    \item \textbf{Coquilha:} Utilização de metal para criação do molde onde o metal é vazado sob pressão com as seguintes características:
+            
+                    \item \textbf{Cera Perdida:} Utilização de cera para criação do molde que se desintegra após confecção com as seguintes características:
                 \end{enumerate}
 
                 \begin{table}[H]
@@ -1496,4 +1495,11 @@
                     \end{tabular}
                     \caption{Vantagens e Desvantagens por Processo de Fundição}
                 \end{table}
+
+        \subsection{Processos Metalúrgicos}
+            \paragraph{Definição}Modificações relacionadas a altas temperaturas sobre os corpos, sendo classificados da seguinte maneira:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item $T < T_{f}$, \textbf{Solidificação:} Aplicação de temperaturas que não alteram a fase do corpo, não superando a temperatura de fusão $T_{f}$;
+                    \item $T > T_{f}$, \textbf{Metalurgia do Pó:} Aplicação de temperaturas que alteram a fase do corpo, superando a temperatura de fusão $T_{f}$;
+                \end{enumerate}
 \end{document}
