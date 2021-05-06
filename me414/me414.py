@@ -261,21 +261,25 @@ if(True):
         #p: probability of sucess
         cnx = Combination(n, x)
 
-        pxg = 0
-        pxl = 0
         px = cnx*Bernoulli(x, n, p)
 
-        for i in range(n+1):
-            cni = Combination(n, i)
-            if(i > x):
-                pxg += cni*Bernoulli(i, n, p)
-            if(i < x):
-                pxl += cni*Bernoulli(i, n, p)
+        return px
+
+    def BinomialInfo(x, n, p):
+        #x: number of sucesses
+        #n: number of trials
+        #p: probability of sucess
+
+        pxl = 0
+        px = Binomial(x, n, p)
+
+        for i in range(x):
+            pxl += Binomial(i, n, p)
 
         expectedValue = n*p
         varianceValue = n*p*(1-p)
 
-        print("\nBinomal Distribution")
+        print("\nBinomial Distribution")
         print("p = {:.4f}".format(p))
         print("n = {:.4f}".format(n))
         print("x = {:.4f}".format(x))
@@ -283,9 +287,9 @@ if(True):
         print("V(X) = {:.4f}".format(varianceValue))
         print("P(X ={}) = {:.4f}".format(x, px))
         print("P(X<={}) = {:.4f}".format(x, px+pxl))
-        print("P(X>={}) = {:.4f}".format(x, px+pxg))
+        print("P(X>={}) = {:.4f}".format(x, 1-pxl))
         print("P(X< {}) = {:.4f}".format(x, pxl))
-        print("P(X> {}) = {:.4f}".format(x, pxg))
+        print("P(X> {}) = {:.4f}".format(x, 1-pxl-px))
 
         return px
 
@@ -295,9 +299,17 @@ if(True):
 
         px = p*(1-p)**(x-1)
 
+        return px
+
+    def GeometricInfo(x, p):
+        #x: number of trials to sucess
+        #p: probability of sucess
+
+        px = Geometric(x, p)
+
         pxl = 0
         for i in range(1,x):
-            pxl += p*(1-p)**(i-1)
+            pxl += Geometric(i, p)
 
         expectedValue = 1/p
         varianceValue = (1-p)/(p**2)
@@ -327,13 +339,19 @@ if(True):
 
         px = Xx*nx/Nn
 
+        return px
+
+    def HiperGeometricInfo(x, n, X, N):
+        #x: number of elements with A selected
+        #n: number of elements selected
+        #X: total number of elements with A
+        #N: total number of elements
+
+        px = HiperGeometric(x, n, X, N)
+
         pxl = 0
         for i in range(x):
-            Xi = Combination(X, i)
-            Nn = Combination(N, n)
-            ni = Combination(N-X,n-i)
-
-            pxl += Xi*ni/Nn
+            pxl += HiperGeometric(i, n, X, N)
 
         expectedValue = n*X/N
         varianceValue = expectedValue*(1 - X/N)*(N-n)/(N-1)
@@ -363,9 +381,20 @@ if(True):
         if( (Lambda <= 7) | ( (n >= 20) & (p <= 0.05) ) ):
             px = (np.exp(-Lambda)*(Lambda)**(x))/np.math.factorial(x)
 
+        return px
+
+    def PoissonInfo(x, n, p):
+        #x: number of sucesses
+        #n: number of trials
+        #p: probability of sucess
+
+        Lambda = n*p
+
+        px = Poisson(x, n, p)
+
         pxl = 0
         for i in range(x):
-            pxl += (np.exp(-Lambda)*(Lambda)**(i))/np.math.factorial(i)
+            pxl += Poisson(i, n, p)
 
         print("\nPoisson Distribution")
         print("x = {:.4f}".format(x))
@@ -373,6 +402,7 @@ if(True):
         print("p = {:.4f}".format(p))
         print("E(X) = {:.4f}".format(Lambda))
         print("V(X) = {:.4f}".format(Lambda))
+        print("P(X ={}) = {:.4f} (Binomial)".format(x, Binomial(x, n, p)))
         print("P(X ={}) = {:.4f}".format(x, px))
         print("P(X<={}) = {:.4f}".format(x, px+pxl))
         print("P(X>={}) = {:.4f}".format(x, 1-pxl))
@@ -382,7 +412,8 @@ if(True):
 
         return px
 
-    b = Binomial(5, 9, 0.53)
-    g = Geometric(2, 0.61)
-    h = HiperGeometric(4, 6, 10, 18)
-    p = Poisson(3, 170, 0.045)
+
+    b = BinomialInfo(5, 9, 0.53)
+    g = GeometricInfo(2, 0.61)
+    h = HiperGeometricInfo(4, 6, 10, 18)
+    p = PoissonInfo(3, 170, 0.045)
