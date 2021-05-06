@@ -258,7 +258,7 @@ if(True):
     def Binomial(x, n, p):
         #x: number of sucesses
         #n: number of trials
-        #n: probability of sucess
+        #p: probability of sucess
         cnx = Combination(n, x)
 
         pxg = 0
@@ -353,8 +353,36 @@ if(True):
 
         return px
 
-    
+    def Poisson(x, n, p):
+        #x: number of sucesses
+        #n: number of trials
+        #p: probability of sucess
+
+        Lambda = n*p
+
+        if( (Lambda <= 7) | ( (n >= 20) & (p <= 0.05) ) ):
+            px = (np.exp(-Lambda)*(Lambda)**(x))/np.math.factorial(x)
+
+        pxl = 0
+        for i in range(x):
+            pxl += (np.exp(-Lambda)*(Lambda)**(i))/np.math.factorial(i)
+
+        print("\nPoisson Distribution")
+        print("x = {:.4f}".format(x))
+        print("n = {:.4f}".format(n))
+        print("p = {:.4f}".format(p))
+        print("E(X) = {:.4f}".format(Lambda))
+        print("V(X) = {:.4f}".format(Lambda))
+        print("P(X ={}) = {:.4f}".format(x, px))
+        print("P(X<={}) = {:.4f}".format(x, px+pxl))
+        print("P(X>={}) = {:.4f}".format(x, 1-pxl))
+        print("P(X< {}) = {:.4f}".format(x, pxl))
+        print("P(X> {}) = {:.4f}".format(x, 1-pxl-px))
+
+
+        return px
 
     b = Binomial(5, 9, 0.53)
     g = Geometric(2, 0.61)
     h = HiperGeometric(4, 6, 10, 18)
+    p = Poisson(3, 170, 0.045)
