@@ -402,7 +402,6 @@ if(True):
         print("p = {:.4f}".format(p))
         print("E(X) = {:.4f}".format(Lambda))
         print("V(X) = {:.4f}".format(Lambda))
-        print("P(X ={}) = {:.4f} (Binomial)".format(x, Binomial(x, n, p)))
         print("P(X ={}) = {:.4f}".format(x, px))
         print("P(X<={}) = {:.4f}".format(x, px+pxl))
         print("P(X>={}) = {:.4f}".format(x, 1-pxl))
