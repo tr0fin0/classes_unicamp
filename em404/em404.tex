@@ -899,11 +899,15 @@
             \paragraph{Definição}Composição do movimento através de um referencial inercial e um referencial não inercial. Quando um dos pontos $B$ do corpo for fixado como referencial e outro ponto $A$ for analisado este possuirá uma velocidade relativa causada pela rotação do corpo, sendo descrita pelas seguintes equações:
                 \begin{equation}
                     \boxed{
-                        \Delta\vec{r}_{A} = \Delta\vec{r}_{B} + \Delta\vec{r}_{A|B}
+                        \vec{r}_{A} = \vec{r}_{B} + \vec{r}_{A|B}
                     }
                     \qquad
                     \boxed{
-                        \Delta\vec{v}_{A} = \Delta\vec{v}_{B} + \Delta\vec{v}_{A|B}
+                        \vec{v}_{A} = \vec{v}_{B} + \vec{v}_{A|B}
+                    }
+                    \qquad
+                    \boxed{
+                        \vec{a}_{A} = \vec{a}_{B} + \vec{a}_{A|B}
                     }
                 \end{equation}
             Onde:
@@ -914,6 +918,19 @@
                                 \vec{v}_{A|B} = \omega\times\vec{r}
                             }
                         \end{equation}
+
+                    \item $\vec{a}_{A|B}$, \textbf{Aceleração Devido à Rotação:} Quando analisado a partir de $B$ o ponto $A$ terá apenas rotação:
+                        \begin{equation}
+                            \boxed{
+                                \vec{a}_{A|B} = \vec{\omega}\times(\vec{\omega}\times\vec{r}) + \alpha\times\vec{r}
+                            }
+                        \end{equation}
+                    Onde:
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item $\vec{a}_{A|B_{n}}$, \textbf{Normal:} Responsável pela modificação da direção de $\vec{v}_{A|B}$.
+
+                            \item $\vec{a}_{A|B_{t}}$, \textbf{Tangencial:} Responsável pela modificação do módulo de $\vec{v}_{A|B}$.
+                        \end{enumerate}
                 \end{enumerate}
 
         \subsection{Centro Instantâneo de Velocidade Nula}
