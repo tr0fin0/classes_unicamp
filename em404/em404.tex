@@ -1069,8 +1069,17 @@
 
                 \begin{figure}[H]
                     \centering
-                    \includegraphics[height = 4cm]{ima4.png}
-                    \caption{Definição do Momento de Inércia}
+                    \begin{subfigure}[t]{0.45\textwidth}
+                        \centering
+                        \includegraphics[height = 4cm]{ima4.png}
+                        \caption{Definição do Momento de Inércia}
+                    \end{subfigure}
+                    \begin{subfigure}[t]{0.45\textwidth}
+                        \centering
+                        \includegraphics[height = 4cm]{ima5.png}
+                        \caption{Definição em Ponto Arbitrário}
+                    \end{subfigure}
+                    \caption{Representação de Corpos Rígidos}
                 \end{figure} \noindent
 
         \subsection{Equações Gerais}
@@ -1092,6 +1101,18 @@
                     \qquad
                     \boxed{
                         \Sigma\vec{M}_{G} = \overline{I}\alpha
+                    }
+                \end{equation}
+            Quando considera-se um ponto arbitrário a quantidade de movimento angular obtêm-se as seguintes equações que podem ser aplicadas tanto para movimento relativo quanto para corpos interligados:
+                \begin{equation}
+                    \boxed{
+                        \Sigma\vec{F} = \Sigma m\vec{\overline{a}}
+                    }
+                    \qquad
+                    \boxed{
+                        \Sigma\vec{M}_{G} = 
+                        \dot{\vec{H}}_{G} + \overline{\rho}\times m \vec{\overline{a}} = 
+                        \Sigma\overline{I}\alpha + \Sigma m\overline{a}d
                     }
                 \end{equation}
 \end{document}
