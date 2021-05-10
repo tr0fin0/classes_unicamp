@@ -1059,8 +1059,22 @@
     \section{Cinética Plana de Corpos Rígidos}
         \paragraph{Definição}Análise das relações entre as forças externas atuando sobre um corpo e seus movimenos correspondentes de rotação e translação, sendo necessárias duas equações de força e uma equação de momento para determinar o estado do movimento plano do corpo rígido.
 
+        \subsection{Momento de Inércia da Massa}
+            \paragraph{Definição}Propriedade constante relacionada a geometria do corpo rígido estudado, quantificando a resistência à variação na velocidade de rotação em torno do eixo $z$ a partir do centro de gravidade obtido pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        \overline{I} = \int\rho^{2}_{i}dm
+                    }
+                \end{equation}
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[height = 4cm]{ima4.png}
+                    \caption{Definição do Momento de Inércia}
+                \end{figure} \noindent
+
         \subsection{Equações Gerais}
-            \paragraph{Definição}Nesta abordagem retoma-se os resultados obtidos para cinética de sistemas de partículas, aplicando-os para um corpo rígido genérico com os seguintes resultados:
+            \paragraph{Definição}Nesta abordagem retoma-se os resultados obtidos para cinética de sistemas de partículas, aplicando-os para o centro de gravidade um corpo rígido genérico com os seguintes resultados:
                 \begin{equation}
                     \boxed{
                         \Sigma\vec{F} = m\vec{\overline{a}}
@@ -1068,6 +1082,16 @@
                     \qquad
                     \boxed{
                         \Sigma\vec{M}_{G} = \dot{\vec{H}}_{G}
+                    }
+                \end{equation}
+            Quando considera-se o momento de inércia a quantidade de movimento angular, obtendo as seguintes equações para centro de gravidade do corpo rígido:
+                \begin{equation}
+                    \boxed{
+                        \Sigma\vec{F} = m\vec{\overline{a}}
+                    }
+                    \qquad
+                    \boxed{
+                        \Sigma\vec{M}_{G} = \overline{I}\alpha
                     }
                 \end{equation}
 \end{document}
