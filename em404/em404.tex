@@ -1069,15 +1069,20 @@
 
                 \begin{figure}[H]
                     \centering
-                    \begin{subfigure}[t]{0.45\textwidth}
+                    \begin{subfigure}[t]{0.3\textwidth}
                         \centering
                         \includegraphics[height = 4cm]{ima4.png}
-                        \caption{Definição do Momento de Inércia}
+                        \caption{Definição Momento de Inércia}
                     \end{subfigure}
-                    \begin{subfigure}[t]{0.45\textwidth}
+                    \begin{subfigure}[t]{0.3\textwidth}
                         \centering
-                        \includegraphics[height = 4cm]{ima5.png}
-                        \caption{Definição em Ponto Arbitrário}
+                        \includegraphics[height = 2.5cm]{ima5.png}
+                        \caption{Definição Ponto Arbitrário}
+                    \end{subfigure}
+                    \begin{subfigure}[t]{0.3\textwidth}
+                        \centering
+                        \includegraphics[height = 3cm]{ima7.png}
+                        \caption{Definição Eixo Fixo}
                     \end{subfigure}
                     \caption{Representação de Corpos Rígidos}
                 \end{figure} \noindent
@@ -1093,26 +1098,79 @@
                         \Sigma\vec{M}_{G} = \dot{\vec{H}}_{G}
                     }
                 \end{equation}
-            Quando considera-se o momento de inércia a quantidade de movimento angular, obtendo as seguintes equações para centro de gravidade do corpo rígido:
-                \begin{equation}
-                    \boxed{
-                        \Sigma\vec{F} = m\vec{\overline{a}}
-                    }
-                    \qquad
-                    \boxed{
-                        \Sigma\vec{M}_{G} = \overline{I}\alpha
-                    }
-                \end{equation}
-            Quando considera-se um ponto arbitrário a quantidade de movimento angular obtêm-se as seguintes equações que podem ser aplicadas tanto para movimento relativo quanto para corpos interligados:
-                \begin{equation}
-                    \boxed{
-                        \Sigma\vec{F} = \Sigma m\vec{\overline{a}}
-                    }
-                    \qquad
-                    \boxed{
-                        \Sigma\vec{M}_{G} = 
-                        \dot{\vec{H}}_{G} + \overline{\rho}\times m \vec{\overline{a}} = 
-                        \Sigma\overline{I}\alpha + \Sigma m\overline{a}d
-                    }
-                \end{equation}
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Centro de Gravidade:} Neste ponto o momento de inércia a quantidade de movimento angular são obtidos pelas seguintes equações:
+                        \begin{equation}
+                            \boxed{
+                                \Sigma\vec{F} = m\vec{\overline{a}}
+                            }
+                            \qquad
+                            \boxed{
+                                \Sigma\vec{M}_{G} = \overline{I}\alpha
+                            }
+                        \end{equation}
+
+                    \item \textbf{Ponto Arbitrário:} Neste ponto, tanto para movimento relativo quanto para corpos interligados, o momento de inércia a quantidade de movimento angular são obtidos pelas seguintes equações:
+                        \begin{equation}
+                            \boxed{
+                                \Sigma\vec{F} = \Sigma m\vec{\overline{a}}
+                            }
+                            \qquad
+                            \boxed{
+                                \Sigma\vec{M}_{G} = 
+                                \dot{\vec{H}}_{G} + \overline{\rho}\times m \vec{\overline{a}} = 
+                                \Sigma\overline{I}\alpha + \Sigma m\overline{a}d
+                            }
+                        \end{equation}
+
+                    \item \textbf{Eixo Fixo:} Neste ponto o momento de inércia a quantidade de movimento angular são obtidos pelas seguintes equações:
+                        \begin{equation}
+                            \boxed{
+                                \Sigma\vec{F} = \Sigma m\vec{\overline{a}}
+                            }
+                            \qquad
+                            \boxed{
+                                \Sigma\vec{M}_{O} = 
+                                \overline{I}_{O}\alpha
+                            }
+                            \qquad
+                            \boxed{
+                                \overline{I}_{O} = 
+                                \overline{I} + \Sigma m\overline{r}^{2}
+                            }
+                        \end{equation}
+
+                        \item \textbf{Centro de Percursão:} Neste ponto o momento de todas forças será nulo obtidos pelas seguintes equações:
+                            \begin{equation}
+                                \boxed{
+                                    \Sigma\vec{F} = \Sigma m\vec{\overline{a}}
+                                }
+                                \qquad
+                                \boxed{
+                                    \Sigma\vec{M}_{O} = 
+                                    \overline{I}_{O}\alpha
+                                }
+                                \qquad
+                                \boxed{
+                                    \overline{I}_{O}\alpha = 
+                                    k^{2}_{O} m
+                                }
+                            \end{equation}
+                            \begin{figure}[H]
+                                \centering
+                                \includegraphics[height = 4cm]{ima6.png}
+                                \caption{Definição Centro de Percursão}
+                            \end{figure}\noindent
+                        Onde:
+                            \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                                \item $k_{O}$, \texttt{Raio de Giração};
+                                \item $q$, \texttt{Distância:} Obtido pela seguinte equação:
+                                    \begin{equation}
+                                        \boxed{
+                                            q = \frac{k^{2}_{O}}{\overline{r}}
+                                        }
+                                    \end{equation} 
+                            \end{enumerate}
+                \end{enumerate}
 \end{document}
