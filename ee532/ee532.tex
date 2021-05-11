@@ -1354,6 +1354,77 @@
                             \caption{Configuração de Base Comum}
                         \end{figure}
                 \end{enumerate}
+            Apesar das configurações apresentadas desempenharem como esperado para amplificadores ainda haverá vulnerabilidade do sistema a alterações das cargas que influenciam o ganho, e consequentemente, o funcionamento do circuito. Afim de proteger os amplificadores implementam-se os seguintes circuitos:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Seguidor de Emissor:} Base como entrada, Coletor ligado a alimentação e Emissor como saída, como representado pelo circuito abaixo:
+                        \begin{figure}[H]
+                            \centering
+                            \begin{subfigure}[t]{0.45\textwidth}
+                                \centering
+                                \begin{circuitikz}[american]
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (0,2) node[npn] (myNPN) {}
+                                    (myNPN.B) -- (-2,2)
+                                    (myNPN.C) -- (0,3)
 
+                                    (myNPN.E) to[short, -o] (0.5,1.25)
+                                    (0.5, 1.25) node[right]{$v_{o}$}
 
+                                    (myNPN.E) to[resistor, l=$R_{E}$] (0,0)
+                                    (0,3) node[vcc]{VCC}
+
+                                    (-2,0) to[sV<=$v_{i}$] (-2,2)
+
+                                    (-2,0) node[tlground]{}
+                                    (0,0)  node[tlground]{};
+                                \end{circuitikz}
+                                \caption{Seguidor de Emissor}
+                            \end{subfigure}
+                            \begin{subfigure}[t]{0.45\textwidth}
+                                \centering
+                                \begin{circuitikz}[american]
+                                    \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                    \draw
+                                    (-3,0) to[sV<=$v_{i}$] (-3,2)
+                                    (-3,2) -- (-2,2)
+                                    (-3,0) node[tlground]{}
+
+                                    (-2,2) node [ocirc, anchor = west] {B} -- (-1,2)
+                                    (-1,2) to[resistor, l=$r_{\pi}$, v=$V_{\pi}$] (-1,0)
+
+                                    (-1,0) -- (1,0)
+                                    (0,0) node [ocirc, anchor = south] {E} -- (0,0)
+                                    (0,-0.5) to[short, -o] (0.5,-0.5)
+                                    (0.5,-0.5) node[right]{$v_{o}$}
+
+                                    (0,0) to[resistor, l=$R_{E}$] (0,-2)
+                                    (0,-2) node[tlground]{}
+
+                                    ( 2,2) node [ocirc, anchor = east] {C} -- ( 1,2)
+                                    ( 1,2) to[cI, v^>=${g_{m}v_{\pi}}$] (1,0)
+
+                                    (3,0) -- (3,2)
+                                    (2,2) -- (3,2)
+                                    (3,0) node[tlground]{};
+                                \end{circuitikz}
+                                \caption{Equivalente Pequenos Sinais}
+                            \end{subfigure}
+                            \caption{Configuração de Emissor Comum}
+                        \end{figure}\noindent
+                    Nesta configuração de amplificador serão obtidos os seguintes resultados:
+                        \begin{equation}
+                            \boxed{
+                                r_{i} = r_{\pi} + (\beta + 1)R_{E}
+                            }
+                            \qquad
+                            \boxed{
+                                r_{o} = R_{E} \parallel \frac{r_{\pi} + R_{S}}{\beta + 1}
+                            }
+                            \qquad
+                            \boxed{
+                                G = \frac{R_{E}}{R_{E} + \frac{1}{g_{m}}}
+                            }
+                        \end{equation}
+                \end{enumerate}
 \end{document}
