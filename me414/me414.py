@@ -174,7 +174,7 @@ if(True):
     print("esperança: {:.4f}".format(expectedValueY))
     print("variância: {:.4f}".format(varianceValueY))
     print("desvio padrão: {:.4f}".format(standardDeviation))
-
+# %%
     #======================
     #combine expected value
     print("\n"+"="*35)
@@ -188,7 +188,7 @@ if(True):
 
     print("esperança resultante: {:.4f}".format(expectedValueR))
     print("variância resultante: {:.4f}".format(varianceValueR))
-
+# %%
     #===============
     #square variable
     print("\n"+"="*35)
@@ -416,3 +416,4 @@ if(True):
     g = GeometricInfo(2, 0.61)
     h = HiperGeometricInfo(4, 6, 10, 18)
     p = PoissonInfo(3, 170, 0.045)
+# %%
