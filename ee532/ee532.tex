@@ -1127,7 +1127,7 @@
                             \caption{Alimentação para Transistor NPN}
                         \end{figure} \noindent
 
-                    \item \textbf{Divisor Resistivo:} Fonte de tensão comum em que a associação dos resistores abaixam o nível de tensão. Esta abordagem apresentará instabilidade de corrente na base, assim recomenda-se a inclusão de um \textbf{Resistor Degenerático};
+                    \item \textbf{Divisor Resistivo:} Fonte de tensão comum em que a associação dos resistores abaixam o nível de tensão. Esta abordagem apresentará instabilidade de corrente na base, assim recomenda-se a inclusão de um \textbf{Resistor Degenerativo};
                         \begin{figure}[H]
                             \centering
                             \begin{subfigure}[t]{0.3\textwidth}
@@ -1354,7 +1354,7 @@
                             \caption{Configuração de Base Comum}
                         \end{figure}
                 \end{enumerate}
-            Apesar das configurações apresentadas desempenharem como esperado para amplificadores ainda haverá vulnerabilidade do sistema a alterações das cargas que influenciam o ganho, e consequentemente, o funcionamento do circuito. Afim de proteger os amplificadores implementam-se os seguintes circuitos:
+            Apesar das configurações apresentadas desempenharem como esperado para amplificadores ainda haverá vulnerabilidade do sistema a alterações das cargas que influenciam o ganho, e consequentemente, o funcionamento do circuito. Afim de proteger os amplificadores implementam-se o seguinte circuito:
                 \begin{enumerate}[rightmargin = \leftmargin]
                     \item \textbf{Seguidor de Emissor:} Base como entrada, Coletor ligado a alimentação e Emissor como saída, como representado pelo circuito abaixo:
                         \begin{figure}[H]
@@ -1426,5 +1426,90 @@
                                 G = \frac{R_{E}}{R_{E} + \frac{1}{g_{m}}}
                             }
                         \end{equation}
+                \end{enumerate}
+
+        \subsection{Classes de Amplificadores}
+            \paragraph{Definição}Nestes circuitos sempre haverá uma troca, circuitos com maior eficiência terão maiores distorções e vice e versa. Cada configuração possuirá diferentes objetivos como mostrados abaixo:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Classe A:} Amplificadores com \texttt{Baixa} distorção e \texttt{Baixa} eficiência, obtidos pelo seguinte circuito:
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}[american]
+                                \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                \draw
+                                (0,2) node[npn] (myNPN) {}
+                                (myNPN.E) -- (0,1)
+
+                                (myNPN.B) to[short, -o] (-1,2)
+                                (-1, 2) node[left]{$v_{i}$}
+
+                                (myNPN.C) to[short, -o] (0.5,2.75)
+                                (0.5, 2.75) node[right]{$v_{o}$}
+
+                                (myNPN.C) to[resistor, l=$R_{C}$] (0,4)
+                                (0,4) node[vcc]{}
+                                (0,1)  node[tlground]{};
+                            \end{circuitikz}
+                            \caption{Amplificador Classe A}
+                        \end{figure}
+
+                    \item \textbf{Classe B:} Amplificadores com \texttt{Alta} distorção e \texttt{Alta} eficiência, obtidos pelo seguinte circuito:
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}[american]
+                                \ctikzset{component text=left, resistors/width=0.25, resistors/zigs=1}
+                                \draw
+                                (0,3) node[npn] (myNPN) {}
+                                (0,1) node[pnp] (myPNP) {}
+                                (myNPN.E) -- (myPNP.E)
+                
+                                (myNPN.B) -- (-1,3)
+                                (myPNP.B) -- (-1,1)
+                                (-1,3) -- (-1,1)
+                
+                                (-1.5,2) to[short, o-*] ( -1,2)
+                                (   0,2) to[short, *-o] (0.5,2)
+                
+                                (-1.5,2) node[left]{$v_{i}$}
+                                ( 0.5,2) node[right]{$v_{o}$}
+                
+                                (myNPN.C) node[vcc]{}
+                                (myPNP.C) node[tlground]{};
+                            \end{circuitikz}
+                            \caption{Amplificador Classe B}
+                        \end{figure}
+
+                    \item \textbf{Classe AB:} Amplificadores com \texttt{Média} distorção e \texttt{Média} eficiência, obtidos pelo seguinte circuito:
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}[american]
+                                \ctikzset{
+                                    component text=left, 
+                                    diodes/scale=0.5, 
+                                    resistors/width=0.25, 
+                                    resistors/zigs=1
+                                }
+                                \draw
+                                (0,3) node[npn] (myNPN) {}
+                                (0,1) node[pnp] (myPNP) {}
+                                (myNPN.E) -- (myPNP.E)
+                
+                                (myNPN.B) -- (-1,3)
+                                (myPNP.B) -- (-1,1)
+                
+                                (-1,3) to[empty diode] (-1,2)
+                                (-1,2) to[empty diode] (-1,1)
+                
+                                (-1.5,2) to[short, o-*] ( -1,2)
+                                (   0,2) to[short, *-o] (0.5,2)
+                
+                                (-1.5,2) node[left]{$v_{i}$}
+                                ( 0.5,2) node[right]{$v_{o}$}
+                
+                                (myNPN.C) node[vcc]{}
+                                (myPNP.C) node[tlground]{};
+                            \end{circuitikz}
+                            \caption{Amplificador Classe AB}
+                        \end{figure}
                 \end{enumerate}
 \end{document}
