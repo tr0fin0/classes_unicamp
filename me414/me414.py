@@ -383,7 +383,7 @@ if(True):
 
         return px
 
-    def PoissonInfo(x, n, p):
+    def PoissonInfo(x: int, n: int, p: int):
         #x: number of sucesses
         #n: number of trials
         #p: probability of sucess
@@ -412,8 +412,8 @@ if(True):
         return px
 
 
-    b = BinomialInfo(5, 9, 0.53)
+    b = BinomialInfo(1, 8, 0.08)
     g = GeometricInfo(2, 0.61)
     h = HiperGeometricInfo(4, 6, 10, 18)
-    p = PoissonInfo(3, 170, 0.045)
+    p = PoissonInfo(3, 3/12, 12)
 # %%
