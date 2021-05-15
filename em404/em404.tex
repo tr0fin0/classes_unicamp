@@ -969,9 +969,9 @@
                     \includegraphics[height = 4cm]{ima3.png}
                     \caption{Representação Eixos Rotativos}
                 \end{figure} \noindent
-            Desta maneira o vetor posição absoluta de $A$, onde $\vec{r}$ representa o vetor de posição de $A$ com relação a $B$. Nota-se que os vetores unitários $\vec{i}$ e $\vec{j}$ possuem derivadas no tempo, pois possuem rotação, como mostrado nas equações abaixo:
+            Onde:
                 \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                    \item \textbf{Direção:}
+                    \item \textbf{Direção:} Vetorialmente a posição do ponto $A$ pode ser descrito como a composição entre o movimento rotacional e translacional, representado pela seguinte equação:
                         \begin{equation}
                             \boxed{
                                 \vec{r}_{A} = \vec{r}_{B} + (x\vec{i} + y\vec{j})
@@ -979,14 +979,14 @@
                         \end{equation}
                     Onde:
                         \begin{enumerate}[rightmargin = \leftmargin]
-                            \item \texttt{Direção Relativa:}
+                            \item \texttt{Direção Relativa:} Representa o vetor de posição de $A$ com relação a $B$, representado pela seguinte equação:
                                 \begin{equation}
                                     \boxed{
-                                        \vec{r} = x\vec{i} + y\vec{j}
+                                        \vec{r}_{AB} = x\vec{i} + y\vec{j}
                                     }
                                 \end{equation}
 
-                            \item \texttt{Derivadas Direcionais:}
+                            \item \texttt{Derivadas Direcionais:} Vetores unitários $\vec{i}$ e $\vec{j}$ possuem derivadas no tempo, pois possuem rotação, como mostrado nas equações abaixo:
                                 \begin{equation}
                                     \boxed{
                                         \dot{\vec{i}} = \omega\times\vec{i} = \omega\vec{j}
@@ -996,58 +996,63 @@
                                         \dot{\vec{j}} = \omega\times\vec{j} = -\omega\vec{i}
                                     }
                                 \end{equation}\noindent
-                            Além disso, as seguintes identidades serão válidas:
-                                \begin{table}[H]
-                                    \centering
-                                    \begin{tabular}[]{c | c c c}
-                                        $\times$  & $ \vec{i}$ & $ \vec{j}$ & $ \vec{k}$\\\hline
-                                        $\vec{i}$ & 0          & $+\vec{k}$ & $-\vec{j}$\\
-                                        $\vec{j}$ & $-\vec{k}$ & 0          & $+\vec{i}$\\
-                                        $\vec{k}$ & $+\vec{j}$ & $-\vec{i}$ & 0\\
-                                    \end{tabular}
-                                    \caption{Multiplicação Vetores Unitários}
-                                \end{table}
-                        \end{enumerate}
+                            \end{enumerate}
+                        Além disso, as seguintes identidades serão válidas:
+                            \begin{table}[H]
+                                \centering
+                                \begin{tabular}[]{c | c c c}
+                                    $\times$  & $ \vec{i}$ & $ \vec{j}$ & $ \vec{k}$\\\hline
+                                    $\vec{i}$ & 0          & $+\vec{k}$ & $-\vec{j}$\\
+                                    $\vec{j}$ & $-\vec{k}$ & 0          & $+\vec{i}$\\
+                                    $\vec{k}$ & $+\vec{j}$ & $-\vec{i}$ & 0\\
+                                \end{tabular}
+                                \caption{Multiplicação Vetores Unitários}
+                            \end{table}
 
-                    \item \textbf{Velocidade:}
+                    \item \textbf{Velocidade:} Vetorialmente a velocidade do ponto $A$ pode ser descrito como a composição entre o movimento rotacional,  translacional e relativo, representado pela seguinte equação:
                         \begin{equation}
                             \boxed{
-                                \vec{v}_{A} = \vec{v}_{B} + \omega\times\vec{r} + \vec{v}_{r}
+                                \vec{v}_{A} = \vec{v}_{B} + \omega_{AB}\times\vec{r}_{AB} + \vec{v}_{r}
                             }
                         \end{equation}
                     Onde:
                         \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                            \item \texttt{Velocidade Relativa:}
+                            \item \texttt{Velocidade Relativa:} Representa o vetor de velocidade de $A$ com relação a $B$, representado pela seguinte equação:
                                 \begin{equation}
                                     \boxed{
-                                        \vec{v}_{A|B} = \omega\times\vec{r} + \vec{v}_{r}
+                                        \vec{v}_{A|B} = \omega_{AB}\times\vec{r}_{AB} + \vec{v}_{r}
                                     }
                                 \end{equation}
                         \end{enumerate}
 
-                    \item \textbf{Aceleração:}
+                    \item \textbf{Aceleração:} Vetorialmente a aceleração do ponto $A$ pode ser descrito como a composição entre o movimento rotacional, translacional, relativo e de \textbf{Coriolis}, representado pela seguinte equação:
                         \begin{equation}
                             \boxed{
-                                \vec{a}_{A} = \vec{a}_{B} + \dot{\omega}\times\vec{r} + \omega\times(\omega\times\vec{r}) + 2\omega\times\vec{v}_{r} + \vec{a}_{r}
+                                \vec{a}_{A} = 
+                                \vec{a}_{B} + 
+                                \dot{\omega}_{AB}\times\vec{r}_{AB} + 
+                                \omega_{AB}\times(\omega_{AB}\times\vec{r}_{AB}) + 
+                                2\omega_{AB}\times\vec{v}_{r} + 
+                                \vec{a}_{r}
                             }
                         \end{equation}
                     Onde:
                         \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                            \item \texttt{Aceleração Relativa Tangencial:}
+                            \item \texttt{Aceleração Relativa Tangencial:} Representa o vetor de aceleração de $A$ com relação a $B$ tangencial a trajetória considerada a partir do \textbf{Centro de Velocidade Nula}, representado pela seguinte equação:
                                 \begin{equation}
                                     \boxed{
                                         (\vec{a}_{A|B})_{t} = \dot{\omega}\times\vec{r}
                                     }
                                 \end{equation}
 
-                            \item \texttt{Aceleração Relativa Normal:}
+                            \item \texttt{Aceleração Relativa Normal:} Representa o vetor de aceleração de $A$ com relação a $B$ normal a trajetória considerada a partir do \textbf{Centro de Velocidade Nula}, representado pela seguinte equação:
                                 \begin{equation}
                                     \boxed{
                                         (\vec{a}_{A|B})_{n} = \omega\times(\omega\times\vec{r})
                                     }
                                 \end{equation}
 
-                            \item \texttt{Aceleração de Coriolis:} Aceleração causada pela rotação percebida apenas por observadores no sistema rotativo; 
+                            \item \texttt{Aceleração de Coriolis:} Aceleração causada pela rotação percebida apenas por observadores no sistema rotativo, representado pela seguinte equação: 
                                 \begin{equation}
                                     \boxed{
                                         \vec{a}_{C} = 2\omega\times\vec{v}_{r}
