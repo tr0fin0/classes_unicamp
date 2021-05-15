@@ -1184,7 +1184,7 @@
                 \end{equation}
             Onde:
                 \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                    \item $T_{i}$, \textbf{Energia Cinética:} Analisa-se conjuntamento a parcela gerada pela translação e pela rotação, obtendo:
+                    \item $T$, \textbf{Energia Cinética:} Analisa-se conjuntamento a parcela gerada pela translação e pela rotação, obtendo:
                         \begin{equation}
                             \boxed{
                                 T_{i} = \frac{1}{2} m\overline{v}^{2} + \frac{1}{2}I_{G}\omega^{2}
@@ -1217,6 +1217,48 @@
                                 \end{equation}\\
                             \end{tabularx}
                         \end{center}
+
+
+                    \item $V$, \textbf{Energia Potencial:} Analisa-se conjuntamento potenciais geradas pela gravidade e pela presença de molas, obtendo:
+                        \begin{equation}
+                            \boxed{
+                                V_{i} = 
+                                m g h +
+                                \frac{1}{2} k x^{2} 
+                            }
+                        \end{equation}
+                    Onde:
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item $h$, \texttt{Variação de Altura};
+                            \item $x$, \texttt{Variação de Comprimento};
+                            \item $k$, \texttt{Constante Elástica};
+                        \end{enumerate}
+                \end{enumerate}
+            Quando trata-se de um intervalo infinitesimal de movimento, a equação de trabalho-energia será obtida pela derivação das expressões associadas descritas acima como mostrado nas seguintes equações:
+                \begin{equation}
+                    \boxed{
+                        dU' = dT + dV
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item $dT$, \textbf{Energia Cinética:} Analisa-se conjuntamento a parcela gerada pela translação e pela rotação, obtendo:
+                        \begin{equation}
+                            \boxed{
+                                dT = 
+                                \Sigma m_{i}\overline{v}_{i}d\overline{v}_{i} +
+                                \Sigma I_{i}\omega_{i}d\omega_{i}
+                            }
+                        \end{equation}
+
+                    \item $dV$, \textbf{Energia Potencial:} Analisa-se conjuntamento potenciais geradas pela gravidade e pela presença de molas, obtendo:
+                        \begin{equation}
+                            \boxed{
+                                dV = 
+                                \Sigma m_{i} g d h_{i} +
+                                \Sigma k_{j} x_{j} d x_{j}
+                            }
+                        \end{equation}
                 \end{enumerate}
 
 \end{document}
