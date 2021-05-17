@@ -1046,7 +1046,7 @@
             \paragraph{Definição}Quantificação do quão distantes os valores de uma variável aleatória $X$ estão de sua esperança, novamente uma métrica numérica que desconsidera o evento em si. Formalmente representada pela seguinte equação:
                 \begin{equation}
                     \boxed{
-                        V(x) = \sigma^{2} = 
+                        V(X) = \sigma^{2} = 
                         E[(X - E(X))^{2}] =
                         E(X^{2}) - (E(X))^{2}
                     }
@@ -1061,6 +1061,16 @@
                             \frac{1}{b-a}, & a \le x \le b,\\
                             0,             & x < a \text{ ou } x > b\\
                         \end{cases}
+                    }
+                \end{equation}
+            Onde os valores de esperança e variância são dados pelas seguintes equações:
+                \begin{equation}
+                    \boxed{
+                        E(X) = \frac{b+a}{2}
+                    }
+                    \qquad
+                    \boxed{
+                        V(X) = \frac{(b-a)^{2}}{12}
                     }
                 \end{equation}
 
