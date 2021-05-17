@@ -997,11 +997,11 @@
         \paragraph{Definição}Experimento aleatório que resultada em uma quantidade numérica como resultado, ou seja, o evento em si não será prioridade. Caso uma função $X$ seja utilizada para relacionar os elementos do espaço amostral da reta real então está será uma \textbf{Variável Aleatória Contínua}. Assim defini-se a probabilidade desta variável ocorrer como:
             \begin{equation}
                 \boxed{
-                    \int_{-\infty}^{+\infty} f(x)dx = 1
+                    \int_{-\infty}^{+\infty} f_{X}(x)dx = 1
                 }
                 \qquad
                 \boxed{
-                    P(a \le X \le b) = \int_{a}^{b} f(x) dx \ge 0, \quad \forall x\in\mathbb{R}
+                    P(a \le X \le b) = \int_{a}^{b} f_{X}(x) dx \ge 0, \quad \forall x\in\mathbb{R}
                 }
             \end{equation}
         Onde:
@@ -1022,4 +1022,29 @@
                         \int_{-\infty}^{x} f_{X}(u)du
                     }
                 \end{equation}
+
+        \subsection{Esperança}
+            \paragraph{Definição}Conhecido em inglês como \textbf{Expected Value}, representa qual seria o valor ponderado entre as probabilidades de todos os possíveis valores de $X$, podendo resultar em um valor impossível. Formalmente representada pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        E(X) = \mu = 
+                        \int_{-\infty}^{+\infty} x f_{X}(x) dx
+                    }
+                \end{equation}
+            Obedecendo as seguintes propriedades:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item Se $X$ é uma variável aleatória e constantes $a$ e $b$, então:
+                        \begin{equation}
+                            \boxed{
+                                E(X^{k}) = 
+                                \int_{-\infty}^{+\infty} x^{k} f_{X}(x) dx
+                            }
+                        \end{equation}
+                    \item Se $X_{1}$, ..., $X_{n}$ são variáveis aleatórias:
+                        \begin{equation}
+                            \boxed{
+                                E \left( \sum_{i=1}^{n} X_{i} \right) = \sum_{i=1}^{n} E(X_{i})
+                            }
+                        \end{equation}
+                \end{enumerate}
 \end{document}
