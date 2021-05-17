@@ -1514,5 +1514,48 @@
     \section{Projeto 6}
         \paragraph{Definição}Conjunto gratuito e aberto RISC de Instruction Set Architecture, ou seja, conjunto de regras de desenvolvimento de software e hardware.
 
+        \subsection{Registradores RISC-V}
+            \paragraph{Definição}Processodores elaborados sobre esta Arquitetura possuirão 32, 64 ou 128 registradores responsáveis por desempenhar funções especificas, cuja descrição seguem abaixo:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}[]{c|l}\hline
+                        Nome & Descrição\\\hline
+                        zero   & Valor Fixo em 0\\
+                        t0-t6  & Valores Temporários\\
+                        s0-t11 & Valores Salvos\\
+                        a0-a7  & Parâmetros e Valores de Retorno de Funções\\
+                        ra     & Endereço de Retorno de Função\\
+                        sp     & Apontador de Pilha\\
+                        gp     & Apontador Global\\
+                        tp     & Apontador de Thread\\
+                        pc     & Contador de Programa\\\hline
+                    \end{tabular}
+                    \caption{Operações \texttt{ALU}}
+                \end{table}\noindent
+            Entre as principais estruturas de funções tem-se o seguintes formatos básicos onde \texttt{func} representa uma função genérica, como descrito a seguir:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{3 Arguments Functions:} Registrador \texttt{s0} assume o valor de \texttt{s1 func s2}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    func s0, s1, s2
+                            \end{lstlisting}
+                        \end{scriptsize}
 
+                    \item \textbf{2 Arguments Functions:} Registrador \texttt{s0} assume o valor de \texttt{s1 func 1}, onde \texttt{1} será nomeado imediato, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    func s0, s1, 1
+                            \end{lstlisting}
+                        \end{scriptsize}
+
+                    \item \textbf{1 Arguments Functions:} Registrador \texttt{s0} assume o valor de \texttt{1}, onde \texttt{1} será nomeado imediato, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    func s0, 1
+                            \end{lstlisting}
+                        \end{scriptsize}
+                \end{enumerate}
 \end{document}
