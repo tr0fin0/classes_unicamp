@@ -1097,7 +1097,7 @@
                 \end{equation}
 
         \subsection{Modelo Normal}
-            \paragraph{Definição}Quando uma variável aleatória contínua assume uma distribuição normal dos valores, isto é, dependendo de sua média e variância, sendo descrita pela seguinte equação:
+            \paragraph{Definição}Quando uma variável aleatória contínua assume uma distribuição normal dos valores, isto é, dependendo de sua média, $\mu$, e variância, $\sigma^{2}$, sendo descrita pela seguinte equação:
                 \begin{equation}
                     \boxed{
                         f_{X}(x) = 
@@ -1116,4 +1116,27 @@
                     }
                 \end{equation}
 
+        \subsection{Modelo Normal Padrão}
+            \paragraph{Definição}Quando uma variável aleatória contínua assume uma distribuição normal padronizada dos valores, isto é, dependendo de sua média, $\mu$, e variância, $\sigma^{2}$, normalizadas, sendo descrita pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        Z(X) = \frac{X - \mu}{\sigma}
+                    }
+                    \qquad
+                    \boxed{
+                        f_{X}(z) = 
+                        \frac{1}{\sqrt{2\pi}} \cdot 
+                        e^{-\frac{z^{2}}{2}}
+                    }
+                \end{equation}
+            Assim tem-se os seguintes resultados:
+                \begin{equation}
+                    \boxed{
+                        E(X) = \mu
+                    }
+                    \qquad
+                    \boxed{
+                        V(X) = \sigma
+                    }
+                \end{equation}
 \end{document}
