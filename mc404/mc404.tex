@@ -1534,7 +1534,7 @@
                 \end{table}\noindent
 
         \subsection{Formato de Funções}
-            \paragraph{Definição}Há diferentes estruturas de funções que podem ser empregadas, entre as principais estruturas de funções tem-se o seguintes formatos básicos onde \texttt{func} representa uma função genérica, como descrito a seguir:
+            \paragraph{Definição}Há diferentes estruturas de funções que podem ser empregadas, entre as principais estruturas de funções tem-se os seguintes formatos básicos onde \texttt{func} representa uma função genérica, como descrito a seguir:
                 \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
                     \item \textbf{3 Arguments Functions:} Registrador \texttt{s0} assume o valor de \texttt{s1 func s2}, representado pelo seguinte comando:
                         \begin{scriptsize}
@@ -1557,6 +1557,34 @@
                             \myStyleAssembly
                             \begin{lstlisting}
     func s0, 1
+                            \end{lstlisting}
+                        \end{scriptsize}
+                \end{enumerate}
+
+        \subsection{Instruções Aritméticas}
+            \paragraph{Definição}Há diferentes funções aritméticas que permitem realizar matemática aritmética simples, entre as principais instruções tem-se como descrito a seguir:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{ADD Instruction:} Armazenada a soma de \texttt{rs1 + rs2} no registrador \texttt{rd}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    ADD rd, rs1, rs2
+                            \end{lstlisting}
+                        \end{scriptsize}
+
+                    \item \textbf{ADDI Instruction:} Armazenada a soma de \texttt{rs1 + imm} no registrador \texttt{rd}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    ADDI rd, rs1, imm
+                            \end{lstlisting}
+                        \end{scriptsize}
+
+                    \item \textbf{SUB Instruction:} Armazenada a subtração de \texttt{rs1 - rs2} no registrador \texttt{rd}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    SUB rd, rs1, rs2
                             \end{lstlisting}
                         \end{scriptsize}
                 \end{enumerate}
