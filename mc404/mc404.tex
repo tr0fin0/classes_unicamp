@@ -1588,4 +1588,33 @@
                             \end{lstlisting}
                         \end{scriptsize}
                 \end{enumerate}
+
+        \subsection{Instruções Lógicas}
+            \paragraph{Definição}Há diferentes funções lógicas que permitem realizar operações simples na arquitetura \texttt{load store}, entre as principais instruções tem-se como descrito a seguir:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{XOR Instruction:} Armazenada a lógica de \texttt{rs1 XOR rs2} no registrador \texttt{rd}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    XOR rd, rs1, rs2
+                            \end{lstlisting}
+                        \end{scriptsize}
+
+                    \item \textbf{OR Instruction:} Armazenada a lógica de \texttt{rs1 OR rs2} no registrador \texttt{rd}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    OR rd, rs1, rs2
+                            \end{lstlisting}
+                        \end{scriptsize}
+
+                    \item \textbf{OR Instruction:} Armazenada a lógica de \texttt{rs1 AND rs2} no registrador \texttt{rd}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    AND rd, rs1, rs2
+                            \end{lstlisting}
+                        \end{scriptsize}
+                \end{enumerate}
+            Nota-se que todas as instruções acima descritas possuem variação imediata, ou seja, podem receber alternativamente um valor imediato para realizar a operação.
 \end{document}
