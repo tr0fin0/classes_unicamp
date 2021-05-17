@@ -1614,4 +1614,34 @@
                         \end{scriptsize}
                 \end{enumerate}
             Nota-se que todas as instruções acima descritas possuem variação imediata, ou seja, podem receber alternativamente um valor imediato para realizar a operação.
+
+
+        \subsection{Instruções de Deslocamento}
+            \paragraph{Definição}Há diferentes funções que permitem deslocar lateralmente bits na arquitetura \texttt{load store}, entre as principais instruções tem-se como descrito a seguir:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{SLL Instruction:} Armazena no registrador \texttt{rd} o deslocamento de \texttt{rs2} bits para esquerda do valor que se encontra em  \texttt{rs1}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    SLL rd, rs1, rs2
+                            \end{lstlisting}
+                        \end{scriptsize}
+
+                    \item \textbf{SRL Instruction:} Armazena no registrador \texttt{rd} o deslocamento de \texttt{rs2} bits para direita do valor que se encontra em  \texttt{rs1}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    SRL rd, rs1, rs2
+                            \end{lstlisting}
+                        \end{scriptsize}
+
+                    \item \textbf{SRA Instruction:} Armazena no registrador \texttt{rd} o deslocamento de \texttt{rs2} bits para direita do valor que se encontra em  \texttt{rs1}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    SRA rd, rs1, rs2
+                            \end{lstlisting}
+                        \end{scriptsize}
+                \end{enumerate}
+            Nota-se que todas as instruções acima descritas possuem variação imediata, ou seja, podem receber alternativamente um valor imediato para realizar a operação, sendo o método normalmente mais utilizado.
 \end{document}
