@@ -1626,6 +1626,7 @@
     SLL rd, rs1, rs2
                             \end{lstlisting}
                         \end{scriptsize}
+                    Este comando multiplica o valor de \texttt{rs1} por $2^{x}$, onde $x$ representa o valor de \texttt{rs2}.
 
                     \item \textbf{SRL Instruction:} Armazena no registrador \texttt{rd} o deslocamento de \texttt{rs2} bits para direita do valor que se encontra em  \texttt{rs1}, representado pelo seguinte comando:
                         \begin{scriptsize}
@@ -1634,6 +1635,7 @@
     SRL rd, rs1, rs2
                             \end{lstlisting}
                         \end{scriptsize}
+                    Este comando divide o valor de \texttt{rs1} por $2^{x}$, onde $x$ representa o valor de \texttt{rs2}.
 
                     \item \textbf{SRA Instruction:} Armazena no registrador \texttt{rd} o deslocamento de \texttt{rs2} bits para direita do valor que se encontra em  \texttt{rs1}, representado pelo seguinte comando:
                         \begin{scriptsize}
@@ -1642,6 +1644,7 @@
     SRA rd, rs1, rs2
                             \end{lstlisting}
                         \end{scriptsize}
+                    Este comando, diferentemente do SRL, replica o valor mais significativo do valor, garantindo que o complemento de dois seja conservado.
                 \end{enumerate}
             Nota-se que todas as instruções acima descritas possuem variação imediata, ou seja, podem receber alternativamente um valor imediato para realizar a operação, sendo o método normalmente mais utilizado.
 \end{document}
