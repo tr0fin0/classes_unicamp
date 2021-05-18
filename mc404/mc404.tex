@@ -1695,4 +1695,43 @@
                         \end{scriptsize}
                     Este, comando apresentaram as variações imediatas, não sinalizadas e a combinação entre imediata e não sinalizada.
                 \end{enumerate}
+
+
+        \subsection{Instruções de Salto Condicional}
+            \paragraph{Definição}Há diferentes funções que permitem, com base em uma comparação, ir para outra posição de memória na arquitetura \texttt{load/store}, entre as principais instruções tem-se como descrito a seguir:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{BEQ Instruction:} Desloca-se para a posição de \texttt{imm} se o valor de \texttt{rs1 == rs2}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    BEQ rs1, rs2, imm
+                            \end{lstlisting}
+                        \end{scriptsize}
+
+                    \item \textbf{BNE Instruction:} Desloca-se para a posição de \texttt{imm} se o valor de \texttt{rs1 != rs2}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    BNE rs1, rs2, imm
+                            \end{lstlisting}
+                        \end{scriptsize}
+
+                    \item \textbf{BLT Instruction:} Desloca-se para a posição de \texttt{imm} se o valor de \texttt{rs1 < rs2}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    BLT rs1, rs2, imm
+                            \end{lstlisting}
+                        \end{scriptsize}
+                    Este, comando apresentará a variação não sinalizada.
+
+                    \item \textbf{BGE Instruction:} Desloca-se para a posição de \texttt{imm} se o valor de \texttt{rs1 >=rs2}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    BGE rs1, rs2, imm
+                            \end{lstlisting}
+                        \end{scriptsize}
+                    Este, comando apresentará a variação não sinalizada.
+                \end{enumerate}
 \end{document}
