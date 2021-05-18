@@ -1668,4 +1668,18 @@
                             \end{lstlisting}
                         \end{scriptsize}
                 \end{enumerate}
+            Neste conjunto de instruções será necessário fornecer a localização do vetor utilizado com relação a seu início. Como \texttt{32 bits = 4 bytes} os imediatos fornecidos as funções serão múltiplos do tamanho de palavra que estiver sendo lida, como representado pela seguinte tabela:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}[]{c|cc}\hline
+                        Linguagem C & Classe em RISC-V & Tamanho em Bytes\\\hline
+                        bool        & byte             & 1\\
+                        char        & byte             & 1\\
+                        short       & halfword         & 2\\
+                        int         & word             & 4\\
+                        long        & word             & 4\\
+                        void        & unsigned word    & 4\\\hline
+                    \end{tabular}
+                    \caption{Registradores RISC-V}
+                \end{table}\noindent
 \end{document}
