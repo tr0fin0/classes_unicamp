@@ -1672,7 +1672,7 @@
                 \begin{table}[H]
                     \centering
                     \begin{tabular}[]{c|cc}\hline
-                        Linguagem C & Classe em RISC-V & Tamanho em Bytes\\\hline
+                        Linguagem C & Variáveis em RISC-V & Tamanho em Bytes\\\hline
                         bool        & byte             & 1\\
                         char        & byte             & 1\\
                         short       & halfword         & 2\\
@@ -1680,6 +1680,19 @@
                         long        & word             & 4\\
                         void        & unsigned word    & 4\\\hline
                     \end{tabular}
-                    \caption{Registradores RISC-V}
+                    \caption{Variavéis RISC-V}
                 \end{table}\noindent
+
+        \subsection{Instruções de Comparação}
+            \paragraph{Definição}Há diferentes funções que permitem, limitadamente, comparar valores na arquitetura \texttt{load/store}, entre as principais instruções tem-se como descrito a seguir:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{SLT Instruction:} Armazena no registrador \texttt{rd} a comparação se o valor em \texttt{rs1} é menor do que o valor em \texttt{rs2}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    SLT rd, rs1, rs2
+                            \end{lstlisting}
+                        \end{scriptsize}
+                    Este, comando apresentaram as variações imediatas, não sinalizadas e a combinação entre imediata e não sinalizada.
+                \end{enumerate}
 \end{document}
