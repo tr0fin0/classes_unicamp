@@ -99,8 +99,9 @@
 %Configurando layout para mostrar códigos
 \usepackage{listings}
 %Setting default style for code
-\lstdefinestyle{myStyle}{
-    language=Bash,                            % the language of the code
+\newcommand{\myStyleC}{
+\lstset{
+    language=C,                            % the language of the code
     basicstyle=\ttfamily\small,               % the size of the fonts that are used for the code
     keywordstyle=\color{darkpurple}\bfseries, %
     stringstyle=\color{darkblue},             %
@@ -123,7 +124,7 @@
     captionpos=b,                             % sets the caption-position to bottom
     xleftmargin=0pt,                          %
     tabsize=2,                                % sets default tabsize to 2 spaces
-}
+}}
 
 %setting bash setup
 \newcommand{\myStyleBash}{
@@ -1652,7 +1653,7 @@
         \subsection{Instruções de Memória}
             \paragraph{Definição}Há diferentes funções que permitem acessar e escrever na memória na arquitetura \texttt{load/store}, entre as principais instruções tem-se como descrito a seguir:
                 \begin{enumerate}[rightmargin = \leftmargin]
-                    \item \textbf{LW Instruction:} Armazena no registrador \texttt{rd} a leitura do endereço dentro de \texttt{rs1}, representado pelo seguinte comando:
+                    \item \textbf{LW Instruction:} Armazena no registrador \texttt{rd} a leitura do endereço dentro de \texttt{rs1 + imm}, representado pelo seguinte comando:
                         \begin{scriptsize}
                             \myStyleAssembly
                             \begin{lstlisting}
@@ -1734,4 +1735,143 @@
                         \end{scriptsize}
                     Este, comando apresentará a variação não sinalizada.
                 \end{enumerate}
+
+        \subsection{Códigos Básicos}
+            \paragraph{Definição}Há diferentes estruturas comumente empregadas em código, entre os principais métodos tem-se como descrito a seguir:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{if Estrutura:} Realização de uma comparação e separação do código, representado pelos seguintes comandos:
+                        \begin{scriptsize}
+                            \myStyleC
+                            \begin{lstlisting}
+    //code in C
+    #include<stdio.h>
+
+    int main()
+    {
+        int t0 = 9;
+        int t1 = 0;
+        int t2 = 5;
+    
+        if (t0 == t2)
+        {
+            t1 += 7;
+        } else
+        {
+            t1 += 15;
+        }
+    
+        printf("t1 = %d\n", t1);
+    }
+
+                            \end{lstlisting}
+                        \end{scriptsize}
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    //code in ASM
+
+    main:
+        addi t0, zero, 9
+        addi t1, zero, 0
+        addi t2, zero, 5
+
+        bne t0, t2, else
+        addi t1, t1, 7
+        j fim
+
+    else:
+        addi t1, t1, 15
+
+    fim:
+        jr ra
+                            \end{lstlisting}
+                        \end{scriptsize}
+\newpage
+                \item \textbf{while Estrutura:} Realização de \texttt{loop} do código, representado pelos seguintes comandos:
+                    \begin{scriptsize}
+                        \myStyleC
+                        \begin{lstlisting}
+    //code in C
+    #include<stdio.h>
+
+    int main()
+    {
+        int t0 = 20;
+        int t1 = 10;
+    
+        while (t0 != t1)
+        {
+            t0 += 2;
+            t1 += 3;
+        }
+    
+        printf("t1 = %d\n", t1);
+    }
+
+                        \end{lstlisting}
+                    \end{scriptsize}
+                    \begin{scriptsize}
+                        \myStyleAssembly
+                        \begin{lstlisting}
+    //code in ASM
+
+    main:
+        addi t0, zero, 20
+        addi t1, zero, 10
+
+    while:
+        beq t0, t1, fim
+        addi t0, t0, 2
+        addi t1, t1, 3
+        j while
+
+    fim:
+        jr ra
+                            \end{lstlisting}
+                        \end{scriptsize}
+\newpage
+                \item \textbf{for Estrutura:} Realização de \texttt{loop} do código, representado pelos seguintes comandos:
+                    \begin{scriptsize}
+                        \myStyleC
+                        \begin{lstlisting}
+    //code in C
+    #include<stdio.h>
+
+    int main()
+    {
+        int t0 = 0;
+        int t1 = 100;
+        int t2 = 0;
+    
+        for (t0 = 0; t0 < t1; t0++)
+        {
+            t2 += t0;
+        }
+    
+        printf("t2 = %d\n", t2);
+    }
+
+                        \end{lstlisting}
+                    \end{scriptsize}
+                    \begin{scriptsize}
+                        \myStyleAssembly
+                        \begin{lstlisting}
+    //code in ASM
+
+    main:
+        addi t0, zero, 0
+        addi t1, zero, 0
+        addi t2, zero, 100
+
+    for:
+        bge t1, t2, fim
+        addi t0, t0, t1
+        addi t1, t1, 1
+        j for
+
+    fim:
+        jr ra
+                        \end{lstlisting}
+                    \end{scriptsize}
+            \end{enumerate}
 \end{document}
