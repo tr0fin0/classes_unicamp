@@ -1743,7 +1743,6 @@
                         \begin{scriptsize}
                             \myStyleC
                             \begin{lstlisting}
-    //code in C
     #include<stdio.h>
 
     int main()
@@ -1759,8 +1758,6 @@
         {
             t1 += 15;
         }
-    
-        printf("t1 = %d\n", t1);
     }
 
                             \end{lstlisting}
@@ -1768,8 +1765,6 @@
                         \begin{scriptsize}
                             \myStyleAssembly
                             \begin{lstlisting}
-    //code in ASM
-
     main:
         addi t0, zero, 9
         addi t1, zero, 0
@@ -1791,7 +1786,6 @@
                     \begin{scriptsize}
                         \myStyleC
                         \begin{lstlisting}
-    //code in C
     #include<stdio.h>
 
     int main()
@@ -1804,17 +1798,12 @@
             t0 += 2;
             t1 += 3;
         }
-    
-        printf("t1 = %d\n", t1);
     }
-
                         \end{lstlisting}
                     \end{scriptsize}
                     \begin{scriptsize}
                         \myStyleAssembly
                         \begin{lstlisting}
-    //code in ASM
-
     main:
         addi t0, zero, 20
         addi t1, zero, 10
@@ -1829,12 +1818,11 @@
         jr ra
                             \end{lstlisting}
                         \end{scriptsize}
-\newpage
+
                 \item \textbf{for Estrutura:} Realização de \texttt{loop} do código, representado pelos seguintes comandos:
                     \begin{scriptsize}
                         \myStyleC
                         \begin{lstlisting}
-    //code in C
     #include<stdio.h>
 
     int main()
@@ -1847,17 +1835,12 @@
         {
             t2 += t0;
         }
-    
-        printf("t2 = %d\n", t2);
     }
-
                         \end{lstlisting}
                     \end{scriptsize}
                     \begin{scriptsize}
                         \myStyleAssembly
                         \begin{lstlisting}
-    //code in ASM
-
     main:
         addi t0, zero, 0
         addi t1, zero, 0
