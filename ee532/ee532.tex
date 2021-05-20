@@ -1512,4 +1512,41 @@
                             \caption{Amplificador Classe AB}
                         \end{figure}
                 \end{enumerate}
+\newpage
+
+    \section{Transistores de Efeito de Campo}
+        \paragraph{Definição}Dispositivo elétrico capaz de controlar corrente entre seus terminais de uma tensão em seu terminal de controle. Construído através da combinação em óxidos e junções de semicondutores positivamente e negativamente dopados classificados de acordo com as ligações realizados, comumente representados como mostrado a seguir:
+            \begin{figure}[H]
+                \centering
+                \begin{subfigure}[t]{0.45\textwidth}
+                    \centering
+                    \begin{circuitikz}[american]
+                        \ctikzset{
+                            component text=left, 
+                            diodes/scale=0.5, 
+                            resistors/width=0.25, 
+                            resistors/zigs=1
+                        }
+                        \draw
+                        (0,0) node[nigfete] (myNFET) {$Q_{1}$};
+                    \end{circuitikz}
+                    \caption{MOSFET N}
+                \end{subfigure}
+                \centering
+                \begin{subfigure}[t]{0.45\textwidth}
+                    \centering
+                    \begin{circuitikz}[american]
+                        \ctikzset{
+                            component text=left, 
+                            diodes/scale=0.5, 
+                            resistors/width=0.25, 
+                            resistors/zigs=1
+                        }
+                        \draw
+                        (0,0) node[pigfete] (myNFET) {$Q_{2}$};
+                    \end{circuitikz}
+                    \caption{MOSFET P}
+                \end{subfigure}
+                \caption{Transistores de Efeito de Campo}
+            \end{figure}
 \end{document}
