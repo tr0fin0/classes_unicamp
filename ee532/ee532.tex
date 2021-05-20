@@ -1594,19 +1594,41 @@
                                 resistors/zigs=1
                             }
                             \draw
-                            (0,0) node[pigfete] (myPFET) {$Q_{2}$}
+                            (0,0) node[pigfete] (myPFET) {}
                             (myPFET.G) node [anchor = east] {G}
                             (myPFET.D) node [anchor = north] {D}
-                            (myPFET.S) node [anchor = south] {S};
+                            (myPFET.S) node [anchor = south] {S}
+                            (myPFET.G) to[open, v_<=$V_{GD}$] (myPFET.D)
+                            (myPFET.S) to[open, v^<=$V_{GD}$] (myPFET.D);
                         \end{circuitikz}
                         \caption{MOSFET P}
                     \end{subfigure}
-                    \caption{Transistores de Efeito de Campo}
+                    \caption{Tensões de Transistores de Efeito de Campo}
                 \end{figure}\noindent
             Este componente apresentará 4 situações de operação, obtidas através das diferentes combinações entre a polarização dos terminais, sendo descritas abaixo:
                 \begin{enumerate}[rightmargin = \leftmargin]
                     \item \textbf{Região de Corte:} ;
                     \item \textbf{Região de Saturação:} ;
+                        \begin{equation}
+                            \boxed{
+                                I_{D} = \frac{1}{2} \mu_{n} C_{ox} \frac{W}{L} (V_{GS} - V_{TH})^{2}
+                            }
+                        \end{equation}
                     \item \textbf{Região de Triodo:} ;
+                        \begin{equation}
+                            \boxed{
+                                I_{D} = \mu_{n} C_{ox} \frac{W}{L}
+                                \left[
+                                    (V_{GS} - V_{TH})V_{DS} - \frac{V_{DS}^{2}}{2}
+                                \right]
+                            }
+                        \end{equation}
+                    Onde:
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item $\mu_{n}$, \texttt{Mobilidade dos Portadores} $[\frac{\text{m}^{2}}{\text{V s}}]$
+                            \item $C_{ox}$, \texttt{Capacitância por Área} $[\frac{\text{F}}{\text{m}^{2}}]$
+                            \item $W$, \texttt{Largura Canal de Condução} $[\text{m}]$
+                            \item $L$, \texttt{Comprimento Canal de Condução} $[\text{m}]$
+                        \end{enumerate}
                 \end{enumerate}
 \end{document}
