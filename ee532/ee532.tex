@@ -1548,18 +1548,65 @@
                         \draw
                         (0,0) node[pigfete] (myPFET) {$Q_{2}$}
                         (myPFET.G) node [anchor = east] {G}
-                        (myPFET.D) node [anchor = south] {D}
-                        (myPFET.S) node [anchor = north] {S};
+                        (myPFET.D) node [anchor = north] {D}
+                        (myPFET.S) node [anchor = south] {S};
                     \end{circuitikz}
                     \caption{MOSFET P}
                 \end{subfigure}
                 \caption{Transistores de Efeito de Campo}
-            \end{figure}
-            Onde:
+            \end{figure}\noindent
+        Onde:
             \begin{enumerate}[noitemsep]
                 \item \textbf{D:} Drain do Transistor;
                 \item \textbf{G:} Gate do Transistor;
                 \item \textbf{S:} Source do Transistor;
             \end{enumerate}
 
+        \subsection{Transistores MOSFET}
+            \paragraph{Definição}Transistores em que a região central será composta por uma região N, MOSFET N, negativamente dopada ou uma região P, MOSFET P, positivamente dopada; ligada duas regiões nas extremidades de dopagem oposta. Na região intermediária haverá uma placa polarizável separada das demais regiões por um óxido, apresentando as seguintes tensões:
+                \begin{figure}[H]
+                    \centering
+                    \begin{subfigure}[t]{0.45\textwidth}
+                        \centering
+                        \begin{circuitikz}[]
+                            \ctikzset{
+                                component text=left, 
+                                diodes/scale=0.5, 
+                                resistors/width=0.25, 
+                                resistors/zigs=1
+                            }
+                            \draw
+                            (0,0) node[nigfete] (myNFET) {}
+                            (myNFET.G) node [anchor = east] {G}
+                            (myNFET.D) node [anchor = south] {D}
+                            (myNFET.S) node [anchor = north] {S};
+                        \end{circuitikz}
+                        \caption{MOSFET N}
+                    \end{subfigure}
+                    \centering
+                    \begin{subfigure}[t]{0.45\textwidth}
+                        \centering
+                        \begin{circuitikz}[]
+                            \ctikzset{
+                                component text=left, 
+                                diodes/scale=0.5, 
+                                resistors/width=0.25, 
+                                resistors/zigs=1
+                            }
+                            \draw
+                            (0,0) node[pigfete] (myPFET) {$Q_{2}$}
+                            (myPFET.G) node [anchor = east] {G}
+                            (myPFET.D) node [anchor = north] {D}
+                            (myPFET.S) node [anchor = south] {S};
+                        \end{circuitikz}
+                        \caption{MOSFET P}
+                    \end{subfigure}
+                    \caption{Transistores de Efeito de Campo}
+                \end{figure}\noindent
+            Este componente apresentará 4 situações de operação, obtidas através das diferentes combinações entre a polarização dos terminais, sendo descritas abaixo:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Região de Corte:} ;
+                    \item \textbf{Região de Saturação:} ;
+                    \item \textbf{Região de Triodo:} ;
+                \end{enumerate}
 \end{document}
