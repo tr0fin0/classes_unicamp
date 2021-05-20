@@ -1528,7 +1528,10 @@
                             resistors/zigs=1
                         }
                         \draw
-                        (0,0) node[nigfete] (myNFET) {$Q_{1}$};
+                        (0,0) node[nigfete] (myNFET) {$Q_{1}$}
+                        (myNFET.G) node [anchor = east] {G}
+                        (myNFET.D) node [anchor = south] {D}
+                        (myNFET.S) node [anchor = north] {S};
                     \end{circuitikz}
                     \caption{MOSFET N}
                 \end{subfigure}
@@ -1543,10 +1546,14 @@
                             resistors/zigs=1
                         }
                         \draw
-                        (0,0) node[pigfete] (myNFET) {$Q_{2}$};
+                        (0,0) node[pigfete] (myPFET) {$Q_{2}$}
+                        (myPFET.G) node [anchor = east] {G}
+                        (myPFET.D) node [anchor = south] {D}
+                        (myPFET.S) node [anchor = north] {S};
                     \end{circuitikz}
                     \caption{MOSFET P}
                 \end{subfigure}
                 \caption{Transistores de Efeito de Campo}
             \end{figure}
+
 \end{document}
