@@ -430,6 +430,20 @@ if(True):
 
         return (1 - np.exp(-Lambda*x))
 
+    def ExponencialReverse(x: int, p: float):
+
+        if (p > 1):
+            return 0
+
+        Lambda = (-np.log(1-p))/x
+
+        print("\nExponencial Distribution")
+        print("x = {:.4f}".format(x))
+        print("p = {:.4f}".format(p))
+        print("l = {:.4f}".format(Lambda))
+
+        return Lambda
+
     def ExponencialInfo(Lambda: int, x: int):
 
         expectedValue = 1/Lambda
@@ -437,7 +451,7 @@ if(True):
 
         px = Exponencial(Lambda, x)
 
-        print("\nPoisson Distribution")
+        print("\nExponencial Distribution")
         print("x      = {:.4f}".format(x))
         print("lambda = {:.4f}".format(Lambda))
         print("E(X) = {:.4f}".format(expectedValue))
@@ -447,9 +461,14 @@ if(True):
 
         return px
 
-    n1 = 15
-    n2 = 22
-    e1 = ExponencialInfo(1/20, n1)
-    e2 = Exponencial(1/20, n2)
+    #exercice 67
+    n1 = 18
+    n2 = 20
+    lb = 1/10
+    e1 = ExponencialInfo(lb, n1)
+    e2 = Exponencial(lb, n2)
     print("P({}<X<{}) = {:.4f}".format(n1, n2, e2-e1))
+
+    #exercice 68
+    e = ExponencialReverse(17, 0.47)
 #%%
