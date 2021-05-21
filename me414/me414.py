@@ -154,7 +154,7 @@ if(False):
     print("P(B  | Ac): {:.2f}".format(bac))
 
 #partes 9 à 11
-if(True):
+if(False):
     #==========================
     #expectedValue and variance
     print("="*35)
@@ -416,4 +416,40 @@ if(True):
     g = GeometricInfo(2, 0.61)
     h = HiperGeometricInfo(4, 6, 10, 18)
     p = PoissonInfo(3, 3/12, 12)
-# %%
+
+# partes 12 e 13
+if(True):
+#%%
+    # from scipy.integrate import quad
+    import numpy as np
+
+    def Exponencial(Lambda: int, x: int):
+
+        if (Lambda < 0):
+            return 0
+
+        return (1 - np.exp(-Lambda*x))
+
+    def ExponencialInfo(Lambda: int, x: int):
+
+        expectedValue = 1/Lambda
+        varianceValue = 1/(Lambda**2)
+
+        px = Exponencial(Lambda, x)
+
+        print("\nPoisson Distribution")
+        print("x      = {:.4f}".format(x))
+        print("lambda = {:.4f}".format(Lambda))
+        print("E(X) = {:.4f}".format(expectedValue))
+        print("V(X) = {:.4f}".format(varianceValue))
+        print("P(X<={}) = {:.4f}".format(x, px))
+        print("P(X> {}) = {:.4f}".format(x, 1-px))
+
+        return px
+
+    n1 = 15
+    n2 = 22
+    e1 = ExponencialInfo(1/20, n1)
+    e2 = Exponencial(1/20, n2)
+    print("P({}<X<{}) = {:.4f}".format(n1, n2, e2-e1))
+#%%
