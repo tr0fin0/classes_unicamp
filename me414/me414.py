@@ -417,9 +417,9 @@ if(False):
     h = HiperGeometricInfo(4, 6, 10, 18)
     p = PoissonInfo(3, 3/12, 12)
 
+#%%
 # partes 12 e 13
 if(True):
-#%%
     # from scipy.integrate import quad
     import numpy as np
 
@@ -486,4 +486,28 @@ if(True):
     #exercice 68
     e = ExponencialReverseL(17, 0.47)
     e = ExponencialReverseX(0.0373, 0.15)
-#%%
+
+    #exercice 69
+    n = 2
+    e = 0.5
+    c = (n+2)*e/(n+1)
+    b = (n+1)/(c**(n+1))
+    pc3 = 1/(3**(n+1))
+    vx = (b*c**(n+3))/(n+3) - e**2
+
+    print("\nb = {:.4f}\nc = {:.4f}\npc3 = {:.4f}\nvx = {:.4f}".format(b, c, pc3, vx))
+
+    #exercice 70
+    from  scipy.integrate import quad
+
+    def Normal(expected: float, variance: float, x: float):
+
+        def f(x):
+
+            return (1/(2*np.math.pi()*variance)**(1/2))*np.exp((-(x-expected)**(2))/(2*variance))
+
+        px = quad(f, -np.math.inf(), x)
+
+        return
+
+    n = Normal(0.0, 1.0, 1.1)
