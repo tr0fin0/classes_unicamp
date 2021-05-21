@@ -430,14 +430,28 @@ if(True):
 
         return (1 - np.exp(-Lambda*x))
 
-    def ExponencialReverse(x: int, p: float):
+    def ExponencialReverseL(x: int, p: float):
 
         if (p > 1):
             return 0
 
         Lambda = (-np.log(1-p))/x
 
-        print("\nExponencial Distribution")
+        print("\nExponencial Reverse Lambda")
+        print("x = {:.4f}".format(x))
+        print("p = {:.4f}".format(p))
+        print("l = {:.4f}".format(Lambda))
+
+        return Lambda
+
+    def ExponencialReverseX(Lambda: float, p: float):
+
+        if (p > 1):
+            return 0
+
+        x = (-np.log(1-p))/Lambda
+
+        print("\nExponencial Reverse X")
         print("x = {:.4f}".format(x))
         print("p = {:.4f}".format(p))
         print("l = {:.4f}".format(Lambda))
@@ -470,5 +484,6 @@ if(True):
     print("P({}<X<{}) = {:.4f}".format(n1, n2, e2-e1))
 
     #exercice 68
-    e = ExponencialReverse(17, 0.47)
+    e = ExponencialReverseL(17, 0.47)
+    e = ExponencialReverseX(0.0373, 0.15)
 #%%
