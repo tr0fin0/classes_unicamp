@@ -982,7 +982,7 @@
             \paragraph{Definição}Composição do movimento através de sistemas cinemáticos móveis, referentes ao ponto $B$, que possuem rotação com relação a um sistema inercial, fixado no ponto $O$. Considere a seguinte figura como referência desta configuração:
                 \begin{figure}[H]
                     \centering
-                    \includegraphics[height = 4cm]{ima3.png}
+                    \includegraphics[height = 5cm]{ima3.png}
                     \caption{Representação Eixos Rotativos}
                 \end{figure} \noindent
             Onde:
@@ -1054,7 +1054,7 @@
 
                             \item $\vec{a}_{C}$, \texttt{Aceleração de Coriolis:} Causada pela rotação percebida apenas por observadores no sistema rotativo;
 
-                            \item $a_{R}$, \texttt{Aceleração de Relativa:} Aceleração de $A$ observada com relação a $B$;
+                            \item $\vec{a}_{R}$, \texttt{Aceleração de Relativa:} Aceleração de $A$ observada com relação a $B$;
                         \end{enumerate}
                 \end{enumerate}
 \newpage
@@ -1063,20 +1063,31 @@
         \paragraph{Definição}Análise das relações entre as forças externas atuando sobre um corpo e seus movimenos correspondentes de rotação e translação, sendo necessárias duas equações de força e uma equação de momento para determinar o estado do movimento plano do corpo rígido.
 
         \subsection{Momento de Inércia da Massa}
-            \paragraph{Definição}Propriedade constante relacionada a geometria do corpo rígido estudado, quantificando a resistência à variação na velocidade de rotação em torno do eixo $z$ a partir do centro de gravidade obtido pela seguinte equação:
+            \paragraph{Definição}Propriedade constante relacionada a geometria do corpo rígido estudado, quantificando a resistência à variação na velocidade de rotação em torno do eixo $z$ a partir do centro de gravidade, como representado pela seguinte figura:
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[height = 4cm]{ima4.png}
+                    \caption{Definição Momento de Inércia}
+                \end{figure}\noindent
+            Desta maneira o momento de inércia de um corpo, considerado a partir de um ponto qualquer será descrito pela seguinte equação:
                 \begin{equation}
                     \boxed{
                         \overline{I} = \int\rho^{2}_{i}dm
                     }
                 \end{equation}
-
+            Usualmente estes valores são tabelados para diferente eixos ao longo de algumas formas geométricas comuns, como representadas pelas seguintes imagens:
                 \begin{figure}[H]
                     \centering
-                    \begin{subfigure}[t]{0.3\textwidth}
-                        \centering
-                        \includegraphics[height = 4cm]{ima4.png}
-                        \caption{Definição Momento de Inércia}
-                    \end{subfigure}
+                    \includegraphics[width = 16cm]{ima9.png}
+                \end{figure}
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width = 16cm]{ima10.png}
+                    \includegraphics[width = 16cm]{ima11.png}
+                    \includegraphics[width = 16cm]{ima13.png}
+                \end{figure}
+
+                \begin{figure}[H]
                     \begin{subfigure}[t]{0.3\textwidth}
                         \centering
                         \includegraphics[height = 2.5cm]{ima5.png}
@@ -1089,10 +1100,15 @@
                     \end{subfigure}
                     \caption{Representação de Corpos Rígidos}
                 \end{figure} \noindent
-            Corpos possuem diferentes momentos de inércia de acordo com o eixo de rotação considerado. Estes momentos são tabelas de para várias geométrias e eixos.
 
         \subsection{Equações Gerais}
-            \paragraph{Definição}Nesta abordagem retoma-se os resultados obtidos para cinética de sistemas de partículas, aplicando-os para o centro de gravidade um corpo rígido genérico com os seguintes resultados:
+            \paragraph{Definição}Nesta abordagem retomam-se os resultados para cinética de sistemas de partículas, aplicando-os, porém, para o um corpo rígido genérico, representado pela seguinte figura:
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[height = 4cm]{ima5.png}
+                    \caption{Diagramas para Cinética Plana de Corpos Rígidos}
+                \end{figure}\noindent
+            Desta maneira, o \textbf{Diagrama Dinâmico}, à esquerda,  representa as variáveis dinâmicas como forças; enquanto o \textbf{Diagrama Cinemático}, à direita, representa as variáveis cinemáticas como momentos e acelerações. Utilizam-se as seguintes equações para descrição do movimento:
                 \begin{equation}
                     \boxed{
                         \Sigma\vec{F} = m\vec{\overline{a}}
@@ -1102,81 +1118,56 @@
                         \Sigma\vec{M}_{G} = \dot{\vec{H}}_{G}
                     }
                 \end{equation}
-            Nestas equações será necessário notar que os termos a direita representam o diagrama
             Onde:
                 \begin{enumerate}[rightmargin = \leftmargin]
-                    \item \textbf{Centro de Gravidade:} Neste ponto o momento de inércia a quantidade de movimento angular são obtidos pelas seguintes equações:
+                    \item $G$, \textbf{Centro de Gravidade:} Eixo de rotação atravessa o centro de gravidade do corpo rígido, sua quantidade de movimento angular será obtida pela seguinte equação:
                         \begin{equation}
                             \boxed{
-                                \Sigma\vec{F} = m\vec{\overline{a}}
-                            }
-                            \qquad
-                            \boxed{
-                                \Sigma\vec{M}_{G} = \overline{I}\alpha
+                                \Sigma\vec{M}_{G} = \overline{I}_{G}\alpha
                             }
                         \end{equation}
 
-                    \item \textbf{Ponto Arbitrário:} Neste ponto, tanto para movimento relativo quanto para corpos interligados, o momento de inércia a quantidade de movimento angular são obtidos pelas seguintes equações:
+                    \item $P$, \textbf{Ponto Arbitrário:} Eixo de rotação não fixo e não coincidente com o centro de gravidade do corpo rígido, sua quantidade de movimento angular será obtida pela seguinte equação:
                         \begin{equation}
                             \boxed{
-                                \Sigma\vec{F} = \Sigma m\vec{\overline{a}}
-                            }
-                            \qquad
-                            \boxed{
-                                \Sigma\vec{M}_{G} = 
-                                \dot{\vec{H}}_{G} + \overline{\rho}\times m \vec{\overline{a}} = 
-                                \overline{I}\alpha + m\overline{a}d
+                                \Sigma\vec{M}_{P} = 
+                                \overline{I}_{G}\alpha + m\overline{a}d
                             }
                         \end{equation}
+                    Esta configuração será válida para corpos interligados e movimento relativo.
 
-                    \item \textbf{Eixo Fixo:} Neste ponto haverá forças de reação dos apoios e o momento de inércia a quantidade de movimento angular são obtidos pelas seguintes equações:
+                    \item $O$, \textbf{Eixo Fixo:} Eixo de rotação fixo e não conincidente com o centro de gravidade do corpo rígido, sua quantidade de movimento angular será obtida pela seguinte equação:
                         \begin{equation}
-                            \boxed{
-                                \Sigma\vec{F} = \Sigma m\vec{\overline{a}}
-                            }
-                            \qquad
                             \boxed{
                                 \Sigma\vec{M}_{O} = 
-                                \overline{I}_{O}\alpha
-                            }
-                            \qquad
-                            \boxed{
-                                \overline{I}_{O} = 
-                                \overline{I} + m\overline{r}^{2}
+                                \underbrace{
+                                    (\overline{I}_{G} + m\overline{r}^{2})
+                                }_{\overline{I}_{O}}
+                                \alpha
                             }
                         \end{equation}
-
-                        \item \textbf{Centro de Percursão:} Neste ponto o momento de todas forças será nulo obtidos pelas seguintes equações:
-                            \begin{equation}
-                                \boxed{
-                                    \Sigma\vec{F} = \Sigma m\vec{\overline{a}}
-                                }
-                                \qquad
-                                \boxed{
-                                    \Sigma\vec{M}_{O} = 
-                                    \overline{I}_{O}\alpha
-                                }
-                                \qquad
-                                \boxed{
-                                    \overline{I}_{O} = 
-                                    m k^{2}_{O}
-                                }
-                            \end{equation}
-                            \begin{figure}[H]
-                                \centering
-                                \includegraphics[height = 4cm]{ima6.png}
-                                \caption{Definição Centro de Percursão}
-                            \end{figure}\noindent
-                        Onde:
-                            \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                                \item $k_{O}$, \texttt{Raio de Giração};
-                                \item $q$, \texttt{Distância:} Obtido pela seguinte equação:
-                                    \begin{equation}
-                                        \boxed{
-                                            q = \frac{k^{2}_{O}}{\overline{r}}
-                                        }
-                                    \end{equation} 
-                            \end{enumerate}
+                    Quando o corpo não apresentar um formato usual tabelado seu momento inercial com relação a um eixo fixo poderá ser obtido através do \textbf{Centro de Percursão}, uma medida padronizada obtida pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                \overline{I}_{O} = 
+                                m k^{2}_{O}
+                            }
+                        \end{equation}
+                        \begin{figure}[H]
+                            \centering
+                            \includegraphics[height = 4cm]{ima6.png}
+                            \caption{Definição Centro de Percursão}
+                        \end{figure}\noindent
+                    Onde:
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item $k_{O}$, \texttt{Raio de Giração};
+                            \item $q$, \texttt{Distância:} Obtido pela seguinte equação:
+                                \begin{equation}
+                                    \boxed{
+                                        q = \frac{k^{2}_{O}}{\overline{r}}
+                                    }
+                                \end{equation} 
+                        \end{enumerate}
                 \end{enumerate}
 
         \subsection{Trabalho e Energia}
