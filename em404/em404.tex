@@ -888,7 +888,13 @@
             \paragraph{Definição}Aplicação de relações geométricas para definir o movimento do corpo ao longo de sua trajetória a partir de um referência inercial, obtendo suas derivadas no tempo para obter velocidades e acelerações. Este é um método analítico, gerando equações possivelmente complexas.
 
         \subsection{Movimento Relativo}
-            \paragraph{Definição}Composição do movimento através de um referencial inercial e um referencial não inercial. Quando um dos pontos $B$ do corpo for fixado como referencial e outro ponto $A$ for analisado este possuirá uma velocidade relativa causada pela rotação do corpo, sendo descrita pelas seguintes equações:
+            \paragraph{Definição}Composição do movimento através de um referencial inercial e um referencial não inercial. Quando, fixado um ponto $B$ do corpo como referencial, qualquer outro ponto $A$ analisado com relação a $B$, possuirá apenas rotação visto que ambos transladaram igualmente pela imposição de corpo rígido como ilustrado pela seguinte figura:
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[height = 4cm]{ima8.png}
+                    \caption{Representação do Movimento Relativo}
+                \end{figure} \noindent
+            Desta forma, considera-se que, quando analisado a partir de um ponto fixo pertencente ao corpo rígido, os demais pontos possuem componentes de movimento causados pela rotação do mesmo, sendo descrita pelas seguintes equações:
                 \begin{equation}
                     \boxed{
                         \vec{r}_{A} = \vec{r}_{B} + \vec{r}_{A|B}
@@ -904,26 +910,43 @@
                 \end{equation}
             Onde:
                 \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                    \item $\vec{v}_{A|B}$, \textbf{Velocidade Devido à Rotação:} Quando analisado a partir de $B$ o ponto $A$ terá apenas rotação:
+                    \item $\vec{v}_{A|B}$, \textbf{Velocidade Devido à Rotação:} Quando analisado a partir de $B$ o ponto $A$ terá apenas rotação, portanto haverá uma velocidade tangencial a trajetória:
                         \begin{equation}
                             \boxed{
-                                \vec{v}_{A|B} = \omega\times\vec{r}
+                                \vec{v}_{A|B} = \omega_{AB}\times\vec{r}_{AB}
                             }
                         \end{equation}
 
-                    \item $\vec{a}_{A|B}$, \textbf{Aceleração Devido à Rotação:} Quando analisado a partir de $B$ o ponto $A$ terá apenas rotação:
+                    \item $\vec{a}_{A|B}$, \textbf{Aceleração Devido à Rotação:} Quando analisado a partir de $B$ o ponto $A$ terá apenas rotação, portanto haverá uma componente normal e outra tangencial a trajetória:
                         \begin{equation}
                             \boxed{
-                                \vec{a}_{A|B} = \vec{\omega}\times(\vec{\omega}\times\vec{r}) + \alpha\times\vec{r}
+                                \vec{a}_{A|B} = 
+                                \underbrace{
+                                    \vec{\omega}_{AB}\times(\vec{\omega}_{AB}\times\vec{r}_{AB})
+                                }_{\vec{a}_{A|B_{n}}} + 
+                                \underbrace{
+                                    \alpha_{AB}\times\vec{r}_{AB}
+                                }_{\vec{a}_{A|B_{t}}}
                             }
                         \end{equation}
                     Onde:
                         \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                            \item $\vec{a}_{A|B_{n}}$, \textbf{Normal:} Responsável pela modificação da direção de $\vec{v}_{A|B}$.
+                            \item $\vec{a}_{A|B_{n}}$, \texttt{Componente Normal:} Responsável pela modificação da direção de $\vec{v}_{A|B}$;
 
-                            \item $\vec{a}_{A|B_{t}}$, \textbf{Tangencial:} Responsável pela modificação do módulo de $\vec{v}_{A|B}$.
+                            \item $\vec{a}_{A|B_{t}}$, \texttt{Componente Tangencial:} Responsável pela modificação do módulo de $\vec{v}_{A|B}$;
                         \end{enumerate}
                 \end{enumerate}
+            Nesta análise recomenda-se realizar as operações vetorialmente, desta maneira evita-se possíveis confusões quando aos produtos vetoriais. Caso esta abordagem seja empregada será necessário conhecer os seguintes resultados vetoriais:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}[]{c | c c c}
+                        $\times$  & $ \vec{i}$ & $ \vec{j}$ & $ \vec{k}$\\\hline
+                        $\vec{i}$ & 0          & $+\vec{k}$ & $-\vec{j}$\\
+                        $\vec{j}$ & $-\vec{k}$ & 0          & $+\vec{i}$\\
+                        $\vec{k}$ & $+\vec{j}$ & $-\vec{i}$ & 0\\
+                    \end{tabular}
+                    \caption{Multiplicação Vetores Unitários}
+                \end{table}
 
         \subsection{Centro Instantâneo de Velocidade Nula}
             \paragraph{Definição}Ponto de intersecção entre o plano do movimento e o eixo normal na qual o corpo possui apenas rotação pura, neste ponto a velocidade instantaneamente será nula. Considere a seguinte figura como referência para o desenvolvimento da localização deste ponto:
@@ -988,17 +1011,6 @@
                                     }
                                 \end{equation}\noindent
                             \end{enumerate}
-                        Além disso, as seguintes identidades serão válidas:
-                            \begin{table}[H]
-                                \centering
-                                \begin{tabular}[]{c | c c c}
-                                    $\times$  & $ \vec{i}$ & $ \vec{j}$ & $ \vec{k}$\\\hline
-                                    $\vec{i}$ & 0          & $+\vec{k}$ & $-\vec{j}$\\
-                                    $\vec{j}$ & $-\vec{k}$ & 0          & $+\vec{i}$\\
-                                    $\vec{k}$ & $+\vec{j}$ & $-\vec{i}$ & 0\\
-                                \end{tabular}
-                                \caption{Multiplicação Vetores Unitários}
-                            \end{table}
 
                     \item \textbf{Velocidade:} Vetorialmente a velocidade do ponto $A$ pode ser descrito como a composição entre o movimento rotacional,  translacional e relativo, representado pela seguinte equação:
                         \begin{equation}
