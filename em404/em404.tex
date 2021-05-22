@@ -828,7 +828,30 @@
                             \item \texttt{Curvilínea:} Deslocamento ao longo de curvas congruentes;
                         \end{enumerate}
 
-                    \item \textbf{Rotação:} Qualquer movimento angular em torno de um eixo fixo, onde todas as partículas do corpo se deslocam em trajetórias circulares, girando do mesmo ângulo ao mesmo tempo;
+                    \item \textbf{Rotação:} Qualquer movimento angular em torno de um eixo fixo, onde todas as partículas do corpo se deslocam em trajetórias circulares, girando do mesmo ângulo ao mesmo tempo, aplicando coordenadas normal e tangencial têm-se:
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item \texttt{Velocidade}: Neste movimento a velocidade sempre será tangente a trajetória da partícula, sendo expressa pela seguinte equação:
+                                \begin{equation}
+                                    \boxed{
+                                        \vec{v} = \vec{\dot{r}} = \vec{\omega}\times\vec{r}
+                                    }
+                                \end{equation}
+        
+                            \item \texttt{Aceleração Normal}: Neste movimento a aceleração normal modificará a trajetória da velocidade do corpo, sendo expressa pela seguinte equação:
+                                \begin{equation}
+                                    \boxed{
+                                        \vec{a}_{n} = \vec{\omega} \times (\vec{\omega}\times\vec{r})
+                                    }
+                                \end{equation}
+        
+                            \item \texttt{Aceleração Tangencial}: Neste movimento a aceleração tangencial modificará a magnitude da velocidade do corpo, sendo expressa pela seguinte equação:
+                                \begin{equation}
+                                    \boxed{
+                                        \vec{a}_{t} = \vec{\alpha} \times \vec{r}
+                                        \vec{a}_{n} = \vec{\omega} \times (\vec{\omega}\times\vec{r})
+                                    }
+                                \end{equation}
+                        \end{enumerate}
 
                     \item \textbf{Geral:} Combinação entre a translação e a rotação simultaneamente ao longo do corpo, definindo as seguintes equações para o movimento angular realizado pelo corpo:
                         \begin{equation}
@@ -859,20 +882,6 @@
                             }
                         \end{equation}
                 \end{enumerate}
-            Quando o corpo rígido girando em torno de um eixo fixo normal ao plano da figura pode-se escrever, utilizando a notação vetorial, as seguintes equações de movimento em coordenadas normal e tangencial:
-                \begin{equation}
-                    \boxed{
-                        \vec{v} = \vec{\dot{r}} = \vec{\omega}\times\vec{r}
-                    }
-                    \qquad
-                    \boxed{
-                        \vec{a}_{n} = \vec{\omega} \times (\vec{\omega}\times\vec{r})
-                    }
-                    \qquad
-                    \boxed{
-                        \vec{a}_{t} = \vec{\alpha} \times \vec{r}
-                    }
-                \end{equation}
 
         \subsection{Movimento Absoluto}
             \paragraph{Definição}Aplicação de relações geométricas para definir o movimento do corpo ao longo de sua trajetória a partir de um referência inercial, obtendo suas derivadas no tempo para obter velocidades e acelerações.
