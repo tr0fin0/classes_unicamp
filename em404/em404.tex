@@ -828,8 +828,36 @@
                             \item \texttt{Curvilínea:} Deslocamento ao longo de curvas congruentes;
                         \end{enumerate}
 
-                    \item \textbf{Rotação:} Qualquer movimento angular em torno de um eixo fixo, onde todas as partículas do corpo se deslocam em trajetórias circulares, girando do mesmo ângulo ao mesmo tempo, aplicando coordenadas normal e tangencial têm-se:
-                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Rotação:} Qualquer movimento angular em torno de um eixo fixo, onde todas as partículas do corpo se deslocam em trajetórias circulares, girando do mesmo ângulo ao mesmo tempo, obtendo as seguintes equações rotacionais:
+                        \begin{equation}
+                            \boxed{
+                                \omega = \diff{\theta}{t} = \dot{\theta}
+                            }
+                            \qquad
+                            \boxed{
+                                \omega d \omega =\alpha d\theta
+                            }
+                            \qquad
+                            \boxed{
+                                \alpha = \diff{\theta}{t} = \dot{\omega} = \ddot{\theta}
+                            }
+                        \end{equation}
+                    Quando a aceleração angular for constante pode-se  integrar as equações acima, obtendo as seguintes equações do movimento angular: 
+                        \begin{equation}
+                            \boxed{
+                                \omega = \omega_{0} + \alpha t
+                            }
+                            \qquad
+                            \boxed{
+                                \omega^{2} = \omega^{2}_{0} + 2\alpha(\theta - \theta_{0})
+                            }
+                            \qquad
+                            \boxed{
+                                \theta = \theta_{0} + \omega_{0} t + \frac{1}{2}\alpha t^{2}
+                            }
+                        \end{equation}
+                    Onde, aplicando coordenadas normal e tangencial têm-se:
+                        \begin{enumerate}[rightmargin = \leftmargin]
                             \item \texttt{Velocidade}: Neste movimento a velocidade sempre será tangente a trajetória da partícula, sendo expressa pela seguinte equação:
                                 \begin{equation}
                                     \boxed{
@@ -853,34 +881,7 @@
                                 \end{equation}
                         \end{enumerate}
 
-                    \item \textbf{Geral:} Combinação entre a translação e a rotação simultaneamente ao longo do corpo, definindo as seguintes equações para o movimento angular realizado pelo corpo:
-                        \begin{equation}
-                            \boxed{
-                                \omega = \diff{\theta}{t} = \dot{\theta}
-                            }
-                            \qquad
-                            \boxed{
-                                \omega d \omega =\alpha d\theta
-                            }
-                            \qquad
-                            \boxed{
-                                \alpha = \diff{\theta}{t} = \dot{\omega} = \ddot{\theta}
-                            }
-                        \end{equation}
-                    Quando a aceleração angular for constante, integrando as equações acima obtêm-se:
-                        \begin{equation}
-                            \boxed{
-                                \omega = \omega_{0} + \alpha t
-                            }
-                            \qquad
-                            \boxed{
-                                \omega^{2} = \omega^{2}_{0} + 2\alpha(\theta - \theta_{0})
-                            }
-                            \qquad
-                            \boxed{
-                                \theta = \theta_{0} + \omega_{0} t + \frac{1}{2}\alpha t^{2}
-                            }
-                        \end{equation}
+                    \item \textbf{Geral}: Combinação entre a translação e a rotação simultânea do corpo rígido ao longo de sua trajetória. Cada componente pode ser analisada individualmente para compreender o resultado de sua combinação.
                 \end{enumerate}
 
         \subsection{Movimento Absoluto}
