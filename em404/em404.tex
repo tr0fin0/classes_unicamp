@@ -986,22 +986,19 @@
                     \caption{Representação Eixos Rotativos}
                 \end{figure} \noindent
             Onde:
-                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                    \item \textbf{Direção:} Vetorialmente a posição do ponto $A$ pode ser descrito como a composição entre o movimento rotacional e translacional, representado pela seguinte equação:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item $\vec{r}_{A}$, \textbf{Direção:} Vetorialmente a posição do ponto $A$ será descrita como a composição entre o movimento rotacional e translacional, representado pela seguinte equação:
                         \begin{equation}
                             \boxed{
-                                \vec{r}_{A} = \vec{r}_{B} + (x\vec{i} + y\vec{j})
+                                \vec{r}_{A} = 
+                                \vec{r}_{B} + 
+                                \underbrace{
+                                    (x\vec{i} + y\vec{j})
+                                }_{\vec{r}_{AB}}
                             }
                         \end{equation}
                     Onde:
                         \begin{enumerate}[rightmargin = \leftmargin]
-                            \item \texttt{Direção Relativa:} Representa o vetor de posição de $A$ com relação a $B$, representado pela seguinte equação:
-                                \begin{equation}
-                                    \boxed{
-                                        \vec{r}_{AB} = x\vec{i} + y\vec{j}
-                                    }
-                                \end{equation}
-
                             \item \texttt{Derivadas Direcionais:} Vetores unitários $\vec{i}$ e $\vec{j}$ possuem derivadas no tempo, pois possuem rotação, como mostrado nas equações abaixo:
                                 \begin{equation}
                                     \boxed{
@@ -1012,61 +1009,52 @@
                                         \dot{\vec{j}} = \omega\times\vec{j} = -\omega\vec{i}
                                     }
                                 \end{equation}\noindent
-                            \end{enumerate}
+                        \end{enumerate}
 
-                    \item \textbf{Velocidade:} Vetorialmente a velocidade do ponto $A$ pode ser descrito como a composição entre o movimento rotacional,  translacional e relativo, representado pela seguinte equação:
+                    \item $\vec{v}_{A}$, \textbf{Velocidade:} Vetorialmente a velocidade do ponto $A$ será descrita como a composição entre o movimento rotacional,  translacional e relativo, representado pela seguinte equação:
                         \begin{equation}
                             \boxed{
-                                \vec{v}_{A} = \vec{v}_{B} + \omega_{AB}\times\vec{r}_{AB} + \vec{v}_{r}
+                                \vec{v}_{A} = 
+                                \vec{v}_{B} + 
+                                \underbrace{
+                                    \omega_{AB}\times\vec{r}_{AB}
+                                }_{\vec{v}_{AB}} + 
+                                \vec{v}_{R}
                             }
                         \end{equation}
                     Onde:
                         \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                            \item \texttt{Velocidade Devido a Rotação:} Representa o vetor de velocidade causada pela rotação de $AB$, representado pela seguinte equação:
-                                \begin{equation}
-                                    \boxed{
-                                        \vec{v}_{A|B} = \omega_{AB}\times\vec{r}_{AB} + \vec{v}_{r}
-                                    }
-                                \end{equation}
+                            \item $\vec{v}_{AB}$, \texttt{Velocidade Devido a Rotação:} Velocidade causada pela rotação de $AB$.
 
-                            \item $v_{r}$, \texttt{Velocidade Relativa:} Representa o vetor de velocidade de $A$ com relação a $B$.
+                            \item $v_{R}$, \texttt{Velocidade Relativa:} Velocidade de $A$ observada com relação a $B$.
                         \end{enumerate}
 
-                    \item \textbf{Aceleração:} Vetorialmente a aceleração do ponto $A$ pode ser descrito como a composição entre o movimento rotacional, translacional, relativo e de \textbf{Coriolis}, representado pela seguinte equação:
+                    \item $\vec{a}_{A}$, \textbf{Aceleração:} Vetorialmente a aceleração do ponto $A$ será descrita como a composição entre o movimento rotacional, translacional, relativo e de \textbf{Coriolis}, representado pela seguinte equação:
                         \begin{equation}
                             \boxed{
                                 \vec{a}_{A} = 
                                 \vec{a}_{B} + 
-                                \dot{\omega}_{AB}\times\vec{r}_{AB} + 
-                                \omega_{AB}\times(\omega_{AB}\times\vec{r}_{AB}) + 
-                                2\omega_{AB}\times\vec{v}_{r} + 
-                                \vec{a}_{r}
+                                \underbrace{
+                                    \omega_{AB}\times(\omega_{AB}\times\vec{r}_{AB})
+                                }_{\vec{a}_{AB_{n}}} + 
+                                \underbrace{
+                                    \dot{\omega}_{AB}\times\vec{r}_{AB}
+                                }_{\vec{a}_{AB_{t}}} + 
+                                \underbrace{
+                                    2\omega_{AB}\times\vec{v}_{R}
+                                }_{\vec{a}_{C}} + 
+                                \vec{a}_{R}
                             }
                         \end{equation}
                     Onde:
-                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                            \item \texttt{Aceleração Devido a Rotação Tangencial:} Representa o vetor de aceleração causada pela rotação de $AB$ tangencial a trajetória considerada a partir do \textbf{Centro de Velocidade Nula}, representado pela seguinte equação:
-                                \begin{equation}
-                                    \boxed{
-                                        (\vec{a}_{A|B})_{t} = \dot{\omega}\times\vec{r}
-                                    }
-                                \end{equation}
+                        \begin{enumerate}[rightmargin = \leftmargin]
+                            \item $\vec{a}_{AB_{t}}$, \texttt{Aceleração Devido a Rotação Tangencial:} Causada pela rotação de $AB$, tangencial a trajetória considerada a partir do \textbf{Centro de Velocidade Nula};
 
-                            \item \texttt{Aceleração Devido a Rotação Normal:} Representa o vetor de aceleração causada pela rotação de $AB$ normal a trajetória considerada a partir do \textbf{Centro de Velocidade Nula}, representado pela seguinte equação:
-                                \begin{equation}
-                                    \boxed{
-                                        (\vec{a}_{A|B})_{n} = \omega\times(\omega\times\vec{r})
-                                    }
-                                \end{equation}
+                            \item $\vec{a}_{AB_{n}}$, \texttt{Aceleração Devido a Rotação Normal:} Causada pela rotação de $AB$, normal a trajetória considerada a partir do \textbf{Centro de Velocidade Nula};
 
-                            \item \texttt{Aceleração de Coriolis:} Aceleração causada pela rotação percebida apenas por observadores no sistema rotativo, representado pela seguinte equação: 
-                                \begin{equation}
-                                    \boxed{
-                                        \vec{a}_{C} = 2\omega\times\vec{v}_{r}
-                                    }
-                                \end{equation}
+                            \item $\vec{a}_{C}$, \texttt{Aceleração de Coriolis:} Causada pela rotação percebida apenas por observadores no sistema rotativo;
 
-                            \item $a_{r}$, \texttt{Aceleração de Relativa:} Representa o vetor de aceleração de $A$ com relação a $B$.
+                            \item $a_{R}$, \texttt{Aceleração de Relativa:} Aceleração de $A$ observada com relação a $B$;
                         \end{enumerate}
                 \end{enumerate}
 \newpage
