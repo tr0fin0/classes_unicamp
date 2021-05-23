@@ -1093,7 +1093,7 @@
                     }
                 \end{equation}
             Onde $I_{G}$ representa o momento de inercia com relação ao centro de massa do corpo e $r$ representa a distância entre o eixo $O$ e o centro de massa $G$ do corpo avaliado.
-\newpage
+
         \subsection{Equações Gerais}
             \paragraph{Definição}Nesta abordagem retomam-se os resultados para cinética de sistemas de partículas, aplicando-os, porém, para o um corpo rígido genérico, representado pela seguinte figura:
                 \begin{figure}[H]
@@ -1139,7 +1139,7 @@
                                 \alpha
                             }
                         \end{equation}
-                    Quando o corpo não apresentar um formato usual tabelado seu momento inercial com relação a um eixo fixo poderá ser obtido através do \textbf{Centro de Percursão}, uma medida padronizada obtida pela seguinte equação:
+                    Quando o corpo não apresentar um formato usual tabelado seu momento inercial com relação a um eixo fixo poderá ser obtido através do \textbf{Raio de Giração}, uma medida padronizada obtida pela seguinte equação:
                         \begin{equation}
                             \boxed{
                                 \overline{I}_{O} = 
@@ -1149,7 +1149,7 @@
                         \begin{figure}[H]
                             \centering
                             \includegraphics[height = 3cm]{ima6.png}
-                            \caption{Definição Centro de Percursão}
+                            \caption{Definição Raio de Giração}
                         \end{figure}\noindent
                     Onde:
                         \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
@@ -1169,7 +1169,13 @@
                     \item $T$, \textbf{Energia Cinética:} Analisa-se conjuntamento a parcela gerada pela translação e pela rotação, obtendo:
                         \begin{equation}
                             \boxed{
-                                T_{i} = \frac{1}{2} m\overline{v}^{2} + \frac{1}{2}I_{G}\omega^{2}
+                                T_{i} = 
+                                \underbrace{
+                                    \frac{1}{2} m\overline{v}^{2}
+                                }_{\text{Translação}} + 
+                                \underbrace{
+                                    \frac{1}{2}I_{G}\omega^{2}
+                                }_{\text{Rotação}}
                             }
                         \end{equation}
                     Onde:
