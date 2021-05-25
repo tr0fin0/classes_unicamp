@@ -960,17 +960,17 @@
                     \centering
                     \begin{subfigure}[]{0.3\textwidth}
                         \centering
-                        \includegraphics[height = 3cm]{ima1.png}
+                        \includegraphics[height = 4cm]{ima1.png}
                         \caption{Centro Instantâneo Interno}
                     \end{subfigure}
                     \begin{subfigure}[]{0.3\textwidth}
                         \centering
-                        \includegraphics[height = 3cm]{ima0.png}
+                        \includegraphics[height = 4cm]{ima0.png}
                         \caption{Centro Instantâneo Genérico}
                     \end{subfigure}
                     \begin{subfigure}[]{0.3\textwidth}
                         \centering
-                        \includegraphics[height = 3cm]{ima2.png}
+                        \includegraphics[height = 4cm]{ima2.png}
                         \caption{Centro Instantâneo Externo}
                     \end{subfigure}
                     \caption{Centro Instantâneo de Velocidade Nula}
@@ -991,6 +991,12 @@
                     \includegraphics[height = 5cm]{ima3.png}
                     \caption{Representação Eixos Rotativos}
                 \end{figure} \noindent
+            Note que para as equações abaixo serem válidas será necessário que as variáveis do problema sejam definidas com relação ao referêncial apresentado acima, pois do contrário não funcionará. Desta maneira, será necessário utilizar a seguinte configuração:
+                \begin{enumerate}[]
+                    \item $B$, \textbf{Origem do Sistema Rotacional};
+                    \item $A$, \textbf{Ponto Qualquer};
+                    \item $O$, \textbf{Origem Inercial};
+                \end{enumerate}
             Onde:
                 \begin{enumerate}[rightmargin = \leftmargin]
                     \item $\vec{r}_{A}$, \textbf{Direção:} Vetorialmente a posição do ponto $A$ será descrita como a composição entre o movimento rotacional e translacional, representado pela seguinte equação:
@@ -1032,7 +1038,7 @@
                         \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
                             \item $\vec{v}_{AB}$, \texttt{Velocidade Devido a Rotação:} Velocidade causada pela rotação de $AB$.
 
-                            \item $v_{R}$, \texttt{Velocidade Relativa:} Velocidade de $A$ observada com relação a $B$.
+                            \item $v_{R}$, \texttt{Velocidade Relativa:} Velocidade de $A$ observada com relação a $B$, ou seja, há deslocamento entre os pontos.
                         \end{enumerate}
 
                     \item $\vec{a}_{A}$, \textbf{Aceleração:} Vetorialmente a aceleração do ponto $A$ será descrita como a composição entre o movimento rotacional, translacional, relativo e de \textbf{Coriolis}, representado pela seguinte equação:
