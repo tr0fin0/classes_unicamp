@@ -960,17 +960,17 @@
                     \centering
                     \begin{subfigure}[]{0.3\textwidth}
                         \centering
-                        \includegraphics[height = 4cm]{ima1.png}
+                        \includegraphics[height = 5cm]{ima1.png}
                         \caption{Centro Instantâneo Interno}
                     \end{subfigure}
                     \begin{subfigure}[]{0.3\textwidth}
                         \centering
-                        \includegraphics[height = 4cm]{ima0.png}
+                        \includegraphics[height = 5cm]{ima0.png}
                         \caption{Centro Instantâneo Genérico}
                     \end{subfigure}
                     \begin{subfigure}[]{0.3\textwidth}
                         \centering
-                        \includegraphics[height = 4cm]{ima2.png}
+                        \includegraphics[height = 5cm]{ima2.png}
                         \caption{Centro Instantâneo Externo}
                     \end{subfigure}
                     \caption{Centro Instantâneo de Velocidade Nula}
@@ -992,7 +992,7 @@
                     \caption{Representação Eixos Rotativos}
                 \end{figure} \noindent
             Note que para as equações abaixo serem válidas será necessário que as variáveis do problema sejam definidas com relação ao referêncial apresentado acima, pois do contrário não funcionará. Desta maneira, será necessário utilizar a seguinte configuração:
-                \begin{enumerate}[]
+                \begin{enumerate}[noitemsep]
                     \item $B$, \textbf{Origem do Sistema Rotacional};
                     \item $A$, \textbf{Ponto Qualquer};
                     \item $O$, \textbf{Origem Inercial};
@@ -1201,22 +1201,22 @@
                         \end{enumerate}
                     Essa expressão geral será simplificada a depender das situações e dos pontos avaliadas, os principais pontos são descritos a seguir:
                         \begin{enumerate}[rightmargin = \leftmargin]
-                            \item \textbf{Translação}: Quando houver apenas translação do corpo rígido avaliado, aplica-se a seguinte equação:
+                            \item \texttt{Translação}: Quando houver apenas translação do corpo rígido avaliado, aplica-se a seguinte equação:
                                 \begin{equation}
                                     \boxed{
                                         T_{i} = \frac{1}{2}m\overline{v}^{2}
                                     }
                                 \end{equation}
                                 
-                            \item \textbf{Rotação em Eixo Fixo}: Quando houver apenas rotação do corpo rígido avaliado entorno de um eixo fixo, aplica-se a seguinte equação:
+                            \item \texttt{Rotação em Eixo Fixo}: Quando houver apenas rotação do corpo rígido avaliado entorno de um eixo fixo, aplica-se a seguinte equação:
                                 \begin{equation}
                                     \boxed{
                                         T_{i} = \frac{1}{2}I_{O}\omega^{2}
                                     }
                                 \end{equation}
-                            Neste caso nota-se que será necessário aplicar o teorema de eixos paralelos para obter o momento inércia do corpo rígido entorno deste eixo.
+                            Neste caso nota-se que será necessário aplicar o \textbf{Teorema dos Eixos Paralelos} para obter o momento inércia do corpo rígido entorno deste eixo.
                                 
-                            \item \textbf{Centro de Velocidade Nula}: Quando a energia cinética do corpo rígido for avaliada entorno do centro de velocidade nula haverá apenas rotação, aplica-se a seguinte equação:
+                            \item \texttt{Centro de Velocidade Nula}: Quando a energia cinética do corpo rígido for avaliada entorno do centro de velocidade nula haverá apenas rotação, aplica-se a seguinte equação:
                                 \begin{equation}
                                     \boxed{
                                         T_{i} = \frac{1}{2}I_{C}\omega^{2}
@@ -1266,6 +1266,10 @@
                                     a_{t} ds = 
                                     (r \alpha)(r d\theta) = 
                                     r^{2} \alpha d\theta
+                                \end{equation}
+                                \begin{equation}
+                                    v dv = 
+                                    v r dw
                                 \end{equation}
 
                             \item $\omega d\omega$:
