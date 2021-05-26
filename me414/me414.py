@@ -505,8 +505,8 @@ if(True):
 
         px = 1/2*(special.erf(x/(np.sqrt(2))) + 1)
 
-        if (x < 0):
-            return 1 - px
+        # if (x < 0):
+        #     return 1 - px
 
         return px
 
@@ -521,10 +521,8 @@ if(True):
 
         px = NormalStandard(x)
 
-        print("\nNormal Standard Distribution")
-        print("x      = {:.4f}".format(x))
-        print("E(X) = 0")
-        print("V(X) = 1")
+        # print("\nNormal Standard Distribution")
+        # print("x    = {:.4f}".format(x))
 
         #equals zero
         if(s == 0):
@@ -536,7 +534,7 @@ if(True):
 
         #P(X < x) where x is negative
         elif((s == -1) & (x < 0)):
-            print("P(X<={}) = {:.4f}".format(x, 1-px))
+            print("P(X<={}) = {:.4f}".format(x, px))
 
         #P(X > x) where x is positive
         elif((s == 1) & (x > 0)):
@@ -544,7 +542,21 @@ if(True):
 
         #P(X > x) where x is negative
         elif((s == 1) & (x < 0)):
-            print("P(X>={}) = {:.4f}".format(x, px))
+            print("P(X>={}) = {:.4f}".format(x, 1-px))
+
+        return px
+
+    def NormalStandardIntervalInfo(a: float, b: float):
+
+        pa = NormalStandard(a)
+        pb = NormalStandard(b)
+
+        px = pb - pa
+
+        # print("\nNormal Standard Interval Distribution")
+        # print("a = {:.4f} and b = {:.4f}".format(a,b))
+        # print("E(X) = 0 and V(X) = 1")
+        print("P({} < Z < {}) = {:.4f}".format(a, b, px))
 
         return px
 
@@ -558,4 +570,15 @@ if(True):
 
         return
 
-    n = NormalStandardInfo(1.1, -1)
+    n = NormalStandardInfo(0.18, -1)
+    n = NormalStandardInfo(-0.27, 1)
+    n = NormalStandardInfo(0.37, 1)
+    n = NormalStandardInfo(-1.03, 1)
+    n = NormalStandardInfo(0.8, 1)
+    n = NormalStandardInfo(-1.06, -1)
+    n = NormalStandardIntervalInfo(-1.61, 0.13)
+    n = NormalStandardIntervalInfo(1.45, 1.49)
+    n = NormalStandardIntervalInfo(-1.34, 0.91)
+    n = NormalStandardIntervalInfo(-1.14, 0.12)
+    n = NormalStandardIntervalInfo(-1.1, -0.47)
+    n = NormalStandardIntervalInfo(0.31, 2.75)
