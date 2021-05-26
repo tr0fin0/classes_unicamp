@@ -1872,7 +1872,7 @@
     \section{Projeto 7}
         \subsection{Execução de Funções}
             \paragraph{Definição}Trechos de código que executam uma tarefa específica organizadas separadamente para facilitar seu reuso e legibilidade dentro das convenções utilizadas, abaixo serão listados as principais:
-                \begin{enumerate}[rightmargin = \leftmargin]
+                \begin{enumerate}[noitemsep]
                     \item \textbf{Atribuição de Variável}: Parâmetros utilizados na função serão sequênciados a partir de \texttt{a0}, \texttt{a1}, ...;
 
                     \item \textbf{Retorno de Variável}: Valores retornados na função serão sequênciados a partir de \texttt{a0}, \texttt{a1}, ...; 
@@ -1881,4 +1881,11 @@
         \subsection{Pilha de Funções}
             \paragraph{Definição} s0-s11: se necessário numa função salve antes salva na pilha no inicio da função restaura a pilha no final da função
             t0-t6 se precisa chamar uma função e presservar a variável, salvar na pilha antes da funÇão e restaurar
+
+            \paragraph{Organização de Memória}Processadores terão suas memórias organizadas com objetivo de otimizar sua utilização, desta maneira será divida nos seguintes espaços:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Pilha}: Inicia-se no fim da memória e cresce para baixo;
+                    \item \textbf{Heap}: Inicia-se no começo da memória e cresce para cima;
+                \end{enumerate}
+            Note que desta forma há diferentes combinações possíveis entre as memórias, sendo apenas limitadas pela outra. Assim, o \textbf{Heap} poderá crescer até encontrar-se com a \textbf{Pilha} e vice-versa, possibilitando flexibilixar e maximizar a utilização da memória disponível.
 \end{document}
