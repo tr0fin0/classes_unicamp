@@ -510,6 +510,44 @@ if(True):
 
         return px
 
+    def NormalStandardInfo(x: float, s: int):
+        #x: number expected
+        #s: comparsion
+        #   if (s == 1):
+        #       P(X>x)
+        #   if (s == -1):
+        #       P(X<x)
+        #   comparsion
+
+        px = NormalStandard(x)
+
+        print("\nNormal Standard Distribution")
+        print("x      = {:.4f}".format(x))
+        print("E(X) = 0")
+        print("V(X) = 1")
+
+        #equals zero
+        if(s == 0):
+            return 0
+
+        #P(X < x) where x is positive
+        if ((s == -1) & (x > 0)):
+            print("P(X<={}) = {:.4f}".format(x, px))
+
+        #P(X < x) where x is negative
+        elif((s == -1) & (x < 0)):
+            print("P(X<={}) = {:.4f}".format(x, 1-px))
+
+        #P(X > x) where x is positive
+        elif((s == 1) & (x > 0)):
+            print("P(X>={}) = {:.4f}".format(x, 1-px))
+
+        #P(X > x) where x is negative
+        elif((s == 1) & (x < 0)):
+            print("P(X>={}) = {:.4f}".format(x, px))
+
+        return px
+
     def Normal(expected: float, variance: float, x: float):
 
         def f(x):
@@ -520,5 +558,4 @@ if(True):
 
         return
 
-    print(special.erf(1.1))
-    # n = Normal(0.0, 1.0, 1.1)
+    n = NormalStandardInfo(1.1, -1)
