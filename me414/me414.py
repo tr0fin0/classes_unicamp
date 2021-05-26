@@ -498,7 +498,17 @@ if(True):
     print("\nb = {:.4f}\nc = {:.4f}\npc3 = {:.4f}\nvx = {:.4f}".format(b, c, pc3, vx))
 
     #exercice 70
+    from  scipy import special
     from  scipy.integrate import quad
+
+    def NormalStandard(x: float):
+
+        px = 1/2*(special.erf(x/(np.sqrt(2))) + 1)
+
+        if (x < 0):
+            return 1 - px
+
+        return px
 
     def Normal(expected: float, variance: float, x: float):
 
@@ -510,4 +520,5 @@ if(True):
 
         return
 
-    n = Normal(0.0, 1.0, 1.1)
+    print(special.erf(1.1))
+    # n = Normal(0.0, 1.0, 1.1)
