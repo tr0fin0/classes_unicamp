@@ -1680,7 +1680,11 @@
                         \begin{figure}[H]
                             \centering
                             \begin{circuitikz}[american]
-                                \ctikzset{component text=left}
+                                \ctikzset{
+                                    component text=left, 
+                                    resistors/width=0.25, 
+                                    resistors/zigs=1
+                                }
                                 \draw
                                 (-2,2) node [ocirc, anchor = west] {G} -- (-1,2)
                                 
