@@ -1631,4 +1631,101 @@
                             \item $L$, \texttt{Comprimento Canal de Condução} $[\text{m}]$
                         \end{enumerate}
                 \end{enumerate}
+
+        \subsection{Modelagem}
+            \paragraph{Definição}Cada diferentes circuito possuirá uma possível modelagem que incluirá, ou excluirá, informações dos transistores. Entre as principais estão as descritas abaixo:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Modelo de Corte:}\\Quando o MOSFET tiver $V_{GS} < V_{TH}$ não haverá condução entre seus terminais, possuindo o seguinte circuito equivalente:
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}
+                                \ctikzset{component text=left}
+                                \draw
+                                (-2,2) node [ocirc, anchor = west] {G} -- (-1,2)
+                                
+                                ( 2,2) node [ocirc, anchor = east] {D} -- ( 1,2)
+
+                                (-1,0) -- (1,0)
+                                (0,-1) node [ocirc, anchor = south] {S} -- (0,0);
+                            \end{circuitikz} 
+                            \caption{Modelagem de Corte para MOSFET}
+                        \end{figure} \noindent
+
+                    \item \textbf{Modelo de Triodo:}\\Quando o MOSFET tiver $V_{GS} > V_{TH}$ e $V_{DS} < V_{GS} - V_{TH}$ haverá condução entre seus terminais, possuindo o seguinte circuito equivalente:
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}[american]
+                                \ctikzset{component text=left}
+                                \draw
+                                (-2,2) node [ocirc, anchor = west] {G} -- (-1,2)
+                                
+                                ( 2,2) node [ocirc, anchor = east] {D} -- ( 1,2)
+                                ( 1,2) to[cI, v^>=${I_{D}}$] (1,0)
+
+                                (-1,0) -- (1,0)
+                                (0,-1) node [ocirc, anchor = south] {S} -- (0,0);
+                            \end{circuitikz} 
+                            \caption{Modelagem de Triodo para MOSFET}
+                        \end{figure} \noindent
+                    Onde:
+                        \begin{equation}
+                            \boxed{
+                                I_{D} = \frac{1}{2} \mu_{n} C_{ox} \frac{W}{L}
+                                \left[
+                                    2(V_{GS} - V_{TH})V_{DS} - V_{DS}^{2}
+                                \right]
+                            }
+                        \end{equation}
+                    Caso $V_{DS} \ll V_{GS} - V_{TH}$ considera-se que o MOSFET apresentará um comportamento resistivo representado pelo seguinte circuito:
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}[american]
+                                \ctikzset{component text=left}
+                                \draw
+                                (-2,2) node [ocirc, anchor = west] {G} -- (-1,2)
+                                
+                                ( 2,2) node [ocirc, anchor = east] {D} -- ( 1,2)
+                                ( 1,2) to[resistor, l=$R_{on}$] (1,0)
+
+                                (-1,0) -- (1,0)
+                                (0,-1) node [ocirc, anchor = south] {S} -- (0,0);
+                            \end{circuitikz} 
+                            \caption{Modelagem de Triodo para MOSFET}
+                        \end{figure} \noindent
+                    Onde:
+                        \begin{equation}
+                            \boxed{
+                                I_{D} = 
+                                \left[
+                                    \mu_{n} C_{ox} \frac{W}{L}
+                                    (V_{GS} - V_{TH})
+                                \right]^{-1}
+                            }
+                        \end{equation}
+
+                    \item \textbf{Modelo de Saturação:}\\Quando o MOSFET tiver $V_{GS} > V_{TH}$ e $V_{DS} \ge V_{GS} - V_{TH}$ haverá condução entre seus terminais, possuindo o seguinte circuito equivalente:
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}[american]
+                                \ctikzset{component text=left}
+                                \draw
+                                (-2,2) node [ocirc, anchor = west] {G} -- (-1,2)
+                                
+                                ( 2,2) node [ocirc, anchor = east] {D} -- ( 1,2)
+                                ( 1,2) to[cI, v^>=${I_{D}}$] (1,0)
+
+                                (-1,0) -- (1,0)
+                                (0,-1) node [ocirc, anchor = south] {S} -- (0,0);
+                            \end{circuitikz} 
+                            \caption{Modelagem de Saturação para MOSFET}
+                        \end{figure} \noindent
+                    Onde:
+                        \begin{equation}
+                            \boxed{
+                                I_{D} = 
+                                \frac{1}{2} \mu_{n} C_{ox} 
+                                \frac{W}{L} (V_{GS} - V_{TH})^{2}
+                            }
+                        \end{equation}
+                \end{enumerate}
 \end{document}
