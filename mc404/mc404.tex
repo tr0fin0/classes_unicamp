@@ -1739,12 +1739,12 @@
         \subsection{Códigos Básicos}
             \paragraph{Definição}Há diferentes estruturas comumente empregadas em código, entre os principais métodos tem-se como descrito a seguir:
                 \begin{enumerate}[rightmargin = \leftmargin]
-                    \item \textbf{if Estrutura:} Realização de uma comparação e separação do código, representado pelos seguintes comandos:
-                        \begin{scriptsize}
-                            \myStyleC
-                            \begin{lstlisting}
+                    \item \textbf{if Estrutura:} Realização de uma comparação e separação do código, representado pelos seguintes comandos:\\
+                        \begin{minipage}[t]{0.45\linewidth}
+                            \begin{scriptsize}
+                                \myStyleC
+                                \begin{lstlisting}
     #include<stdio.h>
-
     int main()
     {
         int t0 = 9;
@@ -1760,11 +1760,14 @@
         }
     }
 
-                            \end{lstlisting}
-                        \end{scriptsize}
-                        \begin{scriptsize}
-                            \myStyleAssembly
-                            \begin{lstlisting}
+                                \end{lstlisting}
+                            \end{scriptsize}
+                        \end{minipage}
+                            \hspace{12.5mm}
+                        \begin{minipage}[t]{0.45\linewidth}
+                            \begin{scriptsize}
+                                \myStyleAssembly
+                                \begin{lstlisting}
     main:
         addi t0, zero, 9
         addi t1, zero, 0
@@ -1779,15 +1782,15 @@
 
     fim:
         jr ra
-                            \end{lstlisting}
-                        \end{scriptsize}
-\newpage
-                \item \textbf{while Estrutura:} Realização de \texttt{loop} do código, representado pelos seguintes comandos:
-                    \begin{scriptsize}
-                        \myStyleC
-                        \begin{lstlisting}
+                                \end{lstlisting}
+                            \end{scriptsize}
+                        \end{minipage}
+                \item \textbf{while Estrutura:} Realização de \texttt{loop} do código, representado pelos seguintes comandos:\\
+                    \begin{minipage}[t]{0.45\linewidth}
+                        \begin{scriptsize}
+                            \myStyleC
+                            \begin{lstlisting}
     #include<stdio.h>
-
     int main()
     {
         int t0 = 20;
@@ -1799,11 +1802,14 @@
             t1 += 3;
         }
     }
-                        \end{lstlisting}
-                    \end{scriptsize}
-                    \begin{scriptsize}
-                        \myStyleAssembly
-                        \begin{lstlisting}
+                            \end{lstlisting}
+                        \end{scriptsize}
+                    \end{minipage}
+                        \hspace{12.5mm}
+                    \begin{minipage}[t]{0.45\linewidth}
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
     main:
         addi t0, zero, 20
         addi t1, zero, 10
@@ -1816,15 +1822,16 @@
 
     fim:
         jr ra
-                            \end{lstlisting}
-                        \end{scriptsize}
+                                \end{lstlisting}
+                            \end{scriptsize}
+                    \end{minipage}
 
-                \item \textbf{for Estrutura:} Realização de \texttt{loop} do código, representado pelos seguintes comandos:
-                    \begin{scriptsize}
-                        \myStyleC
-                        \begin{lstlisting}
+                \item \textbf{for Estrutura:} Realização de \texttt{loop} do código, representado pelos seguintes comandos:\\
+                    \begin{minipage}[t]{0.45\linewidth}
+                        \begin{scriptsize}
+                            \myStyleC
+                            \begin{lstlisting}
     #include<stdio.h>
-
     int main()
     {
         int t0 = 0;
@@ -1836,11 +1843,14 @@
             t2 += t0;
         }
     }
-                        \end{lstlisting}
-                    \end{scriptsize}
-                    \begin{scriptsize}
-                        \myStyleAssembly
-                        \begin{lstlisting}
+                            \end{lstlisting}
+                        \end{scriptsize}
+                    \end{minipage}
+                        \hspace{12.5mm}
+                    \begin{minipage}[t]{0.45\linewidth}
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
     main:
         addi t0, zero, 0
         addi t1, zero, 0
@@ -1854,8 +1864,9 @@
 
     fim:
         jr ra
-                        \end{lstlisting}
-                    \end{scriptsize}
+                            \end{lstlisting}
+                        \end{scriptsize}
+                    \end{minipage}
             \end{enumerate}
 
         \subsection{Execução de Funções}
