@@ -1301,7 +1301,7 @@
                     \centering
                     \includegraphics[height = 4cm]{ima14.png}
                     \caption{Movimento Translacional}
-                \end{figure}
+                \end{figure}\noindent
             Onde:
                 \begin{enumerate}[rightmargin = \leftmargin]
                     \item $\vec{r}_{A}$, \textbf{Deslocamento}:
@@ -1332,7 +1332,7 @@
                     \centering
                     \includegraphics[height = 4cm]{ima15.png}
                     \caption{Movimento Rotacional em Eixo Fixo}
-                \end{figure}
+                \end{figure}\noindent
             Onde:
                 \begin{enumerate}
                     \item $\vec{v}$, \textbf{Velocidade}:
@@ -1359,5 +1359,31 @@
                     \centering
                     \includegraphics[height = 4cm]{ima16.png}
                     \caption{Movimento em Planos Paralelos}
-                \end{figure}
+                \end{figure}\noindent
+
+        \subsection{Eixo Instantâneo de Rotação}
+            \paragraph{Introdução}Primeiramente será necessário analisar o comportamento de um corpo rígido em movimento no espaço, enfatizando suas rotações. Desta forma, considera-se as seguintes figuras que realizam operações idênticas em ordens distintas:
+                \begin{figure}[H]
+                    \centering
+                    \begin{subfigure}[t]{0.45\textwidth}
+                        \centering
+                        \includegraphics[height = 4cm]{ima17.png}
+                        \caption{Rotação em $x$ e $y$}
+                    \end{subfigure}
+                    \begin{subfigure}[t]{0.45\textwidth}
+                        \centering
+                        \includegraphics[height = 4cm]{ima18.png}
+                        \caption{Rotação em $y$ e $x$}
+                    \end{subfigure}
+                    \caption{Rotações Finitas}
+                \end{figure}\noindent
+            Note que o ponto final, 3, termina em posições diferentes a depender dos movimentos realizados. Assim, torna-se evidente que rotações finitas não devem ser tratadas como vetores, pois não apresentam comutabilidade em sua execução. Entretanto quando considera-se rotações infinitesimais as rotações são equivalentes a uma única rotação, implicando na seguinte relação:
+                \begin{equation}
+                    \boxed{
+                        \vec{\omega} = 
+                        \vec{\omega}_{1} + 
+                        \vec{\omega}_{2}
+                    }
+                \end{equation}
+
 \end{document}
