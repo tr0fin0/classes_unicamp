@@ -1872,6 +1872,13 @@
     \section{Projeto 7}
         \paragraph{Definição}Assim como outras linguagens o RISC-V seguem uma sequência de convenções, regras estabelecida entre os usuários, para utilização e aplicação desta linguagem. Recomenda-se que sejam seguidas para garantir a compreensão de seu código.
 
+        \subsection{Endereçamento da Memória}
+            \paragraph{Definição}Sequência utilizada para armazenar uma palavra de \texttt{4 bytes}, ou seja \texttt{32 bits}, na memória, diferenciando a ordem de leitura e escrita através dos seguintes métodos:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Big Endian}: Aloca o \texttt{byte} mais significativo primeiro;
+                    \item \textbf{Little Endian}: Aloca o \texttt{byte} menos significativo primeiro;
+                \end{enumerate}
+
         \subsection{Execução de Funções}
             \paragraph{Definição}Trechos de código que executam uma tarefa específica organizadas separadamente para facilitar seu reuso e legibilidade dentro das convenções utilizadas, abaixo serão listados as principais:
                 \begin{enumerate}[noitemsep]
