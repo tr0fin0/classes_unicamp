@@ -1455,7 +1455,26 @@
                         $T_{f}$        & Alta    & Alta    & Baixa    & Baixa    & Baixa\\\hline
                     \end{tabular}
                     \caption{Vantagens e Desvantagens por Processo de Fundição}
-                \end{table}
+                \end{table}\noindent
+            Baseado nessas características pode-se estabelecer a seguinte árvore de decisão para selecionar o processo mais adequado:
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}
+                        \tikzstyle{level 1} = [sibling distance = 40mm]
+                        \node {Volume de Produção}
+                            child {
+                                node {Molde de Areia}
+                                edge from parent
+                                    node[left] {Baixo}
+                            }
+                            child {
+                                node {Molde de Metal}
+                                edge from parent
+                                    node[right] {Alto}
+                            };
+                    \end{tikzpicture}
+                    \caption{Árvore de Decisão para Processo}
+                \end{figure}
 
         \subsection{Conformação Plástica}
             \paragraph{Definição}Aplicação de forças sem remoção de material do corpo, não superando a tensão de ruptura $\sigma_{r}$, agindo na região plástica do material
