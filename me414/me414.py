@@ -546,16 +546,6 @@ if(True):
 
         return px
 
-    def Normal(expected: float, variance: float, x: float):
-
-        def f(x):
-
-            return (1/(2*np.math.pi()*variance)**(1/2))*np.exp((-(x-expected)**(2))/(2*variance))
-
-        px = quad(f, -np.math.inf(), x)
-
-        return
-
     n = NormalStandardInfo(0.18, -1)
     n = NormalStandardInfo(-0.27, 1)
     n = NormalStandardInfo(0.37, 1)
@@ -577,6 +567,7 @@ if(True):
         print("P({} < Z < {}) = {:.4f}".format(a, b, px))
 
         return px
+
     n = NormalStandardIntervalInfo(-1.61, 0.13)
     n = NormalStandardIntervalInfo(1.45, 1.49)
     n = NormalStandardIntervalInfo(-1.34, 0.91)
