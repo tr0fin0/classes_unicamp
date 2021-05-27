@@ -1887,5 +1887,18 @@
                     \item \textbf{Pilha}: Inicia-se no fim da memória e cresce para baixo;
                     \item \textbf{Heap}: Inicia-se no começo da memória e cresce para cima;
                 \end{enumerate}
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}[]{|c|}\hline
+                        $\downarrow$ Pilha\\
+                        \\
+                        $\vdots$\\
+                        \\
+                        $\uparrow$ Heap\\
+                        Dados\\
+                        Programa\\\hline
+                    \end{tabular}
+                    \caption{Estrutura de Memoria em RISC-V}
+                \end{table}\noindent
             Note que desta forma há diferentes combinações possíveis entre as memórias, sendo apenas limitadas pela outra. Assim, o \textbf{Heap} poderá crescer até encontrar-se com a \textbf{Pilha} e vice-versa, possibilitando flexibilixar e maximizar a utilização da memória disponível.
 \end{document}
