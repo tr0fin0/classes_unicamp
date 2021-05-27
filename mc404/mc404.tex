@@ -1877,10 +1877,10 @@
 
                     \item \textbf{Retorno de Variável}: Valores retornados na função serão sequênciados a partir de \texttt{a0}, \texttt{a1}, ...; 
                 \end{enumerate}
+            Note que quando uma função for executada variáveis atualmente armazenadas em registradores podem ser perdidas, pois durante a execução da função estes locais de memória podem ser acessados e reescritos. Desta maneira recomenda-se salvar as variáveis necessárias na pilha, deslocando o espaço de memória quando não for mais necessário.
 
         \subsection{Pilha de Funções}
-            \paragraph{Definição} s0-s11: se necessário numa função salve antes salva na pilha no inicio da função restaura a pilha no final da função
-            t0-t6 se precisa chamar uma função e presservar a variável, salvar na pilha antes da funÇão e restaurar
+            \paragraph{Definição}
 
             \paragraph{Organização de Memória}Processadores terão suas memórias organizadas com objetivo de otimizar sua utilização, desta maneira será divida nos seguintes espaços:
                 \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
