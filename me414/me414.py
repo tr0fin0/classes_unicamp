@@ -596,3 +596,10 @@ if(True):
     n = NormalIntervalInfo(8.72, 11.35, mu, sg)
 
     #exercice 73
+
+    def NormalStandardReverse(px: float):
+        # px: P(X < x)
+        #
+        # x: expected value
+
+        return np.sqrt(2)*special.erfinv(2*px - 1)
