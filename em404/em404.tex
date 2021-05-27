@@ -1386,4 +1386,58 @@
                     }
                 \end{equation}
 
+            \paragraph{Definição}Considera-se um corpo rígido rotacionado entorno de dois eixos com um ponto fixo $O$, este gira instaneamente em torno do \textbf{Eixo Instantâneo de Rotação} que passa por $O$, como representado na figura abaixo:
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[height = 4cm]{ima20.png}
+                    \caption{Representação Eixo Instantâneo de Rotação}
+                \end{figure}\noindent
+            Desta maneira, qualquer outro ponto $P$ deste corpo girará instantaneamente em arcos circulares em torno deste eixo. Representando a rotação deste eixo instantâneo entorno dos demais eixos obtêm-se as seguintes figuras:
+                \begin{figure}[H]
+                    \centering
+                    \begin{subfigure}[t]{0.45\textwidth}
+                        \centering
+                        \includegraphics[height = 3cm]{ima21.png}
+                        \caption{Cones Circulares}
+                    \end{subfigure}
+                    \begin{subfigure}[t]{0.45\textwidth}
+                        \centering
+                        \includegraphics[height = 3cm]{ima22.png}
+                        \caption{Cones não Circulares}
+                    \end{subfigure}
+                    \caption{Representação dos Cones de Movimento}
+                \end{figure}\noindent
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item \textbf{Cone do Corpo}: Representa a rotação do eixo instantâneo entorno do corpo rígido;
+                    \item \textbf{Cone Espacial}: Representa a rotação do eixo instantâneo entorno do eixo vertical;
+                \end{enumerate}
+            Baseado nesta definições será necessário descrever o movimento com base nesta variáveis. Assim considera-se as seguintes figuras:
+                \begin{figure}[H]
+                    \centering
+                    \begin{subfigure}[t]{0.45\textwidth}
+                        \centering
+                        \includegraphics[height = 3cm]{ima23.png}
+                        \caption{Cone do Corpo}
+                    \end{subfigure}
+                    \begin{subfigure}[t]{0.45\textwidth}
+                        \centering
+                        \includegraphics[height = 3cm]{ima24.png}
+                        \caption{Cone Espacial}
+                    \end{subfigure}
+                    \caption{Definição das Variáveis dos Cones de Movimento}
+                \end{figure}\noindent
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item $\vec{\alpha}$, \textbf{Aceleração Angular}: Representa a derivado no tempo da velocidade angular do corpo rígido, refletindo a variação tanto no módulo como na diração de $\vec{\omega}$. Caso o módulo $\omega$ da rotação do corpo entorno do eixo instantâneo de rotação for constante, a seguinte equação será válida:
+                        \begin{equation}
+                            \boxed{
+                                \vec{\alpha} = \vec{\Omega}\times\vec{\omega}
+                            }
+                        \end{equation}
+                    Neste cenário a aceleração $\vec{\alpha}$ será normal a $\vec{\omega}$, onde:
+                        \begin{enumerate}[noitemsep]
+                            \item $\vec{\Omega}$, \texttt{Velocidade Angular de $\omega$}: Representa a velocidade angular com que o próprio vetor $\omega$ gira entorno do cone espacial;
+                        \end{enumerate}
+                \end{enumerate}
 \end{document}
