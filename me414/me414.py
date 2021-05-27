@@ -502,6 +502,9 @@ if(True):
     from  scipy.integrate import quad
 
     def NormalStandard(x: float):
+        # x: number expected
+        #
+        # px: P(X < x)
 
         px = 1/2*(special.erf(x/(np.sqrt(2))) + 1)
 
