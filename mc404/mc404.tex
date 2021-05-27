@@ -1902,5 +1902,28 @@
                     \end{tabular}
                     \caption{Estrutura de Memoria em RISC-V}
                 \end{table}\noindent
-            Note que desta forma há diferentes combinações possíveis entre as memórias, sendo apenas limitadas pela outra. Assim, o \textbf{Heap} poderá crescer até encontrar-se com a \textbf{Pilha} e vice-versa, possibilitando flexibilixar e maximizar a utilização da memória disponível.
+            Note que desta forma há diferentes combinações possíveis entre as memórias, sendo apenas limitadas pela outra. Assim, o \textbf{Heap} poderá crescer até encontrar-se com a \textbf{Pilha} e vice-versa, possibilitando flexibilixar e maximizar a utilização da memória disponível. Caso deseja-se alocar espaço na \textbf{Pilha} recomenda-se utilizar a seguinte abordagem:\\
+                \begin{minipage}[t]{0.45\linewidth}
+                    \textbf{Início:}
+                    \begin{scriptsize}
+                        \myStyleAssembly
+                        \begin{lstlisting}
+    addi sp, sp, -8
+    sw   ra, 0(sp)
+    sw   s0, 4(sp)
+                        \end{lstlisting}
+                    \end{scriptsize}
+                \end{minipage}
+                    \hspace{12.5mm}
+                \begin{minipage}[t]{0.45\linewidth}
+                    \textbf{Final:}
+                    \begin{scriptsize}
+                        \myStyleAssembly
+                        \begin{lstlisting}
+    sw   s0, 4(sp)
+    sw   ra, 0(sp)
+    addi sp, sp, 8
+                        \end{lstlisting}
+                    \end{scriptsize}
+                \end{minipage}
 \end{document}
