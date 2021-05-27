@@ -506,9 +506,7 @@ if(True):
         #
         # px: P(X < x)
 
-        px = 1/2*(special.erf(x/(np.sqrt(2))) + 1)
-
-        return px
+        return 1/2*(special.erf(x/(np.sqrt(2))) + 1)
 
     def NormalStandardInfo(x: float, s: int):
         #x: number expected
