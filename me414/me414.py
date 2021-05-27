@@ -546,20 +546,6 @@ if(True):
 
         return px
 
-    def NormalStandardIntervalInfo(a: float, b: float):
-
-        pa = NormalStandard(a)
-        pb = NormalStandard(b)
-
-        px = pb - pa
-
-        # print("\nNormal Standard Interval Distribution")
-        # print("a = {:.4f} and b = {:.4f}".format(a,b))
-        # print("E(X) = 0 and V(X) = 1")
-        print("P({} < Z < {}) = {:.4f}".format(a, b, px))
-
-        return px
-
     def Normal(expected: float, variance: float, x: float):
 
         def f(x):
@@ -576,6 +562,21 @@ if(True):
     n = NormalStandardInfo(-1.03, 1)
     n = NormalStandardInfo(0.8, 1)
     n = NormalStandardInfo(-1.06, -1)
+
+    #exercice 71 
+    def NormalStandardIntervalInfo(a: float, b: float):
+
+        pa = NormalStandard(a)
+        pb = NormalStandard(b)
+
+        px = pb - pa
+
+        # print("\nNormal Standard Interval Distribution")
+        # print("a = {:.4f} and b = {:.4f}".format(a,b))
+        # print("E(X) = 0 and V(X) = 1")
+        print("P({} < Z < {}) = {:.4f}".format(a, b, px))
+
+        return px
     n = NormalStandardIntervalInfo(-1.61, 0.13)
     n = NormalStandardIntervalInfo(1.45, 1.49)
     n = NormalStandardIntervalInfo(-1.34, 0.91)
