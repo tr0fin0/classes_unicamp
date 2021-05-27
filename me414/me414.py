@@ -553,7 +553,7 @@ if(True):
     n = NormalStandardInfo(0.8, 1)
     n = NormalStandardInfo(-1.06, -1)
 
-    #exercice 71 
+    #exercice 71
     def NormalStandardIntervalInfo(a: float, b: float):
 
         pa = NormalStandard(a)
@@ -564,13 +564,21 @@ if(True):
         # print("\nNormal Standard Interval Distribution")
         # print("a = {:.4f} and b = {:.4f}".format(a,b))
         # print("E(X) = 0 and V(X) = 1")
-        print("P({} < Z < {}) = {:.4f}".format(a, b, px))
+        print("P({:.4f} < Z < {:.4f}) = {:.4f}".format(a, b, px))
 
         return px
 
-    n = NormalStandardIntervalInfo(-1.61, 0.13)
-    n = NormalStandardIntervalInfo(1.45, 1.49)
-    n = NormalStandardIntervalInfo(-1.34, 0.91)
-    n = NormalStandardIntervalInfo(-1.14, 0.12)
-    n = NormalStandardIntervalInfo(-1.1, -0.47)
-    n = NormalStandardIntervalInfo(0.31, 2.75)
+    n = NormalStandardIntervalInfo(-1.9, 0.03)
+    n = NormalStandardIntervalInfo(0.14, 0.62)
+    n = NormalStandardIntervalInfo(0.67, 2.03)
+    n = NormalStandardIntervalInfo(-1.14, 0.34)
+    n = NormalStandardIntervalInfo(-1.34, 0.36)
+    n = NormalStandardIntervalInfo(1.1, 2.42)
+
+    #exercice 72
+    mu = 9
+    si = 9
+    sg = np.sqrt(si)
+    n = NormalStandardIntervalInfo((7.22 - mu)/sg, (11.10 - mu)/sg)
+    n = NormalStandardIntervalInfo((4.87 - mu)/sg, (12.19 - mu)/sg)
+    n = NormalStandardIntervalInfo((8.72 - mu)/sg, (11.35 - mu)/sg)
