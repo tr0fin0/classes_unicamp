@@ -576,9 +576,23 @@ if(True):
     n = NormalStandardIntervalInfo(1.1, 2.42)
 
     #exercice 72
+    def Normal(x: float, mu: float, sg: float):
+        return NormalStandard((x - mu)/np.sqrt(sg))
+
+    def NormalIntervalInfo(a: float, b: float, mu: float, sg: float):
+
+        pa = Normal(a, mu, sg)
+        pb = Normal(b, mu, sg)
+
+        px = pb - pa
+
+        # print("\nNormal Interval Distribution")
+        # print("a = {:.4f} and b = {:.4f}".format(a,b))
+        # print("E(X) = 0 and V(X) = 1")
+        print("P({:.4f} < Z < {:.4f}) = {:.4f}".format(a, b, px))
+
+        return px
+
     mu = 9
-    si = 9
-    sg = np.sqrt(si)
-    n = NormalStandardIntervalInfo((7.22 - mu)/sg, (11.10 - mu)/sg)
-    n = NormalStandardIntervalInfo((4.87 - mu)/sg, (12.19 - mu)/sg)
-    n = NormalStandardIntervalInfo((8.72 - mu)/sg, (11.35 - mu)/sg)
+    sg = 9
+    n = NormalIntervalInfo(8.72, 11.35, mu, sg)
