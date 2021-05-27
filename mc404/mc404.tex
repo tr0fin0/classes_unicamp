@@ -1875,8 +1875,8 @@
         \subsection{Endereçamento da Memória}
             \paragraph{Definição}Sequência utilizada para armazenar uma palavra de \texttt{4 bytes}, ou seja \texttt{32 bits}, na memória, diferenciando a ordem de leitura e escrita através dos seguintes métodos:
                 \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                    \item \textbf{Big Endian}: Aloca o \texttt{byte} mais significativo primeiro;
-                    \item \textbf{Little Endian}: Aloca o \texttt{byte} menos significativo primeiro;
+                    \item \textbf{Big Endian}: Aloca o \texttt{byte} mais significativo, \texttt{MSB}, primeiro;
+                    \item \textbf{Little Endian}: Aloca o \texttt{byte} menos significativo, \texttt{LSB}, primeiro;
                 \end{enumerate}
             Desta maneira pode-se considerar o seguinte exemplo:
                 \begin{equation}
@@ -1905,7 +1905,7 @@
                             \text{0x21}
                         }
                         \hspace{5mm}
-                        \underbrace{\text{\\O}}_{
+                        \underbrace{\text{}}_{
                             \text{0x00}
                         }
                     }
