@@ -604,7 +604,7 @@ if(True):
 
         return np.sqrt(2)*special.erfinv(2*px - 1)
 
-    def NormalStandardReverseInfo(px: float, s: int):
+    def NormalStandardReverseInfo(px: float, s: int, m: int):
         # px: number expected
         #  s: comparsion
         #   if (s == 1):
@@ -612,22 +612,51 @@ if(True):
         #   if (s == -1):
         #       P(X<x)
         #   comparsion
+        #
+        #  m: module
+        #   if (m == 1):
+        #       P(|X| > x) or P(|X| < x)
+        #   if (s == 0):
+        #       P(X > x) or P(X < x)
+        #   comparsion
 
-        x = NormalStandardReverse(px)
+        # |A| > a: A > a or A < -a
+        # |A| < a: A < a or A > -a, -a < A < a
 
         # print("\nNormal Standard Reverse Distribution")
-        # print("x = {:.4f}".format(x))
+        # print("px = {:.4f}".format(x))
 
         #equals zero
         if(s == 0):
             return 0
 
-        #P(X < x) where x is positive
-        if ((s == -1)):
+        #P(X < x) = px
+        if ((s == -1) & (m == 0)):
+            x = NormalStandardReverse(px)
             print("P(X < {:.4f}) = {:.4f}".format(x, px))
 
-        #P(X > x) where x is positive
-        elif((s == 1)):
-            print("P(X > {:.4f}) = {:.4f}".format(x, 1-px))
+        #P(|X| < x) = px
+        elif((s == -1) & (m == 1)):
+            x = NormalStandardReverse((1+px)/2)
+            print("P(|X| < {:.4f}) = {:.4f}".format(x, px))
 
-        return px
+        #P(X > x) = px
+        elif((s == 1) & (m == 0)):
+            x = NormalStandardReverse(1-px)
+            print("P(X > {:.4f}) = {:.4f}".format(x, px))
+
+        #P(|X| > x) = px
+        elif((s == 1) & (m == 1)):
+            x = NormalStandardReverse(1-px/2)
+            print("P(|X| > {:.4f}) = {:.4f}".format(x, px))
+
+        return x
+
+    x = NormalStandardReverseInfo(0.6201, 1, 0)
+    x = NormalStandardReverseInfo(0.9525, 1, 0)
+    x = NormalStandardReverseInfo(0.6527, -1, 0)
+    x = NormalStandardReverseInfo(0.5837, -1, 0)
+    x = NormalStandardReverseInfo(0.5152, 1, 1)
+    x = NormalStandardReverseInfo(0.8006, 1, 1)
+    x = NormalStandardReverseInfo(0.4293, -1, 1)
+    x = NormalStandardReverseInfo(0.4541, -1, 1)
