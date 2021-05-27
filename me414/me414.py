@@ -603,3 +603,31 @@ if(True):
         # x: expected value
 
         return np.sqrt(2)*special.erfinv(2*px - 1)
+
+    def NormalStandardReverseInfo(px: float, s: int):
+        # px: number expected
+        #  s: comparsion
+        #   if (s == 1):
+        #       P(X>x)
+        #   if (s == -1):
+        #       P(X<x)
+        #   comparsion
+
+        x = NormalStandardReverse(px)
+
+        # print("\nNormal Standard Reverse Distribution")
+        # print("x = {:.4f}".format(x))
+
+        #equals zero
+        if(s == 0):
+            return 0
+
+        #P(X < x) where x is positive
+        if ((s == -1)):
+            print("P(X < {:.4f}) = {:.4f}".format(x, px))
+
+        #P(X > x) where x is positive
+        elif((s == 1)):
+            print("P(X > {:.4f}) = {:.4f}".format(x, 1-px))
+
+        return px
