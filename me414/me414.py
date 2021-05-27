@@ -505,9 +505,6 @@ if(True):
 
         px = 1/2*(special.erf(x/(np.sqrt(2))) + 1)
 
-        # if (x < 0):
-        #     return 1 - px
-
         return px
 
     def NormalStandardInfo(x: float, s: int):
@@ -596,3 +593,5 @@ if(True):
     mu = 9
     sg = 9
     n = NormalIntervalInfo(8.72, 11.35, mu, sg)
+
+    #exercice 73
