@@ -1878,6 +1878,38 @@
                     \item \textbf{Big Endian}: Aloca o \texttt{byte} mais significativo primeiro;
                     \item \textbf{Little Endian}: Aloca o \texttt{byte} menos significativo primeiro;
                 \end{enumerate}
+            Desta maneira pode-se considerar o seguinte exemplo:
+                \begin{equation}
+                    \boxed{
+                        \underbrace{\text{H}}_{
+                            \text{0x48}
+                        }
+                        \hspace{5mm}
+                        \underbrace{\text{E}}_{
+                            \text{0x45}
+                        }
+                        \hspace{5mm}
+                        \underbrace{\text{L}}_{
+                            \text{0x4C}
+                        }
+                        \hspace{5mm}
+                        \underbrace{\text{L}}_{
+                            \text{0x4C}
+                        }
+                        \hspace{5mm}
+                        \underbrace{\text{O}}_{
+                            \text{0x4F}
+                        }
+                        \hspace{5mm}
+                        \underbrace{\text{!}}_{
+                            \text{0x21}
+                        }
+                        \hspace{5mm}
+                        \underbrace{\text{\\O}}_{
+                            \text{0x00}
+                        }
+                    }
+                \end{equation}
 
         \subsection{Execução de Funções}
             \paragraph{Definição}Trechos de código que executam uma tarefa específica organizadas separadamente para facilitar seu reuso e legibilidade dentro das convenções utilizadas, abaixo serão listados as principais:
