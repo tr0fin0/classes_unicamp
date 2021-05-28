@@ -577,7 +577,7 @@ if(True):
     def Normal(x: float, mu: float, sg: float):
         return NormalStandard((x - mu)/np.sqrt(sg))
 
-    def NormalInfo(x: float, s: int):
+    def NormalInfo(x: float, mu: float, sg: float, s: int):
         #x: number expected
         #s: comparsion
         #   if (s == 1):
@@ -586,7 +586,7 @@ if(True):
         #       P(X<x)
         #   comparsion
 
-        px = Normal(x)
+        px = Normal(x, mu, sg)
 
         # print("\nNormal Distribution")
         # print("x    = {:.4f}".format(x))
@@ -731,4 +731,4 @@ if(True):
     n = NormalReverseInfo(0.86, 491, 47**2)
 
     #exercice 76
-    n = Nor
+    n = NormalInfo()
