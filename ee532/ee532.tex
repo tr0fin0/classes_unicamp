@@ -1731,5 +1731,60 @@
                                 \frac{W}{L} (V_{GS} - V_{TH})^{2}
                             }
                         \end{equation}
+
+                    \item \textbf{Modelo Pequenos Sinais:}\\
+                    Empregado quando os circuitos possuem uma amplitude de operação, ou seja, a fonte de tensão apresenta um valor de operação fixo e uma parcela variável, normalmente simétrica, como representada no seguinte circuito:
+                        \begin{figure}[H]
+                            \centering
+                            \begin{circuitikz}[american]
+                                \ctikzset{component text=left}
+                                \draw
+                                (-2,2) node [ocirc, anchor = west] {G} -- (-1,2)
+                                
+                                ( 2,2) node [ocirc, anchor = east] {D} -- ( 1,2)
+                                (-1,2) to[open, v^>=$v_{gs}$] (-1,0)
+                                ( 1,2) to[cI, v^>=${I_{D} + i_{d}}$] (1,0)
+
+                                (-1,0) -- (1,0)
+                                (0,-1) node [ocirc, anchor = south] {S} -- (0,0);
+                            \end{circuitikz} 
+                            \caption{Modelagem de Pequenos Sinais para MOSFET}
+                        \end{figure} \noindent
+                    Considera-se que uma reta tangente a exponencial, onde sua inclinação será dada pela derivada da curva. Como $V_{GS} \gg v_{gs}$ pode-se considerar que $V_{GS} \approx v_{gs}$, obtém-se a seguintes relações:
+                        \begin{equation}
+                            \boxed{
+                                I_{D} = 
+                                \frac{1}{2} 
+                                \underbrace{
+                                    \mu_{n} C_{ox} 
+                                    \frac{W}{L}
+                                }_{\beta} 
+                                (V_{GS} - V_{TH})^{2}
+                            }
+                            \hspace{10mm}
+                            \boxed{
+                                I_{D} + i_{D} = 
+                                \underbrace{
+                                    \beta (V_{GS} - V_{TH})^{2}
+                                }_{I_{D}}
+                                \underbrace{
+                                    2 \beta (V_{GS} - V_{TH})^{2} v_{gs}
+                                }_{i_{d}}
+                            }
+                        \end{equation}
+                    Onde:
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item \texttt{Transcondutância:} Capacidade da junção de conduzir corrente elétrica;
+                                \begin{equation}
+                                    \boxed{
+                                        g_{m} = 
+                                        \begin{cases}
+                                            \mu_{n} C_{ox} \frac{W}{L} (V_{GS} - V_{TH})\\
+                                            \sqrt{2 \mu_{n} C_{ox} \frac{W}{L} I_{D}}\\
+                                            \frac{2 I_{D}}{(V_{GS} - V_{TH})}\\
+                                        \end{cases}
+                                    }
+                                \end{equation}
+                        \end{enumerate}
                 \end{enumerate}
 \end{document}
