@@ -1660,6 +1660,7 @@
                                 (-2,2) node [ocirc, anchor = west] {G} -- (-1,2)
                                 
                                 ( 2,2) node [ocirc, anchor = east] {D} -- ( 1,2)
+                                (-1,2) to[open, v^>=$v_{gs}$] (-1,0)
                                 ( 1,2) to[cI, v^>=${I_{D}}$] (1,0)
 
                                 (-1,0) -- (1,0)
@@ -1689,6 +1690,7 @@
                                 (-2,2) node [ocirc, anchor = west] {G} -- (-1,2)
                                 
                                 ( 2,2) node [ocirc, anchor = east] {D} -- ( 1,2)
+                                (-1,2) to[open, v^>=$v_{gs}$] (-1,0)
                                 ( 1,2) to[resistor, l=$R_{on}$] (1,0)
 
                                 (-1,0) -- (1,0)
@@ -1716,6 +1718,7 @@
                                 (-2,2) node [ocirc, anchor = west] {G} -- (-1,2)
                                 
                                 ( 2,2) node [ocirc, anchor = east] {D} -- ( 1,2)
+                                (-1,2) to[open, v^>=$v_{gs}$] (-1,0)
                                 ( 1,2) to[cI, v^>=${I_{D}}$] (1,0)
 
                                 (-1,0) -- (1,0)
@@ -1766,7 +1769,7 @@
                                 I_{D} + i_{D} = 
                                 \underbrace{
                                     \beta (V_{GS} - V_{TH})^{2}
-                                }_{I_{D}}
+                                }_{I_{D}} + 
                                 \underbrace{
                                     2 \beta (V_{GS} - V_{TH})^{2} v_{gs}
                                 }_{i_{d}}
@@ -1779,8 +1782,8 @@
                                     \boxed{
                                         g_{m} = 
                                         \begin{cases}
-                                            \mu_{n} C_{ox} \frac{W}{L} (V_{GS} - V_{TH})\\
-                                            \sqrt{2 \mu_{n} C_{ox} \frac{W}{L} I_{D}}\\
+                                            \mu_{n} C_{ox} \frac{W}{L} (V_{GS} - V_{TH})\\[3ex]
+                                            \sqrt{2 \mu_{n} C_{ox} \frac{W}{L} I_{D}}\\[3ex]
                                             \frac{2 I_{D}}{(V_{GS} - V_{TH})}\\
                                         \end{cases}
                                     }
