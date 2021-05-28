@@ -1,4 +1,6 @@
+// --------------------------
 // posible triangule code
+// --------------------------
 // s0 side A of the triangule
 // s1 side B of the triangule
 // s2 side C of the triangule
