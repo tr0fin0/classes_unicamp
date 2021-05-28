@@ -580,7 +580,7 @@ if(True):
     def NormalIntervalInfo(a: float, b: float, mu: float, sg: float):
         # P(a < X < b)
         # mu: expected value
-        # sg: standard deviation
+        # sg: variance value
 
         pa = Normal(a, mu, sg)
         pb = Normal(b, mu, sg)
@@ -668,7 +668,7 @@ if(True):
     def NormalReverse(px: float, mu: float, sg: float):
         # px: probability P(X < x)
         # mu: expected value
-        # sg: standard deviation
+        # sg: variance value
 
         # print("\nNormal Reverse Distribution")
         # print("px = {:.4f}".format(x))
@@ -678,7 +678,7 @@ if(True):
     def NormalReverseInfo(px: float, mu: float, sg: float):
         # px: probability P(X < x)
         # mu: expected value
-        # sg: standard deviation
+        # sg: variance value
 
         print("\nNormal Reverse Distribution")
 
