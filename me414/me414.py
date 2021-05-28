@@ -578,6 +578,9 @@ if(True):
         return NormalStandard((x - mu)/np.sqrt(sg))
 
     def NormalIntervalInfo(a: float, b: float, mu: float, sg: float):
+        # P(a < X < b)
+        # mu: expected value
+        # sg: standard deviation
 
         pa = Normal(a, mu, sg)
         pb = Normal(b, mu, sg)
