@@ -731,4 +731,5 @@ if(True):
     n = NormalReverseInfo(0.86, 491, 47**2)
 
     #exercice 76
-    n = NormalInfo()
+    n = NormalInfo(30000, 39000, 8000**2, 1)
+    n = NormalInfo(30000, 32000, 6000**2, 1)
