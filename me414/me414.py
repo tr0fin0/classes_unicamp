@@ -663,7 +663,7 @@ if(True):
 
     #exercice 74
     def NormalReverse(px: float, mu: float, sg: float):
-        # px: probability
+        # px: probability P(X < x)
         # mu: expected value
         # sg: standard deviation
 
