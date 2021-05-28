@@ -673,4 +673,6 @@ if(True):
         # print("\nNormal Reverse Distribution")
         # print("px = {:.4f}".format(x))
 
-        return (mu + np.sqrt(sg)*NormalReverse(px))
+        return (mu + np.sqrt(sg)*NormalStandardReverse(px))
+
+    n = NormalReverse(0.9, 34, 7)
