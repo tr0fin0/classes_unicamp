@@ -680,12 +680,12 @@ if(True):
         # mu: expected value
         # sg: standard deviation
 
-        # print("\nNormal Reverse Distribution")
+        print("\nNormal Reverse Distribution")
 
         x = NormalReverse(px, mu, sg)
 
-        print("P(X < {:.4f}) = {:.4f} with E(X) = {} and V(X) = {}".format(px, x, mu, sg))
+        print("P(X < {:.2f}) = {:.4f}: E(X) = {} and V(X) = {}".format(px, x, mu, sg))
 
         return x
 
-    n = NormalReverse(0.9, 34, 7)
+    n = NormalReverseInfo(0.99, 25, 6**2)
