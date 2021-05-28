@@ -675,4 +675,17 @@ if(True):
 
         return (mu + np.sqrt(sg)*NormalStandardReverse(px))
 
+    def NormalReverseInfo(px: float, mu: float, sg: float):
+        # px: probability P(X < x)
+        # mu: expected value
+        # sg: standard deviation
+
+        # print("\nNormal Reverse Distribution")
+
+        x = NormalReverse(px, mu, sg)
+
+        print("P(X < {:.4f}) = {:.4f} with E(X) = {} and V(X) = {}".format(px, x, mu, sg))
+
+        return x
+
     n = NormalReverse(0.9, 34, 7)
