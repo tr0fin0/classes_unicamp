@@ -577,6 +577,42 @@ if(True):
     def Normal(x: float, mu: float, sg: float):
         return NormalStandard((x - mu)/np.sqrt(sg))
 
+    def NormalInfo(x: float, s: int):
+        #x: number expected
+        #s: comparsion
+        #   if (s == 1):
+        #       P(X>x)
+        #   if (s == -1):
+        #       P(X<x)
+        #   comparsion
+
+        px = Normal(x)
+
+        # print("\nNormal Distribution")
+        # print("x    = {:.4f}".format(x))
+
+        #equals zero
+        if(s == 0):
+            return 0
+
+        #P(X < x) where x is positive
+        if ((s == -1) & (x > 0)):
+            print("P(X<={}) = {:.4f}".format(x, px))
+
+        #P(X < x) where x is negative
+        elif((s == -1) & (x < 0)):
+            print("P(X<={}) = {:.4f}".format(x, px))
+
+        #P(X > x) where x is positive
+        elif((s == 1) & (x > 0)):
+            print("P(X>={}) = {:.4f}".format(x, 1-px))
+
+        #P(X > x) where x is negative
+        elif((s == 1) & (x < 0)):
+            print("P(X>={}) = {:.4f}".format(x, 1-px))
+
+        return px
+
     def NormalIntervalInfo(a: float, b: float, mu: float, sg: float):
         # P(a < X < b)
         # mu: expected value
@@ -693,3 +729,6 @@ if(True):
     #exercice 75
     n = NormalReverseInfo(0.82, 491, 47**2)
     n = NormalReverseInfo(0.86, 491, 47**2)
+
+    #exercice 76
+    n = Nor
