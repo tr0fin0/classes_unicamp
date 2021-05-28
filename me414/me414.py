@@ -689,3 +689,7 @@ if(True):
         return x
 
     n = NormalReverseInfo(0.99, 25, 6**2)
+
+    #exercice 75
+    n = NormalReverseInfo(0.82, 491, 47**2)
+    n = NormalReverseInfo(0.86, 491, 47**2)
