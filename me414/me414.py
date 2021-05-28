@@ -660,3 +660,14 @@ if(True):
     x = NormalStandardReverseInfo(0.8006, 1, 1)
     x = NormalStandardReverseInfo(0.4293, -1, 1)
     x = NormalStandardReverseInfo(0.4541, -1, 1)
+
+    #exercice 74
+    def NormalReverse(px: float, mu: float, sg: float):
+        # px: probability
+        # mu: expected value
+        # sg: standard deviation
+
+        # print("\nNormal Reverse Distribution")
+        # print("px = {:.4f}".format(x))
+
+        return (mu + np.sqrt(sg)*NormalReverse(px))
