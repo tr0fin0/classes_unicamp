@@ -26,17 +26,17 @@ multiply:
     add t0, zero, zero # t0 = zero + zero
 
     deslocation:
-        # addi t1, a1, 1 # t1 = a1 + 1
+        andi t1, a1, 1 # t1 = a1 + 1
+        srai a1, a1, 1 # right shift of a1 by 1
+        # addi t1, a1, 0 # t1 = a1 + 1, store a1
+
+        # # remove LSB
         # srai a1, a1, 1 # right shift of a1 by 1
-        addi t1, a1, 0 # t1 = a1 + 1, store a1
+        # slli a1, a1, 1 #  left shift of a1 by 1
 
-        # remove LSB
-        srai a1, a1, 1 # right shift of a1 by 1
-        slli a1, a1, 1 #  left shift of a1 by 1
-
-        # get LSB
-        sub t1, t1, a1 # t1 = t1 - a1
-        srai a1, a1, 1 # right shift of a1 by 1
+        # # get LSB
+        # sub t1, t1, a1 # t1 = t1 - a1
+        # srai a1, a1, 1 # right shift of a1 by 1
 
         beq t1, zero, pass # if t1 == zero then pass
         add t0, t0, a0     # t0 = t0 + a0
