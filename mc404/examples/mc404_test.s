@@ -1,3 +1,5 @@
+// test can be done in the following site:
+// https://ascslab.org/research/briscv/simulator/simulator.html#
 main:
     addi s0, zero, 3
     addi s1, zero, 4
