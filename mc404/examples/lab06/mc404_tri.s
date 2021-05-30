@@ -7,6 +7,7 @@
 //
 // if a0 == 0 impossible triangule
 //       == 1   possible triangule
+//
 // for testing, uncomment and put the following 
 // lines on the main code:
 //    addi s0, zero, 3
