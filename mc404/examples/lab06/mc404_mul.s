@@ -26,8 +26,8 @@ multiply:
     add t0, zero, zero # t0 = zero + zero
 
     deslocation:
-        andi t1, a1, 1 # t1 = 1, if a1 is odd  (a1[LSB])
-                       # t1 = 0, if a1 is even (a1[LSB])
+        andi t1, a1, 1 # t1 = 1, if a1 is even (a1[LSB])
+                       # t1 = 0, if a1 is odd  (a1[LSB])
         srai a1, a1, 1 # right shift of a1 by 1, divide by 2
 
         beq t1, zero, pass # if t1 == zero then pass
