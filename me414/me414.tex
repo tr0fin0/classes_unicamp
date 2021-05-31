@@ -1174,5 +1174,37 @@
                         V(X) = \sigma^{2}
                     }
                 \end{equation}
-            Nota-se que uma distribuição normal pode ser normalizada para facilitar os cálculos envolvidos
+\newpage
+
+    \section{Variável Aleatória Amostral}
+        \paragraph{Definição}Descrição do comportamento de uma população através da aproximação das características de uma amostra retirada aleatoriamente, podendo-se aplicar diferentes modelagens para sua descrição das quais as principais são listadas a seguir:
+            \begin{enumerate}[rightmargin = \leftmargin]
+                \item \textbf{Modelo Discreto:} Variáveis fixadas em valores pré-estabelecidos, possuindo:
+                    \begin{enumerate}[noitemsep]
+                        \item \texttt{Média Populacional:} $p$;
+                        \item \texttt{Variância Populacional:} $p(1-p)$;
+                    \end{enumerate}
+
+                \item \textbf{Modelo Aleatório:} Variáveis aleatórias contidas em uma distribuição de Bernoulli, possuindo:
+                    \begin{enumerate}[noitemsep]
+                        \item \texttt{Média Populacional:} $p$;
+                        \item \texttt{Variância Populacional:} $p(1-p)$;
+                    \end{enumerate}
+            \end{enumerate}
+        Note que independente do modelo aplicado quando uma amostra $n$ for retirada as propriedades desta são obtidas através das seguintes equações:
+            \begin{equation}
+                \boxed{
+                    E(\hat{p}) = p
+                }
+                \qquad
+                \boxed{
+                    V(\hat{p}) = \frac{p(1-p)}{n}
+                }
+            \end{equation}
+        Assim, a medida que $n$ aumenta estas variáveis poderão ser aproximadas pela seguinte expressão:
+            \begin{equation}
+                \boxed{
+                    \hat{p} \approx N\left(p, \frac{p(1-p)}{n}\right)
+                }
+            \end{equation}
 \end{document}
