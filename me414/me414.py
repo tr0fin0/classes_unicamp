@@ -733,3 +733,11 @@ if(True):
     #exercice 76
     n = NormalInfo(30000, 39000, 8000**2, 1)
     n = NormalInfo(30000, 32000, 6000**2, 1)
+
+    #exercice 77
+    n = NormalInfo(11, 0.22, 0.22*(1-0.22)/200, -1)
+
+    #exercice 78
+    lb = 1/11
+    e = ExponencialInfo(lb, 11)
+    e = ExponencialReverseX(lb, 0.17)
