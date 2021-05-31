@@ -1462,21 +1462,48 @@
                     Neste cenário a aceleração $\vec{\alpha}$ será normal a $\vec{\omega}$.
                 \end{enumerate}
 
-        \subsection{Movimento Geral}
-            \paragraph{Definição}Análise cinemática de um corpo rígido em movimento tridimensional através do movimento relativo, onde será necessário definir um referencial inercial e um referencial não inercial como ilustrado pela seguinte figura:
+        \subsection{Movimento Geral Relativo}
+            \paragraph{Definição}Análise cinemática de um corpo rígido em movimento tridimensional através do movimento relativo, onde será necessário definir um referencial inercial, $O$, e um referencial não inercial, $B$, como ilustrado pela seguinte figura:
                 \begin{figure}[H]
                     \centering
                     \includegraphics[height = 4cm]{ima25.png}
                     \caption{Representação Eixo Instantâneo de Rotação}
                 \end{figure}\noindent
-            Onde:
-                \begin{equation}
-                    \boxed{
-                        \vec{v}_{A} = \vec{v}_{B} + \vec{v}_{AB}
-                    }
-                    \qquad
-                    \boxed{
-                        \vec{a}_{A} = \vec{a}_{B} + \vec{a}_{AB}
-                    }
-                \end{equation}
+            Nesta configuração, como a distância entre $AB$ permanece constante qualquer ponto $A$ visto a partir de $B$ apresentará apenas rotação entorno de uma superfície esférica centrada em $B$. Desta maneira, pode-se descrever o movimento como uma translação do corpo em $B$ e uma rotação entorno de $B$ onde:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item $\vec{v}_{A}$, \textbf{Velocidade:} Vetorialmente a velocidade do ponto $A$ será descrita como a composição entre o movimento rotacional,  translacional e relativo, representado pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                \vec{v}_{A} = 
+                                \vec{v}_{B} + 
+                                \underbrace{
+                                    \omega_{AB}\times\vec{r}_{AB}
+                                }_{\vec{v}_{AB}}
+                            }
+                        \end{equation}
+                    Onde:
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item $\vec{v}_{AB}$, \texttt{Velocidade Devido a Rotação:} Velocidade causada pela rotação de $AB$.
+                        \end{enumerate}
+
+                    \item $\vec{a}_{A}$, \textbf{Aceleração:} Vetorialmente a aceleração do ponto $A$ será descrita como a composição entre o movimento rotacional e translacional, representado pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                \vec{a}_{A} = 
+                                \vec{a}_{B} + 
+                                \underbrace{
+                                    \omega_{AB}\times(\omega_{AB}\times\vec{r}_{AB})
+                                }_{\vec{a}_{AB_{n}}} + 
+                                \underbrace{
+                                    \dot{\omega}_{AB}\times\vec{r}_{AB}
+                                }_{\vec{a}_{AB_{t}}}
+                            }
+                        \end{equation}
+                    Onde:
+                        \begin{enumerate}[rightmargin = \leftmargin]
+                            \item $\vec{a}_{AB_{t}}$, \texttt{Aceleração Devido a Rotação Tangencial:} Causada pela rotação de $AB$, tangencial a trajetória considerada a partir do \textbf{Centro de Velocidade Nula};
+
+                            \item $\vec{a}_{AB_{n}}$, \texttt{Aceleração Devido a Rotação Normal:} Causada pela rotação de $AB$, normal a trajetória considerada a partir do \textbf{Centro de Velocidade Nula};
+                        \end{enumerate}
+                \end{enumerate}
 \end{document}
