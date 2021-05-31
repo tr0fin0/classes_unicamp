@@ -1,39 +1,38 @@
-// --------------------------
-// posible triangule code
-// --------------------------
-// s0 side A of the triangule
-// s1 side B of the triangule
-// s2 side C of the triangule
-//
-// if a0 == 0 impossible triangule
-//       == 1   possible triangule
-//
-// for testing, uncomment and put the following 
-// lines on the main code:
-//    addi s0, zero, 3
-//    addi s1, zero, 4
-//    addi s2, zero, 6
+#  --------------------------
+#  posible triangule code
+#  --------------------------
+#  s0 side A of the triangule
+#  s1 side B of the triangule
+#  s2 side C of the triangule
+
+## if a0 == 0 impossible triangule
+#        == 1   possible triangule
+
+#  for testing, uncomment and put the following 
+#  lines on the main code:
+#     addi s0, zero, 3
+#     addi s1, zero, 4
+#     addi s2, zero, 6
 main:
 
-    add s3, s0, s1
-    sub s3, s3, s2
-    bge zero, s3, else
+    add t0, s0, s1     # t0 = s0 + s1
+    sub t0, t0, s2     # t0 = s0 + s1 - s2
+    bge zero, t0, else # if t0 >= 0 then else
 
-    add s3, s1, s2
-    sub s3, s3, s0
-    bge zero, s3, else
+    add t0, s1, s2     # t0 = s1 + s2
+    sub t0, t0, s0     # t0 = s1 + s2 - s0
+    bge zero, t0, else # if t0 >= 0 then else
 
-    add s3, s2, s0
-    sub s3, s3, s2
-    bge zero, s3, else
+    add t0, s2, s0     # t0 = s2 + s0
+    sub t0, t0, s2     # t0 = s2 + s0 - s1
+    bge zero, t0, else # if t0 >= 0 then else
 
-    sub a0, a0, a0
-    addi a0, zero, 1
-    j fim
+    # passed all restrictions
+    addi a0, zero, 1 # a0 = 1
+    j end            # go to end
 
 else:
-    sub a0, a0, a0
-    add a0, zero, zero
+    add a0, zero, zero # a0 = 0
 
-fim:
+end:
     jr ra
