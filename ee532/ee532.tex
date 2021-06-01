@@ -1800,4 +1800,34 @@
 
         \subsection{PMOS}
             \paragraph{Definição}Tecnologia desenvolvida para portas lógicas que empregram MOSFETs Tipo P, Gate e Drain são construídos com materias dopados positivamente enquanto o corpo com materias dopados negativamente.
+
+        \subsection{CMOS}
+            \paragraph{Definição}Tecnologia desenvolvida pela associação entre componentes NMOS, MOSFETs do Tipo N, e PMOS, MOSFETs do Tipo P, em sequência, possibilitando baixo consumo de potência durante seu funcionamento.
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}[]
+                        \ctikzset{
+                            component text=left, 
+                            diodes/scale=0.5, 
+                            resistors/width=0.25, 
+                            resistors/zigs=1
+                        }
+                        \draw
+                        (0, 1) node[pigfete] (myPFET) {}
+                        (0,-1) node[nigfete] (myNFET) {}
+        
+                        (myPFET.G) -- (myNFET.G)
+                        (myPFET.D) -- (myNFET.D)
+        
+                        (-1.48,0) to[short, o-*] (-0.98,0)
+                        ( 0,0) to[short, *-o] ( 0.5, 0)
+        
+                        (-1.48,0) node[left]{$v_{i}$}
+                        ( 0.5,0) node[right]{$v_{o}$}
+        
+                        (myPFET.S) node[vcc]{}
+                        (myNFET.S) node[tlground]{};
+                    \end{circuitikz}
+                    \caption{CMOS}
+                \end{figure}
 \end{document}
