@@ -519,8 +519,8 @@ if(True):
 
         px = NormalStandard(x)
 
-        # print("\nNormal Standard Distribution")
-        # print("x    = {:.4f}".format(x))
+        print("\nNormal Standard Distribution")
+        print("x    = {:.4f}".format(x))
 
         #equals zero
         if(s == 0):
@@ -578,8 +578,11 @@ if(True):
         return NormalStandard((x - mu)/np.sqrt(sg))
 
     def NormalInfo(x: float, mu: float, sg: float, s: int):
-        #x: number expected
-        #s: comparsion
+        # x:  number expected
+        # mu: expected value
+        # sg: variance value
+        # s:  comparsion
+        #
         #   if (s == 1):
         #       P(X>x)
         #   if (s == -1):
@@ -588,8 +591,8 @@ if(True):
 
         px = Normal(x, mu, sg)
 
-        # print("\nNormal Distribution")
-        # print("x    = {:.4f}".format(x))
+        print("\nNormal Distribution")
+        print("x    = {:.4f}".format(x))
 
         #equals zero
         if(s == 0):
@@ -735,7 +738,10 @@ if(True):
     n = NormalInfo(30000, 32000, 6000**2, 1)
 
     #exercice 77
-    n = NormalInfo(11, 0.22, 0.22*(1-0.22)/200, -1)
+    p  = 0.22
+    n  = 200
+    hp = NormalStandardInfo(p, p*(1-p)/n)
+    hp = NormalInfo(0.275, p, p*(1-p)/n, 1)
 
     #exercice 78
     lb = 1/11
