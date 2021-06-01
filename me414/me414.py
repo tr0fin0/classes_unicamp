@@ -456,7 +456,7 @@ if(True):
         print("p = {:.4f}".format(p))
         print("l = {:.4f}".format(Lambda))
 
-        return Lambda
+        return x
 
     def ExponencialInfo(Lambda: int, x: int):
 
@@ -738,12 +738,16 @@ if(True):
     n = NormalInfo(30000, 32000, 6000**2, 1)
 
     #exercice 77
-    p  = 0.22
-    n  = 55
-    N  = 200
+    p  = 0.22 #probability of study
+    n  = 55   #number expected
+    N  = 200  #number of population
     hp = NormalInfo(n/N, p, p*(1-p)/N, 1)
 
     #exercice 78
     lb = 1/11
-    e = ExponencialInfo(lb, 11)
-    e = ExponencialReverseX(lb, 0.17)
+    ex = 1/lb
+    vx = ex**2
+    e1 = ExponencialInfo(lb, 11)
+    e2 = ExponencialReverseX(lb, 0.17)
+    hp = vx*60/750*0.17
+    print("\nexercice 78:\n a) {:.4}\n b) {:.4}\n c) {:.2}\n d) {}\n e) {:.4}\n f) {:.4}\n g) {:.4}".format(ex, vx, 1-e1, ex, e2, hp, 1.0))
