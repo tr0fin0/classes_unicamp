@@ -739,9 +739,9 @@ if(True):
 
     #exercice 77
     p  = 0.22
-    n  = 200
-    hp = NormalStandardInfo(p, p*(1-p)/n)
-    hp = NormalInfo(0.275, p, p*(1-p)/n, 1)
+    n  = 55
+    N  = 200
+    hp = NormalInfo(n/N, p, p*(1-p)/N, 1)
 
     #exercice 78
     lb = 1/11
