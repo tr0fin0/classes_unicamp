@@ -749,5 +749,16 @@ if(True):
     vx = ex**2
     e1 = ExponencialInfo(lb, 11)
     e2 = ExponencialReverseX(lb, 0.17)
-    hp = vx*60/750*0.17
-    print("\nexercice 78:\n a) {:.4}\n b) {:.4}\n c) {:.2}\n d) {}\n e) {:.4}\n f) {:.4}\n g) {:.4}".format(ex, vx, 1-e1, ex, e2, hp, 1.0))
+    e3 = lb
+    e4 = NormalReverseInfo(0.17, ex, vx/60)
+
+    print(
+        "\nexercice 78:" + 
+        "\n a) {:.4}".format(ex) + 
+        "\n b) {:.4}".format(vx) + 
+        "\n c) {:.4}".format(1-e1) + 
+        "\n d) {:.4}".format(ex) + 
+        "\n e) {:.4}".format(e2) + 
+        "\n f) {:.4}".format(e3) + 
+        "\n g) {:.4}".format(e4)
+    )
