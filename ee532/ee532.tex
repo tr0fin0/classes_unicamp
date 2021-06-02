@@ -1830,4 +1830,69 @@
                     \end{circuitikz}
                     \caption{CMOS}
                 \end{figure}
+\newpage
+
+    \section{Amplificadores Operacionais}
+        \paragraph{Definição}Dispositivos construídos através da combinação de amplificadores e componentes passivos, trazendo as seguintes características:
+            \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                \item \textbf{Impedância de Entrada:} Alta, idealmente $\infty$;
+                \item \textbf{Impedância de Saída:} Baixa, idealmente 0; 
+                \item \textbf{Ganho em Malha Aberta:} Alta, idealmente $\infty$
+            \end{enumerate}
+            \begin{figure}[H]
+                \centering
+                \begin{circuitikz}[]
+                    \ctikzset{
+                        component text=left, 
+                        diodes/scale=0.5, 
+                        resistors/width=0.25, 
+                        resistors/zigs=1
+                    }
+                    \draw
+                    (0,0) node[op amp] (opamp) {}
+                    (opamp.+) node[left] {$v_+$}
+                    (opamp.-) node[left] {$v_-$}
+                    (opamp.out) node[right] {$v_o$}
+                    (opamp.up) --++(0,0.5) node[vcc]{+\,\textnormal{V}}
+                    (opamp.down) --++(0,-0.5) node[vee]{-\,\textnormal{V}};
+                \end{circuitikz}
+                \caption{Representação Amplificador Operacional}
+            \end{figure}
+        Onde:
+            \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                \item $v_{-}$, \textbf{Entrada Inversora:} ;
+                \item $v_{+}$, \textbf{Entrada Não-Inversora:} ;
+                \item $V_{+}$, \textbf{Terminais de Alimentação Positiva:} ;
+                \item $V_{-}$, \textbf{Terminais de Alimentação Negativa:} ;
+                \item $v_{o}$, \textbf{Saída:} ;
+            \end{enumerate}
+
+            \subsection{Amplificador Inversor}
+                \paragraph{Definição}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}[]
+                            \ctikzset{
+                                component text=left, 
+                                diodes/scale=0.5, 
+                                resistors/width=0.25, 
+                                resistors/zigs=1
+                            }
+                            \draw
+                            (0,0) node[op amp] (opamp) {}
+
+                            (opamp.out) to[short, -o] (2,0)
+                            (2,0) node[right] {$v_{\text{out}}$}
+
+                            (opamp.+) --++(0,-1) node[tlground] {}
+                            (opamp.-) to[R, l_=$R_{i}$] (-3, 0.5)
+                            (-3, 0.5) to[sV<=$v_{i}$] (-3,-1.5) node[tlground] {}
+
+                            (opamp.-) to[short,*-] ++(0,1) coordinate (leftR)
+                            to[R, l=$R_{f}$] (leftR -| opamp.out)
+                            to[short,-*] (opamp.out);
+                        \end{circuitikz}
+                        \caption{Amplificador Inversor}
+                    \end{figure}
+
 \end{document}
