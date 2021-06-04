@@ -1650,6 +1650,37 @@
                 \end{enumerate}
 \newpage
 
+        \subsection{Equações Gerais}
+            \paragraph{Definição}Nesta abordagem define-se as equações gerais de movimento para um sistema de massa constante:
+                \begin{equation}
+                    \boxed{
+                        \Sigma\vec{F} = \vec{\dot{G}}
+                    }
+                    \qquad
+                    \boxed{
+                        \Sigma\vec{M} = \vec{\dot{H}}
+                    }
+                \end{equation}
+            Quando $\vec{H}$ é expresso em termos dos componentes medidos em relação a um sistema móvel $x-y-z$ que possui velocidade angular $\vec{\Omega}$ então o momento será:
+                \begin{equation}
+                    \boxed{
+                        \Sigma\vec{M} = 
+                        (\dot{H}_{x} - H_{y}\Omega_{z} + H_{z}\Omega_{y})\vec{i} + 
+                        (\dot{H}_{y} - H_{z}\Omega_{x} + H_{x}\Omega_{z})\vec{j} + 
+                        (\dot{H}_{z} - H_{x}\Omega_{y} + H_{y}\Omega_{x})\vec{k}
+                    }
+                \end{equation}
+            Desta maneira, como mecionado anteriormente, se os eixos de referências coincidem com os eixos principais de inércia com origem em G ou em um ponto O fixo do corpo e no espaço terá os produtos de inércia nulos e, portanto, as seguintes equações são denominadas \textbf{Equações de Euler}:
+                \begin{equation}
+                    \Sigma\vec{M} = 
+                    \begin{cases}
+                        \Sigma\vec{M}_{x} &= (I_{xx}\dot{\omega}_{x} - (I_{yy} - I_{zz}\omega_{y}\omega_{z}))\vec{i}\\
+                        \Sigma\vec{M}_{y} &= (I_{yy}\dot{\omega}_{y} - (I_{zz} - I_{xx}\omega_{z}\omega_{x}))\vec{j}\\
+                        \Sigma\vec{M}_{z} &= (I_{zz}\dot{\omega}_{z} - (I_{xx} - I_{yy}\omega_{x}\omega_{y}))\vec{k}\\
+                    \end{cases}
+                \end{equation}
+\newpage
+
         \subsection{Trabalho e Energia Geral}
             \paragraph{Definição}Baseia-se nos resultados obtidos para cinética de corpos rígidos para expressar essas grandezas no movimento tridimensional que apresentam movimento translacional e rotacional. Recomenda-se analisar as variações individuais entre cada componente descrita pela seguinte equação:
                 \begin{equation}
