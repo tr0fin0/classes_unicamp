@@ -1648,4 +1648,52 @@
                             }
                         \end{equation}
                 \end{enumerate}
+\newpage
+
+        \subsection{Trabalho e Energia Geral}
+            \paragraph{Definição}Baseia-se nos resultados obtidos para cinética de corpos rígidos para expressar essas grandezas no movimento tridimensional que apresentam movimento translacional e rotacional. Recomenda-se analisar as variações individuais entre cada componente descrita pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        T_{1} + V_{1} + U_{1-2} = T_{2} + V_{2}
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item $U$, \textbf{Impulso:} Causado pela presença de forças realizando trabalho ou momentos sendo aplicados. Quando um momento constante for aplicado ao corpo rígido será necessário multiplicá-lo pela comprimento da trajetória para obter as equações necessárias.\\
+                    Caso não hajam forças ou momentos externos sobre o sistema então este termo será nulo, portanto a análise se dará para as variações termo a termo.
+
+                    \item $T$, \textbf{Energia Cinética:} Analisa-se conjuntamento a parcela gerada pela translação e pela rotação, obtendo:
+                        \begin{equation}
+                            \boxed{
+                                T_{i} = 
+                                \underbrace{
+                                    \frac{1}{2} \overline{v}\cdot\vec{G}
+                                }_{\text{Translação}} + 
+                                \underbrace{
+                                    \frac{1}{2}\vec{\omega}\cdot\vec{H}_{G}
+                                }_{\text{Rotação}}
+                            }
+                        \end{equation}
+                    Onde:
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item $\overline{v}$, \texttt{Velocidade Linear do Centro de Massa};
+                            \item $\omega$, \texttt{Velocidade Angular em Torno do Centro de Massa};
+                            \item $\vec{H}_{G}$, \texttt{Quantidade de Movimento Angular no Centro de Massa};
+                        \end{enumerate}
+
+                    \item $V$, \textbf{Energia Potencial:} Analisa-se conjuntamento potenciais geradas pela gravidade e pela presença de molas, obtendo:
+                        \begin{equation}
+                            \boxed{
+                                V_{i} = 
+                                m g h +
+                                \frac{1}{2} k x^{2} 
+                            }
+                        \end{equation}
+                    Onde:
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item $h$, \texttt{Variação de Altura};
+                            \item $x$, \texttt{Variação de Comprimento};
+                            \item $k$, \texttt{Constante Elástica};
+                        \end{enumerate}
+                \end{enumerate}
 \end{document}
