@@ -1586,4 +1586,25 @@
                     \item $\vec{\overline{v}}$, \textbf{Velocidade Linear do Centro de Massa};
                     \item $\vec{\omega}$, \textbf{Velocidade Angular do Centro de Massa};
                 \end{enumerate}
+            Entretanto nota-se que a expressão será complexa e, em muitos casos, não útil para sua aplicação. Desvolve-se os somatórios através da aplicação de integrais para obter a seguinte expressão:
+                \begin{equation}
+                    \boxed{
+                        \vec{H} = 
+                        \begin{bmatrix}
+                            \vec{i} & \vec{j} & \vec{k}\\
+                        \end{bmatrix} \times 
+                        \left(
+                            \begin{bmatrix}
+                                +I_{xx} & -I_{xy} & -I_{xz}\\
+                                -I_{yx} & +I_{yy} & -I_{yz}\\
+                                -I_{zx} & -I_{zy} & +I_{zz}\\
+                            \end{bmatrix} \times
+                            \begin{bmatrix}
+                                \omega_{x}\\
+                                \omega_{y}\\
+                                \omega_{z}\\
+                            \end{bmatrix}
+                        \right)
+                    }
+                \end{equation}
 \end{document}
