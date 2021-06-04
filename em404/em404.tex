@@ -1594,11 +1594,13 @@
                             \vec{i} & \vec{j} & \vec{k}\\
                         \end{bmatrix} \times 
                         \left(
+                            \underbrace{
                             \begin{bmatrix}
                                 +I_{xx} & -I_{xy} & -I_{xz}\\
                                 -I_{yx} & +I_{yy} & -I_{yz}\\
                                 -I_{zx} & -I_{zy} & +I_{zz}\\
-                            \end{bmatrix} \times
+                            \end{bmatrix}
+                            }_{\text{Tensor de Inércia}} \times
                             \begin{bmatrix}
                                 \omega_{x}\\
                                 \omega_{y}\\
@@ -1623,4 +1625,6 @@
                             \boxed{I_{yz} = I_{zy} = \int(yz)dm}
                         \end{equation}
                 \end{enumerate}
+
+            \paragraph{Eixos Principais}Eixos únicos em que os valores dos momentos de inércia assumem valores estacionários e o Tensero de Inércia será diagonal.
 \end{document}
