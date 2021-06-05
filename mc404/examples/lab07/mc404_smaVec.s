@@ -5,7 +5,6 @@
 # menorVetor(int *v, int n)
 # int *v, vector with n int's
 # int n,  size of vector's
-
 #  the first argument is a pointer to
 #  where the array starts in the memory
 #  to compair you need the go throw the
@@ -19,6 +18,10 @@
 # addi s3, zero, 9; # s3 = zero + 4
 # addi s4, zero, 5; # s4 = zero + 5
 
+# # declare a0 = *v and a1 = n
+# addi a0, sp, 0
+# addi a1, zero, 5
+
 # # declare stack and store values
 # addi sp, sp, -20; # sp = sp + -20
 # sw s0, 0(sp)
@@ -27,10 +30,6 @@
 # sw s3, 12(sp)
 # sw s4, 16(sp)
 
-# # declare a0 = *v and a1 = n
-# addi a0, sp, 0
-# addi a1, zero, 5
-
 # # remove stack and retrive values
 # lw s4, 16(sp)
 # lw s3, 12(sp)
@@ -38,7 +37,6 @@
 # lw s1, 4(sp)
 # lw s0, 0(sp)
 # addi sp, sp, 20; # sp = sp + 20
-
 
 MenorVetor:
     # inicialize
