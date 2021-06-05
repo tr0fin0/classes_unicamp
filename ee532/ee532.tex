@@ -1954,4 +1954,45 @@
                     }
                 \end{equation}
 
+        \subsection{Amplificador Seguidor de Tensão}
+            \paragraph{Definição}Amplificador que não amplifica e não inverte o sinal de sua entrada, sendo obtido pela seguinte configuração:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}[]
+                        \ctikzset{
+                            component text=left, 
+                            diodes/scale=0.5, 
+                            resistors/width=0.25, 
+                            resistors/zigs=1
+                        }
+                        \draw
+                        (0,0) node[op amp, noinv input up] (opamp) {}
+    
+                        (opamp.out) to[short, -o] (2,0)
+                        (2,0) node[right] {$v_{\text{out}}$}
+    
+                        (opamp.+) to[short] (-3, 0.5)
+                        (-3, 0.5) to[sV<=$v_{\text{in}}$] (-3,-1.5)
+                                node[tlground] {}
+    
+                        (opamp.out) to[short, *-] ++(0,-1.5) coordinate (mid)
+    
+                        (opamp.-) --++(0,-1) to[short] (mid);
+                    \end{circuitikz}
+                    \caption{Amplificador Seguidor de Tensão}
+                \end{figure}\noindent
+            Note que nesta configuração as seguintes equações serão aplicadas:
+                \begin{equation}
+                    \boxed{
+                        v_{\text{out}} = 
+                        v_{\text{in}}
+                    }
+                    \qquad
+                    \boxed{
+                        A = 
+                        \frac{v_{\text{out}}}{v_{\text{in}}} = 
+                        1
+                    }
+                \end{equation}
+
 \end{document}
