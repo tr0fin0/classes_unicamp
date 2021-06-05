@@ -6,6 +6,12 @@
 # int *v, vector with n int's
 # int n,  size of vector's
 
+#  the first argument is a pointer to
+#  where the array starts in the memory
+#  to compair you need the go throw the
+#  array getting every value and comparing
+#  with the rest saving the smaller
+
 # # declare values
 # addi s0, zero, 8; # s0 = zero + 1
 # addi s1, zero, 11; # s1 = zero + 2
