@@ -1643,21 +1643,15 @@
                 \begin{enumerate}[rightmargin = \leftmargin]
                     \item $R_{\text{max}_{i-1}}$, \textbf{Altura Máxima:} Representa a altura máxima da rugosidade obtida na operação anterior;
 
-                    \item $t_{i-1}$, \textbf{Profundidade Danificada:} Representa a profundidade danificada na operação anterior;
-
-                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                        \item \texttt{Aplicação}:
-                            \begin{equation}
-                                t_{i-1} = 
-                                \begin{cases}
-                                    \text{0.3 mm},       & \text{Barras Laminadas};\\
-                                    \text{0.8 a 1.5 mm}, & \text{Fundidos Comprimento Menores 100 mm};\\
-                                    \text{2 a 6 mm},     & \text{Fundidos Comprimento Maiores 100 mm};\\
-                                \end{cases}
-                            \end{equation}
-                    \end{enumerate}
-
-                    Note que na prática pode-se analisar o parâmetro $R_{\text{max}_{i-1}} + t_{i-1}$ conjuntamente, realizando as seguintes aproximações
+                    \item $t_{i-1}$, \textbf{Profundidade Danificada:} Representa a profundidade danificada na operação anterior. Note que na prática pode-se analisar o parâmetro $R_{\text{max}_{i-1}} + t_{i-1}$ conjuntamente, realizando as seguintes aproximações:
+                        \begin{equation}
+                            t_{i-1} = 
+                            \begin{cases}
+                                \text{0.3 mm},       & \text{Barras Laminadas};\\
+                                \text{0.8 a 1.5 mm}, & \text{Fundidos Comprimento Menores 100 mm};\\
+                                \text{2 a 6 mm},     & \text{Fundidos Comprimento Maiores 100 mm};\\
+                            \end{cases}
+                        \end{equation}
 
                     \item $\rho_{i-1}$, \textbf{Desvios de Posições:} Representa desvios de posição ou alteração de referência durante a montagem;
                     \item $\epsilon_{i}$, \textbf{Erros de Montagem:} Valores tabelados de erros de montagem;
