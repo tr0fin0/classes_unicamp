@@ -49,33 +49,6 @@
 % Configurando layout para mostrar códigos
 \usepackage{listings}
 
-\newcommand{\myStyle}{
-\lstset{
-    language=Octave,                            % the language of the code
-    basicstyle=\ttfamily\small,               % the size of the fonts that are used for the code
-    keywordstyle=\color{darkpurple}\bfseries, %
-    stringstyle=\color{darkblue},             %
-    commentstyle=\color{darkgreen},           %
-    morecomment=[s][\color{blue}]{/**}{*/},   %
-    extendedchars=true,                       %
-    showtabs=false,                           % show tabs within strings adding particular underscores
-    showspaces=false,                         % show spaces adding particular underscores
-    showstringspaces=false,                   % underline spaces within strings
-    numbers=left,                             % where to put the line-numbers
-    numberstyle=\tiny\color{gray},            % the style that is used for the line-numbers
-    stepnumber=1,                             % the step between two line-numbers. If it's 1, each line will be numbered
-    numbersep=5pt,                            % how far the line-numbers are from the code
-    frame=single,                             % adds a frame around the code
-    rulecolor=\color{black},                  % if not set, the frame-color may be changed on line-breaks within not-black text
-    breaklines=true,                          % sets automatic line breaking
-    backgroundcolor=\color{white},            % choose the background color
-    breakatwhitespace=true,                   % sets if automatic breaks should only happen at whitespace
-    breakautoindent=false,                    %
-    captionpos=b,                             % sets the caption-position to bottom
-    xleftmargin=0pt,                          %
-    tabsize=2,                                % sets default tabsize to 2 spaces
-}}
-
 %\titleformat{<command>}[<shape>]{<format>}{<label>}{<sep>}{<before-code>}[<after-code>]
 \titleformat
 {\section} %comand
@@ -116,44 +89,11 @@
 \newpage
 
     \section{test}
-    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-        \item \textbf{Impedância de Entrada:} Alta, idealmente $\infty$;
-        \item \textbf{Impedância de Saída:} Baixa, idealmente 0; 
-        \item \textbf{Ganho em Malha Aberta:} Alta, idealmente $\infty$
-    \end{enumerate}
-    \begin{figure}[H]
-        \centering
-        \begin{circuitikz}[]
-            \ctikzset{
-                component text=left, 
-                diodes/scale=0.5, 
-                resistors/width=0.25, 
-                resistors/zigs=1
-            }
-            \draw
-            (0,0) node[op amp] (opamp) {}
-            (opamp.+) node[left] {$v_+$}
-            (opamp.-) node[left] {$v_-$}
-            (opamp.out) node[right] {$v_o$}
-            (opamp.up) --++(0,0.5) node[vcc]{$V_+$}
-            (opamp.down) --++(0,-0.5) node[vee]{$V_-$};
-        \end{circuitikz}
-        \caption{Representação Amplificador Operacional}
-    \end{figure}
-Onde:
-    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-        \item $v_{-}$, \textbf{Entrada Inversora:} ;
-        \item $v_{+}$, \textbf{Entrada Não-Inversora:} ;
-        \item $V_{+}$, \textbf{Terminais de Alimentação Positiva:} ;
-        \item $V_{-}$, \textbf{Terminais de Alimentação Negativa:} ;
-        \item $v_{o}$, \textbf{Saída:} ;
-    \end{enumerate}
-
-    \subsection{Amplificador Inversor}
-        \paragraph{Definição}
+    \subsection{Amplificador Comparador de Tensão}
+        \paragraph{Definição}Amplificador que compara os valores presentes entre suas entradas inversora e não inversora, sendo obtido pela seguinte configuração:
             \begin{figure}[H]
                 \centering
-                \begin{circuitikz}[]
+                \begin{circuitikz}[american]
                     \ctikzset{
                         component text=left, 
                         diodes/scale=0.5, 
@@ -161,19 +101,29 @@ Onde:
                         resistors/zigs=1
                     }
                     \draw
-                    (0,0) node[op amp] (opamp) {}
+                    (0,0) node[op amp, noinv input up] (opamp) {}
 
-                    (opamp.out) to[short, -o] (2,0)
-                    (2,0) node[right] {$v_{\text{out}}$}
+                    (opamp.out) to[short, -o] ++(0.5,0)
+                                node[right] {$v_{\text{out}}$}
 
-                    (opamp.+) --++(0,-1) node[tlground] {}
-                    (opamp.-) to[R, l_=$R_{i}$] (-3, 0.5)
-                    (-3, 0.5) to[sV<=$v_{i}$] (-3,-1.5) node[tlground] {}
+                    (opamp.+) to[short] ++(-2, 0)
+                              to[sV_=$v_{\text{in}}$] ++(0,-2.5)
+                              node[tlground] {}
 
-                    (opamp.-) to[short,*-] ++(0,1) coordinate (leftR)
-                    to[R, l=$R_{f}$] (leftR -| opamp.out)
-                    to[short,-*] (opamp.out);
+                    (opamp.-) to[short] ++(-0.75, 0)
+                              to[battery=$v_{\text{ref}}$] ++(0,-1.5)
+                              node[tlground] {};
                 \end{circuitikz}
-                \caption{Amplificador Inversor}
-            \end{figure}
+                \caption{Amplificador Comparador de Tensão}
+            \end{figure}\noindent
+        Note que nesta configuração as seguintes equações serão aplicadas:
+            \begin{equation}
+                \boxed{
+                    v_{\text{out}} = 
+                    \begin{cases}
+                        +V_{cc}, & \text{caso $v_{\text{in}} > v_{\text{ref}}$}\\
+                        -V_{cc}, & \text{caso $v_{\text{in}} < v_{\text{ref}}$}\\
+                    \end{cases}
+                }
+            \end{equation}
 \end{document}
