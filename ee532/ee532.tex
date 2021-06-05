@@ -1995,4 +1995,41 @@
                     }
                 \end{equation}
 
+        \subsection{Amplificador Comparador de Tensão}
+            \paragraph{Definição}Amplificador que compara os valores presentes entre suas entradas inversora e não inversora, sendo obtido pela seguinte configuração:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}[american]
+                        \ctikzset{
+                            component text=left, 
+                            diodes/scale=0.5, 
+                            resistors/width=0.25, 
+                            resistors/zigs=1
+                        }
+                        \draw
+                        (0,0) node[op amp, noinv input up] (opamp) {}
+    
+                        (opamp.out) to[short, -o] ++(0.5,0)
+                                    node[right] {$v_{\text{out}}$}
+    
+                        (opamp.+) to[short] ++(-2, 0)
+                                    to[sV_=$v_{\text{in}}$] ++(0,-2.5)
+                                    node[tlground] {}
+    
+                        (opamp.-) to[short] ++(-0.75, 0)
+                                    to[battery=$v_{\text{ref}}$] ++(0,-1.5)
+                                    node[tlground] {};
+                    \end{circuitikz}
+                    \caption{Amplificador Comparador de Tensão}
+                \end{figure}\noindent
+            Note que nesta configuração as seguintes equações serão aplicadas:
+                \begin{equation}
+                    \boxed{
+                        v_{\text{out}} = 
+                        \begin{cases}
+                            +V_{cc}, & \text{caso $v_{\text{in}} > v_{\text{ref}}$}\\
+                            -V_{cc}, & \text{caso $v_{\text{in}} < v_{\text{ref}}$}\\
+                        \end{cases}
+                    }
+                \end{equation}
 \end{document}
