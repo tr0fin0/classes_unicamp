@@ -1658,6 +1658,23 @@
                     \item $\rho_{i-1}$, \textbf{Desvios de Posições:} Representa desvios de posição ou alteração de referência durante a montagem;
                     \item $\epsilon_{i}$, \textbf{Erros de Montagem:} Valores tabelados de erros de montagem, caso trata-se de uma retificação sem centros, $\epsilon_{i} = 0$;
                 \end{enumerate}
+            Apesar dos cálculos serem realizados igualmente será necessário considerar as dimensões máximas e mínimas possíveis pelas tolerâncias das peças, portanto define-se a seguinte figura: 
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[height = 4cm]{ima12.png}
+                    \caption{Regiões de Sobremetal}
+                \end{figure}\noindent
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item $DM_{i-1}$, \textbf{Máxima Dimensão Operação Anterior};
+                    \item $Dm_{i-1}$, \textbf{Mínima Dimensão Operação Anterior};
+                    \item $DM_{i}$, \textbf{Máxima Dimensão Operação Atual};
+                    \item $Dm_{i}$, \textbf{Mínima Dimensão Operação Atual};
+                    \item $T_{i-1}$, \textbf{Tolerância Operação Anterior};
+                    \item $T_{i}$, \textbf{Tolerância Operação Atual};
+                    \item $S_{\text{max}}$, \textbf{Sobremetal Máximo};
+                    \item $S_{\text{min}}$, \textbf{Sobremetal Mínimo};
+                \end{enumerate}
 
         \subsection{Processos Metalúrgicos}
             \paragraph{Definição}Modificações relacionadas a altas temperaturas sobre os corpos, sendo classificados da seguinte maneira:
