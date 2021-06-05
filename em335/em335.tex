@@ -1611,7 +1611,57 @@
                         \end{enumerate}
                 \end{enumerate}
 
-            \paragraph{Sobremetal}
+            \paragraph{Sobremetal}Quantidade de material extra necessário para um processo seja aplicado em uma peça, este será \textbf{Ótimo} se assegura a qualidade a um custo acessível. Desta maneira, pode-se estimar o sobremetal ideal, $S_{T}$, através das seguintes equações:
+                \begin{equation}
+                    \boxed{
+                        S_T = 
+                        \underbrace{
+                            d_{\text{peça bruta}} - 
+                            d_{\text{peça final}}
+                        }_{\text{Superfície Externa}}
+                    }
+                    \qquad
+                    \boxed{
+                        S_T = 
+                        \underbrace{
+                            d_{\text{peça final}} - 
+                            d_{\text{peça bruta}}
+                        }_{\text{Superfície Interna}}
+                    }
+                \end{equation}
+            Nota-se que para realização de qualquer procedimento será necessário reservar uma quantidade de material mínima, $S_{\text{min}}$, de acordo com as características desejadas de tolerâncias, rugosidade e qualidade, sendo expressa pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        S_{\text{min}} = 
+                        R_{\text{max}_{i-1}} + 
+                        t_{i-1} + 
+                        \rho_{i-1} + 
+                        \epsilon_{i}
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item $R_{\text{max}_{i-1}}$, \textbf{Altura Máxima:} Representa a altura máxima da rugosidade obtida na operação anterior;
+
+                    \item $t_{i-1}$, \textbf{Profundidade Danificada:} Representa a profundidade danificada na operação anterior;
+
+                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                        \item \texttt{Aplicação}:
+                            \begin{equation}
+                                t_{i-1} = 
+                                \begin{cases}
+                                    0.3 mm, & \text{Barras Laminadas}\\
+                                    0.8 a 1.5 mm, & \text{Fundidos Comprimento <100 mm}\\
+                                    2 a 6 mm, & \text{Fundidos Comprimento >100 mm}\\
+                                \end{cases}
+                            \end{equation}
+                    \end{enumerate}
+
+                    Note que na prática pode-se analisar o parâmetro $R_{\text{max}_{i-1}} + t_{i-1}$ conjuntamente, realizando as seguintes aproximações
+
+                    \item $\rho_{i-1}$, \textbf{Desvios de Posições:} Representa desvios de posição ou alteração de referência durante a montagem;
+                    \item $\epsilon_{i}$, \textbf{Erros de Montagem:} Valores tabelados de erros de montagem;
+                \end{enumerate}
 
         \subsection{Processos Metalúrgicos}
             \paragraph{Definição}Modificações relacionadas a altas temperaturas sobre os corpos, sendo classificados da seguinte maneira:
