@@ -1744,20 +1744,20 @@
                             \begin{scriptsize}
                                 \myStyleC
                                 \begin{lstlisting}
-    #include<stdio.h>
-    int main()
+#include<stdio.h>
+int main()
+{
+    int t0 = 9;
+    int t1 = 0;
+    int t2 = 5;
+
+    if (t0 == t2)
     {
-        int t0 = 9;
-        int t1 = 0;
-        int t2 = 5;
-    
-        if (t0 == t2)
-        {
-            t1 += 7;
-        } else {
-            t1 += 15;
-        }
+        t1 += 7;
+    } else {
+        t1 += 15;
     }
+}
 
                                 \end{lstlisting}
                             \end{scriptsize}
@@ -1767,20 +1767,20 @@
                             \begin{scriptsize}
                                 \myStyleAssembly
                                 \begin{lstlisting}
-    main:
-        addi t0, zero, 9
-        addi t1, zero, 0
-        addi t2, zero, 5
+main:
+    addi t0, zero, 9
+    addi t1, zero, 0
+    addi t2, zero, 5
 
-        bne t0, t2, else
-        addi t1, t1, 7
-        j fim
+    bne t0, t2, else
+    addi t1, t1, 7
+    j fim
 
-    else:
-        addi t1, t1, 15
+else:
+    addi t1, t1, 15
 
-    fim:
-        jr ra
+fim:
+    jr ra
                                 \end{lstlisting}
                             \end{scriptsize}
                         \end{minipage}
@@ -1789,18 +1789,18 @@
                         \begin{scriptsize}
                             \myStyleC
                             \begin{lstlisting}
-    #include<stdio.h>
-    int main()
+#include<stdio.h>
+int main()
+{
+    int t0 = 20;
+    int t1 = 10;
+
+    while (t0 != t1)
     {
-        int t0 = 20;
-        int t1 = 10;
-    
-        while (t0 != t1)
-        {
-            t0 += 2;
-            t1 += 3;
-        }
+        t0 += 2;
+        t1 += 3;
     }
+}
                             \end{lstlisting}
                         \end{scriptsize}
                     \end{minipage}
@@ -1809,18 +1809,18 @@
                         \begin{scriptsize}
                             \myStyleAssembly
                             \begin{lstlisting}
-    main:
-        addi t0, zero, 20
-        addi t1, zero, 10
+main:
+    addi t0, zero, 20
+    addi t1, zero, 10
 
-    while:
-        beq t0, t1, fim
-        addi t0, t0, 2
-        addi t1, t1, 3
-        j while
+while:
+    beq t0, t1, fim
+    addi t0, t0, 2
+    addi t1, t1, 3
+    j while
 
-    fim:
-        jr ra
+fim:
+    jr ra
                                 \end{lstlisting}
                             \end{scriptsize}
                     \end{minipage}
@@ -1830,18 +1830,18 @@
                         \begin{scriptsize}
                             \myStyleC
                             \begin{lstlisting}
-    #include<stdio.h>
-    int main()
+#include<stdio.h>
+int main()
+{
+    int t0 = 0;
+    int t1 = 0;
+    int t2 = 100;
+
+    for (t0 = 0; t0 < t1; t0++)
     {
-        int t0 = 0;
-        int t1 = 100;
-        int t2 = 0;
-    
-        for (t0 = 0; t0 < t1; t0++)
-        {
-            t2 += t0;
-        }
+        t2 += t0;
     }
+}
                             \end{lstlisting}
                         \end{scriptsize}
                     \end{minipage}
@@ -1850,19 +1850,19 @@
                         \begin{scriptsize}
                             \myStyleAssembly
                             \begin{lstlisting}
-    main:
-        addi t0, zero, 0
-        addi t1, zero, 0
-        addi t2, zero, 100
+main:
+    addi t0, zero, 0
+    addi t1, zero, 0
+    addi t2, zero, 100
 
-    for:
-        bge t1, t2, fim
-        addi t0, t0, t1
-        addi t1, t1, 1
-        j for
+for:
+    bge t1, t2, fim
+    addi t0, t0, t1
+    addi t1, t1, 1
+    j for
 
-    fim:
-        jr ra
+fim:
+    jr ra
                             \end{lstlisting}
                         \end{scriptsize}
                     \end{minipage}
