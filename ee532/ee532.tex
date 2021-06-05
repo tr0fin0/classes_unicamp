@@ -1908,4 +1908,50 @@
                         }
                     \end{equation}
 
+        \subsection{Amplificador Não-Inversor}
+            \paragraph{Definição}Amplificador que amplifica e não inverte o sinal de sua entrada, sendo obtido pela seguinte configuração:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}[]
+                        \ctikzset{
+                            component text=left, 
+                            diodes/scale=0.5, 
+                            resistors/width=0.25, 
+                            resistors/zigs=1
+                        }
+                        \draw
+                        (0,0) node[op amp, noinv input up] (opamp) {}
+        
+                        (opamp.out) to[short, -o] (2,0)
+                        (2,0) node[right] {$v_{\text{out}}$}
+        
+                        (opamp.+) to[short] (-3, 0.5)
+                        (-3, 0.5) to[sV<=$v_{\text{in}}$] (-3,-1.5)
+                                    node[tlground] {}
+        
+                        (opamp.out) to[R, l=$R_{f}$, *-] ++(0,-1.5) coordinate (mid)
+                                    to[R, l=$R_{i}$] ++(0,-1.5)
+                                    node[tlground] {}
+        
+                        (opamp.-) --++(0,-1) to[short, -*] (mid);
+                    \end{circuitikz}
+                    \caption{Amplificador Não-Inversor}
+                \end{figure}\noindent
+            Note que nesta configuração as seguintes equações serão aplicadas:
+                \begin{equation}
+                    \boxed{
+                        v_{\text{out}} = 
+                        v_{\text{in}}
+                        \left(
+                            1 + \frac{R_{f}}{R_{i}}
+                        \right) 
+                    }
+                    \qquad
+                    \boxed{
+                        A = 
+                        \frac{v_{\text{out}}}{v_{\text{in}}} = 
+                        1 + \frac{R_{f}}{R_{i}}
+                    }
+                \end{equation}
+
 \end{document}
