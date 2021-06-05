@@ -1841,6 +1841,7 @@ int main()
     {
         t2 += t0;
     }
+
 }
                             \end{lstlisting}
                         \end{scriptsize}
@@ -2017,8 +2018,8 @@ fim:
                         \begin{scriptsize}
                             \myStyleAssembly
                             \begin{lstlisting}
-    sw   s0, 4(sp)
-    sw   ra, 0(sp)
+    lw   s0, 4(sp)
+    lw   ra, 0(sp)
     addi sp, sp, 8
                             \end{lstlisting}
                         \end{scriptsize}
