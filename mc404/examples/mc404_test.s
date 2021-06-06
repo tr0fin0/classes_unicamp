@@ -47,11 +47,6 @@ main:
     sw s2, 8(sp)
     sw s3, 12(sp)
     sw s4, 16(sp)
-
-    # declare a2 = *c
-    addi a2, sp, 0
-
-    # declare stack and store values
     addi sp, sp, -20;
     sw s0, 0(sp)
     sw s1, 4(sp)
@@ -60,9 +55,10 @@ main:
     sw s4, 16(sp)
 
     # declare a1 = *c
-    addi a1, sp, 0
     addi a0, sp, -20
-    addi a3, zero, 5; # a3 = zero + 5
+    addi a1, sp,   0
+    addi a2, sp,  20
+    addi a3, zero, 5
 
     jal SomaVetor
 
