@@ -1,3 +1,49 @@
+# --------------
+# sum of vectors
+# --------------
+# 
+# somaVetor(int *a, int *b, int *c, int n)
+# int *a, stores the result of *b + *c
+# int *b, vector with n int's
+# int *c, vector with n int's
+# int n,  size of vector's
+
+# # declare values
+# addi s0, zero, 1;
+# addi s1, zero, 2;
+# addi s2, zero, 3;
+# addi s3, zero, 4;
+# addi s4, zero, 5;
+
+# # declare stack and store values
+# addi sp, sp, -20;
+# sw s0, 0(sp)
+# sw s1, 4(sp)
+# sw s2, 8(sp)
+# sw s3, 12(sp)
+# sw s4, 16(sp)
+# addi sp, sp, -20;
+# sw s0, 0(sp)
+# sw s1, 4(sp)
+# sw s2, 8(sp)
+# sw s3, 12(sp)
+# sw s4, 16(sp)
+
+# # declare a1 = *c
+# addi a0, sp, -20
+# addi a1, sp,   0
+# addi a2, sp,  20
+# addi a3, zero, 5
+
+# jal SomaVetor
+
+# # remove stack and retrive values
+# lw s4, 16(sp)
+# lw s3, 12(sp)
+# lw s2, 8(sp)
+# lw s1, 4(sp)
+# lw s0, 0(sp)
+
 SomaVetor:
     # inicialize
 
