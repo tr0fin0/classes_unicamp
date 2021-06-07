@@ -3,8 +3,8 @@
 # -----------------------
 # 
 # menorVetor(int *v, int n)
-# int *v, vector with n int's
-# int n,  size of vector's
+# int *v, pointer to vector
+# int  n, size of vector
 
 #  the first argument is a pointer to
 #  where the array starts in the memory
