@@ -764,32 +764,33 @@ if(True):
     )
 
     #exercice 79
-    ex = 35000 # média em milhas
-    dp = 18000 # desvio padrão em milhas
-    n  = 45    # participantes do programa
-    b  = 10    # bônus em reais
-    m  = 1000  # milhas percorridas
-    a1 = 13950 # mínimo bonificação
-    a2 = 17100 # máxima bonificação
-    b1 = 17550 # mínimo esperado
+    if(False):
+        ex = 35000 # média em milhas
+        dp = 18000 # desvio padrão em milhas
+        n  = 45    # participantes do programa
+        b  = 10    # bônus em reais
+        m  = 1000  # milhas percorridas
+        a1 = 13950 # mínimo bonificação
+        a2 = 17100 # máxima bonificação
+        b1 = 17550 # mínimo esperado
 
-    mi = a1*m/b/n # mínimo de milhas
-    ma = a2*m/b/n # máximo de milhas
-    vx = dp**2/n  # variância em milhas
-    pa = NormalIntervalInfo(mi, ma, ex, vx)
+        mi = a1*m/b/n # mínimo de milhas
+        ma = a2*m/b/n # máximo de milhas
+        vx = dp**2/n  # variância em milhas
+        pa = NormalIntervalInfo(mi, ma, ex, vx)
 
-    me = b1*m/b/n # mínimo em milhas
-    pb = NormalInfo(me, ex, vx, 1)
+        me = b1*m/b/n # mínimo em milhas
+        pb = NormalInfo(me, ex, vx, 1)
 
-    print(
-        "\nexercice 79:" + 
-        "\n a) mi: {}".format(mi) + 
-        "\n    ma: {}".format(ma) + 
-        "\n    ex: {}".format(ex) + 
-        "\n    vx: {:.4}".format(vx) + 
-        "\n    pa: {:.4}".format(pa) + 
-        "\n b) ex: {}".format(ex) + 
-        "\n    vx: {:.4}".format(vx) + 
-        "\n    me: {}".format(me) + 
-        "\n    pb: {:.4}".format(1-pb)
-    )
+        print(
+            "\nexercice 79:" + 
+            "\n a) mi: {}".format(mi) + 
+            "\n    ma: {}".format(ma) + 
+            "\n    ex: {}".format(ex) + 
+            "\n    vx: {:.4}".format(vx) + 
+            "\n    pa: {:.4}".format(pa) + 
+            "\n b) ex: {}".format(ex) + 
+            "\n    vx: {:.4}".format(vx) + 
+            "\n    me: {}".format(me) + 
+            "\n    pb: {:.4}".format(1-pb)
+        )
