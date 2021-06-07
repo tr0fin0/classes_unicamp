@@ -694,14 +694,15 @@ if(True):
 
         return x
 
-    x = NormalStandardReverseInfo(0.6201, 1, 0)
-    x = NormalStandardReverseInfo(0.9525, 1, 0)
-    x = NormalStandardReverseInfo(0.6527, -1, 0)
-    x = NormalStandardReverseInfo(0.5837, -1, 0)
-    x = NormalStandardReverseInfo(0.5152, 1, 1)
-    x = NormalStandardReverseInfo(0.8006, 1, 1)
-    x = NormalStandardReverseInfo(0.4293, -1, 1)
-    x = NormalStandardReverseInfo(0.4541, -1, 1)
+    if(False):
+        x = NormalStandardReverseInfo(0.6201, 1, 0)
+        x = NormalStandardReverseInfo(0.9525, 1, 0)
+        x = NormalStandardReverseInfo(0.6527, -1, 0)
+        x = NormalStandardReverseInfo(0.5837, -1, 0)
+        x = NormalStandardReverseInfo(0.5152, 1, 1)
+        x = NormalStandardReverseInfo(0.8006, 1, 1)
+        x = NormalStandardReverseInfo(0.4293, -1, 1)
+        x = NormalStandardReverseInfo(0.4541, -1, 1)
 
     #exercice 74
     def NormalReverse(px: float, mu: float, sg: float):
