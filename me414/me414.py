@@ -1,5 +1,5 @@
 import numpy as np
-import me414.statpy as stat
+import statpy as stat
 
 #exercice 67
 if(False):
@@ -83,24 +83,27 @@ if(False):
     hp = stat.NormalInfo(n/N, p, p*(1-p)/N, 1)
 
 #exercice 78
-if(True):
+if(False):
     lb = 1/11
     ex = 1/lb
     vx = ex**2
-    e1 = stat.ExponencialInfo(lb, 11)
-    e2 = stat.ExponencialReverseX(lb, 0.17)
-    e3 = lb
-    e4 = stat.NormalReverseInfo(0.17, ex, vx/60)
+    d = 11
+    p = 0.17
+    n = 60
+    e1 = stat.ExponencialInfo(lb, d)
+    e2 = stat.ExponencialReverseX(lb, p)
+    e3 = vx/n
+    e4 = stat.NormalReverseInfo(p, ex, vx/n)
 
     print(
         "\nexercice 78:" + 
-        "\n a) {:.4}".format(ex) + 
-        "\n b) {:.4}".format(vx) + 
-        "\n c) {:.4}".format(1-e1) + 
-        "\n d) {:.4}".format(ex) + 
-        "\n e) {:.4}".format(e2) + 
-        "\n f) {:.4}".format(e3) + 
-        "\n g) {:.4}".format(e4)
+        "\n a) ex: {:.4}".format(ex) + 
+        "\n b) vx: {:.4}".format(vx) + 
+        "\n c) e1: {:.4}".format(1-e1) + 
+        "\n d) ex: {:.4}".format(ex) + 
+        "\n e) e2: {:.4}".format(e2) + 
+        "\n f) e3: 1.42 {:.4}".format(e3) + 
+        "\n g) e4: {:.4}".format(e4)
     )
 
 #exercice 79
