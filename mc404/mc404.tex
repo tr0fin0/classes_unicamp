@@ -2048,5 +2048,17 @@ fim:
 
         \subsection{Constantes de 32 bits}
             \paragraph{Defição}Instruções que manipulam valores imediatos só utilizam os \texttt{12 bits inferiores} dos registradores para armazenar os valores, pelas restrições trazidas pelas implementações de operações. Desta maneira pode-se utilizar as seguintes instruções para manipular os \texttt{20 bits superiores} quando necessário:
+                \begin{equation}
+                    \boxed{
+                    \underbrace{\text{0000 0000 0000 0000 0000}}_{
+                            \text{\texttt{20 bits superiores}}
+                        }
+                        \hspace{5mm}
+                        \underbrace{\text{0000 0000 0000}}_{
+                            \text{\texttt{12 bits inferiores}}
+                        }
+                    }
+                \end{equation}
+            Note que os espaços foram incluidos para facilitar o entendimento dos bits e devem ser desprezados durante a execução das instruções. As seguinte instruções permintem a manipulação dos registradores:
 
 \end{document}
