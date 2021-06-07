@@ -106,26 +106,26 @@
                     (opamp.+) --++(0,-1) node[tlground] {}
 
                     (opamp.-) to[short, -*] ++(-1,0) coordinate (downR7)
-                              to[R, l_=$R_{7}$, -o] ++(0,2)
+                              to[R, l=${R_{7}=2R}$, -o] ++(0,2)
                               node[right] {$D_{3}$}
 
-                    (downR7) to[R, l=$R_{8}$, -*] ++(-2,0) coordinate (downR5)
-                             to[R, l_=$R_{5}$, -o] ++(0,2)
+                    (downR7) to[R, l=${R_{8}=R}$, -*] ++(-2,0) coordinate (downR5)
+                             to[R, l=${R_{5}=2R}$, -o] ++(0,2)
                              node[right] {$D_{2}$}
 
-                    (downR5) to[R, l=$R_{6}$, -*] ++(-2,0) coordinate (downR3)
-                             to[R, l_=$R_{3}$, -o] ++(0,2)
+                    (downR5) to[R, l=${R_{6}=R}$, -*] ++(-2,0) coordinate (downR3)
+                             to[R, l=${R_{3}=2R}$, -o] ++(0,2)
                              node[right] {$D_{1}$}
 
-                    (downR3) to[R, l=$R_{4}$, -*] ++(-2,0) coordinate (downR1)
-                             to[R, l_=$R_{1}$, -o] ++(0,2)
+                    (downR3) to[R, l=${R_{4}=R}$, -*] ++(-2,0) coordinate (downR1)
+                             to[R, l=${R_{1}=2R}$, -o] ++(0,2)
                              node[right] {$D_{0}$}
 
-                    (downR1) to[R, l=$R_{2}$] ++(-2,0)
+                    (downR1) to[R, l=${R_{2}=2R}$] ++(-2,0)
                              --++(0,-2) node[tlground] {}
 
                     (opamp.-) to[short,*-] ++(0,1) coordinate (leftR)
-                              to[R, l=$R_{f}$] (leftR -| opamp.out)
+                              to[R, l=${R_{f}=2R}$] (leftR -| opamp.out)
                               to[short,-*] (opamp.out)
 
                     (opamp.out) to[short, -o] ++(0.5,0)
