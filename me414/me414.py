@@ -633,9 +633,10 @@ if(True):
 
         return px
 
-    mu = 9
-    sg = 9
-    n = NormalIntervalInfo(8.72, 11.35, mu, sg)
+    if(False):
+        mu = 9
+        sg = 9
+        n = NormalIntervalInfo(8.72, 11.35, mu, sg)
 
     #exercice 73
 
