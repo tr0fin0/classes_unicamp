@@ -2107,4 +2107,15 @@ fim:
                             \caption{Operação XOR}
                         \end{table}\noindent
                 \end{enumerate}
+            Isso possibilita os seguintes resultados:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Número Par:} Análisa-se o último bit do valor no registrador \texttt{rs1} e armazena 1 se for par na posição \texttt{rd}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    AND rd, rs1, 1
+                            \end{lstlisting}
+                        \end{scriptsize}
+                    Note que o comando poderia ser aplicado para diferentes multiciplicidades, basta alterar o imediato.
+                \end{enumerate}
 \end{document}
