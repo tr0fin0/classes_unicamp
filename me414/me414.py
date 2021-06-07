@@ -726,8 +726,8 @@ if(True):
         print("P(X < {:.2f}) = {:.4f}: E(X) = {} and V(X) = {}".format(px, x, mu, sg))
 
         return x
-
-    n = NormalReverseInfo(0.99, 25, 6**2)
+    if(False):
+        n = NormalReverseInfo(0.99, 25, 6**2)
 
     #exercice 75
     if(False):
