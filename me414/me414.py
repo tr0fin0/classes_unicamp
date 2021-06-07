@@ -626,9 +626,9 @@ if(True):
 
         px = pb - pa
 
-        # print("\nNormal Interval Distribution")
-        # print("a = {:.4f} and b = {:.4f}".format(a,b))
-        # print("E(X) = 0 and V(X) = 1")
+        print("\nNormal Interval Distribution")
+        print("a = {:.4f} and b = {:.4f}".format(a,b))
+        print("E(X) = 0 and V(X) = 1")
         print("P({:.4f} < Z < {:.4f}) = {:.4f}".format(a, b, px))
 
         return px
