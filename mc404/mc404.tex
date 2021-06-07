@@ -2117,5 +2117,14 @@ fim:
                             \end{lstlisting}
                         \end{scriptsize}
                     Note que o comando poderia ser aplicado para diferentes multiplicidades, basta alterar o imediato.
+
+                    \item \textbf{Zerar Bits:} Análisa-se os bits do valor no registrador \texttt{rs1} e zera aqueles nas posições com 0 do \texttt{imm}, armazenando o resultado em \texttt{rd}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    AND rd, rs1, 0xFF0
+                            \end{lstlisting}
+                        \end{scriptsize}
+                    Note que o comando poderia ser aplicado para diferentes bits do código com números binários ou hexadecimais, basta alterar o imediato.
                 \end{enumerate}
 \end{document}
