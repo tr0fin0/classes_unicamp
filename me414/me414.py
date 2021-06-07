@@ -738,30 +738,32 @@ if(True):
     n = NormalInfo(30000, 32000, 6000**2, 1)
 
     #exercice 77
-    p  = 0.22 #probability of study
-    n  = 55   #number expected
-    N  = 200  #number of population
-    hp = NormalInfo(n/N, p, p*(1-p)/N, 1)
+    if(False):
+        p  = 0.22 #probability of study
+        n  = 55   #number expected
+        N  = 200  #number of population
+        hp = NormalInfo(n/N, p, p*(1-p)/N, 1)
 
     #exercice 78
-    lb = 1/11
-    ex = 1/lb
-    vx = ex**2
-    e1 = ExponencialInfo(lb, 11)
-    e2 = ExponencialReverseX(lb, 0.17)
-    e3 = lb
-    e4 = NormalReverseInfo(0.17, ex, vx/60)
+    if(True):
+        lb = 1/11
+        ex = 1/lb
+        vx = ex**2
+        e1 = ExponencialInfo(lb, 11)
+        e2 = ExponencialReverseX(lb, 0.17)
+        e3 = lb
+        e4 = NormalReverseInfo(0.17, ex, vx/60)
 
-    print(
-        "\nexercice 78:" + 
-        "\n a) {:.4}".format(ex) + 
-        "\n b) {:.4}".format(vx) + 
-        "\n c) {:.4}".format(1-e1) + 
-        "\n d) {:.4}".format(ex) + 
-        "\n e) {:.4}".format(e2) + 
-        "\n f) {:.4}".format(e3) + 
-        "\n g) {:.4}".format(e4)
-    )
+        print(
+            "\nexercice 78:" + 
+            "\n a) {:.4}".format(ex) + 
+            "\n b) {:.4}".format(vx) + 
+            "\n c) {:.4}".format(1-e1) + 
+            "\n d) {:.4}".format(ex) + 
+            "\n e) {:.4}".format(e2) + 
+            "\n f) {:.4}".format(e3) + 
+            "\n g) {:.4}".format(e4)
+        )
 
     #exercice 79
     if(False):
