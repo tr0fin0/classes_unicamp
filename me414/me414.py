@@ -639,7 +639,6 @@ if(True):
         n = NormalIntervalInfo(8.72, 11.35, mu, sg)
 
     #exercice 73
-
     def NormalStandardReverse(px: float):
         # px: P(X < x)
         #
