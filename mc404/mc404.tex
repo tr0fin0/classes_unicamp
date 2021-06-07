@@ -2070,4 +2070,41 @@ fim:
                         \end{scriptsize}
                     Note que o comando \texttt{ADDI} adicionará um valor de \texttt{12 bits} nos bits inferiores da posição desejada.
                 \end{enumerate}
+
+        \subsection{Manipulação de Bits}
+            \paragraph{Definição}Operações lógicas com os bits armazenados em um registrador permitem extrair resultados importantes sobre seus valores. Algumas lógicas comumente aplicadas estão descritas a seguir:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{OR Instruction:} Realizar esta operação terá o seguinte efeito sobre os bits armazenados:
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{c|cc}\hline
+                                OR   & a[i] & imm\\\hline
+                                1    & a[i] & 1\\
+                                a[i] & a[i] & 0\\\hline
+                            \end{tabular}
+                            \caption{Operação OR}
+                        \end{table}\noindent
+
+                    \item \textbf{AND Instruction:} Realizar esta operação terá o seguinte efeito sobre os bits armazenados:
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{c|cc}\hline
+                                AND  & a[i] & imm\\\hline
+                                a[i] & a[i] & 1\\
+                                0    & a[i] & 0\\\hline
+                            \end{tabular}
+                            \caption{Operação AND}
+                        \end{table}\noindent
+
+                    \item \textbf{XOR Instruction:} Realizar esta operação terá o seguinte efeito sobre os bits armazenados:
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{c|cc}\hline
+                                XOR                      & a[i] & imm\\\hline
+                                $\overline{\text{a[i]}}$ & a[i] & 1\\
+                                a[i]                     & a[i] & 0\\\hline
+                            \end{tabular}
+                            \caption{Operação XOR}
+                        \end{table}\noindent
+                \end{enumerate}
 \end{document}
