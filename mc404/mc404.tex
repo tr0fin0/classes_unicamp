@@ -2060,5 +2060,14 @@ fim:
                     }
                 \end{equation}
             Note que os espaços foram incluidos para facilitar o entendimento dos bits e devem ser desprezados durante a execução das instruções. As seguinte instruções permintem a manipulação dos registradores:
-
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{LUI Instruction:} Adiciona-se o valor da posição de \texttt{imm} de \texttt{20 bits} nos bits superiores da posição \texttt{rs1}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    LUI rs1, imm
+                            \end{lstlisting}
+                        \end{scriptsize}
+                    Note que o comando \texttt{ADDI} adicionará um valor de \texttt{12 bits} nos bits inferiores da posição desejada.
+                \end{enumerate}
 \end{document}
