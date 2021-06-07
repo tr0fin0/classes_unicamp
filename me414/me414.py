@@ -762,3 +762,13 @@ if(True):
         "\n f) {:.4}".format(e3) + 
         "\n g) {:.4}".format(e4)
     )
+
+    #exercice 79
+    ex = 40000 # média em milhas
+    vx = 20000 # desvio padrão em milhas
+    n  = 26    # participantes do programa
+    b  = 10    # bônus em reais
+    m  = 1000  # milhas percorridas
+    a1 = 10920 # mínimo bonificação
+    a2 = 11700 # máxima bonificação
+    ph = NormalIntervalInfo(a1*b/m, a2*b/m, ex, vx)
