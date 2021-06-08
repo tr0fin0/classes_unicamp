@@ -1621,20 +1621,23 @@
                         \begin{bmatrix}
                             \vec{i} & \vec{j} & \vec{k}\\
                         \end{bmatrix} \times 
-                        \left(
-                            \underbrace{
+                        \underbrace{
                             \begin{bmatrix}
                                 +I_{xx} & -I_{xy} & -I_{xz}\\
                                 -I_{yx} & +I_{yy} & -I_{yz}\\
                                 -I_{zx} & -I_{zy} & +I_{zz}\\
                             \end{bmatrix}
-                            }_{\text{Tensor de Inércia}} \times
-                            \begin{bmatrix}
-                                \omega_{x}\\
-                                \omega_{y}\\
-                                \omega_{z}\\
-                            \end{bmatrix}
-                        \right)
+                        }_{\text{Tensor de Inércia}} \times
+                        \begin{bmatrix}
+                            \omega_{x}\\
+                            \omega_{y}\\
+                            \omega_{z}\\
+                        \end{bmatrix} = 
+                        \begin{cases}
+                            \vec{H}_{x} = (+I_{xx}\omega_{x} + I_{xy}\omega_{y} + I_{xz}\omega_{z})\vec{i}\\
+                            \vec{H}_{y} = (-I_{yx}\omega_{x} - I_{yy}\omega_{y} + I_{yz}\omega_{z})\vec{j}\\
+                            \vec{H}_{z} = (-I_{zx}\omega_{x} + I_{zy}\omega_{y} - I_{zz}\omega_{z})\vec{k}\\
+                        \end{cases}
                     }
                 \end{equation}
             Onde:
