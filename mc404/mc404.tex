@@ -2155,7 +2155,7 @@ fim:
                 \end{enumerate}
             No RISC-V a manipulação de strings se dá pela manipulação de bytes na memória, desta maneira os seguintes comandos podem ser empregrados:
                 \begin{enumerate}[rightmargin = \leftmargin]
-                    \item \textbf{LBU Instruction:} Carrega o valor de um byte não sinalizado no registrador \texttt{rs1} e o armazena na posição \texttt{rd} pela deslocamento indicado pelo \texttt{imm}, representado pelo seguinte comando:
+                    \item \textbf{LBU Instruction:} Carrega o valor de um byte não sinalizado no registrador \texttt{rs1} e o armazena na posição \texttt{rd} pelo deslocamento indicado pelo \texttt{imm}, representado pelo seguinte comando:
                         \begin{scriptsize}
                             \myStyleAssembly
                             \begin{lstlisting}
@@ -2163,13 +2163,13 @@ fim:
                             \end{lstlisting}
                         \end{scriptsize}
 
-                    \item \textbf{LHU Instruction:} Carrega o valor de um half byte não sinalizado no registrador \texttt{rs1} e o armazena na posição \texttt{rd} pela deslocamento indicado pelo \texttt{imm}, representado pelo seguinte comando:
+                    \item \textbf{LHU Instruction:} Carrega o valor de um half byte não sinalizado no registrador \texttt{rs1} e o armazena na posição \texttt{rd} pelo deslocamento indicado pelo \texttt{imm}, representado pelo seguinte comando:
                         \begin{scriptsize}
                             \myStyleAssembly
                             \begin{lstlisting}
     LBU rd, rs1, imm
                             \end{lstlisting}
-                        \end{scriptsize}\0
+                        \end{scriptsize}
 
                     \item \textbf{SB Instruction:} Armazena o valor de um byte no registrador \texttt{rs1} e o valor carregado da posição \texttt{rs2} pelo deslocamento indicado pelo \texttt{imm}, representado pelo seguinte comando:
                         \begin{scriptsize}
