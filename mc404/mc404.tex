@@ -2153,6 +2153,16 @@ fim:
                     \item \textbf{ISO8859:} Representação utilizando \texttt{8 bits} de codificação de caracteres, onde o acentuações mais utilizadas foram implementadas.
                     \item \textbf{UTF:} Representação utilizando quantidades variáveis de bits, onde uma referência principal é implementada para facilitar sua expansão.
                 \end{enumerate}
+            No RISC-V a manipulação de strings se dá pela manipulação de bytes na memória, desta maneira os seguintes comandos podem ser empregrados:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{LBU Instruction:} Carrega o valor de um byte não sinalizado no registrador \texttt{rs1} e o armazena na posição \texttt{rd} pela deslocamento indicado pelo \texttt{imm}, representado pelo seguinte comando:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    LBU rd, rs1, imm
+                            \end{lstlisting}
+                        \end{scriptsize}
 
-
+                \end{enumerate}
+                
 \end{document}
