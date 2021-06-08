@@ -2077,4 +2077,48 @@
                     \end{circuitikz}
                     \caption{Amplificador Somar em Escala}
                 \end{figure}\noindent
+
+        \subsection{Amplificador Filtro Passa Baixa Ativo}
+            \paragraph{Definição}Amplificador que filtrará o sinal a partir da frequência definida pela combinação de $R$ e $C$ na entrada, sendo obtido pela seguinte configuração:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}[american]
+                        \ctikzset{
+                            component text=left, 
+                            diodes/scale=0.5, 
+                            capacitors/scale=0.75, 
+                            resistors/width=0.25, 
+                            resistors/zigs=1
+                        }
+                        \draw
+                        (0,0) node[op amp, noinv input up] (opamp) {}
+    
+                        (opamp.+) to[short, -*] ++(-1.5,0) coordinate (leftR)
+                                    to[C, l=${C}$] ++(0,-2)
+                                    node[tlground] {}
+    
+                        (leftR) to[R, l_=${R}$, -o] ++(-2,0)
+                                node[left] {$v_{\text{in}}$}
+    
+                        (opamp.out) to[R, l=$R_{1}$, *-] ++(0,-1.5) coordinate (mid)
+                                    to[R, l=$R_{2}$] ++(0,-1.5)
+                                    node[tlground] {}
+            
+                        (opamp.-) --++(0,-1) to[short, -*] (mid)
+    
+                        (opamp.out) to[short, -o] ++(0.5,0)
+                                    node[right] {$v_{\text{out}}$};
+                    \end{circuitikz}
+                    \caption{Amplificador Filtro Passa Baixa Ativo}
+                \end{figure}\noindent
+            Note que nesta configuração as seguintes equações serão aplicadas:
+                \begin{equation}
+                    \boxed{
+                        f_{C} = \frac{1}{2\pi RC}
+                    }
+                    \qquad
+                    \boxed{
+                        A = - \frac{R_{1}}{R_{2}}
+                    }
+                \end{equation}
 \end{document}
