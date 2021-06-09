@@ -89,8 +89,8 @@
 \newpage
 
     \section{test}
-    \subsection{Amplificador Filtro Passa Baixa Ativo}
-        \paragraph{Definição}Amplificador que filtrará o sinal a partir da frequência definida pela combinação de $R$ e $C$ na entrada, sendo obtido pela seguinte configuração:
+    \subsection{Amplificador Integrador}
+        \paragraph{Definição}Amplificador que integrará o sinal recebido na entrada, sendo obtido pela seguinte configuração:
             \begin{figure}[H]
                 \centering
                 \begin{circuitikz}[american]
@@ -102,34 +102,35 @@
                         resistors/zigs=1
                     }
                     \draw
-                    (0,0) node[op amp, noinv input up] (opamp) {}
+                    (0,0) node[op amp] (opamp) {}
 
-                    (opamp.+) to[short, -*] ++(-1.5,0) coordinate (leftR)
-                              to[C, l=${C}$] ++(0,-2)
+                    (opamp.-) to[R, l=${R_{\text{in}}}$, *-o] ++(-2,0)
+                              node[left] {${v_{\text{in}}}$}
+
+                    (opamp.-) to[short] ++(0,1) coordinate (leftC)
+                              to[C, l=${C}$, *-*] (leftC -| opamp.out)
+                              to[short, -*] (opamp.out)
+
+                    (leftC) to[short] ++(0,1) coordinate (leftR)
+                            to[R, l=$R_{f}$] (leftR -| opamp.out)
+                            to[short] (leftC -| opamp.out)
+
+                    (opamp.+) to[short] ++(0,-1)
                               node[tlground] {}
-
-                    (leftR) to[R, l_=${R}$, -o] ++(-2,0)
-                            node[left] {$v_{\text{in}}$}
-
-                    (opamp.out) to[R, l=$R_{1}$, *-] ++(0,-1.5) coordinate (mid)
-                                to[R, l=$R_{2}$] ++(0,-1.5)
-                                node[tlground] {}
-        
-                    (opamp.-) --++(0,-1) to[short, -*] (mid)
 
                     (opamp.out) to[short, -o] ++(0.5,0)
                                 node[right] {$v_{\text{out}}$};
                 \end{circuitikz}
-                \caption{Amplificador Filtro Passa Baixa Ativo}
+                \caption{Amplificador Integrador}
             \end{figure}\noindent
         Note que nesta configuração as seguintes equações serão aplicadas:
             \begin{equation}
                 \boxed{
-                    f_{C} = \frac{1}{2\pi RC}
+                    f_{C} = \frac{1}{2\pi R_{\text{in}}C}
                 }
                 \qquad
                 \boxed{
-                    A = - \frac{R_{1}}{R_{2}}
+                    A \rvert_{f=0} = - \frac{R_{f}}{R_{\text{in}}}
                 }
             \end{equation}
 \end{document}
