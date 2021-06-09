@@ -1176,8 +1176,8 @@
                 \end{equation}
 \newpage
 
-    \section{Variável Aleatória Amostral}
-        \paragraph{Definição}Descrição do comportamento de uma população através da aproximação das características de uma amostra retirada aleatoriamente, podendo-se aplicar diferentes modelagens para sua descrição das quais as principais são listadas a seguir:
+    \section{Distribuição Amostral}
+        \paragraph{Definição}Descrição do comportamento de uma população através da aproximação das características de uma amostra retirada aleatoriamente, que pode ser apresentar diferentes modelagens para sua descrição das quais as principais são listadas a seguir:
             \begin{enumerate}[rightmargin = \leftmargin]
                 \item \textbf{Modelo Discreto:} Variáveis fixadas em valores pré-estabelecidos, possuindo:
                     \begin{enumerate}[noitemsep]
@@ -1194,17 +1194,40 @@
         Note que independente do modelo aplicado quando uma amostra $n$ for retirada as propriedades desta são obtidas através das seguintes equações:
             \begin{equation}
                 \boxed{
+                    E(\overline{X}) = \mu
+                }
+                \qquad
+                \boxed{
+                    V(\overline{X}) = \frac{\sigma^{2}}{n}
+                }
+                \qquad
+                \boxed{
+                    EP(\overline{X}) = \sqrt{V(\overline{X})}
+                }
+            \end{equation}
+            \begin{equation}
+                \boxed{
                     E(\hat{p}) = p
                 }
                 \qquad
                 \boxed{
                     V(\hat{p}) = \frac{p(1-p)}{n}
                 }
+                \qquad
+                \boxed{
+                    EP(\hat{p}) = \sqrt{V(\hat{p})}
+                }
             \end{equation}
         Assim, a medida que $n$ aumenta estas variáveis poderão ser aproximadas pela seguinte expressão:
             \begin{equation}
                 \boxed{
-                    \hat{p} \approx N\left(p, \frac{p(1-p)}{n}\right)
+                    \overline{X} \approx 
+                    N \left(\mu, \frac{\sigma^{2}}{n}\right)
+                }
+                \qquad
+                \boxed{
+                    \hat{p} \approx 
+                    N \left(p, \frac{p(1-p)}{n}\right)
                 }
             \end{equation}
 
