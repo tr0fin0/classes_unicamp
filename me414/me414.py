@@ -151,3 +151,30 @@ if(False):
         "\n a) {:.4}".format(a1) + 
         "\n b) {:.4}".format(a1)
     )
+
+# exercice 81
+if(True):
+    # exponencial distribution
+    # a)
+    ex = 3.0   # expected value
+    vx = ex**2 # variance value
+
+    # b)
+    lb = 1/ex # lamba
+    px = 0.56 # total of students
+    dx = stat.ExponencialReverseX(lb, px)
+
+    # c)
+    n = 200 #total of sample
+    ep = np.sqrt(vx/n)
+
+    # d)
+    dm = stat.NormalReverse(px, ex, vx/n)
+
+    print(
+        "\nexercice 81:" + 
+        "\n a) {:.4}".format(ex) + 
+        "\n b) {:.4}".format(dx) + 
+        "\n c) {:.4}".format(ep) + 
+        "\n d) {:.4}".format(dm)
+    )
