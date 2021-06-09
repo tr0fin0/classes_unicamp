@@ -137,3 +137,17 @@ if(False):
         "\n    me: {}".format(me) + 
         "\n    pb: {:.4}".format(1-pb)
     )
+
+# exercice 80
+if(False):
+    # uniform distribution
+    mi = 67 # minimum value
+    ma = 77 # maximum value
+
+    a1 = (mi + ma)/2 # expected value
+
+    print(
+        "\nexercice 80:" + 
+        "\n a) {:.4}".format(a1) + 
+        "\n b) {:.4}".format(a1)
+    )
