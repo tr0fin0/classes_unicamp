@@ -83,17 +83,30 @@ if(False):
     hp = stat.NormalInfo(n/N, p, p*(1-p)/N, 1)
 
 #exercice 78
-if(False):
+if(True):
+    # exponencial distribution
     lb = 1/20  # lambda
+
+    # a) d)
     ex = 1/lb  # expected value
+
+    # b)
     vx = ex**2 # variance value
-    d = 20     # dias
-    p = 0.63   # probability
-    n = 190    # amostral size
-    e1 = stat.ExponencialInfo(lb, d)
+
+    # c)
+    d = 20 # dias
+    e1 = stat.Exponencial(lb, d)
+
+    # e)
+    p = 0.63 # probability
     e2 = stat.ExponencialReverseX(lb, p)
-    e3 = vx/n
-    e4 = stat.NormalReverseInfo(p, ex, vx/n)
+
+    # f)
+    n = 190 # amostral size
+    e3 = np.sqrt(vx/n)
+
+    # g)
+    e4 = stat.NormalReverse(p, ex, vx/n)
 
     print(
         "\nexercice 78:" + 
@@ -102,7 +115,7 @@ if(False):
         "\n c) {:.4}".format(1-e1) + 
         "\n d) {:.4}".format(ex) + 
         "\n e) {:.4}".format(e2) + 
-        "\n f) 1.42 {:.4}".format(e3) + 
+        "\n f) {:.4}".format(e3) + 
         "\n g) {:.4}".format(e4)
     )
 
@@ -153,7 +166,7 @@ if(False):
     )
 
 # exercice 81
-if(True):
+if(False):
     # exponencial distribution
     # a)
     ex = 3.0   # expected value
