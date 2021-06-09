@@ -83,7 +83,7 @@ if(False):
     hp = stat.NormalInfo(n/N, p, p*(1-p)/N, 1)
 
 #exercice 78
-if(True):
+if(False):
     # exponencial distribution
     lb = 1/20  # lambda
 
@@ -152,7 +152,7 @@ if(False):
     )
 
 # exercice 80
-if(True):
+if(False):
     # uniform distribution
     mi = 65 # minimum value
     ma = 84 # maximum value
@@ -196,4 +196,29 @@ if(False):
         "\n b) {:.4}".format(dx) + 
         "\n c) {:.4}".format(ep) + 
         "\n d) {:.4}".format(dm)
+    )
+
+# exercice 82
+if(True):
+    # bernoulli distribution
+    s = 1/38  # probability of sucess
+    f = 1 - s # probability of failler
+    G = 32    # gain value
+    L = -1    # lost value
+
+    # a)
+    ex = G*s + L*f # expected value
+
+    # b)
+    vx = 0.0
+
+    # c)
+    n = 982 # number of trials
+    pc = stat.Bernoulli(1, n, s)
+
+    print(
+        "\nexercice 82:" + 
+        "\n a) {:.4}".format(ex) + 
+        "\n b) {:.4}".format(vx) + 
+        "\n c) {:.4}".format(pc)
     )
