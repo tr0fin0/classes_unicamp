@@ -84,12 +84,12 @@ if(False):
 
 #exercice 78
 if(False):
-    lb = 1/11
-    ex = 1/lb
-    vx = ex**2
-    d = 11
-    p = 0.17
-    n = 60
+    lb = 1/20  # lambda
+    ex = 1/lb  # expected value
+    vx = ex**2 # variance value
+    d = 20     # dias
+    p = 0.63   # probability
+    n = 190    # amostral size
     e1 = stat.ExponencialInfo(lb, d)
     e2 = stat.ExponencialReverseX(lb, p)
     e3 = vx/n
@@ -97,13 +97,13 @@ if(False):
 
     print(
         "\nexercice 78:" + 
-        "\n a) ex: {:.4}".format(ex) + 
-        "\n b) vx: {:.4}".format(vx) + 
-        "\n c) e1: {:.4}".format(1-e1) + 
-        "\n d) ex: {:.4}".format(ex) + 
-        "\n e) e2: {:.4}".format(e2) + 
-        "\n f) e3: 1.42 {:.4}".format(e3) + 
-        "\n g) e4: {:.4}".format(e4)
+        "\n a) {:.4}".format(ex) + 
+        "\n b) {:.4}".format(vx) + 
+        "\n c) {:.4}".format(1-e1) + 
+        "\n d) {:.4}".format(ex) + 
+        "\n e) {:.4}".format(e2) + 
+        "\n f) 1.42 {:.4}".format(e3) + 
+        "\n g) {:.4}".format(e4)
     )
 
 #exercice 79
