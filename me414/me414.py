@@ -152,17 +152,23 @@ if(False):
     )
 
 # exercice 80
-if(False):
+if(True):
     # uniform distribution
-    mi = 67 # minimum value
-    ma = 77 # maximum value
+    mi = 65 # minimum value
+    ma = 84 # maximum value
 
+    # a)
     a1 = (mi + ma)/2 # expected value
+
+    # b)
+    n = 121 # size sample
+    vx = ((ma - mi)**2)/12
+    b1 = np.sqrt(vx/n)
 
     print(
         "\nexercice 80:" + 
         "\n a) {:.4}".format(a1) + 
-        "\n b) {:.4}".format(a1)
+        "\n b) {:.4}".format(b1)
     )
 
 # exercice 81
