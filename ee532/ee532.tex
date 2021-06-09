@@ -2121,4 +2121,49 @@
                         A = - \frac{R_{1}}{R_{2}}
                     }
                 \end{equation}
+
+        \subsection{Amplificador Integrador}
+            \paragraph{Definição}Amplificador que integrará o sinal recebido na entrada, sendo obtido pela seguinte configuração:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}[american]
+                        \ctikzset{
+                            component text=left, 
+                            diodes/scale=0.5, 
+                            capacitors/scale=0.75, 
+                            resistors/width=0.25, 
+                            resistors/zigs=1
+                        }
+                        \draw
+                        (0,0) node[op amp] (opamp) {}
+    
+                        (opamp.-) to[R, l=${R_{\text{in}}}$, *-o] ++(-2,0)
+                                    node[left] {${v_{\text{in}}}$}
+    
+                        (opamp.-) to[short] ++(0,1) coordinate (leftC)
+                                    to[C, l=${C}$, *-*] (leftC -| opamp.out)
+                                    to[short, -*] (opamp.out)
+    
+                        (leftC) to[short] ++(0,1) coordinate (leftR)
+                                to[R, l=$R_{f}$] (leftR -| opamp.out)
+                                to[short] (leftC -| opamp.out)
+    
+                        (opamp.+) to[short] ++(0,-1)
+                                    node[tlground] {}
+    
+                        (opamp.out) to[short, -o] ++(0.5,0)
+                                    node[right] {$v_{\text{out}}$};
+                    \end{circuitikz}
+                    \caption{Amplificador Integrador}
+                \end{figure}\noindent
+            Note que nesta configuração as seguintes equações serão aplicadas:
+                \begin{equation}
+                    \boxed{
+                        f_{C} = \frac{1}{2\pi R_{\text{in}}C}
+                    }
+                    \qquad
+                    \boxed{
+                        A \rvert_{f=0} = - \frac{R_{f}}{R_{\text{in}}}
+                    }
+                \end{equation}
 \end{document}
