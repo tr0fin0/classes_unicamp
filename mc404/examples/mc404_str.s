@@ -18,8 +18,8 @@ strcpy:
     add t0, a0, zero # t0 = *destination
 
     loop:
-        lbu t1, 0(a1)       # schar = source[i]
-        sbu ti, 0(a0)       # destination[j] = source[i]
+        lbu t1, 0(a1)       #
+        sbu t1, 0(a0)       # a0 = a1
         addi a0, a0, 1      # a0++
         addi a1, a1, 1      # a1++
         bne t1, zero, loop; # if schar == \0 then end
