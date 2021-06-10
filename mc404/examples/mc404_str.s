@@ -44,3 +44,23 @@ strcmp:
         addi a0, zero, 0 # a0 = 0, str1 != str2
 
 ret
+
+# char *strcat(char *destination, const char *source)
+strcat:
+    addi t0, a0, 0 # t0 = *dest
+
+    loop:
+        lbu  t1, 0(a0)      # dest[i]
+        addi a0, a0, 1      # dest++
+        bne  t1, zero, loop # if dest[i] != \0 then loop
+
+    copy:
+        lbu  t2, 0(a1)      # 
+        sbu  t2, 0(a0)      # 
+        addi a0, a0, 1      # dest++
+        addi a1, a1, 1      # sour++
+        bne  t2, zero, copy # if sour[i] != \0 then copy
+
+    addi a0, t0, 0 # a0 = *dest
+
+ret
