@@ -224,3 +224,28 @@ if(False):
         "\n b) {:.4}".format(dp) + 
         "\n c) {:.4}".format(pc)
     )
+
+# exercice 83
+if(True):
+    p = 0.73 # probabilidade pesquisa
+    n = 784  # tamanho da amostra
+
+    # a) b)
+    ic = 0.90 # intervalo de confiança
+    ei = stat.ExpectedIntervalInfo(p, ic, n)
+
+    # c)
+    erro = (p - ei[0])*100
+
+    # d)
+    pe = 0.70
+    d = 0
+    if(ei[0] > pe): d = 1
+
+    print(
+        "\nexercice 83:" + 
+        "\n a) {:.4}".format(ei[0]) + 
+        "\n b) {:.4}".format(ei[1]) + 
+        "\n c) {:.4}".format(erro) + 
+        "\n d) {}".format(d)
+    )
