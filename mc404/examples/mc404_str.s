@@ -15,4 +15,15 @@ ret
 
 # char *strcpy( char *destination, const char *source)
 strcpy:
-    addi t0, a0, 0 # 
+    add t0, a0, zero # t0 = *destination
+
+    loop:
+        lbu t1, 0(a1)       # schar = source[i]
+        sbu ti, 0(a0)       # destination[j] = source[i]
+        addi a0, a0, 1      # a0++
+        addi a1, a1, 1      # a1++
+        bne t1, zero, loop; # if schar == \0 then end
+
+    add a0, t0, zero # a0 = *destination
+
+ret
