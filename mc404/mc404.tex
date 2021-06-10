@@ -2188,4 +2188,14 @@ fim:
                         \end{scriptsize}
                 \end{enumerate}
             Note que nestes comandos o final das strings será indicado por \texttt{"\ 0"}.
+
+        \subsection{Funções de Strings}
+            \paragraph{Definição}Há muitos funções utéis para manipulações de strings que não são padrões ao RISC-V, assim algumas das mais empregadas serão empregadas a seguir:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{int strlen:} Retorna o tamanho da \texttt{string}:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \lstinputlisting[firstline=0, lastline=13]{./examples/mc404_str.s}
+                        \end{scriptsize}
+                \end{enumerate}
 \end{document}
