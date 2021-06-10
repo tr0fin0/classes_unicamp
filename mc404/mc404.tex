@@ -2221,15 +2221,16 @@ fim:
             \paragraph{Definição}Interações entre o código em assembly e o restante do sistema depende do sistema operacional empregado. Neste caso o \href{https://ascslab.org/research/briscv/simulator/simulator.html#}{simulador} será capaz de realizar as seguintes operações:
                 \begin{table}[H]
                     \centering
-                    \begin{tabular}[]{l|c c}\hline
-                        Syscall & id \texttt{t0} & Descrição\\\hline
-                        Imprime \texttt{inteiro}  & 1 & Imprime o valor de a0 no console como inteiro\\
-                        Imprime \texttt{caracter} & 2 & Imprime o valor de a0 no console como caracter\\
-                        Imprime \texttt{string}   & 3 & Imprime a string a0 com tamanho a1 no console\\
-                        Lê \texttt{inteiro}       & 4 & Lê inteiro do console e retorna em a0\\
-                        Lê \texttt{caracter}      & 5 & Lê caracter do console e retorna em a0\\
-                        Lê \texttt{string}        & 6 & Lê string do tamanho solicitado em a1 e armazena no endereço indicado em a0\\
-                        \texttt{SBRK}             & 7 & Aloca a0 bytes de memória e retorna um ponteiro para o bloco de memória, desalocando com a0 negativo\\
+                    \begin{tabular}[]{l|c l}\hline
+                        Syscall         & \texttt{t0} & Descrição\\\hline
+                        Imprime \texttt{inteiro}  & 1 & Imprime o valor de \texttt{a0} no console como \texttt{inteiro}\\
+                        Imprime \texttt{caracter} & 2 & Imprime o valor de \texttt{a0} no console como \texttt{caracter}\\
+                        Imprime \texttt{string}   & 3 & Imprime a \texttt{string} \texttt{a0} com tamanho a1 no console\\
+                        Lê \texttt{inteiro}       & 4 & Lê \texttt{inteiro} do console e retorna em \texttt{a0}\\
+                        Lê \texttt{caracter}      & 5 & Lê \texttt{caracter} do console e retorna em \texttt{a0}\\
+                        Lê \texttt{string}        & 6 & Lê \texttt{string} de tamanho a1 e retorna em \texttt{a0}\\
+                        \texttt{SBRK}             & 7 & \texttt{a0}$>$0, Aloca bytes de memória e retorna ponteiro em \texttt{a0}\\
+                                                  &   & \texttt{a0}$<$0, Desaloca bytes de memória e retorna ponteiro em \texttt{a0}\\\hline
                     \end{tabular}
                     \caption{Syscall RISC-V}
                 \end{table}\noindent
