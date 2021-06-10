@@ -199,11 +199,11 @@ if(False):
     )
 
 # exercice 82
-if(True):
+if(False):
     # bernoulli distribution
     s = 1/38  # probability of sucess
     f = 1 - s # probability of failler
-    G = 32    # gain value
+    G = 35    # gain value
     L = -1    # lost value
 
     # a)
@@ -214,9 +214,9 @@ if(True):
     dp = vx**(1/2) # normal deviation
 
     # c)
-    n = 982 # number of trials
+    n = 791 # number of trials
     gs = G*s
-    pc = stat.NormalInfo(0, n*gs, n*gs*(1-gs), 1)
+    pc = stat.NormalInfo(0, ex, vx/n, 1)
 
     print(
         "\nexercice 82:" + 
