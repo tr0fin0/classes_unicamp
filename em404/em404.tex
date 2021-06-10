@@ -1707,7 +1707,45 @@
                         \end{cases}
                     }
                 \end{equation}
-            Desta maneira, como mecionado anteriormente, se os eixos de referências coincidem com os eixos principais de inércia com origem em G ou em um ponto O fixo do corpo e no espaço terá os produtos de inércia nulos e, portanto, as seguintes equações são denominadas \textbf{Equações de Euler}:
+            Onde:
+                \begin{equation}
+                    \boxed{
+                        \vec{H} = 
+                        \begin{cases}
+                            \vec{H}_{x} = (+I_{xx}\omega_{x} - I_{xy}\omega_{y} - I_{xz}\omega_{z})\vec{i}\\
+                            \vec{H}_{y} = (-I_{yx}\omega_{x} + I_{yy}\omega_{y} - I_{yz}\omega_{z})\vec{j}\\
+                            \vec{H}_{z} = (-I_{zx}\omega_{x} - I_{zy}\omega_{y} + I_{zz}\omega_{z})\vec{k}\\
+                        \end{cases}
+                    }
+                \end{equation}
+
+            \paragraph{Planos Paralelos}Quando o movimento ocorrer ao longo de planos paralelos com $\omega_{x} = \omega_{y} = 0$ e $\omega_{z} \ne 0$ as equações serão:
+                \begin{equation}
+                    \boxed{
+                        \Sigma\vec{M} = 
+                        \Sigma\vec{M}_{x} + 
+                        \Sigma\vec{M}_{y} + 
+                        \Sigma\vec{M}_{z} = 
+                        \begin{cases}
+                            \Sigma\vec{M}_{x} = (- I_{xz}\dot{\omega}_{z} + I_{yz}\dot{\omega}_{z}^{2})\vec{i}\\
+                            \Sigma\vec{M}_{y} = (- I_{yz}\dot{\omega}_{z} - I_{xz}\dot{\omega}_{z}^{2})\vec{j}\\
+                            \Sigma\vec{M}_{z} = (+ I_{zz}\dot{\omega}_{z}^{2})\vec{k}\\
+                        \end{cases}
+                    }
+                \end{equation}
+            Onde:
+                \begin{equation}
+                    \boxed{
+                        \vec{H} = 
+                        \begin{cases}
+                            \vec{H}_{x} = (- I_{xz}\omega_{z})\vec{i}\\
+                            \vec{H}_{y} = (- I_{yz}\omega_{z})\vec{j}\\
+                            \vec{H}_{z} = (+ I_{zz}\omega_{z})\vec{k}\\
+                        \end{cases}
+                    }
+                \end{equation}
+
+            \paragraph{Eixos Principais}Quando os eixos de referências coincidem com os eixos principais de inércia com origem em G ou em um ponto O fixo do corpo e no espaço terá os produtos de inércia nulos e, portanto, as seguintes equações são denominadas \textbf{Equações de Euler}:
                 \begin{equation}
                     \boxed{
                         \Sigma\vec{M} = 
