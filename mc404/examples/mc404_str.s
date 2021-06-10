@@ -1,3 +1,4 @@
+# int strlen(const char *str)
 strlen:
     addi t0, zero, 0 # i lenght of string
 
@@ -12,5 +13,6 @@ strlen:
         addi a0, t0, 0 # a0 = i
 ret
 
+# char *strcpy( char *destination, const char *source)
 strcpy:
-    
+    addi t0, a0, 0 # 
