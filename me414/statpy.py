@@ -337,20 +337,20 @@ def NormalInfo(x: float, mu: float, sg: float, s: int):
         return 0
 
     #P(X < x) where x is positive
-    if ((s == -1) & (x > 0)):
+    if ((s == -1) & (x >= 0)):
         print("P(X<={}) = {:.4f}".format(x, px))
 
     #P(X < x) where x is negative
     elif((s == -1) & (x < 0)):
-        print("P(X<={}) = {:.4f}".format(x, px))
+        print("P(X< {}) = {:.4f}".format(x, px))
 
     #P(X > x) where x is positive
-    elif((s == 1) & (x > 0)):
+    elif((s == 1) & (x >= 0)):
         print("P(X>={}) = {:.4f}".format(x, 1-px))
 
     #P(X > x) where x is negative
     elif((s == 1) & (x < 0)):
-        print("P(X>={}) = {:.4f}".format(x, 1-px))
+        print("P(X> {}) = {:.4f}".format(x, 1-px))
 
     return px
 
