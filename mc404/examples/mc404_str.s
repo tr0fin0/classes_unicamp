@@ -22,7 +22,7 @@ strcpy:
         sbu t1, 0(a0)       # a0 = a1
         addi a0, a0, 1      # a0++
         addi a1, a1, 1      # a1++
-        bne t1, zero, loop; # if schar == \0 then end
+        bne t1, zero, loop; # if schar != \0 then end
 
     add a0, t0, zero # a0 = *destination
 
