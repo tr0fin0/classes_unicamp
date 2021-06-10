@@ -448,3 +448,23 @@ def NormalReverseInfo(px: float, mu: float, sg: float):
     print("P(X < {:.2f}) = {:.4f}: E(X) = {} and V(X) = {}".format(px, x, mu, sg))
 
     return x
+
+def ExpectedInterval(p: float, z: float, n: int):
+    minimum = p - z*np.sqrt(p*(1-p)/n)
+    maximum = p + z*np.sqrt(p*(1-p)/n)
+
+    return minimum, maximum
+
+def ExpectedIntervalInfo(p: float, ic: float, n: int):
+    if(ic == 0.68):
+        ei = ExpectedInterval(p, 1, n)
+    elif(ic == 0.90):
+        ei = ExpectedInterval(p, 1.64, n)
+    elif(ic == 0.95):
+        ei = ExpectedInterval(p, 1.96, n)
+    elif(ic == 0.99):
+        ei = ExpectedInterval(p, 2.58, n)
+
+    print("IC({:.4}, {:.2}) = [{:.4},{:.4}]".format(p, ic, ei[0], ei[1]))
+
+    return ei
