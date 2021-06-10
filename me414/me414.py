@@ -210,15 +210,17 @@ if(True):
     ex = G*s + L*f # expected value
 
     # b)
-    vx = 0.0
+    vx = ((G-ex)**2)*s + ((L-ex)**2)*f # variance value
+    dp = vx**(1/2) # normal deviation
 
     # c)
     n = 982 # number of trials
-    pc = stat.Bernoulli(1, n, s)
+    gs = G*s
+    pc = stat.NormalInfo(0, n*gs, n*gs*(1-gs), 1)
 
     print(
         "\nexercice 82:" + 
         "\n a) {:.4}".format(ex) + 
-        "\n b) {:.4}".format(vx) + 
+        "\n b) {:.4}".format(dp) + 
         "\n c) {:.4}".format(pc)
     )
