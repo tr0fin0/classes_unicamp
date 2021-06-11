@@ -496,7 +496,7 @@ def expIntErr(p, z, e):
         percentage of error
 
     e : float
-        margin error
+        margin of error
 
     Returns
     -------
