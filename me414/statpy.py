@@ -497,6 +497,7 @@ def SCnfInt(p, sc, n):
 
     sc: float
         statistical confidence
+
         if  sc == 0.68 then z = 1
             sc == 0.90 then z = 1.64
             sc == 0.95 then z = 1.96
@@ -560,7 +561,7 @@ def CCnfInt(p, z, n):
 
 
 
-def SCCnsInt(p, sc, n):
+def SCCnfInt(p, sc, n):
     """
     Statistical Conservative Confidence Interval
 
@@ -575,6 +576,7 @@ def SCCnsInt(p, sc, n):
 
     sc: float
         statistical confidence
+
         if  sc == 0.68 then z = 1
             sc == 0.90 then z = 1.64
             sc == 0.95 then z = 1.96
@@ -604,7 +606,7 @@ def SCCnsInt(p, sc, n):
 
 def sCnfInt(p, z, e):
     """
-    Size of Confidence Interval
+    size Confidence Interval
 
     Returns the minimum size n needed for the sample 
     to achieve an desired error margin of e considering an 
@@ -633,7 +635,7 @@ def sCnfInt(p, z, e):
 
 def sCCnfInt(p, z, e):
     """
-    Size of Conservative Confidence Interval
+    size Conservative Confidence Interval
 
     Returns the minimum size n needed for the sample 
     to achieve an desired error margin of e considering an 
@@ -661,7 +663,7 @@ def sCCnfInt(p, z, e):
 
 def sSCnfInt(p, sc, e):
     """
-    Size of Statistical Confidence Interval
+    size Statistical Confidence Interval
 
     Returns the minimum size n needed for the sample 
     to achieve an desired error margin of e considering an 
@@ -674,6 +676,7 @@ def sSCnfInt(p, sc, e):
 
     sc: float
         statistical confidence
+
         if  sc == 0.68 then z = 1
             sc == 0.90 then z = 1.64
             sc == 0.95 then z = 1.96
@@ -684,8 +687,8 @@ def sSCnfInt(p, sc, e):
 
     Returns
     -------
-    expIntErrInf : float
-                   Minimum sample for specified error margin
+    sSCnfInt : float
+               Minimum sample for specified error margin
     """
 
     if  (sc == 0.68):
@@ -703,7 +706,7 @@ def sSCnfInt(p, sc, e):
 
 def sSCCnfInt(p, sc, e):
     """
-    Size of Statistical Conservative Confidence Interval
+    size Statistical Conservative Confidence Interval
 
     Returns the minimum size n needed for the sample 
     to achieve an desired error margin of e considering an 
@@ -716,6 +719,7 @@ def sSCCnfInt(p, sc, e):
 
     sc: float
         statistical confidence
+
         if  sc == 0.68 then z = 1
             sc == 0.90 then z = 1.64
             sc == 0.95 then z = 1.96
