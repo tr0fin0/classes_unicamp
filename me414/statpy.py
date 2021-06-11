@@ -480,34 +480,53 @@ def cnfInt(p, z, n):
 
     return err, p-err, p+err
 
-def sCnfInt(p, z, e):
-    """
-    Size of Confidence Interval
 
-    Returns the minimum size n needed for the sample 
-    to achieve an desired error margin of e considering an 
-    interval constant of z with a probability p
+
+def SCnfInt(p, sc, n):
+    """
+    Statistical Confidence Interval
+
+    Returns the minimum and maximum values 
+    from the probability of p in an amostral distribution
+    considering an interval constant of z with a sample of size n
 
     Parameters
     ----------
     p : float
         probability of population
 
-    z : float
-        interval constant
+    sc: float
+        statistical confidence
+        if  sc == 0.68 then z = 1
+            sc == 0.90 then z = 1.64
+            sc == 0.95 then z = 1.96
+            sc == 0.99 then z = 2.58
 
-    e : float
-        margin of error
+    n : int
+        size of sample
 
     Returns
     -------
-    CnfInt : float
-             size of sample
+    SCnfInt : array
+              SCnfInt[0] error of interval
+              SCnfInt[1] minimum interval value
+              SCnfInt[2] maximum interval value
     """
 
-    return (z**2)*(p*(1-p))/(e**2)
+    if  (sc == 0.68):
+        z = 1.0
+    elif(sc == 0.90):
+        z = 1.64
+    elif(sc == 0.95):
+        z = 1.96
+    elif(sc == 0.99):
+        z = 2.58
 
-def cCnfInt(p, z, n):
+    return cnfInt(p, z, n)
+
+
+
+def CCnfInt(p, z, n):
     """
     Conservative Confidence Interval
 
@@ -539,7 +558,80 @@ def cCnfInt(p, z, n):
 
     return err, p-err, p+err
 
-def scCnfInt(p, z, e):
+
+
+def SCCnsInt(p, sc, n):
+    """
+    Statistical Conservative Confidence Interval
+
+    Returns the minimum size n needed for the sample 
+    to achieve an desired error margin of e considering an 
+    statistical confidence of sc with a probability p
+
+    Parameters
+    ----------
+    p : float
+        probability of population
+
+    sc: float
+        statistical confidence
+        if  sc == 0.68 then z = 1
+            sc == 0.90 then z = 1.64
+            sc == 0.95 then z = 1.96
+            sc == 0.99 then z = 2.58
+
+    n : int
+        size of sample
+
+    Returns
+    -------
+    expIntCns : array
+                Minimum in expInt[0] and maximum in expInt[1]
+    """
+
+    if  (sc == 0.68):
+        z = 1.0
+    elif(sc == 0.90):
+        z = 1.64
+    elif(sc == 0.95):
+        z = 1.96
+    elif(sc == 0.99):
+        z = 2.58
+
+    return CCnfInt(p, z, n)
+
+
+
+def sCnfInt(p, z, e):
+    """
+    Size of Confidence Interval
+
+    Returns the minimum size n needed for the sample 
+    to achieve an desired error margin of e considering an 
+    interval constant of z with a probability p
+
+    Parameters
+    ----------
+    p : float
+        probability of population
+
+    z : float
+        interval constant
+
+    e : float
+        margin of error
+
+    Returns
+    -------
+    CnfInt : float
+             size of sample
+    """
+
+    return (z**2)*(p*(1-p))/(e**2)
+
+
+
+def sCCnfInt(p, z, e):
     """
     Size of Conservative Confidence Interval
 
@@ -566,9 +658,52 @@ def scCnfInt(p, z, e):
 
     return (z**2)/(4*e**2)
 
-def scsCnfInt(p, sc, e):
+
+def sSCnfInt(p, sc, e):
     """
-    Size of Conservative Statistical Confidence Interval
+    Size of Statistical Confidence Interval
+
+    Returns the minimum size n needed for the sample 
+    to achieve an desired error margin of e considering an 
+    statistical confidence of sc with a probability p
+
+    Parameters
+    ----------
+    p : float
+        probability of population
+
+    sc: float
+        statistical confidence
+        if  sc == 0.68 then z = 1
+            sc == 0.90 then z = 1.64
+            sc == 0.95 then z = 1.96
+            sc == 0.99 then z = 2.58
+
+    e : float
+        margin of error
+
+    Returns
+    -------
+    expIntErrInf : float
+                   Minimum sample for specified error margin
+    """
+
+    if  (sc == 0.68):
+        z = 1.0
+    elif(sc == 0.90):
+        z = 1.64
+    elif(sc == 0.95):
+        z = 1.96
+    elif(sc == 0.99):
+        z = 2.58
+
+    return sCnfInt(p, z, e)
+
+
+
+def sSCCnfInt(p, sc, e):
+    """
+    Size of Statistical Conservative Confidence Interval
 
     Returns the minimum size n needed for the sample 
     to achieve an desired error margin of e considering an 
@@ -606,129 +741,4 @@ def scsCnfInt(p, sc, e):
     elif(sc == 0.99):
         z = 2.58
 
-    return scCnfInt(p, z, e)
-
-def csCnsInt(p, sc, n):
-    """
-    Conservative Statistical Confidence Interval
-
-    Returns the minimum and maximum values 
-    from p considering an error z with a 
-    sample of size n with the worst cenario
-    when p = 1/2
-
-    Parameters
-    ----------
-    p : float
-        probability of population
-
-    sc: float
-        statistical confidence
-        if  sc == 0.68 then z = 1
-            sc == 0.90 then z = 1.64
-            sc == 0.95 then z = 1.96
-            sc == 0.99 then z = 2.58
-
-    n : int
-        size of sample
-
-    Returns
-    -------
-    expIntCns : array
-                Minimum in expInt[0] and maximum in expInt[1]
-    """
-
-    if  (sc == 0.68):
-        z = 1.0
-    elif(sc == 0.90):
-        z = 1.64
-    elif(sc == 0.95):
-        z = 1.96
-    elif(sc == 0.99):
-        z = 2.58
-
-    return cCnfInt(p, z, n)
-
-def expIntErrInf(p, ic, e):
-    """
-    Size of sample for an specified error margin
-
-    Returns size of the sample need for
-    an error margin e considering an 
-    error z with a probability p
-
-    Parameters
-    ----------
-    p : float
-        probability of population
-
-    ic: float
-        statistical confidence
-        if  ic == 0.68 then z = 1
-            ic == 0.90 then z = 1.64
-            ic == 0.95 then z = 1.96
-            ic == 0.99 then z = 2.58
-
-    e : float
-        margin of error
-
-    Returns
-    -------
-    expIntErrInf : float
-                   Minimum sample for specified error margin
-    """
-
-    if  (ic == 0.68):
-        z = 1.0
-    elif(ic == 0.90):
-        z = 1.64
-    elif(ic == 0.95):
-        z = 1.96
-    elif(ic == 0.99):
-        z = 2.58
-
-    return expIntErr(p, z, e)
-
-def expIntInf(p, ic, n):
-    """
-    Expected Interval of a variable
-
-    Returns the minimum and maximum values 
-    from p considering an error z with a 
-    sample of size n
-
-    Parameters
-    ----------
-    p : float
-        probability of population
-
-    ic: float
-        statistical confidence
-        if  ic == 0.68 then z = 1
-            ic == 0.90 then z = 1.64
-            ic == 0.95 then z = 1.96
-            ic == 0.99 then z = 2.58
-
-    n : int
-        size of sample
-
-    Returns
-    -------
-    expIntInf : array
-                Minimum in expInt[0] and maximum in expInt[1]
-    """
-
-    if  (ic == 0.68):
-        z = 1.0
-    elif(ic == 0.90):
-        z = 1.64
-    elif(ic == 0.95):
-        z = 1.96
-    elif(ic == 0.99):
-        z = 2.58
-
-    expIntInf = expInt(p, z, n)
-
-    print("IC({:.4}, {:.2}) = [{:.4},{:.4}]".format(p, ic, expIntInf[0], expIntInf[1]))
-
-    return expIntInf
+    return sCCnfInt(p, z, e)
