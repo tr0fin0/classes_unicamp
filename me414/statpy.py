@@ -478,7 +478,7 @@ def cnfInt(p, z, n):
 
     err = z*np.sqrt(p*(1-p)/n)
 
-    return err, p- err, p+err
+    return err, p-err, p+err
 
 
 def cExpRng(p, z, n):
