@@ -513,13 +513,13 @@ def cCnfInt(p, z, n):
 
     return err, p-err, p+err
 
-def sizCExpInt(p, z, e):
+def sCCnfInt(p, z, e):
     """
-    Size of Conservative Expected Interval of a variable
+    Size of Conservative Confidence Interval of a variable
 
     Returns the minimum size n needed for the sample 
-    to achieve an desired error margin e considering an 
-    error z with a probability p
+    to achieve an desired error margin of e considering an 
+    interval consta of z with a probability p
 
     Parameters
     ----------
