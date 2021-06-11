@@ -479,6 +479,37 @@ def expInt(p, z, n):
 
     return minimum, maximum
 
+def expIntCns(p, z, n):
+    """
+    Expected Conservative Interval of a variable
+
+    Returns the minimum and maximum values 
+    from p considering an error z with a 
+    sample of size n with the worst cenario
+    when p = 1/2
+
+    Parameters
+    ----------
+    p : float
+        probability of population
+
+    z : float
+        percentage of error
+
+    n : int
+        size of sample
+
+    Returns
+    -------
+    expIntCns : array
+                Minimum in expInt[0] and maximum in expInt[1]
+    """
+
+    minimum = p - z*np.sqrt(1/n)/2
+    maximum = p + z*np.sqrt(1/n)/2
+
+    return minimum, maximum
+
 def expIntErr(p, z, e):
     """
     Size of sample for an specified error margin
