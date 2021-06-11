@@ -538,6 +538,46 @@ def expIntCnsSiz(p, z, e):
 
     return (z**2)/(4*e**2)
 
+def expIntCnsSizInf(p, ic, e):
+    """
+    Size of conservative sample for an specified error margin
+
+    Returns size of the sample need for
+    an error margin e considering an 
+    error z with a probability p
+
+    Parameters
+    ----------
+    p : float
+        probability of population
+
+    ic: float
+        statistical confidence
+        if  ic == 0.68 then z = 1
+            ic == 0.90 then z = 1.64
+            ic == 0.95 then z = 1.96
+            ic == 0.99 then z = 2.58
+
+    e : float
+        margin of error
+
+    Returns
+    -------
+    expIntCnsSizInf : float
+                      Minimum in expInt[0] and maximum in expInt[1]
+    """
+
+    if  (ic == 0.68):
+        z = 1.0
+    elif(ic == 0.90):
+        z = 1.64
+    elif(ic == 0.95):
+        z = 1.96
+    elif(ic == 0.99):
+        z = 2.58
+
+    return expIntCnsSiz(p, z, e)
+
 def expIntCnsInf(p, ic, n):
     """
     Expected Conservative Interval of a variable
