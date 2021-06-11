@@ -510,6 +510,47 @@ def expIntCns(p, z, n):
 
     return minimum, maximum
 
+def expIntCnsInf(p, ic, n):
+    """
+    Expected Conservative Interval of a variable
+
+    Returns the minimum and maximum values 
+    from p considering an error z with a 
+    sample of size n with the worst cenario
+    when p = 1/2
+
+    Parameters
+    ----------
+    p : float
+        probability of population
+
+    ic: float
+        statistical confidence
+        if  ic == 0.68 then z = 1
+            ic == 0.90 then z = 1.64
+            ic == 0.95 then z = 1.96
+            ic == 0.99 then z = 2.58
+
+    n : int
+        size of sample
+
+    Returns
+    -------
+    expIntCns : array
+                Minimum in expInt[0] and maximum in expInt[1]
+    """
+
+    if  (ic == 0.68):
+        z = 1.0
+    elif(ic == 0.90):
+        z = 1.64
+    elif(ic == 0.95):
+        z = 1.96
+    elif(ic == 0.99):
+        z = 2.58
+
+    return expIntCns(p, z, n)
+
 def expIntErr(p, z, e):
     """
     Size of sample for an specified error margin
