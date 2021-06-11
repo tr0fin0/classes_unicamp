@@ -262,11 +262,11 @@ if(False):
     ic = 0.90 # intervalo de confiança
     ei = stat.SCnfInt(p, ic, n)
 
-    # e)
+    # e) tamanho intervalo de confiança
     e = 0.04
     size1 = stat.sSCnfInt(p, ic, e)
 
-    # f) conservador
+    # f) tamanho intervalo de confiança conservador
     size2 = stat.sSCCnfInt(p, ic, e)
 
     print(
@@ -277,4 +277,29 @@ if(False):
         "\n d) {:.4}".format(ei[0]*100) + 
         "\n e) {:.4}".format(size1) + 
         "\n f) {:.4}".format(size2)
+    )
+
+# exercice 85
+if(True):
+    ex = 106   # valor esperado/amostra
+    dp = 20.18 # desvio padrão/amostra
+    vx = dp**2 # variância
+    n  = 499   # tamanho amostral
+    ic = 0.99  # intervalo de confiança
+
+    # a) b)
+    p = stat.NormalInfo(0, ex, vx/n, 1)
+    ei = stat.SCCnfInt(ex, ic, n)
+
+    mi = ex*(1 - ei[0])
+    ma = ex*(1 + ei[0])
+
+    print(
+        "\nexercice 85:" + 
+        "\n p     {:.4}".format(p) + 
+        "\n ei[0] {:.4}".format(ei[0]) + 
+        "\n ei[1] {:.4}".format(ei[1]) + 
+        "\n ei[2] {:.4}".format(ei[2]) + 
+        "\n a) {:.4}".format(mi) + 
+        "\n b) {:.4}".format(ma)
     )
