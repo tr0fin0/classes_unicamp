@@ -479,6 +479,33 @@ def expInt(p, z, n):
 
     return minimum, maximum
 
+def expIntErr(p, z, e):
+    """
+    Size of sample for an specified error margin
+
+    Returns size of the sample need for
+    an error margin e considering an 
+    error z with a probability p
+
+    Parameters
+    ----------
+    p : float
+        probability of population
+
+    z : float
+        percentage of error
+
+    e : float
+        margin error
+
+    Returns
+    -------
+    expIntErr : float
+                Minimum sample for specified error margin
+    """
+
+    return (z**2)*(p*(1-p))/(e**2)
+
 def expIntInf(p, ic, n):
     """
     Expected Interval of a variable
