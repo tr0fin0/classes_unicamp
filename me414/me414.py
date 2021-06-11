@@ -226,13 +226,13 @@ if(False):
     )
 
 # exercice 83
-if(True):
+if(False):
     p = 0.73 # probabilidade pesquisa
     n = 784  # tamanho da amostra
 
     # a) b)
     ic = 0.90 # intervalo de confiança
-    ei = stat.ExpectedIntervalInfo(p, ic, n)
+    ei = stat.expIntInf(p, ic, n)
 
     # c)
     erro = (p - ei[0])*100
@@ -248,4 +248,36 @@ if(True):
         "\n b) {:.4}".format(ei[1]) + 
         "\n c) {:.4}".format(erro) + 
         "\n d) {}".format(d)
+    )
+
+# exercice 84
+if(True):
+    f = 46  # quantidade de fumantes
+    n = 108 # tamanho da amostra
+
+    # a)
+    p = f/n # proporção de fumantes
+
+    #  b) c)
+    ic = 0.90 # intervalo de confiança
+    ei = stat.expIntInf(p, ic, n)
+
+    # d)
+    erro = (p - ei[0])*100
+
+    # e)
+    e = 0.04
+    size1 = stat.expIntErrInf(p, ic, e)
+
+    # f)
+    size2 = stat.expIntCnsSizInf(p, ic, e)
+
+    print(
+        "\nexercice 84:" + 
+        "\n a) {:.4}".format(p) + 
+        "\n b) {:.4}".format(ei[0]) + 
+        "\n c) {:.4}".format(ei[1]) + 
+        "\n d) {:.4}".format(erro) + 
+        "\n e) {:.4}".format(size1) + 
+        "\n f) {:.4}".format(size2)
     )
