@@ -251,33 +251,30 @@ if(False):
     )
 
 # exercice 84
-if(True):
+if(False):
     f = 46  # quantidade de fumantes
     n = 108 # tamanho da amostra
 
     # a)
     p = f/n # proporção de fumantes
 
-    #  b) c)
+    #  b) c) d)
     ic = 0.90 # intervalo de confiança
-    ei = stat.expIntInf(p, ic, n)
-
-    # d)
-    erro = (p - ei[0])*100
+    ei = stat.SCnfInt(p, ic, n)
 
     # e)
     e = 0.04
-    size1 = stat.expIntErrInf(p, ic, e)
+    size1 = stat.sSCnfInt(p, ic, e)
 
-    # f)
-    size2 = stat.expIntCnsSizInf(p, ic, e)
+    # f) conservador
+    size2 = stat.sSCCnfInt(p, ic, e)
 
     print(
         "\nexercice 84:" + 
         "\n a) {:.4}".format(p) + 
-        "\n b) {:.4}".format(ei[0]) + 
-        "\n c) {:.4}".format(ei[1]) + 
-        "\n d) {:.4}".format(erro) + 
+        "\n b) {:.4}".format(ei[1]) + 
+        "\n c) {:.4}".format(ei[2]) + 
+        "\n d) {:.4}".format(ei[0]*100) + 
         "\n e) {:.4}".format(size1) + 
         "\n f) {:.4}".format(size2)
     )
