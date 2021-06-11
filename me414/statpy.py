@@ -487,7 +487,7 @@ def cCnfInt(p, z, n):
 
     Returns the minimum and maximum values 
     from the probability of p in an amostral distribution
-    considering an range constant of z with a sample of size n
+    considering an interval constant of z with a sample of size n
     with the worst cenario when p = 1/2 and interval is maximum
 
     Parameters
