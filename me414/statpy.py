@@ -481,14 +481,14 @@ def cnfInt(p, z, n):
     return err, p-err, p+err
 
 
-def cExpRng(p, z, n):
+def cCnfInt(p, z, n):
     """
-    Conservative Expected Interval of a variable
+    Conservative Confidence Interval of a variable
 
     Returns the minimum and maximum values 
-    from p considering an error z with a 
-    sample of size n with the worst cenario
-    when p = 1/2
+    from the probability of p in an amostral distribution
+    considering an range constant of z with a sample of size n
+    with the worst cenario when p = 1/2 and interval is maximum
 
     Parameters
     ----------
@@ -496,21 +496,22 @@ def cExpRng(p, z, n):
         probability of population
 
     z : float
-        interval of error
+        interval constant
 
     n : int
         size of sample
 
     Returns
     -------
-    expIntCns : array
-                Minimum in expInt[0] and maximum in expInt[1]
+    cCnfInt : array
+              cCnfInt[0] error of interval
+              cCnfInt[1] minimum interval value
+              cCnfInt[2] maximum interval value
     """
 
-    minimum = p - z*np.sqrt(1/n)/2
-    maximum = p + z*np.sqrt(1/n)/2
+    err = z*np.sqrt(1/n)/2
 
-    return minimum, maximum
+    return err, p-err, p+err
 
 def sizCExpInt(p, z, e):
     """
