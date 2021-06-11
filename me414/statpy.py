@@ -515,7 +515,7 @@ def cCnfInt(p, z, n):
 
 def sCCnfInt(p, z, e):
     """
-    Size of Conservative Confidence Interval of a variable
+    Size of Conservative Confidence Interval
 
     Returns the minimum size n needed for the sample 
     to achieve an desired error margin of e considering an 
@@ -534,8 +534,8 @@ def sCCnfInt(p, z, e):
 
     Returns
     -------
-    expIntCnsSiz : float
-                   Minimum in expInt[0] and maximum in expInt[1]
+    sCCnfInt : float
+               size of conservative sample
     """
 
     return (z**2)/(4*e**2)
