@@ -280,7 +280,7 @@ if(False):
     )
 
 # exercice 85
-if(True):
+if(False):
     ex = 106   # valor esperado/amostra
     dp = 20.18 # desvio padrão/amostra
     vx = dp**2 # variância
