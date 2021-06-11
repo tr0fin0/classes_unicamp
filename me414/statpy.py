@@ -483,7 +483,7 @@ def cnfInt(p, z, n):
 
 def cCnfInt(p, z, n):
     """
-    Conservative Confidence Interval of a variable
+    Conservative Confidence Interval
 
     Returns the minimum and maximum values 
     from the probability of p in an amostral distribution
