@@ -479,16 +479,44 @@ def expInt(p, z, n):
 
     return minimum, maximum
 
-def ExpectedIntervalInfo(p: float, ic: float, n: int):
-    if(ic == 0.68):
-        ei = ExpectedInterval(p, 1, n)
+def expIntInf(p, ic, n):
+    """
+    Expected Interval of a variable
+
+    Returns the minimum and maximum values 
+    from p considering an error z with a 
+    sample of size n
+
+    Parameters
+    ----------
+    p : float
+        probability of population
+
+    ic: float
+        statistical confidence
+        if  ic == 0.68 then z = 1
+            ic == 0.90 then z = 1.64
+            ic == 0.95 then z = 1.96
+            ic == 0.99 then z = 2.58
+
+    n : int
+        size of sample
+
+    Returns
+    -------
+    expIntInf : array
+                Minimum in expInt[0] and maximum in expInt[1]
+    """
+
+    if  (ic == 0.68):
+        expInt = expInt(p, 1,    n)
     elif(ic == 0.90):
-        ei = ExpectedInterval(p, 1.64, n)
+        expInt = expInt(p, 1.64, n)
     elif(ic == 0.95):
-        ei = ExpectedInterval(p, 1.96, n)
+        expInt = expInt(p, 1.96, n)
     elif(ic == 0.99):
-        ei = ExpectedInterval(p, 2.58, n)
+        expInt = expInt(p, 2.58, n)
 
-    print("IC({:.4}, {:.2}) = [{:.4},{:.4}]".format(p, ic, ei[0], ei[1]))
+    print("IC({:.4}, {:.2}) = [{:.4},{:.4}]".format(p, ic, expInt[0], expInt[1]))
 
-    return ei
+    return expInt
