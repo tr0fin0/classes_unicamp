@@ -509,14 +509,16 @@ def expIntInf(p, ic, n):
     """
 
     if  (ic == 0.68):
-        expInt = expInt(p, 1,    n)
+        z = 1.0
     elif(ic == 0.90):
-        expInt = expInt(p, 1.64, n)
+        z = 1.64
     elif(ic == 0.95):
-        expInt = expInt(p, 1.96, n)
+        z = 1.96
     elif(ic == 0.99):
-        expInt = expInt(p, 2.58, n)
+        z = 2.58
 
-    print("IC({:.4}, {:.2}) = [{:.4},{:.4}]".format(p, ic, expInt[0], expInt[1]))
+    expIntInf = expInt(p, z, n)
 
-    return expInt
+    print("IC({:.4}, {:.2}) = [{:.4},{:.4}]".format(p, ic, expIntInf[0], expIntInf[1]))
+
+    return expIntInf
