@@ -519,7 +519,7 @@ def sCCnfInt(p, z, e):
 
     Returns the minimum size n needed for the sample 
     to achieve an desired error margin of e considering an 
-    interval consta of z with a probability p
+    interval constant of z with a probability p
 
     Parameters
     ----------
@@ -527,7 +527,7 @@ def sCCnfInt(p, z, e):
         probability of population
 
     z : float
-        percentage of error
+        interval constant
 
     e : float
         margin of error
@@ -540,45 +540,47 @@ def sCCnfInt(p, z, e):
 
     return (z**2)/(4*e**2)
 
-def expIntCnsSizInf(p, ic, e):
+def sCsCnfInt(p, sc, e):
     """
-    Size of conservative sample for an specified error margin
+    Size of Conservative Confidence Interval sample for an specified error margin
 
-    Returns size of the sample need for
-    an error margin e considering an 
-    error z with a probability p
+    Returns the minimum size n needed for the sample 
+    to achieve an desired error margin of e considering an 
+    statistical confidence of sc with a probability p
 
     Parameters
     ----------
     p : float
         probability of population
 
-    ic: float
+    sc: float
         statistical confidence
-        if  ic == 0.68 then z = 1
-            ic == 0.90 then z = 1.64
-            ic == 0.95 then z = 1.96
-            ic == 0.99 then z = 2.58
+        if  sc == 0.68 then z = 1
+            sc == 0.90 then z = 1.64
+            sc == 0.95 then z = 1.96
+            sc == 0.99 then z = 2.58
 
     e : float
         margin of error
 
     Returns
     -------
-    expIntCnsSizInf : float
-                      Minimum in expInt[0] and maximum in expInt[1]
+    sCsCnfInt : float
+                sCsCnfInt[0] error of interval
+                sCsCnfInt[1] minimum interval value
+                sCsCnfInt[2] maximum interval value
     """
 
-    if  (ic == 0.68):
+    if  (sc == 0.68):
         z = 1.0
-    elif(ic == 0.90):
+    elif(sc == 0.90):
         z = 1.64
-    elif(ic == 0.95):
+    elif(sc == 0.95):
         z = 1.96
-    elif(ic == 0.99):
+    elif(sc == 0.99):
         z = 2.58
 
-    return sizExpIntCns(p, z, e)
+    return sCCnfInt(p, z, e)
 
 def expIntCnsInf(p, ic, n):
     """
