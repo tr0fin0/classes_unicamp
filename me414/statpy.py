@@ -449,7 +449,31 @@ def NormalReverseInfo(px: float, mu: float, sg: float):
 
     return x
 
-def ExpectedInterval(p: float, z: float, n: int):
+def expInt(p, z, n):
+    """
+    Expected Interval of a variable
+
+    Returns the minimum and maximum values 
+    from p considering an error z with a 
+    sample of size n
+
+    Parameters
+    ----------
+    p : float
+        probability of population
+
+    z : float
+        percentage of error
+
+    n : int
+        size of sample
+
+    Returns
+    -------
+    expInt : array
+             Minimum in expInt[0] and maximum in expInt[1]
+    """
+
     minimum = p - z*np.sqrt(p*(1-p)/n)
     maximum = p + z*np.sqrt(p*(1-p)/n)
 
