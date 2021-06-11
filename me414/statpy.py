@@ -449,13 +449,13 @@ def NormalReverseInfo(px: float, mu: float, sg: float):
 
     return x
 
-def expInt(p, z, n):
+def cnfInt(p, z, n):
     """
-    Expected Interval of a variable
+    Confidence Interval of a variable
 
     Returns the minimum and maximum values 
-    from p considering an error z with a 
-    sample of size n
+    from the probability of p in an amostral distribution
+    considering an range constant of z with a sample of size n
 
     Parameters
     ----------
@@ -463,26 +463,27 @@ def expInt(p, z, n):
         probability of population
 
     z : float
-        percentage of error
+        interval constant
 
     n : int
         size of sample
 
     Returns
     -------
-    expInt : array
-             Minimum in expInt[0] and maximum in expInt[1]
+    cnfInt : array
+             cnfInt[0] error of range
+             cnfInt[1] minimum range value
+             cnfInt[2] maximum range value
     """
 
-    minimum = p - z*np.sqrt(p*(1-p)/n)
-    maximum = p + z*np.sqrt(p*(1-p)/n)
+    err = z*np.sqrt(p*(1-p)/n)
 
-    return minimum, maximum
+    return err, p- err, p+err
 
 
-def expIntCns(p, z, n):
+def cExpRng(p, z, n):
     """
-    Expected Conservative Interval of a variable
+    Conservative Expected Interval of a variable
 
     Returns the minimum and maximum values 
     from p considering an error z with a 
@@ -495,7 +496,7 @@ def expIntCns(p, z, n):
         probability of population
 
     z : float
-        percentage of error
+        interval of error
 
     n : int
         size of sample
@@ -511,12 +512,12 @@ def expIntCns(p, z, n):
 
     return minimum, maximum
 
-def expIntCnsSiz(p, z, e):
+def sizCExpInt(p, z, e):
     """
-    Size of conservative sample for an specified error margin
+    Size of Conservative Expected Interval of a variable
 
-    Returns size of the sample need for
-    an error margin e considering an 
+    Returns the minimum size n needed for the sample 
+    to achieve an desired error margin e considering an 
     error z with a probability p
 
     Parameters
@@ -576,7 +577,7 @@ def expIntCnsSizInf(p, ic, e):
     elif(ic == 0.99):
         z = 2.58
 
-    return expIntCnsSiz(p, z, e)
+    return sizExpIntCns(p, z, e)
 
 def expIntCnsInf(p, ic, n):
     """
