@@ -451,7 +451,7 @@ def NormalReverseInfo(px: float, mu: float, sg: float):
 
 def cnfInt(p, z, n):
     """
-    Confidence Interval of a variable
+    Confidence Interval
 
     Returns the minimum and maximum values 
     from the probability of p in an amostral distribution
