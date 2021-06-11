@@ -471,9 +471,9 @@ def cnfInt(p, z, n):
     Returns
     -------
     cnfInt : array
-             cnfInt[0] error of range
-             cnfInt[1] minimum range value
-             cnfInt[2] maximum range value
+             cnfInt[0] error of interval
+             cnfInt[1] minimum interval value
+             cnfInt[2] maximum interval value
     """
 
     err = z*np.sqrt(p*(1-p)/n)
