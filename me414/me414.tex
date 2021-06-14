@@ -1263,7 +1263,21 @@
             Onde:
                 \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
                     \item $p$, \textbf{Proporção Populacional:} Parâmetro populacional desconhecido $p$ que deseja-se encontrar;
+
                     \item $\hat{p}$, \textbf{Proporção Amostral:} Parâmetro amostral extraído para descrever o parâmetro $p$;
+
+                    \item $1-\alpha$, \textbf{Intervalo de Confiança:} Representa a margem de erro aceitável para variável, descrito como:
+                        \begin{equation}
+                            \boxed{
+                                1-\alpha =
+                                \begin{cases}
+                                    90\%, & z_{\alpha/2} = 1.64\\
+                                    95\%, & z_{\alpha/2} = 1.96\\
+                                    99\%, & z_{\alpha/2} = 2.58\\
+                                \end{cases}
+                            }
+                        \end{equation}
+                    Note que, quanto maior o intervalo de confiança aceitável, maior será a gama de valores aceitável. Este valores são obtidos pela análise da distribuição normal associada ao valores.
                 \end{enumerate}
                 \begin{equation}
                     \boxed{
