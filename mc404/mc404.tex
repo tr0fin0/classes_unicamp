@@ -2249,7 +2249,19 @@ fim:
         \subsection{Variáveis}
             \paragraph{Definição}Locais na memória utilizados para armazenar valores necessários no decorrer dos programs. Há diferentes formais de realizar essa alocação que variam de acorodo com a plataforma utilizada, sendo as mais utilizadas para o simulador utilizado as demonstradas a seguir:
                 \begin{enumerate}[rightmargin = \leftmargin]
-                    \item \textbf{Constantes:}
+                    \item \textbf{Constantes:} Armazenadas na região de dados da memória e não poderam ser alteradas, implementadas da seguinte maneira:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    .section .rodata
+    vetor:
+        .word 0
+        .word 1
+        .word 2
+                            \end{lstlisting}
+                        \end{scriptsize}
+                    Note que neste caso \texttt{.word} armazena uma palavra de \texttt{4 bytes}, espaço necessário para armazenar um \texttt{int}.
+
                     \item \textbf{Variáveis Globais:} Armazenadas na região de dados da memória, implementadas da seguinte maneira:
                         \begin{scriptsize}
                             \myStyleAssembly
