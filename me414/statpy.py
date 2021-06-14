@@ -587,8 +587,8 @@ def SCCnfInt(p, sc, n):
 
     Returns
     -------
-    expIntCns : array
-                Minimum in expInt[0] and maximum in expInt[1]
+    SCCnfInt : array
+               Minimum in expInt[0] and maximum in expInt[1]
     """
 
     if  (sc == 0.68):
