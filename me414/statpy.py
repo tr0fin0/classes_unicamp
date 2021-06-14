@@ -625,8 +625,8 @@ def sCnfInt(p, z, e):
 
     Returns
     -------
-    CnfInt : float
-             size of sample
+    sCnfInt : float
+              size of sample
     """
 
     return (z**2)*(p*(1-p))/(e**2)
