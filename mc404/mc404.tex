@@ -2283,8 +2283,8 @@ fim:
     sw ra, 12(sp)
                             \end{lstlisting}
                         \end{scriptsize}
-                    Note que \texttt{addi} deslocará o ponteiro da pilha a quantidade de espaço desejada pelo usuário, neste caso \texttt{4 words}. Além disso será necessário reposicionar o ponteiro \texttt{ra} e na sequência sobra espaço para alocação de \texttt{3 words}. Ao final da execução do código será restaurar a posição da pila e recuperar as variáveis nela armazenadas.
+                    Note que \texttt{addi} deslocará o ponteiro da pilha pela quantidade de espaço desejada pelo usuário, neste caso \texttt{4 words}. Além disso, reposiciona-se o ponteiro \texttt{ra}, restando espaço para alocação de \texttt{3 words}. Ao final da execução do código será necessário restaurar a posição da pila e recuperar as variáveis nela armazenadas.
 
-                    \item \textbf{Struct:}
+                    \item \textbf{Struct:} 
                 \end{enumerate}
 \end{document}
