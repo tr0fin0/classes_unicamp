@@ -2285,6 +2285,14 @@ fim:
                         \end{scriptsize}
                     Note que \texttt{addi} deslocará o ponteiro da pilha pela quantidade de espaço desejada pelo usuário, neste caso \texttt{4 words}. Além disso, reposiciona-se o ponteiro \texttt{ra}, restando espaço para alocação de \texttt{3 words}. Ao final da execução do código será necessário restaurar a posição da pila e recuperar as variáveis nela armazenadas.
 
-                    \item \textbf{Struct:} 
+                    \item \textbf{Struct:} Armazena várias variáveis em conjunto sequencial onde cada variável deverá ser considerada, implementadas da seguinte maneira:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    
+    sw ra, 12(sp)
+                            \end{lstlisting}
+                        \end{scriptsize}
+                    Note que torna-se comum realizar o \textbf{padding} dos dados, isto é, arredondar o espaço necessário para cade variável para múltiplos de 4 bytes para facilitar o percurso ao longo da memória.
                 \end{enumerate}
 \end{document}
