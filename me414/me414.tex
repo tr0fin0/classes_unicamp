@@ -1221,60 +1221,6 @@
                 }
             \end{equation}
 
-        apresentar diferentes modelagens para sua descrição das quais as principais são listadas a seguir:
-            \begin{enumerate}[rightmargin = \leftmargin]
-                \item \textbf{Modelo Discreto:} Variáveis fixadas em valores pré-estabelecidos, possuindo:
-                    \begin{enumerate}[noitemsep]
-                        \item \texttt{Média Populacional:} $p$;
-                        \item \texttt{Variância Populacional:} $p(1-p)$;
-                    \end{enumerate}
-
-                \item \textbf{Modelo Aleatório:} Variáveis aleatórias contidas em uma distribuição de Bernoulli, possuindo:
-                    \begin{enumerate}[noitemsep]
-                        \item \texttt{Média Populacional:} $p$;
-                        \item \texttt{Variância Populacional:} $p(1-p)$;
-                    \end{enumerate}
-            \end{enumerate}
-        Note que independente do modelo aplicado quando uma amostra $n$ for retirada as propriedades desta são obtidas através das seguintes equações:
-            \begin{equation}
-                \boxed{
-                    E(\overline{X}) = \mu
-                }
-                \qquad
-                \boxed{
-                    V(\overline{X}) = \frac{\sigma^{2}}{n}
-                }
-                \qquad
-                \boxed{
-                    EP(\overline{X}) = \sqrt{V(\overline{X})}
-                }
-            \end{equation}
-            \begin{equation}
-                \boxed{
-                    E(\hat{p}) = p
-                }
-                \qquad
-                \boxed{
-                    V(\hat{p}) = \frac{p(1-p)}{n}
-                }
-                \qquad
-                \boxed{
-                    EP(\hat{p}) = \sqrt{V(\hat{p})}
-                }
-            \end{equation}
-        Assim, a medida que $n$ aumenta estas variáveis poderão ser aproximadas pela seguinte expressão:
-            \begin{equation}
-                \boxed{
-                    \overline{X} \approx 
-                    N \left(\mu, \frac{\sigma^{2}}{n}\right)
-                }
-                \qquad
-                \boxed{
-                    \hat{p} \approx 
-                    N \left(p, \frac{p(1-p)}{n}\right)
-                }
-            \end{equation}
-
         \subsection{Teorema do Limite Central}
             \paragraph{Definição}
                 \begin{displayquote}[][]
