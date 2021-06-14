@@ -152,7 +152,7 @@
             \paragraph{Definição}Medida de posição central em que se $x_{1}, \cdots, x_{n}$ são $n$ observações, a média aritmética será dada pela seguinte equação:
                 \begin{equation}
                     \boxed{
-                        \overline{x} = \frac{1}{n} \sum_{i = 1}^{n} x_{i}
+                        \bar{x} = \frac{1}{n} \sum_{i = 1}^{n} x_{i}
                     }
                 \end{equation}
 
@@ -175,14 +175,14 @@
             \paragraph{Definição}Medida de dispersão em que a média dos desvios ao quadrado será dada pela seguinte equação:
                 \begin{equation}
                     \boxed{
-                        s^{2} = \frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \overline{x})^{2}
+                        s^{2} = \frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \bar{x})^{2}
                     }
                 \end{equation}
                 \begin{enumerate}[rightmargin=\leftmargin, noitemsep]
                     \item \textbf{Coeficiente de Variação:} Normaliza o desvio padrão com relação a média do conjunto de dados de tal forma que os desvios padrões de diferentes amostras possam ser comparadas, será dado pela seguinte equação:
                         \begin{equation}
                             \boxed{
-                                C_{V} = \frac{s}{\overline{x}}
+                                C_{V} = \frac{s}{\bar{x}}
                             }
                         \end{equation}
                 \end{enumerate}
@@ -191,7 +191,7 @@
             \paragraph{Definição}Medida de dispersão em que a raiz quadrada da variância será dada pela seguinte equação:
             \begin{equation}
                 \boxed{
-                    s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \overline{x})^{2}}
+                    s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \bar{x})^{2}}
                 }
             \end{equation}
 
@@ -201,22 +201,22 @@
                     \boxed{
                         -1 \le
                         C_{C}(x,y) = \frac{1}{n-1} \sum_{i=1}^{n} 
-                        \left(\frac{x_{i}-\overline{x}}{s_{x}}\right)
+                        \left(\frac{x_{i}-\bar{x}}{s_{x}}\right)
                         \cdot
-                        \left(\frac{y_{i}-\overline{y}}{s_{y}}\right)
+                        \left(\frac{y_{i}-\bar{y}}{s_{y}}\right)
                         \le 1
                     }
                 \end{equation}
             Onde:
                 \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                    \item \textbf{Desvio Padronizado:} Define-se que a operação realizada representa quão distante uma observação $x_{i}$, ou $y_{i}$, está afastada de sua respectiva média $\overline{x}$, ou $\overline{y}$, sendo descrita pela seguinte equação:
+                    \item \textbf{Desvio Padronizado:} Define-se que a operação realizada representa quão distante uma observação $x_{i}$, ou $y_{i}$, está afastada de sua respectiva média $\bar{x}$, ou $\bar{y}$, sendo descrita pela seguinte equação:
                         \begin{equation}
                             \boxed{
-                                z_{x_{i}} = \frac{x_{i}-\overline{x}}{s_{x}}
+                                z_{x_{i}} = \frac{x_{i}-\bar{x}}{s_{x}}
                             }
                             \hspace{20mm}
                             \boxed{
-                                z_{y_{i}} = \frac{y_{i}-\overline{y}}{s_{y}}
+                                z_{y_{i}} = \frac{y_{i}-\bar{y}}{s_{y}}
                             }
                         \end{equation}
                 \end{enumerate}
@@ -981,7 +981,7 @@
             \paragraph{Definição}Aproximação para distribuição binomial apresenta $n\to\infty$ e $p\to 0$, geralmente considera-se os seguintes critérios, $np\le 7$ ou $n\ge 20$ e $p\le 0.05$. Assim a probabilidade desta aproximação será dada pela seguinte equação:
                 \begin{equation}
                     \boxed{
-                        P(X = x) = \binom{n}{x} p^{x}(1-p)^{n-x} \approx
+                        P(X = x) = \binom{n}{x} p^{x}(1-p)^{n-x} \sim
                         \frac{e^{-np}(np)^{x}}{x!}
                     }
                 \end{equation}
@@ -1179,19 +1179,19 @@
     \section{Distribuição Amostral}
         \paragraph{Definição}Descrição do comportamento de uma população através das características de uma amostra retirada aleatoriamente que poderá ser construída através de diferentes modelos.
 
-        \paragraph{Descrição}Temos uma população com uma esperança, ou média, $\mu$ e variância $\sigma^{2}$ desconhecidas que deseja-se estimar a partir de uma amostra deste grupo. Retira-se então uma amostra aleatória de tamanho $n$ e calcula-se sua esperança, ou média, amostral $\overline{X}$, ou $\hat{p}$, para estimar o parâmetro populacional desconhecido $\mu$, implicando nos seguintes resultados:
+        \paragraph{Descrição}Temos uma população com uma esperança, ou média, $\mu$ e variância $\sigma^{2}$ desconhecidas que deseja-se estimar a partir de uma amostra deste grupo. Retira-se então uma amostra aleatória de tamanho $n$ e calcula-se sua esperança, ou média, amostral $\bar{X}$, ou $\hat{p}$, para estimar o parâmetro populacional desconhecido $\mu$, implicando nos seguintes resultados:
             \begin{equation}
                 \boxed{
-                    E(\overline{X}) = \mu
+                    E(\bar{X}) = \mu
                 }
                 \qquad
                 \boxed{
-                    V(\overline{X}) = \frac{\sigma^{2}}{n}
+                    V(\bar{X}) = \frac{\sigma^{2}}{n}
                 }
                 \qquad
                 \boxed{
-                    EP(\overline{X}) = 
-                    \sqrt{V(\overline{X})} =
+                    EP(\bar{X}) = 
+                    \sqrt{V(\bar{X})} =
                     \frac{\sigma}{\sqrt[]{n}}
                 }
             \end{equation}
@@ -1213,18 +1213,18 @@
         Quando a amostral aumenta, tendendo ao tamanho da população, ao analisar os gráficos obtidos será possível aproximar as variáveis encontradas pela distribuição normal como mostrado nas seguintes equações:
             \begin{equation}
                 \boxed{
-                    \overline{X} \approx N \left(\mu, \frac{\sigma^{2}}{n}\right)
+                    \bar{X} \sim N \left(\mu, \frac{\sigma^{2}}{n}\right)
                 }
                 \qquad
                 \boxed{
-                    \hat{p} \approx N \left(p, \frac{p(1-p)}{n}\right)
+                    \hat{p} \sim N \left(p, \frac{p(1-p)}{n}\right)
                 }
             \end{equation}
 
         \subsection{Teorema do Limite Central}
             \paragraph{Definição}
                 \begin{displayquote}[][]
-                    Considera-se uma amostra aleatória $X_{1}$, ..., $X_{n}$ coletada de uma população com média $\mu$ e variância $\sigma^{2}$, então a distribuição amostral de $\overline{X}$ aproxima-se de uma \textbf{Distribuição Normal} de média $\mu$ e variância $\frac{\sigma^{2}}{n}$ quando $n$ for suficientemente grande:
+                    Considera-se uma amostra aleatória $X_{1}$, ..., $X_{n}$ coletada de uma população com média $\mu$ e variância $\sigma^{2}$, então a distribuição amostral de $\bar{X}$ aproxima-se de uma \textbf{Distribuição Normal} de média $\mu$ e variância $\frac{\sigma^{2}}{n}$ quando $n$ for suficientemente grande:
                         \begin{equation}
                             \boxed{
                                 \bar{X} \sim N \left(\mu, \frac{\sigma^{2}}{n}\right)
