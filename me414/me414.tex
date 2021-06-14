@@ -48,8 +48,8 @@
 \usepackage{pgfplots}
 \usepackage{tikz}
 \usepgfplotslibrary{statistics}
-\usepgfplotslibrary{external}
-\tikzexternalize
+% \usepgfplotslibrary{external}
+% \tikzexternalize
 
 %Configurando pacote de circuitos
 \usepackage{circuitikz}
@@ -1282,26 +1282,31 @@
                     Note que, quanto maior o intervalo de confiança aceitável, maior será a gama de valores aceitável. Este valores são obtidos pela análise da distribuição normal associada ao valores.
                 \end{enumerate}
             Todavia, esta análise pressupõe que o parâmetro populacional $p$ seja conhecido durante a análise o que não será sempre verdade. Desta maneira pode-se estudar qual seria o pior cenário desta distribuição, observando o seguinte gráfico:
-                \begin{tikzpicture}
-                    \begin{axis}[
-                        xmin = 0,
-                        xmax = 11,
-                        ymin = 0, 
-                        ymax = 10,
-                        minor x tick num = 4,
-                        minor y tick num = 1,
-                        area style,
-                        width  = 5cm,
-                        height = 5cm,
-                        %ylabel = {Frequência},
-                        %xlabel = {Quantidade},
-                        samples = 50,
-                    ]
-                    \addplot+[
-                        red
-                    ] (x,x*(1-x))
-                    \end{axis}
-                \end{tikzpicture}
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin = 0,
+                            xmax = 1.1,
+                            ymin = 0, 
+                            ymax = 0.275,
+                            width  = 7.5cm,
+                            height = 5cm,
+                            xlabel = \(x\),
+                            ylabel = {\(f(x)\)},
+                            axis lines = left,
+                        ]
+                        \addplot [
+                                domain=0:1, 
+                                samples=100, 
+                                color=red,
+                        ]
+                        {-x^2 + x};
+                        \addlegendentry{\(p(1-p)\)}
+                        \end{axis}
+                    \end{tikzpicture}
+                \end{figure}
+            Nota-se que esta função apresentará máximo, isto é, o pior resultado possível para o intervalo de confiança, com $p = \frac{1}{2}$ e portanto $p(1-p) = \frac{1}{4}$ desta maneira o cálculo se reduz para a seguinte expressão:
                 \begin{equation}
                     \boxed{
                         IC_{C} (p, 1-\alpha) = 
