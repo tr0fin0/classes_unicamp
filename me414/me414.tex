@@ -1177,7 +1177,37 @@
 \newpage
 
     \section{Distribuição Amostral}
-        \paragraph{Definição}Descrição do comportamento de uma população através da aproximação das características de uma amostra retirada aleatoriamente, que pode ser apresentar diferentes modelagens para sua descrição das quais as principais são listadas a seguir:
+        \paragraph{Definição}Descrição do comportamento de uma população através das características de uma amostra retirada aleatoriamente que poderá ser construída através de diferentes modelos.
+
+        \paragraph{Descrição}Temos uma população com uma esperança, ou média, $\mu$ e variância $\sigma^{2}$ desconhecidas que deseja-se estimar a partir de uma amostra deste grupo. Retira-se então uma amostra aleatória de tamanho $n$ e calcula-se sua esperança, ou média, amostral $\overline{X}$, ou $\hat{p}$, para estimar o parâmetro populacional desconhecido $\mu$, implicando nos seguintes resultados:
+            \begin{center}
+                \begin{minipage}[t]{0.425\linewidth}
+                    \textbf{Variáveis Amostral}
+                    \begin{equation}
+                        \boxed{
+                            E(\overline{X}) = \mu
+                        }
+                        \qquad
+                        \boxed{
+                            V(\overline{X}) = \frac{\sigma^{2}}{n}
+                        }
+                    \end{equation}
+                \end{minipage}
+                \begin{minipage}[t]{0.425\linewidth}
+                    \textbf{Variáveis Populacionais}
+                    \begin{equation}
+                        \boxed{
+                            E(\hat{p}) = p
+                        }
+                        \qquad
+                        \boxed{
+                            V(\hat{p}) = \frac{p(1-p)}{n}
+                        }
+                    \end{equation}
+                \end{minipage}
+            \end{center}
+        
+        apresentar diferentes modelagens para sua descrição das quais as principais são listadas a seguir:
             \begin{enumerate}[rightmargin = \leftmargin]
                 \item \textbf{Modelo Discreto:} Variáveis fixadas em valores pré-estabelecidos, possuindo:
                     \begin{enumerate}[noitemsep]
