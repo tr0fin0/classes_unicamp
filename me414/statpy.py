@@ -549,10 +549,10 @@ def CCnfInt(p, z, n):
 
     Returns
     -------
-    cCnfInt : array
-              cCnfInt[0] error of interval
-              cCnfInt[1] minimum interval value
-              cCnfInt[2] maximum interval value
+    CCnfInt : array
+              CCnfInt[0] error of interval
+              CCnfInt[1] minimum interval value
+              CCnfInt[2] maximum interval value
     """
 
     err = z*np.sqrt(1/n)/2
