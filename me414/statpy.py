@@ -731,9 +731,10 @@ def sSCCnfInt(p, sc, e):
     Returns
     -------
     sCsCnfInt : float
-                sCsCnfInt[0] error of interval
-                sCsCnfInt[1] minimum interval value
-                sCsCnfInt[2] maximum interval value
+
+                sSCCnfInt[0] error of interval
+                sSCCnfInt[1] minimum interval value
+                sSCCnfInt[2] maximum interval value
     """
 
     if  (sc == 0.68):
