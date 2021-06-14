@@ -1280,6 +1280,26 @@
                     Note que, quanto maior o intervalo de confiança aceitável, maior será a gama de valores aceitável. Este valores são obtidos pela análise da distribuição normal associada ao valores.
                 \end{enumerate}
             Todavia, esta análise pressupõe que o parâmetro populacional $p$ seja conhecido durante a análise o que não será sempre verdade. Desta maneira pode-se estudar qual seria o pior cenário desta distribuição, observando o seguinte gráfico:
+                \begin{tikzpicture}
+                    \begin{axis}[
+                        xmin = 0,
+                        xmax = 11,
+                        ymin = 0, 
+                        ymax = 10,
+                        minor x tick num = 4,
+                        minor y tick num = 1,
+                        area style,
+                        width  = 5cm,
+                        height = 5cm,
+                        %ylabel = {Frequência},
+                        %xlabel = {Quantidade},
+                        samples = 50,
+                    ]
+                    \addplot+[
+                        red
+                    ] (x,x*(1-x))
+                    \end{axis}
+                \end{tikzpicture}
                 \begin{equation}
                     \boxed{
                         IC_{C} (p, 1-\alpha) = 
