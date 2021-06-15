@@ -1943,9 +1943,9 @@
             \paragraph{Definição}Considere um sistema de partículas cujas posições são especificadas pelas coordenadas cartesianas $x_{1}$, $x_{2}$, ..., $x_{k}$. Se as forças $F_{1}$, $F_{2}$, ..., $F_{k}$ são aplicadas nas coordenadas correspondentes na direção positiva, desta maneira pelo \textbf{Trabalho Virtual} o deslocamento virtual arbitrário será:
                 \begin{equation}
                     \boxed{
-                        \sigma W = 
+                        \delta W = 
                         \sum_{j=1}^{k} F_{j} \cdot 
-                        \sigma x_{j} = 0
+                        \delta x_{j} = 0
                     }
                 \end{equation}
             Suponha que as coordenadas cartesianas sejam relacionadas com as coordenadas generalizadas na forma das seguintes equações:
@@ -1963,11 +1963,9 @@
                     }
                 \end{equation}
             Nota-se que os deslocamentos virtuais das coordenadas cartesianas $x_{j}$ serão dadas pela diferenciação das funções que as relacionam com as coordenadas generalizadas, obtendo a seguinte equação:
-                \begin{equation}
-                    \boxed{
-                        \sigma x_{j} = 
-                        \sum_{i=1}^{k} \diffp{x_{j}}{q_{i}} \sigma q_{i} + 
-                        \diffp{x_{j}}{t} \sigma t
-                    }
-                \end{equation}
+                \begin{equation*}
+                    \delta x_{j} = 
+                    \sum_{i=1}^{k} \diffp{x_{j}}{{q_{i}}}\delta q_{i} + 
+                    \diffp{x_{j}}{t}\delta t
+                \end{equation*}
 \end{document}
