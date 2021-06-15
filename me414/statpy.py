@@ -372,9 +372,23 @@ def NormalIntervalInfo(a: float, b: float, mu: float, sg: float):
     return px
 
 def NormalStandardReverse(px: float):
-    # px: P(X < x)
-    #
-    # x: expected value
+    """
+    Reverse Normal Standard Distribution
+
+    Returns the expected value of the desired probability 
+    of a Normal Standard Distribution using the the 
+    erfinv function from special
+
+    Parameters
+    ----------
+    px: float
+        P(X < x), probability of distribution
+
+    Returns
+    -------
+    x : float
+        expected value
+    """
 
     return np.sqrt(2)*special.erfinv(2*px - 1)
 
