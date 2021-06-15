@@ -529,6 +529,7 @@ def SCnfInt(p, sc, n):
               SCnfInt[2] maximum interval value
     """
 
+    # z = NormalStandardReverse((1+p)/2)
     if  (sc == 0.68):
         z = 1.0
     elif(sc == 0.90):
@@ -606,6 +607,7 @@ def SCCnfInt(p, sc, n):
                Minimum in expInt[0] and maximum in expInt[1]
     """
 
+    # z = NormalStandardReverse((1+p)/2)
     if  (sc == 0.68):
         z = 1.0
     elif(sc == 0.90):
@@ -706,6 +708,7 @@ def sSCnfInt(p, sc, e):
                Minimum sample for specified error margin
     """
 
+    # z = NormalStandardReverse((1+p)/2)
     if  (sc == 0.68):
         z = 1.0
     elif(sc == 0.90):
@@ -752,6 +755,7 @@ def sSCCnfInt(p, sc, e):
                 sSCCnfInt[2] maximum interval value
     """
 
+    # z = NormalStandardReverse((1+p)/2)
     if  (sc == 0.68):
         z = 1.0
     elif(sc == 0.90):
