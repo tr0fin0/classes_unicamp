@@ -395,7 +395,7 @@ def RNrmStd(px: float):
 
 def RNrmStd_i(px: float, greater = False, module = False):
     """
-    Reverse Normal Standard Distribution
+    Reverse Normal Standard Distribution information
 
     Returns the expected value of the desired probability of 
     a Normal Standard Distribution using the erfinv function 
@@ -539,15 +539,7 @@ def SCnfInt(p, sc, n):
               SCnfInt[2] maximum interval value
     """
 
-    # z = RNrmStd((1+p)/2)
-    if  (sc == 0.68):
-        z = 1.0
-    elif(sc == 0.90):
-        z = 1.64
-    elif(sc == 0.95):
-        z = 1.96
-    elif(sc == 0.99):
-        z = 2.58
+    z = RNrmStd((1+p)/2)
 
     return cnfInt(p, z, n)
 
@@ -617,15 +609,7 @@ def SCCnfInt(p, sc, n):
                Minimum in expInt[0] and maximum in expInt[1]
     """
 
-    # z = RNrmStd((1+p)/2)
-    if  (sc == 0.68):
-        z = 1.0
-    elif(sc == 0.90):
-        z = 1.64
-    elif(sc == 0.95):
-        z = 1.96
-    elif(sc == 0.99):
-        z = 2.58
+    z = RNrmStd((1+p)/2)
 
     return CCnfInt(p, z, n)
 
@@ -718,15 +702,7 @@ def sSCnfInt(p, sc, e):
                Minimum sample for specified error margin
     """
 
-    # z = RNrmStd((1+p)/2)
-    if  (sc == 0.68):
-        z = 1.0
-    elif(sc == 0.90):
-        z = 1.64
-    elif(sc == 0.95):
-        z = 1.96
-    elif(sc == 0.99):
-        z = 2.58
+    z = RNrmStd((1+p)/2)
 
     return sCnfInt(p, z, e)
 
@@ -765,14 +741,6 @@ def sSCCnfInt(p, sc, e):
                 sSCCnfInt[2] maximum interval value
     """
 
-    # z = RNrmStd((1+p)/2)
-    if  (sc == 0.68):
-        z = 1.0
-    elif(sc == 0.90):
-        z = 1.64
-    elif(sc == 0.95):
-        z = 1.96
-    elif(sc == 0.99):
-        z = 2.58
+    z = RNrmStd((1+p)/2)
 
     return sCCnfInt(p, z, e)
