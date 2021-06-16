@@ -1979,7 +1979,7 @@
                 \end{equation}
 
         \subsection{Equações de Lagrange}
-            \paragraph{Definção}Equações obtidas a partir do \textbf{Princípio de d'Alembert}, relacionando as energias envolvidas no sistema denotadas por $L = T - V$ como demonstrado pela seguinte equação:
+            \paragraph{Definção}Equações obtidas a partir do \textbf{Princípio de d'Alembert}, relacionando as energias envolvidas no sistema denotadas pelo Lagrangiano $L = T - V$ como demonstrado pela seguinte equação:
                 \begin{equation}
                     \boxed{
                         \diff{}{t} \left(\diffp{L}{{\dot{q}_{i}}}\right) - 
@@ -1990,9 +1990,21 @@
                 \end{equation}
             Onde:
                 \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                    \item $q_{i}$: Coordenadas generalizadas do sistema;
-                    \item $Q'_{i}$: Forças generalizadas não deriváveis de uma função potencial;
-                    \item Vínculos são ideias e Holônomos;
-                    \item Referência inercial;
+                    \item \textbf{Considerações:}
+                        \begin{enumerate}
+                            \item \texttt{Coordenadas:} Generalizadas representados por $q_{i}$;
+                            \item \texttt{Vínculos:} Ideias e Holônomos;
+                            \item \texttt{Referencial:} Inercial;
+                        \end{enumerate}
+
+                    \item $R$: \textbf{Função de Dissipação de Rayleigh:} Representa forças não conservativas proporcionais à velocidade, obtido pela seguinte equação:
+                        \begin{equation}
+                            R = \sum_{j=1}^{k} \frac{1}{2} c_{j} \dot{x}_{j}^{2}
+                            \quad\text{onde}\quad
+                            Q'_{i} = -\diffp{R}{{\dot{q}_{i}}}
+                        \end{equation}
+                        \begin{enumerate}[rightmargin = \leftmargin]
+                            \item $Q'_{i}$: Forças generalizadas não deriváveis de uma função potencial;
+                        \end{enumerate}
                 \end{enumerate}
 \end{document}
