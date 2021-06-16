@@ -493,9 +493,9 @@ def NormalReverseInfo(px: float, mu: float, sg: float):
 
     return x
 
-def cnfInt(p, z, n):
+def cnfIntPrp(p, z, n):
     """
-    Confidence Interval
+    Confidence Interval Proportional
 
     Returns the minimum and maximum values 
     from the probability of p in an amostral distribution
@@ -514,10 +514,10 @@ def cnfInt(p, z, n):
 
     Returns
     -------
-    cnfInt : array
-             cnfInt[0] error of interval
-             cnfInt[1] minimum interval value
-             cnfInt[2] maximum interval value
+    cnfIntPrp : array
+                cnfIntPrp[0] error of interval
+                cnfIntPrp[1] minimum interval value
+                cnfIntPrp[2] maximum interval value
     """
 
     err = z*np.sqrt(p*(1-p)/n)
@@ -526,9 +526,9 @@ def cnfInt(p, z, n):
 
 
 
-def SCnfInt(p, sc, n):
+def SCnfIntPrp(p, sc, n):
     """
-    Statistical Confidence Interval
+    Statistical Confidence Interval Proportional
 
     Returns the minimum and maximum values 
     from the probability of p in an amostral distribution
@@ -552,21 +552,21 @@ def SCnfInt(p, sc, n):
 
     Returns
     -------
-    SCnfInt : array
-              SCnfInt[0] error of interval
-              SCnfInt[1] minimum interval value
-              SCnfInt[2] maximum interval value
+    SCnfIntPrp : array
+                 SCnfIntPrp[0] error of interval
+                 SCnfIntPrp[1] minimum interval value
+                 SCnfIntPrp[2] maximum interval value
     """
 
     z = RNrmStdDst((1+sc)/2)
 
-    return cnfInt(p, z, n)
+    return cnfIntPrp(p, z, n)
 
 
 
-def CCnfInt(p, z, n):
+def CCnfIntPrp(p, z, n):
     """
-    Conservative Confidence Interval
+    Conservative Confidence Interval Proportional
 
     Returns the minimum and maximum values 
     from the probability of p in an amostral distribution
@@ -586,10 +586,10 @@ def CCnfInt(p, z, n):
 
     Returns
     -------
-    CCnfInt : array
-              CCnfInt[0] error of interval
-              CCnfInt[1] minimum interval value
-              CCnfInt[2] maximum interval value
+    CCnfIntPrp : array
+                 CCnfIntPrp[0] error of interval
+                 CCnfIntPrp[1] minimum interval value
+                 CCnfIntPrp[2] maximum interval value
     """
 
     err = z*np.sqrt(1/n)/2
@@ -598,9 +598,9 @@ def CCnfInt(p, z, n):
 
 
 
-def SCCnfInt(p, sc, n):
+def SCCnfIntPrp(p, sc, n):
     """
-    Statistical Conservative Confidence Interval
+    Statistical Conservative Confidence Interval Proportional
 
     Returns the minimum size n needed for the sample 
     to achieve an desired error margin of e considering an 
@@ -624,19 +624,19 @@ def SCCnfInt(p, sc, n):
 
     Returns
     -------
-    SCCnfInt : array
-               Minimum in expInt[0] and maximum in expInt[1]
+    SCCnfIntPrp : array
+                  Minimum in expInt[0] and maximum in expInt[1]
     """
 
     z = RNrmStdDst((1+sc)/2)
 
-    return CCnfInt(p, z, n)
+    return CCnfIntPrp(p, z, n)
 
 
 
-def sCnfInt(p, z, e):
+def sCnfIntPrp(p, z, e):
     """
-    size Confidence Interval
+    size Confidence Interval Proportional
 
     Returns the minimum size n needed for the sample 
     to achieve an desired error margin of e considering an 
@@ -655,17 +655,17 @@ def sCnfInt(p, z, e):
 
     Returns
     -------
-    sCnfInt : float
-              size of sample
+    sCnfIntPrp : float
+                 size of sample
     """
 
     return (z**2)*(p*(1-p))/(e**2)
 
 
 
-def sCCnfInt(p, z, e):
+def sCCnfIntPrp(p, z, e):
     """
-    size Conservative Confidence Interval
+    size Conservative Confidence Interval Proportional
 
     Returns the minimum size n needed for the sample 
     to achieve an desired error margin of e considering an 
@@ -684,16 +684,16 @@ def sCCnfInt(p, z, e):
 
     Returns
     -------
-    sCCnfInt : float
-               size of conservative sample
+    sCCnfIntPrp : float
+                  size of conservative sample
     """
 
     return (z**2)/(4*e**2)
 
 
-def sSCnfInt(p, sc, e):
+def sSCnfIntPrp(p, sc, e):
     """
-    size Statistical Confidence Interval
+    size Statistical Confidence Interval Proportional
 
     Returns the minimum size n needed for the sample 
     to achieve an desired error margin of e considering an 
@@ -717,19 +717,19 @@ def sSCnfInt(p, sc, e):
 
     Returns
     -------
-    sSCnfInt : float
-               Minimum sample for specified error margin
+    sSCnfIntPrp : float
+                  Minimum sample for specified error margin
     """
 
     z = RNrmStdDst((1+sc)/2)
 
-    return sCnfInt(p, z, e)
+    return sCnfIntPrp(p, z, e)
 
 
 
-def sSCCnfInt(p, sc, e):
+def sSCCnfIntPrp(p, sc, e):
     """
-    size Statistical Conservative Confidence Interval
+    size Statistical Conservative Confidence Interval Proportional
 
     Returns the minimum size n needed for the sample 
     to achieve an desired error margin of e considering an 
@@ -753,13 +753,13 @@ def sSCCnfInt(p, sc, e):
 
     Returns
     -------
-    sCsCnfInt : float
+    sCsCnfIntPrp : float
 
-                sSCCnfInt[0] error of interval
-                sSCCnfInt[1] minimum interval value
-                sSCCnfInt[2] maximum interval value
+                   sSCCnfIntPrp[0] error of interval
+                   sSCCnfIntPrp[1] minimum interval value
+                   sSCCnfIntPrp[2] maximum interval value
     """
 
     z = RNrmStdDst((1+sc)/2)
 
-    return sCCnfInt(p, z, e)
+    return sCCnfIntPrp(p, z, e)
