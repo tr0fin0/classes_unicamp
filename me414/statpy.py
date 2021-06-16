@@ -254,14 +254,27 @@ def ExponencialInfo(Lambda: int, x: int):
 
     return px
 
-def NormalStandard(x: float):
-    # x: number expected
-    #
-    # px: P(X < x)
+def nrmStd(x: float):
+    """
+    Normal Standard Distribution
+
+    Returns the de value of P(X < x) within a normal distribution, 
+    expected value = 0  and variance = 1
+
+    Parameters
+    ----------
+    x : float
+        Desired value
+
+    Returns
+    -------
+    px: float
+        P(X < x)
+    """
 
     return 1/2*(special.erf(x/(np.sqrt(2))) + 1)
 
-def NormalStandardInfo(x: float, s: int):
+def nrmStd_i(x: float, s: int):
     #x: number expected
     #s: comparsion
     #   if (s == 1):
@@ -270,7 +283,7 @@ def NormalStandardInfo(x: float, s: int):
     #       P(X<x)
     #   comparsion
 
-    px = NormalStandard(x)
+    px = nrmStd(x)
 
     print("\nNormal Standard Distribution")
     print("x    = {:.4f}".format(x))
@@ -297,10 +310,10 @@ def NormalStandardInfo(x: float, s: int):
 
     return px
 
-def NormalStandardIntervalInfo(a: float, b: float):
+def nrmStdIntervalInfo(a: float, b: float):
 
-    pa = NormalStandard(a)
-    pb = NormalStandard(b)
+    pa = nrmStd(a)
+    pb = nrmStd(b)
 
     px = pb - pa
 
@@ -313,7 +326,7 @@ def NormalStandardIntervalInfo(a: float, b: float):
 
 
 def Normal(x: float, mu: float, sg: float):
-    return NormalStandard((x - mu)/np.sqrt(sg))
+    return nrmStd((x - mu)/np.sqrt(sg))
 
 def NormalInfo(x: float, mu: float, sg: float, s: int):
     # x:  number expected
