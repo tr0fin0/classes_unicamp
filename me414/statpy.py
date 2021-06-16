@@ -763,3 +763,38 @@ def sSCCnfIntPrp(p, sc, e):
     z = RNrmStdDst((1+sc)/2)
 
     return sCCnfIntPrp(p, z, e)
+
+def cnfIntAbs(ex, sd, z, n):
+    """
+    Confidence Interval Absolute
+
+    Returns the minimum and maximum values 
+    from the absolute value of ex with a standart deviation of sd 
+    in an amostral distribution considering an interval constant of z 
+    with a sample of size n
+
+    Parameters
+    ----------
+    ex: float
+        abusolute value
+
+    sd: float
+        standard deviation
+
+    z : float
+        interval constant
+
+    n : int
+        size of sample
+
+    Returns
+    -------
+    cnfIntAbs : array
+                cnfIntAbs[0] error of interval
+                cnfIntAbs[1] minimum interval value
+                cnfIntAbs[2] maximum interval value
+    """
+
+    err = z*sd/np.sqrt(n)
+
+    return err, ex-err, ex+err
