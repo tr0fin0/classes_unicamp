@@ -371,7 +371,7 @@ def NormalIntervalInfo(a: float, b: float, mu: float, sg: float):
 
     return px
 
-def NormalStandardReverse(px: float):
+def RNrmStd(px: float):
     """
     Reverse Normal Standard Distribution
 
@@ -393,7 +393,7 @@ def NormalStandardReverse(px: float):
 
     return np.sqrt(2)*special.erfinv(2*px - 1)
 
-def RNrmStd(px: float, greater = False, module = False):
+def RNrmStd_i(px: float, greater = False, module = False):
     """
     Reverse Normal Standard Distribution
 
@@ -431,22 +431,22 @@ def RNrmStd(px: float, greater = False, module = False):
 
     #P(|X| > x) = px
     if greater and module:
-        x = NormalStandardReverse(1-px/2)
+        x = RNrmStd(1-px/2)
         print("P(|X| > {:.4f}) = {:.4f}".format(x, px))
 
     #P(X > x) = px
     elif greater and not module:
-        x = NormalStandardReverse(1-px)
+        x = RNrmStd(1-px)
         print("P(X > {:.4f}) = {:.4f}".format(x, px))
 
     #P(|X| < x) = px
     elif not greater and module:
-        x = NormalStandardReverse((1+px)/2)
+        x = RNrmStd((1+px)/2)
         print("P(|X| < {:.4f}) = {:.4f}".format(x, px))
 
     #P(X < x) = px
     elif not greater and not module:
-        x = NormalStandardReverse(px)
+        x = RNrmStd(px)
         print("P(X < {:.4f}) = {:.4f}".format(x, px))
 
     return x
@@ -459,7 +459,7 @@ def NormalReverse(px: float, mu: float, sg: float):
     # print("\nNormal Reverse Distribution")
     # print("px = {:.4f}".format(x))
 
-    return (mu + np.sqrt(sg)*NormalStandardReverse(px))
+    return (mu + np.sqrt(sg)*RNrmStd(px))
 
 def NormalReverseInfo(px: float, mu: float, sg: float):
     # px: probability P(X < x)
@@ -539,7 +539,7 @@ def SCnfInt(p, sc, n):
               SCnfInt[2] maximum interval value
     """
 
-    # z = NormalStandardReverse((1+p)/2)
+    # z = RNrmStd((1+p)/2)
     if  (sc == 0.68):
         z = 1.0
     elif(sc == 0.90):
@@ -617,7 +617,7 @@ def SCCnfInt(p, sc, n):
                Minimum in expInt[0] and maximum in expInt[1]
     """
 
-    # z = NormalStandardReverse((1+p)/2)
+    # z = RNrmStd((1+p)/2)
     if  (sc == 0.68):
         z = 1.0
     elif(sc == 0.90):
@@ -718,7 +718,7 @@ def sSCnfInt(p, sc, e):
                Minimum sample for specified error margin
     """
 
-    # z = NormalStandardReverse((1+p)/2)
+    # z = RNrmStd((1+p)/2)
     if  (sc == 0.68):
         z = 1.0
     elif(sc == 0.90):
@@ -765,7 +765,7 @@ def sSCCnfInt(p, sc, e):
                 sSCCnfInt[2] maximum interval value
     """
 
-    # z = NormalStandardReverse((1+p)/2)
+    # z = RNrmStd((1+p)/2)
     if  (sc == 0.68):
         z = 1.0
     elif(sc == 0.90):
