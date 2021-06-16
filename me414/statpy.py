@@ -383,7 +383,7 @@ def NormalStandardReverse(px: float):
     ----------
     px: float
 
-        P(X < x), probability of distribution
+        P(X < x) = px, probability of distribution
 
     Returns
     -------
