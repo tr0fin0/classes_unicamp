@@ -254,7 +254,7 @@ def ExponencialInfo(Lambda: int, x: int):
 
     return px
 
-def nrmStd(x: float):
+def nrmStdDst(x: float):
     """
     Normal Standard Distribution
 
@@ -274,7 +274,7 @@ def nrmStd(x: float):
 
     return 1/2*(special.erf(x/(np.sqrt(2))) + 1)
 
-def nrmStd_i(x: float, s: int):
+def nrmStdDst_i(x: float, s: int):
     #x: number expected
     #s: comparsion
     #   if (s == 1):
@@ -283,7 +283,7 @@ def nrmStd_i(x: float, s: int):
     #       P(X<x)
     #   comparsion
 
-    px = nrmStd(x)
+    px = nrmStdDst(x)
 
     print("\nNormal Standard Distribution")
     print("x    = {:.4f}".format(x))
@@ -310,10 +310,10 @@ def nrmStd_i(x: float, s: int):
 
     return px
 
-def nrmStdIntervalInfo(a: float, b: float):
+def nrmStdDstIntervalInfo(a: float, b: float):
 
-    pa = nrmStd(a)
-    pb = nrmStd(b)
+    pa = nrmStdDst(a)
+    pb = nrmStdDst(b)
 
     px = pb - pa
 
@@ -326,7 +326,7 @@ def nrmStdIntervalInfo(a: float, b: float):
 
 
 def Normal(x: float, mu: float, sg: float):
-    return nrmStd((x - mu)/np.sqrt(sg))
+    return nrmStdDst((x - mu)/np.sqrt(sg))
 
 def NormalInfo(x: float, mu: float, sg: float, s: int):
     # x:  number expected
@@ -384,7 +384,7 @@ def NormalIntervalInfo(a: float, b: float, mu: float, sg: float):
 
     return px
 
-def RNrmStd(px: float):
+def RNrmStdDst(px: float):
     """
     Reverse Normal Standard Distribution
 
@@ -406,7 +406,7 @@ def RNrmStd(px: float):
 
     return np.sqrt(2)*special.erfinv(2*px - 1)
 
-def RNrmStd_i(px: float, greater = False, module = False):
+def RNrmStdDst_i(px: float, greater = False, module = False):
     """
     Reverse Normal Standard Distribution information
 
@@ -444,22 +444,22 @@ def RNrmStd_i(px: float, greater = False, module = False):
 
     #P(|X| > x) = px
     if greater and module:
-        x = RNrmStd(1-px/2)
+        x = RNrmStdDst(1-px/2)
         print("P(|X| > {:.4f}) = {:.4f}".format(x, px))
 
     #P(X > x) = px
     elif greater and not module:
-        x = RNrmStd(1-px)
+        x = RNrmStdDst(1-px)
         print("P(X > {:.4f}) = {:.4f}".format(x, px))
 
     #P(|X| < x) = px
     elif not greater and module:
-        x = RNrmStd((1+px)/2)
+        x = RNrmStdDst((1+px)/2)
         print("P(|X| < {:.4f}) = {:.4f}".format(x, px))
 
     #P(X < x) = px
     elif not greater and not module:
-        x = RNrmStd(px)
+        x = RNrmStdDst(px)
         print("P(X < {:.4f}) = {:.4f}".format(x, px))
 
     return x
@@ -472,7 +472,7 @@ def NormalReverse(px: float, mu: float, sg: float):
     # print("\nNormal Reverse Distribution")
     # print("px = {:.4f}".format(x))
 
-    return (mu + np.sqrt(sg)*RNrmStd(px))
+    return (mu + np.sqrt(sg)*RNrmStdDst(px))
 
 def NormalReverseInfo(px: float, mu: float, sg: float):
     # px: probability P(X < x)
@@ -552,7 +552,7 @@ def SCnfInt(p, sc, n):
               SCnfInt[2] maximum interval value
     """
 
-    z = RNrmStd((1+sc)/2)
+    z = RNrmStdDst((1+sc)/2)
 
     return cnfInt(p, z, n)
 
@@ -622,7 +622,7 @@ def SCCnfInt(p, sc, n):
                Minimum in expInt[0] and maximum in expInt[1]
     """
 
-    z = RNrmStd((1+sc)/2)
+    z = RNrmStdDst((1+sc)/2)
 
     return CCnfInt(p, z, n)
 
@@ -715,7 +715,7 @@ def sSCnfInt(p, sc, e):
                Minimum sample for specified error margin
     """
 
-    z = RNrmStd((1+sc)/2)
+    z = RNrmStdDst((1+sc)/2)
 
     return sCnfInt(p, z, e)
 
@@ -754,6 +754,6 @@ def sSCCnfInt(p, sc, e):
                 sSCCnfInt[2] maximum interval value
     """
 
-    z = RNrmStd((1+sc)/2)
+    z = RNrmStdDst((1+sc)/2)
 
     return sCCnfInt(p, z, e)
