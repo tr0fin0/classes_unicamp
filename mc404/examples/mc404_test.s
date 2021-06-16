@@ -1,73 +1,68 @@
-SomaVetor:
-    # inicialize
+.section .data
+    string:
+        .word 65
+        .word 100
+        .word 92 
+        .word 94 
+        .word 96 
+        .word 97 
+        .word 98 
+        .word 110
+        .word 121
+        .word 123
+        .word 122
+        .word 0
 
-    # save inicial pointers
-    add s0, zero, a0 # s0 = *A[j]
-    add s1, zero, a1 # s1 = *B[j]
-    add s2, zero, a2 # s2 = *C[j]
-    # save vectors size
-    add s3, zero, a3 # s3 =  n
+.section .text
+    Maiuscula:
+        addi t0, a0, 0     # save *string
+        addi t2, zero,  97 #a in ASCII
+        addi t3, zero, 122 #z in ASCII
 
-    # vector values registers
-    add t0, zero, zero # t0 = A[j]
-    add t1, zero, zero # t1 = B[j]
-    add t2, zero, zero # t2 = C[j]
-    # size counter
-    add t3, zero, zero # i = 0
+        loop1:
+            lbu t1, 0(a0)     #    char = string[i]
+            beq t1, zero, end1 # if char == \0 then end
 
-    loop:
-        lw t1, 0(s1) # load B[j] value
-        lw t2, 0(s2) # load C[j] value
+            addi a0, a0, 4    # a0++
 
-        add t0, t1, t2 # store total value
-        sw  t0, 0(s0)  # A[j] = B[j] + C[j]
+            blt t1, t2, loop1  # if char  a then loop
+            bgt t1, t3, loop1  # if char  z then loop
 
-        addi s0, s0, 4 # *A[j] -> A[j+1]
-        addi s1, s1, 4 # *B[j] -> B[j+1]
-        addi s2, s2, 4 # *C[j] -> C[j+1]
+            lbu  t1,  -4(a0)  #      char = string[i]
+            addi t1, t1, -32  #       "A" = "a" - 32
+            sb   t1,  -4(a0)  # string[i] = CHAR
 
-        addi t3, t3, 1 # i = i + 1
+            j loop1
 
-        blt t3, s3, loop # if i < n then loop
+        end1:
+            addi a0, t0, 0 # return *string
+            jr ra
 
-    jr ra # return
+    ImprimeMaiuscula:
+        call Maiuscula
+        
+        addi t1, a0, 0     # *string
 
-main:
-    # declare values
-    addi s0, zero, 1;
-    addi s1, zero, 2;
-    addi s2, zero, 3;
-    addi s3, zero, 4;
-    addi s4, zero, 5;
+        loop:
+            lbu t2, 0(t1)      #    char = string[i]
+            beq t2, zero, end  # if char == \0 then end
+            
+            addi t1, t1, 4     # a0++
+            
+            addi t0, zero, 2   # syscall: print caracter
+            addi a0, t2, 0     # caracter to print
+            ecall
 
-    # declare stack and store values
-    addi sp, sp, -20;
-    sw s0, 0(sp)
-    sw s1, 4(sp)
-    sw s2, 8(sp)
-    sw s3, 12(sp)
-    sw s4, 16(sp)
-    addi sp, sp, -20;
-    sw s0, 0(sp)
-    sw s1, 4(sp)
-    sw s2, 8(sp)
-    sw s3, 12(sp)
-    sw s4, 16(sp)
+            j loop
 
-    # declare a1 = *c
-    addi a0, sp, -20
-    addi a1, sp,   0
-    addi a2, sp,  20
-    addi a3, zero, 5
+        end:
+            jr ra
 
-    jal SomaVetor
+    main:
+        # declare a0 = *string
+        lui  a0,     %hi(string)
+        addi a0, a0, %lo(string)
 
-    # remove stack and retrive values
-    lw s4, 16(sp)
-    lw s3, 12(sp)
-    lw s2, 8(sp)
-    lw s1, 4(sp)
-    lw s0, 0(sp)
-    addi sp, sp, 40; # sp = sp + 40
+        call ImprimeMaiuscula
 
-    jr ra
+        jr ra
