@@ -280,7 +280,7 @@ if(False):
     )
 
 # exercice 85
-if(True):
+if(False):
     ex = 106   # valor esperado/amostra
     dp = 21.54 # desvio padrão/amostra
     n  = 543   # tamanho amostral
@@ -293,4 +293,39 @@ if(True):
         "\nexercice 85:" + 
         "\n a) {:.4}".format(ei[1]) + 
         "\n b) {:.4}".format(ei[2])
+    )
+
+# exercice 86
+if(True):
+    n  = 30      # tamanho da amostra
+    mi = 22.90   # min
+    ma = 28.43   # max
+    ex = 26.06   # median
+    me = 26.00   # mean
+    vx = 2.06159 # var
+    sd = 1.43582 # std dev
+    cv = 0.05523 # coef var
+    ic = 0.95    # confidence interval 2 sd
+
+    # c)
+    ei = stat.SCnfIntAbs(ex, sd, ic, n)
+    q = 27 # quantidade de creditos
+    print(ei[2])
+    c = 2.0
+    if (q-ei[2])>0: c =1.0
+
+    #d
+    d = 0.26214 # SE.mean
+
+    #e
+    ic = 0.99 # confidence interval
+    ei = stat.SCnfIntAbs(ex, sd, ic, n)
+
+    print(
+        "\nexercice 85:" + 
+        "\n a) {:.4}".format(ex) + 
+        "\n b) {:.4}".format(sd) + 
+        "\n c) {:.4}".format(c) + 
+        "\n d) {:.4}".format(d) + 
+        "\n e) {:.4}".format(ei[2])
     )
