@@ -30,7 +30,6 @@ ret
 
 # int strcmp(const char *str1, const char *str2)
 strcmp:
-    addi a0, zero, 1 # a0 = 1, str1 == str2
 
     loop:
         lbu t0, 0(a0)       # t0 = str1[i]
@@ -40,9 +39,11 @@ strcmp:
         bne t0, t1, end    # if str1[i] != str2[i] then end
         bne t0, zero, loop # if str1[i] != \0      then loop
 
+        addi a0, zero, 1 # a0 = 1, str1 == str2
+    ret
+
     end:
         addi a0, zero, 0 # a0 = 0, str1 != str2
-
 ret
 
 # char *strcat(char *destination, const char *source)
