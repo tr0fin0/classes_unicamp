@@ -440,6 +440,12 @@ def RNrmStdDst_i(px: float, greater = False, module = False):
 
         |A| > a: A > a or A < -a
         |A| < a: A < a or A > -a, -a < A < a
+
+        know: P(X < -x) = P(X > x) so:
+
+        P(|X| < x) = 1 - P(X < x)
+        P(X > x) = 1 - P(X < x)
+
     """
 
     #P(|X| > x) = px
