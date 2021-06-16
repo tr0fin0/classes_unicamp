@@ -539,7 +539,7 @@ def SCnfInt(p, sc, n):
               SCnfInt[2] maximum interval value
     """
 
-    z = RNrmStd((1+p)/2)
+    z = RNrmStd((1+sc)/2)
 
     return cnfInt(p, z, n)
 
@@ -609,7 +609,7 @@ def SCCnfInt(p, sc, n):
                Minimum in expInt[0] and maximum in expInt[1]
     """
 
-    z = RNrmStd((1+p)/2)
+    z = RNrmStd((1+sc)/2)
 
     return CCnfInt(p, z, n)
 
@@ -702,7 +702,7 @@ def sSCnfInt(p, sc, e):
                Minimum sample for specified error margin
     """
 
-    z = RNrmStd((1+p)/2)
+    z = RNrmStd((1+sc)/2)
 
     return sCnfInt(p, z, e)
 
@@ -741,6 +741,6 @@ def sSCCnfInt(p, sc, e):
                 sSCCnfInt[2] maximum interval value
     """
 
-    z = RNrmStd((1+p)/2)
+    z = RNrmStd((1+sc)/2)
 
     return sCCnfInt(p, z, e)
