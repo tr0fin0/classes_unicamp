@@ -280,26 +280,17 @@ if(False):
     )
 
 # exercice 85
-if(False):
+if(True):
     ex = 106   # valor esperado/amostra
-    dp = 20.18 # desvio padrão/amostra
-    vx = dp**2 # variância
-    n  = 499   # tamanho amostral
+    dp = 21.54 # desvio padrão/amostra
+    n  = 543   # tamanho amostral
     ic = 0.99  # intervalo de confiança
 
     # a) b)
-    p = stat.NormalInfo(0, ex, vx/n, 1)
-    ei = stat.SCCnfInt(ex, ic, n)
-
-    mi = ex*(1 - ei[0])
-    ma = ex*(1 + ei[0])
+    ei = stat.SCnfIntAbs(ex, dp, ic, n)
 
     print(
         "\nexercice 85:" + 
-        "\n p     {:.4}".format(p) + 
-        "\n ei[0] {:.4}".format(ei[0]) + 
-        "\n ei[1] {:.4}".format(ei[1]) + 
-        "\n ei[2] {:.4}".format(ei[2]) + 
-        "\n a) {:.4}".format(mi) + 
-        "\n b) {:.4}".format(ma)
+        "\n a) {:.4}".format(ei[1]) + 
+        "\n b) {:.4}".format(ei[2])
     )
