@@ -532,15 +532,15 @@ def SCnfIntPrp(p, sc, n):
 
     Returns the minimum and maximum values 
     from the probability of p in an amostral distribution
-    considering an interval constant of z with a sample of size n
+    considering an statistical confidence of sc with a sample of size n
 
     Parameters
     ----------
     p : float
-        probability of population
+        Probability of population
 
     sc: float
-        statistical confidence
+        Statistical Confidence
 
         if  sc == 0.68 then z = 1
             sc == 0.90 then z = 1.64
@@ -548,11 +548,12 @@ def SCnfIntPrp(p, sc, n):
             sc == 0.99 then z = 2.58
 
     n : int
-        size of sample
+        Size of sample
 
     Returns
     -------
     SCnfIntPrp : array
+
                  SCnfIntPrp[0] error of interval
                  SCnfIntPrp[1] minimum interval value
                  SCnfIntPrp[2] maximum interval value
@@ -776,20 +777,21 @@ def cnfIntAbs(ex, sd, z, n):
     Parameters
     ----------
     ex: float
-        abusolute value
+        Abusolute value
 
     sd: float
-        standard deviation
+        Standard Deviation
 
     z : float
-        interval constant
+        Interval Constant
 
     n : int
-        size of sample
+        Size of sample
 
     Returns
     -------
     cnfIntAbs : array
+
                 cnfIntAbs[0] error of interval
                 cnfIntAbs[1] minimum interval value
                 cnfIntAbs[2] maximum interval value
@@ -798,3 +800,45 @@ def cnfIntAbs(ex, sd, z, n):
     err = z*sd/np.sqrt(n)
 
     return err, ex-err, ex+err
+
+
+def SCnfIntAbs(ex, sd, sc, n):
+    """
+    Statistical Confidence Interval Absolute
+
+    Returns the minimum and maximum values 
+    from the absolute value of ex with a standart deviation of sd 
+    in an amostral distribution considering an statiscal confidence of sc 
+    with a sample of size n
+
+    Parameters
+    ----------
+    ex: float
+        Abusolute value
+
+    sd: float
+        Standard Deviation
+
+    sc: float
+        Statistical Confidence
+
+        if  sc == 0.68 then z = 1
+            sc == 0.90 then z = 1.64
+            sc == 0.95 then z = 1.96
+            sc == 0.99 then z = 2.58
+
+    n : int
+        size of sample
+
+    Returns
+    -------
+    cnfIntAbs : array
+
+                cnfIntAbs[0] error of interval
+                cnfIntAbs[1] minimum interval value
+                cnfIntAbs[2] maximum interval value
+    """
+
+    z = RNrmStdDst((1+sc)/2)
+
+    return cnfIntAbs(ex, sd, z, n)
