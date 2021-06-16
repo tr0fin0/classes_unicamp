@@ -504,13 +504,13 @@ def cnfIntPrp(p, z, n):
     Parameters
     ----------
     p : float
-        probability of population
+        Probability of population
 
     z : float
-        interval constant
+        Interval Constant
 
     n : int
-        size of sample
+        Size of sample
 
     Returns
     -------
@@ -577,17 +577,18 @@ def CCnfIntPrp(p, z, n):
     Parameters
     ----------
     p : float
-        probability of population
+        Probability of population
 
     z : float
-        interval constant
+        Interval Constant
 
     n : int
-        size of sample
+        Size of sample
 
     Returns
     -------
     CCnfIntPrp : array
+
                  CCnfIntPrp[0] error of interval
                  CCnfIntPrp[1] minimum interval value
                  CCnfIntPrp[2] maximum interval value
@@ -610,10 +611,10 @@ def SCCnfIntPrp(p, sc, n):
     Parameters
     ----------
     p : float
-        probability of population
+        Probability of population
 
     sc: float
-        statistical confidence
+        Statistical Confidence
 
         if  sc == 0.68 then z = 1
             sc == 0.90 then z = 1.64
@@ -621,7 +622,7 @@ def SCCnfIntPrp(p, sc, n):
             sc == 0.99 then z = 2.58
 
     n : int
-        size of sample
+        Size of sample
 
     Returns
     -------
@@ -646,18 +647,18 @@ def sCnfIntPrp(p, z, e):
     Parameters
     ----------
     p : float
-        probability of population
+        Probability of population
 
     z : float
-        interval constant
+        Interval Constant
 
     e : float
-        margin of error
+        Margin of Error
 
     Returns
     -------
     sCnfIntPrp : float
-                 size of sample
+                 Size of sample
     """
 
     return (z**2)*(p*(1-p))/(e**2)
@@ -675,18 +676,18 @@ def sCCnfIntPrp(p, z, e):
     Parameters
     ----------
     p : float
-        probability of population
+        Probability of population
 
     z : float
-        interval constant
+        Interval Constant
 
     e : float
-        margin of error
+        Margin of Error
 
     Returns
     -------
     sCCnfIntPrp : float
-                  size of conservative sample
+                  Size of conservative sample
     """
 
     return (z**2)/(4*e**2)
@@ -703,10 +704,10 @@ def sSCnfIntPrp(p, sc, e):
     Parameters
     ----------
     p : float
-        probability of population
+        Probability of population
 
     sc: float
-        statistical confidence
+        Statistical Confidence
 
         if  sc == 0.68 then z = 1
             sc == 0.90 then z = 1.64
@@ -714,7 +715,7 @@ def sSCnfIntPrp(p, sc, e):
             sc == 0.99 then z = 2.58
 
     e : float
-        margin of error
+        Margin of Error
 
     Returns
     -------
@@ -739,10 +740,10 @@ def sSCCnfIntPrp(p, sc, e):
     Parameters
     ----------
     p : float
-        probability of population
+        Probability of population
 
     sc: float
-        statistical confidence
+        Statistical Confidence
 
         if  sc == 0.68 then z = 1
             sc == 0.90 then z = 1.64
@@ -750,7 +751,7 @@ def sSCCnfIntPrp(p, sc, e):
             sc == 0.99 then z = 2.58
 
     e : float
-        margin of error
+        Margin of Error
 
     Returns
     -------
@@ -764,6 +765,8 @@ def sSCCnfIntPrp(p, sc, e):
     z = RNrmStdDst((1+sc)/2)
 
     return sCCnfIntPrp(p, z, e)
+
+
 
 def cnfIntAbs(ex, sd, z, n):
     """
@@ -802,6 +805,7 @@ def cnfIntAbs(ex, sd, z, n):
     return err, ex-err, ex+err
 
 
+
 def SCnfIntAbs(ex, sd, sc, n):
     """
     Statistical Confidence Interval Absolute
@@ -828,7 +832,7 @@ def SCnfIntAbs(ex, sd, sc, n):
             sc == 0.99 then z = 2.58
 
     n : int
-        size of sample
+        Size of sample
 
     Returns
     -------
