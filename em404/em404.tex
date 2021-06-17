@@ -1556,6 +1556,26 @@
                         \end{equation}
                     Onde:
                         \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item $\Omega$, \texttt{Aceleração Angular Eixos:} Representa a aceleração angular que os eixos relativos possuiram, representado pela seguinte equação:
+                                \begin{equation}
+                                    \boxed{
+                                        \vec{\Omega} = 
+                                        \Omega_{x}\vec{i} + 
+                                        \Omega_{y}\vec{j} + 
+                                        \Omega_{z}\vec{k}
+                                    }
+                                \end{equation}
+                            Note que sua derivada deverá realizar a regra da cadeia entre as direções e as velocidades sobre cada eixo como demonstrado:
+                                \begin{equation*}
+                                    \dot{\vec{\Omega}} = 
+                                    \Omega_{x}\dot{\vec{i}} + 
+                                    \dot{\Omega}_{x}\vec{i} + 
+                                    \Omega_{y}\dot{\vec{y}} + 
+                                    \dot{\Omega}_{y}\vec{y} + 
+                                    \Omega_{z}\dot{\vec{z}} + 
+                                    \dot{\Omega}_{z}\vec{z}
+                                \end{equation*}
+
                             \item $\vec{v}_{AB}$, \texttt{Velocidade Devido a Rotação:} Velocidade causada pela rotação de $AB$.
 
                             \item $\vec{v}_{R}$, \texttt{Velocidade Relativa:} Velocidade de $A$ observada com relação a $B$, ou seja, há deslocamento entre os pontos, este termo será nulo caso $\vec{\Omega} = \vec{\omega}$.
@@ -1567,7 +1587,7 @@
                                 \vec{a}_{A} = 
                                 \vec{a}_{B} + 
                                 \underbrace{
-                                    \Omega\times(\Omega_{AB}\times\vec{r}_{AB})
+                                    \Omega\times(\Omega\times\vec{r}_{AB})
                                 }_{\vec{a}_{AB_{n}}} + 
                                 \underbrace{
                                     \dot{\Omega}\times\vec{r}_{AB}
