@@ -2074,13 +2074,20 @@
 
                     \item $R$: \textbf{Função de Dissipação de Rayleigh:} Representa forças de amortecimento proporcionais à velocidade, obtido pela seguinte equação:
                         \begin{equation}
+                            R = 
+                            \sum_{j=1}^{k} 
+                            \frac{1}{2} c_{j} \dot{x}_{j}^{2}
+                            \quad\text{também empregada em}\quad
                             Q'_{i} = -\diffp{R}{{\dot{q}_{i}}}
-                            \quad\text{onde}\quad
-                            R = \sum_{j=1}^{k} \frac{1}{2} c_{j} \dot{x}_{j}^{2}
                         \end{equation}
                         \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
-                            \item $c_{j}$: Constante de Amortecimento;
-                            \item $Q'_{i}$: Forças generalizadas não deriváveis de uma função potencial;
+                            \item $c_{j}$: \texttt{Constante de Amortecimento:} Representação da proporcionalidade do amortecimento fornecido pelo componente ao sistema;
+                            
+                            \item $\dot{x}_{j}$: \texttt{Velocidade Coordenada Generalizada:} Velocidade imposta ao amortecimento com relação as coordenadas generalizadas;
+
+                            \item $Q'_{i}$: \texttt{Forças Generalizadas não Deriváveis:} Representação das forças de amortecimento com relação as coordenadas não generalizadas do sistema;
                         \end{enumerate}
+
+                    \item $Q_{i_{NC}}$: \textbf{Forças não Conservativas:} Representa forças não conservativas do sistema, ação de forças externas;
                 \end{enumerate}
 \end{document}
