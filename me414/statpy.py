@@ -532,7 +532,7 @@ def SCnfIntPrp(p, sc, n):
 
     Returns the minimum and maximum values 
     from the probability of p in an amostral distribution
-    considering an statistical confidence of sc with a sample of size n
+    considering a statistical confidence of sc with a sample of size n
 
     Parameters
     ----------
@@ -605,7 +605,7 @@ def SCCnfIntPrp(p, sc, n):
     Statistical Conservative Confidence Interval Proportional
 
     Returns the minimum size n needed for the sample 
-    to achieve an desired error margin of e considering an 
+    to achieve an desired error margin of e considering a 
     statistical confidence of sc with a probability p
 
     Parameters
@@ -698,7 +698,7 @@ def sSCnfIntPrp(p, sc, err):
     size Statistical Confidence Interval Proportional
 
     Returns the minimum size n needed for the sample 
-    to achieve an desired error margin of e considering an 
+    to achieve an desired error margin of e considering a 
     statistical confidence of sc with a probability p
 
     Parameters
@@ -734,7 +734,7 @@ def sSCCnfIntPrp(p, sc, err):
     size Statistical Conservative Confidence Interval Proportional
 
     Returns the minimum size n needed for the sample 
-    to achieve an desired error margin of e considering an 
+    to achieve an desired error margin of e considering a 
     statistical confidence of sc with a probability p
 
     Parameters
@@ -812,7 +812,7 @@ def SCnfIntAbs(ex, sd, sc, n):
 
     Returns the minimum and maximum values 
     from the absolute value of ex with a standart deviation of sd 
-    in an amostral distribution considering an statiscal confidence of sc 
+    in an amostral distribution considering a statiscal confidence of sc 
     with a sample of size n
 
     Parameters
