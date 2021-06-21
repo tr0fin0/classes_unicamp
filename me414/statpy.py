@@ -846,3 +846,30 @@ def SCnfIntAbs(ex, sd, sc, n):
     z = RNrmStdDst((1+sc)/2)
 
     return cnfIntAbs(ex, sd, z, n)
+
+def sCnfIntAbs(sd, z, err):
+    """
+    size Confidence Interval Absolute
+
+    Returns the minimum size n needed for the sample 
+    to achieve an desired error margin of err considering an 
+    interval constant of z with a standard deviantion of sd
+
+    Parameters
+    ----------
+    sd: float
+        Standard Deviantion
+
+    z : float
+        Interval Constant
+
+    err:float
+        Margin of Error
+
+    Returns
+    -------
+    sCnfIntAbs: float
+                Size of sample
+    """
+
+    return (z*sd/err)**2
