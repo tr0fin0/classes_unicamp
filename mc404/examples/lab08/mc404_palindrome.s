@@ -35,12 +35,12 @@ Palindrome:
     end0:
         addi t1, a0, -1     # *s[n-1]
 
-    addi a0, zero, 1; # a0 = 1
+    addi a0, zero, 1;       # a0 = 1
 
     loop1:
         lbu t2, 0(t0)       # s[i]
         lbu t3, 0(t1)       # s[n-i-1]
-        beq t0, zero, end   # if s[i] == zero then end
+        beq t2, zero, end2  # if s[i] == zero then end2
 
         addi t0, t0,  1     # t0++
         addi t1, t1, -1     # t1--
@@ -49,10 +49,9 @@ Palindrome:
         j loop1
 
     end1:
-        addi a0, zero, 0; # a0 = 0
-        j end
+        addi a0, zero, 0;   # a0 = 0
 
-    end:
+    end2:
         lw   ra, 0(sp)
         addi sp, sp,4
         jr ra
