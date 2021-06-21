@@ -332,9 +332,61 @@ if(False):
 
 # exercice 88
 if(True):
+    vx = 12 # variance
+    n  = 27 # size of sample
+
+    s = np.array([
+        12,
+        10,
+        8,
+        9,
+        16,
+        15,
+        16,
+        14,
+        19,
+        9,
+        17,
+        9,
+        13,
+        12,
+        13,
+        16,
+        14,
+        11,
+        12,
+        9,
+        16,
+        11,
+        19,
+        16,
+        12,
+        15,
+        8
+    ])
+
+    # a)
+    ex = np.mean(s)
+
+    # b) c) d)
+    sc = 0.95
+    sd = np.sqrt(vx)
+    ic = stat.SCnfIntAbs(ex, sd, sc, n)
+
+    # e)
+    err = 1
+    nn = stat.sSCnfIntAbs(sd, sc, err)
+
+    # f)
+    vd = np.var(s, ddof=1)
+    ic1 = stat.SCnfIntAbs(ex, vd, sc, n)
 
     print(
         "\nexercice 88:" + 
         "\n a) {:.4}".format(ex) + 
-        "\n e) {:.4}".format(ei[2])
+        "\n b) {:.4}".format(ic[1]) + 
+        "\n c) {:.4}".format(ic[2]) + 
+        "\n d) {:.4}".format(ic[0]) + 
+        "\n e) {:.4}".format(nn) + 
+        "\n f) {:.4}".format(ic1[2])
     )
