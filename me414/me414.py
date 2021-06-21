@@ -296,7 +296,7 @@ if(False):
     )
 
 # exercice 86
-if(True):
+if(False):
     n  = 30      # tamanho da amostra
     mi = 22.90   # min
     ma = 28.43   # max
@@ -322,10 +322,19 @@ if(True):
     ei = stat.SCnfIntAbs(ex, sd, ic, n)
 
     print(
-        "\nexercice 85:" + 
+        "\nexercice 86:" + 
         "\n a) {:.4}".format(ex) + 
         "\n b) {:.4}".format(sd) + 
         "\n c) {:.4}".format(c) + 
         "\n d) {:.4}".format(d) + 
+        "\n e) {:.4}".format(ei[2])
+    )
+
+# exercice 88
+if(True):
+
+    print(
+        "\nexercice 88:" + 
+        "\n a) {:.4}".format(ex) + 
         "\n e) {:.4}".format(ei[2])
     )
