@@ -836,11 +836,11 @@ def SCnfIntAbs(ex, sd, sc, n):
 
     Returns
     -------
-    cnfIntAbs : array
+    SCnfIntAbs: array
 
-                cnfIntAbs[0] error of interval
-                cnfIntAbs[1] minimum interval value
-                cnfIntAbs[2] maximum interval value
+                SCnfIntAbs[0] error of interval
+                SCnfIntAbs[1] minimum interval value
+                SCnfIntAbs[2] maximum interval value
     """
 
     z = RNrmStdDst((1+sc)/2)
