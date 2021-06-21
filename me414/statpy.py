@@ -873,3 +873,32 @@ def sCnfIntAbs(sd, z, err):
     """
 
     return (z*sd/err)**2
+
+def sSCnfIntAbs(sd, sc, err):
+    """
+    size Statistical Confidence Interval Absolute
+
+    Returns the minimum size n needed for the sample 
+    to achieve an desired error margin of err considering a 
+    statiscal confidence of sc with a standard deviantion of sd
+
+    Parameters
+    ----------
+    sd: float
+        Standard Deviantion
+
+    sc: float
+        Statiscal Confidence
+
+    err:float
+        Margin of Error
+
+    Returns
+    -------
+    sSCnfIntAbs:float
+                Size of sample
+    """
+
+    z = RNrmStdDst((1+sc)/2)
+
+    return cnfIntAbs(sd, z, err)
