@@ -89,8 +89,8 @@
 \newpage
 
     \section{test}
-    \subsection{Amplificador Gerador de Onda Quadrada}
-        \paragraph{Definição}Amplificador que colocará em sua saída uma onda quadrada de frequência controlada, sendo obtido pela seguinte configuração:
+    \subsection{Amplificador Filtro Passa Alta Ativo}
+        \paragraph{Definição}Amplificador que filtrará o sinal a partir da frequência definida pela combinação de R e C na entrada, sendo obtido pela seguinte configuração:
             \begin{figure}[H]
                 \centering
                 \begin{circuitikz}[american]
@@ -104,44 +104,32 @@
                     \draw
                     (0,0) node[op amp] (opamp) {}
     
-                    (opamp.-) to[short, -*] ++(-1.25,0) coordinate (upC)
-                              to[C, l=${C}$] ++(0,-2)
-                              node[tlground] {}
+                    (opamp.-)   to[short, -*] ++(-1.5,0) coordinate (leftR)
+                                to[R, l=${R}$] ++(0,-2)
+                                node[tlground] {}
 
-                    (upC) node[left] {$v_{\text{C}}$}
+                    (leftR) to[C, l_=${C}$, -o] ++(-2,0)
+                            node[left] {$v_{\text{in}}$}
 
-                    (upC) to[short] ++(0,1) coordinate (leftR)
-                          to[R, l=${R_{1}}$] (leftR -| opamp.out)
-                          to[short, -*] (opamp.out)
-
-                    (opamp.out) to[R, l=$R_{2}$, *-] ++(0,-1.5) coordinate (mid)
-                                to[R, l=$R_{3}$] ++(0,-1.5)
+                    (opamp.out) to[R, l=$R_{1}$, *-] ++(0,-1.5) coordinate (mid)
+                                to[R, l=$R_{2}$] ++(0,-1.5)
                                 node[tlground] {}
         
-                    (opamp.+) to[short] ++(0,-1) 
-                              to[short, -*] (mid)
-                              node[right] {$v_{\text{f}}$}
+                    (opamp.+) --++(0,-1) to[short, -*] (mid)
 
                     (opamp.out) to[short, -o] ++(0.5,0)
                                 node[right] {$v_{\text{out}}$};
                 \end{circuitikz}
-                \caption{Amplificador Gerador de Onda Quadrada}
+                \caption{Amplificador Filtro Passa Alta Ativo}
             \end{figure}\noindent
         Note que nesta configuração as seguintes equações serão aplicadas:
             \begin{equation}
                 \boxed{
-                    B = \frac{R_{3}}{R_{2} + R_{3}}
+                    f_{C} = \frac{1}{2\pi RC}
                 }
                 \qquad
                 \boxed{
-                    f_{C} = 
-                    \frac{1}{
-                        2R_{1}C \ln\left(\frac{1+B}{1-B}\right)
-                    }
-                }
-                \qquad
-                \boxed{
-                    v_{f} = v_{\text{out}}  B
+                    A = 1 + \frac{R_{1}}{R_{2}}
                 }
             \end{equation}
 \end{document}
