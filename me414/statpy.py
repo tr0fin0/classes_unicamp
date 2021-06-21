@@ -636,7 +636,7 @@ def SCCnfIntPrp(p, sc, n):
 
 
 
-def sCnfIntPrp(p, z, e):
+def sCnfIntPrp(p, z, err):
     """
     size Confidence Interval Proportional
 
@@ -652,7 +652,7 @@ def sCnfIntPrp(p, z, e):
     z : float
         Interval Constant
 
-    e : float
+    err:float
         Margin of Error
 
     Returns
@@ -661,11 +661,11 @@ def sCnfIntPrp(p, z, e):
                  Size of sample
     """
 
-    return (z**2)*(p*(1-p))/(e**2)
+    return (z**2)*(p*(1-p))/(err**2)
 
 
 
-def sCCnfIntPrp(p, z, e):
+def sCCnfIntPrp(p, z, err):
     """
     size Conservative Confidence Interval Proportional
 
@@ -681,7 +681,7 @@ def sCCnfIntPrp(p, z, e):
     z : float
         Interval Constant
 
-    e : float
+    err:float
         Margin of Error
 
     Returns
@@ -690,10 +690,10 @@ def sCCnfIntPrp(p, z, e):
                   Size of conservative sample
     """
 
-    return (z**2)/(4*e**2)
+    return (z**2)/(4*err**2)
 
 
-def sSCnfIntPrp(p, sc, e):
+def sSCnfIntPrp(p, sc, err):
     """
     size Statistical Confidence Interval Proportional
 
@@ -714,7 +714,7 @@ def sSCnfIntPrp(p, sc, e):
             sc == 0.95 then z = 1.96
             sc == 0.99 then z = 2.58
 
-    e : float
+    err:float
         Margin of Error
 
     Returns
@@ -725,11 +725,11 @@ def sSCnfIntPrp(p, sc, e):
 
     z = RNrmStdDst((1+sc)/2)
 
-    return sCnfIntPrp(p, z, e)
+    return sCnfIntPrp(p, z, err)
 
 
 
-def sSCCnfIntPrp(p, sc, e):
+def sSCCnfIntPrp(p, sc, err):
     """
     size Statistical Conservative Confidence Interval Proportional
 
@@ -750,7 +750,7 @@ def sSCCnfIntPrp(p, sc, e):
             sc == 0.95 then z = 1.96
             sc == 0.99 then z = 2.58
 
-    e : float
+    err:float
         Margin of Error
 
     Returns
@@ -764,7 +764,7 @@ def sSCCnfIntPrp(p, sc, e):
 
     z = RNrmStdDst((1+sc)/2)
 
-    return sCCnfIntPrp(p, z, e)
+    return sCCnfIntPrp(p, z, err)
 
 
 
