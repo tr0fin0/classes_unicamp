@@ -901,4 +901,4 @@ def sSCnfIntAbs(sd, sc, err):
 
     z = RNrmStdDst((1+sc)/2)
 
-    return cnfIntAbs(sd, z, err)
+    return sCnfIntAbs(sd, z, err)
