@@ -2166,6 +2166,58 @@
                     }
                 \end{equation}
 
+        \subsection{Amplificador Filtro Passa Banda Ativo}
+            \paragraph{Definição}Amplificador que filtrará o sinal a partir da frequência definida pela combinação de $R_{1}$ e $C_{1}$ na entrada suportanto no máximo a frequência definida pela combinação de $R_{2}$ e $C_{2}$ na saída, sendo obtido pela seguinte configuração:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}[american]
+                        \ctikzset{
+                            component text=left, 
+                            diodes/scale=0.5, 
+                            capacitors/scale=0.75, 
+                            resistors/width=0.25, 
+                            resistors/zigs=1
+                        }
+                        \draw
+                        (0,0) node[op amp, noinv input up] (opamp) {}
+        
+                        (opamp.+)   to[short, -*] ++(-1.5,0) coordinate (leftR)
+                                    to[R, l=${R_{1}}$] ++(0,-2)
+                                    node[tlground] {}
+    
+                        (leftR) to[C, l_=${C_{1}}$, -o] ++(-2,0)
+                                node[left] {$v_{\text{in}}$}
+    
+                        (opamp.out) to[R, l=$R_{3}$, *-] ++(0,-1.5) coordinate (mid)
+                                    to[R, l=$R_{4}$] ++(0,-1.5)
+                                    node[tlground] {}
+            
+                        (opamp.-) --++(0,-1) to[short, -*] (mid)
+    
+                        (opamp.out) to[R, l=${R_{2}}$] ++(2, 0) coordinate (out)
+                                    to[C, l=${C_{2}}$] ++(0,-2)
+                                    node[tlground] {}
+    
+                        (out)   to[short, *-o] ++(0.5,0)
+                                node[right] {$v_{\text{out}}$};
+                    \end{circuitikz}
+                    \caption{Amplificador Filtro Passa Banda Ativo}
+                \end{figure}\noindent
+            Note que nesta configuração as seguintes equações serão aplicadas:
+                \begin{equation}
+                    \boxed{
+                        f_{\text{Baixa}} = \frac{1}{2\pi R_{1}C_{1}}
+                    }
+                    \qquad
+                    \boxed{
+                        f_{\text{Alta}} = \frac{1}{2\pi R_{2}C_{2}}
+                    }
+                    \qquad
+                    \boxed{
+                        A = 1 + \frac{R_{3}}{R_{4}}
+                    }
+                \end{equation}
+
         \subsection{Amplificador Integrador}
             \paragraph{Definição}Amplificador que integrará o sinal recebido na entrada, sendo obtido pela seguinte configuração:
                 \begin{figure}[H]
