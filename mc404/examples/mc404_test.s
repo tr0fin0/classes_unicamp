@@ -11,7 +11,7 @@
         .word 0x00000001 # result 1
 
         .word 0x61605E5C # 00 00 5C 5E 60 61 6E 6E 61 60 5E 5C
-        .word 0x60616E6E #
+        .word 0x60616E6E
         .word 0x00005C5E
         .word 0x00000001 # result 1
 
@@ -35,69 +35,25 @@
         .word 0x00006420
         .word 0x00000001 # result 1
 
+        .word 0x44434241 # 41 42 43 44 45 45 44 43 42 41 00 00
+        .word 0x43444545
+        .word 0x00004142
+        .word 0x00000001 # result 1
+
+        .word 0x44434241 # 41 42 43 44 45 46 45 44 43 42 41 00
+        .word 0x44454645
+        .word 0x00414243
+        .word 0x00000001 # result 1
+
+        .word 0x64636261 # 41 42 43 44 45 65 64 63 62 61 00 00
+        .word 0x43444565
+        .word 0x00004142
+        .word 0x00000001 # result 0
+
+
+
 .section .text
-    Maiuscula:
-        addi t0, a0, 0          # save *string
-        addi t2, zero,  97      # a in ASCII
-        addi t3, zero, 122      # z in ASCII
-
-        loop:
-            lbu t1, 0(a0)       #    char = string[i]
-            beq t1, zero, end   # if char == \0 then end
-
-            addi a0, a0, 1      # a0++
-
-            blt t1, t2, loop    # if char  a then loop
-            bgt t1, t3, loop    # if char  z then loop
-
-            lbu  t1,  -1(a0)    #      char = string[i]
-            addi t1, t1, -32    #       "A" = "a" - 32
-            sb   t1,  -1(a0)    # string[i] = CHAR
-
-            j loop
-
-        end:
-            addi a0, t0, 0      # return *string
-            jr ra
-
-    Palindrome:
-        addi sp, sp, -4
-        sw   ra, 0(sp)
-
-        call Maiuscula
-
-        addi t0, a0, 0          # *s[0]
-
-        loop0:
-            lbu t1, 0(a0)       #    char = s[i]
-            beq t1, zero, end0  # if char == \0 then end0
-
-            addi a0, a0, 1      # a0++
-            j loop0
-
-        end0:
-            addi t1, a0, -1     # *s[n-1]
-
-        addi a0, zero, 1;       # a0 = 1
-
-        loop1:
-            lbu t2, 0(t0)       # s[i]
-            lbu t3, 0(t1)       # s[n-i-1]
-            beq t2, zero, end2  # if s[i] == zero then end2
-
-            addi t0, t0,  1     # t0++
-            addi t1, t1, -1     # t1--
-
-            bne t2, t3, end1;   # if s[i] != s[n-i-1] then end1
-            j loop1
-
-        end1:
-            addi a0, zero, 0;   # a0 = 0
-
-        end2:
-            lw   ra, 0(sp)
-            addi sp, sp,4
-            jr ra
+# insert function here
 
     main:
 
@@ -108,7 +64,7 @@
         addi s2, s2, %lo(.vector)   # *s  save bottom 12 bits
 
         addi s3, zero, 0            # i = 0   counter
-        addi s4, zero, 7            # n = 7   number of tests
+        addi s4, zero, 10           # n = 10  number of tests
 
         tests:
 
