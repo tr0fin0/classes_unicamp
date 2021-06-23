@@ -9,45 +9,12 @@
 # return 1 if the string is     palindrome
 #        0 if the string is not palindrome
 # 
-# depending of testing: 
-# assume if no case sentive not comment Maiuscula and it's call
-# assume if    case sentive     comment Maiuscula and it's call
-# 
 #     .TEXT:
 #         .word 0x61605E5C
 #         .word 0x796E6462
 #         .word 0x00007B7A
 
-Maiuscula:
-    addi t0, a0, 0          # save *string
-    addi t2, zero,  97      # a in ASCII
-    addi t3, zero, 122      # z in ASCII
-
-    loop:
-        lbu t1, 0(a0)       #    char = string[i]
-        beq t1, zero, end   # if char == \0 then end
-
-        addi a0, a0, 1      # a0++
-
-        blt t1, t2, loop    # if char  a then loop
-        bgt t1, t3, loop    # if char  z then loop
-
-        lbu  t1,  -1(a0)    #      char = string[i]
-        addi t1, t1, -32    #       "A" = "a" - 32
-        sb   t1,  -1(a0)    # string[i] = CHAR
-
-        j loop
-
-    end:
-        addi a0, t0, 0      # return *string
-        jr ra
-
 Palindrome:
-    addi sp, sp, -4
-    sw   ra, 0(sp)
-
-    call Maiuscula
-
     addi t0, a0, 0          # *s[0]
 
     loop0:
@@ -77,6 +44,4 @@ Palindrome:
         addi a0, zero, 0;   # a0 = 0
 
     end2:
-        lw   ra, 0(sp)
-        addi sp, sp,4
         jr ra
