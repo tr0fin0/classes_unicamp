@@ -9,8 +9,9 @@
 # return 1 if the string is     palindrome
 #        0 if the string is not palindrome
 # 
-# assuming that the Maiuscula 
-# is implemented
+# depending of testing: 
+# assume if no case sentive not comment Maiuscula and it's call
+# assume if    case sentive     comment Maiuscula and it's call
 # 
 #     .TEXT:
 #         .word 0x61605E5C
