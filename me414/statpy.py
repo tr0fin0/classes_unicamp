@@ -274,42 +274,42 @@ def nrmStdDst(x: float):
 
     return 1/2*(special.erf(x/(np.sqrt(2))) + 1)
 
-def nrmStdDst_i(x: float, s: int):
+def nrmStdDst_i(x: float, greatter=False):
+    """
+    Normal Standard Distribution information
 
-    #x: number expected
-    #s: comparsion
-    #   if (s == 1):
-    #       P(X>x)
-    #   if (s == -1):
-    #       P(X<x)
-    #   comparsion
+    Returns the de value of P(X < x) within a normal distribution, 
+    expected value = 0  and variance = 1
+
+    Parameters
+    ----------
+    x : float
+        Desired value
+
+    greater :   boolean
+                Is the dessired value greater?
+
+    Returns
+    -------
+    px: float
+
+        if greatter:
+            P(X>x)
+        else:
+            P(X<x)
+    """
 
     px = nrmStdDst(x)
 
-    print("\nNormal Standard Distribution")
-    print("x    = {:.4f}".format(x))
+    if greatter:
+        print("P(X > {:.4}) = {:.4f}".format(x, 1-px))
+        return 1-px
 
-    #equals zero
-    if(s == 0):
-        return 0
+    else:
+        print("P(X < {:.4}) = {:.4f}".format(x, px))
+        return px
 
-    #P(X < x) where x is positive
-    if ((s == -1) & (x > 0)):
-        print("P(X<={}) = {:.4f}".format(x, px))
 
-    #P(X < x) where x is negative
-    elif((s == -1) & (x < 0)):
-        print("P(X<={}) = {:.4f}".format(x, px))
-
-    #P(X > x) where x is positive
-    elif((s == 1) & (x > 0)):
-        print("P(X>={}) = {:.4f}".format(x, 1-px))
-
-    #P(X > x) where x is negative
-    elif((s == 1) & (x < 0)):
-        print("P(X>={}) = {:.4f}".format(x, 1-px))
-
-    return px
 
 def nrmStdDstIntervalInfo(a: float, b: float):
 
