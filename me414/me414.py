@@ -392,7 +392,7 @@ if(False):
     )
 
 # exercice 89
-if(True):
+if(False):
     na = 54 # number of adults
     ia = 24 # number of infected adults
     ph = ia/na # porcentagem of infected
@@ -405,4 +405,20 @@ if(True):
     print(
         "\nexercice 89:" + 
         "\n a) {:.4} {:.4} {:.4} {:.4}".format(ph, po, z, pvalue)
+    )
+
+# exercice 90
+if(True):
+    n = 202    # total of amostral sample
+    p = 135    # part of amostral sample
+    ph = p/n   # porcentagem of amostral sample
+    po = 0.60  # null hipotese
+
+    z = (ph - po)/np.sqrt(po*(1-po)/n)
+
+    pvalue = stat.nrmStdDst_i(z, True) # greatter = True
+
+    print(
+        "\nexercice 90:" + 
+        "\n a) p-value: {:.4}".format(pvalue)
     )
