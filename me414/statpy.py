@@ -258,8 +258,7 @@ def nrmStdDst(x: float):
     """
     Normal Standard Distribution
 
-    Returns the de value of P(X < x) within a normal distribution, 
-    expected value = 0  and variance = 1
+    Returns the de value of P(X < x) within a normal standard distribution with expected value of 0  and variance of 1
 
     Parameters
     ----------
@@ -278,8 +277,7 @@ def nrmStdDst_i(x: float, greatter=False):
     """
     Normal Standard Distribution information
 
-    Returns the de value of P(X < x) within a normal distribution, 
-    expected value = 0  and variance = 1
+    Returns the de value of P(X < x) within a normal standard distribution with expected value of 0  and variance of 1 and informations of the requisted option.
 
     Parameters
     ----------
