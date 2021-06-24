@@ -408,7 +408,7 @@ if(False):
     )
 
 # exercice 90
-if(True):
+if(False):
     n = 202    # total of amostral sample
     p = 135    # part of amostral sample
     ph = p/n   # porcentagem of amostral sample
@@ -421,4 +421,23 @@ if(True):
     print(
         "\nexercice 90:" + 
         "\n a) p-value: {:.4}".format(pvalue)
+    )
+
+# exercice 91
+if(True):
+    n =  73    # total of amostral sample
+    ph = 0.44  # percentage of amostral sample
+    po = 0.28  # percentage of population
+    ns = 0.1  # nivel de significanca
+
+    z = (ph - po)/np.sqrt(po*(1-po)/n)
+
+    pvalue = stat.nrmStdDst_i(z, True) # greatter = True
+
+    e = pvalue < ns
+    print(
+        "\nexercice 91:" + 
+        "\n c) test:    {:.4}".format(z) +
+        "\n d) p-value: {:.4}".format(pvalue) + 
+        "\n e) p-value: "+ str(e)
     )
