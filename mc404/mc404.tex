@@ -2334,5 +2334,20 @@ fim:
                         \end{enumerate}
                 \end{enumerate}
             Note que interrupções são uma alternativa para o tratamento de preriféricos, processando suas informações apenas quando estas são requisitadas que poderá vir do software ou do hardware como descrito abaixo:
-                
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Totalmente em Software:}
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item \texttt{Definição:} Única rotina chamada para qualquer evento externo e deve consultar todos os periféricos para descobrir o que aconteceu;
+                        \end{enumerate}
+
+                    \item \textbf{Híbrido:}
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item \texttt{Definição:} Única rotina chamada para qualquer evento externo e recebe um registrador indicando o causador da interrupção;
+                        \end{enumerate}
+
+                    \item \textbf{Auxiliada em Hardware:}
+                        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                            \item \texttt{Definição:} Rotinas diferentes chamadas para cada evento externo facilitando como o software é escrito;
+                        \end{enumerate}
+                \end{enumerate}
 \end{document}
