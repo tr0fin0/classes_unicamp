@@ -311,7 +311,7 @@ def nrmStdDst_i(x: float, greatter=False):
 
 
 
-def nrmStdDstIntervalInfo(a: float, b: float):
+def INrmStdDst_i(a: float, b: float):
 
     pa = nrmStdDst(a)
     pb = nrmStdDst(b)
@@ -326,10 +326,10 @@ def nrmStdDstIntervalInfo(a: float, b: float):
     return px
 
 
-def Normal(x: float, mu: float, sg: float):
+def nrmDst(x: float, mu: float, sg: float):
     return nrmStdDst((x - mu)/np.sqrt(sg))
 
-def NormalInfo(x: float, mu: float, sg: float, s: int):
+def nrmDst_i(x: float, mu: float, sg: float, s: int):
     # x:  number expected
     # mu: expected value
     # sg: variance value
@@ -341,7 +341,7 @@ def NormalInfo(x: float, mu: float, sg: float, s: int):
     #       P(X<x)
     #   comparsion
 
-    px = Normal(x, mu, sg)
+    px = nrmDst(x, mu, sg)
 
     print("\nNormal Distribution")
     print("x    = {:.4f}".format(x))
@@ -368,13 +368,13 @@ def NormalInfo(x: float, mu: float, sg: float, s: int):
 
     return px
 
-def NormalIntervalInfo(a: float, b: float, mu: float, sg: float):
+def INrmDst_i(a: float, b: float, mu: float, sg: float):
     # P(a < X < b)
     # mu: expected value
     # sg: variance value
 
-    pa = Normal(a, mu, sg)
-    pb = Normal(b, mu, sg)
+    pa = nrmDst(a, mu, sg)
+    pb = nrmDst(b, mu, sg)
 
     px = pb - pa
 
@@ -471,7 +471,7 @@ def RNrmStdDst_i(px: float, greater = False, module = False):
 
     return x
 
-def NormalReverse(px: float, mu: float, sg: float):
+def RNrmDst(px: float, mu: float, sg: float):
     # px: probability P(X < x)
     # mu: expected value
     # sg: variance value
@@ -481,14 +481,14 @@ def NormalReverse(px: float, mu: float, sg: float):
 
     return (mu + np.sqrt(sg)*RNrmStdDst(px))
 
-def NormalReverseInfo(px: float, mu: float, sg: float):
+def RNrmDst_i(px: float, mu: float, sg: float):
     # px: probability P(X < x)
     # mu: expected value
     # sg: variance value
 
     print("\nNormal Reverse Distribution")
 
-    x = NormalReverse(px, mu, sg)
+    x = RNrmDst(px, mu, sg)
 
     print("P(X < {:.2f}) = {:.4f}: E(X) = {} and V(X) = {}".format(px, x, mu, sg))
 
