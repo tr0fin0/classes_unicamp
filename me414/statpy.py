@@ -327,6 +327,34 @@ def INrmStdDst_i(a: float, b: float):
 
 
 def nrmDst(x: float, mu: float, sg: float):
+    """
+    Normal Distribution
+
+    Returns the de value of P(X < x) within a normal distribution with 
+    expected value of mu  and variance of sg. It computes the value passed in the normalization of the values [1]
+
+    Parameters
+    ----------
+    x : float
+        Desired value
+
+    mu: float
+        Expected value
+
+    sg: float
+        Variance value
+
+    Returns
+    -------
+    px: float
+        P(X < x)
+
+    Reference
+    ---------
+        [1] 
+            https://en.wikipedia.org/wiki/Normalization_(statistics)
+    """
+
     return nrmStdDst((x - mu)/np.sqrt(sg))
 
 def nrmDst_i(x: float, mu: float, sg: float, s: int):
