@@ -1347,9 +1347,37 @@
                         \item $H_{A}$, \texttt{Hipótese Alternativa:} Parâmetro populacional assume valores diferentes de $H_{0}$;
                     \end{enumerate}
 
-                \item \textbf{Estatísticas:} Comparação entre os valores encontradas na população após experimentação e os esperados pela \textbf{Hipótese};
+                \item \textbf{Estatísticas:} Comparação entre os valores encontradas na população após experimentação e os esperados pela \textbf{Hipótese}, obtido pela seguinte equação:
+                    \begin{equation*}
+                        z = \frac{\hat{p} - p_{0}}{\sqrt[]{\frac{p_0(1-p_{0})}{n}}} \sim
+                        N(0,1)
+                        \quad\text{onde}\quad
+                        \begin{cases}
+                            np_{0} \ge 10\\
+                            n(1-p_{0}) \ge 10\\
+                        \end{cases}
+                    \end{equation*}
+                Onde:
+                    \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                        \item $\hat{p}$ \texttt{Proporção Amostral:} Obtida pela seguinte equação:
+                            \begin{equation*}
+                                \hat{p} \sim N\left( p, \frac{p(1-p)}{n}\right)
+                            \end{equation*} 
+                        \item $p_{0}$ \texttt{Proporção Populacional};
+                    \end{enumerate}
 
-                \item \textbf{p-valor:} Probabilidade que resume a possibilidade de que a \texttt{Hipótese Nula} seja verdadeira;
+                \item \textbf{p-valor:} Probabilidade que resume a possibilidade de que a \texttt{Hipótese Nula} seja verdadeira, obtido pela seguinte equação:
+                    \begin{equation}
+                        \boxed{
+                            \text{\textbf{p-valor}} = 
+                            \begin{cases}
+                                P(|Z|\ge|z|) & \hat{p}\neq p_{0}\quad\text{Bilateral}\\
+                                P( Z \le z ) & \hat{p}   < p_{0}\quad\text{Unilateral à Esquerda}\\
+                                P( Z \ge z ) & \hat{p}   > p_{0}\quad\text{Unilateral à Direita}\\
+                            \end{cases}
+                        }
+                    \end{equation}
+
                 \item \textbf{Conclusão:} Análise baseada no \textbf{p-valor} com base em um \textbf{Nível de Significância} $\alpha = 0.05$, representando uma constante usual que poderá ser interpretada da seguinte maneira:
                     \begin{enumerate}[noitemsep]
                         \item Se $\text{\textbf{p-valor}} \le \alpha$: rejeita-se $H_{0}$, há evidência contra a \texttt{Hipótese Nula};
