@@ -1338,5 +1338,22 @@
 
     \section{Hipótese}
         \paragraph{Definição}Afirmações sobre um parâmetro de uma população que deverá ser testado. Desta maneira, será necessário estabelecer procedimentos a serem seguidos como explicados abaixo:
+            \begin{enumerate}[rightmargin = \leftmargin]
+                \item \textbf{Suposições:} Normalmente assume-se que os dados obtidos do experimento foram produzidos através de um processo de aleatorização;
 
+                \item \textbf{Hipóteses:} Afirmação sobre um parâmetro populacional desejado que deverá ser definido antes da realização do experimento;
+                    \begin{enumerate}[noitemsep]
+                        \item $H_{0}$, \texttt{Hipótese Nula:} Parâmetro populacional assume um dado valor;
+                        \item $H_{A}$, \texttt{Hipótese Alternativa:} Parâmetro populacional assume valores diferentes de $H_{0}$;
+                    \end{enumerate}
+
+                \item \textbf{Estatísticas:} Comparação entre os valores encontradas na população após experimentação e os esperados pela \textbf{Hipótese};
+
+                \item \textbf{p-valor:} Probabilidade que resume a possibilidade de que a \texttt{Hipótese Nula} seja verdadeira;
+                \item \textbf{Conclusão:} Análise baseada no \textbf{p-valor} com base em um \textbf{Nível de Significância} $\alpha = 0.05$, representando uma constante usual que poderá ser interpretada da seguinte maneira:
+                    \begin{enumerate}[noitemsep]
+                        \item Se $\text{\textbf{p-valor}} \le \alpha$: rejeita-se $H_{0}$, há evidência contra a \texttt{Hipótese Nula};
+                        \item Se $\text{\textbf{p-valor}}   > \alpha$: não rejeita-se $H_{0}$, não há evidência contra a \texttt{Hipótese Nula};
+                    \end{enumerate}
+            \end{enumerate}
 \end{document}
