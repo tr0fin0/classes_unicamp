@@ -331,7 +331,7 @@ if(False):
     )
 
 # exercice 88
-if(True):
+if(False):
     vx = 12 # variance
     n  = 27 # size of sample
 
@@ -389,4 +389,20 @@ if(True):
         "\n d) {:.4}".format(ic[0]) + 
         "\n e) {:.4}".format(nn) + 
         "\n f) {:.4}".format(ic1[2])
+    )
+
+# exercice 89
+if(True):
+    na = 54 # number of adults
+    ia = 24 # number of infected adults
+    ph = ia/na # porcentagem of infected
+    po = 0.47  # null hipotese
+
+    z = (ph - po)/np.sqrt(po*(1-po)/na)
+
+    pvalue = 2*stat.nrmStdDst_i(z, False)
+
+    print(
+        "\nexercice 89:" + 
+        "\n a) {:.4} {:.4} {:.4} {:.4}".format(ph, po, z, pvalue)
     )
