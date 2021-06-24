@@ -2351,4 +2351,32 @@ fim:
                         \end{enumerate}
                 \end{enumerate}
             Cada diferente abordagem poderá implementar uma rotina adequada, sendo as principais: Endereço Único, armazena um único endereço; Tratador Individualizado, armazena um endereço base e outro para cada evento possível num vetor de endereços.
+
+        \subsection{Control and Status Registers}
+            \paragraph{Definição}Registrador além dos 32 disponíveis para manipulação responsáveis por armazenar informações sobre o processador e controlam operações do controlador, possibilitando os seguintes comandos:
+                \begin{enumerate}
+                    \item \textbf{CSRR:} Le o valor de um registrador reservado \texttt{mscratch} e armazena no registrador \texttt{rd} como representado a seguir:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    csrr rd, mscratch
+                            \end{lstlisting}
+                        \end{scriptsize}
+
+                    \item \textbf{CSRW:} Escreve em um registrador reservado \texttt{mscratch} o valor de um registrador \texttt{rd} como representado a seguir:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    csrw mscratch, rd
+                            \end{lstlisting}
+                        \end{scriptsize}
+
+                    \item \textbf{CSRRW:} Troca o valor em um registrador reservado \texttt{mscratch} com o valor de um registrador \texttt{rd} como representado a seguir:
+                        \begin{scriptsize}
+                            \myStyleAssembly
+                            \begin{lstlisting}
+    csrw rd, mscratch, rd
+                            \end{lstlisting}
+                        \end{scriptsize}
+                \end{enumerate}
 \end{document}
