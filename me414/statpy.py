@@ -583,18 +583,7 @@ def RNrmDst(px: float, mu: float, sg: float):
 
     return (mu + np.sqrt(sg)*RNrmStdDst(px))
 
-def RNrmDst_i(px: float, mu: float, sg: float):
-    # px: probability P(X < x)
-    # mu: expected value
-    # sg: variance value
 
-    print("\nNormal Reverse Distribution")
-
-    x = RNrmDst(px, mu, sg)
-
-    print("P(X < {:.2f}) = {:.4f}: E(X) = {} and V(X) = {}".format(px, x, mu, sg))
-
-    return x
 
 def cnfIntPrp(p, z, n):
     """
