@@ -273,7 +273,7 @@ def nrmStdDst(x: float):
 
     return 1/2*(special.erf(x/(np.sqrt(2))) + 1)
 
-def nrmStdDst_i(x: float, greatter=False):
+def nrmStdDst_i(x: float, greater=False):
     """
     Normal Standard Distribution information
 
@@ -299,7 +299,7 @@ def nrmStdDst_i(x: float, greatter=False):
 
     px = nrmStdDst(x)
 
-    if greatter:
+    if greater:
         print("P(X > {:.4}) = {:.4f}".format(x, 1-px))
         return 1-px
 
@@ -355,44 +355,44 @@ def nrmDst(x: float, mu: float, sg: float):
 
     return nrmStdDst((x - mu)/np.sqrt(sg))
 
-def nrmDst_i(x: float, mu: float, sg: float, s: int):
-    # x:  number expected
-    # mu: expected value
-    # sg: variance value
-    # s:  comparsion
-    #
-    #   if (s == 1):
-    #       P(X>x)
-    #   if (s == -1):
-    #       P(X<x)
-    #   comparsion
+def nrmDst_i(x: float, mu: float, sg: float, greater=False):
+    """
+    Normal Distribution information
+
+    Returns the de value of P(X < x) within a normal distribution with expected value of mu  and variance of sg and informations of the requisted option. It computes the value passed in the normalization of the values [1]
+
+    Parameters
+    ----------
+    x : float
+        Desired value
+
+    greater :   boolean
+                Is the dessired value greater?
+
+    Returns
+    -------
+    px: float
+
+        if greatter:
+            P(X>x)
+        else:
+            P(X<x)
+
+    Reference
+    ---------
+        [1] 
+            https://en.wikipedia.org/wiki/Normalization_(statistics)
+    """
 
     px = nrmDst(x, mu, sg)
 
-    print("\nNormal Distribution")
-    print("x    = {:.4f}".format(x))
+    if greater:
+        return 1-px
 
-    #equals zero
-    if(s == 0):
-        return 0
+    else:
+        return px
 
-    #P(X < x) where x is positive
-    if ((s == -1) & (x >= 0)):
-        print("P(X<={}) = {:.4f}".format(x, px))
 
-    #P(X < x) where x is negative
-    elif((s == -1) & (x < 0)):
-        print("P(X< {}) = {:.4f}".format(x, px))
-
-    #P(X > x) where x is positive
-    elif((s == 1) & (x >= 0)):
-        print("P(X>={}) = {:.4f}".format(x, 1-px))
-
-    #P(X > x) where x is negative
-    elif((s == 1) & (x < 0)):
-        print("P(X> {}) = {:.4f}".format(x, 1-px))
-
-    return px
 
 def INrmDst_i(a: float, b: float, mu: float, sg: float):
     # P(a < X < b)
