@@ -254,6 +254,8 @@ def ExponencialInfo(Lambda: int, x: int):
 
     return px
 
+
+
 def nrmStdDst(x: float):
     """
     Normal Standard Distribution
@@ -272,6 +274,8 @@ def nrmStdDst(x: float):
     """
 
     return 1/2*(special.erf(x/(np.sqrt(2))) + 1)
+
+
 
 def nrmStdDst_i(x: float, greater=False):
     """
@@ -337,6 +341,7 @@ def INrmStdDst(a: float, b: float):
     return pb - pa, pa, pb
 
 
+
 def nrmDst(x: float, mu: float, sg: float):
     """
     Normal Distribution
@@ -367,6 +372,8 @@ def nrmDst(x: float, mu: float, sg: float):
     """
 
     return nrmStdDst((x - mu)/np.sqrt(sg))
+
+
 
 def nrmDst_i(x: float, mu: float, sg: float, greater=False, module=False):
     """
@@ -426,22 +433,34 @@ def nrmDst_i(x: float, mu: float, sg: float, greater=False, module=False):
 
 
 
-def INrmDst_i(a: float, b: float, mu: float, sg: float):
-    # P(a < X < b)
-    # mu: expected value
-    # sg: variance value
+def INrmDst(a: float, b: float, mu: float, sg: float):
+    """
+    Interval NormalDistribution
+
+    Returns the value of P(a < X < b) = px and it's extremes within a normal distribution with expected value of mu and variance of sg.
+
+    Parameters
+    ----------
+    a : float
+        Minimum value
+
+    b : float
+        Maximum value
+
+    Returns
+    -------
+    INrmStdDst: array
+                INrmStdDst[0] px
+                INrmStdDst[1] pa
+                INrmStdDst[2] pb
+    """
 
     pa = nrmDst(a, mu, sg)
     pb = nrmDst(b, mu, sg)
 
-    px = pb - pa
+    return pb - pa, pa, pb
 
-    print("\nNormal Interval Distribution")
-    print("a = {:.4f} and b = {:.4f}".format(a,b))
-    print("E(X) = 0 and V(X) = 1")
-    print("P({:.4f} < Z < {:.4f}) = {:.4f}".format(a, b, px))
 
-    return px
 
 def RNrmStdDst(px: float):
     """
