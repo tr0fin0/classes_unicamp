@@ -355,7 +355,7 @@ def nrmDst(x: float, mu: float, sg: float):
 
     return nrmStdDst((x - mu)/np.sqrt(sg))
 
-def nrmDst_i(x: float, mu: float, sg: float, greater=False):
+def nrmDst_i(x: float, mu: float, sg: float, greater=False, module=False):
     """
     Normal Distribution information
 
@@ -366,17 +366,26 @@ def nrmDst_i(x: float, mu: float, sg: float, greater=False):
     x : float
         Desired value
 
-    greater :   boolean
-                Is the dessired value greater?
-
-    Returns
-    -------
-    px: float
+    greater : boolean
+              Is the dessired value greater?
 
         if greatter:
             P(X>x)
         else:
             P(X<x)
+    
+    module : boolean
+             Is the dessired value in modulus?
+
+        if module:
+            P(|X| > x) or P(|X| < x)
+        else:
+            P( X  > x) or P( X  < x)
+
+    Returns
+    -------
+    px: float
+
 
     Reference
     ---------
@@ -386,10 +395,20 @@ def nrmDst_i(x: float, mu: float, sg: float, greater=False):
 
     px = nrmDst(x, mu, sg)
 
-    if greater:
+    # P(|X| > x) = px
+    if greater and module:
+        return 1-px/2
+
+    # P( X  > x) = px
+    elif greater and not module:
         return 1-px
 
-    else:
+    # P(|X| < x) = px
+    elif not greater and module:
+        return (1+px)/2
+
+    # P( X  < x) = px
+    elif not greater and not module:
         return px
 
 
