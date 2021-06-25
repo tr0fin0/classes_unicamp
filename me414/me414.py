@@ -424,7 +424,7 @@ if(False):
     )
 
 # exercice 91
-if(True):
+if(False):
     n =  73    # total of amostral sample
     ph = 0.44  # percentage of amostral sample
     po = 0.28  # percentage of population
@@ -437,6 +437,31 @@ if(True):
     e = pvalue < ns
     print(
         "\nexercice 91:" + 
+        "\n a) test:    " + 1 + 
+        "\n b) test:    " + 3 + 
+        "\n c) test:    {:.4}".format(z) +
+        "\n d) p-value: {:.4}".format(pvalue) + 
+        "\n e) p-value: "+ str(e)
+    )
+
+# exercice 92
+if(False):
+    mean_amazon = 46.99 # selling price in amazon
+    n =  15              # total of adds
+    mean = 45.43
+    stddev = 3.676
+    semean = 0.949
+    ns = 0.1
+
+    z = (mean - mean_amazon)/(np.sqrt(stddev/n))
+
+    pvalue = stat.nrmStdDst_i(z, False)
+
+    e = pvalue > ns
+    print(
+        "\nexercice 91:" + 
+        "\n a) test:    " + str(1) + 
+        "\n a) test:    " + str(3) + 
         "\n c) test:    {:.4}".format(z) +
         "\n d) p-value: {:.4}".format(pvalue) + 
         "\n e) p-value: "+ str(e)
