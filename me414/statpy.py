@@ -386,6 +386,12 @@ def nrmDst_i(x: float, mu: float, sg: float, greater=False, module=False):
     x : float
         Desired value
 
+    mu: float
+        Expected value
+
+    sg: float
+        Variance value
+
     greater : boolean
               Is the dessired value greater?
 
@@ -446,6 +452,12 @@ def INrmDst(a: float, b: float, mu: float, sg: float):
 
     b : float
         Maximum value
+
+    mu: float
+        Expected value
+
+    sg: float
+        Variance value
 
     Returns
     -------
@@ -545,12 +557,29 @@ def RNrmStdDst_i(px: float, greater = False, module = False):
 
 
 def RNrmDst(px: float, mu: float, sg: float):
-    # px: probability P(X < x)
-    # mu: expected value
-    # sg: variance value
+    """
+    Reverse Normal Distribution
 
-    # print("\nNormal Reverse Distribution")
-    # print("px = {:.4f}".format(x))
+    Returns the expected value of the desired probability 
+    of a Normal Distribution using the the erfinv function from special with expected value of mu and variance of sg.
+
+    Parameters
+    ----------
+    px: float
+
+        P(X < x) = px, probability of distribution
+
+    mu: float
+        Expected value
+
+    sg: float
+        Variance value
+
+    Returns
+    -------
+    x : float
+        expected value
+    """
 
     return (mu + np.sqrt(sg)*RNrmStdDst(px))
 
