@@ -528,25 +528,21 @@ def RNrmStdDst_i(px: float, greater = False, module = False):
 
     #P(|X| > x) = px
     if greater and module:
-        x = RNrmStdDst(1-px/2)
-        print("P(|X| > {:.4f}) = {:.4f}".format(x, px))
+        return RNrmStdDst(1-px/2)
 
     #P(X > x) = px
     elif greater and not module:
-        x = RNrmStdDst(1-px)
-        print("P(X > {:.4f}) = {:.4f}".format(x, px))
+        return RNrmStdDst(1-px)
 
     #P(|X| < x) = px
     elif not greater and module:
-        x = RNrmStdDst((1+px)/2)
-        print("P(|X| < {:.4f}) = {:.4f}".format(x, px))
+        return RNrmStdDst((1+px)/2)
 
     #P(X < x) = px
     elif not greater and not module:
-        x = RNrmStdDst(px)
-        print("P(X < {:.4f}) = {:.4f}".format(x, px))
+        return RNrmStdDst(px)
 
-    return x
+
 
 def RNrmDst(px: float, mu: float, sg: float):
     # px: probability P(X < x)
