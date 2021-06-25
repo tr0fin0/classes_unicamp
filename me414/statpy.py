@@ -258,7 +258,7 @@ def nrmStdDst(x: float):
     """
     Normal Standard Distribution
 
-    Returns the de value of P(X < x) within a normal standard distribution with expected value of 0  and variance of 1
+    Returns the value of P(X < x) within a normal standard distribution with expected value of 0  and variance of 1
 
     Parameters
     ----------
@@ -277,7 +277,7 @@ def nrmStdDst_i(x: float, greater=False):
     """
     Normal Standard Distribution information
 
-    Returns the de value of P(X < x) within a normal standard distribution with expected value of 0  and variance of 1 and informations of the requisted option.
+    Returns the value of P(X < x) within a normal standard distribution with expected value of 0  and variance of 1 and informations of the requisted option.
 
     Parameters
     ----------
@@ -309,26 +309,39 @@ def nrmStdDst_i(x: float, greater=False):
 
 
 
-def INrmStdDst_i(a: float, b: float):
+def INrmStdDst(a: float, b: float):
+    """
+    Interval Normal Standard Distribution
+
+    Returns the value of P(a < X < b) = px and it's extremes within a normal standard distribution with expected value of 0  and variance of 1.
+
+    Parameters
+    ----------
+    a : float
+        Minimum value
+
+    b : float
+        Maximum value
+
+    Returns
+    -------
+    INrmStdDst: array
+                INrmStdDst[0] px
+                INrmStdDst[1] pa
+                INrmStdDst[2] pb
+    """
 
     pa = nrmStdDst(a)
     pb = nrmStdDst(b)
 
-    px = pb - pa
-
-    # print("\nNormal Standard Interval Distribution")
-    # print("a = {:.4f} and b = {:.4f}".format(a,b))
-    # print("E(X) = 0 and V(X) = 1")
-    print("P({:.4f} < Z < {:.4f}) = {:.4f}".format(a, b, px))
-
-    return px
+    return pb - pa, pa, pb
 
 
 def nrmDst(x: float, mu: float, sg: float):
     """
     Normal Distribution
 
-    Returns the de value of P(X < x) within a normal distribution with 
+    Returns the value of P(X < x) within a normal distribution with 
     expected value of mu  and variance of sg. It computes the value passed in the normalization of the values [1]
 
     Parameters
@@ -359,7 +372,7 @@ def nrmDst_i(x: float, mu: float, sg: float, greater=False, module=False):
     """
     Normal Distribution information
 
-    Returns the de value of P(X < x) within a normal distribution with expected value of mu  and variance of sg and informations of the requisted option. It computes the value passed in the normalization of the values [1]
+    Returns the value of P(X < x) within a normal distribution with expected value of mu  and variance of sg and informations of the requisted option. It computes the value passed in the normalization of the values [1]
 
     Parameters
     ----------
