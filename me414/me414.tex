@@ -1394,5 +1394,18 @@
                         Aceitar $H_{0}$  & -                  & Erro do Tipo II\\\hline
                     \end{tabular}
                     \caption{Classificação Erros}
-                \end{table}
+                \end{table}\noindent
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Erro do Tipo I:} Normalmente atribuído como \textbf{Falso Positivo}, apresentando a seguinte probabilidade de ocorrer, também nomeada \textbf{Nível de Significância}:
+                        \begin{equation}
+                            \alpha = P(\text{Erro do Tipo I})
+                        \end{equation}
+
+                    \item \textbf{Erro do Tipo II:} Normalmente atribuído como \textbf{Falso Negativo}, apresentando a seguinte probabilidade de ocorrer:
+                        \begin{equation}
+                            \beta = P(\text{Erro do Tipo II})
+                        \end{equation}
+                    Idealmente deseja-se que estas probabilidades sejam baixas, indicando hipóteses confiáveis. Entretanto, à medida que diminui-se $\alpha$, $\beta$ tende a aumentar. Desta maneira, estipula-se usualmente que $\alpha = 5\%$ para que os resultados sejam adequados.
+                \end{enumerate}
 \end{document}
