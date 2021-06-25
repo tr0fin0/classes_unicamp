@@ -1,24 +1,25 @@
 #include<stdio.h>
+#include <stdlib.h>
+
+// Implemente um programa em Assembly do RISC-V que leia um número N na entrada (considere valores de N positivos) e em seguida leia N strings de no máximo 20 caracteres cada para, ao fim, imprimir todas elas da última digitada para a primeira digitada.
 
 int main()
 {
-    int n = 10;
-    int v[n];
+    int size_string = 20;
 
-    for(int i = 0; i < n; i++)
+    int number_strings;                         // declare constant N
+    scanf("%d", &number_strings);               // ecall to read integer
+
+    char array[number_strings][size_string];    // save space in memory
+
+    for(int i = 0; i < number_strings; i++)     // loops with ecall reading strings
     {
-        v[i] = i;
+        scanf("%s", array[i]);
     }
 
-    int m;
-
-    for(int i = 0; i < n; i++)
+    // note that the last input must discosidered because it is \0
+    for(int i = number_strings-1; i >= 0; i--)  // loops with ecall printing strings
     {
-        if(v[i] < m)
-        {
-            m = v[i];
-        }
+        printf("%s\n", array[i]);
     }
-
-    printf("%d\n",m);
 }
