@@ -585,6 +585,72 @@ def RNrmDst(px: float, mu: float, sg: float):
 
 
 
+def RNrmDst_i(px: float, mu: float, sg: float, greater = False, module = False):
+    """
+    Reverse Normal Standard Distribution information
+
+    Returns the expected value of the desired probability of 
+    a Normal Standard Distribution using the erfinv function 
+    from special package with computes the error function
+
+    Parameters
+    ----------
+    px: float
+        Probability of normal standard distribution
+
+    mu: float
+        Expected value
+
+    sg: float
+        Variance value
+
+    greater : boolean
+              Is the dessired value greater?
+
+        if greatter:
+            P(X>x)
+        else:
+            P(X<x)
+    
+    module : boolean
+             Is the dessired value in modulus?
+
+        if module:
+            P(|X| > x) or P(|X| < x)
+        else:
+            P( X  > x) or P( X  < x)
+
+    Notes
+    -----
+
+        |A| > a: A > a or A < -a
+        |A| < a: A < a or A > -a, -a < A < a
+
+        know: P(X < -x) = P(X > x) so:
+
+        P(|X| < x) = 1 - P(X < x)
+        P( X  > x) = 1 - P(X < x)
+
+    """
+
+    #P(|X| > x) = px
+    if greater and module:
+        return RNrmDst(1-px/2, mu, sg)
+
+    #P(X > x) = px
+    elif greater and not module:
+        return RNrmDst(1-px, mu, sg)
+
+    #P(|X| < x) = px
+    elif not greater and module:
+        return RNrmDst((1+px)/2, mu, sg)
+
+    #P(X < x) = px
+    elif not greater and not module:
+        return RNrmDst(px, mu, sg)
+
+
+
 def cnfIntPrp(p, z, n):
     """
     Confidence Interval Proportional
