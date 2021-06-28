@@ -332,7 +332,7 @@ if(False):
     )
 
 # exercice 88
-if(True):
+if(False):
     vx = 14 # variance
     n  = 12 # size of sample
 
@@ -384,7 +384,7 @@ if(True):
     )
 
 # exercice 89
-if(True):
+if(False):
     na = 48 # number of adults
     ia = 13 # number of infected adults
     ph = ia/na # porcentagem of infected
@@ -444,24 +444,28 @@ if(False):
     )
 
 # exercice 92
-if(False):
+if(True):
     mean_amazon = 46.99 # selling price in amazon
-    n =  15              # total of adds
-    mean = 45.43
-    stddev = 3.676
-    semean = 0.949
-    ns = 0.1
+    n      = 14         # total of adds
+    mean   = 44.55
+    vare   = 10.297
+    stddev =  3.209
+    semean =  0.858
+    ns = 0.05
 
-    z = (mean - mean_amazon)/(np.sqrt(stddev/n))
+    z = (mean - mean_amazon)/(stddev/np.sqrt(n)) # slide 18 page 20
 
-    pvalue = stat.nrmStdDst_i(z, False)
-
-    e = pvalue > ns
+    # http://me414-unicamp.github.io/about/Tabelas-impressao.pdf
+    # t student distribution
+    # v = n-1
+    # t_ns = -t_(1-ns)
+    pvalue = -1.771
+    e = pvalue < ns
     print(
         "\nexercice 91:" + 
         "\n a) test:    " + str(1) + 
         "\n a) test:    " + str(3) + 
-        "\n c) test:    {:.4}".format(z) +
+        "\n c) test:   {:.4}".format(z) +
         "\n d) p-value: {:.4}".format(pvalue) + 
         "\n e) p-value: "+ str(e)
     )
