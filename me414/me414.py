@@ -473,3 +473,37 @@ if(False):
         "\n d) p-value: {:.4}".format(pvalue) + 
         "\n e) p-value: "+ str(e)
     )
+
+# exercice 93
+if(True):
+    mean_control      = 720
+
+    size_sample       = 15
+    mean_sample       = 732.1
+    variance_sample   = 1615.5
+
+    # c
+    z = (
+        mean_sample - mean_control
+        )/(
+        np.sqrt(variance_sample/size_sample)
+        ) # slide 18 page 20
+
+    # d
+    # http://me414-unicamp.github.io/about/Tabelas-impressao.pdf
+    # t student distribution
+    # v = n-1
+    # t_ns = -t_(1-ns)
+    ns = 0.1
+    pvalue = 1.761
+
+    # e
+    e = pvalue < ns
+    print(
+        "\nexercice 91:" + 
+        "\n a) test:    " + str(1) + 
+        "\n a) test:    " + str(4) + 
+        "\n c) test:   {:.4}".format(z) +
+        "\n d) p-value: {:.4}".format(pvalue) + 
+        "\n e) p-value: "+ str(e)
+    )
