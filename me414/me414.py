@@ -1,4 +1,5 @@
 import numpy as np
+import scipy as sp
 import statpy as stat
 
 #exercice 67
@@ -331,64 +332,55 @@ if(False):
     )
 
 # exercice 88
-if(False):
-    vx = 12 # variance
-    n  = 27 # size of sample
+if(True):
+    vx = 14 # variance
+    n  = 12 # size of sample
 
     s = np.array([
+        14,
         12,
         10,
-        8,
-        9,
-        16,
-        15,
-        16,
-        14,
-        19,
-        9,
+        12,
         17,
-        9,
+        8,
         13,
+        17,
+        10,
         12,
-        13,
-        16,
-        14,
-        11,
-        12,
-        9,
-        16,
-        11,
-        19,
-        16,
-        12,
-        15,
-        8
+        22,
+        19
     ])
 
     # a)
     ex = np.mean(s)
 
     # b) c) d)
-    sc = 0.95
+    sc = 0.99
     sd = np.sqrt(vx)
     ic = stat.SCnfIntAbs(ex, sd, sc, n)
 
     # e)
-    err = 1
+    err = 2
     nn = stat.sSCnfIntAbs(sd, sc, err)
 
     # f)
     vd = np.var(s, ddof=1)
-    ic1 = stat.SCnfIntAbs(ex, vd, sc, n)
+
+    # use this site: http://www.bertolo.pro.br/FinEst/Estatistica/DistribuicaoProbabilidades2/t/index.html
+    # p-value: 1-sc
+    # g.l:     n-1  graus de liberdade
+    t = 3.106
+
+    nnm = stat.cnfIntAbs(ex, np.sqrt(vd), t, n)
 
     print(
         "\nexercice 88:" + 
-        "\n a) {:.4}".format(ex) + 
-        "\n b) {:.4}".format(ic[1]) + 
-        "\n c) {:.4}".format(ic[2]) + 
-        "\n d) {:.4}".format(ic[0]) + 
-        "\n e) {:.4}".format(nn) + 
-        "\n f) {:.4}".format(ic1[2])
+        "\n a) {:.6}".format(ex) + 
+        "\n b) {:.6}".format(ic[1]) + 
+        "\n c) {:.6}".format(ic[2]) + 
+        "\n d) {:.6}".format(ic[0]) + 
+        "\n e) {:.6}".format(nn) + 
+        "\n f) {:.6}".format(nnm[2])
     )
 
 # exercice 89
