@@ -475,7 +475,7 @@ if(False):
     )
 
 # exercice 93
-if(True):
+if(False):
     mean_control      = 720
 
     size_sample       = 15
@@ -493,17 +493,54 @@ if(True):
     # http://me414-unicamp.github.io/about/Tabelas-impressao.pdf
     # t student distribution
     # v = n-1
-    # t_ns = -t_(1-ns)
+    # t_{1-ns/2}
     ns = 0.1
     pvalue = 1.761
 
     # e
     e = pvalue < ns
     print(
-        "\nexercice 91:" + 
+        "\nexercice 93:" + 
         "\n a) test:    " + str(1) + 
         "\n a) test:    " + str(4) + 
         "\n c) test:   {:.4}".format(z) +
         "\n d) p-value: {:.4}".format(pvalue) + 
         "\n e) p-value: "+ str(e)
+    )
+
+# exercice 94
+if(True):
+    mean_control      = 1700
+
+    size_sample       = 290
+    mean_sample       = 1699
+    nDeviation_sample = 150
+
+    # a
+    test_value = (
+                mean_sample - mean_control
+                )/(
+                nDeviation_sample/np.sqrt(size_sample)
+                ) # slide 18 page 20
+
+    # b
+    # http://me414-unicamp.github.io/about/Tabelas-impressao.pdf
+    # t student distribution
+    # v = n-1
+    # t_{1-ns/2}
+    ns = 0.01
+    critical_value = 2.326
+
+    # c
+    pvalue = 2*(1-stat.nrmStdDst(test_value))
+
+    # d
+    e = pvalue < ns
+
+    print(
+        "\nexercice 94:" + 
+        "\n a) test_value:     {:.4}".format(test_value) + 
+        "\n b) critical_value: {:.4}".format(critical_value) + 
+        "\n c) p-value:        {:.4}".format(pvalue) +
+        "\n d) accepted:       " + str(e)
     )
