@@ -444,7 +444,7 @@ if(False):
     )
 
 # exercice 92
-if(True):
+if(False):
     mean_amazon = 46.99 # selling price in amazon
     n      = 14         # total of adds
     mean   = 44.55
@@ -453,16 +453,20 @@ if(True):
     semean =  0.858
     ns = 0.05
 
+    # c
     z = (mean - mean_amazon)/(stddev/np.sqrt(n)) # slide 18 page 20
 
+    # d
     # http://me414-unicamp.github.io/about/Tabelas-impressao.pdf
     # t student distribution
     # v = n-1
     # t_ns = -t_(1-ns)
     pvalue = -1.771
+
+    # e
     e = pvalue < ns
     print(
-        "\nexercice 91:" + 
+        "\nexercice 92:" + 
         "\n a) test:    " + str(1) + 
         "\n a) test:    " + str(3) + 
         "\n c) test:   {:.4}".format(z) +
