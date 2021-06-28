@@ -384,19 +384,26 @@ if(True):
     )
 
 # exercice 89
-if(False):
-    na = 54 # number of adults
-    ia = 24 # number of infected adults
+if(True):
+    na = 48 # number of adults
+    ia = 13 # number of infected adults
     ph = ia/na # porcentagem of infected
-    po = 0.47  # null hipotese
+    po = 0.30  # null hipotese
 
     z = (ph - po)/np.sqrt(po*(1-po)/na)
+    pz = 0.6700 # from tables
+    print(pz, stat.nrmStdDst(-z))
 
-    pvalue = 2*stat.nrmStdDst_i(z, False)
+    pvalue = 2*(1-pz)
+    pvalue1 = 2*(1-stat.nrmStdDst(-z))
+    pvalue2 = 2*stat.nrmStdDst(z)
 
     print(
         "\nexercice 89:" + 
-        "\n a) {:.4} {:.4} {:.4} {:.4}".format(ph, po, z, pvalue)
+        "\n          z: {:.4}".format(z) +
+        "\n a) p value1: {:.4}".format(pvalue1) +
+        "\n a) p value2: {:.4}".format(pvalue2) +
+        "\n a) p value: {:.4}".format(pvalue)
     )
 
 # exercice 90
