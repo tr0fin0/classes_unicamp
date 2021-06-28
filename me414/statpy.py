@@ -1007,61 +1007,6 @@ def SCnfIntAbs(ex, sd, sc, n):
 
 
 
-# def SCCnfIntAbs(ex, sd, sc, n):
-#     """
-#     Statistical Conservative Confidence Interval Absolute
-
-#     Returns the minimum and maximum values 
-#     from the absolute value of ex with an unknown variance of sigma2 
-#     in an amostral distribution considering a statiscal confidence of sc 
-#     with a sample of size n
-
-#     Parameters
-#     ----------
-#     ex: float
-#         Abusolute value
-
-#     sd: float
-#         Standard Deviation
-
-#     sc: float
-#         Statistical Confidence
-
-#         if  sc == 0.68 then z = 1
-#             sc == 0.90 then z = 1.64
-#             sc == 0.95 then z = 1.96
-#             sc == 0.99 then z = 2.58
-
-#     n : int
-#         Size of sample
-
-#     Returns
-#     -------
-#     SCnfIntAbs: array
-
-#                 SCnfIntAbs[0] error of interval
-#                 SCnfIntAbs[1] minimum interval value
-#                 SCnfIntAbs[2] maximum interval value
-
-#     Notes
-#     -----
-#     Details can be find in the function definition [1] with an implementation in scipy package [2]
-
-#     Reference
-#     ---------
-#         [1] 
-#             https://pt.wikipedia.org/wiki/Distribui%C3%A7%C3%A3o_t_de_Student
-
-#         [2] scipy.stats.t
-#             https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.t.html  https://stackoverflow.com/questions/12412895/how-to-calculate-probability-in-a-normal-distribution-given-mean-standard-devi
-#     """
-
-#     z = RNrmStdDst((1+sc)/2)
-
-#     return CCnfIntAbs(ex, sd, z, n)
-
-
-
 def sCnfIntAbs(sd, z, err):
     """
     size Confidence Interval Absolute
