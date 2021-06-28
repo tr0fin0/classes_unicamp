@@ -1060,6 +1060,8 @@ def SCnfIntAbs(ex, sd, sc, n):
 
 #     return CCnfIntAbs(ex, sd, z, n)
 
+
+
 def sCnfIntAbs(sd, z, err):
     """
     size Confidence Interval Absolute
