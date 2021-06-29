@@ -512,9 +512,9 @@ if(False):
 if(True):
     mean_control      = 1700
 
-    size_sample       = 290
-    mean_sample       = 1699
-    nDeviation_sample = 150
+    size_sample       = 210
+    mean_sample       = 1705
+    nDeviation_sample = 160
 
     # a
     test_value = (
@@ -527,12 +527,12 @@ if(True):
     # http://me414-unicamp.github.io/about/Tabelas-impressao.pdf
     # t student distribution
     # v = n-1
-    # t_{1-ns/2}
-    ns = 0.01
-    critical_value = 2.326
+    # t_{1-ns/2} bicaudal
+    ns = 0.05
+    critical_value = 1.960
 
     # c
-    pvalue = 2*(1-stat.nrmStdDst(test_value))
+    pvalue = stat.nrmStdDst_i(test_value,True,True)
 
     # d
     e = pvalue < ns
