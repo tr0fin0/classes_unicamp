@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include <stdlib.h>
+#include<stdlib.h>
 
 // Implemente um programa em Assembly do RISC-V que leia um número N na entrada (considere valores de N positivos) e em seguida leia N strings de no máximo 20 caracteres cada para, ao fim, imprimir todas elas da última digitada para a primeira digitada.
 
