@@ -419,23 +419,25 @@ def nrmDst_i(x: float, mu: float, sg: float, greater=False, module=False):
             https://en.wikipedia.org/wiki/Normalization_(statistics)
     """
 
-    px = nrmDst(x, mu, sg)
+    if module:
+        px = nrmDst(abs(x), mu, sg)
 
-    # P(|X| > x) = px
-    if greater and module:
-        return 1-px/2
+        if greater:
+            # P(|X| > |x|) = px
+            return 2-2*px
+        else:
+            # P(|X| < |x|) = px
+            return 2*px-1
 
-    # P( X  > x) = px
-    elif greater and not module:
-        return 1-px
+    else:
+        px = nrmDst(x, mu, sg)
 
-    # P(|X| < x) = px
-    elif not greater and module:
-        return (1+px)/2
-
-    # P( X  < x) = px
-    elif not greater and not module:
-        return px
+        if greater:
+            # P( X  >  x ) = px
+            return 1-px
+        else:
+            # P( X  <  x ) = px
+            return px
 
 
 
