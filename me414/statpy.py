@@ -420,6 +420,7 @@ def nrmDst_i(x: float, mu: float, sg: float, greater=False, module=False):
     """
 
     if module:
+        # curve is symmetrical so independent of x signal
         px = nrmDst(abs(x), mu, sg)
 
         if greater:
