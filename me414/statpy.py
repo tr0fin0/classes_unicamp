@@ -288,6 +288,22 @@ def nrmStdDst_i(x: float, greater=False, module=False):
     x : float
         Desired value
 
+    greater : boolean
+              Is the dessired value greater?
+
+        if greatter:
+            P(X>x)
+        else:
+            P(X<x)
+
+    module : boolean
+             Is the dessired value in modulus?
+
+        if module:
+            P(|X| > x) or P(|X| < x)
+        else:
+            P( X  > x) or P( X  < x)
+
     Returns
     -------
     px: float
