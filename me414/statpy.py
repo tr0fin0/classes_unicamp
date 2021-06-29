@@ -277,7 +277,7 @@ def nrmStdDst(x: float):
 
 
 
-def nrmStdDst_i(x: float, greater=False):
+def nrmStdDst_i(x: float, greater=False, module=False):
     """
     Normal Standard Distribution information
 
@@ -287,9 +287,6 @@ def nrmStdDst_i(x: float, greater=False):
     ----------
     x : float
         Desired value
-
-    greater :   boolean
-                Is the dessired value greater?
 
     Returns
     -------
@@ -301,15 +298,26 @@ def nrmStdDst_i(x: float, greater=False):
             P(X<x)
     """
 
-    px = nrmStdDst(x)
+    if module:
+        # curve is symmetrical so independent of x signal
+        px = nrmStdDst(abs(x))
 
-    if greater:
-        print("P(X > {:.4}) = {:.4f}".format(x, 1-px))
-        return 1-px
+        if greater:
+            # P(|X| > |x|) = px
+            return 2-2*px
+        else:
+            # P(|X| < |x|) = px
+            return 2*px-1
 
     else:
-        print("P(X < {:.4}) = {:.4f}".format(x, px))
-        return px
+        px = nrmStdDst(x)
+
+        if greater:
+            # P( X  >  x ) = px
+            return 1-px
+        else:
+            # P( X  <  x ) = px
+            return px
 
 
 
@@ -399,7 +407,7 @@ def nrmDst_i(x: float, mu: float, sg: float, greater=False, module=False):
             P(X>x)
         else:
             P(X<x)
-    
+
     module : boolean
              Is the dessired value in modulus?
 
