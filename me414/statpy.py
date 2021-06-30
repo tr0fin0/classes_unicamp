@@ -1617,7 +1617,7 @@ def tSCnfIntAbsP(
     # computing the pondered variance
     vrM = ((nA-1)*vrA + (nB-1)*vrB)/(nA+nB - 2)
 
-    return cnfIntAbs(exA, exB, vrM, vrM, nA, nB, z)
+    return cnfIntAbsP(exA, exB, vrM, vrM, nA, nB, z)
 
 
 
@@ -1660,3 +1660,46 @@ def cnfIntPrpP(
     err = z*np.sqrt((pA*(1-pA))/nA + (pB*(1-pB))/nB)
 
     return err, (pA-pB)-err, (pA-pB)+err
+
+
+
+def SCnfIntPrpP(
+    pA: float, pB: float, 
+    nA: float, nB: float, 
+    sc: float):
+    """
+    Confidence Interval Absolute
+    with two populations
+
+    Returns the minimum and maximum proportional values of confidence interval from two populations A and B with the propor value of pA and pB, with a sample of size nA and nB in an amostral distribution considering an interval constant of z
+
+    Parameters
+    ----------
+    pA: float
+        Proportional value of population A
+
+    nA: int
+        Size of sample of population A
+
+    pB: float
+        Proportional value of population B
+
+    nB: int
+        Size of sample of population B
+
+    sc: float
+        Statiscal Confidence
+
+    Returns
+    -------
+    SCnfIntPrpP:    array
+
+                    SCnfIntPrpP[0] error of interval
+                    SCnfIntPrpP[1] minimum interval value
+                    SCnfIntPrpP[2] maximum interval value
+    """
+
+    # computing the t-student distribution
+    z = RNrmStdDst((1+sc)/2)
+
+    return cnfIntAbsP(pA, pB, nA, nB, z)
