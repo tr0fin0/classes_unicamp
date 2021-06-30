@@ -544,19 +544,32 @@ def RLExponencial(x: int, p: float):
 
 
 
-def ExponencialReverseX(Lambda: float, p: float):
+def RXExponencial(Lambda: float, p: float):
+    """
+    Reverse X Exponencial
+
+
+
+    Parameters
+    ----------
+    Lambda: int
+
+
+    p : float
+        
+
+    Returns
+    -------
+    x : float
+        
+    """
 
     if (p > 1):
         return 0
 
-    x = (-np.log(1-p))/Lambda
+    return (-np.log(1-p))/Lambda
 
-    print("\nExponencial Reverse X")
-    print("x = {:.4f}".format(x))
-    print("p = {:.4f}".format(p))
-    print("l = {:.4f}".format(Lambda))
 
-    return x
 
 def ExponencialInfo(Lambda: int, x: int):
 
