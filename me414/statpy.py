@@ -300,7 +300,7 @@ def HGeometric(x: float, n: float, X: float, N: float):
     Returns
     -------
     px: float
-        P(X < x)
+        P(X = x)
     """
 
     Xx = Combination(X, x)
@@ -311,35 +311,79 @@ def HGeometric(x: float, n: float, X: float, N: float):
 
 
 
-def HiperGeometricInfo(x, n, X, N):
-    #x: number of elements with A selected
-    #n: number of elements selected
-    #X: total number of elements with A
-    #N: total number of elements
+def HGeometric_i(x: float, n: float, X: float, N: float, greater=False, equal=False):
+    """
+    Hiper Geometric
 
-    px = HiperGeometric(x, n, X, N)
 
-    pxl = 0
+
+    Parameters
+    ----------
+    x : float
+        Number of elements selected with A
+
+    n : float
+        Number of elements selected
+
+    X : float
+        Total number of elements with A
+
+    N : float
+        Total number of elements
+
+    greater : boolean
+              Is the dessired value greater?
+
+        if greatter:
+            P(X>x)
+        else:
+            P(X<x)
+
+    equal : boolean
+            Is the dessired value equal to x?
+
+        if equal:
+            P(X >= x) or P(X <= x)
+        else:
+            P(X >  x) or P(X <  x)
+
+    Returns
+    -------
+    HGeometric_i:   array
+                    HGeometric_i[0] ex: Expected Value
+                    HGeometric_i[1] vr: Variance
+                    HGeometric_i[2] px: P(X  = x)
+                    HGeometric_i[3] px: P(X ?? x)
+    """
+
+    px = HGeometric(x, n, X, N)
+
+    pxLower = 0
     for i in range(x):
-        pxl += HiperGeometric(i, n, X, N)
+        pxLower += HGeometric(i, n, X, N)
 
-    expectedValue = n*X/N
-    varianceValue = expectedValue*(1 - X/N)*(N-n)/(N-1)
+    # expected value
+    ex = n*X/N
+    # variance
+    vr = ex*(1 - X/N)*(N-n)/(N-1)
 
-    print("\nHiper Geometric Distribution")
-    print("x = {:.4f}".format(x))
-    print("n = {:.4f}".format(n))
-    print("X = {:.4f}".format(X))
-    print("N = {:.4f}".format(N))
-    print("E(X) = {:.4f}".format(expectedValue))
-    print("V(X) = {:.4f}".format(varianceValue))
-    print("P(X ={}) = {:.4f}".format(x, px))
-    print("P(X<={}) = {:.4f}".format(x, px+pxl))
-    print("P(X>={}) = {:.4f}".format(x, 1-pxl))
-    print("P(X< {}) = {:.4f}".format(x, pxl))
-    print("P(X> {}) = {:.4f}".format(x, 1-pxl-px))
+    if greater and equal:
+        # P(X >= x) = px
+        return ex, vr, px, 1-pxLower
 
-    return px
+    elif greater and not equal:
+        # P(X >  x) = px
+        return ex, vr, px, 1-px-pxLower
+
+    elif not greater and equal:
+        # P(X <= x) = px
+        return ex, vr, px, px+pxLower
+
+    elif not greater and not equal:
+        # P(X <  x) = px
+        return ex, vr, px, pxLower
+
+
 
 def Poisson(x, n, p):
     #x: number of sucesses
