@@ -50,15 +50,35 @@ def Combination(n: float, k: float):
 
     return cnk
 
-def Bernoulli(x, n, p):
-    #x: = 1, sucess
-    #   = 0, fail
-    #p: probability of sucess
-    #n: number of trials
+def Bernoulli(x: float, n: float, p: float):
+    """
+    Bernoulli
 
-    px = (p**(x))*((1-p)**(n-x))
 
-    return px
+
+    Parameters
+    ----------
+    x : float
+        Result of trial
+
+        if sucess
+            x = 1
+        if fail
+            x = 0
+
+    n : float
+        Number of trials
+
+    p : float
+        probability of sucess
+
+    Returns
+    -------
+    px: float
+        P(X < x)
+    """
+
+    return (p**(x))*((1-p)**(n-x))
 
 def Binomial(x, n, p):
     #x: number of sucesses
