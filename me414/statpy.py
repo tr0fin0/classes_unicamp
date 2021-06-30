@@ -25,7 +25,7 @@ def ccxy(x, y):
 
 
 
-def Combination(n: float, k: float):
+def Combination(n: int, k: int):
     """
     Combination
 
@@ -33,9 +33,9 @@ def Combination(n: float, k: float):
 
     Parameters
     ----------
-    n : float
+    n : int
         
-    k : float
+    k : int
 
     Returns
     -------
@@ -56,7 +56,7 @@ def Combination(n: float, k: float):
 
 
 
-def Bernoulli(x: float, n: float, p: float):
+def Bernoulli(x: int, n: int, p: int):
     """
     Bernoulli
 
@@ -64,7 +64,7 @@ def Bernoulli(x: float, n: float, p: float):
 
     Parameters
     ----------
-    x : float
+    x : int
         Result of trial
 
         if sucess
@@ -72,10 +72,10 @@ def Bernoulli(x: float, n: float, p: float):
         if fail
             x = 0
 
-    n : float
+    n : int
         Number of trials
 
-    p : float
+    p : int
         Probability of sucess
 
     Returns
@@ -88,7 +88,7 @@ def Bernoulli(x: float, n: float, p: float):
 
 
 
-def Binomial(x: float, n: float, p: float):
+def Binomial(x: int, n: int, p: int):
     """
     Binomial
 
@@ -96,13 +96,13 @@ def Binomial(x: float, n: float, p: float):
 
     Parameters
     ----------
-    x : float
+    x : int
         Number of sucesses
 
-    n : float
+    n : int
         Number of trials
 
-    p : float
+    p : int
         Probability of sucess
 
     Returns
@@ -115,7 +115,7 @@ def Binomial(x: float, n: float, p: float):
 
 
 
-def Binomial_i(x: float, n: float, p: float, greater=False, equal=False):
+def Binomial_i(x: int, n: int, p: int, greater=False, equal=False):
     """
     Binomial information
 
@@ -123,13 +123,13 @@ def Binomial_i(x: float, n: float, p: float, greater=False, equal=False):
 
     Parameters
     ----------
-    x : float
+    x : int
         Number of sucesses
 
-    n : float
+    n : int
         Number of trials
 
-    p : float
+    p : int
         Probability of sucess
 
     greater : boolean
@@ -186,7 +186,7 @@ def Binomial_i(x: float, n: float, p: float, greater=False, equal=False):
 
 
 
-def Geometric(n: float, p: float):
+def Geometric(n: int, p: int):
     """
     Geometric
 
@@ -194,10 +194,10 @@ def Geometric(n: float, p: float):
 
     Parameters
     ----------
-    n : float
+    n : int
         Number of trials to sucess
 
-    p : float
+    p : int
         Probability of sucess
 
     Returns
@@ -210,7 +210,7 @@ def Geometric(n: float, p: float):
 
 
 
-def Geometric_i(n: float, p: float, greater=False, equal=False):
+def Geometric_i(n: int, p: int, greater=False, equal=False):
     """
     Geometric information
 
@@ -218,10 +218,10 @@ def Geometric_i(n: float, p: float, greater=False, equal=False):
 
     Parameters
     ----------
-    n : float
+    n : int
         Number of trials to sucess
 
-    p : float
+    p : int
         Probability of sucess
 
     greater : boolean
@@ -277,7 +277,7 @@ def Geometric_i(n: float, p: float, greater=False, equal=False):
 
 
 
-def HGeometric(x: float, n: float, X: float, N: float):
+def HGeometric(x: int, n: int, X: int, N: int):
     """
     Hiper Geometric
 
@@ -285,16 +285,16 @@ def HGeometric(x: float, n: float, X: float, N: float):
 
     Parameters
     ----------
-    x : float
+    x : int
         Number of elements selected with A
 
-    n : float
+    n : int
         Number of elements selected
 
-    X : float
+    X : int
         Total number of elements with A
 
-    N : float
+    N : int
         Total number of elements
 
     Returns
@@ -311,7 +311,7 @@ def HGeometric(x: float, n: float, X: float, N: float):
 
 
 
-def HGeometric_i(x: float, n: float, X: float, N: float, greater=False, equal=False):
+def HGeometric_i(x: int, n: int, X: int, N: int, greater=False, equal=False):
     """
     Hiper Geometric
 
@@ -319,16 +319,16 @@ def HGeometric_i(x: float, n: float, X: float, N: float, greater=False, equal=Fa
 
     Parameters
     ----------
-    x : float
+    x : int
         Number of elements selected with A
 
-    n : float
+    n : int
         Number of elements selected
 
-    X : float
+    X : int
         Total number of elements with A
 
-    N : float
+    N : int
         Total number of elements
 
     greater : boolean
@@ -385,9 +385,41 @@ def HGeometric_i(x: float, n: float, X: float, N: float, greater=False, equal=Fa
 
 
 
-def Poisson(x: float, n: float, p: float):
+def Poisson(x: int, n: int, p: int):
     """
-    Geometric
+    Poisson
+
+
+
+    Parameters
+    ----------
+    x : int
+        Number of sucess
+
+    n : int
+        Number of trials
+
+    p : int
+        Probability of sucess
+
+    Returns
+    -------
+    px: float
+        P(X = x)
+    """
+
+    Lambda = n*p
+
+    if (Lambda <= 7) or ((n >= 20) and (p <= 0.05)):
+        return (np.exp(-Lambda)*(Lambda)**(x))/np.math.factorial(x)
+
+    return 0
+
+
+
+def Poisson_i(x: int, n: int, p: int):
+    """
+    Poisson information
 
 
 
@@ -407,17 +439,6 @@ def Poisson(x: float, n: float, p: float):
     px: float
         P(X = x)
     """
-
-    Lambda = n*p
-
-    if (Lambda <= 7) or ((n >= 20) and (p <= 0.05)):
-        return (np.exp(-Lambda)*(Lambda)**(x))/np.math.factorial(x)
-
-    return 0
-
-
-
-def PoissonInfo(x: int, n: int, p: int):
     #x: number of sucesses
     #n: number of trials
     #p: probability of sucess
