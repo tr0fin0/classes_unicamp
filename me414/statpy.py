@@ -1456,6 +1456,7 @@ def sSCnfIntAbs(sd, sc, err):
     return sCnfIntAbs(sd, z, err)
 
 
+
 def cnfIntAbs(
     exA: float, exB: float, 
     vrA: float, vrB: float, 
@@ -1505,16 +1506,18 @@ def cnfIntAbs(
 
 
 
-def CCnfIntAbs(
+
+
+def SCnfIntAbs(
     exA: float, exB: float, 
     vrA: float, vrB: float, 
     nA: float, nB: float, 
     sc: float):
     """
-    Confidence Interval Absolute
+    Statistical Confidence Interval Absolute
     with two populations
 
-    Returns the minimum and maximum values of confidence interval from two populations A and B with the absolute value of exA and exB with a standart deviation of sdA and sdB with a sample of size nA and nB in an amostral distribution considering an interval constant of z
+    Returns the minimum and maximum values of confidence interval from two populations A and B with the absolute value of exA and exB with a standart deviation of sdA and sdB with a sample of size nA and nB in an amostral distribution considering a statistical confidence of sc
 
     Parameters
     ----------
@@ -1549,6 +1552,60 @@ def CCnfIntAbs(
 
     Reference
     ---------
+        [1]
+            https://en.wikipedia.org/wiki/Confidence_interval
+    """
+
+    z = RNrmStdDst((1+sc)/2)
+
+    return cnfIntAbs(exA, exB, vrA, vrB, nA, nB, z)
+
+
+
+def tSCnfIntAbs(
+    exA: float, exB: float, 
+    vrA: float, vrB: float, 
+    nA: float, nB: float, 
+    sc: float):
+    """
+    t-student Statistical Confidence Interval Absolute
+    with two populations
+
+    Returns the minimum and maximum values of confidence interval from two populations A and B with the absolute value of exA and exB with a standart deviation of sdA and sdB with a sample of size nA and nB in an amostral distribution considering a statistical confidence of sc
+
+    Parameters
+    ----------
+    exA:float
+        Abusolute value of population A
+
+    vrA:float
+        Variance of population A
+
+    nA: int
+        Size of sample of population A
+
+    exB:float
+        Abusolute value of population B
+
+    vrB:float
+        Variance of population B
+
+    nB: int
+        Size of sample of population B
+
+    sc: float
+        Statiscal Confidence
+
+    Returns
+    -------
+    tSCnfIntAbs :   array
+
+                    tSCnfIntAbs[0] error of interval
+                    tSCnfIntAbs[1] minimum interval value
+                    tSCnfIntAbs[2] maximum interval value
+
+    Reference
+    ---------
         [1] 
             https://docs.scipy.org/doc/scipy/reference/reference/generated/scipy.stats.t.html#scipy.stats.t
         [2]
@@ -1556,7 +1613,7 @@ def CCnfIntAbs(
     """
 
     # computing the t-student distribution
-    z = t.ppf(1-(1-sc)/2, nA+nB-2)
+    z = t.ppf((1+sc)/2, nA+nB-2)
 
     # computing the pondered variance
     vrM = ((nA-1)*vrA + (nB-1)*vrB)/(nA+nB - 2)
