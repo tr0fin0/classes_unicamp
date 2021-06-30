@@ -641,6 +641,11 @@ if(False):
     # c
     c = a - b
 
+    # g
+    pvalue = 2*stat.nrmStdDst_i(c,True,True)
+    pvalue = 2*stat.nrmStdDst_i(c,True,True)
+    g = c > 1-sc
+
     print(
         "\nexercice 97:" + 
         "\n a) {:.4}".format(a) + 
@@ -649,7 +654,8 @@ if(False):
         "\n d) {:.4}".format(d[0]) + 
         "\n e) {:.4}".format(d[1]) + 
         "\n f) {:.4}".format(d[2]) + 
-        "\n g) {:.4}".format(0.0)
+        "\n f) {:.4}".format(pvalue) + 
+        "\n g) "+ str(g)
     )
 
 # exercice 98
@@ -668,7 +674,6 @@ if(False):
     # d
     # use t-student distribution because yes
     ns = 0.01
-    cvalue = stat.nrmStdDst_i(0.1/2,True,True)
     cvalue = t.ppf(1-(ns)/2, nA+nB-2)
 
     # e
@@ -684,7 +689,7 @@ if(False):
     )
 
 # exercice 99
-if(True):
+if(False):
     nA = 13
     nB = 14
 
@@ -721,4 +726,37 @@ if(True):
         "\n d) {:.4}".format(cvalue) + 
         "\n e) {:.4}".format(pvalue) + 
         "\n f) " + str(f)
+    )
+
+# exercice 100
+if(True):
+    n1 = 57
+    n2 = 296
+    s1 = 7
+    s2 = 163
+
+    p1 = s1/n1
+    p2 = s2/n2
+
+    # a
+    hp = (n1*p1 + n2*p2)/(n1 + n2)
+    a = (p1 - p2)/np.sqrt(hp*(1-hp)*(1/n1 + 1/n2))
+
+    # b
+    b = stat.nrmStdDst_i(a,True,True)
+
+    # c
+    ns = 0.1/2
+    sc = 1-ns
+    cvalue = stat.RNrmStdDst(sc)
+
+    # d
+    d = abs(a) > cvalue
+
+    print(
+        "\nexercice 100:" + 
+        "\n a) {:.4}".format(a) + 
+        "\n b) {:.4}".format(b) + 
+        "\n c) {:.4}".format(cvalue) + 
+        "\n d) " + str(d)
     )
