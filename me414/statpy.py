@@ -2,6 +2,8 @@ import numpy as np
 from scipy import special
 from scipy.integrate import quad
 
+
+
 def ccxy(x, y):
     if(x.size != y.size):
         return 2
@@ -20,6 +22,8 @@ def ccxy(x, y):
     ccxy = np.sum(zx*zy)/(n-1)
 
     return ccxy
+
+
 
 def Combination(n: float, k: float):
     """
@@ -49,6 +53,8 @@ def Combination(n: float, k: float):
     cnk = fN/(fK*fNK)
 
     return cnk
+
+
 
 def Bernoulli(x: float, n: float, p: float):
     """
@@ -80,6 +86,8 @@ def Bernoulli(x: float, n: float, p: float):
 
     return (p**(x))*((1-p)**(n-x))
 
+
+
 def Binomial(x: float, n: float, p: float):
     """
     Binomial
@@ -89,12 +97,7 @@ def Binomial(x: float, n: float, p: float):
     Parameters
     ----------
     x : float
-        number of sucesses
-
-        if sucess
-            x = 1
-        if fail
-            x = 0
+        Number of sucesses
 
     n : float
         Number of trials
@@ -110,33 +113,78 @@ def Binomial(x: float, n: float, p: float):
 
     return Combination(n, x)*Bernoulli(x, n, p)
 
-def BinomialInfo(x, n, p):
-    #x: number of sucesses
-    #n: number of trials
-    #p: probability of sucess
 
-    pxl = 0
+
+def Binomial_i(x: float, n: float, p: float, greater=False, equal=False):
+    """
+    Binomial information
+
+
+
+    Parameters
+    ----------
+    x : float
+        Number of sucesses
+
+    n : float
+        Number of trials
+
+    p : float
+        Probability of sucess
+
+    greater : boolean
+              Is the dessired value greater?
+
+        if greatter:
+            P(X>x)
+        else:
+            P(X<x)
+
+    equal : boolean
+            Is the dessired value equal to x?
+
+        if equal:
+            P(X >= x) or P(X <= x)
+        else:
+            P(X >  x) or P(X <  x)
+
+    Returns
+    -------
+    Binomial_i: array
+                Binomial_i[0] ex: Expected Value
+                Binomial_i[1] vr: Variance
+                Binomial_i[2] px: P(X  = x)
+                Binomial_i[3] px: P(X ?? x)
+    """
+
     px = Binomial(x, n, p)
 
+    pxLower = 0
     for i in range(x):
-        pxl += Binomial(i, n, p)
+        pxLower += Binomial(i, n, p)
 
-    expectedValue = n*p
-    varianceValue = n*p*(1-p)
+    # expected value
+    ex = n*p
+    # variance
+    vr = n*p*(1-p)
 
-    print("\nBinomial Distribution")
-    print("p = {:.4f}".format(p))
-    print("n = {:.4f}".format(n))
-    print("x = {:.4f}".format(x))
-    print("E(X) = {:.4f}".format(expectedValue))
-    print("V(X) = {:.4f}".format(varianceValue))
-    print("P(X ={}) = {:.4f}".format(x, px))
-    print("P(X<={}) = {:.4f}".format(x, px+pxl))
-    print("P(X>={}) = {:.4f}".format(x, 1-pxl))
-    print("P(X< {}) = {:.4f}".format(x, pxl))
-    print("P(X> {}) = {:.4f}".format(x, 1-pxl-px))
+    if greater and equal:
+        # P(X >= x) = px
+        return ex, vr, px, 1-pxLower
 
-    return px
+    elif greater and not equal:
+        # P(X >  x) = px
+        return ex, vr, px, 1-px-pxLower
+
+    elif not greater and equal:
+        # P(X <= x) = px
+        return ex, vr, px, px+pxLower
+
+    elif not greater and not equal:
+        # P(X <  x) = px
+        return ex, vr, px, pxLower
+
+
 
 def Geometric(x, p):
     #x: number of trials to sucess
