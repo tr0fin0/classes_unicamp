@@ -547,6 +547,7 @@ if(False):
         "\n d) accepted:       " + str(e)
     )
 
+# exercice 95
 if(False):
     nA = 11.0
     nB = 15.0
@@ -583,7 +584,8 @@ if(False):
         "\n f) " + str(e)
     )
 
-if(True):
+# exercice 96
+if(False):
     vrA = 102
     vrB = 102
 
@@ -613,4 +615,39 @@ if(True):
         "\n c) " + str(cStr) + 
         "\n d) {:.4}".format(2*c[0]) + 
         "\n e) {:.4}".format(c[0])
+    )
+
+# exercice 97
+if(True):
+    nN = 122
+    nL = 122
+
+    fvN = 29
+    fvL = 18
+
+    # a
+    a = fvN/nN
+
+    # b
+    b = fvL/nL
+
+    # c
+    c = a - b
+
+    # d
+    sc = 0.99
+    d = stat.SCnfIntPrpP(a, b, nN, nL, sc)
+
+    # c
+    c = a - b
+
+    print(
+        "\nexercice 97:" + 
+        "\n a) {:.4}".format(a) + 
+        "\n b) {:.4}".format(b) + 
+        "\n c) {:.4}".format(c) + 
+        "\n d) {:.4}".format(d[0]) + 
+        "\n e) {:.4}".format(d[1]) + 
+        "\n f) {:.4}".format(d[2]) + 
+        "\n g) {:.4}".format(0.0)
     )
