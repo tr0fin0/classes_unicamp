@@ -571,22 +571,52 @@ def RXExponencial(Lambda: float, p: float):
 
 
 
-def ExponencialInfo(Lambda: int, x: int):
+def Exponencial_i(Lambda: int, x: int, greater=False):
+    """
+    Exponencial information
 
-    expectedValue = 1/Lambda
-    varianceValue = 1/(Lambda**2)
+
+
+    Parameters
+    ----------
+    Lambda: int
+            
+
+    x : int
+        
+
+    greater : boolean
+              Is the dessired value greater?
+
+        if greatter:
+            P(X>x)
+        else:
+            P(X<x)
+
+    Returns
+    -------
+    Exponencial_i:array
+                Exponencial_i[0] ex: Expected Value
+                Exponencial_i[1] vr: Variance
+                Exponencial_i[2] px: P(X  = x)
+                Exponencial_i[3] px: P(X ?? x)
+    """
+
+    # expected value
+    ex = 1/Lambda
+    # variance
+    vr = 1/(Lambda**2)
 
     px = Exponencial(Lambda, x)
 
-    print("\nExponencial Distribution")
-    print("x      = {:.4f}".format(x))
-    print("lambda = {:.4f}".format(Lambda))
-    print("E(X) = {:.4f}".format(expectedValue))
-    print("V(X) = {:.4f}".format(varianceValue))
-    print("P(X<={}) = {:.4f}".format(x, px))
-    print("P(X> {}) = {:.4f}".format(x, 1-px))
 
-    return px
+    if greater:
+        # P(X >  x) = px
+        return ex, vr, 1-px
+
+    else:
+        # P(X <= x) = px
+        return ex, vr, px
 
 
 
