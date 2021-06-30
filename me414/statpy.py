@@ -186,7 +186,7 @@ def Binomial_i(x: float, n: float, p: float, greater=False, equal=False):
 
 
 
-def Geometric(x: float, p: float):
+def Geometric(n: float, p: float):
     """
     Geometric
 
@@ -210,31 +210,72 @@ def Geometric(x: float, p: float):
 
 
 
-def GeometricInfo(x, p):
-    #x: number of trials to sucess
-    #p: probability of sucess
+def Geometric_i(n: float, p: float, greater=False, equal=False):
+    """
+    Geometric information
 
-    px = Geometric(x, p)
 
-    pxl = 0
-    for i in range(1,x):
-        pxl += Geometric(i, p)
 
-    expectedValue = 1/p
-    varianceValue = (1-p)/(p**2)
+    Parameters
+    ----------
+    n : float
+        Number of trials to sucess
 
-    print("\nGeometric Distribution")
-    print("p = {:.4f}".format(p))
-    print("x = {:.4f}".format(x))
-    print("E(X) = {:.4f}".format(expectedValue))
-    print("V(X) = {:.4f}".format(varianceValue))
-    print("P(X ={}) = {:.4f}".format(x, px))
-    print("P(X<={}) = {:.4f}".format(x, px+pxl))
-    print("P(X>={}) = {:.4f}".format(x, 1-pxl))
-    print("P(X< {}) = {:.4f}".format(x, pxl))
-    print("P(X> {}) = {:.4f}".format(x, 1-px-pxl))
+    p : float
+        Probability of sucess
 
-    return px
+    greater : boolean
+              Is the dessired value greater?
+
+        if greatter:
+            P(X>x)
+        else:
+            P(X<x)
+
+    equal : boolean
+            Is the dessired value equal to x?
+
+        if equal:
+            P(X >= x) or P(X <= x)
+        else:
+            P(X >  x) or P(X <  x)
+
+    Returns
+    -------
+    Geometric_i:array
+                Geometric_i[0] ex: Expected Value
+                Geometric_i[1] vr: Variance
+                Geometric_i[2] px: P(X  = x)
+                Geometric_i[3] px: P(X ?? x)
+    """
+    px = Geometric(n, p)
+
+    pxLower = 0
+    for i in range(1,n):
+        pxLower += Geometric(i, p)
+
+    # expected value
+    ex = 1/p
+    # variance
+    vr = (1-p)/(p**2)
+
+    if greater and equal:
+        # P(X >= x) = px
+        return ex, vr, px, 1-pxLower
+
+    elif greater and not equal:
+        # P(X >  x) = px
+        return ex, vr, px, 1-px-pxLower
+
+    elif not greater and equal:
+        # P(X <= x) = px
+        return ex, vr, px, px+pxLower
+
+    elif not greater and not equal:
+        # P(X <  x) = px
+        return ex, vr, px, pxLower
+
+
 
 def HiperGeometric(x, n, X, N):
     #x: number of elements with A selected
