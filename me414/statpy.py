@@ -491,6 +491,24 @@ def Poisson_i(x: int, n: int, p: int, greater=False, equal=False):
 
 
 def Exponencial(Lambda: int, x: int):
+    """
+    Exponencial
+
+
+
+    Parameters
+    ----------
+    Lambda: int
+            
+
+    x : int
+        
+
+    Returns
+    -------
+    px: float
+        P(X = x)
+    """
 
     if (Lambda < 0):
         return 0
