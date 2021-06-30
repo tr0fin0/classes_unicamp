@@ -417,7 +417,7 @@ def Poisson(x: int, n: int, p: int):
 
 
 
-def Poisson_i(x: int, n: int, p: int):
+def Poisson_i(x: int, n: int, p: int, greater=False, equal=False):
     """
     Poisson information
 
@@ -434,37 +434,61 @@ def Poisson_i(x: int, n: int, p: int):
     p : float
         Probability of sucess
 
+    greater : boolean
+              Is the dessired value greater?
+
+        if greatter:
+            P(X>x)
+        else:
+            P(X<x)
+
+    equal : boolean
+            Is the dessired value equal to x?
+
+        if equal:
+            P(X >= x) or P(X <= x)
+        else:
+            P(X >  x) or P(X <  x)
+
     Returns
     -------
-    px: float
-        P(X = x)
+    Poisson_i:  array
+                Poisson_i[0] ex: Expected Value
+                Poisson_i[1] vr: Variance
+                Poisson_i[2] px: P(X  = x)
+                Poisson_i[3] px: P(X ?? x)
     """
-    #x: number of sucesses
-    #n: number of trials
-    #p: probability of sucess
 
     Lambda = n*p
 
     px = Poisson(x, n, p)
 
-    pxl = 0
+    pxLower = 0
     for i in range(x):
-        pxl += Poisson(i, n, p)
+        pxLower += Poisson(i, n, p)
 
-    print("\nPoisson Distribution")
-    print("x = {:.4f}".format(x))
-    print("n = {:.4f}".format(n))
-    print("p = {:.4f}".format(p))
-    print("E(X) = {:.4f}".format(Lambda))
-    print("V(X) = {:.4f}".format(Lambda))
-    print("P(X ={}) = {:.4f}".format(x, px))
-    print("P(X<={}) = {:.4f}".format(x, px+pxl))
-    print("P(X>={}) = {:.4f}".format(x, 1-pxl))
-    print("P(X< {}) = {:.4f}".format(x, pxl))
-    print("P(X> {}) = {:.4f}".format(x, 1-pxl-px))
+    # expected value
+    ex = Lambda
+    # variance
+    vr = Lambda
+
+    if greater and equal:
+        # P(X >= x) = px
+        return ex, vr, px, 1-pxLower
+
+    elif greater and not equal:
+        # P(X >  x) = px
+        return ex, vr, px, 1-px-pxLower
+
+    elif not greater and equal:
+        # P(X <= x) = px
+        return ex, vr, px, px+pxLower
+
+    elif not greater and not equal:
+        # P(X <  x) = px
+        return ex, vr, px, pxLower
 
 
-    return px
 
 def Exponencial(Lambda: int, x: int):
 
