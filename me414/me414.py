@@ -618,7 +618,7 @@ if(False):
     )
 
 # exercice 97
-if(True):
+if(False):
     nN = 122
     nL = 122
 
@@ -650,4 +650,34 @@ if(True):
         "\n e) {:.4}".format(d[1]) + 
         "\n f) {:.4}".format(d[2]) + 
         "\n g) {:.4}".format(0.0)
+    )
+
+# exercice 98
+if(True):
+    # c
+    exA = 7.49
+    exB = 7.09
+    vrA = 2.054
+    vrB = 3.082
+    nA = 40
+    nB = 40
+
+    delta = 0
+    c = ((exA - exB) - delta)/np.sqrt(vrA/nA + vrB/nB)
+
+    # d
+    ns = 0.01
+    cvalue = stat.nrmStdDst_i(0.1/2,True,True)
+    cvalue = t.ppf(1-(ns)/2, nA+nB-2)
+
+    # e
+    e = abs(c) > cvalue
+
+    print(
+        "\nexercice 98:" + 
+        "\n a) {:.4}".format(1.0) + 
+        "\n b) {:.4}".format(2.0) + 
+        "\n c) {:.4}".format(c) + 
+        "\n d) {:.4}".format(cvalue) + 
+        "\n e) " + str(e)
     )
