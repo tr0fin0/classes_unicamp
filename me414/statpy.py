@@ -1457,7 +1457,7 @@ def sSCnfIntAbs(sd, sc, err):
 
 
 
-def cnfIntAbs(
+def cnfIntAbsP(
     exA: float, exB: float, 
     vrA: float, vrB: float, 
     nA: float, nB: float, 
@@ -1493,11 +1493,11 @@ def cnfIntAbs(
 
     Returns
     -------
-    cnfIntAbs : array
+    cnfIntAbsP: array
 
-                cnfIntAbs[0] error of interval
-                cnfIntAbs[1] minimum interval value
-                cnfIntAbs[2] maximum interval value
+                cnfIntAbsP[0] error of interval
+                cnfIntAbsP[1] minimum interval value
+                cnfIntAbsP[2] maximum interval value
     """
 
     err = z*np.sqrt(vrA/nA + vrB/nB)
@@ -1507,8 +1507,7 @@ def cnfIntAbs(
 
 
 
-
-def SCnfIntAbs(
+def SCnfIntAbsP(
     exA: float, exB: float, 
     vrA: float, vrB: float, 
     nA: float, nB: float, 
@@ -1544,11 +1543,11 @@ def SCnfIntAbs(
 
     Returns
     -------
-    cnfIntAbs : array
+    SCnfIntAbsP:    array
 
-                cnfIntAbs[0] error of interval
-                cnfIntAbs[1] minimum interval value
-                cnfIntAbs[2] maximum interval value
+                    SCnfIntAbsP[0] error of interval
+                    SCnfIntAbsP[1] minimum interval value
+                    SCnfIntAbsP[2] maximum interval value
 
     Reference
     ---------
@@ -1558,11 +1557,11 @@ def SCnfIntAbs(
 
     z = RNrmStdDst((1+sc)/2)
 
-    return cnfIntAbs(exA, exB, vrA, vrB, nA, nB, z)
+    return cnfIntAbsP(exA, exB, vrA, vrB, nA, nB, z)
 
 
 
-def tSCnfIntAbs(
+def tSCnfIntAbsP(
     exA: float, exB: float, 
     vrA: float, vrB: float, 
     nA: float, nB: float, 
@@ -1598,11 +1597,11 @@ def tSCnfIntAbs(
 
     Returns
     -------
-    tSCnfIntAbs :   array
+    tSCnfIntAbsP:   array
 
-                    tSCnfIntAbs[0] error of interval
-                    tSCnfIntAbs[1] minimum interval value
-                    tSCnfIntAbs[2] maximum interval value
+                    tSCnfIntAbsP[0] error of interval
+                    tSCnfIntAbsP[1] minimum interval value
+                    tSCnfIntAbsP[2] maximum interval value
 
     Reference
     ---------
@@ -1619,3 +1618,45 @@ def tSCnfIntAbs(
     vrM = ((nA-1)*vrA + (nB-1)*vrB)/(nA+nB - 2)
 
     return cnfIntAbs(exA, exB, vrM, vrM, nA, nB, z)
+
+
+
+def cnfIntPrpP(
+    pA: float, pB: float, 
+    nA: float, nB: float, 
+    z: float):
+    """
+    Confidence Interval Absolute
+    with two populations
+
+    Returns the minimum and maximum proportional values of confidence interval from two populations A and B with the propor value of pA and pB, with a sample of size nA and nB in an amostral distribution considering an interval constant of z
+
+    Parameters
+    ----------
+    pA: float
+        Proportional value of population A
+
+    nA: int
+        Size of sample of population A
+
+    pB: float
+        Proportional value of population B
+
+    nB: int
+        Size of sample of population B
+
+    z : float
+        Interval Constant
+
+    Returns
+    -------
+    cnfIntPrpP: array
+
+                cnfIntPrpP[0] error of interval
+                cnfIntPrpP[1] minimum interval value
+                cnfIntPrpP[2] maximum interval value
+    """
+
+    err = z*np.sqrt((pA*(1-pA))/nA + (pB*(1-pB))/nB)
+
+    return err, (pA-pB)-err, (pA-pB)+err
