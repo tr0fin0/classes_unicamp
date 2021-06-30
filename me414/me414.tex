@@ -1421,7 +1421,7 @@
                     }
                 \end{equation}
             Onde:
-                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                \begin{enumerate}[rightmargin = \leftmargin]
                     \item $\mu_{1} - \mu_{2}$, \textbf{Diferença da Média:} Representa a relação entre a diferença as médias das populações;
 
                     \item $\bar{x} - \bar{y}$, \textbf{Diferença da Amostral:} Representa a relação entre a diferença as populações;
@@ -1431,7 +1431,7 @@
                             \bar{Y} \sim N \left(\mu_{2}, \frac{\sigma_{2}^{2}}{m}\right)
                         \end{equation*}
 
-                    \item $1-\alpha$, \textbf{Intervalo de Confiança:} Representa a margem de erro aceitável para variável, descrito como:
+                    \item $1-\alpha$, \textbf{Intervalo de Confiança:} Representa a margem de erro aceitável para variável, descrito como uma distribuição normal:
                         \begin{equation}
                             \boxed{
                                 1-\alpha =
@@ -1442,5 +1442,35 @@
                                 \end{cases}
                             }
                         \end{equation}
+                \end{enumerate}
+            Note que quando as variâncias populacionais forem desconhecidas, será necessário realizar as seguintes contas:
+                \begin{equation}
+                    \boxed{
+                        IC (\mu_{1} - \mu_{2}, 1-\alpha) = 
+                        \left[
+                            (\bar{x} - \bar{y}) - t\sqrt{S_{p}^{2}\left(\frac{1}{n} + \frac{1}{m}\right)};
+                            (\bar{x} - \bar{y}) + t\sqrt{S_{p}^{2}\left(\frac{1}{n} + \frac{1}{m}\right)}
+                        \right]
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item $S_{p}^{2}$, \textbf{Variância:} Representa a variância ponderada entre as populações, obtido pela seguinte equação:
+                        \begin{equation}
+                            S_{p}^{2} = \frac{(n-1)S_{1}^{2} + (m-1)S_{2}^{2}}{n + m - 2}
+                        \end{equation}
+
+                    \item $1-\alpha$, \textbf{Intervalo de Confiança:} Representa a margem de erro aceitável para variável, descrito como uma distribuição t-student:
+                        \begin{equation}
+                            \boxed{
+                                1-\alpha =
+                                \begin{cases}
+                                    90\%, & t = t_{n+m-2, \alpha/2}\\
+                                    95\%, & t = t_{n+m-2, \alpha/2}\\
+                                    99\%, & t = t_{n+m-2, \alpha/2}\\
+                                \end{cases}
+                            }
+                        \end{equation}
+                    Obtidos através de tabelas ou softwares especializados.
                 \end{enumerate}
 \end{document}
