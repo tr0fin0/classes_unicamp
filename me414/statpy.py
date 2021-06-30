@@ -277,19 +277,39 @@ def Geometric_i(n: float, p: float, greater=False, equal=False):
 
 
 
-def HiperGeometric(x, n, X, N):
-    #x: number of elements with A selected
-    #n: number of elements selected
-    #X: total number of elements with A
-    #N: total number of elements
+def HGeometric(x: float, n: float, X: float, N: float):
+    """
+    Hiper Geometric
+
+
+
+    Parameters
+    ----------
+    x : float
+        Number of elements selected with A
+
+    n : float
+        Number of elements selected
+
+    X : float
+        Total number of elements with A
+
+    N : float
+        Total number of elements
+
+    Returns
+    -------
+    px: float
+        P(X < x)
+    """
 
     Xx = Combination(X, x)
     Nn = Combination(N, n)
     nx = Combination(N-X,n-x)
 
-    px = Xx*nx/Nn
+    return Xx*nx/Nn
 
-    return px
+
 
 def HiperGeometricInfo(x, n, X, N):
     #x: number of elements with A selected
