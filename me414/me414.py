@@ -547,7 +547,7 @@ if(False):
         "\n d) accepted:       " + str(e)
     )
 
-if(True):
+if(False):
     nA = 11.0
     nB = 15.0
 
@@ -581,4 +581,36 @@ if(True):
         "\n d) {:.4}".format(d[1]) + 
         "\n e) {:.4}".format(d[2]) + 
         "\n f) " + str(e)
+    )
+
+if(True):
+    vrA = 102
+    vrB = 102
+
+    nA = 16
+    nB = 23
+
+    exA = 54.06
+    exB = 58.65
+
+    sc = 0.96
+
+    # a
+    a = stat.SCnfIntAbs(exA, np.sqrt(vrA), sc, nA)
+
+    # b
+    b = stat.SCnfIntAbs(exB, np.sqrt(vrB), sc, nB)
+
+    # c
+    c = stat.SCnfIntAbsP(exA, exB, vrA, vrB, nA, nB, sc)
+
+    cStr = True
+
+    print(
+        "\nexercice 96:" + 
+        "\n a) {:.4}".format(a[1]) + 
+        "\n b) {:.4}".format(b[2]) + 
+        "\n c) " + str(cStr) + 
+        "\n d) {:.4}".format(2*c[0]) + 
+        "\n e) {:.4}".format(c[0])
     )
