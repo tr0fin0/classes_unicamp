@@ -1502,3 +1502,63 @@ def cnfIntAbs(
     err = z*np.sqrt(vrA/nA + vrB/nB)
 
     return err, (exA-exB)-err, (exA-exB)+err
+
+
+
+def CCnfIntAbs(
+    exA: float, exB: float, 
+    vrA: float, vrB: float, 
+    nA: float, nB: float, 
+    sc: float):
+    """
+    Confidence Interval Absolute
+    with two populations
+
+    Returns the minimum and maximum values of confidence interval from two populations A and B with the absolute value of exA and exB with a standart deviation of sdA and sdB with a sample of size nA and nB in an amostral distribution considering an interval constant of z
+
+    Parameters
+    ----------
+    exA:float
+        Abusolute value of population A
+
+    vrA:float
+        Variance of population A
+
+    nA: int
+        Size of sample of population A
+
+    exB:float
+        Abusolute value of population B
+
+    vrB:float
+        Variance of population B
+
+    nB: int
+        Size of sample of population B
+
+    sc: float
+        Statiscal Confidence
+
+    Returns
+    -------
+    cnfIntAbs : array
+
+                cnfIntAbs[0] error of interval
+                cnfIntAbs[1] minimum interval value
+                cnfIntAbs[2] maximum interval value
+
+    Reference
+    ---------
+        [1] 
+            https://docs.scipy.org/doc/scipy/reference/reference/generated/scipy.stats.t.html#scipy.stats.t
+        [2]
+            https://en.wikipedia.org/wiki/Confidence_interval
+    """
+
+    # computing the t-student distribution
+    z = t.ppf(1-(1-sc)/2, nA+nB-2)
+
+    # computing the pondered variance
+    vrM = ((nA-1)*vrA + (nB-1)*vrB)/(nA+nB - 2)
+
+    return cnfIntAbs(exA, exB, vrM, vrM, nA, nB, z)
