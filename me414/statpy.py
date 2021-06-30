@@ -385,17 +385,37 @@ def HGeometric_i(x: float, n: float, X: float, N: float, greater=False, equal=Fa
 
 
 
-def Poisson(x, n, p):
-    #x: number of sucesses
-    #n: number of trials
-    #p: probability of sucess
+def Poisson(x: float, n: float, p: float):
+    """
+    Geometric
+
+
+
+    Parameters
+    ----------
+    x : float
+        Number of sucess
+
+    n : float
+        Number of trials
+
+    p : float
+        Probability of sucess
+
+    Returns
+    -------
+    px: float
+        P(X = x)
+    """
 
     Lambda = n*p
 
-    if( (Lambda <= 7) | ( (n >= 20) & (p <= 0.05) ) ):
-        px = (np.exp(-Lambda)*(Lambda)**(x))/np.math.factorial(x)
+    if (Lambda <= 7) or ((n >= 20) and (p <= 0.05)):
+        return (np.exp(-Lambda)*(Lambda)**(x))/np.math.factorial(x)
 
-    return px
+    return 0
+
+
 
 def PoissonInfo(x: int, n: int, p: int):
     #x: number of sucesses
