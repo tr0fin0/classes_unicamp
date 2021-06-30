@@ -515,19 +515,34 @@ def Exponencial(Lambda: int, x: int):
 
     return (1 - np.exp(-Lambda*x))
 
-def ExponencialReverseL(x: int, p: float):
+
+
+def RLExponencial(x: int, p: float):
+    """
+    Reverse Lambda Exponencial
+
+
+
+    Parameters
+    ----------
+    x : int
+        
+
+    p : float
+        
+
+    Returns
+    -------
+    Lambda: float
+            
+    """
 
     if (p > 1):
         return 0
 
-    Lambda = (-np.log(1-p))/x
+    return (-np.log(1-p))/x
 
-    print("\nExponencial Reverse Lambda")
-    print("x = {:.4f}".format(x))
-    print("p = {:.4f}".format(p))
-    print("l = {:.4f}".format(Lambda))
 
-    return Lambda
 
 def ExponencialReverseX(Lambda: float, p: float):
 
