@@ -21,18 +21,32 @@ def ccxy(x, y):
 
     return ccxy
 
-def Combination(n, k):
-    #n: number of objects
-    #k: number of groups
+def Combination(n: float, k: float):
+    """
+    Combination
 
-    if n<k:
+
+
+    Parameters
+    ----------
+    n : float
+        
+    k : float
+
+    Returns
+    -------
+    px: float
+        P(X < x)
+    """
+
+    if n < k:
         return 0
 
-    fatorialN = np.math.factorial(n)
-    fatorialK = np.math.factorial(k)
-    fatorialNK = np.math.factorial(n-k)
+    fN  = np.math.factorial(n)
+    fK  = np.math.factorial(k)
+    fNK = np.math.factorial(n-k)
 
-    cnk = fatorialN/(fatorialK*fatorialNK)
+    cnk = fN/(fK*fNK)
 
     return cnk
 
