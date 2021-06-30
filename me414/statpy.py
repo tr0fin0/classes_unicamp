@@ -1,6 +1,7 @@
 import numpy as np
 from scipy import special
 from scipy.integrate import quad
+from scipy.stats import t
 
 
 
@@ -1453,3 +1454,51 @@ def sSCnfIntAbs(sd, sc, err):
     z = RNrmStdDst((1+sc)/2)
 
     return sCnfIntAbs(sd, z, err)
+
+
+def cnfIntAbs(
+    exA: float, exB: float, 
+    vrA: float, vrB: float, 
+    nA: float, nB: float, 
+    z: float):
+    """
+    Confidence Interval Absolute
+    with two populations
+
+    Returns the minimum and maximum values of confidence interval from two populations A and B with the absolute value of exA and exB with a standart deviation of sdA and sdB with a sample of size nA and nB in an amostral distribution considering an interval constant of z
+
+    Parameters
+    ----------
+    exA:float
+        Abusolute value of population A
+
+    vrA:float
+        Variance of population A
+
+    nA: int
+        Size of sample of population A
+
+    exB:float
+        Abusolute value of population B
+
+    vrB:float
+        Variance of population B
+
+    nB: int
+        Size of sample of population B
+
+    z : float
+        Interval Constant
+
+    Returns
+    -------
+    cnfIntAbs : array
+
+                cnfIntAbs[0] error of interval
+                cnfIntAbs[1] minimum interval value
+                cnfIntAbs[2] maximum interval value
+    """
+
+    err = z*np.sqrt(vrA/nA + vrB/nB)
+
+    return err, (exA-exB)-err, (exA-exB)+err
