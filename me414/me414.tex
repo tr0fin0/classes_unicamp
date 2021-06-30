@@ -1251,7 +1251,7 @@
     \section{Inferência}
         \paragraph{Definição}Descrição das características desconhecidas de uma população com base em uma amostral aleatória desta população. Qualquer análise realizada será realizada com um erro associado que deverá ser informado juntamente com os valores obtidos.
 
-        \subsection{Intervalo de Confiança}
+        \subsection{Intervalo de Confiança 1 População}
             \paragraph{Definição}Representa um intervalo a partir de uma estimativa pontual $\hat{\theta}$ de uma variável $\theta$ que, a partir de uma margem de erro, poderá contemplar uma porcentagem do resultado real como descrito pela seguinte equação:
                 \begin{equation}
                     \boxed{
@@ -1407,5 +1407,40 @@
                             \beta = P(\text{Erro do Tipo II})
                         \end{equation}
                     Idealmente deseja-se que estas probabilidades sejam baixas, indicando hipóteses confiáveis. Entretanto, à medida que diminui-se $\alpha$, $\beta$ tende a aumentar. Desta maneira, estipula-se usualmente que $\alpha = 5\%$ para que os resultados sejam adequados.
+                \end{enumerate}
+
+        \subsection{Intervalo de Confiança 2 População}
+            \paragraph{Definição}Representa relação entre uma variável dentro de duas populações independentes, 1 e 2, que possuem respectivamente $\mu_{1}$ e $\mu_{2}$ como média populacional, $\sigma_{1}^{2}$ e $\sigma_{2}^{2}$ como variância e $n$ e $m$ de tamanho. Assim um intervalo a partir de uma margem de erro, poderá contemplar uma porcentagem do resultado real será descrito pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        IC (\mu_{1} - \mu_{2}, 1-\alpha) = 
+                        \left[
+                            (\bar{x} - \bar{y}) - z_{\alpha/2}\sqrt{\frac{\sigma_{1}^{2}}{n} + \frac{\sigma_{2}^{2}}{m}};
+                            (\bar{x} - \bar{y}) + z_{\alpha/2}\sqrt{\frac{\sigma_{1}^{2}}{n} + \frac{\sigma_{2}^{2}}{m}}
+                        \right]
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                    \item $\mu_{1} - \mu_{2}$, \textbf{Diferença da Média:} Representa a relação entre a diferença as médias das populações;
+
+                    \item $\bar{x} - \bar{y}$, \textbf{Diferença da Amostral:} Representa a relação entre a diferença as populações;
+                        \begin{equation*}
+                            \bar{X} \sim N \left(\mu_{1}, \frac{\sigma_{1}^{2}}{n}\right)
+                            \qquad
+                            \bar{Y} \sim N \left(\mu_{2}, \frac{\sigma_{2}^{2}}{m}\right)
+                        \end{equation*}
+
+                    \item $1-\alpha$, \textbf{Intervalo de Confiança:} Representa a margem de erro aceitável para variável, descrito como:
+                        \begin{equation}
+                            \boxed{
+                                1-\alpha =
+                                \begin{cases}
+                                    90\%, & z_{\alpha/2} = 1.64\\
+                                    95\%, & z_{\alpha/2} = 1.96\\
+                                    99\%, & z_{\alpha/2} = 2.58\\
+                                \end{cases}
+                            }
+                        \end{equation}
                 \end{enumerate}
 \end{document}
