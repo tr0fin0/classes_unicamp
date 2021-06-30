@@ -186,13 +186,29 @@ def Binomial_i(x: float, n: float, p: float, greater=False, equal=False):
 
 
 
-def Geometric(x, p):
-    #x: number of trials to sucess
-    #p: probability of sucess
+def Geometric(x: float, p: float):
+    """
+    Geometric
 
-    px = p*(1-p)**(x-1)
 
-    return px
+
+    Parameters
+    ----------
+    n : float
+        Number of trials to sucess
+
+    p : float
+        Probability of sucess
+
+    Returns
+    -------
+    px: float
+        P(X = x)
+    """
+
+    return p*(1-p)**(n-1)
+
+
 
 def GeometricInfo(x, p):
     #x: number of trials to sucess
