@@ -653,7 +653,7 @@ if(False):
     )
 
 # exercice 98
-if(True):
+if(False):
     # c
     exA = 7.49
     exB = 7.09
@@ -666,6 +666,7 @@ if(True):
     c = ((exA - exB) - delta)/np.sqrt(vrA/nA + vrB/nB)
 
     # d
+    # use t-student distribution because yes
     ns = 0.01
     cvalue = stat.nrmStdDst_i(0.1/2,True,True)
     cvalue = t.ppf(1-(ns)/2, nA+nB-2)
@@ -680,4 +681,44 @@ if(True):
         "\n c) {:.4}".format(c) + 
         "\n d) {:.4}".format(cvalue) + 
         "\n e) " + str(e)
+    )
+
+# exercice 99
+if(True):
+    nA = 13
+    nB = 14
+
+    dp1 = 3161
+    dp2 = 3858
+
+    # c
+    exA = 63561.09
+    dpA = 3212.67
+
+    exB = 57462.14
+    dpB = 3311.87
+
+    delta = 0
+    # use stardard deviation because yes
+    c = ((exA - exB) - delta)/np.sqrt(dp1**2/nA + dp2**2/nB)
+
+    # d
+    ns = 0.01
+    sc = 1-ns
+    cvalue = stat.RNrmStdDst(sc)
+
+    # e
+    pvalue = stat.nrmStdDst_i(c,True,False)
+
+    # f
+    f = abs(c) > cvalue
+
+    print(
+        "\nexercice 99:" + 
+        "\n a) {:.4}".format(1.0) + 
+        "\n b) {:.4}".format(3.0) + 
+        "\n c) {:.4}".format(c) + 
+        "\n d) {:.4}".format(cvalue) + 
+        "\n e) {:.4}".format(pvalue) + 
+        "\n f) " + str(f)
     )
