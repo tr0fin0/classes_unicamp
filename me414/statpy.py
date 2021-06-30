@@ -70,7 +70,7 @@ def Bernoulli(x: float, n: float, p: float):
         Number of trials
 
     p : float
-        probability of sucess
+        Probability of sucess
 
     Returns
     -------
@@ -80,15 +80,35 @@ def Bernoulli(x: float, n: float, p: float):
 
     return (p**(x))*((1-p)**(n-x))
 
-def Binomial(x, n, p):
-    #x: number of sucesses
-    #n: number of trials
-    #p: probability of sucess
-    cnx = Combination(n, x)
+def Binomial(x: float, n: float, p: float):
+    """
+    Binomial
 
-    px = cnx*Bernoulli(x, n, p)
 
-    return px
+
+    Parameters
+    ----------
+    x : float
+        number of sucesses
+
+        if sucess
+            x = 1
+        if fail
+            x = 0
+
+    n : float
+        Number of trials
+
+    p : float
+        Probability of sucess
+
+    Returns
+    -------
+    px: float
+        P(X < x)
+    """
+
+    return Combination(n, x)*Bernoulli(x, n, p)
 
 def BinomialInfo(x, n, p):
     #x: number of sucesses
