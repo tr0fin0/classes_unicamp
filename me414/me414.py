@@ -2,6 +2,8 @@ import numpy as np
 import scipy as sp
 import statpy as stat
 
+from scipy.stats import t
+
 #exercice 67
 if(False):
     n1 = 18
@@ -476,7 +478,7 @@ if(False):
 
 # exercice 93
 if(False):
-    mean_control      = 720
+    exA      = 720
 
     size_sample       = 15
     mean_sample       = 732.1
@@ -484,7 +486,7 @@ if(False):
 
     # c
     z = (
-        mean_sample - mean_control
+        mean_sample - exA
         )/(
         np.sqrt(variance_sample/size_sample)
         ) # slide 18 page 20
@@ -509,8 +511,8 @@ if(False):
     )
 
 # exercice 94
-if(True):
-    mean_control      = 1700
+if(False):
+    exA      = 1700
 
     size_sample       = 210
     mean_sample       = 1705
@@ -518,7 +520,7 @@ if(True):
 
     # a
     test_value = (
-                mean_sample - mean_control
+                mean_sample - exA
                 )/(
                 nDeviation_sample/np.sqrt(size_sample)
                 ) # slide 18 page 20
@@ -543,4 +545,40 @@ if(True):
         "\n b) critical_value: {:.4}".format(critical_value) + 
         "\n c) p-value:        {:.4}".format(pvalue) +
         "\n d) accepted:       " + str(e)
+    )
+
+if(True):
+    nA = 11.0
+    nB = 15.0
+
+    exA = 50.45
+    exB = 35.07
+
+    vrA = 242.67
+    vrB = 247.35
+
+    # c
+    c = exA - exB
+
+    # d
+    sc = 0.99
+
+    d = stat.CCnfIntAbs(
+        exA, exB, 
+        vrA, vrB, 
+        nA, nB, 
+        sc)
+
+    # e
+    ns = 0.01
+    e = c < ns
+
+    print(
+        "\nexercice 95:" + 
+        "\n a) {:.4}".format(exA) + 
+        "\n b) {:.4}".format(exB) + 
+        "\n c) {:.4}".format(c) + 
+        "\n d) {:.4}".format(d[1]) + 
+        "\n e) {:.4}".format(d[2]) + 
+        "\n f) " + str(e)
     )
