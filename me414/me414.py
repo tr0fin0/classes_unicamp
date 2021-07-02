@@ -618,12 +618,12 @@ if(False):
     )
 
 # exercice 97
-if(False):
-    nN = 122
-    nL = 122
+if(True):
+    nN = 115#122 148
+    nL = 115#122 148
 
-    fvN = 29
-    fvL = 18
+    fvN = 18#29 18
+    fvL = 15#18 8
 
     # a
     a = fvN/nN
@@ -635,16 +635,20 @@ if(False):
     c = a - b
 
     # d
-    sc = 0.99
+    sc = 0.99#0.99 0.95
     d = stat.SCnfIntPrpP(a, b, nN, nL, sc)
 
     # c
     c = a - b
 
     # g
-    pvalue = 2*stat.nrmStdDst_i(c,True,True)
-    pvalue = 2*stat.nrmStdDst_i(c,True,True)
-    g = c > 1-sc
+    phat = (nN*a + nL*b)/(nN + nL)
+    zobs = (a - b)/np.sqrt(phat*(1-phat)*(1/nN + 1/nL))
+
+    za = stat.nrmStdDst_i(1-(sc)/2,True,True)
+    pvalue = stat.nrmStdDst_i(zobs,True,True)
+
+    g1 = pvalue < 1-sc
 
     print(
         "\nexercice 97:" + 
@@ -654,8 +658,7 @@ if(False):
         "\n d) {:.4}".format(d[0]) + 
         "\n e) {:.4}".format(d[1]) + 
         "\n f) {:.4}".format(d[2]) + 
-        "\n f) {:.4}".format(pvalue) + 
-        "\n g) "+ str(g)
+        "\n g) pvalue < 1-ic: "+ str(g1)
     )
 
 # exercice 98
@@ -729,7 +732,7 @@ if(False):
     )
 
 # exercice 100
-if(True):
+if(False):
     n1 = 57
     n2 = 296
     s1 = 7
