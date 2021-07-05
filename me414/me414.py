@@ -9,117 +9,141 @@ if(False):
     n1 = 18
     n2 = 20
     lb = 1/10
-    e1 = stat.ExponencialInfo(lb, n1)
+    e1 = stat.Exponencial(lb, n1)
     e2 = stat.Exponencial(lb, n2)
+    print("P(   X<{}) = {:.4f}".format(n1, e1))
     print("P({}<X<{}) = {:.4f}".format(n1, n2, e2-e1))
 
 #exercice 68
 if(False):
-    e = stat.ExponencialReverseL(17, 0.47)
-    e = stat.ExponencialReverseX(0.0373, 0.15)
+    e1 = stat.RLExponencial(17, 0.47)
+    e2 = stat.RXExponencial(e1, 0.15)
+
+    print(
+        "\nexercice 68:" + 
+        "\n a) {:.4}".format(e1) + 
+        "\n b) {:.4}".format(e2)
+    )
+
 
 #exercice 69
 if(False):
     n = 2
     e = 0.5
+    # integral para funcao acumulada
+    # integral para esperanca
     c = (n+2)*e/(n+1)
     b = (n+1)/(c**(n+1))
     pc3 = 1/(3**(n+1))
     vx = (b*c**(n+3))/(n+3) - e**2
 
-    print("\nb = {:.4f}\nc = {:.4f}\npc3 = {:.4f}\nvx = {:.4f}".format(b, c, pc3, vx))
+    print(
+        "\nexercice 69:" + 
+        "\n a) {:.4}".format(b) + 
+        "\n b) {:.4}".format(c) + 
+        "\n c) {:.4}".format(pc3) + 
+        "\n d) {:.4}".format(vx)
+    )
+
 
 #exercice 70
 if(False):
-    n = stat.NormalStandardInfo(0.18, -1)
-    n = stat.NormalStandardInfo(-0.27, 1)
-    n = stat.NormalStandardInfo(0.37, 1)
-    n = stat.NormalStandardInfo(-1.03, 1)
-    n = stat.NormalStandardInfo(0.8, 1)
-    n = stat.NormalStandardInfo(-1.06, -1)
+
+    print(
+        "\nexercice 70:" + 
+        "\n a) {:.4}".format(stat.nrmStdDst_i( 0.18)) + 
+        "\n b) {:.4}".format(stat.nrmStdDst_i(-0.27, True)) + 
+        "\n c) {:.4}".format(stat.nrmStdDst_i( 0.37, True)) + 
+        "\n d) {:.4}".format(stat.nrmStdDst_i(-1.03, True)) + 
+        "\n e) {:.4}".format(stat.nrmStdDst_i( 0.80, True)) + 
+        "\n f) {:.4}".format(stat.nrmStdDst_i(-1.06)) + 
+        "\n g) {:.4}".format(0.0)
+    )
 
 #exercice 71
 if(False):
-    n = stat.NormalStandardIntervalInfo(-1.9, 0.03)
-    n = stat.NormalStandardIntervalInfo(0.14, 0.62)
-    n = stat.NormalStandardIntervalInfo(0.67, 2.03)
-    n = stat.NormalStandardIntervalInfo(-1.14, 0.34)
-    n = stat.NormalStandardIntervalInfo(-1.34, 0.36)
-    n = stat.NormalStandardIntervalInfo(1.1, 2.42)
+    print(
+        "\nexercice 71:" + 
+        "\n a) {:.4}".format(stat.INrmStdDst(-1.90, 0.03)[0]) + 
+        "\n b) {:.4}".format(stat.INrmStdDst( 0.14, 0.62)[0]) + 
+        "\n c) {:.4}".format(stat.INrmStdDst( 0.67, 2.03)[0]) + 
+        "\n d) {:.4}".format(stat.INrmStdDst(-1.14, 0.34)[0]) + 
+        "\n e) {:.4}".format(stat.INrmStdDst(-1.34, 0.36)[0]) + 
+        "\n f) {:.4}".format(stat.INrmStdDst( 1.10, 2.42)[0])
+    )
 
 #exercice 72
 if(False):
     mu = 9
     sg = 9
-    n = stat.NormalIntervalInfo(8.72, 11.35, mu, sg)
+    print(
+        "\nexercice 72:" + 
+        "\n a) {:.4}".format(stat.INrmDst( 7.22, 11.10, mu, sg)[0]) + 
+        "\n b) {:.4}".format(stat.INrmDst( 4.87, 12.19, mu, sg)[0]) + 
+        "\n c) {:.4}".format(stat.INrmDst( 8.72, 11.35, mu, sg)[0])
+    )
 
 #exercice 73
 if(False):
-    x = stat.NormalStandardReverseInfo(0.6201, 1, 0)
-    x = stat.NormalStandardReverseInfo(0.9525, 1, 0)
-    x = stat.NormalStandardReverseInfo(0.6527, -1, 0)
-    x = stat.NormalStandardReverseInfo(0.5837, -1, 0)
-    x = stat.NormalStandardReverseInfo(0.5152, 1, 1)
-    x = stat.NormalStandardReverseInfo(0.8006, 1, 1)
-    x = stat.NormalStandardReverseInfo(0.4293, -1, 1)
-    x = stat.NormalStandardReverseInfo(0.4541, -1, 1)
+    print(
+        "\nexercice 73:" + 
+        "\n a) {:.4}".format(stat.RNrmStdDst_i(0.6201, True, False)) + 
+        "\n b) {:.4}".format(stat.RNrmStdDst_i(0.9525, True, False)) + 
+        "\n c) {:.4}".format(stat.RNrmStdDst_i(0.6527, False, False)) + 
+        "\n d) {:.4}".format(stat.RNrmStdDst_i(0.5837, False, False)) + 
+        "\n e) {:.4}".format(stat.RNrmStdDst_i(0.5152, True, True)) + 
+        "\n f) {:.4}".format(stat.RNrmStdDst_i(0.8006, True, True)) + 
+        "\n g) {:.4}".format(stat.RNrmStdDst_i(0.4293, False, True)) + 
+        "\n h) {:.4}".format(stat.RNrmStdDst_i(0.4541, False, True))
+    )
 
 #exercice 74
 if(False):
-    n = stat.NormalReverseInfo(0.99, 25, 6**2)
+    print(
+        "\nexercice 74:" + 
+        "\n a) {:.4}".format(stat.RNrmDst(0.99, 25, 6**2))
+    )
 
 #exercice 75
 if(False):
-    n = stat.NormalReverseInfo(0.82, 491, 47**2)
-    n = stat.NormalReverseInfo(0.86, 491, 47**2)
+    print(
+        "\nexercice 75:" + 
+        "\n a) {:.4}".format(stat.RNrmDst_i(1-0.18, 491, 47**2)) + 
+        "\n b) {:.4}".format(stat.RNrmDst_i(1-0.14, 491, 47**2))
+    )
 
 #exercice 76
 if(False):
-    n = stat.NormalInfo(30000, 39000, 8000**2, 1)
-    n = stat.NormalInfo(30000, 32000, 6000**2, 1)
+    print(
+        "\nexercice 76:" + 
+        "\n a) {:.4}".format(stat.nrmDst_i(30000, 39000, 8000**2, True)) + 
+        "\n b) {:.4}".format(stat.nrmDst_i(30000, 32000, 6000**2, True))
+    )
 
 #exercice 77
 if(False):
     p  = 0.22 #probability of study
     n  = 55   #number expected
     N  = 200  #number of population
-    hp = stat.NormalInfo(n/N, p, p*(1-p)/N, 1)
+    print(
+        "\nexercice 77:" + 
+        "\n a) {:.4}".format(stat.nrmDst_i(n/N, p, p*(1-p)/N, True))
+    )
 
 #exercice 78
 if(False):
     # exponencial distribution
     lb = 1/20  # lambda
 
-    # a) d)
-    ex = 1/lb  # expected value
-
-    # b)
-    vx = ex**2 # variance value
-
-    # c)
-    d = 20 # dias
-    e1 = stat.Exponencial(lb, d)
-
-    # e)
-    p = 0.63 # probability
-    e2 = stat.ExponencialReverseX(lb, p)
-
-    # f)
-    n = 190 # amostral size
-    e3 = np.sqrt(vx/n)
-
-    # g)
-    e4 = stat.NormalReverse(p, ex, vx/n)
-
     print(
         "\nexercice 78:" + 
-        "\n a) {:.4}".format(ex) + 
-        "\n b) {:.4}".format(vx) + 
-        "\n c) {:.4}".format(1-e1) + 
-        "\n d) {:.4}".format(ex) + 
-        "\n e) {:.4}".format(e2) + 
-        "\n f) {:.4}".format(e3) + 
-        "\n g) {:.4}".format(e4)
+        "\n a) {:.4}".format(1/lb) + 
+        "\n b) {:.4}".format((1/lb)**2) + 
+        "\n c) {:.4}".format(stat.Exponencial_i(lb, 20, True)[2]) + 
+        "\n d) {:.4}".format(1/lb) + 
+        "\n e) {:.4}".format(stat.RXExponencial(lb, 0.63)) + 
+        "\n f) {:.4}".format(np.sqrt((1/lb)**2/190)) + 
+        "\n g) {:.4}".format(stat.RNrmDst(0.63, 1/lb, (1/lb)**2/190))
     )
 
 #exercice 79
@@ -136,22 +160,15 @@ if(False):
     mi = a1*m/b/n # mínimo de milhas
     ma = a2*m/b/n # máximo de milhas
     vx = dp**2/n  # variância em milhas
-    pa = stat.NormalIntervalInfo(mi, ma, ex, vx)
+    pa = stat.INrmDst(mi, ma, ex, vx)[0]
 
     me = b1*m/b/n # mínimo em milhas
-    pb = stat.NormalInfo(me, ex, vx, 1)
+    pb = stat.nrmDst_i(me, ex, vx, True)
 
     print(
         "\nexercice 79:" + 
-        "\n a) mi: {}".format(mi) + 
-        "\n    ma: {}".format(ma) + 
-        "\n    ex: {}".format(ex) + 
-        "\n    vx: {:.4}".format(vx) + 
-        "\n    pa: {:.4}".format(pa) + 
-        "\n b) ex: {}".format(ex) + 
-        "\n    vx: {:.4}".format(vx) + 
-        "\n    me: {}".format(me) + 
-        "\n    pb: {:.4}".format(1-pb)
+        "\n a) pa: {:.4}".format(pa) + 
+        "\n b) pb: {:.4}".format(pb)
     )
 
 # exercice 80
@@ -184,14 +201,14 @@ if(False):
     # b)
     lb = 1/ex # lamba
     px = 0.56 # total of students
-    dx = stat.ExponencialReverseX(lb, px)
+    dx = stat.RXExponencial(lb, px)
 
     # c)
     n = 200 #total of sample
     ep = np.sqrt(vx/n)
 
     # d)
-    dm = stat.NormalReverse(px, ex, vx/n)
+    dm = stat.RNrmDst(px, ex, vx/n)
 
     print(
         "\nexercice 81:" + 
@@ -218,8 +235,7 @@ if(False):
 
     # c)
     n = 791 # number of trials
-    gs = G*s
-    pc = stat.NormalInfo(0, ex, vx/n, 1)
+    pc = stat.nrmDst_i(0, ex, vx/n, True)
 
     print(
         "\nexercice 82:" + 
@@ -235,26 +251,25 @@ if(False):
 
     # a) b)
     ic = 0.90 # intervalo de confiança
-    ei = stat.expIntInf(p, ic, n)
+    ei = stat.SCnfIntPrp(p, ic, n)
 
     # c)
-    erro = (p - ei[0])*100
+    erro = ei[0]*100
 
     # d)
     pe = 0.70
-    d = 0
-    if(ei[0] > pe): d = 1
+    d = ei[1] > pe
 
     print(
         "\nexercice 83:" + 
-        "\n a) {:.4}".format(ei[0]) + 
-        "\n b) {:.4}".format(ei[1]) + 
+        "\n a) {:.4}".format(ei[1]) + 
+        "\n b) {:.4}".format(ei[2]) + 
         "\n c) {:.4}".format(erro) + 
-        "\n d) {}".format(d)
+        "\n d) " + str(d)
     )
 
 # exercice 84
-if(False):
+if(True):
     f = 46  # quantidade de fumantes
     n = 108 # tamanho da amostra
 
@@ -263,14 +278,14 @@ if(False):
 
     #  b) c) d)
     ic = 0.90 # intervalo de confiança
-    ei = stat.SCnfInt(p, ic, n)
+    ei = stat.SCnfIntPrp(p, ic, n)
 
     # e) tamanho intervalo de confiança
     e = 0.04
-    size1 = stat.sSCnfInt(p, ic, e)
+    size1 = stat.sSCnfIntPrp(p, ic, e)
 
     # f) tamanho intervalo de confiança conservador
-    size2 = stat.sSCCnfInt(p, ic, e)
+    size2 = stat.sSCCnfIntPrp(p, ic, e)
 
     print(
         "\nexercice 84:" + 
@@ -283,7 +298,7 @@ if(False):
     )
 
 # exercice 85
-if(False):
+if(True):
     ex = 106   # valor esperado/amostra
     dp = 21.54 # desvio padrão/amostra
     n  = 543   # tamanho amostral
@@ -618,7 +633,7 @@ if(False):
     )
 
 # exercice 97
-if(True):
+if(False):
     nN = 115#122 148
     nL = 115#122 148
 
