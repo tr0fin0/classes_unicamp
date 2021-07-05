@@ -917,6 +917,11 @@ def RNrmStdDst_i(px: float, greater = False, module = False):
         else:
             P( X  > x) or P( X  < x)
 
+    Returns
+    -------
+    x : float
+        expected value
+
     Notes
     -----
 
@@ -1702,4 +1707,4 @@ def SCnfIntPrpP(
     # computing the t-student distribution
     z = RNrmStdDst((1+sc)/2)
 
-    return cnfIntAbsP(pA, pB, nA, nB, z)
+    return cnfIntPrpP(pA, pB, nA, nB, z)
