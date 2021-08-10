@@ -164,9 +164,9 @@
     ]
 
     \subsection{Informação}
-        \paragraph{Definição}Informação são dados comunicados ou recebidos que resolvem incertezas sobre um fato ou circunstância específica. Assim, dada uma variável aleatória discreta $X$ com as seguintes condições:
+        \paragraph{Definição}Informação são dados comunicados ou recebidos que resolvem incertezas sobre um fato ou circunstância específica. Assim, dada uma variável aleatória discreta $x$ com as seguintes condições:
             \begin{enumerate}[noitemsep]
-                \item Possíveis Valores: $X \in \{x_{1},...,x_{n}\}$;
+                \item Possíveis Valores: $x \in \{x_{1},...,x_{n}\}$;
                 \item Probabilidades Associadas: $\{p_{1},...,p_{n}\}$;
             \end{enumerate}
         Desta forma, considera-se $I(x_{i})$ que a \textbf{Quantidade de Informação Recebida}, medida em \texttt{bits}, será relacionada por:
@@ -175,7 +175,20 @@
                     I(x_{i}) = \log_{2}\left(\frac{1}{p_{i}}\right)
                 }
             \end{equation}
-        Nota-se que eventos de baixa probabilidade transportam mais informação.
+        Nota-se trata-se de uma informação relacionada apenas ao evento analisado. Além disso, eventos de baixa probabilidade transportam mais informação.
+
+    \subsection{Entropia}
+        \paragraph{Definição}Dada uma variável aleatória $x$ então sua \textbf{Entropia} $H(x)$ será a quantidade média de informação recebida ao conhecer seu valor, sendo descrita pela equação abaixo:
+            \begin{equation*}
+                H(x) = E(I(x)) = \sum_{i=1}^{N}p_{i}\log_{2}\left(\frac{1}{p_{i}}\right)
+            \end{equation*}
+        Onde $E(x)$ representa a \textbf{Esperança} da variável $x$, podendo ser simplificada para:
+            \begin{equation}
+                \boxed{
+                    H(x) = -\sum_{i=1}^{N}p_{i}\log_{2}p_{i}
+                }
+            \end{equation}
+        Nota-se que trata-se de uma informação relacionada apenas ao processo analisado.
 
 
     \raggedcolumns
