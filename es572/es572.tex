@@ -157,11 +157,10 @@
     \addtocontents{toc}{\protect\thispagestyle{empty}}
 \newpage
 
-\begin{multicols*}{2}
-    [
-        \section{Introdução}
-            \paragraph{Apresentação}Teoria utilizada para o desenvolvimento da disciplina será baseada nas proposições trazidas por Claude Shannon em 1948.
-    ]
+    \section{Introdução}
+        \paragraph{Apresentação}Teoria utilizada para o desenvolvimento da disciplina será baseada nas proposições trazidas por Claude Shannon em 1948.
+\begin{multicols}{2}
+    \raggedcolumns
 
     \subsection{Informação}
         \paragraph{Definição}Informação são dados comunicados ou recebidos que resolvem incertezas sobre um fato ou circunstância específica. Assim, dada uma variável aleatória discreta $x$ com as seguintes condições:
@@ -177,6 +176,8 @@
             \end{equation}
         Nota-se trata-se de uma informação relacionada apenas ao evento analisado. Além disso, eventos de baixa probabilidade transportam mais informação.
 
+    \columnbreak
+
     \subsection{Entropia}
         \paragraph{Definição}Dada uma variável aleatória $x$ então sua \textbf{Entropia} $H(x)$ será a quantidade média de informação recebida ao conhecer seu valor, sendo descrita pela equação abaixo:
             \begin{equation*}
@@ -189,12 +190,52 @@
                 }
             \end{equation}
         Nota-se que trata-se de uma informação relacionada apenas ao processo analisado.
+\end{multicols}
+        
+        \subsection{Codificação}
+            \paragraph{Definição}Mapeamento \textbf{biunívoco}, cada elemento associado a um único contraelemento, entre cadeias de bits e os membros do conjunto de dados a serem condificados. Classificados em:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Comprimento Fixo:} Caso todos os símbolos ocorram com a mesma probabilidade, geralmente utiliza-se este método;
+                        \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                            \item \texttt{Vantagens:}
+                                \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                                    \item Todas as folhas possuem a mesma distância da raiz;
+                                    \item Acesso Aleatório: Variáveis podem ser lidas em qualquer trecho da codificação;
+                                \end{enumerate}
 
+                            \item \texttt{Entropia:} Considera-se uma variável aleatória X que assume valores entre $N$ possibilidades equiprováveis será:
+                                \begin{equation}
+                                    \boxed{
+                                        H(x) = \sum_{i=1}^{N}p_{i}\log_{2}\left(\frac{1}{p_{i}}\right) = \sum_{i=1}^{N}\frac{1}{N}\log_{2}(N)
+                                    }
+                                \end{equation}
+                            Desta forma, uma codificação \textbf{ótima} terá $N = 2^{k}$, onde $k \in \mathbb{N}$.
+                        \end{enumerate}
 
-    \raggedcolumns
-    \columnbreak
+                    \item \textbf{Comprimento Variável:} Caso todos os símbolos não ocorram com a mesma probabilidade, geralmente utiliza-se este método;
+                        \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                            \item \texttt{Vantagens:}
+                                \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                                    \item Flexibilidade para se aproximar da codificação \textbf{ideal};
+                                \end{enumerate}
 
+                            \item \texttt{Entropia:} Considera-se uma variável aleatória X que assume valores entre $N$ possibilidades equiprováveis será:
+                                \begin{equation}
+                                    \boxed{
+                                        H(x) = \sum_{i=1}^{N}p_{i}\log_{2}\left(\frac{1}{p_{i}}\right)
+                                    }
+                                \end{equation}
+                            Desta forma, uma codificação \textbf{ótima} terá:
+                                \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                                    \item \texttt{Codificação Curta:} Se $x_{i}$ tiver uma probabilidade alta;
+                                    \item \texttt{Codificação Longa:} Se $x_{i}$ tiver uma probabilidade baixa;
+                                \end{enumerate}
+                        \end{enumerate}
 
-\end{multicols*}
+                    \item \textbf{Codificação Ambígua:};
+
+                \end{enumerate}
+            Será necessário evitar codificações ambíguas, pois poderá haver incerteza de informação neste caso. Desta forma, uma árvore binária deve ser criada para validar se a codificação é válida, alocando as variáveis nos terminais das ramificações.
+
 
 \end{document}
