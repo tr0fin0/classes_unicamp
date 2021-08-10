@@ -157,49 +157,31 @@
     \addtocontents{toc}{\protect\thispagestyle{empty}}
 \newpage
 
-\begin{multicols}{2}
+\begin{multicols*}{2}
     [
         \section{Introdução}
-            \paragraph{Definição}\blindtext
+            \paragraph{Apresentação}Teoria utilizada para o desenvolvimento da disciplina será baseada nas proposições trazidas por Claude Shannon em 1948.
     ]
-    \subsection{Teste}
-        \paragraph{TESTE}\blindtext\blindtext
+
+    \subsection{Informação}
+        \paragraph{Definição}Informação são dados comunicados ou recebidos que resolvem incertezas sobre um fato ou circunstância específica. Assim, dada uma variável aleatória discreta $X$ com as seguintes condições:
+            \begin{enumerate}[noitemsep]
+                \item Possíveis Valores: $X \in \{x_{1},...,x_{n}\}$;
+                \item Probabilidades Associadas: $\{p_{1},...,p_{n}\}$;
+            \end{enumerate}
+        Desta forma, considera-se $I(x_{i})$ que a \textbf{Quantidade de Informação Recebida}, medida em \texttt{bits}, será relacionada por:
+            \begin{equation}
+                \boxed{
+                    I(x_{i}) = \log_{2}\left(\frac{1}{p_{i}}\right)
+                }
+            \end{equation}
+        Nota-se que eventos de baixa probabilidade transportam mais informação.
+
 
     \raggedcolumns
     \columnbreak
 
-    \subsection{Teste}
-        \paragraph{TESTE}\blindtext\blindtext\blindtext
 
-        \begin{figure}[H]
-            \centering
-            \begin{tikzpicture}
-                \begin{axis}[
-                    xmin = 0,
-                    xmax = 1.1,
-                    ymin = 0, 
-                    ymax = 0.275,
-                    width  = 7.5cm,
-                    height = 5cm,
-                    xlabel = \(x\),
-                    ylabel = {\(f(x)\)},
-                    axis lines = left,
-                ]
-                \addplot [
-                        domain=0:1, 
-                        samples=100, 
-                        color=red,
-                ]
-                {-x^2 + x};
-                \addlegendentry{\(p(1-p)\)}
-                \end{axis}
-            \end{tikzpicture}
-        \end{figure}\noindent
+\end{multicols*}
 
-\end{multicols}
-    \paragraph{Definição}\blindtext\blindtext\blindtext
-
-
-    \section{Introdução}
-        \paragraph{Definição}\blindtext
 \end{document}
