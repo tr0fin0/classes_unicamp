@@ -46,6 +46,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{systeme}
+\usepackage{mathtools}
 \usepackage{float}
 \usepackage{enumitem}
 \usepackage[thinc]{esdiff} %parcial derivatives
@@ -138,16 +139,18 @@
 \titlespacing*{\subsection}{0mm}{5mm}{2.5mm}
 
 
+\newcommand{\nameSubject}{EA611 - Circuitos II}
+\newcommand{\nameAuthor}{Guilherme Nunes Trofino}
 \begin{document}
     \begin{titlepage}
         \begin{center}
             \rule{450pt}{0.5pt}\\[4mm]
-            {\Huge EA611 - Circuitos II}\\
+            {\Huge \nameSubject}\\
             \rule{450pt}{0.5pt}\\[2mm]
             {\Large Resumo Teórico}\\[200mm]
             \today\\
             \rule{250pt}{0.5pt}\\
-            {\large Guilherme Nunes Trofino}\\
+            {\large \nameAuthor}\\
             {\large 217276}\\
         \end{center}
     \end{titlepage}
@@ -157,49 +160,52 @@
     \addtocontents{toc}{\protect\thispagestyle{empty}}
 \newpage
 
-\begin{multicols}{2}
-    [
-        \section{Introdução}
-            \paragraph{Definição}\blindtext
-    ]
-    \subsection{Teste}
-        \paragraph{TESTE}\blindtext\blindtext
-
-    \raggedcolumns
-    \columnbreak
-
-    \subsection{Teste}
-        \paragraph{TESTE}\blindtext\blindtext\blindtext
-
-        \begin{figure}[H]
-            \centering
-            \begin{tikzpicture}
-                \begin{axis}[
-                    xmin = 0,
-                    xmax = 1.1,
-                    ymin = 0, 
-                    ymax = 0.275,
-                    width  = 7.5cm,
-                    height = 5cm,
-                    xlabel = \(x\),
-                    ylabel = {\(f(x)\)},
-                    axis lines = left,
-                ]
-                \addplot [
-                        domain=0:1, 
-                        samples=100, 
-                        color=red,
-                ]
-                {-x^2 + x};
-                \addlegendentry{\(p(1-p)\)}
-                \end{axis}
-            \end{tikzpicture}
-        \end{figure}\noindent
-
-\end{multicols}
-    \paragraph{Definição}\blindtext\blindtext\blindtext
-
 
     \section{Introdução}
-        \paragraph{Definição}\blindtext
+        \paragraph{Apresentação}Neste documento será descrito as informações necessárias para compreensão e solução de exercícios relacionados a disciplina \nameSubject. Note que este documento são notas realizadas por \nameAuthor, em \today.
+
+        \subsection{Transformada de Laplace}
+            \paragraph{Definição}Conversão de uma equação diferencial em equação algébrica e uma convolução em multiplicação. Formalmente descrita pelas seguintes equações:
+
+            \begin{multicols}{2}
+                \raggedcolumns
+                \paragraph{Forma Bilateral:}
+                    \begin{equation}
+                        \boxed{
+                            F(s) = \mathcal{B}\{ f(t) \} \coloneqq \int_{-\infty}^{+\infty} f(t) \; e^{-st} \; \text{d} t
+                        }
+                    \end{equation}
+
+                \columnbreak
+
+                \paragraph{Forma Unilateral:}
+                    \begin{equation}
+                        \boxed{
+                            F(s) = \mathcal{L}\{ f(t) \} \coloneqq \int_{0}^{+\infty} f(t) \; e^{-st} \; \text{d} t
+                        }
+                    \end{equation}
+            \end{multicols}\noindent
+            Note que a forma \texttt{Unilateral} será um caso particular da \texttt{Bilateral}. Além disso, no estudo de circuitos elétricos será conveniente a adoção do domínio dos complexos para análise. Assim $s = \sigma + \omega\text{j}$ onde $\text{j}$ será a \textbf{Unidade Imaginária}, evitando confusão com \textbf{Corrente Elétrica} causada pela notação matemática canónica.
+
+            \paragraph{Transformações}A seguir encontram-se as principais transformações pela definição \texttt{Unilateral} necessárias:
+
+                \begin{table}[H]
+                    \centering
+                    \begingroup
+                    \setlength{\tabcolsep}{5mm}
+                    \renewcommand{\arraystretch}{1.5}
+                    \begin{tabular}[]{lcc}
+                                         & $f(t)$      & $\mathcal{L}\{ f(t) \}$\\\hline
+                        Impulso Unitário & $u(t)$      & $\frac{1}{s}$\\
+                        Degrau Unitário  & $\delta(t)$ & $1$\\
+                                         & $t^{n}$     & $\frac{n!}{s^{n+1}}$\\
+                                         & $e^{-at}$   & $\frac{1}{s+a}$\\
+                                         & $te^{-at}$  & $\frac{1}{(s+a)^{2}}$\\
+                                         & $\sin(at)$  & $\frac{k}{(s^2+a^2)}$\\
+                                         & $\cos(at)$  & $\frac{s}{(s^2+a^2)}$\\\hline
+                    \end{tabular}
+                    \endgroup
+                    \caption{Tabela de Transformadas de Laplace}\label{table:Laplace}
+                \end{table} \noindent
+
 \end{document}
