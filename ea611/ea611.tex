@@ -251,7 +251,7 @@
                     \raggedcolumns
                     \paragraph{Capacitor}Genericamente considera-se a seguinte equação para descrever o comportamento do componente:
                         \begin{equation*}
-                            v_{C}(t) = \frac{1}{C}\;\int_{0}^{t} i\;\text{d}t + v_{C}(0)
+                            v_{C}(t) = \frac{1}{C}\;\int_{0}^{t} i_{C}(t)\;\text{d}t + v_{C}(0)
                         \end{equation*}
                     Aplica-se a \textbf{Transformada de Laplace}, obtendo a seguinte equação:
                         \begin{equation}
@@ -273,12 +273,12 @@
 
                     \paragraph{Resistor}Genericamente considera-se a seguinte equação para descrever o comportamento do componente:
                         \begin{equation*}
-                            v_{r}(t) = R\;i_{r}(t)
+                            v_{R}(t) = R\;i_{R}(t)
                         \end{equation*}
                     Aplica-se a \textbf{Transformada de Laplace}, obtendo a seguinte equação:
                         \begin{equation}
                             \boxed{
-                                V_{r}(s) = R\;I_{r}(s)
+                                V_{R}(s) = R\;I_{R}(s)
                             }
                         \end{equation}
                     \columnbreak
