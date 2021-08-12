@@ -241,5 +241,15 @@
                 \end{enumerate}
             Será necessário evitar codificações ambíguas, pois poderá haver incerteza de informação neste caso. Desta forma, uma árvore binária deve ser criada para validar se a codificação é válida, alocando as variáveis nos terminais das ramificações.
 
+        \subsection{Algoritmo de Huffman}
+            \paragraph{Definição}Algoritmo para construção de uma \textbf{Árvore Binária Ótima}, isto é uma codificação que possua entropia próxima a mínima necessária. Aplica-se os seguintes passos:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item Criação de uma sub-árvore com os símbolos de \textbf{menor} probabilidade, associando-a o somatório de suas possibilidades;
+                    \item Seleção de dois símbolos ou sub-árvores com menores probabilidades e as combine em uma nova sub-árvore;
+                    \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                        \item Caso hajam símbolos ou sub-árvores com mesma probabilidade, escolha arbitrariamente;
+                    \end{enumerate}
+                \end{enumerate}
+
 
 \end{document}
