@@ -189,51 +189,34 @@
 
             \paragraph{Transformações}A seguir encontram-se as principais transformações pela definição \texttt{Unilateral} necessárias:
 
-                \begin{multicols}{2}
-                    \raggedcolumns
-                    \begin{table}[H]
-                        \centering
-                        \begingroup
-                        % \setlength{\tabcolsep}{5mm}
-                        \renewcommand{\arraystretch}{1.25}
-                        \begin{tabular}[]{lcc}
-                                             & $f(t)$      & $\mathcal{L}\{ f(t) \}$\\\hline
-                            Degrau Unitário  & $u(t)$      & $\frac{1}{s}$\\
-                            Impulso Unitário & $\delta(t)$ & $1$\\
-                                             & $t^{n}$     & $\frac{n!}{s^{n+1}}$\\
-                                             & $e^{-at}$   & $\frac{1}{s+a}$\\
-                                             & $te^{-at}$  & $\frac{1}{(s+a)^{2}}$\\
-                                             & $\sin(at)$  & $\frac{k}{(s^2+a^2)}$\\
-                                             & $\cos(at)$  & $\frac{s}{(s^2+a^2)}$\\
-                                             & $e^{at}\;\sin(bt)$  & $\frac{b}{(s-a)^2+b^2}$\\
-                                             & $e^{at}\;\cos(bt)$  & $\frac{s-a}{(s-a)^2+b^2}$\\
-                            Convolução       & $\int_{0}^{t} f(\varphi)\;g(t - \varphi) \text{d}\varphi$ & $F(s)\cdot G(s)$\\
-                            Integral         & $\int_{0}^{t} f(\varphi)\;u(t - \varphi) \text{d}\varphi$ & $\frac{F(s)}{s}$\\
-                            Derivada         & $\diff{f(\varphi)}{\varphi} $ & $s\cdot F(s)$\\\hline
-                        \end{tabular}
-                        \endgroup
-                        \caption{Tabela de Transformadas de Laplace}\label{table:Laplace}
-                    \end{table} \noindent
+                \begin{table}[H]
+                    \centering
+                    \begingroup
+                    % \setlength{\tabcolsep}{5mm}
+                    \renewcommand{\arraystretch}{1.25}
+                    \begin{tabular}[]{lcc}
+                                            & $f(t)$      & $\mathcal{L}\{ f(t) \}$\\\hline
+                        Degrau Unitário  & $u(t)$      & $\frac{1}{s}$\\
+                        Impulso Unitário & $\delta(t)$ & $1$\\
+                                            & $t^{n}$     & $\frac{n!}{s^{n+1}}$\\
+                                            & $e^{-at}$   & $\frac{1}{s+a}$\\
+                                            & $te^{-at}$  & $\frac{1}{(s+a)^{2}}$\\
+                                            & $\sin(at)$  & $\frac{k}{(s^2+a^2)}$\\
+                                            & $\cos(at)$  & $\frac{s}{(s^2+a^2)}$\\
+                                            & $e^{at}\;\sin(bt)$  & $\frac{b}{(s-a)^2+b^2}$\\
+                                            & $e^{at}\;\cos(bt)$  & $\frac{s-a}{(s-a)^2+b^2}$\\
+                        Convolução       & $\int_{0}^{t} f(\varphi)\;g(t - \varphi) \text{d}\varphi$ & $F(s)\cdot G(s)$\\
+                        Integral         & $\int_{0}^{t} f(\varphi)\;u(t - \varphi) \text{d}\varphi$ & $\frac{F(s)}{s}$\\
+                        Derivada         & $\diff{f(\varphi)}{\varphi} $ & $s\cdot F(s)$\\\hline
+                    \end{tabular}
+                    \endgroup
+                    \caption{Tabela de Transformadas de Laplace}\label{table:Laplace}
+                \end{table} \noindent
 
-                    \columnbreak
-
-                    \paragraph{Impulso Unitário}Distribuição infinita no ponto zero e nula no restante da reta. Formalmente descrita pela seguinte equação:
+                    \begin{multicols}{2}
+                        \raggedcolumns
+                        \paragraph{Degrau Unitário}Representação de descontinuidade unitária. Formalmente descrita pela seguinte equação:
                         \begin{equation}
-                            \boxed{
-                                \delta(x) = 
-                                \begin{cases}
-                                    0, & x \neq 0;\\
-                                    \infty, & x = 0;\\
-                                \end{cases}
-                            }
-                        \end{equation}
-                    Obedecendo:
-                        \begin{equation}
-                            \int_{-\infty}^{+\infty} \delta(x) \; \text{d}x = 1
-                        \end{equation}
-
-                    \paragraph{Degrau Unitário}Representação de descontinuidade unitária. Formalmente descrita pela seguinte equação:
-                        \begin{equation*}
                             \boxed{
                                 u(x - a) = 
                                 \begin{cases}
@@ -242,7 +225,64 @@
                                     1, & x > a;\\
                                 \end{cases}
                             }
-                        \end{equation*}
+                        \end{equation}
+
+                        \columnbreak
+
+                        \paragraph{Impulso Unitário}Distribuição infinita no ponto zero e nula no restante da reta. Formalmente descrita pela seguinte equação:
+                            \begin{equation}
+                                \boxed{
+                                    \delta(x) = 
+                                    \begin{cases}
+                                        0, & x \neq 0;\\
+                                        \infty, & x = 0;\\
+                                    \end{cases}
+                                    }
+                                \end{equation}
+                        Obedecendo:
+                            \begin{equation*}
+                                \int_{-\infty}^{+\infty} \delta(x) \; \text{d}x = 1
+                            \end{equation*}
                 \end{multicols}
+
+        \subsection{Transformada de Componentes}
+            \paragraph{Definição}Substituir as equações que descrevem cada componente empregado em um circuito através de seu equivalente em \textbf{Laplace} simplificará os cálculos como representado abaixo:
+                \begin{multicols*}{2}
+                    \raggedcolumns
+                    \paragraph{Capacitor}Genericamente considera-se a seguinte equação para descrever o comportamento do componente:
+                        \begin{equation*}
+                            v_{C}(t) = \frac{1}{C}\;\int_{0}^{t} i\;\text{d}t + v_{C}(0)
+                        \end{equation*}
+                    Aplica-se a \textbf{Transformada de Laplace}, obtendo a seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                V_{C}(s) = \frac{1}{sC}\;I_{C}(s) + \frac{v_{C}(0)}{s}
+                            }
+                        \end{equation}
+
+                    \paragraph{Indutor}Genericamente considera-se a seguinte equação para descrever o comportamento do componente:
+                        \begin{equation*}
+                            v_{L}(t) = L\;\diff{i_{L}(t)}{t}
+                        \end{equation*}
+                    Aplica-se a \textbf{Transformada de Laplace}, obtendo a seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                V_{L}(s) = sL\;I_{L}(s) - L\;I_{L}(0)
+                            }
+                        \end{equation}
+
+                    \paragraph{Resistor}Genericamente considera-se a seguinte equação para descrever o comportamento do componente:
+                        \begin{equation*}
+                            v_{r}(t) = R\;i_{r}(t)
+                        \end{equation*}
+                    Aplica-se a \textbf{Transformada de Laplace}, obtendo a seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                V_{r}(s) = R\;I_{r}(s)
+                            }
+                        \end{equation}
+                    \columnbreak
+                    \paragraph{Função de Rede}aaaaa
+                \end{multicols*}
 
 \end{document}
