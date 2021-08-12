@@ -5,70 +5,16 @@
 \author{Guilherme Nunes Trofino\\217276}
 \project{Resumo Teórico}
 
-\newcommand{\myStyle}{
-\lstset{
-    language=Octave,                            % the language of the code
-    basicstyle=\ttfamily\small,               % the size of the fonts that are used for the code
-    keywordstyle=\color{darkpurple}\bfseries, %
-    stringstyle=\color{darkblue},             %
-    commentstyle=\color{darkgreen},           %
-    morecomment=[s][\color{blue}]{/**}{*/},   %
-    extendedchars=true,                       %
-    showtabs=false,                           % show tabs within strings adding particular underscores
-    showspaces=false,                         % show spaces adding particular underscores
-    showstringspaces=false,                   % underline spaces within strings
-    numbers=left,                             % where to put the line-numbers
-    numberstyle=\tiny\color{gray},            % the style that is used for the line-numbers
-    stepnumber=1,                             % the step between two line-numbers. If it's 1, each line will be numbered
-    numbersep=5pt,                            % how far the line-numbers are from the code
-    frame=single,                             % adds a frame around the code
-    rulecolor=\color{black},                  % if not set, the frame-color may be changed on line-breaks within not-black text
-    breaklines=true,                          % sets automatic line breaking
-    backgroundcolor=\color{white},            % choose the background color
-    breakatwhitespace=true,                   % sets if automatic breaks should only happen at whitespace
-    breakautoindent=false,                    %
-    captionpos=b,                             % sets the caption-position to bottom
-    xleftmargin=0pt,                          %
-    tabsize=2,                                % sets default tabsize to 2 spaces
-}}
-
-%\titleformat{<command>}[<shape>]{<format>}{<label>}{<sep>}{<before-code>}[<after-code>]
-\titleformat
-{\section} %comand
-[block]  %shape
-{\normalfont\LARGE} %format
-{\thesection. } %label
-{0mm} %sep
-{} %before-code
-[{\titlerule[0.1mm]}] %after-code
-
-\titlespacing*{\section}{0mm}{0mm}{15mm}
-
-\titleformat
-{\subsection} %comand
-[block]  %shape
-{\normalfont\Large} %format
-{\thesubsection. } %label
-{0mm} %sep
-{} %before-code
-[] %after-code
-
-\titlespacing*{\subsection}{0mm}{5mm}{2.5mm}
-
-
-\newcommand{\nameSubject}{EA611 - Circuitos II}
-\newcommand{\nameAuthor}{Guilherme Nunes Trofino}
 \begin{document}
     \maketitle
 \newpage
 
     \tableofcontents
-    \addtocontents{toc}{\protect\thispagestyle{empty}}
 \newpage
 
 
     \section{Introdução}
-        \paragraph{Apresentação}Neste documento será descrito as informações necessárias para compreensão e solução de exercícios relacionados a disciplina \nameSubject. Note que este documento são notas realizadas por \nameAuthor, em \today.
+        \paragraph{Apresentação}Neste documento será descrito as informações necessárias para compreensão e solução de exercícios relacionados a disciplina \title. Note que este documento são notas realizadas por \author, em \today.
 
         \subsection{Transformada de Laplace}
             \paragraph{Definição}Conversão de uma equação diferencial em equação algébrica e uma convolução em multiplicação. Formalmente descrita pelas seguintes equações:
@@ -78,7 +24,7 @@
                 \paragraph{Forma Bilateral:}
                     \begin{equation}
                         \boxed{
-                            F(s) = \mathcal{B}\{ f(t) \} \coloneqq \int_{-\infty}^{+\infty} f(t) \; e^{-st} \; \text{d} t
+                            F(s) = \mathcal{B} \{ f(t) \} := \int_{-\infty}^{+\infty} f(t) \; e^{-st} \; \text{d}t
                         }
                     \end{equation}
 
@@ -87,14 +33,13 @@
                 \paragraph{Forma Unilateral:}
                     \begin{equation}
                         \boxed{
-                            F(s) = \mathcal{L}\{ f(t) \} \coloneqq \int_{0}^{+\infty} f(t) \; e^{-st} \; \text{d} t
+                            F(s) = \mathcal{L}\{ f(t) \} := \int_{0}^{+\infty} f(t) \; e^{-st} \; \text{d} t
                         }
                     \end{equation}
             \end{multicols}\noindent
             Note que a forma \texttt{Unilateral} será um caso particular da \texttt{Bilateral}. Além disso, no estudo de circuitos elétricos será conveniente a adoção do domínio dos complexos para análise. Assim $s = \sigma + \omega\text{j}$ onde $\text{j}$ será a \textbf{Unidade Imaginária}, evitando confusão com \textbf{Corrente Elétrica} causada pela notação matemática canónica.
 
             \paragraph{Transformações}A seguir encontram-se as principais transformações pela definição \texttt{Unilateral} necessárias:
-
                 \begin{table}[H]
                     \centering
                     \begingroup
