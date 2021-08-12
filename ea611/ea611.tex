@@ -1,92 +1,9 @@
 \documentclass{article}
-\usepackage{blindtext}
+\usepackage{tpack}
 
-\usepackage{geometry}
-\geometry{
-    a4paper,
-    left=20mm,
-    right=20mm,
-    bottom=25mm,
-    top=30mm,
-    marginparwidth=50mm
-}
-
-% \geometry{
-%     a4paper,
-%     paperheight=845pt,
-%     paperwidth=597pt,
-%     voffset=15pt,
-%     hoffset=25pt,
-%     headheight=12pt,
-%     headsep=25pt,
-%     textheight=.90\paperheight,
-%     textwidth=.65\paperwidth,
-%     marginparsep=.02\paperwidth,
-%     marginparwidth=.25\paperwidth,
-%     inner=.05\paperwidth,
-%     footskip=25pt,
-% }
-\usepackage[utf8]{inputenc}
-\usepackage[english, main=portuguese]{babel}
-
-\usepackage[hidelinks]{hyperref}
-\usepackage{bookmark}
-\usepackage{cancel}
-\usepackage{comment}
-
-\usepackage{array}
-\usepackage{indentfirst}
-\usepackage{multicol}
-\setlength{\multicolsep}{5mm}
-\setlength{\columnsep}{7.5mm}
-\usepackage{subfiles}
-
-\usepackage{titlesec}
-
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{systeme}
-\usepackage{mathtools}
-\usepackage{float}
-\usepackage{enumitem}
-\usepackage[thinc]{esdiff} %parcial derivatives
-\restylefloat{table}
-
-\usepackage{graphicx}
-\usepackage{subcaption}
-\graphicspath{ {./images/} }
-
-% Pacote para a definição de novas cores
-\usepackage{xcolor}
-% Definindo novas cores
-\definecolor{darkgreen}{rgb}{0.0, 0.42, 0.24}
-\definecolor{darkpurple}{rgb}{0.74, 0.2, 0.64}
-\definecolor{darkblue}{rgb}{0.0, 0.28, 0.67}
-
-%Configurando numeração de objetos; figuras, equações e etc., em ambientes; section, subsection e etc..
-\usepackage{chngcntr}
-\counterwithin{figure}{section}
-\counterwithin{equation}{subsection}
-
-%Configurando espaços entre paragrafos
-%\setlength{\parskip}{0.5em}
-
-%Configurando pacote de Gráficos plots
-\usepackage{pgfplots}
-\usepackage{tikz}
-\usepgfplotslibrary{statistics} %necessário para boxplot
-
-%Configurando pacote de circuitos
-\usepackage{circuitikz}
-
-% Configurando layout para mostrar códigos
-\usepackage{listings}
-
-%Configurando multiple files
-\usepackage{filecontents}
-
-%Configurando quotes
-\usepackage{csquotes}
+\title{ES572 - Circuitos Lógicos}
+\author{Guilherme Nunes Trofino\\217276}
+\project{Resumo Teórico}
 
 \newcommand{\myStyle}{
 \lstset{
@@ -142,18 +59,7 @@
 \newcommand{\nameSubject}{EA611 - Circuitos II}
 \newcommand{\nameAuthor}{Guilherme Nunes Trofino}
 \begin{document}
-    \begin{titlepage}
-        \begin{center}
-            \rule{450pt}{0.5pt}\\[4mm]
-            {\Huge \nameSubject}\\
-            \rule{450pt}{0.5pt}\\[2mm]
-            {\Large Resumo Teórico}\\[200mm]
-            \today\\
-            \rule{250pt}{0.5pt}\\
-            {\large \nameAuthor}\\
-            {\large 217276}\\
-        \end{center}
-    \end{titlepage}
+    \maketitle
 \newpage
 
     \tableofcontents
