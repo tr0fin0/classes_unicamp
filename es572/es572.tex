@@ -112,5 +112,72 @@
                     \item Desempenhos mais próximos da entropia podem ser obtidos com sequências maiores, normalmente aplicadas em algoritmos de compressão como \texttt{LZW};
                 \end{itemize}
 
+\tikzset{
+    iv/.style={
+        draw,
+        fill=white,
+        circle,
+        minimum size=20pt,
+        inner sep=0pt,
+        text=black
+    },
+    ev/.style={
+        draw,
+        fill=gray!10,
+        rectangle,
+        minimum size=20pt,
+        inner sep=0pt,
+        text=black
+    }
+}
+    \begin{multicols}{2}
+        \begin{figure}[H]
+            \centering
+            \begin{forest} % from https://tex.stackexchange.com/a/304002/121799
+                for tree={
+                    s sep = 10mm,   % Horizontal Distance
+                    l = 0mm,        % Vertical Distance
+                    where n children={0}{ev}{iv},
+                    l+=8mm,
+                    if n=1{
+                        edge label={
+                            node [midway, left] {0}
+                        }
+                    }{
+                        edge label={
+                            node [midway, right] {1}
+                        }
+                    }
+                }
+                [100
+                    [60
+                        [A] [B]
+                    ]
+                    [40
+                        [C]
+                        [20
+                            [D] [E]
+                        ]
+                    ]
+                ]
+            \end{forest}
+            \caption{Representação da Árvore de Huffman}
+        \end{figure} \noindent
 
+        \columnbreak\noindent
+        Considera-se como exemplo a seguinte distribuição de probabilidades:
+            \begin{table}[H]
+                \centering
+                \begin{tabular}[]{cc}\hline
+                    Símbolos & Probabilidade\\\hline
+                    A & 30\\
+                    B & 30\\
+                    C & 20\\
+                    D & 10\\
+                    E & 10\\\hline
+                \end{tabular}
+                \caption{Probabilidades dos Símbolos}\label{table:Huffman}
+            \end{table}
+    
+    \end{multicols}
 \end{document}
