@@ -190,6 +190,14 @@
                     \end{tabular}
                     \caption{Representação da Distância de Hamming}\label{table:Hamming}
                 \end{table}\noindent
-    
-    \end{multicols}
+
+        \subsubsection{Deteção de Erro de \texttt{1 bit}}
+            \paragraph{Definição}Criação de palavras código válidas, de modo que um erro de um \textbf{único} \texttt{bit} não produza outra palavra de código válida. Desta forma, será necessário uma codificação cuja distância de Hamming entre quaisquer palavras válidas seja de \textbf{pelo menos} 2.
+
+            \paragraph{Aplicação}Adiciona-se um \texttt{bit} em qualquer palavra válida para que o número total de \texttt{bits 1} seja:
+                \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                    \item \textbf{Paridade Par:} Possui um número par de \texttt{bits 1};
+                    \item \textbf{Paridade Ímpar:} Possui um número ímpar de \texttt{bits 1};
+                \end{enumerate}
+            Selecionado a paridade basta incluir \texttt{bit de paridade} adequado. Assim, a partir deste valor é possível detectar erros durante a transmissão do símbolo de acordo com a paridade da codificação.
 \end{document}
