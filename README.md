@@ -8,6 +8,7 @@ my LaTeX notebooks and exercises solutions of my classes in Control and Automati
 - EM360: Thermodynamics I;
 - EM404: Dynamics;
 - EM733: Productive Systems;
+- ES572: Heat Transfer;
 - ES572: Logic Circuits;
 - ES601: Linear Analys of Systems;
 - ES704: Basic Instrumentation;
