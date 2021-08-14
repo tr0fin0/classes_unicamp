@@ -25,6 +25,7 @@
 \usepackage[english, main=portuguese]{babel}                        % Text Correction
 
 \usepackage{geometry, indentfirst, subcaption, subfiles, titlesec}  % General Presets
+\usepackage{titling}                                                % General Presets
 \usepackage{enumitem, multicol}                                     % Text Enviroments
 
 \usepackage[hidelinks]{hyperref}                                    %
@@ -34,9 +35,12 @@
 \usepackage{array, systeme}                                         % Table Presets
 \usepackage[thinc]{esdiff}                                          % Derivatives Presets
 
-\usepackage{graphicx, xcolor}                                       % Colors
+\usepackage{graphicx}                                               % Colors
+\usepackage[table]{xcolor}                                          % Colors
 
-\usepackage{circuitikz, tikz, pgfplots, listings}                   % Illustration
+\usepackage{circuitikz, forest, tikz, pgfplots, listings}           % Illustration
+
+\usetikzlibrary{matrix}                                             % Matrix
 \usepgfplotslibrary{statistics}                                     % Necessary for Boxplot
 
 
@@ -101,6 +105,17 @@
 
     \titlespacing*{\subsection}{0mm}{5mm}{2.5mm}
 
+\titleformat
+    {\subsubsection}        % Part
+    [block]                 % Part Shape
+    {\normalfont\large}     % Font Size
+    {\thesubsubsection. }   % Label Numbering
+    {0mm}                   % Part Separation
+    {}                      % Code Before
+    []                      % Code After
+
+    \titlespacing*{\subsubsection}{0mm}{2.5mm}{2.5mm}
+
 
 % ----------------------------------------------
 %               Make Title: Customization
@@ -108,6 +123,7 @@
 
 
 \newcommand*{\project}[1]{\gdef\@project{#1}}
+\newcommand*{\authorRA}[1]{\gdef\@authorRA{#1}}
 
 \renewcommand{\maketitle}{
     \begin{titlepage}
@@ -119,7 +135,7 @@
             \today\\
             \rule{250pt}{0.5pt}\\
             {\large \@author}\\
-            % {\large \@ra}\\
+            {\large \@authorRA}\\
         \end{center}
     \end{titlepage}
 }
@@ -131,6 +147,14 @@
 
                                                     % Table of Contents
 \addtocontents{toc}{\protect\thispagestyle{empty}}  % Remove Numbering
+
+
+% ----------------------------------------------
+%               Table: Customization
+% ----------------------------------------------
+
+\newcommand{\mycell}[2]{
+    \begin{tabular}{@{}c@{}c@{}}&\tiny #2\\\normalfont #1&\end{tabular}}
 
 
 % ----------------------------------------------
