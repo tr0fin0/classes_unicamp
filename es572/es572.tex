@@ -195,13 +195,13 @@
                     \caption{Representação da Distância de Hamming}\label{table:HammingDefinition}
                 \end{table}\noindent
 
-        \subsubsection{Deteção de Erro de \texttt{1 bit}}
+        \subsubsection{Deteção de \texttt{Erro de 1 bit}}
             \paragraph{Definição}Criação de palavras código válidas, de modo que um erro de um \textbf{único} \texttt{bit} não produza outra palavra de código válida. Desta forma, será necessário uma codificação cuja distância de Hamming entre quaisquer palavras válidas seja de \textbf{pelo menos} 2.
 
             \paragraph{Aplicação}Adiciona-se um \texttt{bit} em qualquer palavra válida para que o número total de \texttt{bits 1} seja:
                 \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
-                    \item \textbf{Paridade Par:} Possui um número par de \texttt{bits 1};
-                    \item \textbf{Paridade Ímpar:} Possui um número ímpar de \texttt{bits 1};
+                    \item \textbf{Paridade Par:} Possui um número par de \texttt{bits 1}. Representado com \texttt{bit 0};
+                    \item \textbf{Paridade Ímpar:} Possui um número ímpar de \texttt{bits 1}. Representado com \texttt{bit 1};
                 \end{enumerate}
 
         \subsubsection{Codificação de Hamming \texttt{(15, 11)}}
@@ -218,7 +218,7 @@
                     \caption{Codificação de Hamming}
                     \label{table:HammingCode}
                 \end{table}\noindent
-            Na sequência seleciona-se os \textcolor{red!80}{\texttt{bits de paridade}}, apresentados nas posições com \textcolor{red!80}{p}, necessários para que cada \textbf{subgrupo} possuam a mesma paridade como representado abaixo:
+            Na sequência preenche-se os \textcolor{red!80}{\texttt{bits de paridade}}, apresentados nas posições com \textcolor{red!80}{p}, representando a paridade de cada \textbf{subgrupo} possuam como representado abaixo:
                 \begin{table}[H]
                     \centering
                     \begin{tabular}{|c|c|c|c|}\hline
@@ -251,7 +251,7 @@
                     \caption{Grupos de Hamming}
                     \label{table:HammingGroups}
                 \end{table}\noindent
-            Neste ponto pode-se detectar e localizar \texttt{erros de 1 bit}. Na sequência seleciona-se o \textcolor{blue!80}{\texttt{bit de paridade do conjunto}} necessários para que o \textbf{grupo} possuam a mesma paridade como representado abaixo:
+            Neste ponto pode-se detectar e localizar \texttt{erros de 1 bit}. Na sequência preenche-se o \textcolor{blue!80}{\texttt{bit de paridade do conjunto}} para paridade do \textbf{grupo} como representado abaixo:
                 \begin{table}[H]
                     \centering
                     \begin{tabular}{|c|c|c|c|}\hline
@@ -265,4 +265,25 @@
                 \end{table}\noindent
             Neste ponto pode-se localizar \texttt{erros de 2 bits}.
 
+        \subsubsection{Decodificação de Hamming \texttt{(15,11)}}
+            \paragraph{Definição}Interpretação dos dados recebidos na \textbf{Configuração de Hamming}, analisando os \texttt{15, ou 16, bits} codificados como descrito abaixo:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Transmissão Correta:} 
+                        \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                            \item Não houve erro nos \textcolor{red!80}{\texttt{bits de paridade}}
+                            \item Não houve erro no \textcolor{blue!80}{\texttt{bit de paridade do conjunto}};
+                        \end{enumerate}
+
+                    \item \textbf{Transmissão com} \texttt{Erro de 1 bit}:
+                        \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                            \item Houve erro em pelo menos um dos \textcolor{red!80}{\texttt{bits de paridade}}
+                            \item Houve erro no \textcolor{blue!80}{\texttt{bit de paridade do conjunto}};
+                        \end{enumerate}
+
+                    \item \textbf{Transmissão com} \texttt{Erro de 2 bit}:
+                        \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                            \item Houve erro em pelo menos um dos \textcolor{red!80}{\texttt{bits de paridade}}
+                            \item Não houve erro no \textcolor{blue!80}{\texttt{bit de paridade do conjunto}};
+                        \end{enumerate}
+                \end{enumerate}
 \end{document}
