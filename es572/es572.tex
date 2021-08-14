@@ -5,6 +5,9 @@
 \author{Guilherme Nunes Trofino\\217276}
 \project{Resumo Teórico}
 
+\newcommand{\mycell}[2]{
+    \begin{tabular}{@{}c@{}c@{}}&\tiny #2\\\normalfont #1&\end{tabular}}
+
 \begin{document}
     \maketitle
 \newpage
@@ -13,7 +16,8 @@
 \newpage
 
     \section{Introdução}
-        \paragraph{Apresentação}Teoria utilizada para o desenvolvimento da disciplina será baseada nas proposições trazidas por Claude Shannon em 1948.
+        \paragraph{Apresentação}Neste documento será descrito as informações necessárias para compreensão e solução de exercícios relacionados a disciplina \title. Note que este documento são notas realizadas por \author, em \today.
+
 \begin{multicols}{2}
     \raggedcolumns
 
@@ -123,7 +127,7 @@
     },
     ev/.style={
         draw,
-        fill=gray!10,
+        fill=gray!50,
         rectangle,
         minimum size=20pt,
         inner sep=0pt,
@@ -188,7 +192,7 @@
                         Original  & Palavra Código\\\hline
                         0110 0100 & 01\textcolor{red}{0}0 \textcolor{red}{1}100\\\hline
                     \end{tabular}
-                    \caption{Representação da Distância de Hamming}\label{table:Hamming}
+                    \caption{Representação da Distância de Hamming}\label{table:HammingDefinition}
                 \end{table}\noindent
 
         \subsubsection{Deteção de Erro de \texttt{1 bit}}
@@ -199,5 +203,66 @@
                     \item \textbf{Paridade Par:} Possui um número par de \texttt{bits 1};
                     \item \textbf{Paridade Ímpar:} Possui um número ímpar de \texttt{bits 1};
                 \end{enumerate}
-            Selecionado a paridade basta incluir \texttt{bit de paridade} adequado. Assim, a partir deste valor é possível detectar erros durante a transmissão do símbolo de acordo com a paridade da codificação.
+
+        \subsubsection{Codificação de Hamming \texttt{(15, 11)}}
+            \paragraph{Definição}Organização de dados em \texttt{15 bits}, \texttt{11 bits} de dados e \texttt{4 bits} são redundância. Desta forma, os \texttt{bits} redundantes são suficientes para determinar a posição de qualquer erro de \texttt{1 bit} presente nos dados.
+
+            \paragraph{Aplicação}Organize os \texttt{11 bits} de dados sequencialmente nos espaços brancos de uma matriz 4x4 como representado abaixo:
+                \begin{table}[H]
+                    \centering\begin{tabular}{|c|c|c|c|}\hline
+                        \cellcolor{blue!40}\mycell{x}{0} & \cellcolor{red!40}\mycell{p}{1} & \cellcolor{red!40}\mycell{p}{2}  & \mycell{1}{3}\\\hline
+                        \cellcolor{red!40}\mycell{p}{4}  & \mycell{0}{5}                   & \mycell{1}{6}                    & \mycell{0}{7}\\\hline
+                        \cellcolor{red!40}\mycell{p}{8}  & \mycell{0}{9}                   & \mycell{1}{10}                   & \mycell{0}{11}\\\hline
+                        \mycell{1}{12}                   & \mycell{0}{13}                  & \mycell{0}{14}                   & \mycell{1}{15}\\\hline
+                    \end{tabular}
+                    \caption{Codificação de Hamming}
+                    \label{table:HammingCode}
+                \end{table}\noindent
+            Na sequência seleciona-se os \textcolor{red!80}{\texttt{bits de paridade}}, apresentados nas posições com \textcolor{red!80}{p}, necessários para que cada \textbf{subgrupo} possuam a mesma paridade como representado abaixo:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}{|c|c|c|c|}\hline
+                        \mycell{x}{0}  & \cellcolor{red!40}\mycell{0}{1}   & \mycell{p}{2}  & \cellcolor{gray!50}\mycell{1}{3}\\\hline
+                        \mycell{p}{4}  & \cellcolor{gray!50}\mycell{0}{5}  & \mycell{1}{6}  & \cellcolor{gray!50}\mycell{0}{7}\\\hline
+                        \mycell{p}{8}  & \cellcolor{gray!50}\mycell{0}{9}  & \mycell{1}{10} & \cellcolor{gray!50}\mycell{0}{11}\\\hline
+                        \mycell{1}{12} & \cellcolor{gray!50}\mycell{0}{13} & \mycell{0}{14} & \cellcolor{gray!50}\mycell{1}{15}\\\hline
+                    \end{tabular}
+                    \quad
+                    \begin{tabular}{|c|c|c|c|}\hline
+                        \mycell{x}{0}  & \mycell{0}{1}  & \cellcolor{red!40}\mycell{0}{2}   & \cellcolor{gray!50}\mycell{1}{3}\\\hline
+                        \mycell{p}{4}  & \mycell{0}{5}  & \cellcolor{gray!50}\mycell{1}{6}  & \cellcolor{gray!50}\mycell{0}{7}\\\hline
+                        \mycell{p}{8}  & \mycell{0}{9}  & \cellcolor{gray!50}\mycell{1}{10} & \cellcolor{gray!50}\mycell{0}{11}\\\hline
+                        \mycell{1}{12} & \mycell{0}{13} & \cellcolor{gray!50}\mycell{0}{14} & \cellcolor{gray!50}\mycell{1}{15}\\\hline
+                    \end{tabular}
+                    \quad
+                    \begin{tabular}{|c|c|c|c|}\hline
+                        \mycell{x}{0}                     & \mycell{0}{1}                     & \mycell{0}{2}                     & \mycell{1}{3}\\\hline
+                        \cellcolor{red!40}\mycell{1}{4}   & \cellcolor{gray!50}\mycell{0}{5}  & \cellcolor{gray!50}\mycell{1}{6}  & \cellcolor{gray!50}\mycell{0}{7}\\\hline
+                        \mycell{p}{8}                     & \mycell{0}{9}                     & \mycell{1}{10}                    & \mycell{0}{11}\\\hline
+                        \cellcolor{gray!50}\mycell{1}{12} & \cellcolor{gray!50}\mycell{0}{13} & \cellcolor{gray!50}\mycell{0}{14} & \cellcolor{gray!50}\mycell{1}{15}\\\hline
+                    \end{tabular}
+                    \quad
+                    \begin{tabular}{|c|c|c|c|}\hline
+                        \mycell{x}{0}                     & \mycell{0}{1}                     & \mycell{0}{2}                     & \mycell{1}{3}\\\hline
+                        \mycell{1}{4}                     & \mycell{0}{5}                     & \mycell{1}{6}                     & \mycell{0}{7}\\\hline
+                        \cellcolor{red!40}\mycell{1}{8}   & \cellcolor{gray!50}\mycell{0}{9}  & \cellcolor{gray!50}\mycell{1}{10} & \cellcolor{gray!50}\mycell{0}{11}\\\hline
+                        \cellcolor{gray!50}\mycell{1}{12} & \cellcolor{gray!50}\mycell{0}{13} & \cellcolor{gray!50}\mycell{0}{14} & \cellcolor{gray!50}\mycell{1}{15}\\\hline
+                    \end{tabular}
+                    \caption{Grupos de Hamming}
+                    \label{table:HammingGroups}
+                \end{table}\noindent
+            Neste ponto pode-se detectar e localizar \texttt{erros de 1 bit}. Na sequência seleciona-se o \textcolor{blue!80}{\texttt{bit de paridade do conjunto}} necessários para que o \textbf{grupo} possuam a mesma paridade como representado abaixo:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}{|c|c|c|c|}\hline
+                        \cellcolor{blue!40}\mycell{1}{0} & \mycell{0}{1}  & \mycell{0}{2}  & \mycell{1}{3}\\\hline
+                        \mycell{1}{4}                    & \mycell{0}{5}  & \mycell{1}{6}  & \mycell{0}{7}\\\hline
+                        \mycell{1}{8}                    & \mycell{0}{9}  & \mycell{1}{10} & \mycell{0}{11}\\\hline
+                        \mycell{1}{12}                   & \mycell{0}{13} & \mycell{0}{14} & \mycell{1}{15}\\\hline
+                    \end{tabular}
+                    \caption{Codificação Hamming Estendida}
+                    \label{table:HammingFinal}
+                \end{table}\noindent
+            Neste ponto pode-se localizar \texttt{erros de 2 bits}.
+
 \end{document}
