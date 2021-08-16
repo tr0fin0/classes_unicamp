@@ -43,257 +43,409 @@
                         b_{0}(t) \cdot y(t)
                     \end{equation*}
 
-        \paragraph{}\textbf{E.D.O.} não Linear Homogênea de Ordem N:\\
-        \textbf{Definição:} Quando a função possui $b_{n}(t) \neq 1$ e $f(t) = 0$.
-            \[0 = b_{n}(t) \cdot y^{n}(t) + b_{n-1}(t) \cdot y^{n-1}(t) + \dots +b_{1}(t) \cdot y'(t) + b_{0}(t) \cdot y(t)\]
-        
-        \paragraph{}\textbf{E.D.O.} Linear não Homogênea de Ordem N:\\
-        \textbf{Definição:} Quando a função possui $b_{n}(t) = 1$ e $f(t) \neq 0$.
-            \[f(t) = 1 \cdot y^{n}(t) + b_{n-1}(t) \cdot y^{n-1}(t) + \dots +b_{1}(t) \cdot y'(t) + b_{0}(t) \cdot y(t)\]
-        
-        \paragraph{}\textbf{E.D.O.} Linear Homogênea de Ordem N:\\
-        \textbf{Definição:} Quando a função possui $b_{n}(t) = 1$ e $f(t) = 0$.
-            \[0 = 1 \cdot y^{n}(t) + b_{n-1}(t) \cdot y^{n-1}(t) + \dots +b_{1}(t) \cdot y'(t) + b_{0}(t) \cdot y(t)\]
-\newpage
+                \item \textbf{E.D.O. não Linear Homogênea de Ordem N:} Quando a função possui $b_{n}(t) \neq 1$ e $f(t) = 0$ como representado pela seguinte equação:
+                    \begin{equation*}
+                        0 = 
+                        b_{n}(t)   \cdot y^{n}(t) + 
+                        b_{n-1}(t) \cdot y^{n-1}(t) + \dots +
+                        b_{1}(t) \cdot y'(t) + 
+                        b_{0}(t) \cdot y(t)
+                    \end{equation*}
 
-\section{E.D.O.'s Lineares de 1º Ordem}
-    \paragraph{}\textbf{Definição:} E.D.O.'s Lineares de 1º Ordem serão da forma:
-        \[f(t) = q(t) \cdot y'(t) + p(t) \cdot y(t)\]
-    
-    \subsection{Teorema da Existência e da Unicidade}
-        \paragraph{}\textbf{Definição:} Caso as condições enunciadas a seguir sejam verdadeiras então as equações terão tais características.
-        \paragraph{}Equação Geral e Condição Inicial:
-            \[f(x,y(x)) = y' \hspace{5mm} y(a) = b\]
-        \paragraph{}Se $f(x,y(x))$ é contínua em uma região $R$ qualquer contida em $R^2$ então existe solução em $R$.
-        \paragraph{}Se $f_y(x,y(x))$ é contínua em uma região $R$ qualquer contida em $R^2$ então a solução em $R$ é única.
-    
-    \subsection{E.D.O. Linear não Homogênea}
-        \paragraph{}\textbf{Definição:} Quando a função possui $q_{n}(t) = 1$, $p(t) \neq a$ e $f(t) \neq 0$.
-            \[f(t) = 1 \cdot y'(t) + p(t) \cdot y(t)\]
-        
-        \paragraph{}Equações de 1º ordem lineares, constantes e homogêneas são resolvidas com a aplicação do fator integrante.
-        \paragraph{}Fator Integrante:
-            \[u(t) = e^{\int{p(t)dt}}\]
-        \paragraph{}Quando este termo é apicado a equação a mesma pode ser simplificada através da derivada do produto como demonstrado a seguir:
-            \[\frac{d}{dt}[u(t) \cdot y(t)] = u(t) \cdot f(t)\]
-        \paragraph{}Consequentemente a solução de tal E.D.O. será:
-            \[y(t) = \frac{\int{f(t) \cdot u(t) dt + C}}{u(t)}\]
-        \paragraph{}Devido a integração aparecerá uma constante que deve ser considerada durantes os cálculos, sendo divida por $u(t)$. Quando o problema valores iniciais será necessário realizar as substituições dadas para obter a constante correspondente.
-    
-    \subsection{E.D.O. Linear Constante não Homogênea}
-        \paragraph{}\textbf{Definição:} Quando a função possui $q_{n}(t) = 1$, $p(t) = a$ e $f(t) \neq 0$.
-            \[f(t) = 1 \cdot y'(t) + a \cdot y(t)\]
-    
-    \subsection{E.D.O. Linear Constante Homogênea}
-        \paragraph{}\textbf{Definição:} Quando a função possui $q_{n}(t) = 1$, $p(t) = a$ e $f(t) = 0$.
-            \[0 = 1 \cdot y'(t) + a \cdot y(t)\]
-        
-    \subsection{Equações Separáveis}
-        \paragraph{}\textbf{Definição:} Quando a função possui a forma $y'(x)=f(x) \cdot g(y)$, isto é,  x e y separáveis em funções independentes.
-        \paragraph{}Equação Geral:
-            \[y'(x)=f(x) \cdot g(y)\]
-        
-        \paragraph{}Solução Geral:
-            \[\int{\frac{1}{g(y)}dy} = \int{f(x)dx}\]
-        \paragraph{}Equações desta forma possuem resolução direta pois basta isolar as funções correspondentes e aplicar a integração adequada.
-    
-    \subsection{Equações Exatas}
-        \paragraph{}\textbf{Definição:} Uma E.D.O. $F(x,y)$ será exata quando puder ser rescrita como demonstrado:
-            \[M(x,y)dx+N(x,y)dy=0\]
-        \paragraph{}Onde:
-        
-        \quad$F_{x}(x,y)=M$
-        
-        \quad$F_{y}(x,y)=N$
-        \paragraph{}Caso $M_{y}=N_{x}$ então a equação $F(x,y)$ será exata e poderá ser encontrada pelo método que segue:
-            \[F(x,y)=\int{M}dx=F_{0}(x,y)+g(y)\]
-            \[N= F_{0y}(x,y)+g'(y)\]
-        \paragraph{}Note que o processo poderia ser aplicado em função de $N$ obtendo assim $g(x)$ como constante resultante da integração.
-        \paragraph{}\textbf{Fator Integrante:} Caso $M_{y}\neq N_{x}$ a equação não seria exata, sendo necessário aplicar um fator integrante para torná-la exata. Há dois casos possíveis para tal fator, sendo eles:
-        
-        \paragraph{}Dependente de $x$, $u(x)$:
-            \[u(x)=e^{\int{\frac{M_{y}-N_{x}}{N}dx}}\]
-        \paragraph{}Dependente de $y$, $u(y)$:
-            \[u(y)=e^{\int{\frac{N_{x}-M_{y}}{M}dy}}\]
-    
-    \subsection{Substituição Linear}
-        \paragraph{}\textbf{Definição:} Quando a função possui a forma $y'(x)=F(ax+by(x)+c)$, isto é, todos os termos, com excessão de $y'(x)$, estão contidos em uma única função.
-        \paragraph{}Equação Geral:
-            \[y'(x)=F(ax+by(x)+c)\]
-        \paragraph{}Substituição:
-            \[V(x)=ax+by(x)+c\]
-        \paragraph{}Como consequência de qualquer substituição será necessário deriva-la para encontrar $y'(x)$ em função da substituição.
-        \paragraph{}Derivação:
-            \[y'(x)=\frac{V'(x)-a}{b}\]
-        \paragraph{}Solução Geral:
-            \[V'(x)=bF(V(x))+a\]
-        \paragraph{}Note que a solução geral obtida sempre será separável ápos a substituição.
-    
-    \subsection{Substituição Homogênea}
-        \paragraph{}\textbf{Definição:} Quando a função possui os termos $x$ e $y$ descritos por quocientes.
-        \paragraph{}Equação Geral:
-            \[y'(x)=f(\frac{y}{x})\]
-        \paragraph{}Substituição:
-            \[V(x)=\frac{y}{x} \Leftrightarrow y=V(x) \cdot x\]
-        \paragraph{}Derivação:
-            \[y'(x)=V(x)+V'(x) \cdot x\]
-        \paragraph{}Solução Geral:
-            \[V(x)+V'(x)x=f(V(x))\]
-        \paragraph{}Note que a solução geral obtida sempre será separável ápos a substituição.
-    
-    \subsection{Substituição de Bernoulli}
-        \paragraph{}\textbf{Definição:} Quando a função possui a forma $y'(x)+p(x) \cdot y(x)=f(x) \cdot y^{n}(x)$, isto 
-        é, $f(x)$ está multiplicada por uma potência $n$ de $y(x)$.
-        \paragraph{}Equação Geral:
-            \[y'(x)+p(x) \cdot y(x)=f(x) \cdot y^{n}(x)\]
-        \paragraph{}Substituição:
-            \[V(x)=y^{n-1}(x)\]
-        \paragraph{}Derivação:
-            \[V'(x)=y'y^{n}\]
-        \paragraph{}Solução:
-            \[\frac{v'(x)}{1-n}+p(x)v(x)=f(x)\]
-\newpage
+                \item \textbf{E.D.O. Linear não Homogênea de Ordem N:} Quando a função possui $b_{n}(t) = 1$ e $f(t) \neq 0$ como representado pela seguinte equação:
+                    \begin{equation*}
+                        f(t) = 
+                        1          \cdot y^{n}(t) + 
+                        b_{n-1}(t) \cdot y^{n-1}(t) + \dots +
+                        b_{1}(t) \cdot y'(t) + 
+                        b_{0}(t) \cdot y(t)
+                    \end{equation*}
 
-\section{Sequências Infinitas}
-    \paragraph{}\textbf{Definição:} Funções definidas em $f:Z\to R$ onde $f(n)=a_{n}$, $n$ é o índice da sequência e $a_{n}$ é o n-ésimo termo da sequência. Todas as propriedades demonstradas e aprendidas em Cálculo I para Limites podem ser aplicadas no estudo de sequências. 
-    
-    \subsection{Convergência}
-        \paragraph{}\textbf{Definição:} Uma sequência, $a_{n}$, converge para $L$ se dado qualquer $\epsilon > 0$ existe $N \ge 0$ tal que $|a_{n}-L|<\epsilon$ para todo $n \ge N$.
-        \paragraph{}\textbf{Exemplo:}
-            \[\lim_{n\to\infty}\frac{n-1}{n}\rightarrow1\]
-        \paragraph{}Dado $\epsilon>0$ existe $N$ tal que $|\frac{n-1}{n}-1|<\epsilon$ então $\epsilon>\frac{1}{n}$ logo $N>\frac{1}{\epsilon}$.
-        \paragraph{} Toda sequência convergente é limitada, ou seja, existe $K$ tal que $|a_{n}| \le K$. Todavia uma sequência limitada não implica em convergência.
-    
-    \subsection{Divergência}
-        \paragraph{}\textbf{Definição:} Uma sequência, $a_{n}$, diverge se dado qualquer $K>0$ existe $N$ tal que $a_{n} \ge K$ para todo $n \ge N$.
-        \paragraph{}\textbf{Exemplo:} 
-            \[\lim_{n\to\infty}n^{2} \rightarrow \infty\]
-    
-    \subsection{Ordem de Crescimento}
-        \paragraph{}\textbf{Definição:} Considerando duas funções quaisquer $f(n)$ e $g(n)$ pode-se analisar a rapidez de crescimento para inferir o resultado. Tomando o seguinte quociente apenas como suposição:
-            \[\lim\limits_{n\to\infty}\frac{f(n)}{g(n)}\left \{ \begin{matrix} 0\\ K\ne0\\ \infty\end{matrix}\right.\]
-        \paragraph{}Se $\lim\limits_{n\to\infty}\frac{f(n)}{g(n)}=0$ implica que $g(n)$ tende ao infinito mais rapidamente do que $f(n)$.
-        \paragraph{}Se $\lim\limits_{n\to\infty}\frac{f(n)}{g(n)}=K$ implica que $f(n)$ e $g(n)$ possuem a mesma ordem de crescimento.
-        \paragraph{}Se $\lim\limits_{n\to\infty}\frac{f(n)}{g(n)}=\infty$ implica que $f(n)$ tende ao infinito mais rapidamente do que $g(n)$.
-        \paragraph{}Assim sendo pode-se ordenar em ordem crescente de crescimento da principais funções, considerando $a>1$:
-            \[log_{a}n < n^k < a^n < n! < n^n \]
+                \item \textbf{E.D.O. Linear Homogênea de Ordem N:} Quando a função possui $b_{n}(t) = 1$ e $f(t) = 0$ como representado pela seguinte equação:
+                    \begin{equation*}
+                        0 = 
+                        1          \cdot y^{n}(t) + 
+                        b_{n-1}(t) \cdot y^{n-1}(t) + \dots +
+                        b_{1}(t) \cdot y'(t) + 
+                        b_{0}(t) \cdot y(t)
+                    \end{equation*}
+            \end{enumerate}
+
+
+
+        \subsection{E.D.O.'s Lineares de 1º Ordem}
+            \paragraph{Definição}E.D.O.'s Lineares de 1º Ordem serão equações construídas a partir de uma função $f(t)$ qualquer e sua derivada de 1º Ordem como representada na seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        f(t) = q(t) \cdot y'(t) + p(t) \cdot y(t)
+                    }
+                \end{equation}
+
+
+            \subsubsection{Teorema da Existência e da Unicidade}
+                \paragraph{Definição}E.D.O.'s Lineares de 1º Ordem existirão se, e somente se, atendem as condições enunciadas a seguir. Primeiramente, considera-se as seguintes equações:
+                    \begin{equation}
+                        f(t) =
+                        \begin{cases}
+                            f(x,y(x)) = y', & \text{Equação Geral}\\
+                            y(a) = b,       & \text{Condição Inicial}\\
+                        \end{cases}
+                    \end{equation}
+                Onde:
+                    \begin{itemize}[noitemsep]
+                        \item Se $f(x,y(x))$ é contínua em uma região $R$ qualquer contida em $R^2$ então existe solução em $R$;
+
+                        \item Se $f_y(x,y(x))$ é contínua em uma região $R$ qualquer contida em $R^2$ então a solução em $R$ é única;
+                    \end{itemize}
+                Caso a equação atenda a estes requisitos, então as seguintes classificações serão válidas:
+
+            \subsubsection{E.D.O. Linear não Homogênea}
+                \paragraph{Definição}Quando a função possui $q_{n}(t) = 1$ e $f(t) \neq 0$ como representado pela seguinte equação:
+                    \begin{equation}
+                        f(t) = 1 \cdot y'(t) + p(t) \cdot y(t)
+                    \end{equation}
+
+                \paragraph{Resolução}E.D.O.'s Lineares e Homogêneas de 1º Ordem são solucionadas através da aplicação do \texttt{Fator Integrante} apresentado na seguinte equação:
+                    \begin{equation*}
+                        u(t) = e^{\int p(t)\;\text{d}t}
+                    \end{equation*}
+                Quando este termo é apicado a equação a mesma pode ser simplificada através da derivada do produto como demonstrado a seguir:
+                    \begin{equation*}
+                        \diff{[u(t) \cdot y(t)]}{t} = u(t) \cdot f(t)
+                    \end{equation*}
+                Quando o problema valores iniciais será necessário realizar substituições para obter a constante correspondente. Consequentemente a solução de tal E.D.O. será:
+                    \begin{equation}
+                        \boxed{
+                            y(t) = \frac{\int{f(t) \cdot u(t)\;\text{d}t + C}}{u(t)}
+                        }
+                    \end{equation}
+
+            \subsubsection{E.D.O. Linear Homogênea}
+                \paragraph{Definição}Quando a função possui $q_{n}(t) = 1$ e $f(t) = 0$ como representado pela seguinte equação:
+                    \begin{equation}
+                        0 = 1 \cdot y'(t) + p(t) \cdot y(t)
+                    \end{equation}
+
+            \subsection{Equações Separáveis}
+                \paragraph{Definição}Quando a função possui a forma $y'(x)=f(x) \cdot g(y)$, isto é,  x e y separáveis em funções independentes.
+                \paragraph{}Equação Geral:
+                    \begin{equation}
+                        y'(x)=f(x) \cdot g(y)
+                    \end{equation}
+                
+                \paragraph{}Solução Geral:
+                    \begin{equation}
+                        \int{\frac{1}{g(y)}dy} = \int{f(x)dx}
+                    \end{equation}
+                \paragraph{}Equações desta forma possuem resolução direta pois basta isolar as funções correspondentes e aplicar a integração adequada.
+
+            \subsection{Equações Exatas}
+                \paragraph{Definição}Uma E.D.O. $F(x,y)$ será exata quando puder ser rescrita como demonstrado:
+                    \begin{equation}
+                        M(x,y)dx+N(x,y)dy=0
+                    \end{equation}
+                \paragraph{}Onde:
+                
+                \quad$F_{x}(x,y)=M$
+                
+                \quad$F_{y}(x,y)=N$
+                \paragraph{}Caso $M_{y}=N_{x}$ então a equação $F(x,y)$ será exata e poderá ser encontrada pelo método que segue:
+                    \begin{equation}
+                        F(x,y)=\int{M}dx=F_{0}(x,y)+g(y)
+                    \end{equation}
+                    \begin{equation}
+                        N= F_{0y}(x,y)+g'(y)
+                    \end{equation}
+                \paragraph{}Note que o processo poderia ser aplicado em função de $N$ obtendo assim $g(x)$ como constante resultante da integração.
+                \paragraph{}\textbf{Fator Integrante:} Caso $M_{y}\neq N_{x}$ a equação não seria exata, sendo necessário aplicar um fator integrante para torná-la exata. Há dois casos possíveis para tal fator, sendo eles:
+                
+                \paragraph{}Dependente de $x$, $u(x)$:
+                    \begin{equation}
+                        u(x)=e^{\int{\frac{M_{y}-N_{x}}{N}dx}}
+                    \end{equation}
+                \paragraph{}Dependente de $y$, $u(y)$:
+                    \begin{equation}
+                        u(y)=e^{\int{\frac{N_{x}-M_{y}}{M}dy}}
+                    \end{equation}
+
+            \subsubsection{Substituição Linear}
+                \paragraph{Definição}Quando a função possui a forma $y'(x)=F(ax+by(x)+c)$, isto é, todos os termos, com excessão de $y'(x)$, estão contidos em uma única função.
+                \paragraph{}Equação Geral:
+                    \begin{equation}
+                        y'(x)=F(ax+by(x)+c)
+                    \end{equation}
+                \paragraph{}Substituição:
+                    \begin{equation}
+                        V(x)=ax+by(x)+c
+                    \end{equation}
+                \paragraph{}Como consequência de qualquer substituição será necessário deriva-la para encontrar $y'(x)$ em função da substituição.
+                \paragraph{}Derivação:
+                    \begin{equation}
+                        y'(x)=\frac{V'(x)-a}{b}
+                    \end{equation}
+                \paragraph{}Solução Geral:
+                    \begin{equation}
+                        V'(x)=bF(V(x))+a
+                    \end{equation}
+                \paragraph{}Note que a solução geral obtida sempre será separável ápos a substituição.
+
+            \subsubsection{Substituição Homogênea}
+                \paragraph{Definição}Quando a função possui os termos $x$ e $y$ descritos por quocientes.
+                \paragraph{}Equação Geral:
+                    \begin{equation}
+                        y'(x)=f(\frac{y}{x})
+                    \end{equation}
+                \paragraph{}Substituição:
+                    \begin{equation}
+                        V(x)=\frac{y}{x} \Leftrightarrow y=V(x) \cdot x
+                    \end{equation}
+                \paragraph{}Derivação:
+                    \begin{equation}
+                        y'(x)=V(x)+V'(x) \cdot x
+                    \end{equation}
+                \paragraph{}Solução Geral:
+                    \begin{equation}
+                        V(x)+V'(x)x=f(V(x))
+                    \end{equation}
+                \paragraph{}Note que a solução geral obtida sempre será separável ápos a substituição.
+
+            \subsubsection{Substituição de Bernoulli}
+                \paragraph{Definição}Quando a função possui a forma $y'(x)+p(x) \cdot y(x)=f(x) \cdot y^{n}(x)$, isto 
+                é, $f(x)$ está multiplicada por uma potência $n$ de $y(x)$.
+                \paragraph{}Equação Geral:
+                    \begin{equation}
+                        y'(x)+p(x) \cdot y(x)=f(x) \cdot y^{n}(x)
+                    \end{equation}
+                \paragraph{}Substituição:
+                    \begin{equation}
+                        V(x)=y^{n-1}(x)
+                    \end{equation}
+                \paragraph{}Derivação:
+                    \begin{equation}
+                        V'(x)=y'y^{n}
+                    \end{equation}
+                \paragraph{}Solução:
+                    \begin{equation}
+                        \frac{v'(x)}{1-n}+p(x)v(x)=f(x)
+                    \end{equation}
+
+
+    \section{Sequências Infinitas}
+        \paragraph{Definição}Funções definidas em $f:Z\to R$ onde $f(n)=a_{n}$, $n$ é o índice da sequência e $a_{n}$ é o n-ésimo termo da sequência. Todas as propriedades demonstradas e aprendidas em Cálculo I para Limites podem ser aplicadas no estudo de sequências. 
+        
+        \subsection{Convergência}
+            \paragraph{Definição}Uma sequência, $a_{n}$, converge para $L$ se dado qualquer $\epsilon > 0$ existe $N \ge 0$ tal que $|a_{n}-L|<\epsilon$ para todo $n \ge N$.
+            \paragraph{}\textbf{Exemplo:}
+                \begin{equation}
+                    \lim_{n\to\infty}\frac{n-1}{n}\rightarrow1
+                \end{equation}
+            \paragraph{}Dado $\epsilon>0$ existe $N$ tal que $|\frac{n-1}{n}-1|<\epsilon$ então $\epsilon>\frac{1}{n}$ logo $N>\frac{1}{\epsilon}$.
+            \paragraph{} Toda sequência convergente é limitada, ou seja, existe $K$ tal que $|a_{n}| \le K$. Todavia uma sequência limitada não implica em convergência.
+        
+        \subsection{Divergência}
+            \paragraph{Definição}Uma sequência, $a_{n}$, diverge se dado qualquer $K>0$ existe $N$ tal que $a_{n} \ge K$ para todo $n \ge N$.
+            \paragraph{}\textbf{Exemplo:} 
+                \begin{equation}
+                    \lim_{n\to\infty}n^{2} \rightarrow \infty
+                \end{equation}
+        
+        \subsection{Ordem de Crescimento}
+            \paragraph{Definição}Considerando duas funções quaisquer $f(n)$ e $g(n)$ pode-se analisar a rapidez de crescimento para inferir o resultado. Tomando o seguinte quociente apenas como suposição:
+                \begin{equation}
+                    \lim\limits_{n\to\infty}\frac{f(n)}{g(n)}\left \{ \begin{matrix} 0\\ K\ne0\\ \infty\end{matrix}\right.
+                \end{equation}
+            \paragraph{}Se $\lim\limits_{n\to\infty}\frac{f(n)}{g(n)}=0$ implica que $g(n)$ tende ao infinito mais rapidamente do que $f(n)$.
+            \paragraph{}Se $\lim\limits_{n\to\infty}\frac{f(n)}{g(n)}=K$ implica que $f(n)$ e $g(n)$ possuem a mesma ordem de crescimento.
+            \paragraph{}Se $\lim\limits_{n\to\infty}\frac{f(n)}{g(n)}=\infty$ implica que $f(n)$ tende ao infinito mais rapidamente do que $g(n)$.
+            \paragraph{}Assim sendo pode-se ordenar em ordem crescente de crescimento da principais funções, considerando $a>1$:
+                \begin{equation}
+                    log_{a}n < n^k < a^n < n! < n^n 
+                \end{equation}
+                
+        \subsection{Sequências Monótonas}
+            \paragraph{Definição}Sequências cujos termos podem ser comparados com apenas um símbolo serão sequências monótonas. Há subclassificações em função dos diferentes símbolos possíveis, sendo elas:
+            \paragraph{}\textbf{Sequências Crescentes:} Sequências cujos termos podem ser comparados apenas com $<$.
+                \begin{equation}
+                    a_1<a_2<\cdots<a_{n-1}<a_n
+                \end{equation}
+            \paragraph{}\textbf{Sequências não Decrescentes:} Sequências cujos termos podem ser comparados apenas com $\le$.
+                \begin{equation}
+                    a_1\le a_2\le \cdots \le a_{n-1} \le a_n
+                \end{equation}
+            \paragraph{}\textbf{Sequências Decrescentes:} Sequências cujos termos podem ser comparados apenas com $>$.
+                \begin{equation}
+                    a_1>a_2>\cdots>a_{n-1}>a_n
+                \end{equation}
+            \paragraph{}\textbf{Sequências não Decrescentes:} Sequências cujos termos podem ser comparados apenas com $\ge$.
+                \begin{equation}
+                    a_1\ge a_2\ge \cdots \ge a_{n-1} \ge a_n
+                \end{equation}
+                
+        \subsection{Formas Indeterminadas}
+            \paragraph{Definição}Há expressões que não são resultados válidos, demandando manipulação. Entre as principais estão $\infty\cdot0=\frac{\infty}{\infty}$ e $\frac{0}{0}$ às quais aplica-se L'Hospital. Há também $\infty-\infty$, $\infty^0$ e $0^{\infty}$ os quais demandam modificação da expressão. Outra forma incomum é $1^{\infty}$ o qual aplica-se $e^{ln}$
+        
+        \subsection{Séries Numéricas}
+            \paragraph{Definição}São consideradas séries numéricas as sequências que envolvem o somatório de uma expressão no infinito.
+            \begin{equation}
+                \sum\limits_{n=1}^{\infty}a_n = a_1 + a_2 + \cdots
+            \end{equation}
+            \paragraph{}Assim como na integração imprópria o infinito é uma impossibilidade, demandando a aplicação de limite tornando-a finita. Durante este processo considera-se a soma parcial, ou seja, até um número qualquer $N$ finito.
+            \begin{equation}
+                \sum\limits_{n=1}^{N}a_n = a_1 + a_2 + \cdots + a_{N-1} + a_N
+            \end{equation}
+            \paragraph{}Em seguida toma-se o limite de $N$ tendendo ao infinito.
+            \begin{equation}
+                \sum\limits_{n=1}^{\infty}a_n=\lim\limits_{N\to\infty}\sum\limits_{n=1}^{N}a_n
+            \end{equation}
+            \paragraph{}O limite só poderá ser calculado se a série for estritamente definida, isto é, todos os termos estejam descritos na expressão. Sendo assim, serão necessárias modificações nas exxpressões para que as mesmas estejam propriamente definidas e possam assim ser calculadas.
+        
+        \subsection{Séries Geométricas}
+            \paragraph{Definição}Serão séries geométricas aquelas em que a expressão somada é da forma $x^{n}$ onde $n$ serão os números do domínio e $x$ será uma constante.
+                \begin{equation}
+                    \sum\limits_{n=1}^{\infty}x^n
+                \end{equation}
+            \paragraph{}Há sequências, em sua maioria, em que a simples atribuição de limite não será suficiente para que a mesma possa ser solucionada. Para torná-la estritamente definida será necessário manipular a expressão da seguinte forma:
+                \begin{equation}
+                    S_n=x+x^2+\cdots+x^n
+                \end{equation}
+                \begin{equation}
+                    xS_n=x^2+x^3+\cdots+x^{n+1}
+                \end{equation}
+            \paragraph{}Note que todos os termos serão comuns a ambas somas parciais com exceção do primeiro e do último, sendo assim a subtração entre tais somas eliminará todos os termos desconhecidos do somatório.
+                \begin{equation}
+                    S_n-xS_n=x-x^{n+1}
+                \end{equation}
+                \begin{equation}
+                    S_n=\frac{x-x^{n+1}}{1-x}
+                \end{equation}
+            \paragraph{}Com essa manipulação será possível isolar a soma parcial, obtendo uma série estritamente definida. Isso possibilita a aplicação do limite e consequente solução do somatório inicial.
+                \begin{equation}
+                    \sum\limits_{n=1}^{\infty} x^n = \lim\limits_{n\to\infty}\frac{x-x^{n+1}}{1-x}
+                \end{equation}
+            \paragraph{}Consequentemente haverão quatro possibilidades a serem analisadas quanto ao valor de $x$ que influenciarão o resultado final do somatório.
+                \begin{equation}
+                    \lim\limits_{n\to\infty}\frac{x-x^{n+1}}{1-x}\left \{ \begin{matrix} \frac{x}{1-x}; |x|<1\\ -\infty; |x|>1\\ \infty; x=1\\ Diverge; x=-1\end{matrix}\right.
+                \end{equation}
             
-    \subsection{Sequências Monótonas}
-        \paragraph{}\textbf{Definição:} Sequências cujos termos podem ser comparados com apenas um símbolo serão sequências monótonas. Há subclassificações em função dos diferentes símbolos possíveis, sendo elas:
-        \paragraph{}\textbf{Sequências Crescentes:} Sequências cujos termos podem ser comparados apenas com $<$.
-            \[a_1<a_2<\cdots<a_{n-1}<a_n\]
-        \paragraph{}\textbf{Sequências não Decrescentes:} Sequências cujos termos podem ser comparados apenas com $\le$.
-            \[a_1\le a_2\le \cdots \le a_{n-1} \le a_n\]
-        \paragraph{}\textbf{Sequências Decrescentes:} Sequências cujos termos podem ser comparados apenas com $>$.
-            \[a_1>a_2>\cdots>a_{n-1}>a_n\]
-        \paragraph{}\textbf{Sequências não Decrescentes:} Sequências cujos termos podem ser comparados apenas com $\ge$.
-            \[a_1\ge a_2\ge \cdots \ge a_{n-1} \ge a_n\]
-            
-    \subsection{Formas Indeterminadas}
-        \paragraph{}\textbf{Definição:} Há expressões que não são resultados válidos, demandando manipulação. Entre as principais estão $\infty\cdot0=\frac{\infty}{\infty}$ e $\frac{0}{0}$ às quais aplica-se L'Hospital. Há também $\infty-\infty$, $\infty^0$ e $0^{\infty}$ os quais demandam modificação da expressão. Outra forma incomum é $1^{\infty}$ o qual aplica-se $e^{ln}$
-    
-    \subsection{Séries Numéricas}
-        \paragraph{}\textbf{Definição:} São consideradas séries numéricas as sequências que envolvem o somatório de uma expressão no infinito.
-        \[\sum\limits_{n=1}^{\infty}a_n = a_1 + a_2 + \cdots\]
-        \paragraph{}Assim como na integração imprópria o infinito é uma impossibilidade, demandando a aplicação de limite tornando-a finita. Durante este processo considera-se a soma parcial, ou seja, até um número qualquer $N$ finito.
-        \[\sum\limits_{n=1}^{N}a_n = a_1 + a_2 + \cdots + a_{N-1} + a_N\]
-        \paragraph{}Em seguida toma-se o limite de $N$ tendendo ao infinito.
-        \[\sum\limits_{n=1}^{\infty}a_n=\lim\limits_{N\to\infty}\sum\limits_{n=1}^{N}a_n\]
-        \paragraph{}O limite só poderá ser calculado se a série for estritamente definida, isto é, todos os termos estejam descritos na expressão. Sendo assim, serão necessárias modificações nas exxpressões para que as mesmas estejam propriamente definidas e possam assim ser calculadas.
-    
-    \subsection{Séries Geométricas}
-        \paragraph{}\textbf{Definição:}Serão séries geométricas aquelas em que a expressão somada é da forma $x^{n}$ onde $n$ serão os números do domínio e $x$ será uma constante.
-            \[\sum\limits_{n=1}^{\infty}x^n\]
-        \paragraph{}Há sequências, em sua maioria, em que a simples atribuição de limite não será suficiente para que a mesma possa ser solucionada. Para torná-la estritamente definida será necessário manipular a expressão da seguinte forma:
-            \[S_n=x+x^2+\cdots+x^n\]
-            \[xS_n=x^2+x^3+\cdots+x^{n+1}\]
-        \paragraph{}Note que todos os termos serão comuns a ambas somas parciais com exceção do primeiro e do último, sendo assim a subtração entre tais somas eliminará todos os termos desconhecidos do somatório.
-            \[S_n-xS_n=x-x^{n+1}\]
-            \[S_n=\frac{x-x^{n+1}}{1-x}\]
-        \paragraph{}Com essa manipulação será possível isolar a soma parcial, obtendo uma série estritamente definida. Isso possibilita a aplicação do limite e consequente solução do somatório inicial.
-            \[\sum\limits_{n=1}^{\infty} x^n = \lim\limits_{n\to\infty}\frac{x-x^{n+1}}{1-x}\]
-        \paragraph{}Consequentemente haverão quatro possibilidades a serem analisadas quanto ao valor de $x$ que influenciarão o resultado final do somatório.
-            \[\lim\limits_{n\to\infty}\frac{x-x^{n+1}}{1-x}\left \{ \begin{matrix} \frac{x}{1-x}; |x|<1\\ -\infty; |x|>1\\ \infty; x=1\\ Diverge; x=-1\end{matrix}\right.\]
+    \section{Testes de Série}
+        \paragraph{}Como as séries possuem a noção de divergência e convergência, explicadas anteriormente, se faz necessário descobrir como se enquadra cada sequência. Para tal existem diversos testes que avaliam, sobre condições especificas, o comportamento da equação trabalhada.
         
-\section{Testes de Série}
-    \paragraph{}Como as séries possuem a noção de divergência e convergência, explicadas anteriormente, se faz necessário descobrir como se enquadra cada sequência. Para tal existem diversos testes que avaliam, sobre condições especificas, o comportamento da equação trabalhada.
-    
-    \subsection{Teste de Divergência}
-        \paragraph{}\textbf{Teorema:} Se a série converge então $\lim_{n\to\infty}a_{n} = 0$, cuja demonstração segue:
-            \[S_{n-1}=a_{1}+a_{2}+\cdots+a_{n-2}+a_{n-1}, \lim_{n\to\infty}S_{n-1} = S\]
-            \[S_{n}=a_{1}+a_{2}+\cdots+a_{n-1}+a_{n}, \lim_{n\to\infty}S_{n} = S\]
-        \paragraph{}Note que assumindo que a série seja convergente não deve importar o fim do limite, pois calcular soma no infinito deve tender para o valor da série. Assim pode-se dizer que:
-            \[\lim_{n\to\infty}(S_{n}-S_{n-1}) = S - S = 0\]
-        \paragraph{}Note que o resultado da subtração será $a_{n}$ visto que os demais termos são eliminados com a subtração. Assim obtém-se o resultado:
-            \[\lim_{n\to\infty}a_{n} = 0, Converge\]
-            \[\lim_{n\to\infty}a_{n} \ne 0, Diverge\]
-    
-    \subsection{Teste da Comparação}
-        \paragraph{}Este testes vem como consequência da comparação de limites do Cálculo I, como sequências nada mais são do que somas de finitas avaliadas no infinito o resultado pode ser estendido para o Cálculo III com os devidos ajustes.
-        \paragraph{}\textbf{Teorema:} Sejam $a_{n}$ e $b_{n}$ os termos gerais de duas séries distintas tais que $0 \le a_{n} \le b_{n}$ temos que:
-        \paragraph{}Se $\sum b_{n}$ converge então $\sum a_{n}$ converge. Claramente se uma série com termo geral com crescimento mais acelerado converge outra série com crescimento semelhante ou inferior deve convergir.
-        \paragraph{}Se $\sum a_{n}$ diverge então $\sum b_{n}$ diverge. Claramente se uma série com termo geral com crescimento menos acelerado diverge outra série com crescimento semelhante ou superior deve divergir.
-    \subsection{Teste da Comparação do Limite}
-        \paragraph{}Assim como o Teste da Comparação este teste vem como consequência da comparação de limites do Cálculo I, porém este expende o resultado.
-        \paragraph{}\textbf{Teorema:} Sejam $a_{n}>0$ e $b_{n}>0$ os termos gerais de duas séries distintas tais que:
-            \[\lim_{n\to\infty}\frac{a_{n}}{b_{n}}=p\]
-            \[0<p<\infty\]
-        \paragraph{}Em outras palavras, as séries $\sum a_{n}$ e $\sum a_{n}$ possuem a mesma ordem de crescimento. Logo existem $r$ e $R$ tais que $r<p<R$ implicando em:
-            \[r<\frac{a_{n}}{b_{n}}<R\]
-            \[rb_{n}<a_{n}<Rb_{n}\]
-        \paragraph{}Conclui-se, por meio da comparação, que:
-        \paragraph{}Se $\sum Rb_{n}$ converge então $\sum a_{n}$ converge. Claramente se uma série com termo geral com crescimento mais acelerado converge outra série com crescimento semelhante ou inferior deve convergir.
-        \paragraph{}Se $\sum rb_{n}$ diverge então $\sum a_{n}$ diverge. Claramente se uma série com termo geral com crescimento menos acelerado diverge outra série com crescimento semelhante ou superior deve divergir.
+        \subsection{Teste de Divergência}
+            \paragraph{}\textbf{Teorema:} Se a série converge então $\lim_{n\to\infty}a_{n} = 0$, cuja demonstração segue:
+                \begin{equation}
+                    S_{n-1}=a_{1}+a_{2}+\cdots+a_{n-2}+a_{n-1}, \lim_{n\to\infty}S_{n-1} = S
+                \end{equation}
+                \begin{equation}
+                    S_{n}=a_{1}+a_{2}+\cdots+a_{n-1}+a_{n}, \lim_{n\to\infty}S_{n} = S
+                \end{equation}
+            \paragraph{}Note que assumindo que a série seja convergente não deve importar o fim do limite, pois calcular soma no infinito deve tender para o valor da série. Assim pode-se dizer que:
+                \begin{equation}
+                    \lim_{n\to\infty}(S_{n}-S_{n-1}) = S - S = 0
+                \end{equation}
+            \paragraph{}Note que o resultado da subtração será $a_{n}$ visto que os demais termos são eliminados com a subtração. Assim obtém-se o resultado:
+                \begin{equation}
+                    \lim_{n\to\infty}a_{n} = 0, Converge
+                \end{equation}
+                \begin{equation}
+                    \lim_{n\to\infty}a_{n} \ne 0, Diverge
+                \end{equation}
+        
+        \subsection{Teste da Comparação}
+            \paragraph{}Este testes vem como consequência da comparação de limites do Cálculo I, como sequências nada mais são do que somas de finitas avaliadas no infinito o resultado pode ser estendido para o Cálculo III com os devidos ajustes.
+            \paragraph{}\textbf{Teorema:} Sejam $a_{n}$ e $b_{n}$ os termos gerais de duas séries distintas tais que $0 \le a_{n} \le b_{n}$ temos que:
+            \paragraph{}Se $\sum b_{n}$ converge então $\sum a_{n}$ converge. Claramente se uma série com termo geral com crescimento mais acelerado converge outra série com crescimento semelhante ou inferior deve convergir.
+            \paragraph{}Se $\sum a_{n}$ diverge então $\sum b_{n}$ diverge. Claramente se uma série com termo geral com crescimento menos acelerado diverge outra série com crescimento semelhante ou superior deve divergir.
+        \subsection{Teste da Comparação do Limite}
+            \paragraph{}Assim como o Teste da Comparação este teste vem como consequência da comparação de limites do Cálculo I, porém este expende o resultado.
+            \paragraph{}\textbf{Teorema:} Sejam $a_{n}>0$ e $b_{n}>0$ os termos gerais de duas séries distintas tais que:
+                \begin{equation}
+                    \lim_{n\to\infty}\frac{a_{n}}{b_{n}}=p
+                \end{equation}
+                \begin{equation}
+                    0<p<\infty
+                \end{equation}
+            \paragraph{}Em outras palavras, as séries $\sum a_{n}$ e $\sum a_{n}$ possuem a mesma ordem de crescimento. Logo existem $r$ e $R$ tais que $r<p<R$ implicando em:
+                \begin{equation}
+                    r<\frac{a_{n}}{b_{n}}<R
+                \end{equation}
+                \begin{equation}
+                    rb_{n}<a_{n}<Rb_{n}
+                \end{equation}
+            \paragraph{}Conclui-se, por meio da comparação, que:
+            \paragraph{}Se $\sum Rb_{n}$ converge então $\sum a_{n}$ converge. Claramente se uma série com termo geral com crescimento mais acelerado converge outra série com crescimento semelhante ou inferior deve convergir.
+            \paragraph{}Se $\sum rb_{n}$ diverge então $\sum a_{n}$ diverge. Claramente se uma série com termo geral com crescimento menos acelerado diverge outra série com crescimento semelhante ou superior deve divergir.
 
-    \subsection{Teste da Integral}
-        \paragraph{}\textbf{Teorema:} Considere uma função $f(x)$ decrescente e positiva, isto é $f(x) \ge 0$,  com $\lim_{x\to\infty}f(x)=0$, então temos:
-        \paragraph{}$\sum\limits_{n=1}^{\infty}a_{n}$ converge se e somente se $\int_{1}^{\infty}f(x)dx$ convergir.
-        \paragraph{}$\sum\limits_{n=1}^{\infty}a_{n}$ diverge se e somente se $\int_{1}^{\infty}f(x)dx$ divergir.
-        
-    \subsection{Teste da Razão}
-        \paragraph{}\textbf{Teorema:} Sejam $\sum\limits_{n=1}^{\infty}a_{n}$ e $a_{n}>0$ define-se $L$ como:
-            \[\lim_{n\to\infty}\frac{a_{n+1}}{a_{n}}=L\]
-        \paragraph{}Se $L<1$ então $\sum a_{n}$ converge.
-        \paragraph{}Se $L>1$ então $\sum a_{n}$ diverge.
-        \paragraph{}Note que o teorema não estabelece nenhuma conclusão para $L=1$, assim não é possível inferir nada sobre a sequência. 
-        
-    \subsection{Teste da Raiz}
-        \paragraph{}\textbf{Teorema:} Sejam $\sum\limits_{n=1}^{\infty}a_{n}$ e $a_{n}>0$ define-se $L$ como:
-            \[\lim_{n\to\infty}{(a_{n})}^{\frac{1}{n}}=L\]
-        \paragraph{}Se $L<1$ então $\sum a_{n}$ converge.
-        \paragraph{}Se $L>1$ então $\sum a_{n}$ diverge.
-        \paragraph{}Este teste é normalmente aplicado quando todos os termos da sequência estão elevados a $n$, possibilitando simplificar drasticamente a equação.
-
-    \subsection{Convergência Absoluta}
-        \paragraph{}\textbf{Definição:} Uma série $\sum a_{n}$ converge absolutamente se sua série absoluta equivalente, $\sum |a_{n}|$, converge.
-        \paragraph{}\textbf{Teorema:}
-        
-    \subsection{Séries Alternadas}
-        \paragraph{}\textbf{Definição:} Uma será alternada se seus termos possuírem sinais alternados ao longo de toda a sequência, formalmente descrito como:
-            \[\sum\limits_{n=1}^{\infty}(-1)^{n}a_{n}\]
-            \[\sum\limits_{n=1}^{\infty}(-1)^{n+1}a_{n}\]
-    
-    \subsection{Teste das Séries Alternadas}
-        \paragraph{}\textbf{Teorema:} Considerando uma série alternada da forma $\sum {(-1)}^{n}a_{n}$ será convergente se $a_{n}$ for decrescente e:
-            \[\lim_{n\to\infty}a_{n}=0\]
+        \subsection{Teste da Integral}
+            \paragraph{}\textbf{Teorema:} Considere uma função $f(x)$ decrescente e positiva, isto é $f(x) \ge 0$,  com $\lim_{x\to\infty}f(x)=0$, então temos:
+            \paragraph{}$\sum\limits_{n=1}^{\infty}a_{n}$ converge se e somente se $\int_{1}^{\infty}f(x)dx$ convergir.
+            \paragraph{}$\sum\limits_{n=1}^{\infty}a_{n}$ diverge se e somente se $\int_{1}^{\infty}f(x)dx$ divergir.
             
-    \section{Séries de Potência}
-        \paragraph{}\textbf{Definição:} Será uma série de potência aquela que puder ser representada como:
-            \[\sum\limits_{n=1}^{\infty}c_{n}{(x-x_{0})}^{n}=c_{0}+c_{1}{(x-x_{0})}+\cdots+c_{n}{(x-x_{0})}^{n}\]
-        \paragraph{}Analisando o somatório nota-se como a constante é atribuída:
-            \[f(x)=\sum\limits_{n=1}^{\infty}c_{n}{(x-x_{0})}^{n}=\sum\limits_{n=1}^{\infty}\frac{f^{n}(x_{0})}{n!}{x}^{n}\]
-        \paragraph{}Geralmente considera-se no caso geral a translação de $x$ em $x_{0}$, entretanto pode-se, por conveniência, analisar séries dessa forma em $x_{0}=0$. Nota-se que estas funções podem ser infinitamente diferenciáveis.
-            \[\sum\limits_{n=1}^{\infty}c_{n}{x}^{n}\]
+        \subsection{Teste da Razão}
+            \paragraph{}\textbf{Teorema:} Sejam $\sum\limits_{n=1}^{\infty}a_{n}$ e $a_{n}>0$ define-se $L$ como:
+                \begin{equation}
+                    \lim_{n\to\infty}\frac{a_{n+1}}{a_{n}}=L
+                \end{equation}
+            \paragraph{}Se $L<1$ então $\sum a_{n}$ converge.
+            \paragraph{}Se $L>1$ então $\sum a_{n}$ diverge.
+            \paragraph{}Note que o teorema não estabelece nenhuma conclusão para $L=1$, assim não é possível inferir nada sobre a sequência. 
             
-    \subsection{Funções Analíticas}
-        \paragraph{}\textbf{Definição:} Uma função $f(x)$ é analítica em $x\in J$, onde $J$ é um intervalo simétrico aberto qualquer, se sua Série de Taylor converge em $J$.
-        \paragraph{}O intervalo de convergência pode ser obtido pelo teste da razão:
-            \[\lim_{n\to\infty}\frac{c_{n+1}{|x|}^{n+1}}{c_{n}{|x|}^{n}}\]
-            \[|x|=\lim_{n\to\infty}\frac{c_{n+1}}{c_{n}}\]
-            \[\begin{matrix} \underbrace{\lim_{n\to\infty}\frac{c_{n+1}}{c_{n}}}\\I\end{matrix}\]
-        \paragraph{}Segundo o teste da razão sabe-se que para $|x|\ne 0$ deve-se analisar $I$.
-        \paragraph{}
+        \subsection{Teste da Raiz}
+            \paragraph{}\textbf{Teorema:} Sejam $\sum\limits_{n=1}^{\infty}a_{n}$ e $a_{n}>0$ define-se $L$ como:
+                \begin{equation}
+                    \lim_{n\to\infty}{(a_{n})}^{\frac{1}{n}}=L
+                \end{equation}
+            \paragraph{}Se $L<1$ então $\sum a_{n}$ converge.
+            \paragraph{}Se $L>1$ então $\sum a_{n}$ diverge.
+            \paragraph{}Este teste é normalmente aplicado quando todos os termos da sequência estão elevados a $n$, possibilitando simplificar drasticamente a equação.
 
-    \subsection{Método de Séries de Potência}
+        \subsection{Convergência Absoluta}
+            \paragraph{Definição}Uma série $\sum a_{n}$ converge absolutamente se sua série absoluta equivalente, $\sum |a_{n}|$, converge.
+            \paragraph{}\textbf{Teorema:}
+            
+        \subsection{Séries Alternadas}
+            \paragraph{Definição}Uma será alternada se seus termos possuírem sinais alternados ao longo de toda a sequência, formalmente descrito como:
+                \begin{equation}
+                    \sum\limits_{n=1}^{\infty}(-1)^{n}a_{n}
+                \end{equation}
+                \begin{equation}
+                    \sum\limits_{n=1}^{\infty}(-1)^{n+1}a_{n}
+                \end{equation}
+        
+        \subsection{Teste das Séries Alternadas}
+            \paragraph{}\textbf{Teorema:} Considerando uma série alternada da forma $\sum {(-1)}^{n}a_{n}$ será convergente se $a_{n}$ for decrescente e:
+                \begin{equation}
+                    \lim_{n\to\infty}a_{n}=0
+                \end{equation}
+                
+        \section{Séries de Potência}
+            \paragraph{Definição}Será uma série de potência aquela que puder ser representada como:
+                \begin{equation}
+                    \sum\limits_{n=1}^{\infty}c_{n}{(x-x_{0})}^{n}=c_{0}+c_{1}{(x-x_{0})}+\cdots+c_{n}{(x-x_{0})}^{n}
+                \end{equation}
+            \paragraph{}Analisando o somatório nota-se como a constante é atribuída:
+                \begin{equation}
+                    f(x)=\sum\limits_{n=1}^{\infty}c_{n}{(x-x_{0})}^{n}=\sum\limits_{n=1}^{\infty}\frac{f^{n}(x_{0})}{n!}{x}^{n}
+                \end{equation}
+            \paragraph{}Geralmente considera-se no caso geral a translação de $x$ em $x_{0}$, entretanto pode-se, por conveniência, analisar séries dessa forma em $x_{0}=0$. Nota-se que estas funções podem ser infinitamente diferenciáveis.
+                \begin{equation}
+                    \sum\limits_{n=1}^{\infty}c_{n}{x}^{n}
+                \end{equation}
+                
+        \subsection{Funções Analíticas}
+            \paragraph{Definição}Uma função $f(x)$ é analítica em $x\in J$, onde $J$ é um intervalo simétrico aberto qualquer, se sua Série de Taylor converge em $J$.
+            \paragraph{}O intervalo de convergência pode ser obtido pelo teste da razão:
+                \begin{equation}
+                    \lim_{n\to\infty}\frac{c_{n+1}{|x|}^{n+1}}{c_{n}{|x|}^{n}}
+                \end{equation}
+                \begin{equation}
+                    |x|=\lim_{n\to\infty}\frac{c_{n+1}}{c_{n}}
+                \end{equation}
+                \begin{equation}
+                    \begin{matrix} \underbrace{\lim_{n\to\infty}\frac{c_{n+1}}{c_{n}}}\\I\end{matrix}
+                \end{equation}
+            \paragraph{}Segundo o teste da razão sabe-se que para $|x|\ne 0$ deve-se analisar $I$.
+            \paragraph{}
+
+        \subsection{Método de Séries de Potência}
 
 \end{document}
