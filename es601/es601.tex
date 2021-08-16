@@ -2,7 +2,8 @@
 \usepackage{tpack}
 
 \title{ES601 - Análise Linear de Sistemas}
-\author{Guilherme Nunes Trofino\\217276}
+\author{Guilherme Nunes Trofino}
+\authorRA{217276}
 \project{Resumo Teórico}
 
 \begin{document}
@@ -13,12 +14,45 @@
 \newpage
 
     \section{Introdução}
-        \paragraph{Definição}
+        \paragraph{Apresentação}Neste documento será descrito as informações necessárias para compreensão e solução de exercícios relacionados a disciplina \thetitle . Note que este documento são notas realizadas por \theauthor , em \today.
 
-\begin{multicols}{2}
-    \raggedcolumns
+        \subsection{Modelagem Mecânica}
+            \paragraph{Definição}Modelos básicos para situações usualmente encontradas em sistemas mecânicos simples, descrevendo as equações necessárias para a descrição do movimento.
+                \begin{multicols}{2}
+                    \raggedcolumns
+                    \subsubsection{Mola Ideal}
+                        \paragraph{Definição}Dispositivo linear que apresenta uma \texttt{Constante Elástica} constante igual a $k$.\\
 
+                        Assim, haverá uma força $\vec{F}$ exercida pela mola proporcional ao seu deslocamento $x$ com sentido oposto, de acordo com a seguinte equação:
+                            \begin{equation}
+                                \boxed{
+                                    \vec{F} = - k\;\vec{x}
+                                }
+                            \end{equation}
+                        Analogamente, no caso \textbf{Rotacional} um torque $\vec{T}$ causa um deslocamento angular $\theta$. Assim, a seguinte equação será válida:
+                            \begin{equation}
+                                \boxed{
+                                    \vec{T} = - k\;\vec{\theta}
+                                }
+                            \end{equation}
 
-\end{multicols}
+                    \columnbreak
+
+                    \subsubsection{Amortecedor Ideal}
+                        \paragraph{Definição}Dispositivo linear que apresenta uma \texttt{Constante de Amortecimento} constante igual a $c$.\\
+
+                        Assim, haverá uma força $\vec{F}$ exercida pelo amortecedor  proporcional a sua velocidade $\dot{x}$ com sentido oposto, de acordo com a seguinte equação:
+                            \begin{equation}
+                                \boxed{
+                                    \vec{F} = - c\;\vec{\dot{x}}
+                                }
+                            \end{equation}
+                        Analogamente, no caso \textbf{Rotacional} um torque $\vec{T}$ causa um velocidade angular $\dot{\theta}$. Assim, a seguinte equação será válida:
+                            \begin{equation}
+                                \boxed{
+                                    \vec{T} = - k\;\vec{\dot{\theta}}
+                                }
+                            \end{equation}
+                \end{multicols}\noindent
 
 \end{document}
