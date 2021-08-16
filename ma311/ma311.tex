@@ -2,7 +2,8 @@
 \usepackage{tpack}
 
 \title{MA311 - Cálculo III}
-\author{Guilherme Nunes Trofino\\217276}
+\author{Guilherme Nunes Trofino}
+\authorRA{217276}
 \project{Resumo Teórico}
 
 \begin{document}
@@ -12,19 +13,36 @@
     \tableofcontents
 \newpage
 
-\section{Introdução}
-    \subsection{Equações Diferenciais Ordinais}
-        \paragraph{}\textbf{Definição:} Equações compostas por uma função e suas derivadas constituem uma Equação Diferencial.
-            \[f(t) = b_{n}(t) \cdot y^{n}(t) + b_{n-1}(t) \cdot y^{n-1}(t) + \dots +b_{1}(t) \cdot y'(t) + b_{0}(t) \cdot y(t)\]
-        \paragraph{}Onde:\\
-            \quad$b_{n}(t)$: Representa uma função na variável $t$.\\
-            \quad$y^{n}(t)$: Representa a ésima derivada da função $y(t)$.
-   
-   \subsection{Classificação}
-        \paragraph{}\textbf{E.D.O.} não Linear não Homogênea de Ordem N:\\
-        \textbf{Definição:} Quando a função possui $b_{n}(t) \neq 1$ e $f(t) \neq 0$.
-            \[f(t) = b_{n}(t) \cdot y^{n}(t) + b_{n-1}(t) \cdot y^{n-1}(t) + \dots +b_{1}(t) \cdot y'(t) + b_{0}(t) \cdot y(t)\]
-        
+    \section{Introdução}
+        \paragraph{Apresentação}Neste documento será descrito as informações necessárias para compreensão e solução de exercícios relacionados a disciplina \thetitle . Note que este documento são notas realizadas por \theauthor , em \today.
+
+    \section{Equações Diferenciais Ordinais, E.D.O.}
+        \paragraph{Definição}Família de equações construídas a partir de uma função $f(t)$ qualquer e suas derivadas como representada na seguinte equação:
+            \begin{equation}
+                \boxed{
+                    f(t) = 
+                    b_{n}(t) \cdot y^{n}(t) + 
+                    b_{n-1}(t) \cdot y^{n-1}(t) + \dots + 
+                    b_{1}(t) \cdot y'(t) + 
+                    b_{0}(t) \cdot y(t)
+                }
+            \end{equation}
+        Onde:
+            \begin{enumerate}[noitemsep]
+                \item $b_{n}(t)$: Representa uma função na variável $t$;
+                \item $y^{n}(t)$: Representa a ésima derivada da função $y(t)$;
+            \end{enumerate}
+        Tais equações ocorrem com frequência durante a análise e descrita de problemas físicos, visto que várias variáveis são denotadas através da derivação ou integração de uma propriedade. Desta forma, podem-se classificá-las como descrito a seguir:
+            \begin{enumerate}[rightmargin = \leftmargin]
+                \item \textbf{E.D.O. não Linear não Homogênea de Ordem N:} Quando a função possui $b_{n}(t) \neq 1$ e $f(t) \neq 0$ como representado pela seguinte equação:
+                    \begin{equation*}
+                        f(t) = 
+                        b_{n}(t)   \cdot y^{n}(t) + 
+                        b_{n-1}(t) \cdot y^{n-1}(t) + \dots +
+                        b_{1}(t) \cdot y'(t) + 
+                        b_{0}(t) \cdot y(t)
+                    \end{equation*}
+
         \paragraph{}\textbf{E.D.O.} não Linear Homogênea de Ordem N:\\
         \textbf{Definição:} Quando a função possui $b_{n}(t) \neq 1$ e $f(t) = 0$.
             \[0 = b_{n}(t) \cdot y^{n}(t) + b_{n-1}(t) \cdot y^{n-1}(t) + \dots +b_{1}(t) \cdot y'(t) + b_{0}(t) \cdot y(t)\]
