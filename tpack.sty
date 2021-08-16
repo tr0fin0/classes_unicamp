@@ -83,6 +83,9 @@
 % ----------------------------------------------
 
 
+\let\stdsection\section
+\renewcommand\section{\newpage\stdsection}  % New Page before Section
+
 \titleformat
     {\section}              % Part
     [block]                 % Part Shape
