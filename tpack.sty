@@ -7,6 +7,7 @@
 
 
 
+
 % ----------------------------------------------
 %               Presets
 % ----------------------------------------------
@@ -14,6 +15,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{tpack}[2021/08/12 Trofino's Package]
+
 
 
 % ----------------------------------------------
@@ -31,17 +33,19 @@
 \usepackage[hidelinks]{hyperref}                                    %
 \usepackage{bookmark, chngcntr, comment, csquotes, filecontents}    % File Manapulation
 
-\usepackage{amsmath, amssymb, cancel, float}                        % Math Presets
+\usepackage{amsmath, amssymb, amsthm, cancel, float}                % Math Presets
 \usepackage{array, systeme}                                         % Table Presets
 \usepackage[thinc]{esdiff}                                          % Derivatives Presets
 
 \usepackage{graphicx}                                               % Colors
 \usepackage[table]{xcolor}                                          % Colors
+\usepackage[many]{tcolorbox}                                        % Enviroment
 
 \usepackage{circuitikz, forest, tikz, pgfplots, listings}           % Illustration
 
 \usetikzlibrary{matrix}                                             % Matrix
 \usepgfplotslibrary{statistics}                                     % Necessary for Boxplot
+
 
 
 % ----------------------------------------------
@@ -81,6 +85,7 @@
 % ----------------------------------------------
 %               Title Setup: Customization
 % ----------------------------------------------
+
 
 
 \let\stdsection\section
@@ -125,6 +130,7 @@
 % ----------------------------------------------
 
 
+
 \newcommand*{\project}[1]{\gdef\@project{#1}}
 \newcommand*{\authorRA}[1]{\gdef\@authorRA{#1}}
 
@@ -144,6 +150,7 @@
 }
 
 
+
 % ----------------------------------------------
 %               Table of Contents: Customization
 % ----------------------------------------------
@@ -152,12 +159,14 @@
 \addtocontents{toc}{\protect\thispagestyle{empty}}  % Remove Numbering
 
 
+
 % ----------------------------------------------
 %               Table: Customization
 % ----------------------------------------------
 
 \newcommand{\mycell}[2]{
     \begin{tabular}{@{}c@{}c@{}}&\tiny #2\\\normalfont #1&\end{tabular}}
+
 
 
 % ----------------------------------------------
@@ -324,6 +333,126 @@
   resistors/width=0.25, 
   resistors/zigs=1
 }
+
+
+
+% ----------------------------------------------
+%               Environment: Customization
+% ----------------------------------------------
+
+\newtheoremstyle{mystyle}   % Name
+  {}                        % Space Above
+  {}                        % Space Below
+  {}                        % Body Font
+  {}                        % Indent Amount
+  {\bfseries}               % Theorem Head Font
+  {.}                       % Punctuation after Theorem
+  { }                       % Space after Theorem
+  {}                        % Theorem Head Specification
+
+\renewenvironment{proof}{{\sffamily\bfseries Proof. }}{\qed}  % Add QED symbol
+
+% Numbering Enviroments AMSTHM
+% \newtheorem{〈env name〉}{〈text 〉}[〈parent counter 〉]
+% \newtheorem{〈env name〉}[〈shared counter 〉]{〈text 〉}
+\theoremstyle{mystyle}{
+    \newtheorem*{remark}{Remark}
+}
+
+\theoremstyle{mystyle}{
+    \newtheorem{definition}{Definition}[section]
+}
+
+\theoremstyle{mystyle}{
+    \newtheorem{theorem}{Theorem}[section]
+}
+
+\theoremstyle{mystyle}{
+    \newtheorem{lemma}[theorem]{Lemma}
+}
+
+\theoremstyle{mystyle}{
+    \newtheorem*{example}{Example}
+}
+
+\theoremstyle{definition}{
+    \newtheorem*{exercise}{Exercise}}
+
+
+\tcolorboxenvironment{definition}{
+    boxrule=0pt,
+    boxsep=2pt,
+    colback={gray!50},
+    enhanced jigsaw, 
+    borderline west={2pt}{0pt}{gray!10},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    breakable,
+}
+
+\tcolorboxenvironment{theorem}{
+    boxrule=0pt,
+    boxsep=2pt,
+    colback={White!90!Dandelion},
+    enhanced jigsaw, 
+    borderline west={2pt}{0pt}{Dandelion},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    breakable,
+}
+
+\tcolorboxenvironment{lemma}{
+    boxrule=0pt,
+    boxsep=2pt,
+    blanker,
+    borderline west={2pt}{0pt}{Red},
+    before skip=10pt,
+    after skip=10pt,
+    sharp corners,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
+\tcolorboxenvironment{proof}{
+    boxrule=0pt,
+    boxsep=2pt,
+    blanker,
+    borderline west={2pt}{0pt}{NavyBlue!80!white},
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
+\tcolorboxenvironment{remark}{
+    boxrule=0pt,
+    boxsep=2pt,
+    blanker,
+    borderline west={2pt}{0pt}{Green},
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
+\tcolorboxenvironment{example}{
+    boxrule=0pt,
+    boxsep=2pt,
+    blanker,
+    borderline west={2pt}{0pt}{Black},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
 
 
 % ----------------------------------------------
