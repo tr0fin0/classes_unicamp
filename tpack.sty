@@ -350,53 +350,60 @@
   { }                       % Space after Theorem
   {}                        % Theorem Head Specification
 
-\renewenvironment{proof}{{\sffamily\bfseries Proof. }}{\qed}  % Add QED symbol
 
 % Numbering Enviroments AMSTHM
 % \newtheorem{〈env name〉}{〈text 〉}[〈parent counter 〉]
 % \newtheorem{〈env name〉}[〈shared counter 〉]{〈text 〉}
+
 \theoremstyle{mystyle}{
-    \newtheorem*{remark}{Remark}
+    \newtheorem{definition}{Definição}[section]
 }
 
 \theoremstyle{mystyle}{
-    \newtheorem{definition}{Definition}[section]
-}
-
-\theoremstyle{mystyle}{
-    \newtheorem{theorem}{Theorem}[section]
+    \newtheorem{theorem}{Teorema}[section]
 }
 
 \theoremstyle{mystyle}{
     \newtheorem{lemma}[theorem]{Lemma}
 }
 
+\renewenvironment{proof}{{\bfseries Prova }}{\qed}  % Add QED symbol
+
 \theoremstyle{mystyle}{
-    \newtheorem*{example}{Example}
+    \newtheorem*{remark}{Remark}
 }
 
-\theoremstyle{definition}{
-    \newtheorem*{exercise}{Exercise}}
+\theoremstyle{mystyle}{
+    \newtheorem*{example}{Exemplo}
+}
+
+\theoremstyle{mystyle}{
+    \newtheorem*{exercise}{Exercício}
+}
+
+\theoremstyle{mystyle}{
+    \newtheorem*{resolution}{Resolução}
+}
 
 
 \tcolorboxenvironment{definition}{
-    boxrule=0pt,
+    boxrule=0.1mm,                          % Box Thickness outline
     boxsep=2pt,
-    colback={gray!50},
-    enhanced jigsaw, 
-    borderline west={2pt}{0pt}{gray!10},
-    sharp corners,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{black},      % Thickness
+    sharp corners,                          % Corners Style
     before skip=10pt,
     after skip=10pt,
     breakable,
 }
 
 \tcolorboxenvironment{theorem}{
-    boxrule=0pt,
+    boxrule=0.1mm,
     boxsep=2pt,
-    colback={White!90!Dandelion},
-    enhanced jigsaw, 
-    borderline west={2pt}{0pt}{Dandelion},
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{magenta},
     sharp corners,
     before skip=10pt,
     after skip=10pt,
@@ -404,23 +411,26 @@
 }
 
 \tcolorboxenvironment{lemma}{
-    boxrule=0pt,
+    boxrule=0.1mm,
     boxsep=2pt,
-    blanker,
-    borderline west={2pt}{0pt}{Red},
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{olive},
+    sharp corners,
     before skip=10pt,
     after skip=10pt,
-    sharp corners,
     left=12pt,
     right=12pt,
     breakable,
 }
 
 \tcolorboxenvironment{proof}{
-    boxrule=0pt,
+    boxrule=0.1mm,
     boxsep=2pt,
-    blanker,
-    borderline west={2pt}{0pt}{NavyBlue!80!white},
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{orange},
+    sharp corners,
     before skip=10pt,
     after skip=10pt,
     left=12pt,
@@ -429,10 +439,12 @@
 }
 
 \tcolorboxenvironment{remark}{
-    boxrule=0pt,
+    boxrule=0.1mm,
     boxsep=2pt,
-    blanker,
-    borderline west={2pt}{0pt}{Green},
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{brown},
+    sharp corners,
     before skip=10pt,
     after skip=10pt,
     left=12pt,
@@ -441,10 +453,39 @@
 }
 
 \tcolorboxenvironment{example}{
-    boxrule=0pt,
+    boxrule=0.1mm,
     boxsep=2pt,
-    blanker,
-    borderline west={2pt}{0pt}{Black},
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{violet},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
+\tcolorboxenvironment{exercise}{
+    boxrule=0.1mm,
+    boxsep=2pt,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{teal},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
+\tcolorboxenvironment{resolution}{
+    boxrule=0.1mm,
+    boxsep=2pt,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{darkgray},
     sharp corners,
     before skip=10pt,
     after skip=10pt,
