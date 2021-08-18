@@ -100,14 +100,16 @@
                 Caso a equação atenda a estes requisitos, então as seguintes classificações serão válidas:
 
             \subsubsection{E.D.O. Linear não Homogênea}
-                \paragraph{Definição}Quando a função possui $q_{n}(t) = 1$ e $f(t) \neq 0$ como representado pela seguinte equação:
+                \paragraph{Definição}Função possui $q_{n}(t) = 1$ e $f(t) \neq 0$ como representado pela seguinte equação:
                     \begin{equation}
                         f(t) = 1 \cdot y'(t) + p(t) \cdot y(t)
                     \end{equation}
 
                 \paragraph{Resolução}E.D.O.'s Lineares e Homogêneas de 1º Ordem são solucionadas através da aplicação do \texttt{Fator Integrante} apresentado na seguinte equação:
                     \begin{equation*}
-                        u(t) = e^{\int p(t)\;\text{d}t}
+                        \boxed{
+                            u(t) = e^{\int p(t)\;\text{d}t}
+                        }
                     \end{equation*}
                 Quando este termo é apicado a equação a mesma pode ser simplificada através da derivada do produto como demonstrado a seguir:
                     \begin{equation*}
@@ -120,53 +122,53 @@
                         }
                     \end{equation}
 
-            \subsubsection{E.D.O. Linear Homogênea}
-                \paragraph{Definição}Quando a função possui $q_{n}(t) = 1$ e $f(t) = 0$ como representado pela seguinte equação:
-                    \begin{equation}
-                        0 = 1 \cdot y'(t) + p(t) \cdot y(t)
-                    \end{equation}
-
-            \subsection{Equações Separáveis}
-                \paragraph{Definição}Quando a função possui a forma $y'(x)=f(x) \cdot g(y)$, isto é,  x e y separáveis em funções independentes.
-                \paragraph{}Equação Geral:
+            \subsubsection{E.D.O. Separável}
+                \paragraph{Definição}Função possui $y'(x)=f(x) \cdot g(y)$, isto é, quando $x$ e $y$ são variáveis separáveis em funções independentes como mostrado pela seguinte equação:
                     \begin{equation}
                         y'(x)=f(x) \cdot g(y)
                     \end{equation}
-                
-                \paragraph{}Solução Geral:
-                    \begin{equation}
-                        \int{\frac{1}{g(y)}dy} = \int{f(x)dx}
-                    \end{equation}
-                \paragraph{}Equações desta forma possuem resolução direta pois basta isolar as funções correspondentes e aplicar a integração adequada.
 
-            \subsection{Equações Exatas}
-                \paragraph{Definição}Uma E.D.O. $F(x,y)$ será exata quando puder ser rescrita como demonstrado:
+                \paragraph{Resolução}E.D.O.'s Separáveis são diretas e consequentemente a solução será:
                     \begin{equation}
-                        M(x,y)dx+N(x,y)dy=0
+                        \boxed{
+                            \int{\frac{1}{g(y)}dy} = \int{f(x)dx}
+                        }
                     \end{equation}
-                \paragraph{}Onde:
-                
-                \quad$F_{x}(x,y)=M$
-                
-                \quad$F_{y}(x,y)=N$
-                \paragraph{}Caso $M_{y}=N_{x}$ então a equação $F(x,y)$ será exata e poderá ser encontrada pelo método que segue:
+
+            \subsubsection{E.D.O. Exata}
+                \paragraph{Definição}Função $F(x,y)$ será exata quando puder ser rescrita como combinação linear de funções obtidas a partir das derivadas da função $F(x,y)$ como monstrado pela seguinte equação:
                     \begin{equation}
-                        F(x,y)=\int{M}dx=F_{0}(x,y)+g(y)
+                        M(x,y)\;\text{d}x + N(x,y)\;\text{d}y = 0
                     \end{equation}
+                Onde:
+                    \begin{enumerate}[noitemsep]
+                        \item $F_{x}(x,y) = M(x,y)$
+                        \item $F_{y}(x,y) = N(x,y)$
+                    \end{enumerate}
+
+                \paragraph{Resolução}Caso $M_{y}\neq N_{x}$ a equação não seria exata, sendo necessário aplicar um \texttt{Fator Integrante} para torná-la exata. Há dois casos possíveis para tal fator, sendo eles:
+                    \begin{equation*}
+                        u(x) \text{ ou } u(y) =
+                        \begin{cases}
+                            e^{\int{\frac{M_{y}-N_{x}}{N}\;\text{d}x}} & \text{se depende de } $x$;\\
+
+                            e^{\int{\frac{N_{x}-M_{y}}{M}\;\text{d}y}} & \text{se depende de } $y$;\\
+                        \end{cases}
+                    \end{equation*}
+                Caso $M_{y}(x,y) = N_{x}(x,y)$, então a equação $F(x,y)$ será exata e poderá ser encontrada pelo método que segue:
                     \begin{equation}
-                        N= F_{0y}(x,y)+g'(y)
+                        F(x,y) = 
+                        \begin{cases}
+                            \int M(x,y)\;\text{d}x = F_{0}(x,y) + g(y)&
+                            N(x,y) = F_{0y}(x,y)+g'(y)\\
+
+                            \int N(x,y)\;\text{d}y = F_{0}(x,y) + g(x)&
+                            M(x,y) = F_{0x}(x,y)+g'(x)\\
+                        \end{cases}
                     \end{equation}
-                \paragraph{}Note que o processo poderia ser aplicado em função de $N$ obtendo assim $g(x)$ como constante resultante da integração.
-                \paragraph{}\textbf{Fator Integrante:} Caso $M_{y}\neq N_{x}$ a equação não seria exata, sendo necessário aplicar um fator integrante para torná-la exata. Há dois casos possíveis para tal fator, sendo eles:
-                
-                \paragraph{}Dependente de $x$, $u(x)$:
-                    \begin{equation}
-                        u(x)=e^{\int{\frac{M_{y}-N_{x}}{N}dx}}
-                    \end{equation}
-                \paragraph{}Dependente de $y$, $u(y)$:
-                    \begin{equation}
-                        u(y)=e^{\int{\frac{N_{x}-M_{y}}{M}dy}}
-                    \end{equation}
+
+        \subsection{Substituições}
+            \paragraph{Definição}
 
             \subsubsection{Substituição Linear}
                 \paragraph{Definição}Quando a função possui a forma $y'(x)=F(ax+by(x)+c)$, isto é, todos os termos, com excessão de $y'(x)$, estão contidos em uma única função.
