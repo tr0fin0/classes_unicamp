@@ -2,7 +2,8 @@
 \usepackage{tpack}
 
 \title{EA611 - Circuitos II}
-\author{Guilherme Nunes Trofino\\217276}
+\author{Guilherme Nunes Trofino}
+\authorRA{217276}
 \project{Resumo Teórico}
 
 \begin{document}
@@ -77,37 +78,42 @@
                 \end{equation}
             \newpage
 
-                    \begin{multicols}{2}
-                        \raggedcolumns
-                        \paragraph{Degrau Unitário}Representação de descontinuidade unitária. Formalmente descrita pela seguinte equação:
-                        \begin{equation}
-                            \boxed{
-                                u(x - a) = 
-                                \begin{cases}
-                                    0, & x < a;\\
-                                    \frac{1}{2}, & x = a;\\
-                                    1, & x > a;\\
-                                \end{cases}
+            \subsubsection{Degrau Unitário}
+                \paragraph{Definição}Representação de descontinuidade unitária, normalmente utilizada para representar mudanças instantâneas em sistemas. Formalmente descrita pela seguinte equação:
+                    \begin{equation}
+                        \boxed{
+                            u(x - a) = 
+                            \begin{cases}
+                                0, & x < a;\\
+                                \frac{1}{2}, & x = a;\\
+                                1, & x > a;\\
+                            \end{cases}
+                        }
+                    \end{equation}
+
+            \subsubsection{Impulso Unitário}
+                \paragraph{Definição}Distribuição infinita no ponto zero e nula no restante da reta. Formalmente descrita pela seguinte equação:
+                    \begin{equation}
+                        \boxed{
+                            \delta(x) = 
+                            \begin{cases}
+                                0, & x \neq 0;\\
+                                \infty, & x = 0;\\
+                            \end{cases}
                             }
                         \end{equation}
-
-                        \columnbreak
-
-                        \paragraph{Impulso Unitário}Distribuição infinita no ponto zero e nula no restante da reta. Formalmente descrita pela seguinte equação:
-                            \begin{equation}
-                                \boxed{
-                                    \delta(x) = 
-                                    \begin{cases}
-                                        0, & x \neq 0;\\
-                                        \infty, & x = 0;\\
-                                    \end{cases}
-                                    }
-                                \end{equation}
-                        Obedecendo:
-                            \begin{equation*}
-                                \int_{-\infty}^{+\infty} \delta(x) \; \text{d}x = 1
-                            \end{equation*}
-                \end{multicols}
+                Obedecendo:
+                    \begin{equation*}
+                        \int_{-\infty}^{+\infty} \delta(x) \; \text{d}x = 1
+                        \quad\text{e}\quad
+                        \boxed{
+                            \int_{a}^{b} f(t) \delta(t)\;\text{d}t = 
+                            \begin{cases}
+                                f(0);   & \text{se } 0\in[a,b]\\
+                                0;      & \text{se } 0\notin[a,b]\\
+                            \end{cases}
+                        }
+                    \end{equation*}
 
         \subsection{Transformada de Componentes}
             \paragraph{Definição}Substituir as equações que descrevem cada componente empregado em um circuito através de seu equivalente em \textbf{Laplace} simplificará os cálculos como representado abaixo:
