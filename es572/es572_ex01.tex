@@ -1,0 +1,231 @@
+\documentclass[es572.tex]{subfiles}
+\usepackage{tpack}
+
+\begin{document}
+    \subsection{Exercício 01}
+        \subsubsection{Questão 1}
+            \begin{exercise}
+                Você recebe um número binário de 4 bits desconhecido, e foi informado de que a representação binária contém apenas um par de bits vizinhos repetidos. Qual a quantidade de informação que você recebeu?
+            \end{exercise}
+            \begin{resolution}
+                Há no total $2^{4} = 16$ números possíveis, sendo que apenas $6$ os seguintes atendem as condições estabelecidas como mostrados a seguir:
+                    \begin{table}[H]
+                        \centering
+                        \begin{tabular}[]{cc}\hline
+                            1101\textsubscript{2} & 0010\textsubscript{2}\\
+                            0110\textsubscript{2} & 1001\textsubscript{2}\\
+                            1011\textsubscript{2} & 0100\textsubscript{2}\\\hline
+                        \end{tabular}
+                    \end{table}\noindent
+                Sabe-se que a \textbf{Quantidade de Informação Recebida} será obtida pela seguinte equação:
+                    \begin{equation*}
+                        I(x) = \log_{2}\left(\frac{1}{p_{x}}\right)
+                        \quad\text{com}\quad
+                        p_{x} = \frac{6}{16}
+                    \end{equation*}
+                Logo:
+                    \begin{equation*}
+                        I(x) = \log_{2}\left(\frac{16}{6}\right) \approx 1.41504 \text{ bits}
+                    \end{equation*}
+            \end{resolution}
+
+            \begin{exercise}
+                Você recebe uma informação adicional dizendo que o número também é par. Qual a quantidade de informação adicional que você recebeu?
+            \end{exercise}
+            \begin{resolution}
+                Agora há no total as 6 combinações já conhecidas, sendo que apenas 3 delas são pares como mostradas a seguir:
+                    \begin{table}[H]
+                        \centering
+                        \begin{tabular}[]{c}\hline
+                            0110\textsubscript{2}\\
+                            0010\textsubscript{2}\\
+                            0100\textsubscript{2}\\\hline
+                        \end{tabular}
+                    \end{table}\noindent
+                Desta forma a \textbf{Quantidade de Informação Recebida} será obtida pela seguinte equação:
+                    \begin{equation*}
+                        I(x) = \log_{2}\left(\frac{1}{p_{x}}\right)
+                        \quad\text{com}\quad
+                        p_{x} = \frac{3}{16}
+                    \end{equation*}
+                Logo:
+                    \begin{equation*}
+                        I(x) = \log_{2}\left(\frac{16}{3}\right) \approx 2.41504 \text{ bits}
+                    \end{equation*}
+                Assim obtendo aproximadamente 1 bit adicional de informação.
+            \end{resolution}
+
+        \newpage\subsubsection{Questão 2}
+            \begin{exercise}
+                X é um número binário de 8 bits desconhecido. Você é avisado que a distância de Hamming entre X e 00101101\textsubscript{2} é dois. Quantos bits de informação sobre X você recebeu?
+            \end{exercise}
+            \begin{resolution}
+                Há no total $2^{8} = 256$ números possíveis, sendo que apenas $56$ atendem as condições visto que a partir do código informado é necessário selecionar \texttt{2 bits}.
+                    \begin{table}[H]
+                        \centering
+                        \begin{tabular}[]{c}\hline
+                            00101101\textsubscript{2}\\\hline
+                        \end{tabular}
+                    \end{table}\noindent
+                Inicialmente há 8 posições a serem escolhidas, na sequência há 7 posições disponíveis visto que a distância de Hamming deve ser identicamente 2. Desta forma a \textbf{Quantidade de Informação Recebida} será obtida pela seguinte equação:
+                    \begin{equation*}
+                        I(x) = \log_{2}\left(\frac{1}{p_{x}}\right)
+                        \quad\text{com}\quad
+                        p_{x} = \frac{56}{256}
+                    \end{equation*}
+                Logo:
+                    \begin{equation*}
+                        I(x) = \log_{2}\left(\frac{256}{56}\right) \approx 2.19265 \text{ bits}
+                    \end{equation*}
+            \end{resolution}
+
+        \newpage\subsubsection{Questão 3}
+            \begin{exercise}
+                Para cada uma das distribuições de probabilidade dos símbolos, construa uma árvore a partir do altoritmo de Huffman nessas distribuições de probabilidade.
+                    \begin{enumerate}[noitemsep]
+                        \item $p(A) = 0.31$, $p(B) = 0.2$, $p(C) = 0.2$, $p(D) = 0.19$ e $p(E) = 0.1$;
+
+                        \item $p(A) = 0.6$, $p(B) = 0.1$, $p(C) = 0.1$, $p(D) = 0.1$ e $p(E) = 0.1$;
+
+                        \item $p(A) = 0.29$, $p(B) = 0.22$, $p(C) = 0.18$, $p(D) = 0.17$ e $p(E) = 0.14$;
+                    \end{enumerate}
+            \end{exercise}
+
+            \begin{resolution}
+                Considera-se a seguintes árvores:
+                \begin{figure}[H]
+                    \centering
+                    \begin{forest}
+                        for tree={
+                            s sep = 10mm,   % Horizontal Distance
+                            l = 0mm,        % Vertical Distance
+                            where n children={0}{ev}{iv},
+                            l+=8mm,
+                            if n=1{
+                                edge label={
+                                    node [midway, left] {0}
+                                }
+                            }{
+                                edge label={
+                                    node [midway, right] {1}
+                                }
+                            }
+                        }
+                        [1
+                            [0.4
+                                [B] [C]
+                            ]
+                            [0.6
+                                [A]
+                                [0.29
+                                    [D] [E]
+                                ]
+                            ]
+                        ]
+                    \end{forest}
+                    \caption{Árvore 1}
+                \end{figure}
+                \begin{figure}[H]
+                    \centering
+                    \begin{forest}
+                        for tree={
+                            s sep = 10mm,   % Horizontal Distance
+                            l = 0mm,        % Vertical Distance
+                            where n children={0}{ev}{iv},
+                            l+=8mm,
+                            if n=1{
+                                edge label={
+                                    node [midway, left] {0}
+                                }
+                            }{
+                                edge label={
+                                    node [midway, right] {1}
+                                }
+                            }
+                        }
+                        [1
+                            [A]
+                            [0.4
+                                [0.2
+                                    [B] [C]
+                                ]
+                                [0.2
+                                    [D] [E]
+                                ]
+                            ]
+                        ]
+                    \end{forest}
+                    \caption{Árvore 2}
+                \end{figure}
+                \begin{figure}[H]
+                    \centering
+                    \begin{forest}
+                        for tree={
+                            s sep = 10mm,   % Horizontal Distance
+                            l = 0mm,        % Vertical Distance
+                            where n children={0}{ev}{iv},
+                            l+=8mm,
+                            if n=1{
+                                edge label={
+                                    node [midway, left] {0}
+                                }
+                            }{
+                                edge label={
+                                    node [midway, right] {1}
+                                }
+                            }
+                        }
+                        [1
+                            [0.4
+                                [B] [C]
+                            ]
+                            [0.6
+                                [A]
+                                [0.31
+                                    [D] [E]
+                                ]
+                            ]
+                        ]
+                    \end{forest}
+                    \caption{Árvore 3}
+                \end{figure} \noindent
+            \end{resolution}
+
+        \newpage\subsubsection{Questão 4}
+            \begin{exercise}
+                Considere a codificação para dois símbolos $A = 1100110011$ e $B = 0110100000$. Qual é a distância de Hammming entre elas? Quantos bits de erro podem ser detectados? Quantos bits de erro podem ser corrigidos?
+            \end{exercise}
+            \begin{resolution}
+                Nota-se a 5 bits de diferença como ilustrado pelos caractéres em \textcolor{red}{vermelho}:
+                    \begin{table}[H]
+                        \centering
+                        \begin{tabular}[]{cc}\hline
+                            \textcolor{red}{1}1\textcolor{red}{0}01\textcolor{red}{1}00\textcolor{red}{11}\textsubscript{2}\\
+                            \textcolor{red}{0}1\textcolor{red}{1}01\textcolor{red}{0}00\textcolor{red}{00}\textsubscript{2}\\\hline
+                        \end{tabular}
+                    \end{table}\noindent
+                Desta forma, a distância de Hamming, $H$, destes símbolos será 5. Assim, até 4 bits de erro podem ser detectados, $E_{D}$, e 2 bits de erro podem ser corrigidos, $E_{C}$, como mostrado pelas seguintes equações:
+                    \begin{equation*}
+                        H =  E_{D} + 1 \rightarrow E_{D} = 4
+                        \qquad
+                        H = 2E_{C} + 1 \rightarrow E_{C} = 2
+                    \end{equation*}
+            \end{resolution}
+
+        \newpage\subsubsection{Questão 5}
+            \begin{exercise}
+                Codifique a mensagem 01101000101\textsubscript{2} através do código de Hamming (15, 11) estendido. Decodifique-o após de inserir 0, 1 e 2 erros aleatórios, respectivamente. Verifique que as propriedades de correção do código são verificadas.
+            \end{exercise}
+            \begin{resolution}
+                Considere a seguinte codificação:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}{|c|c|c|c|}\hline
+                        \mycell{0}{0}  & \mycell{0}{1}  & \mycell{0}{2}  & \mycell{0}{3}\\\hline
+                        \mycell{0}{4}  & \mycell{1}{5}  & \mycell{1}{6}  & \mycell{0}{7}\\\hline
+                        \mycell{1}{8}  & \mycell{1}{9}  & \mycell{0}{10} & \mycell{0}{11}\\\hline
+                        \mycell{0}{12} & \mycell{1}{13} & \mycell{0}{14} & \mycell{1}{15}\\\hline
+                    \end{tabular}
+                \end{table}\noindent
+            \end{resolution}
+\end{document}
