@@ -264,24 +264,24 @@
                 \end{table}\noindent
             Neste ponto pode-se localizar \texttt{erros de 2 bits}.
 
-        \subsubsection{Decodificação de Hamming \texttt{(15,11)}}
+        \subsubsection{Decodificação de Hamming \texttt{(15, 11)}}
             \paragraph{Definição}Interpretação dos dados recebidos na \textbf{Configuração de Hamming}, analisando os \texttt{15, ou 16, bits} codificados como descrito abaixo:
                 \begin{enumerate}[rightmargin = \leftmargin]
                     \item \textbf{Transmissão Correta:} 
                         \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
-                            \item Não houve erro nos \textcolor{red!80}{\texttt{bits de paridade}}
+                            \item Não houve erro nos \textcolor{red!80}{\texttt{bits de paridade}};
                             \item Não houve erro no \textcolor{blue!80}{\texttt{bit de paridade do conjunto}};
                         \end{enumerate}
 
                     \item \textbf{Transmissão com} \texttt{Erro de 1 bit}:
                         \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
-                            \item Houve erro em pelo menos um dos \textcolor{red!80}{\texttt{bits de paridade}}
+                            \item Houve erro em pelo menos um dos \textcolor{red!80}{\texttt{bits de paridade}};
                             \item Houve erro no \textcolor{blue!80}{\texttt{bit de paridade do conjunto}};
                         \end{enumerate}
 
                     \item \textbf{Transmissão com} \texttt{Erro de 2 bit}:
                         \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
-                            \item Houve erro em pelo menos um dos \textcolor{red!80}{\texttt{bits de paridade}}
+                            \item Houve erro em pelo menos um dos \textcolor{red!80}{\texttt{bits de paridade}};
                             \item Não houve erro no \textcolor{blue!80}{\texttt{bit de paridade do conjunto}};
                         \end{enumerate}
                 \end{enumerate}
