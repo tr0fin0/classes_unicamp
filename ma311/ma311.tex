@@ -155,7 +155,7 @@
                             e^{\int{\frac{N_{x}-M_{y}}{M}\;\text{d}y}} & \text{se depende de } $y$;\\
                         \end{cases}
                     \end{equation*}
-                Caso $M_{y}(x,y) = N_{x}(x,y)$, então a equação $F(x,y)$ será exata e poderá ser encontrada pelo método que segue:
+                Caso $M_{y}(x,y) = N_{x}(x,y)$, então a equação $F(x,y)$ será exata e sua solução poderá ser encontrada pela aplicação do \texttt{Fator Integrante} método que segue:
                     \begin{equation}
                         F(x,y) = 
                         \begin{cases}
@@ -167,69 +167,77 @@
                         \end{cases}
                     \end{equation}
 
-        \subsection{Substituições}
-            \paragraph{Definição}
-
             \subsubsection{Substituição Linear}
-                \paragraph{Definição}Quando a função possui a forma $y'(x)=F(ax+by(x)+c)$, isto é, todos os termos, com excessão de $y'(x)$, estão contidos em uma única função.
-                \paragraph{}Equação Geral:
-                    \begin{equation}
-                        y'(x)=F(ax+by(x)+c)
-                    \end{equation}
-                \paragraph{}Substituição:
-                    \begin{equation}
-                        V(x)=ax+by(x)+c
-                    \end{equation}
-                \paragraph{}Como consequência de qualquer substituição será necessário deriva-la para encontrar $y'(x)$ em função da substituição.
-                \paragraph{}Derivação:
-                    \begin{equation}
+                \paragraph{Definição}Quando a função possui todos os termos, exceto $y'(x)$, em uma função separável como mostrado na seguinte equação:
+                    \begin{equation*}
+                        y'(x) = F(ax+by(x)+c)
+                    \end{equation*}
+                \paragraph{Substituição}Caso seja separável a seguinte substituição deve ser aplicada:
+                    \begin{equation*}
+                        \boxed{
+                            V(x) = ax+by(x)+c
+                        }
+                    \end{equation*}
+                Como consequência de qualquer substituição será necessário derivá-la para encontrar $y'(x)$ em função da substituição aplicada como mostrado na equação abaixo:
+                    \begin{equation*}
                         y'(x)=\frac{V'(x)-a}{b}
-                    \end{equation}
-                \paragraph{}Solução Geral:
+                    \end{equation*}
+                \paragraph{Resolução}Na sequência será necessário aplicar os resultados obtidos na equação original e resolve-la como mostrado na equação abaixo:
                     \begin{equation}
-                        V'(x)=bF(V(x))+a
+                        \boxed{
+                            V'(x)=bF(V(x))+a
+                        }
                     \end{equation}
-                \paragraph{}Note que a solução geral obtida sempre será separável ápos a substituição.
 
             \subsubsection{Substituição Homogênea}
-                \paragraph{Definição}Quando a função possui os termos $x$ e $y$ descritos por quocientes.
-                \paragraph{}Equação Geral:
-                    \begin{equation}
+                \paragraph{Definição}Quando a função possui os termos $x$ e $y$ descritos por quocientes como mostrado na seguinte equação:
+                    \begin{equation*}
                         y'(x)=f(\frac{y}{x})
-                    \end{equation}
-                \paragraph{}Substituição:
+                    \end{equation*}
+                \paragraph{Substituição}Caso seja homogênea a seguinte substituição deve ser aplicada:
                     \begin{equation}
-                        V(x)=\frac{y}{x} \Leftrightarrow y=V(x) \cdot x
+                        \boxed{
+                            V(x)=\frac{y}{x}
+                        }
                     \end{equation}
-                \paragraph{}Derivação:
-                    \begin{equation}
+                Como consequência de qualquer substituição será necessário derivá-la para encontrar $y'(x)$ em função da substituição aplicada como mostrado na equação abaixo:
+                    \begin{equation*}
                         y'(x)=V(x)+V'(x) \cdot x
-                    \end{equation}
-                \paragraph{}Solução Geral:
+                    \end{equation*}
+                \paragraph{Resolução}Na sequência será necessário aplicar os resultados obtidos na equação original e resolve-la como mostrado na equação abaixo:
                     \begin{equation}
-                        V(x)+V'(x)x=f(V(x))
+                        \boxed{
+                            V(x)+V'(x)x=f(V(x))
+                        }
                     \end{equation}
-                \paragraph{}Note que a solução geral obtida sempre será separável ápos a substituição.
 
             \subsubsection{Substituição de Bernoulli}
-                \paragraph{Definição}Quando a função possui a forma $y'(x)+p(x) \cdot y(x)=f(x) \cdot y^{n}(x)$, isto 
-                é, $f(x)$ está multiplicada por uma potência $n$ de $y(x)$.
-                \paragraph{}Equação Geral:
-                    \begin{equation}
+                \paragraph{Definição}Quando a função possui um termo $y^{n}(x)$, com $n\neq 0, 1$, multiplicando $f(x)$ como mostrado na seguinte equação:
+                    \begin{equation*}
                         y'(x)+p(x) \cdot y(x)=f(x) \cdot y^{n}(x)
-                    \end{equation}
-                \paragraph{}Substituição:
-                    \begin{equation}
-                        V(x)=y^{n-1}(x)
-                    \end{equation}
-                \paragraph{}Derivação:
-                    \begin{equation}
+                    \end{equation*}
+                \paragraph{Substituição}Caso seja homogênea a seguinte substituição deve ser aplicada:
+                    \begin{equation*}
+                        \boxed{
+                            V(x)=y^{n-1}(x)
+                        }
+                    \end{equation*}
+                Como consequência de qualquer substituição será necessário derivá-la para encontrar $y'(x)$ em função da substituição aplicada como mostrado na equação abaixo:
+                    \begin{equation*}
                         V'(x)=y'y^{n}
-                    \end{equation}
-                \paragraph{}Solução:
+                    \end{equation*}
+                \paragraph{Resolução}Na sequência será necessário aplicar os resultados obtidos na equação original e resolve-la como mostrado na equação abaixo:
                     \begin{equation}
-                        \frac{v'(x)}{1-n}+p(x)v(x)=f(x)
+                        \boxed{
+                            \frac{v'(x)}{1-n}+p(x)v(x)=f(x)
+                        }
                     \end{equation}
+
+        \subsection{E.D.O.'s de 2º Ordem}
+            \paragraph{Definição}E.D.O.'s de 2º Ordem serão equações construídas com a derivada de 2º Ordem.
+
+            \subsubsection{Redução de Ordem}
+                \paragraph{Definição}Quando uma substituição permite reduzir o grau 
 
 
     \section{Sequências Infinitas}
