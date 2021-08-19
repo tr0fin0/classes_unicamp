@@ -1,9 +1,12 @@
-\documentclass[es572.tex]{subfiles}
+\documentclass{article}
 \usepackage{tpack}
 
+
 \begin{document}
-    \subsection{Exercício 01}
-        \subsubsection{Questão 1}
+    \section{Exercício 01}
+        \paragraph{Apresentação}Resolução das questões de Circuitos Lógicos por Guilherme Nunes Trofino, 217276.
+
+        \subsection{Questão 1}
             \begin{exercise}
                 Você recebe um número binário de 4 bits desconhecido, e foi informado de que a representação binária contém apenas um par de bits vizinhos repetidos. Qual a quantidade de informação que você recebeu?
             \end{exercise}
@@ -25,7 +28,7 @@
                     \end{equation*}
                 Logo:
                     \begin{equation*}
-                        I(x) = \log_{2}\left(\frac{16}{6}\right) \approx 1.41504 \text{ bits}
+                        I(x) = \log_{2}\left(\frac{16}{6}\right) \approx \boxed{1.41504 \text{ bits}}
                     \end{equation*}
             \end{resolution}
 
@@ -52,10 +55,10 @@
                     \begin{equation*}
                         I(x) = \log_{2}\left(\frac{16}{3}\right) \approx 2.41504 \text{ bits}
                     \end{equation*}
-                Assim obtendo aproximadamente 1 bit adicional de informação.
+                Assim obtendo aproximadamente $\boxed{1 \text{bit}}$ adicional de informação.
             \end{resolution}
 
-        \newpage\subsubsection{Questão 2}
+        \newpage\subsection{Questão 2}
             \begin{exercise}
                 X é um número binário de 8 bits desconhecido. Você é avisado que a distância de Hamming entre X e 00101101\textsubscript{2} é dois. Quantos bits de informação sobre X você recebeu?
             \end{exercise}
@@ -67,19 +70,19 @@
                             00101101\textsubscript{2}\\\hline
                         \end{tabular}
                     \end{table}\noindent
-                Inicialmente há 8 posições a serem escolhidas, na sequência há 7 posições disponíveis visto que a distância de Hamming deve ser identicamente 2. Desta forma a \textbf{Quantidade de Informação Recebida} será obtida pela seguinte equação:
+                Inicialmente há 8 posições a serem escolhidas, na sequência há 7 posições disponíveis e a ordem não importa visto que a distância de Hamming deve ser identicamente 2. Desta forma a \textbf{Quantidade de Informação Recebida} será obtida pela seguinte equação:
                     \begin{equation*}
                         I(x) = \log_{2}\left(\frac{1}{p_{x}}\right)
                         \quad\text{com}\quad
-                        p_{x} = \frac{56}{256}
+                        p_{x} = \frac{28}{256}
                     \end{equation*}
                 Logo:
                     \begin{equation*}
-                        I(x) = \log_{2}\left(\frac{256}{56}\right) \approx 2.19265 \text{ bits}
+                        I(x) = \log_{2}\left(\frac{256}{28}\right) \approx \boxed{3.19265 \text{ bits}}
                     \end{equation*}
             \end{resolution}
 
-        \newpage\subsubsection{Questão 3}
+        \newpage\subsection{Questão 3}
             \begin{exercise}
                 Para cada uma das distribuições de probabilidade dos símbolos, construa uma árvore a partir do altoritmo de Huffman nessas distribuições de probabilidade.
                     \begin{enumerate}[noitemsep]
@@ -191,12 +194,12 @@
                 \end{figure} \noindent
             \end{resolution}
 
-        \newpage\subsubsection{Questão 4}
+        \newpage\subsection{Questão 4}
             \begin{exercise}
                 Considere a codificação para dois símbolos $A = 1100110011$ e $B = 0110100000$. Qual é a distância de Hammming entre elas? Quantos bits de erro podem ser detectados? Quantos bits de erro podem ser corrigidos?
             \end{exercise}
             \begin{resolution}
-                Nota-se a 5 bits de diferença como ilustrado pelos caractéres em \textcolor{red}{vermelho}:
+                Nota-se que há 5 bits de diferença como ilustrado pelos caractéres em \textcolor{red}{vermelho}:
                     \begin{table}[H]
                         \centering
                         \begin{tabular}[]{cc}\hline
@@ -206,26 +209,75 @@
                     \end{table}\noindent
                 Desta forma, a distância de Hamming, $H$, destes símbolos será 5. Assim, até 4 bits de erro podem ser detectados, $E_{D}$, e 2 bits de erro podem ser corrigidos, $E_{C}$, como mostrado pelas seguintes equações:
                     \begin{equation*}
-                        H =  E_{D} + 1 \rightarrow E_{D} = 4
+                        H =  E_{D} + 1 \rightarrow \boxed{E_{D} = 4}
                         \qquad
-                        H = 2E_{C} + 1 \rightarrow E_{C} = 2
+                        H = 2E_{C} + 1 \rightarrow \boxed{E_{C} = 2}
                     \end{equation*}
             \end{resolution}
 
-        \newpage\subsubsection{Questão 5}
+        \newpage\subsection{Questão 5}
             \begin{exercise}
                 Codifique a mensagem 01101000101\textsubscript{2} através do código de Hamming (15, 11) estendido. Decodifique-o após de inserir 0, 1 e 2 erros aleatórios, respectivamente. Verifique que as propriedades de correção do código são verificadas.
             \end{exercise}
             \begin{resolution}
-                Considere a seguinte codificação:
-                \begin{table}[H]
-                    \centering
-                    \begin{tabular}{|c|c|c|c|}\hline
-                        \mycell{0}{0}  & \mycell{0}{1}  & \mycell{0}{2}  & \mycell{0}{3}\\\hline
-                        \mycell{0}{4}  & \mycell{1}{5}  & \mycell{1}{6}  & \mycell{0}{7}\\\hline
-                        \mycell{1}{8}  & \mycell{1}{9}  & \mycell{0}{10} & \mycell{0}{11}\\\hline
-                        \mycell{0}{12} & \mycell{1}{13} & \mycell{0}{14} & \mycell{1}{15}\\\hline
-                    \end{tabular}
-                \end{table}\noindent
+                Considere a seguinte codificação em paridade par:
+                    \begin{table}[H]
+                        \centering
+                        \begin{tabular}{|c|c|c|c|}\hline
+                            \mycell{0}{0}  & \mycell{0}{1}  & \mycell{0}{2}  & \mycell{0}{3}\\\hline
+                            \mycell{0}{4}  & \mycell{1}{5}  & \mycell{1}{6}  & \mycell{0}{7}\\\hline
+                            \mycell{1}{8}  & \mycell{1}{9}  & \mycell{0}{10} & \mycell{0}{11}\\\hline
+                            \mycell{0}{12} & \mycell{1}{13} & \mycell{0}{14} & \mycell{1}{15}\\\hline
+                        \end{tabular}
+                    \end{table}\noindent
+                Quando há 0 erros será trivial, basta analisar os bits de paridade da codificação. Considere que os erros implementados estarão representados com a cor \textcolor{red}{vermelha}, desta forma o seguinte procedimento será aplicado para 1 erro:
+                    \begin{table}[H]
+                        \centering
+                        \begin{tabular}{|c|c|c|c|}\hline
+                            \cellcolor{red!40}\mycell{0}{0}  & \mycell{0}{1}                   & \mycell{0}{2}  & \mycell{0}{3}\\\hline
+                            \mycell{0}{4}                    & \mycell{\textcolor{red}{0}}{5}  & \mycell{1}{6}  & \mycell{0}{7}\\\hline
+                            \mycell{1}{8}                    & \mycell{1}{9}                   & \mycell{0}{10} & \mycell{0}{11}\\\hline
+                            \mycell{0}{12}                   & \mycell{1}{13}                  & \mycell{0}{14} & \mycell{1}{15}\\\hline
+                        \end{tabular}
+                        \quad
+                        \begin{tabular}{|c|c|c|c|}\hline
+                            \mycell{0}{0}  & \cellcolor{red!40}\mycell{0}{1}                    & \mycell{0}{2}  & \cellcolor{gray!50}\mycell{0}{3}\\\hline
+                            \mycell{0}{4}  & \cellcolor{gray!50}\mycell{\textcolor{red}{0}}{5}  & \mycell{1}{6}  & \cellcolor{gray!50}\mycell{0}{7}\\\hline
+                            \mycell{1}{8}  & \cellcolor{gray!50}\mycell{1}{9}                   & \mycell{0}{10} & \cellcolor{gray!50}\mycell{0}{11}\\\hline
+                            \mycell{0}{12} & \cellcolor{gray!50}\mycell{1}{13}                  & \mycell{0}{14} & \cellcolor{gray!50}\mycell{1}{15}\\\hline
+                        \end{tabular}
+                        \quad
+                        \begin{tabular}{|c|c|c|c|}\hline
+                            \mycell{0}{0}                     & \mycell{0}{1}                                      &  \mycell{0}{2}                    & \mycell{0}{3}\\\hline
+                            \cellcolor{red!40}\mycell{0}{4}   & \cellcolor{gray!50}\mycell{\textcolor{red}{0}}{5}  & \cellcolor{gray!50}\mycell{1}{6}  & \cellcolor{gray!50}\mycell{0}{7}\\\hline
+                            \mycell{1}{8}                     & \mycell{1}{9}                                      & \mycell{0}{10}                    & \mycell{0}{11}\\\hline
+                            \cellcolor{gray!50}\mycell{0}{12} & \cellcolor{gray!50}\mycell{1}{13}                  & \cellcolor{gray!50}\mycell{0}{14} & \cellcolor{gray!50}\mycell{1}{15}\\\hline
+                        \end{tabular}
+                    \end{table}\noindent
+                Nota-se que o \texttt{bit de paridade de conjunto} está errado, pois há uma quantidade ímpar de números uns no conjunto de dados. Na sequência nota-se que há um erro na segunda ou quarta coluna e um erro na segunda ou quarta linha da matriz. Assim, conclui-se que há um erro na segunda coluna com a segunda linha. Agora será apresentado o procedimento para 2 erros:
+                    \begin{table}[H]
+                        \centering
+                        \begin{tabular}{|c|c|c|c|}\hline
+                            \cellcolor{red!40}\mycell{\textcolor{red}{1}}{0}  & \mycell{0}{1}                   & \mycell{0}{2}  & \mycell{0}{3}\\\hline
+                            \mycell{0}{4}                                     & \mycell{\textcolor{red}{0}}{5}  & \mycell{1}{6}  & \mycell{0}{7}\\\hline
+                            \mycell{1}{8}                                     & \mycell{1}{9}                   & \mycell{0}{10} & \mycell{0}{11}\\\hline
+                            \mycell{0}{12}                                    & \mycell{1}{13}                  & \mycell{0}{14} & \mycell{1}{15}\\\hline
+                        \end{tabular}
+                        \quad
+                        \begin{tabular}{|c|c|c|c|}\hline
+                            \mycell{\textcolor{red}{1}}{0}  & \cellcolor{red!40}\mycell{0}{1}                    & \mycell{0}{2}  & \cellcolor{gray!50}\mycell{0}{3}\\\hline
+                            \mycell{0}{4}                   & \cellcolor{gray!50}\mycell{\textcolor{red}{0}}{5}  & \mycell{1}{6}  & \cellcolor{gray!50}\mycell{0}{7}\\\hline
+                            \mycell{1}{8}                   & \cellcolor{gray!50}\mycell{1}{9}                   & \mycell{0}{10} & \cellcolor{gray!50}\mycell{0}{11}\\\hline
+                            \mycell{0}{12}                  & \cellcolor{gray!50}\mycell{1}{13}                  & \mycell{0}{14} & \cellcolor{gray!50}\mycell{1}{15}\\\hline
+                        \end{tabular}
+                        \quad
+                        \begin{tabular}{|c|c|c|c|}\hline
+                            \mycell{\textcolor{red}{1}}{0}    & \mycell{0}{1}                                      &  \mycell{0}{2}                    & \mycell{0}{3}\\\hline
+                            \cellcolor{red!40}\mycell{0}{4}   & \cellcolor{gray!50}\mycell{\textcolor{red}{0}}{5}  & \cellcolor{gray!50}\mycell{1}{6}  & \cellcolor{gray!50}\mycell{0}{7}\\\hline
+                            \mycell{1}{8}                     & \mycell{1}{9}                                      & \mycell{0}{10}                    & \mycell{0}{11}\\\hline
+                            \cellcolor{gray!50}\mycell{0}{12} & \cellcolor{gray!50}\mycell{1}{13}                  & \cellcolor{gray!50}\mycell{0}{14} & \cellcolor{gray!50}\mycell{1}{15}\\\hline
+                        \end{tabular}
+                    \end{table}\noindent
+                Nota-se que o \texttt{bit de paridade de conjunto} está correto, pois há uma quantidade ímpar de números uns no conjunto de dados. Como o restante da análise anterior se mantém neste caso há 2 erros que não podem ser corrigidos, apenas detectados.
             \end{resolution}
 \end{document}
