@@ -115,6 +115,19 @@
                         }
                     \end{equation*}
 
+            \subsubsection{Transformada da Deriva}
+                \paragraph{Definição}Quando aplicada em uma derivada de ordem $n$ será necessário utilizar da recursão e integração por partes, obtendo a seguinte equação geral:
+                    \begin{equation}
+                        \boxed{
+                            \mathcal{L}\left\{\diff[n]{f(\varphi)}{\varphi}\right\} = 
+                            s^{n}\cdot F(s) - 
+                            s^{n-1} \cdot f(0) - 
+                            s^{n-1} \cdot f'(0) - \dots - 
+                            s \cdot f^{n-2}(0) - 
+                            f^{n-1}(0)
+                        }
+                    \end{equation}
+
         \subsection{Transformada de Componentes}
             \paragraph{Definição}Substituir as equações que descrevem cada componente empregado em um circuito através de seu equivalente em \textbf{Laplace} simplificará os cálculos como representado abaixo:
                 \begin{multicols*}{2}
