@@ -129,19 +129,19 @@
                     \end{equation}
 
         \subsection{Transformada de Componentes}
-            \paragraph{Definição}Substituir as equações que descrevem cada componente empregado em um circuito através de seu equivalente em \textbf{Laplace} simplificará os cálculos como representado abaixo:
-                \begin{multicols*}{2}
-                    \raggedcolumns
-                    \paragraph{Capacitor}Genericamente considera-se a seguinte equação para descrever o comportamento do componente:
-                        \begin{equation*}
-                            v_{C}(t) = \frac{1}{C}\;\int_{0}^{t} i_{C}(t)\;\text{d}t + v_{C}(0)
-                        \end{equation*}
-                    Aplica-se a \textbf{Transformada de Laplace}, obtendo a seguinte equação:
-                        \begin{equation}
-                            \boxed{
-                                V_{C}(s) = \frac{1}{sC}\;I_{C}(s) + \frac{v_{C}(0)}{s}
-                            }
-                        \end{equation}
+            \paragraph{Definição}Substituir as equações que descrevem cada componente empregado em um circuito através de seu equivalente em \textbf{Laplace} simplificará os cálculos e poderá integrar suas condições iniciais na análise como representado abaixo:
+
+            \subsubsection{Capacitor}
+                \paragraph{Definição}Genericamente considera-se a seguinte equação para descrever o comportamento do componente:
+                    \begin{equation*}
+                        v_{C}(t) = \frac{1}{C}\;\int_{0}^{t} i_{C}(t)\;\text{d}t + v_{C}(0)
+                    \end{equation*}
+                Aplica-se a \textbf{Transformada de Laplace}, obtendo a seguinte equação:
+                    \begin{equation}
+                        \boxed{
+                            V_{C}(s) = \frac{1}{sC}\;I_{C}(s) + \frac{v_{C}(0)}{s}
+                        }
+                    \end{equation}
 
                     \paragraph{Indutor}Genericamente considera-se a seguinte equação para descrever o comportamento do componente:
                         \begin{equation*}
