@@ -278,4 +278,30 @@
                 \item \textbf{Estável:} Não apresentará mudanças durante seu uso;
                 \item \textbf{Veloz:} Fácil de acessar, transformar, combinar, transmitir e armazenar;
             \end{enumerate}
+        No mundo, não quântico, não é digital e são afetados por imperfeições que devem ser consideradas na descrição de modelo de conversão que consigo manter a precisão necessária para aplicação desejada.
+
+        \subsection{Processamento Digital}
+            \paragraph{Definição}Conversão, manipulação e utilização de sinais digitais para interpretação de fenômenos físicos estudados. Isso demandará algumas definições de conceitos descritas na sequência.
+
+            \subsubsection{Conversão Digital}
+                \paragraph{Definição}Inicialmente será necessário determinar como os sinais analógicos, medições reais, serão convertido para sinais digitais para que então possam ser trabalhados, buscando métodos que atendam as condições de codificações como a representada a seguir:
+                    \begin{equation}
+                        \boxed{
+                            V = 
+                            \begin{cases}
+                                0,                    & \text{se } V \leq V_{L}\\
+                                \text{zona proíbida}, & \text{se } V_{L} \leq V \leq V_{H}\\
+                                1,                    & \text{se } V \geq V_{H}\\
+                            \end{cases}
+                        }
+                    \end{equation}
+                Onde:
+                    \begin{enumerate}[noitemsep]
+                        \item \texttt{Nível Lógico 0:} Caso $V$ seja menor ou igual ao \textbf{Threshold Low} $V_{L}$;
+
+                        \item \texttt{Nível Lógico 1:} Caso $V$ seja maior ou igual ao \textbf{Threshold High} $V_{H}$;
+                    \end{enumerate}
+                Note que desta forma o sinal estará protegido de pequenos ruídos pois não poderá passar de um nível lógico para o outro diretamente.
+
+            
 \end{document}
