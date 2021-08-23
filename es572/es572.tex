@@ -289,17 +289,19 @@
                         \boxed{
                             V = 
                             \begin{cases}
-                                0,                    & \text{se } V \leq V_{L}\\
-                                \text{zona proíbida}, & \text{se } V_{L} \leq V \leq V_{H}\\
-                                1,                    & \text{se } V \geq V_{H}\\
+                                0,                      & \text{se } V \leq V_{OL}\\
+                                \text{margem de erro},  & \text{se } V_{OL} \leq V \leq V_{IL}\\
+                                \text{zona proíbida},   & \text{se } V_{IL} \leq V \leq V_{IH}\\
+                                \text{margem de erro},  & \text{se } V_{IH} \leq V \leq V_{OH}\\
+                                1,                      & \text{se } V \geq V_{OH}\\
                             \end{cases}
                         }
                     \end{equation}
                 Onde:
                     \begin{enumerate}[noitemsep]
-                        \item \texttt{Nível Lógico 0:} Caso $V$ seja menor ou igual ao \textbf{Threshold Low} $V_{L}$;
+                        \item \texttt{Nível Lógico 0:} Caso $V$ seja menor ou igual ao \textbf{Threshold Low} $V_{OL}$;
 
-                        \item \texttt{Nível Lógico 1:} Caso $V$ seja maior ou igual ao \textbf{Threshold High} $V_{H}$;
+                        \item \texttt{Nível Lógico 1:} Caso $V$ seja maior ou igual ao \textbf{Threshold High} $V_{OH}$;
                     \end{enumerate}
                 Note que desta forma o sinal estará protegido de pequenos ruídos pois não poderá passar de um nível lógico para o outro diretamente.
 
