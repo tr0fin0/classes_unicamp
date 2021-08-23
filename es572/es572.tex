@@ -303,5 +303,25 @@
                     \end{enumerate}
                 Note que desta forma o sinal estará protegido de pequenos ruídos pois não poderá passar de um nível lógico para o outro diretamente.
 
-            
+        \subsection{Dispositivos Combinacionais}
+            \paragraph{Definição}Componente eletrônico que atende as seguintes especificações:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Comunicação:} Necessidades para interface com o dispositivo apresentando:
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Entradas:} Ao menos uma entrada digital;
+                            \item \texttt{Saídas:} Ao menos uma saída digital;
+                        \end{enumerate}
+
+                    \item \textbf{Especificação Funcional:} Qualquer saída será obtida por uma combinação possível das entradas válidas;
+
+                    \item \textbf{Especificação Temporal:} Há um \texttt{Tempo de Propagação} $t_{PD}$ mínimo necessário para que o dispositivo calcule a saída a partir de suas entradas válidas;
+                \end{enumerate}
+            Além disso, um conjunto de elementos interconectados será combinacional se não viola nenhuma das seguintes regras:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Condição 1:} Cada elemento individual é combinacional;
+
+                    \item \textbf{Condição 2:} Cada entrada é conectada a uma, e apenas uma, saída ou fornecimento externo;
+
+                    \item \textbf{Condição 3:} Não há ciclos diretos;
+                \end{enumerate}
 \end{document}
