@@ -324,4 +324,29 @@
 
                     \item \textbf{Condição 3:} Não há ciclos diretos;
                 \end{enumerate}
+
+        \subsubsection{Buffer}
+            \paragraph{Definição}[Funcionamento] [caracteristica de transfer6encia de tensão]
+
+            \paragraph{Representação}aa
+                \begin{table}[H]
+                    \centering  
+                    \begin{tabular}[]{c|c}\hline
+                        in & out\\\hline
+                        0  & 0\\
+                        1  & 1\\\hline
+                    \end{tabular}
+                    \caption{Tabela Verdade Buffer}
+                \end{table}
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        (0,0) node[buffer] (myPort) {}
+                        (myPort.in)  node [anchor = east] {in}
+                        (myPort.out) node [anchor = west] {out};
+                    \end{circuitikz} 
+                    \caption{Porta Lógica Buffer}
+                \end{figure} \noindent
 \end{document}
