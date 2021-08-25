@@ -328,27 +328,30 @@
                 \end{enumerate}
 
         \subsubsection{Buffer}
-            \paragraph{Definição}[Funcionamento] [caracteristica de transfer6encia de tensão]
+            \paragraph{Definição}Dispositivo eletrônico que transfere tensão, visto que ao longo da transmisssão o acumulo de ruídos poderia modificar o sinal transmitido, mantem sua estabilidade apesar de logicamente não alterá-lo.
 
-            \paragraph{Representação}aa
-                \begin{table}[H]
-                    \centering  
-                    \begin{tabular}[]{c|c}\hline
-                        in & out\\\hline
-                        0  & 0\\
-                        1  & 1\\\hline
-                    \end{tabular}
-                    \caption{Tabela Verdade Buffer}
-                \end{table}
-                \begin{figure}[H]
-                    \centering
-                    \begin{circuitikz}
-                        \ctikzset{component text=left}
-                        \draw
-                        (0,0) node[buffer] (myPort) {}
-                        (myPort.in)  node [anchor = east] {in}
-                        (myPort.out) node [anchor = west] {out};
-                    \end{circuitikz} 
-                    \caption{Porta Lógica Buffer}
-                \end{figure} \noindent
+            \paragraph{Representação}Dispositivo apresentará a seguinte tabela verdade e representação em circuitos:
+                \begin{multicols}{2}
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{c|c}\hline
+                            in & out\\\hline
+                            0  & 0\\
+                            1  & 1\\\hline
+                        \end{tabular}
+                        \caption{Tabela Verdade Buffer}
+                    \end{table}
+                    \columnbreak\noindent
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (0,0) node[buffer] (myPort) {}
+                            (myPort.in)  node [anchor = east] {in}
+                            (myPort.out) node [anchor = west] {out};
+                        \end{circuitikz} 
+                        \caption{Representação Buffer}
+                    \end{figure} \noindent
+                \end{multicols}
 \end{document}
