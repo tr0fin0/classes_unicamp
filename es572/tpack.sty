@@ -1,0 +1,944 @@
+%% tpack.sty 
+%% --------------------------------------------- 
+%% A package creeated for the classes repository
+%% 
+%% by Guilherme Trofino.
+%% ---------------------------------------------
+
+
+
+
+% ----------------------------------------------
+%               Presets
+% ----------------------------------------------
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tpack}[2021/08/12 Trofino's Package]
+
+
+
+% ----------------------------------------------
+%               Packages: Required
+% ----------------------------------------------
+
+
+\usepackage[utf8]{inputenc}                                         % Language Presets
+\usepackage[english, main=portuguese]{babel}                        % Text Correction
+
+\usepackage{geometry, indentfirst, subcaption, subfiles, titlesec}  % General Presets
+\usepackage{titling}                                                % General Presets
+\usepackage{enumitem, multicol}                                     % Text Enviroments
+
+\usepackage[hidelinks]{hyperref}                                    %
+\usepackage{bookmark, chngcntr, comment, csquotes, filecontents}    % File Manapulation
+
+\usepackage{amsmath, amssymb, amsthm, cancel, float}                % Math Presets
+\usepackage{array, systeme}                                         % Table Presets
+\usepackage[thinc]{esdiff}                                          % Derivatives Presets
+
+\usepackage{graphicx}                                               % Colors
+\usepackage[table]{xcolor}                                          % Colors
+\usepackage[many]{tcolorbox}                                        % Enviroment
+
+\usepackage{circuitikz, forest, tikz, pgfplots, listings}           % Illustration
+
+\usetikzlibrary{matrix}                                             % Matrix
+\usepgfplotslibrary{statistics}                                     % Necessary for Boxplot
+
+
+
+% ----------------------------------------------
+%               Packages: Customization
+% ----------------------------------------------
+
+                        % Page Setup
+\geometry{
+    a4paper,            % Page Size
+    left=20mm,          % Left  Margin
+    right=20mm,         % Right Margin
+    bottom=25mm,        % Bottom Margin
+    top=30mm,           % Top    Margin
+    marginparwidth=50mm %
+}
+
+                                % Multicolumns Setup
+\setlength{\multicolsep}{5mm}   % Enviroment Separation
+\setlength{\columnsep}{7.5mm}   % Columns Separation
+
+                        %
+\restylefloat{table}
+
+                                % Graphics Setup
+\graphicspath{ {./images/} }    % Graphics Path
+
+                                                % Colors Setup
+\definecolor{darkgreen}{rgb}{0.0, 0.42, 0.24}   % 
+\definecolor{darkpurple}{rgb}{0.74, 0.2, 0.64}  %
+\definecolor{darkblue}{rgb}{0.0, 0.28, 0.67}    %
+
+                                        % Numering Setup
+\counterwithin{figure}{section}         % Figure {section }.{figure}
+\counterwithin{equation}{subsection}    % Equation {section}.{subsection}.{equation}
+
+
+% ----------------------------------------------
+%               Title Setup: Customization
+% ----------------------------------------------
+
+
+
+\let\stdsection\section
+\renewcommand\section{\newpage\stdsection}  % New Page before Section
+
+\titleformat
+    {\section}              % Part
+    [block]                 % Part Shape
+    {\normalfont\LARGE}     % Font Size
+    {\thesection. }         % Label Numbering
+    {0mm}                   % Part Separation
+    {}                      % Code Before
+    [{\titlerule[0.1mm]}]   % Code After
+
+    \titlespacing*{\section}{0mm}{0mm}{15mm}
+
+\titleformat
+    {\subsection}           % Part
+    [block]                 % Part Shape
+    {\normalfont\Large}     % Font Size
+    {\thesubsection. }      % Label Numbering
+    {0mm}                   % Part Separation
+    {}                      % Code Before
+    []                      % Code After
+
+    \titlespacing*{\subsection}{0mm}{5mm}{2.5mm}
+
+\titleformat
+    {\subsubsection}        % Part
+    [block]                 % Part Shape
+    {\normalfont\large}     % Font Size
+    {\thesubsubsection. }   % Label Numbering
+    {0mm}                   % Part Separation
+    {}                      % Code Before
+    []                      % Code After
+
+    \titlespacing*{\subsubsection}{0mm}{2.5mm}{2.5mm}
+
+
+% ----------------------------------------------
+%               Make Title: Customization
+% ----------------------------------------------
+
+
+
+\newcommand*{\project}[1]{\gdef\@project{#1}}
+\newcommand*{\authorRA}[1]{\gdef\@authorRA{#1}}
+
+\renewcommand{\maketitle}{
+    \begin{titlepage}
+        \begin{center}
+            \rule{450pt}{0.5pt}\\[4mm]
+            {\Huge \@title}\\
+            \rule{450pt}{0.5pt}\\[2mm]
+            {\Large \@project}\\[200mm]
+            \today\\
+            \rule{250pt}{0.5pt}\\
+            {\large \@author}\\
+            {\large \@authorRA}\\
+        \end{center}
+    \end{titlepage}
+}
+
+
+
+% ----------------------------------------------
+%               Table of Contents: Customization
+% ----------------------------------------------
+
+                                                    % Table of Contents
+\addtocontents{toc}{\protect\thispagestyle{empty}}  % Remove Numbering
+
+
+
+% ----------------------------------------------
+%               Table: Customization
+% ----------------------------------------------
+
+\newcommand{\mycell}[2]{
+    \begin{tabular}{@{}c@{}c@{}}&\tiny #2\\\normalfont #1&\end{tabular}}
+
+
+
+% ----------------------------------------------
+%               Listings: Customization
+% ----------------------------------------------
+
+\newcommand{\myOctave}{                             % Name after the Language used
+    \lstset{
+        language=Octave,                            % Code Language
+        basicstyle=\ttfamily\small,                 % Code Font Size
+        keywordstyle=\color{darkpurple}\bfseries,   % Color Key Word
+        stringstyle=\color{darkblue},               % Color String
+        commentstyle=\color{darkgreen},             % Color Comment
+        morecomment=[s][\color{blue}]{/**}{*/},     % Color Comment
+        extendedchars=true,                         % 
+        showtabs=false,                             % Show Tabs within Strings
+        showspaces=false,                           % Show Spaces Code
+        showstringspaces=false,                     % Show Spaces Strings
+        numbers=left,                               % Line Number Position
+        numberstyle=\tiny\color{gray},              % Line Number Style
+        stepnumber=1,                               % Line Number Step
+        numbersep=5pt,                              % Line Number Distance from Code
+        frame=single,                               % Frame
+        rulecolor=\color{black},                    % Frame Color
+        backgroundcolor=\color{white},              % Background Color
+        breaklines=true,                            % Break Automatic Line
+        breakatwhitespace=true,                     % Break Automatic Spaces 
+        breakautoindent=false,                      % Break Automatic Indent
+        captionpos=b,                               % Caption Position
+        xleftmargin=0pt,                            % Left Margin
+        tabsize=2,                                  % Tab Size
+    }
+}
+
+\newcommand{\myStyleBash}{
+    \lstset{
+        language=Bash,                              % Code Language
+        basicstyle=\ttfamily\small,                 % Code Font Size
+        keywordstyle=\color{darkpurple}\bfseries,   % Color Key Word
+        stringstyle=\color{darkblue},               % Color String
+        commentstyle=\color{darkgreen},             % Color Comment
+        morecomment=[s][\color{blue}]{/**}{*/},     % Color Comment
+        extendedchars=true,                         % 
+        showtabs=false,                             % Show Tabs within Strings
+        showspaces=false,                           % Show Spaces Code
+        showstringspaces=false,                     % Show Spaces Strings
+        numbers=left,                               % Line Number Position
+        numberstyle=\tiny\color{gray},              % Line Number Style
+        stepnumber=1,                               % Line Number Step
+        numbersep=5pt,                              % Line Number Distance from Code
+        frame=single,                               % Frame
+        rulecolor=\color{black},                    % Frame Color
+        breaklines=true,                            % Background Color
+        backgroundcolor=\color{white},              % Break Automatic Line
+        breakatwhitespace=true,                     % Break Automatic Spaces 
+        breakautoindent=false,                      % Break Automatic Indent
+        captionpos=b,                               % Caption Position
+        xleftmargin=0pt,                            % Left Margin
+        tabsize=2,                                  % Tab Size
+    }
+}
+
+\newcommand{\myStyleVHDL}{
+    \lstset{
+        language=VHDL,                              % Code Language
+        basicstyle=\ttfamily\small,                 % Code Font Size
+        keywordstyle=\color{darkpurple}\bfseries,   % Color Key Word
+        stringstyle=\color{darkblue},               % Color String
+        commentstyle=\color{darkgreen},             % Color Comment
+        morecomment=[s][\color{blue}]{/**}{*/},     % Color Comment
+        extendedchars=true,                         % 
+        showtabs=false,                             % Show Tabs within Strings
+        showspaces=false,                           % Show Spaces Code
+        showstringspaces=false,                     % Show Spaces Strings
+        numbers=left,                               % Line Number Position
+        numberstyle=\tiny\color{gray},              % Line Number Style
+        stepnumber=1,                               % Line Number Step
+        numbersep=5pt,                              % Line Number Distance from Code
+        frame=single,                               % Frame
+        rulecolor=\color{black},                    % Frame Color
+        breaklines=true,                            % Background Color
+        backgroundcolor=\color{white},              % Break Automatic Line
+        breakatwhitespace=true,                     % Break Automatic Spaces 
+        breakautoindent=false,                      % Break Automatic Indent
+        captionpos=b,                               % Caption Position
+        xleftmargin=0pt,                            % Left Margin
+        tabsize=2,                                  % Tab Size
+    }
+}
+
+\newcommand{\myStyleAssembly}{
+    \lstset{
+        language=[x86masm]Assembler,                % Code Language
+        basicstyle=\ttfamily\small,                 % Code Font Size
+        keywordstyle=\color{darkpurple}\bfseries,   % Color Key Word
+        stringstyle=\color{darkblue},               % Color String
+        commentstyle=\color{darkgreen},             % Color Comment
+        morecomment=[s][\color{blue}]{/**}{*/},     % Color Comment
+        extendedchars=true,                         % 
+        showtabs=false,                             % Show Tabs within Strings
+        showspaces=false,                           % Show Spaces Code
+        showstringspaces=false,                     % Show Spaces Strings
+        numbers=left,                               % Line Number Position
+        numberstyle=\tiny\color{gray},              % Line Number Style
+        stepnumber=1,                               % Line Number Step
+        numbersep=5pt,                              % Line Number Distance from Code
+        frame=single,                               % Frame
+        rulecolor=\color{black},                    % Frame Color
+        breaklines=true,                            % Background Color
+        backgroundcolor=\color{white},              % Break Automatic Line
+        breakatwhitespace=true,                     % Break Automatic Spaces 
+        breakautoindent=false,                      % Break Automatic Indent
+        captionpos=b,                               % Caption Position
+        xleftmargin=0pt,                            % Left Margin
+        tabsize=2,                                  % Tab Size
+    }
+}
+
+
+% ----------------------------------------------
+%               Circuitikz: Customization
+% ----------------------------------------------
+
+\tikzset{
+    mux2by1/.style={
+        muxdemux, muxdemux def={
+            Lh=4,
+            Rh=2,
+            w=2,
+            NL=2,
+            NB=1,
+            NR=1,
+            NT=0,
+            inset Lh=0,
+            inset Rh=0,
+            inset w=0,
+            square pins=0
+        }
+    }
+}
+
+\tikzset{
+    demux2by1/.style={
+        muxdemux, muxdemux def={
+            Lh=2,
+            Rh=4,
+            w=2,
+            NL=1,
+            NB=1,
+            NR=2,
+            NT=0,
+            inset Lh=0,
+            inset Rh=0,
+            inset w=0,
+            square pins=0
+        }
+    }
+}
+
+\ctikzset{
+  component text=left, 
+  diodes/scale=0.5, 
+  capacitors/scale=0.75, 
+  resistors/width=0.25, 
+  resistors/zigs=1
+}
+
+
+
+% ----------------------------------------------
+%               Environment: Customization
+% ----------------------------------------------
+
+\newtheoremstyle{mystyle}   % Name
+  {}                        % Space Above
+  {}                        % Space Below
+  {}                        % Body Font
+  {}                        % Indent Amount
+  {\bfseries}               % Theorem Head Font
+  {.}                       % Punctuation after Theorem
+  { }                       % Space after Theorem
+  {}                        % Theorem Head Specification
+
+
+% Numbering Enviroments AMSTHM
+% \newtheorem{〈env name〉}{〈text 〉}[〈parent counter 〉]
+% \newtheorem{〈env name〉}[〈shared counter 〉]{〈text 〉}
+
+\theoremstyle{mystyle}{
+    \newtheorem{definition}{Definição}[section]
+}
+
+\theoremstyle{mystyle}{
+    \newtheorem{theorem}{Teorema}[section]
+}
+
+\theoremstyle{mystyle}{
+    \newtheorem{lemma}[theorem]{Lemma}
+}
+
+\renewenvironment{proof}{{\bfseries Prova }}{\qed}  % Add QED symbol
+
+\theoremstyle{mystyle}{
+    \newtheorem*{remark}{Remark}
+}
+
+\theoremstyle{mystyle}{
+    \newtheorem*{example}{Exemplo}
+}
+
+\theoremstyle{mystyle}{
+    \newtheorem*{exercise}{Exercício}
+}
+
+\theoremstyle{mystyle}{
+    \newtheorem*{resolution}{Resolução}
+}
+
+
+\tcolorboxenvironment{definition}{
+    boxrule=0.1mm,                          % Box Thickness outline
+    boxsep=2pt,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{black},      % Thickness
+    sharp corners,                          % Corners Style
+    before skip=10pt,
+    after skip=10pt,
+    breakable,
+}
+
+\tcolorboxenvironment{theorem}{
+    boxrule=0.1mm,
+    boxsep=2pt,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{magenta},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    breakable,
+}
+
+\tcolorboxenvironment{lemma}{
+    boxrule=0.1mm,
+    boxsep=2pt,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{olive},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
+\tcolorboxenvironment{proof}{
+    boxrule=0.1mm,
+    boxsep=2pt,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{orange},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
+\tcolorboxenvironment{remark}{
+    boxrule=0.1mm,
+    boxsep=2pt,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{brown},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
+\tcolorboxenvironment{example}{
+    boxrule=0.1mm,
+    boxsep=2pt,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{violet},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
+\tcolorboxenvironment{exercise}{
+    boxrule=0.1mm,
+    boxsep=2pt,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{teal},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
+\tcolorboxenvironment{resolution}{
+    boxrule=0.1mm,
+    boxsep=2pt,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{darkgray},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
+
+
+% ----------------------------------------------
+%               Forest: Customization
+% ----------------------------------------------
+
+\tikzset{
+    iv/.style={
+        draw,
+        fill=white,
+        circle,
+        minimum size=20pt,
+        inner sep=0pt,
+        text=black
+    },
+    ev/.style={
+        draw,
+        fill=gray!50,
+        rectangle,
+        minimum size=20pt,
+        inner sep=0pt,
+        text=black
+    }
+}
+
+
+
+
+% ----------------------------------------------
+%               Listings: Customization
+% ----------------------------------------------
+
+\usetikzlibrary{chains}
+\usetikzlibrary{positioning}
+\usepackage{xstring}
+
+\makeatletter
+\pgfdeclareshape{tolposition}{
+  \inheritsavedanchors[from=rectangle]
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{%
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfpathmoveto{\pgfpoint{-\pgf@xb}{0pt}}
+    \pgfpathlineto{\pgfpoint{\pgf@xb}{0pt}}
+    \pgfpathmoveto{\pgfpointadd{\pgfpointorigin}{\pgfpoint{0pt}{-\pgf@yb}}}
+    \pgfpathlineto{\pgfpoint{0pt}{\pgf@yb}}
+    \pgfusepath{stroke}
+    \pgfpathcircle{\pgfpointorigin}{0.6\pgf@yb}
+ }
+}
+
+\pgfdeclareshape{tolstraightness}{
+  \inheritsavedanchors[from=rectangle]
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{%
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfpathmoveto{\pgfpointadd{\pgfpointorigin}{\pgfpoint{-0.6\pgf@xb}{0pt}}}
+    \pgfpathlineto{\pgfpoint{0.6\pgf@xb}{0pt}}
+ }
+}
+
+\pgfdeclareshape{tolflatness}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{%
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{-0.6\pgf@xb}{-0.3\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.3\pgf@xb}{-0.3\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.6\pgf@xb}{0.3\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{-0.3\pgf@xb}{0.3\pgf@yb}}
+    \pgfpathclose
+ }
+}
+
+
+\pgfdeclareshape{tolcircularity}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{%
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathcircle{\pgfpointorigin}{0.6\pgf@yb}
+ }
+}
+
+\pgfdeclareshape{tolcylindricity}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    {
+        \pgftransformrotate{60}
+        \pgfpathmoveto{\pgfpoint{-\pgf@xb}{0.4\pgf@yb}}
+        \pgfpathlineto{\pgfpoint{0.6\pgf@xb}{0.4\pgf@yb}}
+        \pgfpathmoveto{\pgfpoint{-0.6\pgf@xb}{-0.4\pgf@yb}}
+        \pgfpathlineto{\pgfpoint{\pgf@xb}{-0.4\pgf@yb}}
+    }
+    \pgfusepath{stroke}
+    \pgfpathcircle{\pgfpointorigin}{0.4\pgf@yb}
+ }
+}
+
+\pgfdeclareshape{tolprofile line}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{%
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    %% The path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{-0.6\pgf@yb}{-0.3\pgf@yb}}
+    \pgfpatharc{180}{0}{0.6\pgf@yb}
+ }
+}
+
+\pgfdeclareshape{tolprofile surface}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{-0.6\pgf@yb}{-0.3\pgf@yb}}
+    \pgfpatharc{180}{0}{0.6\pgf@yb}
+    \pgfpathclose
+ }
+}
+
+
+\pgfdeclareshape{tolperpendicularity}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfpathmoveto{\pgfpoint{-0.6\pgf@yb}{-0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.6\pgf@yb}{-0.6\pgf@yb}}
+    \pgfpathmoveto{\pgfpoint{0pt}{-0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0pt}{0.6\pgf@yb}}
+ }
+}
+
+\pgfdeclareshape{tolangularity}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{0.6\pgf@yb}{0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{-0.6\pgf@yb}{-0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.6\pgf@yb}{-0.6\pgf@yb}}
+ }
+}
+
+
+\pgfdeclareshape{tolparallelism}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{-0.5\pgf@yb}{-0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0pt}{0.6\pgf@yb}}
+    \pgfpathmoveto{\pgfpoint{0pt}{-0.6\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.5\pgf@yb}{0.6\pgf@yb}}
+ }
+}
+
+
+\pgfdeclareshape{tolsymmetry}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfpathmoveto{\pgfpoint{-0.4\pgf@yb}{-0.4\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.4\pgf@yb}{-0.4\pgf@yb}}
+    \pgfpathmoveto{\pgfpoint{-0.6\pgf@yb}{0pt}}
+    \pgfpathlineto{\pgfpoint{0.6\pgf@yb}{0pt}}
+    \pgfpathmoveto{\pgfpoint{-0.4\pgf@yb}{0.4\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.4\pgf@yb}{0.4\pgf@yb}}
+ }
+}
+
+\pgfdeclareshape{tolconcentricity}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    {\pgfpathcircle{\pgfpointorigin}{0.6\pgf@yb}}
+    \pgfpathcircle{\pgfpointorigin}{0.4\pgf@yb}
+ }
+}
+
+\pgfdeclareshape{tolcircular runout}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpointadd
+        {\pgfpoint{0pt}{0pt}}
+        {\pgfpointpolar{50}{0.2\pgf@yb}}
+    }
+    \pgfpathlineto{\pgfpointadd
+        {\pgfpoint{0pt}{0pt}}
+        {\pgfpointpolar{50}{-0.7\pgf@yb}}
+    }
+    \pgfusepath{stroke}
+    {\pgftransformrotate{-40}
+    \pgfpathmoveto{\pgfpoint{-0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0pt}{0.7\pgf@yb}}
+    \pgfpathclose
+    \pgfusepath{fill}
+    }
+ }
+}
+
+\pgfdeclareshape{toltotal runout}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+
+  %% The path
+  \backgroundpath{
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpointadd
+        {\pgfpoint{-0.3\pgf@yb}{0pt}}
+        {\pgfpointpolar{50}{0.2\pgf@yb}}
+    }
+    \pgfpathlineto{\pgfpointadd
+        {\pgfpoint{-0.3\pgf@yb}{0pt}}
+        {\pgfpointpolar{50}{-0.7\pgf@yb}}
+    }
+    \pgfpathlineto{\pgfpointadd
+        {\pgfpoint{0.3\pgf@yb}{0pt}}
+        {\pgfpointpolar{50}{-0.7\pgf@yb}}
+    }
+    \pgfpathlineto{\pgfpointadd
+        {\pgfpoint{0.3\pgf@yb}{0pt}}
+        {\pgfpointpolar{50}{0.2\pgf@yb}}
+    }
+    \pgfusepath{stroke}
+    {
+    \pgftransformxshift{-0.3\pgf@yb}
+    \pgftransformrotate{-40}
+    \pgfpathmoveto{\pgfpoint{-0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0pt}{0.7\pgf@yb}}
+    \pgfpathclose
+    \pgfusepath{fill}
+    }
+    {
+    \pgftransformxshift{0.3\pgf@yb}
+    \pgftransformrotate{-40}
+    \pgfpathmoveto{\pgfpoint{-0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0.2\pgf@yb}{0.2\pgf@yb}}
+    \pgfpathlineto{\pgfpoint{0pt}{0.7\pgf@yb}}
+    \pgfpathclose
+    \pgfusepath{fill}
+    }
+ }
+}
+
+\pgfdeclareshape{tolmodifier}{
+  \inheritsavedanchors[from=rectangle] 
+  \inheritanchorborder[from=rectangle]
+  \foreach \anchor in {center,north,south,west,east,north east,south east,north west, south west}{
+    \inheritanchor[from=rectangle]{\anchor}
+  }
+  \backgroundpath{% this is new
+    % store lower right in xa/ya and upper right in xb/yb
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    % construct main path
+    \pgfpathrectanglecorners
+        {\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+        {\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgfusepath{stroke}
+    \pgfpathcircle{\pgfpointlineattime{0.5}{\southwest}{\northeast}}{0.55\pgf@yb}
+ }
+}
+
+\makeatother
+
+
+
+\tikzset{
+    tolstyle/.style={
+        draw,
+        on chain=going right,
+        inner ysep=0pt,
+        minimum height=1.7em
+    },
+    type/.style={tol#1},
+    modifier/.style={tolmodifier,font=#1}
+}
+
+\newcommand{\tol}[1]{%
+    \begin{tikzpicture}[baseline=-0.3em,
+        start chain,
+        node distance=-\pgflinewidth
+    ]
+        \foreach \content in {#1} {
+            \IfSubStr{\content}{type}{
+                \edef\donode{%
+                    \noexpand\node[
+                        tolstyle,
+                        minimum width=\noexpand\pgfkeysvalueof{/pgf/minimum height},
+                        \content
+                    ]{};
+                }
+                \donode
+            }{
+                \IfSubStr{\content}{modifier}{
+                \edef\donode{\noexpand\node[tolstyle,tolmodifier,minimum width=\noexpand\pgfkeysvalueof{/pgf/minimum height},\content]{};}
+                \donode
+            }
+                \node[tolstyle]{\content};
+            }
+        }
+    \end{tikzpicture}%
+}
+
+\endinput
