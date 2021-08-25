@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{tpack}
+
+
+\begin{document}
+    \section{Exercício 01}
+        \paragraph{Apresentação}Resolução das questões de Análise Linear de Sistemas por Guilherme Nunes Trofino, 217276.
+
+        \subsection{Questão 1}
+            \begin{exercise}
+                Modelar um sistema RC série com tensão aplicada no circuito como entrada e tensão no capacitor como saída. Implementar a equação diferencial como um diagrama de blocos e simular no Simulink para um entrada em degrau de tensão de 10 V e condições iniciais nulas. A resistência é de 1 kOhm e o capacitor de 2000 uF.
+            \end{exercise}
+            \begin{resolution}
+                Primeiramente será necessário elaborar o circuito requisitado:
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}[american voltages]
+                            \ctikzset{
+                                component text=left, 
+                                diodes/scale=0.5, 
+                                resistors/width=0.25, 
+                                resistors/zigs=1
+                            }
+                            \draw
+                            (0,0)   to[sV, l=$v_{\text{in}}$]       ++(0,3) {}
+                                    to[R, l_=$R_{1}$, v^=$v_{R}$]   ++(3,0) coordinate (vOUT)
+                                    to[C, l_=$C_{1}$, v^=$v_{C}$]   ++(0,-3)
+                                    to[short]                       (0,0);
+                        \end{circuitikz}
+                        \caption{Circuito RC}
+                    \end{figure}
+                    Note que o degrau de alimentação será represetado como uma fonte variável e analisando pela \textbf{Lei das Malhas} nessa única malha, obtêm-se a seguinte equação:
+                    \begin{align}
+                        v_{\text{in}}   &= v_{R} + v_{C}\\
+                                        &= R_{1}\;i + v_{C}\\
+                                        &= R_{1}\;C_{1}\diff{v_{C}}{t} + v_{C}\\
+                                        &= R_{1}\;C_{1}\dot{v}_{C} + v_{C}\\
+                        \dot{v}_{C}     &= \frac{1}{R_{1}C_{1}}v_{\text{in}} - \frac{1}{R_{1}C_{1}}v_{C}\label{eq:simulink}
+                    \end{align}
+                Desta forma, a equação \ref{eq:simulink} será representada no Simulink com o seguinte diagrama:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 5cm]{es601_ex01_im01.png}
+                        \caption{Diagrama no Simulink}
+                    \end{figure}
+                Note que nesta configuração apresenta $\tau = R_{1}C_{1} = 2$ s, desta forma a simulação deve possuir ao menos $5\tau = 10$ s de análise para que o transiente seja superado. Consequentemente obtêm-se o seguinte gráfico para representar a tensão sobre o capacitor:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 8cm]{es601_ex01_im02.png}
+                        \caption{Gráfico da Simulação no Simulink}
+                    \end{figure}
+                \end{resolution}
+
+            \begin{exercise}
+                Calcular a solução analítica (resolver a equação diferencial ou usar Laplace, como preferir), implementar no MATLAB e comparar o resultado com o do Simulink.
+            \end{exercise}
+            \begin{resolution}
+                a
+            \end{resolution}
+\end{document}
