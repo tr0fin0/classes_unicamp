@@ -22,10 +22,10 @@
                                 resistors/zigs=1
                             }
                             \draw
-                            (0,0)   to[sV, l=$v_{\text{in}}$]       ++(0,3) {}
-                                    to[R, l_=$R_{1}$, v^=$v_{R}$]   ++(3,0) coordinate (vOUT)
-                                    to[C, l_=$C_{1}$, v^=$v_{C}$]   ++(0,-3)
-                                    to[short]                       (0,0);
+                            (0,0)   to[sV, l=$v_{\text{in}}$]   ++(0,3) {}
+                                    to[R, l_=$R$, v^=$v_{R}$]   ++(3,0) coordinate (vOUT)
+                                    to[C, l_=$C$, v^=$v_{C}$]   ++(0,-3)
+                                    to[short]                   (0,0);
                         \end{circuitikz}
                         \caption{Circuito RC}
                     \end{figure}
