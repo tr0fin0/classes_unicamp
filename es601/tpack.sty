@@ -196,7 +196,7 @@
         breakatwhitespace=true,                     % Break Automatic Spaces 
         breakautoindent=false,                      % Break Automatic Indent
         captionpos=b,                               % Caption Position
-        xleftmargin=0pt,                            % Left Margin
+        xleftmargin=5mm,                            % Left Margin
         tabsize=2,                                  % Tab Size
     }
 }
@@ -224,7 +224,7 @@
         breakatwhitespace=true,                     % Break Automatic Spaces 
         breakautoindent=false,                      % Break Automatic Indent
         captionpos=b,                               % Caption Position
-        xleftmargin=0pt,                            % Left Margin
+        xleftmargin=5mm,                            % Left Margin
         tabsize=2,                                  % Tab Size
     }
 }
@@ -252,7 +252,7 @@
         breakatwhitespace=true,                     % Break Automatic Spaces 
         breakautoindent=false,                      % Break Automatic Indent
         captionpos=b,                               % Caption Position
-        xleftmargin=0pt,                            % Left Margin
+        xleftmargin=5mm,                            % Left Margin
         tabsize=2,                                  % Tab Size
     }
 }
@@ -280,7 +280,7 @@
         breakatwhitespace=true,                     % Break Automatic Spaces 
         breakautoindent=false,                      % Break Automatic Indent
         captionpos=b,                               % Caption Position
-        xleftmargin=0pt,                            % Left Margin
+        xleftmargin=5mm,                            % Left Margin
         tabsize=2,                                  % Tab Size
     }
 }
@@ -381,6 +381,10 @@
     \newtheorem*{exercise}{Exercício}
 }
 
+\theoremstyle{mystyle}{
+    \newtheorem*{resolution}{Resolução}
+}
+
 
 \tcolorboxenvironment{definition}{
     boxrule=0.1mm,                          % Box Thickness outline
@@ -475,6 +479,46 @@
     right=12pt,
     breakable,
 }
+
+\tcolorboxenvironment{resolution}{
+    boxrule=0.1mm,
+    boxsep=2pt,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{darkgray},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
+
+
+% ----------------------------------------------
+%               Forest: Customization
+% ----------------------------------------------
+
+\tikzset{
+    iv/.style={
+        draw,
+        fill=white,
+        circle,
+        minimum size=20pt,
+        inner sep=0pt,
+        text=black
+    },
+    ev/.style={
+        draw,
+        fill=gray!50,
+        rectangle,
+        minimum size=20pt,
+        inner sep=0pt,
+        text=black
+    }
+}
+
 
 
 
