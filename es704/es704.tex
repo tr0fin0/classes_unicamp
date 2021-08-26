@@ -13,8 +13,8 @@
     \tableofcontents
 \newpage
 
-    \section{Introdução}
-        \paragraph{Apresentação}Neste documento será descrito as informações necessárias para compreensão e solução de exercícios relacionados a disciplina \thetitle. Note que este documento são notas realizadas por \theauthor, em \today.
+\section{Introdução}
+    \paragraph{Apresentação}Neste documento será descrito as informações necessárias para compreensão e solução de exercícios relacionados a disciplina \thetitle. Note que este documento são notas realizadas por \theauthor, em \today.
 
     \subsection{Medição}
         \paragraph{Definição}Atribuição do valor, ou tendência de valores, à variável de interesse, normalmente proviniente a um sistema que se deja analisar.
@@ -55,4 +55,30 @@
             \paragraph{Definição}Aplicar uma entrada conhecida para medir a resposta do sistema com a saída sempre seguindo a forma de onda da entrada.
 
             \paragraph{Constante de Tempo}Variável denotada pela constante $\tau$ para representar o tempo necessário para que o sistema atinga $63,2\%$ de seu valor final. Comumente, define-se que $5\tau$ representa o tempo necessário para que sistema se estabilize após um estímulo.
+
+    \subsection{Erro}
+        \paragraph{Definição}Diferença entre os valores medidos $y$ e seus correspondentes valores reais $y'$ de uma variável como expresso pela seguinte equação:
+            \begin{equation}
+                \boxed{
+                    e = |y - y'|
+                }
+            \end{equation}
+
+        \subsubsection{Erro Aleatório}
+            \paragraph{Definição}Problemas que afetam a \textbf{Precisão} do sistema, pois causam o espalhamento dos dados em relação ao valor real.
+
+        \subsubsection{Erro Sistemático}
+            \paragraph{Definição}Problemas que afetam a \textbf{Exatidão} do sistema, pois causam a deflexão do valor medido em relação ao valor real.
+
+        \subsubsection{Erro Experimental}
+            \paragraph{Definição}Diferentes problemas visíveis durante a análise dos dados causados por métodos inadequados de experimentação, entre os principais estão:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Histerese:} Diferença na resposta do sistema exitado por entradas crescentes, \texttt{upscale} e decrescentes, \texttt{downscale};
+
+                    \item \textbf{Linearidade:} Diferença na resposta em relação a curva de calibração linear;
+
+                    \item \textbf{Sensibilidade:} Diferença no valor do ganho do sistema ;
+
+                    \item \textbf{Retorno ao Zero:} Diferença na resposta do sistema para uma entrada nula;
+                \end{enumerate}
 \end{document}
