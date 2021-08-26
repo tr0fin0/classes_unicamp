@@ -21,19 +21,26 @@
 
     \subsection{Calibração}
         \paragraph{Definição}Determinar matematicamente a relação entre a entrada e sistema de medição, possuindo \textbf{dimensões} que devem estar de acordo com as \textbf{Normas Técnicas}. Classificadas de acordo com mostrado a seguir:
-            \begin{enumerate}[rightmargin = \leftmargin]
-                \item \textbf{Calibração Estática:} Aplicar uma entrada conhecida para medir a resposta do sistema, representada em um gráfico;
 
-                \item \textbf{Calibração Dinâmica:} Aplicar uma entrada continuamente, medindo a saída do sistema;
-                    \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
-                        \item \texttt{Constante de Tempo:} Representa o tempo necessário para que a sistema perco
+        \subsubsection{Calibração Estática}
+            \paragraph{Definição}Aplicar uma entrada conhecida para medir a resposta do sistema, representada em um gráfico como mostrado a seguir:
 
-                        \item \texttt{Resposta na Frequência:} 
-                    \end{enumerate}
+            \paragraph{Curva de Calibração}Relação entre a entrada e saída de dados definida por $y = f(x)$.
 
-               \item \textbf{Erros:}
-                    
-            \end{enumerate}
+            \paragraph{Sensibilidade Estática}Representa a proporção entre a entrada e a saída nas regiões de baixa e alta sensibilidade como expressado pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        K = \diff{f(x)}{x}\Bigr|_{\substack{x = x_{0}}}
+                    }
+                \end{equation}
 
+            \paragraph{Faixa Dinâmica}Intervalo no qual a curva de calibração é válida, pois há dados para suportar as hipóteses. Fora deste intervalo, a resposta será uma \textbf{Extrapolação}.
+                \begin{equation}
+                    \boxed{r_{i} = x_{\text{max}} - x_{\text{min}}}
+                    \qquad
+                    \boxed{r_{o} = y_{\text{max}} - y_{\text{min}}}
+                \end{equation}
+
+            \paragraph{Resolução}Menor incremento que pode ser detectado pelo sistema de medição. Geralmente determinado pela escala indicada pelos equipamentos de medição ou pelas restrições do sistema.
 
 \end{document}
