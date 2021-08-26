@@ -43,4 +43,11 @@
 
             \paragraph{Resolução}Menor incremento que pode ser detectado pelo sistema de medição. Geralmente determinado pela escala indicada pelos equipamentos de medição ou pelas restrições do sistema.
 
+            \paragraph{Coeficiente de Determinação}Grau de compatibilidade entre os valores amostrados, $y$, e os valores do \textbf{Curve Fitting}, $y_{C}$, relacionados pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        R^{2} = 1 - \frac{\sum(y - y_{C})^{2}}{\sum(y - \bar{y})^{2}}
+                    }
+                \end{equation}
+            Quanto mais próximo de 1 melhor será o ajuste da curva.
 \end{document}
