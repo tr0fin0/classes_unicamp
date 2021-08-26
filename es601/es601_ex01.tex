@@ -42,13 +42,13 @@
                 Desta forma, a equação \ref{eq:simulink} será representada no Simulink com o seguinte diagrama:
                     \begin{figure}[H]
                         \centering
-                        \includegraphics[height = 5cm]{es601_ex01_im01.png}
+                        % \includegraphics[height = 5cm]{es601_ex01_im01.png}
                         \caption{Diagrama no Simulink}
                     \end{figure}
                 Note que nesta configuração apresenta $\tau = RC = 2$ s, desta forma a simulação deve possuir ao menos $5\tau = 10$ s de análise para que o transiente seja superado. Consequentemente obtêm-se o seguinte gráfico para representar a tensão sobre o capacitor:
                     \begin{figure}[H]
                         \centering
-                        \includegraphics[height = 8cm]{es601_ex01_im02.png}
+                        % \includegraphics[height = 8cm]{es601_ex01_im02.png}
                         \caption{Gráfico da Simulação no Simulink}
                     \end{figure}
                 \end{resolution}
@@ -57,6 +57,47 @@
                 Calcular a solução analítica (resolver a equação diferencial ou usar Laplace, como preferir), implementar no MATLAB e comparar o resultado com o do Simulink.
             \end{exercise}
             \begin{resolution}
-                a
+                Inicialmente parte-se da equação \ref{eq:analytics} que será solucionada pela \textbf{Transformada de Laplace} como representada abaixo:
+                    \begin{align}
+                        v_{\text{in}}           &= RC\diff{v_{C}}{t} + v_{C}\nonumber\\
+                        v_{\text{in}}u(t)       &= RC\diff{v_{C}}{t} + v_{C} & \text{Incluindo \texttt{Função Degrau}}\nonumber\\
+                        \Aboxed{
+                            \frac{v_{\text{in}}}{s} &= RC(sV_{C} - v_{C0}) + V_{C}
+                        } & \text{Aplicando \texttt{Laplace}}
+                    \end{align}
+                As condições iniciais serão consideradas como não nulas no desenvolvimento para demonstração de um caso geral. Na sequência será necessário isolar a variável desejada, $V_{C}$, procedendo da seguinte forma:
+                    \begin{align}
+                        V_{C}(RCs + 1)          &= \frac{v_{\text{in}}}{s} + RCv_{C0}\nonumber\\
+                        V_{C}(s + \frac{1}{RC}) &= \frac{v_{\text{in}}}{RCs} + v_{C0}\nonumber\\
+                        \Aboxed{
+                            V_{C}                   &= \frac{v_{\text{in}}}{RCs(s + \frac{1}{RC})} + \frac{v_{C0}}{(s + \frac{1}{RC})}
+                        } & \text{Equação Isolada}
+                    \end{align}
+                Note que será necessário simplificar a equação através de \textbf{Frações Parciais} para que a \textbf{Anti-Transformada de Laplace} possa ser aplicada e solução encontrada. Desta forma tem-se a seguinte equação:
+                    \begin{equation*}
+                        \frac{v_{\text{in}}}{RCs(s + \frac{1}{RC})} = 
+                        \frac{A}{RCs} + \frac{B}{(s + \frac{1}{RC})}
+                        \quad
+                        \begin{cases}
+                            As + BRCs = 0                & \rightarrow \boxed{B =  -v_{\text{in}}}\\[2.5mm]
+                            \frac{A}{RC} = v_{\text{in}} & \rightarrow \boxed{A = RCv_{\text{in}}}\\
+                        \end{cases}
+                    \end{equation*}
+                Obtém-se a seguinte equação geral para $V_{C}$:
+                    \begin{align}
+                        V_{C}       &= \frac{v_{\text{in}}}{s} + \frac{v_{\text{in}}}{s + \frac{1}{RC}} + \frac{v_{C0}}{s + \frac{1}{RC}}\nonumber\\
+                        v_{C}(t)    &= v_{\text{in}} - v_{\text{in}}e^{-\frac{1}{RC}t} + v_{C0}e^{-\frac{1}{RC}t} & \text{Aplicando \texttt{Anti-Laplace}}\nonumber\\
+                        \Aboxed{
+                            v_{C}(t)    &= v_{\text{in}}(1 - e^{-\frac{1}{RC}t}) + v_{C0}e^{-\frac{1}{RC}t}
+                        } & \text{Aplicando Condições Iniciais}\\
+                        \Aboxed{
+                            v_{C}(t)    &= 10(1 - e^{-\frac{1}{2}t})
+                        }
+                    \end{align}
+                Equação acima será modelada em Mathlab através do seguinte algoritmo:
+                    \begin{scriptsize}
+                        \myOctave
+                        \lstinputlisting{es601_ex01_cd01.m}
+                    \end{scriptsize}
             \end{resolution}
 \end{document}
