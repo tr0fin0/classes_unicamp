@@ -476,6 +476,46 @@
     breakable,
 }
 
+\tcolorboxenvironment{resolution}{
+    boxrule=0.1mm,
+    boxsep=2pt,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{darkgray},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
+
+
+% ----------------------------------------------
+%               Forest: Customization
+% ----------------------------------------------
+
+\tikzset{
+    iv/.style={
+        draw,
+        fill=white,
+        circle,
+        minimum size=20pt,
+        inner sep=0pt,
+        text=black
+    },
+    ev/.style={
+        draw,
+        fill=gray!50,
+        rectangle,
+        minimum size=20pt,
+        inner sep=0pt,
+        text=black
+    }
+}
+
+
 
 
 % ----------------------------------------------
