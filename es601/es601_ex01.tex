@@ -28,14 +28,16 @@
                                     to[short]                   (0,0);
                         \end{circuitikz}
                         \caption{Circuito RC}
-                    \end{figure}
-                    Note que o degrau de alimentação será represetado como uma fonte variável e analisando pela \textbf{Lei das Malhas} nessa única malha, obtêm-se a seguinte equação:
+                    \end{figure}\noindent
+                Note que o degrau de alimentação será represetado como uma fonte variável e analisando pela \textbf{Lei das Malhas} nessa única malha, obtêm-se a seguinte equação:
                     \begin{align}
-                        v_{\text{in}}   &= v_{R} + v_{C}\\
-                                        &= R_{1}\;i + v_{C}\\
-                                        &= R_{1}\;C_{1}\diff{v_{C}}{t} + v_{C}\\
-                                        &= R_{1}\;C_{1}\dot{v}_{C} + v_{C}\\
-                        \dot{v}_{C}     &= \frac{1}{R_{1}C_{1}}v_{\text{in}} - \frac{1}{R_{1}C_{1}}v_{C}\label{eq:simulink}
+                        v_{\text{in}}   &= v_{R} + v_{C}\nonumber\\
+                                        &= Ri + v_{C}\nonumber\\
+                        v_{\text{in}}   &= RC\diff{v_{C}}{t} + v_{C}\label{eq:analytics}\\
+                                        &= RC\dot{v}_{C} + v_{C}\nonumber\\
+                        \Aboxed{
+                            \dot{v}_{C} &= \frac{1}{RC}v_{\text{in}} - \frac{1}{RC}v_{C}\label{eq:simulink}
+                        }
                     \end{align}
                 Desta forma, a equação \ref{eq:simulink} será representada no Simulink com o seguinte diagrama:
                     \begin{figure}[H]
@@ -43,7 +45,7 @@
                         \includegraphics[height = 5cm]{es601_ex01_im01.png}
                         \caption{Diagrama no Simulink}
                     \end{figure}
-                Note que nesta configuração apresenta $\tau = R_{1}C_{1} = 2$ s, desta forma a simulação deve possuir ao menos $5\tau = 10$ s de análise para que o transiente seja superado. Consequentemente obtêm-se o seguinte gráfico para representar a tensão sobre o capacitor:
+                Note que nesta configuração apresenta $\tau = RC = 2$ s, desta forma a simulação deve possuir ao menos $5\tau = 10$ s de análise para que o transiente seja superado. Consequentemente obtêm-se o seguinte gráfico para representar a tensão sobre o capacitor:
                     \begin{figure}[H]
                         \centering
                         \includegraphics[height = 8cm]{es601_ex01_im02.png}
