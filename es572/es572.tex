@@ -411,10 +411,13 @@
 
         \subsection{CMOS}
             \paragraph{Definição}Metodologia de projeto de circuitos digitais dominante no mercado por seu baixo consumo de energia que deve atender aos seguintes requisitos:
-                \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
-                    \item \textbf{Pull-Down:} Conexão com baixa tensão através de NMOS;
-                    \item \textbf{Pull-Up:} Conexão com alta tensão através de PMOS;
-                    \item \textbf{Circuitos Duais:} ;
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Conexão:} Necessidades de configuração do dispositivo:
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Pull-Down:} Baixa tensão, representadas por $V_{\text{SS}}$, através de NMOS;
+                            \item \texttt{Pull-Up:} Alta tensão, representadas por $V_{\text{DD}}$, através de PMOS;
+                        \end{enumerate}
+                    \item \textbf{Dualidade:} Conexões em série PMOS são logicamente equivalentes a conexões em paralelo NMOS e vice versa;
                 \end{enumerate}
 
             \subsubsection{Inversor}
