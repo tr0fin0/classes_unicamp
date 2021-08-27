@@ -61,7 +61,9 @@
                                          & $e^{at}\;\cos(bt)$  & $\frac{s-a}{(s-a)^2+b^2}$\\
                         Convolução       & $\int_{0}^{t} f(\varphi)\;g(t - \varphi) \text{d}\varphi$ & $F(s)\cdot G(s)$\\
                         Integral         & $\int_{0}^{t} f(\varphi)\;u(t - \varphi) \text{d}\varphi$ & $\frac{F(s)}{s}$\\
-                        Derivada         & $\diff{f(\varphi)}{\varphi} $ & $s\cdot F(s)$\\\hline
+                        Derivada         & $\diff{f(\varphi)}{\varphi}$ & $s\cdot F(s)$\\
+                        Frequência       & $e^{-at}f(t)$          & $F(s+a)$\\
+                        Temporal         & $f(t-\tau)\mu(t-\tau)$ & $e^{-s\tau}F(s)$\\\hline
                     \end{tabular}
                     \endgroup
                     \caption{Tabela de Transformadas de Laplace}\label{table:Laplace}
@@ -69,14 +71,13 @@
             Conside que as funções \textbf{Trigonométricas Hiperbólicas} são definidas pelas equações abaixo:
                 \begin{equation}
                     \boxed{
-                        \sinh(x) = \frac{e^{x} - e^{-x}}{2}
+                        \sinh(ax) = \frac{e^{ax} - e^{-ax}}{2}
                     }
                     \qquad
                     \boxed{
-                        \cosh(x) = \frac{e^{x} + e^{-x}}{2}
+                        \cosh(ax) = \frac{e^{ax} + e^{-ax}}{2}
                     }
                 \end{equation}
-            \newpage
 
             \subsubsection{Degrau Unitário}
                 \paragraph{Definição}Representação de descontinuidade unitária, normalmente utilizada para representar mudanças instantâneas em sistemas. Formalmente descrita pela seguinte equação:
@@ -129,7 +130,7 @@
                     \end{equation}
 
         \subsection{Transformada de Componentes}
-            \paragraph{Definição}Substituir as equações que descrevem cada componente empregado em um circuito através de seu equivalente em \textbf{Laplace} simplificará os cálculos e poderá integrar suas condições iniciais na análise como representado abaixo:
+            \paragraph{Definição}Substituir as equações que descrevem cada componente empregado em um circuito através de seu equivalente em \textbf{Laplace} simplificará os cálculos e poderá integrar suas condições iniciais na análise. Nesta transformação o circuito resultante será puramente resistivo e obedecerá às \textbf{Leis de Kirchhoff}.
 
             \subsubsection{Capacitor}
                 \paragraph{Definição}Genericamente considera-se a seguinte equação para descrever o comportamento do componente:
@@ -167,4 +168,14 @@
                         }
                     \end{equation}
 
+        \subsection{Função de Rede}
+            \paragraph{Definição}Simplificação dos circuitos de tal forma que análise seja facilitada pela utilização de suas entradas e de suas saídas sempre presupondo que as condições iniciais nulas obtidas pelas seguintes equações:
+                \begin{equation}
+                    \boxed{H(s) = \frac{I(s)}{V(s)}}
+                \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item $V(s)$, \textbf{Entrada:} Tensão de Entrada;
+                    \item $I(s)$, \textbf{Saída:} Saída de Corrente;
+                \end{enumerate}
 \end{document}
