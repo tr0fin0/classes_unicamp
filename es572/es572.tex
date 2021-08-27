@@ -453,21 +453,21 @@
                     \begin{circuitikz}
                         \ctikzset{component text=left}
                         \draw
-                                (0, 1) node[pmos] (myPFET) {}
-                                (0,-1) node[nmos] (myNFET) {}
-                
-                                (myPFET.G) -- (myNFET.G)
-                                (myPFET.D) -- (myNFET.D)
-                
-                                (-1.48,0) to[short, o-*] (-0.98,0)
-                                ( 0,0) to[short, *-o] ( 0.5, 0)
-                
-                                (-1.48,0) node[left]{$v_{i}$}
-                                ( 0.5,0) node[right]{$v_{o}$}
-                
-                                (myPFET.S) node[vcc]{$v_{\text{DD}}$}
-                                (myNFET.S) node[tlground]{$v_{\text{SS}}$};
-                            \end{circuitikz} 
+                        (0, 1) node[pmos] (myPFET) {}
+                        (0,-1) node[nmos] (myNFET) {}
+        
+                        (myPFET.G) -- (myNFET.G)
+                        (myPFET.D) -- (myNFET.D)
+        
+                        (-1.48,0) to[short, o-*] (-0.98,0)
+                        ( 0,0) to[short, *-o] ( 0.5, 0)
+        
+                        (-1.48,0) node[left]{$v_{i}$}
+                        ( 0.5,0) node[right]{$v_{o}$}
+        
+                        (myPFET.S) node[vcc]{$v_{\text{DD}}$}
+                        (myNFET.S) node[tlground]{$v_{\text{SS}}$};
+                    \end{circuitikz} 
                             \caption{Representação Inversor}
                         \end{figure} \noindent
                     \end{multicols}\noindent
