@@ -423,23 +423,36 @@
         \subsubsection{Inversor}
             \paragraph{Definição}Dispositivo eletrônico que inverte sua tensão entrada, valores de entrada alto implicam saída baixa e valores baixos de entrada implicam saída alta.
 
-                \paragraph{Representação}Dispositivo apresentará a seguinte tabela verdade e representação em circuitos:
-                    \begin{multicols}{2}
-                        \begin{table}[H]
-                            \centering  
-                            \begin{tabular}[]{c|c}\hline
-                                in & out\\\hline
-                                0  & 1\\
-                                1  & 0\\\hline
-                            \end{tabular}
-                            \caption{Tabela Verdade Inversor}
-                        \end{table}
-                        \columnbreak\noindent
-                        \begin{figure}[H]
-                            \centering
-                            \begin{circuitikz}
-                                \ctikzset{component text=left}
-                                \draw
+            \paragraph{Representação}Dispositivo apresentará a seguinte tabela verdade e representação em circuitos:
+                \begin{multicols}{2}
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{c|c}\hline
+                            in & out\\\hline
+                            0  & 1\\
+                            1  & 0\\\hline
+                        \end{tabular}
+                        \caption{Tabela Verdade Inversor}
+                    \end{table}
+                    \columnbreak\noindent
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (0,0) node[not port] (myPort) {}
+                            (myPort.in)  node [anchor = east] {in}
+                            (myPort.out) node [anchor = west] {out};
+                        \end{circuitikz} 
+                        \caption{Representação Inversor}
+                    \end{figure} \noindent
+                \end{multicols}\noindent
+            Normalmente este componente será implementado com a seguinte configuração:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
                                 (0, 1) node[pmos] (myPFET) {}
                                 (0,-1) node[nmos] (myNFET) {}
                 
