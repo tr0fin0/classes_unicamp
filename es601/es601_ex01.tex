@@ -42,17 +42,17 @@
                 Desta forma, a equação \ref{eq:simulink} será representada no Simulink com o seguinte diagrama:
                     \begin{figure}[H]
                         \centering
-                        % \includegraphics[height = 5cm]{es601_ex01_im01.png}
+                        \includegraphics[height = 5cm]{es601_ex01_im01.png}
                         \caption{Diagrama no Simulink}
                     \end{figure}
                 Note que nesta configuração apresenta $\tau = RC = 2$ s, desta forma a simulação deve possuir ao menos $5\tau = 10$ s de análise para que o transiente seja superado. Consequentemente obtêm-se o seguinte gráfico para representar a tensão sobre o capacitor:
                     \begin{figure}[H]
                         \centering
-                        % \includegraphics[height = 8cm]{es601_ex01_im02.png}
+                        \includegraphics[height = 12cm]{es601_ex01_im02.png}
                         \caption{Gráfico da Simulação no Simulink}
                     \end{figure}
                 \end{resolution}
-
+\newpage
             \begin{exercise}
                 Calcular a solução analítica (resolver a equação diferencial ou usar Laplace, como preferir), implementar no MATLAB e comparar o resultado com o do Simulink.
             \end{exercise}
@@ -94,10 +94,19 @@
                             v_{C}(t)    &= 10(1 - e^{-\frac{1}{2}t})
                         }
                     \end{align}
-                Equação acima será modelada em Mathlab através do seguinte algoritmo:
+\newpage
+                Equação acima será modelada em Matlab através do seguinte algoritmo:
                     \begin{scriptsize}
                         \myOctave
                         \lstinputlisting{es601_ex01_cd01.m}
                     \end{scriptsize}
+\newpage
+                Isso trará o seguinte resultado:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 12cm]{es601_ex01_im03.png}
+                        \caption{Gráfico Analítico no Matlab}
+                    \end{figure}
+                Nota-se que o gráfico é, como esperado, semelhante ao obtido através da simulação no Simulink. Desta forma, os métodos de solução são igualmente eficazes para descrever o comportamento da tensão no capacitor.
             \end{resolution}
 \end{document}
