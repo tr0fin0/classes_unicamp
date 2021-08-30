@@ -31,7 +31,7 @@
                 \begin{equation}
                     \boxed{
                         K = \diff{f(x)}{x}\Bigr|_{\substack{x = x_{0}}}
-                    }
+                    }\label{eq:staticSensitibility}
                 \end{equation}
 
             \paragraph{Faixa Dinâmica}Intervalo no qual a curva de calibração é válida, pois há dados para suportar as hipóteses. Fora deste intervalo, a resposta será uma \textbf{Extrapolação}.
@@ -41,7 +41,15 @@
                     \boxed{r_{o} = y_{\text{max}} - y_{\text{min}}}
                 \end{equation}
 
-            \paragraph{Resolução}Menor incremento que pode ser detectado pelo sistema de medição. Geralmente determinado pela escala indicada pelos equipamentos de medição ou pelas restrições do sistema.
+            \paragraph{Resolução}Menor incremento que pode ser detectado pelo sistema de medição. Geralmente determinado pela escala indicada pelos equipamentos de medição ou pelas restrições do sistema obtido pela seguinte equação:
+                \begin{equation}
+                    \boxed{\Delta R = \frac{\Delta E}{K}}
+                \end{equation}
+            Onde:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Resolução Equipamento:} $\Delta E$, Presente no equipamento de medição;
+                    \item \textbf{Sensibilidade Estática:} $K$ dada pela equação \ref{eq:staticSensitibility};
+                \end{enumerate}
 
             \paragraph{Coeficiente de Determinação}Grau de compatibilidade entre os valores amostrados, $y$, e os valores do \textbf{Curve Fitting}, $y_{C}$, relacionados pela seguinte equação:
                 \begin{equation}
@@ -81,4 +89,138 @@
 
                     \item \textbf{Retorno ao Zero:} Diferença na resposta do sistema para uma entrada nula;
                 \end{enumerate}
+
+    \section{Análise de Sinais}
+        \paragraph{Definição}Estudo de informações físicas sobre a variável medida, transmitida entre um processo e o sistema de medição entre os eságios do sistema de medição classificados em:
+            \begin{enumerate}
+                \item \textbf{Classes:}
+                    \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                        \item \texttt{Analógico:} Contínuo em Magnitude e Tempo;
+                        \item \texttt{Discreto:} Contínuo em Magnitude e Discretizado no Tempo;
+                        \item \texttt{Digital:} Quantizado em Magnitude e Discretizado no Tempo;
+                    \end{enumerate}
+
+                \item \textbf{Magnitude:}
+                    \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                        \item \texttt{Dinâmico:} Varia no tempo;
+                        \item \texttt{Estático:} Não varia no tempo;
+                    \end{enumerate}
+
+                \item \textbf{Periodicidade:}
+                    \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                        \item \texttt{Periódico:} Apresenta repetição;
+                        \item \texttt{Aperiódico:} Não apresenta repetição;
+                    \end{enumerate}
+
+                \item \textbf{Previsibilidade:}
+                    \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                        \item \texttt{Determinístico:} Expressa por uma função matemática;
+                        \item \texttt{Não-Determinístico:} Não expressa por uma função matemática;
+                    \end{enumerate}
+            \end{enumerate}
+
+        \subsection{Redução de Dados}
+            \paragraph{Definição}Análise dos dados sobre dois parâmetros listados abaixo:
+
+            \subsubsection{Valor Médio}
+                \paragraph{Definição}Caraceriza a componente DC, contínua, do sinal através da seguinte equação:
+                    \begin{equation}
+                        \boxed{\bar{y} = \frac{1}{N} \sum_{n=1}^{N} y(n)}
+                    \end{equation}
+
+            \subsubsection{Valor Root Mean Square}
+                \paragraph{Definição}Caraceriza a componente AC, alternada, do sinal através da seguinte equação:
+                    \begin{equation}
+                        \boxed{
+                            y_{\text{RMS}} = \sqrt{\frac{1}{N} \sum_{n=1}^{N} y^{2}(n)}
+                        }
+                    \end{equation}
+
+        \subsection{Análise em Frequência}
+            \paragraph{Definição}Sinais apresentaram informações relevantes sobre suas frequências de funcionamento e dessa forma será necessário analisá-lo com algumas ferramentas descritas na sequência.
+
+            \subsubsection{Série de Fourier}
+                \paragraph{Definição}Dado um sinal periódico $y(t) = y(t + T)$ com período $T = \frac{1}{f} = \frac{2\pi}{\omega}$ então este poderá ser ser representado através de uma \textbf{Série de Fourier} pela seguinte equação:
+                    \begin{equation}
+                        \boxed{
+                            y(t) = 
+                            A_{0} + 
+                            \sum_{n=1}^{\infty} (A_{n}\cos(n\omega t) + B_{n}\sin(n\omega t))
+                        }
+                        \qquad
+                        \text{onde:}
+                        \qquad
+                        \boxed{
+                            \begin{cases}
+                                A_{0} = \frac{1}{T} \int_{-\frac{T}{2}}^{+\frac{T}{2}} y(t)\text{d}t\\[2.5mm]
+                                A_{n} = \frac{2}{T} \int_{-\frac{T}{2}}^{+\frac{T}{2}} y(t)\cos(n\omega t)\text{d}t\\[2.5mm]
+                                B_{n} = \frac{2}{T} \int_{-\frac{T}{2}}^{+\frac{T}{2}} y(t)\sin(n\omega t)\text{d}t\\
+                            \end{cases}
+                        }
+                    \end{equation}
+                Onde:
+                    \begin{enumerate}[noitemsep]
+                        \item Se $y(t)$ é par então $B_{n} = 0$;
+                        \item Se $y(t)$ é ímpar então $A_{n} = 0$;
+                    \end{enumerate}
+
+            \subsubsection{Transformada de Fourier}
+                \paragraph{Definição}Extensão da séri de Fourier para sinais periódicos e aperiódicos descrito a seguir:
+                    \begin{multicols}{2}
+                        \raggedcolumns
+                        \paragraph{Transformada Direta:}
+                            \begin{equation}
+                                \boxed{
+                                    Y(\omega) = \mathcal{F} \{ y(t) \} := 
+                                    \int_{-\infty}^{+\infty} y(t) \; e^{-j\omega t} \; \text{d}t
+                                }
+                            \end{equation}
+        
+                        \columnbreak
+        
+                        \paragraph{Transformada Inversa:}
+                            \begin{equation}
+                                \boxed{
+                                    y(t) = \mathcal{F}^{-1}\{ Y(\omega) \} := 
+                                    \int_{-\infty}^{+\infty} Y(\omega) \; e^{j\omega t} \; \text{d} \omega
+                                }
+                            \end{equation}
+                    \end{multicols}\noindent
+                Note que o resultado da \textbf{Transformada de Fourier} será um número complexo da forma:
+                    \begin{equation*}
+                        \boxed{
+                            Y(\omega) = Y_{\text{R}}(\omega) + j Y_{\text{I}}(\omega)
+                        }
+                    \end{equation*}
+                Onde:
+                    \begin{enumerate}[noitemsep]
+                        \item Representa a parcela \texttt{Real} como $Y_{\text{R}}(\omega)$;
+
+                        \item Representa a parcela \texttt{Imaginária} como $Y_{\text{I}}(\omega)$;
+                    \end{enumerate}
+                Assim como presente na teoria de Circuitos Elétricos, números complexos podem ser representados através de \textbf{Fasores} como represenado pela seguinte equação:
+                    \begin{equation}
+                        \boxed{
+                            Y(\omega) = |Y(\omega)| \phase{\phi(\omega)^{\circ}}
+                        }
+                    \end{equation}
+                Onde:
+                    \begin{enumerate}[noitemsep]
+                        \item \textbf{Espectro de Magnitude:} Ou também nomeado como \textbf{Amplitude} pela seguinte equação:
+                            \begin{equation*}
+                                \boxed{
+                                    |Y(\omega)| = \sqrt{Y_{\text{R}}^{2}(\omega) + Y_{\text{I}}^{2}(\omega)}
+                                }
+                            \end{equation*}
+
+                        \item \textbf{Espectro de Fase:} Ou também nomeado como \textbf{Fase} pela seguinte equação:
+                            \begin{equation*}
+                                \boxed{
+                                    \phi(\omega) = \tan^{-1}
+                                    \left(
+                                        \frac{Y_{\text{I}}}{Y_{\text{R}}}
+                                    \right)
+                                }
+                            \end{equation*}
+                    \end{enumerate}
 \end{document}
