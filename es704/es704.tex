@@ -165,13 +165,13 @@
                     \end{enumerate}
 
             \subsubsection{Transformada de Fourier}
-                \paragraph{Definição}Extensão da séri de Fourier para sinais periódicos e aperiódicos descrito a seguir:
+                \paragraph{Definição}Extensão da série de Fourier para sinais periódicos e aperiódicos descrito a seguir:
                     \begin{multicols}{2}
                         \raggedcolumns
                         \paragraph{Transformada Direta:}
                             \begin{equation}
                                 \boxed{
-                                    Y(\omega) = \mathcal{F} \{ y(t) \} := 
+                                    \mathcal{F} \{ y(t) \} := 
                                     \int_{-\infty}^{+\infty} y(t) \; e^{-j\omega t} \; \text{d}t
                                 }
                             \end{equation}
@@ -181,8 +181,8 @@
                         \paragraph{Transformada Inversa:}
                             \begin{equation}
                                 \boxed{
-                                    y(t) = \mathcal{F}^{-1}\{ Y(\omega) \} := 
-                                    \int_{-\infty}^{+\infty} Y(\omega) \; e^{j\omega t} \; \text{d} \omega
+                                    \mathcal{F}^{-1}\{ Y(\omega) \} := 
+                                    \frac{1}{2\pi} \int_{-\infty}^{+\infty} Y(\omega) \; e^{j\omega t} \; \text{d} \omega
                                 }
                             \end{equation}
                     \end{multicols}\noindent
