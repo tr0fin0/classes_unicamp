@@ -14,6 +14,159 @@
 \newpage
 
     \section{Introdução}
-        \paragraph{Definição}
+        \paragraph{Apresentação}Neste documento será descrito as informações necessárias para compreensão e solução de exercícios relacionados a disciplina \thetitle. Note que este documento são notas realizadas por \theauthor, em \today.
+
+        \paragraph{Definição}Transferência de Calor é a energia térmica em trânsito devido a uma \texttt{Diferença de Temperatura} no espaço que ocorre nos seguintes processos:
+
+        \subsection{Condução}
+            \paragraph{Definição}Energia transferida de partículas mais energéticas para menos energéticas de uma substância devido às interações entre partículas em repouso.
+
+        \subsubsection{Lei de Fourier}
+            \paragraph{Definição}Energia transferida por unidade de tempo será dado por:
+                \begin{equation}
+                    \boxed{
+                        q_{x}^{''} = - K \diff{T}{x} 
+                        \quad 
+                        \left[\frac{\text{W}}{\text{m\textsuperscript{2}}}\right]
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                    \item \textbf{Fluxo Térmico:} $q_{x}''$ em $\left[\frac{\text{W}}{\text{m\textsuperscript{2}}}\right]$, perpedicular a direção de transferência;
+
+                    \item \textbf{Condutividade Térmica:} $K$ em $\left[\frac{\text{W}}{\text{m K}}\right]$;
+                \end{enumerate}
+
+        \subsection{Convecção}
+            \paragraph{Definição}Energia transferida pelo fluxo de partículas seja um Movimento Aleatório ou um Movimento Global do fluído através de dois mecanismos:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Convecção Forçada:} Escoamento causado por meios externos; 
+                    \item \textbf{Convecção Natural:} Escoamento induzido por diferenças de densidade; 
+                \end{enumerate}
+            Quantifica-se este fluxo de energia, independente do mecanismo, através da seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        q_{\text{conv}}'' = \frac{q}{A} = h (T_{S} - T_{\infty})
+                        \quad 
+                        \left[\frac{\text{W}}{\text{m\textsuperscript{2}}}\right]
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                    \item \textbf{Fluxo Térmico:} $q_{\text{conv}}''$ em $\left[\frac{\text{W}}{\text{m\textsuperscript{2}}}\right]$;
+
+                    \item \textbf{Coeficiente de Transferêcia:} $h$ em $\left[\frac{\text{W}}{\text{m\textsuperscript{2} K}}\right]$;
+                \end{enumerate}
+            Nota-se que este coeficiente apresentará os seguintes valores típicos:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}{lll}\hline
+                        Situação          &          & h\;$\left[\frac{\text{W}}{\text{m\textsuperscript{2} K}}\right]$\\\hline
+                        Convecção Natural & Gases    & 2 - 25\\
+                                          & Líquidos & 50 - 1000\\
+                        Convecção Forçada & Gases    & 25 - 250\\
+                                          & Líquidos & 100 - 20000\\
+                        Mudança de Fase   &          & 2500 - 100000\\\hline
+                    \end{tabular}
+                    \caption{Coeficiente de Transferência Térmica por Convecção}
+                    \label{table:convectionConstant}
+                \end{table}\noindent
+
+
+        \subsection{Radiação}
+            \paragraph{Definição}Energia transferida, não necessariamente demandando um meio material, pela matéria que se encontra a uma temperatura não nula. 
+
+        \subsubsection{Radiação Emitida}
+            \paragraph{Definição}Quantifica-se o fluxo de energia saindo de um corpo por radiação através da seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        E = \epsilon\;\sigma\;T_{S}^{4}
+                        \quad
+                        \left[\frac{\text{W}}{\text{m\textsuperscript{2}}}\right]
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Permissividade:} $0 \leq \epsilon \leq 1$ adimensional;
+                    \item \textbf{Constante de Stefan-Boltzmann:} $\sigma = 5,67\times 10^{-8}$ em $\left[\frac{\text{W}}{\text{m\textsuperscript{2} K\textsuperscript{4}}}\right]$;
+                    \item \textbf{Temperatura Absoluta:} $T_{S}$ em $[K]$;
+                \end{enumerate}
+
+        \subsubsection{Radiação Recebida}
+            \paragraph{Definição}Quantifica-se o fluxo de energia recebida, também nomeada como \textbf{Irradiação}, por um corpo por radiação através da seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        G = G_{\text{abs}} + G_{\text{unknown}} + G_{\text{ref}}
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Radiação Recebida:} $G$ em ;
+                    \item \textbf{Radiação Absorvida:} $G_{\text{abs}}$ em ;
+                    \item \textbf{Radiação :} $G_{\text{unknown}}$ em ;
+                    \item \textbf{Radiação Refletida:} $G_{\text{ref}}$ em ;
+                \end{enumerate}
+
+        \subsubsection{Radiação Absorvida}
+            \paragraph{Definição}Quantifica-se o fluxo de energia entrando de um corpo por radiação através da seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        G_{\text{abs}} = \alpha G
+                        \quad
+                        \left[\frac{\text{W}}{\text{m\textsuperscript{2}}}\right]
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Absortividade:} $0 \leq \alpha \leq 1$ adimensional;
+                    \item \textbf{Irradiação:} $G$ em $\left[\frac{\text{W}}{\text{m\textsuperscript{2}}}\right]$;
+                \end{enumerate}
+
+        \subsubsection{Reservatório Térmico}
+            \paragraph{Definição}Caso haja uma superfície reduzida com temperatura $T_{S}$ cercada por outra envolvente muito aumentada com temperatura $T_{\text{sur}}$ então, caso $\epsilon = \alpha$, o fluxo de energia causado pela radiação será dado pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        q_{\text{rad}}'' = \frac{q}{A} = \epsilon\sigma(T_{S}^{4} - T_{\text{sur}}^{4}) 
+                        \quad 
+                        \left[\frac{\text{W}}{\text{m\textsuperscript{2}}}\right]
+                    }
+                \end{equation}
+            Note que a equação acima pode ser resescrita como demonstrado a seguir:
+                \begin{equation}
+                    \boxed{
+                        q_{\text{rad}} = h_{r} A (T_{S} - T_{\text{sur}}) 
+                        \quad 
+                        [\text{W}]
+                    }
+                    \qquad
+                    \boxed{
+                        h_{r} = \epsilon \sigma (T_{S} + T_{\text{sur}})(T_{S}^{2} + T_{\text{sur}}^{2})
+                    }
+                \end{equation}
+            Desta forma, quando houver troca de calor simultaneamente na superfície por convecção e por radiação o fluxo de energia será dado pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        q = q_{\text{conv}} + q_{\text{rad}} = 
+                        h A (T_{S} - T_{\text{sur}}) + \epsilon\sigma(T_{S}^{4} - T_{\text{sur}}^{4}) 
+                        \quad 
+                        [\text{W}]
+                    }
+                \end{equation}
+
+        \subsection{Conservação de Energia}
+            \paragraph{Definição}
+                \begin{equation}
+                    \boxed{
+                        \diff{E_{\text{corpo}}}{t} = \dot{E}_{\text{in}} - \dot{E}_{\text{out}} + \dot{E}_{\text{interno}}
+                    }
+                \end{equation}
+
+        \subsubsection{Balanço de Energia em Superfície}
+            \paragraph{Definição}Considera-se que superfícies não apresentam massa e portanto apresentam a seguinte equação para conservação de massa:
+                \begin{equation}
+                    \boxed{
+                        \dot{E}_{\text{in}} - \dot{E}_{\text{out}} = 0
+                    }
+                \end{equation}
 
 \end{document}
