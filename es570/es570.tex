@@ -35,6 +35,49 @@
                     \item \textbf{Fluxo Térmico:} $q_{x}''$ em $\left[\frac{\text{W}}{\text{m\textsuperscript{2}}}\right]$, perpedicular a direção de transferência;
 
                     \item \textbf{Condutividade Térmica:} $K$ em $\left[\frac{\text{W}}{\text{m K}}\right]$;
+
+                    \item \textbf{Gradiente de Temperatura:} $\nabla T$ em $\left[\frac{\text{K}}{\text{m}}\right]$;
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Coordenadas Cartesianas:}
+                                \begin{equation}
+                                    \boxed{
+                                        \nabla T = 
+                                        \left(
+                                            \hat{i}\diffp{T}{x} + 
+                                            \hat{j}\diffp{T}{y} + 
+                                            \hat{k}\diffp{T}{z}
+                                        \right)
+                                    }
+                                \end{equation}
+                        \end{enumerate}
+
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Coordenadas Cilíndricas:}
+                                \begin{equation}
+                                    \boxed{
+                                        \nabla T = 
+                                        \left(
+                                            \hat{i}\diffp{T}{r} + 
+                                            \hat{j}\frac{1}{r}\diffp{T}{\phi} + 
+                                            \hat{k}\diffp{T}{z}
+                                        \right)
+                                    }
+                                \end{equation}
+                        \end{enumerate}
+
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Coordenadas Esféricas:}
+                                \begin{equation}
+                                    \boxed{
+                                        \nabla T = 
+                                        \left(
+                                            \hat{i}\diffp{T}{r} + 
+                                            \hat{j}\frac{1}{r}\diffp{T}{\phi} + 
+                                            \hat{k}\frac{1}{r\sin(\theta)}\diffp{T}{\theta}
+                                        \right)
+                                    }
+                                \end{equation}
+                        \end{enumerate}
                 \end{enumerate}
 
         \subsection{Convecção}
