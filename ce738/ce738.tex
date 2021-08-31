@@ -113,102 +113,328 @@
             % \end{table}
 
     \section{Microeconomia}
-        \paragraph{Definição}Estudo da Teoria dos Preços para determinar o funcionamento de um sistema econômico determinando como será o custo, a oferta e demanda de um certo produto ou serviço, baseada nas seguintes divisões:
-            \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
-                \item \textbf{Teoria da Demanda:} Necessidade de consumo de bens;
 
-                \item \textbf{Teoria da Oferta:} Organização das empresas para criação de bens;
+        \subsection{Teoria e Modelagem}
+            \paragraph{Definição}Elaboração de hipótese para determinar o funcionamento de um sistema econômico, determinando como será o custo, a oferta e demanda de um certo produto ou serviço baseada nas seguintes divisões:
+                \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                    \item \textbf{Teoria da Demanda:} Necessidade de consumo de bens;
 
-                \item \textbf{Análise das Estrutras de Mercado:} Análise do funcionamento dos agentes envolvidos com os seguintes pressupostos básicos:
-                    \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
-                        \item \texttt{Coeteris Paribus:} Desconsidera os elementos não relevantes a análise dos aspectos em questão; 
-                        \item \texttt{Preços Relativos:} Comparação entre preços de um bem ou serviço;
-                        \item \texttt{Princípio da Racionalidade:} Toda empresa terá objetivos racionnais, otimizando seus fatores para maximação de seus lucros;
-                    \end{enumerate}
-            \end{enumerate}
+                    \item \textbf{Teoria da Oferta:} Organização das empresas para criação de bens;
 
-        \paragraph{Teorias e Modelos}Na economia, explicação e previsão baseiam-se em teorias desenvolvidades a partir de fenômenos observados com representações matemáticas de um empresa, um mercado ou alguma outra entidade.
+                    \item \textbf{Análise das Estrutras de Mercado:} Análise do funcionamento dos agentes envolvidos com os seguintes pressupostos básicos:
+                        \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                            \item \texttt{Coeteris Paribus:} Desconsidera elementos não relevantes a análise em questão; 
+                            \item \texttt{Preços Relativos:} Comparação entre preços de um bem ou serviço;
+                            \item \texttt{Racionalidade:} Objetivos racionnais, otimizando fatores para maximação de benefício;
+                        \end{enumerate}
+                \end{enumerate}
 
-        \paragraph{Aplicação}Cada entidade poderá utilizar uma análise da economia para determinar planos de ação para atingir seus objetivos com base em metas e variáveis locais.
+                \paragraph{Aplicação}Cada entidade poderá utilizar uma análise microeconômica para determinar planos de ação para atingir seus objetivos com base em metas e variáveis locais.
 
-    \subsection{Mercados}
-        \paragraph{Definição}Grupos de compradores e vendedores que através de interações determinam o preço de um produto ou serviço.
+        \subsubsection{Mercados}
+            \paragraph{Definição}Grupos de compradores e vendedores que através de interações determinam o preço de um produto ou serviço.
 
-    \subsection{Demanda}
-        \paragraph{Definição}Necessidade de consumo pelos indivíduos que pertencem a sociedade com base nos seguintes princípios:
-            \begin{enumerate}[rightmargin = \leftmargin]
-                \item \textbf{Racionalidade:} Todo indivíduo terá objetivos racionnais, otimizando seus fatores para maximação de suas satisfações e necessidades;
-                \item \textbf{Utilidade:}
-                    \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
-                        \item \texttt{Utilidade Total:} Necessidade absoluta de um bem ou serviço;
-                        \item \texttt{Utilidade Marginal:} Necessidade de um bem ou serviço quando já se possui um ou mais deste bem ou serviço. Espera-se que a real necessidade decaia a medida que a quantidade aumenta;
-                    \end{enumerate}
-            \end{enumerate}
-        Nota-se que há uma relação inversa entre \textbf{preço} e \textbf{quantidade} demandada de um bem ou serviço por: Efeito de Novo Consumidor, Efeito de Renda, Efeito de Substituição e Utilidade Marginal Decrescente.
+        \subsection{Demanda}
+            \paragraph{Definição}Necessidade de consumo pelos indivíduos que pertencem a sociedade com base nos seguintes princípios:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Racionalidade:} Maximação de suas satisfações e necessidades;
+                    \item \textbf{Utilidade:}
+                        \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                            \item \texttt{Total:} Necessidade absoluta de um bem ou serviço;
+                            \item \texttt{Marginal:} Necessidade de um bem ou serviço quando já se possui um ou mais deste bem ou serviço. Espera-se que a real necessidade decaia a medida que a quantidade aumenta;
+                        \end{enumerate}
+                \end{enumerate}
+            Isso normalmente será descrito matematicamente aravés da seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        D_{\text{x}} =
+                        f(
+                            P_{\text{x}},
+                            P_{\text{i}},
+                            R,
+                            G,
+                            E
+                        )
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item $D_{\text{x}}$, \textbf{Quantidade Demandada} do bem x;
+                    \item $P_{\text{x}}$, \textbf{Preço do Bem} x;
+                    \item $P_{\text{i}}$, \textbf{Preço de Bens Relacionados} de x;
+                    \item $R$, \textbf{Renda do Consumidor} de x;
+                    \item $G$, \textbf{Gosto do Consumidor} de x;
+                    \item $E$, \textbf{Expectativas do Consumidor} de x;
+                \end{enumerate}
 
-        \paragraph{Bens Substitutos}Produtos que quando uma demanda por um aumenta o preço do outro aumenta.
+        \subsubsection{Oferta e Demanda}
+            \paragraph{Definição}Nota-se a seguinte relação entre a \texttt{Oferta} e a \texttt{Demanda} de um produto qualquer:
+                \begin{equation}
+                    \boxed{
+                        P_{\text{x}}\uparrow
+                        \;
+                        D_{\text{x}}\downarrow
+                    }
+                    \qquad
+                    \boxed{
+                        P_{\text{x}}\downarrow
+                        \;
+                        D_{\text{x}}\uparrow
+                    }
+                \end{equation}
+            Isso ocorre em virtude dos seguintes parâmetros:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Efeito Novo Consumidor};
+                    \item \textbf{Efeito Renda};
+                    \item \textbf{Efeito Substituição};
+                    \item \textbf{Utilidade Marginal Decrescente};
+                \end{enumerate}
 
-        \paragraph{Bens Complementares}Produtos que quando o preço de um aumenta a demanda do outro diminui.
+        \subsubsection{Bens Substiutos}
+            \paragraph{Definição}Produtos que apresentam a seguinte relação entre a \texttt{Oferta} e a \texttt{Demanda}:
+                \begin{equation}
+                    \boxed{
+                        P_{\text{i}}\uparrow
+                        \;
+                        D_{\text{x}}\uparrow
+                    }
+                    \qquad
+                    \boxed{
+                        P_{\text{i}}\downarrow
+                        \;
+                        D_{\text{x}}\downarrow
+                    }
+                \end{equation}
 
-        \paragraph{Bens Normais}Produtos que quando a renda aumenta e a demanda aumenta.
+        \subsubsection{Bens Complementares}
+            \paragraph{Definição}Produtos que apresentam a seguinte relação entre a \texttt{Oferta} e a \texttt{Demanda}:
+                \begin{equation}
+                    \boxed{
+                        P_{\text{i}}\uparrow
+                        \;
+                        D_{\text{x}}\downarrow
+                    }
+                    \qquad
+                    \boxed{
+                        P_{\text{i}}\downarrow
+                        \;
+                        D_{\text{x}}\uparrow
+                    }
+                \end{equation}
 
-        \paragraph{Bens Consumo Saciado}Produtos que quando a renda aumenta e a demanda permanece estável.
+        \subsubsection{Bens Normais}
+            \paragraph{Definição}Produtos que apresentam a seguinte relação entre a \texttt{Renda} e a \texttt{Demanda}:
+                \begin{equation}
+                    \boxed{
+                        R\uparrow
+                        \;
+                        D_{\text{x}}\uparrow
+                    }
+                    \qquad
+                    \boxed{
+                        R\downarrow
+                        \;
+                        D_{\text{x}}\downarrow
+                    }
+                \end{equation}
 
-        \paragraph{Bens Inferiores}Produtos que quando a renda aumenta e a demanda do diminui.
+        \subsubsection{Bens Consumo Saciado}
+            \paragraph{Definição}Produtos que apresentam a seguinte relação entre a \texttt{Renda} e a \texttt{Demanda}:
+                \begin{equation}
+                    \boxed{
+                        R\uparrow
+                        \;
+                        D_{\text{x}}
+                    }
+                    \qquad
+                    \boxed{
+                        R\downarrow
+                        \;
+                        D_{\text{x}}
+                    }
+                \end{equation}
 
-        \paragraph{Equilíbrio de Mercado}Preço na economia de mercado é determinado tanto pela oferta quanto pela procura. Balanço ideal entre oferta e demanda.
+        \subsubsection{Bens Inferiores}
+            \paragraph{Definição}Produtos que apresentam a seguinte relação entre a \texttt{Renda} e a \texttt{Demanda}:
+                \begin{equation}
+                    \boxed{
+                        R\uparrow
+                        \;
+                        D_{\text{x}}\downarrow
+                    }
+                    \qquad
+                    \boxed{
+                        R\downarrow
+                        \;
+                        D_{\text{x}}\uparrow
+                    }
+                \end{equation}
+
+        \subsection{Oferta}
+            \paragraph{Definição}Quantidade de um bem ou serviço que um único produtor deseja vender no mercado, por unidade de tempo. Isso normalmente será descrito matematicamente aravés da seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        O_{\text{x}} =
+                        f(
+                            P_{\text{x}},
+                            P_{\text{i}},
+                            P_{\text{p}},
+                            T,
+                            E,
+                            C
+                        )
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item $O_{\text{x}}$, \textbf{Quantidade Ofertada} do bem x;
+                    \item $P_{\text{x}}$, \textbf{Preço do Bem} x;
+                    \item $P_{\text{i}}$, \textbf{Preço de Bens Relacionados} de x;
+                    \item $P_{\text{p}}$, \textbf{Preço de Produção} de x;
+                    \item $T$, \textbf{Tecnologias} de x;
+                    \item $E$, \textbf{Expectativas} de x;
+                    \item $C$, \textbf{Condições Climáticas} de x;
+                \end{enumerate}
+
+        \subsubsection{Preço e Oferta}
+            \paragraph{Definição}Nota-se a seguinte relação entre o \texttt{Preço} e a \texttt{Oferta} de um produto qualquer:
+                \begin{equation}
+                    \boxed{
+                        P_{\text{x}}\uparrow
+                        \;
+                        O_{\text{x}}\uparrow
+                    }
+                    \qquad
+                    \boxed{
+                        P_{\text{x}}\downarrow
+                        \;
+                        O_{\text{x}}\downarrow
+                    }
+                \end{equation}
+
+        \subsubsection{Equilíbrio de Mercado}
+            \paragraph{Definição}Preço na economia de mercado determinado tanto pela oferta quanto pela demanda.
+
 
         \subsection{Elasicidade}
             \paragraph{Definição}Sensibilidade dos agentes econômicos em face de qualquer alteraÇão nas condições de mercado demonstrando o grau de reações a ações e situações.
 
-            \subsubsection{Elasticidade Demanda}
-                \paragraph{Elasticidade Preço da Demanda}Variação percentual na quantidade demandada dada a variação no preço do bem.
-                \paragraph{Elasticidade Renda da Demanda}Variação percentual na quantidade demandada dada a variação da renda.
-                \paragraph{Elasticidade Preço Cruzada da Demanda}Variação percentual na quantidade demandada dada a variação da demanda de outro bem.
+        \subsubsection{Elasticidade-Preço Demanda, $E_{\text{D}}$}
+            \paragraph{Definição}Variação percentual na quantidade demandada dada a variação no preço do bem obtida pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        E_{\text{D}} = 
+                        \frac{\Delta\%\;Q_{\text{x}}}{\Delta\%\;P_{\text{x}}}
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Demanda Elástica:} $|E_{\text{D}}| > 1$;
+                        \begin{enumerate}
+                            \item \texttt{Demanda Perfeitamente Elástica:} $E_{\text{D}} = \infty$;
+                        \end{enumerate}
 
-            estruturas de mercados utilizam modelos para compreender o funcionamento d
-            concorrencia perfeia
-                numero enorme de empresas unico requisito necessario
-                diferencia entre produtos não afeta
-                empresas de jogos
-            monopolio
-            oligopolio
-                avaicao
-            concorrencia monopolistica
-            atomizado grande quantidade de empresas, empresas como atomos
-            monopolio industria farmaceutico
-                estatais de petroleo estrategico e seguracao nacional saneamento
-                petroleo
-            oligopolio
-                pequeno grupo de empresas dominando
-                não definido pela literatura
-                poucas dominando
-                empresas satelites, seguem as estrageias das principais
-                possibilidade de carterizacao
-                industtria automotiva
-                barreiras invisiveis tetos de vidro de custos para competitidade
-            concorrencia monopolistica
-                entre perfeita e monopolio
-                varias empresas
-                há pequena margem de manobra
-                há produtos substitutos
-            
-            estrutura no mercado de fatores de produçao
-            concorrencia perfeita
-                mercado da construçao civil, baixa capacitacao e baixo salario
-            monopolio
-                um responsavel pela venda de ensumos
-                demanda derivada, depende da demanda de bens e servicos
-            oligopolio
-                poucas empresas produzindo um mesmo ensumo
-            Monopsonio
-                um comprador para muitos vendedores
-                monopolio na compra de ensumos
-            Oligopsonio
-                poucos compadores para muitos vendedores
-                oligopolio para compra de ensumos
-                industria automobilistica para autopecas
-            monopolio bilateral
+                    \item \textbf{Demanda Unitária:} $|E_{\text{D}}| = 1$;
+
+                    \item \textbf{Demanda Inelástica:} $|E_{\text{D}}| < 1$;
+                        \begin{enumerate}
+                            \item \texttt{Demanda Perfeitamente Inelástica:} $E_{\text{D}} = 0$;
+                        \end{enumerate}
+                \end{enumerate}
+
+        \subsubsection{Elasticidade-Preço Cruzada da Demanda, $E_{\text{xy}}$}
+            \paragraph{Definição}Variação percentual na quantidade demandada dada a variação da demanda de outro bem obtida pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        E_{\text{xy}} = 
+                        \frac{\Delta\%\;Q_{\text{x}}}{\Delta\%\;P_{\text{y}}} =
+                        \frac{\Delta Q_{\text{x}}}{\Delta P_{\text{y}}} \frac{P_{\text{y}}}{Q_{\text{x}}}
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Bens Substitutos:} $E_{\text{xy}} > 0$;
+
+                    \item \textbf{Bens Independentes:} $E_{\text{xy}} = 0$;
+
+                    \item \textbf{Bens Complementares:} $E_{\text{xy}} < 0$;
+                \end{enumerate}
+
+        \subsubsection{Elasticidade-Renda da Demanda, $E_{\text{R}}$}
+            \paragraph{Definição}Variação percentual na quantidade demandada dada a variação da renda obtida pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        E_{\text{R}} = 
+                        \frac{\Delta\%\;Q_{\text{x}}}{\Delta\%\;R_{\text{x}}} =
+                        \frac{\Delta Q_{\text{x}}}{\Delta R_{\text{x}}} \frac{R_{\text{x}}}{Q_{\text{x}}}
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Bens Inferiores:} $E_{\text{R}} < 0$;
+
+                    \item \textbf{Bens de Consumo Saciado:} $E_{\text{xy}} = 0$;
+
+                    \item \textbf{Bens Normais:} $0 < E_{\text{xy}} < 1$;
+
+                    \item \textbf{Bens Superiores:} $E_{\text{xy}} > 1$;
+                \end{enumerate}
+
+        \subsubsection{Elasticidade-Preço da Oferta, $E_{\text{O}}$}
+            \paragraph{Definição}Variação percentual na quantidade ofertada dada a variação no preço do bem obtida pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        E_{\text{O}} = 
+                        \frac{\Delta\%\;Q_{\text{O}}}{\Delta\%\;P_{\text{O}}} = 
+                        \frac{\Delta Q_{\text{O}}}{\Delta P_{\text{O}}}\frac{P_{\text{O}}}{Q_{\text{O}}}
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Oferta Elástica:} $E_{\text{O}} > 1$;
+                        \begin{enumerate}
+                            \item \texttt{Oferta Perfeitamente Elástica:} $E_{\text{O}} = \infty$;
+                        \end{enumerate}
+
+                    \item \textbf{Oferta Unitária :} $E_{\text{O}} = 1$;
+
+                    \item \textbf{Oferta Inelástica:} $E_{\text{O}} < 1$;
+                        \begin{enumerate}
+                            \item \texttt{Oferta Perfeitamente Inelástica:} $E_{\text{O}} = 0$;
+                        \end{enumerate}
+                \end{enumerate}
+
+        \subsection{Estruturas de Mercado}
+            \paragraph{Definição}Modelos utilizados para compreender o funcionamento e a interação entre os diferentes agentes que fazem parte de uma sociedade. Há diferentes cenários possíveis sendo os principais os descritos a seguir:
+
+                \begin{table}[H]
+                    \centering  
+                    \begin{tabular}[]{l|lllll}hline
+                                       & Concorrência Perfeita & Monopólio       & Oligopólio   & Concorrência Monopolística\\\hline
+                        Qntd. Empresas & Enorme                & Unitário        & Pequeno      & Elevado\\
+                        Produto        & Homogêneo             & Não Substitutos & Homogêneo    & Diferenciado\\
+                        Controle       & Não Há                & Elevado         & Dificultado  & Baixo\\
+                        Concorrência   & Não é Possível        & Não Há          & Intensa      & Intensa\\
+                        Ingresso       & Não Há Barreiras      & Há Barreiras    & Há Barreiras & Não Há Barreiras\\\hline
+                    \end{tabular}
+                \end{table}
+
+        \subsubsection{Concorrência Perfeita}
+            \paragraph{Definição}Único requisito necessário é apresentar uma quantidade enorme de empresas no mercado onde a diferenciação entre produtos não afeta. \textbf{Exemplo:} Indústria de Jogos, Construção Civil.
+
+        \subsubsection{Monopólio}
+            \paragraph{Definição}. \textbf{Exemplo:} Estatais de Petróleo, Indústria Farmaceútica.
+
+        \subsubsection{Oligopólio}
+            \paragraph{Definição}Não há uma definição clara na literatura. Neste cenário há possibilidade da formação de cartéis entre as empresas dominantes pelas barreiras diretas e indiretas presentes. \textbf{Exemplo:} Indústria Automotiva.
+
+        \subsubsection{Monopsônio}
+            \paragraph{Definição}Mercado em que haja apenas um comprador para muios vendedores, também referido como um monopólio para compra de insumos.
+
+        \subsubsection{Oligopsônio}
+            \paragraph{Definição}Mercado em que haja poucos compradores para muitos vendedores, também referido como um oligopólio para compra de insumos. \textbf{Exemplo:} Indústria Automotiva para Autopeças.
+
+        \subsubsection{spam}
 
             concetracao de mercado
                 medida comument utilizada para verificar o grau de concentracao economica, indicide de concentracao das 4 mairores empresa 
