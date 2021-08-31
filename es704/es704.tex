@@ -223,4 +223,17 @@
                                 }
                             \end{equation*}
                     \end{enumerate}
+
+        \subsubsection{Transformada de Fourier Discreta}
+            \paragraph{Definição}Seja um sinal discreto $y(n\Delta t) \approx y(n)$, onde $\Delta t$ é o incremento temporal então a \textbf{Transformada de Fourier} será dada pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        Y(k\Delta f) \approx Y(k) = \frac{2}{N} \sum_{n=0}^{N-1} y(n) e^{-j2\pi \frac{k}{N}}
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Incremento Espectral:} $\Delta f = \frac{1}{M\Delta t} = \frac{\Delta\omega}{2\pi}$;
+                \end{enumerate}
+            Note que esta transformação será calculada computacionalmente pelo algoritmo \texttt{Fast Fourier Transform} onde $M$ deve ser utilizada como uma potência de 2. A fim de evitar vazameno espectral, também nomeado \textbf{Leakage}, aplica-se a \texttt{Função de Janelamento} antes da \texttt{FFT}.
 \end{document}
