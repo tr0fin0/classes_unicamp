@@ -385,7 +385,82 @@
 
         \subsubsection{Atraso de Contaminação, $t_{CD}$}
             \paragraph{Definição}Limitante inferior para o atraso de entradas inválidas para saídas inválidas causado pela presença intrínseca de ruídos ou interferência na atuação dos dispositivos como representado pelo seguinte gráfico:
-
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin = 0, xmax = 15.25, % Axis Coordenates
+                            ymin = 0, ymax = 5.25, % Axis Coordenates
+                            xlabel = {$t$},  % Axis Labels
+                            ylabel = {$v_{\text{in}}$}, % Axis Labels
+                            xtick = {4.25,10.0},      % Axis Ticks Potions
+                            ytick = {1,04},  % Axis Ticks Potions
+                            xticklabels = {$t_{1}$,$t_{2}$}, % Axis Ticks Labels
+                            yticklabels = {$V_{IL}$, $V_{IH}$}, % Axis Ticks Labels
+                            x label style = {at={(axis cs:{15.5,0})}, anchor=west},
+                            y label style = {at={(axis cs:{0,5.5})}, anchor=south, rotate=-90},
+                            width  = 15.0cm,
+                            height =  4.0cm,
+                            axis lines = left,
+                        ]
+                        \draw[] (axis cs:{0,0.5}) -- (axis cs:{4.125,0.5});
+                        \draw[] (axis cs:{4.125,0.5}) -- (axis cs:{5.125,4.5});
+                
+                        \draw[] (axis cs:{5.125,4.5}) -- (axis cs:{9.875,4.5});
+                        \draw[] (axis cs:{9.875,4.5}) -- (axis cs:{10.875,0.5});
+                
+                        \draw[] (axis cs:{10.875,0.5}) -- (axis cs:{14.5,0.5});
+                
+                        \draw[red, dashed] (axis cs:{4.25,0}) -- (axis cs:{4.25,5.5});
+                        \draw[red, dashed] (axis cs:{10.0,0}) -- (axis cs:{10.0,5.5});
+                        \draw[gray, dashed] (axis cs:{0,1}) -- (axis cs:{15,1});
+                        \draw[gray, dashed] (axis cs:{0,4}) -- (axis cs:{15,4});
+                        \end{axis}
+                    \end{tikzpicture}
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin = 0, xmax = 15.25, % Axis Coordenates
+                            ymin = 0, ymax = 5.25, % Axis Coordenates
+                            xlabel = {$t$},  % Axis Labels
+                            ylabel = {$v_{\text{out}}$}, % Axis Labels
+                            xtick = {5.125,10.875},      % Axis Ticks Potions
+                            ytick = {1,04},  % Axis Ticks Potions
+                            xticklabels = {$t_{1}$,$t_{2}$}, % Axis Ticks Labels
+                            yticklabels = {$V_{OL}$, $V_{OH}$}, % Axis Ticks Labels
+                            x label style = {at={(axis cs:{15.5,0})}, anchor=west},
+                            y label style = {at={(axis cs:{0,5.5})}, anchor=south, rotate=-90},
+                            width  = 15.0cm,
+                            height =  4.0cm,
+                            axis lines = left,
+                        ]
+                        \draw[] (axis cs:{0,4.5}) -- (axis cs:{5,4.5});
+                        \draw[] (axis cs:{5,4.5}) -- (axis cs:{6,0.5});
+                
+                        \draw[] (axis cs:{6,0.5}) -- (axis cs:{10.75,0.5});
+                        \draw[] (axis cs:{10.75,0.5}) -- (axis cs:{11.75,4.5});
+                
+                        \draw[] (axis cs:{11.75,4.5}) -- (axis cs:{14.5,4.5});
+                
+                        \draw[red, dashed] (axis cs:{5.125,0}) -- (axis cs:{5.125,5.5});
+                        \draw[red, dashed] (axis cs:{10.875,0}) -- (axis cs:{10.875,5.5});
+                        \draw[gray, dashed] (axis cs:{0,1}) -- (axis cs:{15,1});
+                        \draw[gray, dashed] (axis cs:{0,4}) -- (axis cs:{15,4});
+                
+                        \draw[{Latex[round]}-{Latex[round]}] (axis cs:{4.25,5}) -- (axis cs:{5.125,5});
+                        \draw[{Latex[round]}-{Latex[round]}] (axis cs:{10.0,5}) -- (axis cs:{10.875,5});
+                        \end{axis}
+                        \node[above] at (4.25,2.5) {$t_{CD}$};
+                        \node[above] at (9.25,2.5) {$t_{CD}$};
+                    \end{tikzpicture}
+                    \caption{Atraso de Contaminação}
+                \end{figure}\noindent
+            Note que os circuitos não serão necessariamente simétricos e portanto o $t_{CD}$ do dispositivo será o \textbf{mínimo} entre os atrasos de propagação como mostrado pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        t_{CD} = \min\{ (t_{3} - t_{1}), (t_{4} - t_{2}) \}
+                    }
+                \end{equation}
+\newpage
         \subsection{Dispositivos Combinacionais}
             \paragraph{Definição}Componente eletrônico que atende as seguintes especificações:
                 \begin{enumerate}[rightmargin = \leftmargin]
