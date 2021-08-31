@@ -200,9 +200,33 @@
             \paragraph{Definição}
                 \begin{equation}
                     \boxed{
-                        \diff{E_{\text{corpo}}}{t} = \dot{E}_{\text{in}} - \dot{E}_{\text{out}} + \dot{E}_{\text{interno}}
+                        \dot{E}_{\text{acu}} = 
+                        \diff{E_{\text{corpo}}}{t} = 
+                        \dot{E}_{\text{in}} - 
+                        \dot{E}_{\text{out}} + 
+                        \dot{E}_{\text{ger}}
+                        \quad
+                        \left[
+                            \text{W} = \frac{\text{Kg m\textsuperscript{2}}}{s\textsuperscript{3}}
+                        \right]
                     }
                 \end{equation}
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Energia Gerada:} $\dot{E}_{\text{ger}}$ em $[\text{W}]$ obtida pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                \dot{E}_{\text{ger}} = \dot{q} \text{d}x\; \text{d}y\; \text{d}z
+                            }
+                        \end{equation}
+
+                    \item \textbf{Energia Acumulada:} $\dot{E}_{\text{acu}}$ em $[\text{W}]$ obtida pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                \dot{E}_{\text{acu}} = p c_{\text{p}} \diffp{T}{t} \text{d}x\; \text{d}y\; \text{d}z
+                            }
+                        \end{equation}
+                \end{enumerate}
 
         \subsubsection{Balanço de Energia em Superfície}
             \paragraph{Definição}Considera-se que superfícies não apresentam massa e portanto apresentam a seguinte equação para conservação de massa:
