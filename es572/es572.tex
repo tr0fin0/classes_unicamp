@@ -569,6 +569,145 @@
                         \end{enumerate}
                     \item \textbf{Dualidade:} Conexões em série PMOS são logicamente equivalentes a conexões em paralelo NMOS e vice versa;
                 \end{enumerate}
+            Nota-se que os MOSFET apresentam o seguinte comportamento para suas diferentes construções:
+                \begin{multicols}{3}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (0, 0) node[nmos] (myFET) {}
+                            (myFET.G) node[left]{$A$};
+                        \end{circuitikz} 
+                        \caption{NMOS Isolado}
+                    \end{figure} \noindent
+                
+                    \columnbreak\noindent
+                
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{c|cc}\hline
+                            A & NMOS & PMOS\\\hline
+                            1 & 1    & 0\\
+                            0 & 0    & 1\\\hline
+                        \end{tabular}
+                    \end{table}
+                
+                    \columnbreak\noindent
+                
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (0, 0) node[pmos] (myFET) {}
+                            (myFET.G) node[left]{$A$};
+                        \end{circuitikz} 
+                        \caption{PMOS Isolado}
+                    \end{figure} \noindent
+                \end{multicols}\noindent
+            Estes dispositivos são conectados de acordo com os requisitos impostos pela construção CMOS e apresentam o seguinte comportamento para as combinações usuais:
+                \begin{multicols}{3}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (0, 0.75) node[nmos] (myFET_A) {}
+                            (0,-0.75) node[nmos] (myFET_B) {}
+                
+                            (myFET_A.S) -- (myFET_B.D)
+                
+                            (myFET_A.G) node[left]{$A$}
+                            (myFET_B.G) node[left]{$B$};
+                        \end{circuitikz} 
+                    \end{figure} \noindent
+                
+                    \columnbreak\noindent
+                
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{cc|cc}\hline
+                            A & B & NMOS & PMOS\\\hline
+                            0 & 0 & 0    & 1\\
+                            0 & 1 & 0    & 1\\
+                            1 & 0 & 0    & 1\\
+                            1 & 1 & 1    & 0\\\hline
+                        \end{tabular}
+                    \end{table}
+                
+                    \columnbreak\noindent
+                
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (-0.5,0) node[pmos] (myFET_A) {}
+                            ( 0.5,0) node[pmos, xscale=-1] (myFET_B) {}
+                
+                            (myFET_A.D) -- (myFET_B.D) coordinate (up)
+                            (myFET_A.S) -- (myFET_B.S) coordinate (down)
+                
+                            (0, 0.75) to[short, o-] ++(0,+0.75)
+                            (0,-0.75) to[short, o-] ++(0,-0.75)
+                
+                            (myFET_A.G) node[left]{$A$}
+                            (myFET_B.G) node[right]{$B$};
+                        \end{circuitikz} 
+                    \end{figure} \noindent
+                \end{multicols}\noindent
+            Na sequência as combinações serão trocadas e, consequentemente, os comportamentos serão inversos como ilustrado nas tabelas verdades:
+                \begin{multicols}{3}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (-0.5,0) node[nmos] (myFET_A) {}
+                            ( 0.5,0) node[nmos, xscale=-1] (myFET_B) {}
+                
+                            (myFET_A.D) -- (myFET_B.D) coordinate (up)
+                            (myFET_A.S) -- (myFET_B.S) coordinate (down)
+                
+                            (0, 0.75) to[short, o-] ++(0,+0.75)
+                            (0,-0.75) to[short, o-] ++(0,-0.75)
+                
+                            (myFET_A.G) node[left]{$A$}
+                            (myFET_B.G) node[right]{$B$};
+                        \end{circuitikz} 
+                    \end{figure} \noindent
+                
+                    \columnbreak\noindent
+                
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{cc|cc}\hline
+                            A & B & NMOS & PMOS\\\hline
+                            0 & 0 & 0    & 1\\
+                            0 & 1 & 1    & 0\\
+                            1 & 0 & 1    & 0\\
+                            1 & 1 & 1    & 0\\\hline
+                        \end{tabular}
+                    \end{table}
+                
+                    \columnbreak\noindent
+                
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (0, 0.75) node[pmos] (myFET_A) {}
+                            (0,-0.75) node[pmos] (myFET_B) {}
+                
+                            (myFET_A.D) -- (myFET_B.S)
+                
+                            (myFET_A.G) node[left]{$A$}
+                            (myFET_B.G) node[left]{$B$};
+                        \end{circuitikz} 
+                    \end{figure} \noindent
+                \end{multicols}\noindent
 
         \subsubsection{Inversor}
             \paragraph{Definição}Dispositivo eletrônico que inverte sua tensão entrada, valores de entrada alto implicam saída baixa e valores baixos de entrada implicam saída alta.
