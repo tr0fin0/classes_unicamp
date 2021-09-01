@@ -197,4 +197,139 @@
 
                 \item \textbf{Fase:} Indica a defasagem do sinal representada por $\varphi$;
             \end{enumerate}
+
+        \subsection{Fasores}
+            \paragraph{Definição}Conversão de equações periódicas em \textbf{Equações Fasoriais}, isto é, equações que envolvam números complexos para representar um comportamento periódico como descrito pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        V(t) := V_{M}\phase{\varphi^{\circ}}
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}
+                    \item \textbf{Amplitude:} $V_{M}$, Representa a \texttt{Tensão Máxima} do sinal obtido pela seguinte equação:
+                        \begin{equation*}
+                            \boxed{
+                                V_{M} = \sqrt{
+                                    V_{\text{I}}^{2} + V_{\text{R}}^{2}
+                                }
+                            }
+                        \end{equation*}
+                    Onde:
+                        \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                            \item \texttt{Parcela Imaginária:} $V_{\text{I}}$;
+
+                            \item \texttt{Parcela Real:} $V_{\text{R}}$;
+                        \end{enumerate}
+
+
+                    \item \textbf{Ciclo:} Características da equação:
+                        \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                            \item \texttt{Frequência:} $\omega$, Constante a todos os componentes do circuito;
+                        \end{enumerate}
+
+                    \item \textbf{Fase:} Indica a defasagem do sinal representada por $\varphi$ obtido pela seguinte equação:
+                        \begin{equation*}
+                            \boxed{
+                                \varphi = \tan^{-1}
+                                \left(
+                                    \frac{V_{\text{I}}}{V_{\text{R}}}
+                                \right)
+                            }
+                        \end{equation*}
+                \end{enumerate}
+
+            \begin{multicols}{2}
+                \raggedcolumns
+                \subsubsection{Multiplicação}
+                    \paragraph{Definição}Seja $V_{1}(t) = V_{1} \phase{\alpha_{1}^{\circ}}$ e $V_{2}(t) = V_{2} \phase{\alpha_{2}^{\circ}}$ então a multiplicação será obtida pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                V_{1}(t) \cdot V_{2}(t) = 
+                                (V_{1} \cdot V_{2})\phase{(\alpha_{1} + \alpha_{2})^{\circ}}
+                            }
+                        \end{equation}
+
+                \columnbreak
+
+                \subsubsection{Divisão}
+                    \paragraph{Definição}Seja $V_{1}(t) = V_{1} \phase{\alpha_{1}^{\circ}}$ e $V_{2}(t) = V_{2} \phase{\alpha_{2}^{\circ}}$ então a multiplicação será obtida pela seguinte equação:
+                        \begin{equation}
+                            \boxed{
+                                \frac{V_{1}(t)}{V_{2}(t)} = 
+                                \frac{V_{1}}{V_{2}} \phase{(\alpha_{1} - \alpha_{2})^{\circ}}
+                            }
+                        \end{equation}
+            \end{multicols}
+
+        \subsection{Transformada de Componentes}
+            \paragraph{Definição}Substituir as equações que descrevem cada componente empregada em um \textbf{Circuito Periódico} através apenas de sua amplitude e sua fase. Nesta transformação o circuito resultante será puramente resistivo com componentes reais e imaginárias e obedecerá às \textbf{Leis de Kirchhoff}.
+                \begin{table}[H]
+                    \centering
+                    \begingroup
+                    % \setlength{\tabcolsep}{5mm}
+                    \renewcommand{\arraystretch}{1.25}
+                    \begin{tabular}[]{lll}
+                                  & Equação Periódica                  & Equação Fasorial\\\hline
+                        Resistor  & $v_{R}(t) = R\;i_{R}(t)$           & $V_{R}(t) = R\;I_{R}(t)$\\[2.5mm]
+                        Capacitor & $i_{C}(t) = C\;\diff{v_{C}(t)}{t}$ & $V_{C}(t) = \frac{1}{j\omega C}\;I_{C}(t)$\\[2.5mm]
+                        Indutor   & $v_{L}(t) = L\;\diff{i_{L}(t)}{t}$ & $V_{L}(s) = j\omega L\;I_{L}(t)$\\[2.5mm]\hline
+                    \end{tabular}
+                    \endgroup
+                    \caption{Transformadas de Fasorial de Componentes}\label{table:FasorialComponents}
+                \end{table} \noindent
+
+        \subsection{Potência}
+            \paragraph{Definição}Seja um sistema com uma fonte $v(t) = V_{M}\cos(\omega t)$ e $i(t) = I_{M}\cos(\omega t)$ então a potência instantânea será dada pela seguinte equação:
+                \begin{equation}
+                    p(t) = 
+                    R\;i(t)^{2} = 
+                    R\;I_{M}^{2}\cos^{2}(\omega t) = 
+                    \boxed{
+                        \frac{R I_{M}^{2}}{2}(1 + \cos(2\omega t))
+                    }
+                \end{equation}
+            Nota-se que a potência instantânea oscila com o dobro da frequência em torno de um valor constante.
+
+            \subsubsection{Potência Média}
+                \paragraph{Definição}Potência fornecida durante um ciclo $T$ de oscilação da equação periódica obtida pela seguinte equação:
+                    \begin{equation}
+                        \bar{p} = 
+                        \frac{1}{T} \int_{t}^{t+T} p(t)\;\text{d}t = 
+                        \boxed{
+                            \frac{V_{M}\;I_{M}}{2} \cos(\theta)
+                        }
+                    \end{equation}
+                Onde:
+                    \begin{enumerate}
+                        \item \textbf{Fase da Carga:} $\theta$, Representando o impedância geral pelo componente analísado:
+                            \begin{equation*}
+                                \theta = 
+                                \begin{cases}
+                                    -90^{\circ}, & \text{se carga Capacitiva}\\
+                                      0^{\circ}, & \text{se carga Resistiva}\\
+                                    +90^{\circ}, & \text{se carga Indutiva}\\
+                                \end{cases}
+                            \end{equation*}
+                    \end{enumerate}
+                Desta forma define-se como valores eficazes de sinais periódicas os valores necessários em sinais contínuos para que haja a mesma entrega de potência média em um resistor obtidos pela seguinte equação:
+                    \begin{equation}
+                        \boxed{I_{\text{ef}} = \frac{I_{M}}{\sqrt{2}}}
+                        \qquad
+                        \boxed{V_{\text{ef}} = \frac{V_{M}}{\sqrt{2}}}
+                    \end{equation}
+
+            \subsubsection{Potência Aparente}
+                \paragraph{Definição}Considera-se que o produto entre os valores eficazes de corrente e tensão representa o \textbf{Potência Aparente} sobre aquele componente como mostrado na equação a seguir:
+                    \begin{equation}
+                        \boxed{p_{\text{ap}} = I_{\text{ef}}\;V_{\text{ef}}}
+                    \end{equation}
+
+            \subsubsection{Fator de Potência}
+                \paragraph{Definição}Relação entre a potência média e a potência aparente como mostrado na equação a seguir:
+                    \begin{equation}
+                        \boxed{
+                            f_{p} = \frac{\bar{p}}{I_{\text{ef}}\;V_{\text{ef}}} = \cos(\theta)
+                        }
+                    \end{equation}
 \end{document}
