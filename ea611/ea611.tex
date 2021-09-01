@@ -131,42 +131,20 @@
 
         \subsection{Transformada de Componentes}
             \paragraph{Definição}Substituir as equações que descrevem cada componente empregado em um circuito através de seu equivalente em \textbf{Laplace} simplificará os cálculos e poderá integrar suas condições iniciais na análise. Nesta transformação o circuito resultante será puramente resistivo e obedecerá às \textbf{Leis de Kirchhoff}.
-
-            \subsubsection{Capacitor}
-                \paragraph{Definição}Genericamente considera-se a seguinte equação para descrever o comportamento do componente:
-                    \begin{equation*}
-                        v_{C}(t) = \frac{1}{C}\;\int_{0}^{t} i_{C}(t)\;\text{d}t + v_{C}(0)
-                    \end{equation*}
-                Aplica-se a \textbf{Transformada de Laplace}, obtendo a seguinte equação:
-                    \begin{equation}
-                        \boxed{
-                            V_{C}(s) = \frac{1}{sC}\;I_{C}(s) + \frac{v_{C}(0)}{s}
-                        }
-                    \end{equation}
-
-            \subsubsection{Indutor}
-                \paragraph{Definição}Genericamente considera-se a seguinte equação para descrever o comportamento do componente:
-                    \begin{equation*}
-                        v_{L}(t) = L\;\diff{i_{L}(t)}{t}
-                    \end{equation*}
-                Aplica-se a \textbf{Transformada de Laplace}, obtendo a seguinte equação:
-                    \begin{equation}
-                        \boxed{
-                            V_{L}(s) = sL\;I_{L}(s) - L\;I_{L}(0)
-                        }
-                    \end{equation}
-
-            \subsubsection{Resistor}
-                \paragraph{Definição}Genericamente considera-se a seguinte equação para descrever o comportamento do componente:
-                    \begin{equation*}
-                        v_{R}(t) = R\;i_{R}(t)
-                    \end{equation*}
-                Aplica-se a \textbf{Transformada de Laplace}, obtendo a seguinte equação:
-                    \begin{equation}
-                        \boxed{
-                            V_{R}(s) = R\;I_{R}(s)
-                        }
-                    \end{equation}
+                \begin{table}[H]
+                    \centering
+                    \begingroup
+                    % \setlength{\tabcolsep}{5mm}
+                    \renewcommand{\arraystretch}{1.25}
+                    \begin{tabular}[]{lll}
+                                  & Equação Geral                                                         & Equação Laplace\\\hline
+                        Resistor  & $v_{R}(t) = R\;i_{R}(t)$                                              & $V_{R}(s) = R\;I_{R}(s)$\\[2.5mm]
+                        Capacitor & $v_{C}(t) = \frac{1}{C}\;\int_{0}^{t} i_{C}(t)\;\text{d}t + v_{C}(0)$ & $V_{C}(s) = \frac{1}{sC}\;I_{C}(s) + \frac{v_{C}(0)}{s}$\\[2.5mm]
+                        Indutor   & $v_{L}(t) = L\;\diff{i_{L}(t)}{t}$                                    & $V_{L}(s) = sL\;I_{L}(s) - L\;I_{L}(0)$\\[2.5mm]\hline
+                    \end{tabular}
+                    \endgroup
+                    \caption{Transformadas de Laplace de Componentes}\label{table:LaplaceComponents}
+                \end{table} \noindent
 
         \subsection{Função de Rede}
             \paragraph{Definição}Simplificação dos circuitos de tal forma que análise seja facilitada pela utilização de suas entradas e de suas saídas sempre presupondo que as condições iniciais nulas obtidas pelas seguintes equações:
@@ -179,10 +157,10 @@
                     \item $I(s)$, \textbf{Saída:} Saída de Corrente;
                 \end{enumerate}
 
-    \section{Circuitos Senoidais}
+    \section{Circuitos Periódicos}
         \paragraph{Definição}Circuitos que são submetidos a sinais de tensão senoidais normalmente presentes em sistemas de potência elétrica com corrente alternada que será representada pela seguinte equação:
             \begin{equation}
-                \boxed{v(t) = V_{M}\sin(\omega t + \varphi)}
+                \boxed{v(t) = V_{M}\cos(\omega t + \varphi)}
             \end{equation}
         Onde:
             \begin{enumerate}
