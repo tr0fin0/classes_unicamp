@@ -80,7 +80,48 @@
 \newpage
         \subsection{Questão 4}
             \begin{exercise}
-                1
+                Construa a rede \texttt{pull-down} correspondente à rede de \texttt{pull-up} do circuito CMOS apresentado:
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (-0.5,0) node[pmos] (myFET_A1) {}
+                            ( 0.5,0) node[pmos, xscale=-1] (myFET_B1) {}
+                
+                            (myFET_A1.S)-- (-0.5,1)
+                                        -- (+0.5,1)
+                                        -- (myFET_B1.S)
+                                
+                            (myFET_A1.D)-- (-0.5,-1)
+                                        -- (+0.5,-1)
+                                        -- (myFET_B1.D)
+
+                            (0, 1) to[short, o-] ++(0,+0.5)
+                            (0,-1) to[short, o-] ++(0,-0.5)
+
+                            (-0.5,3) node[pmos] (myFET_A2) {}
+                            ( 0.5,3) node[pmos, xscale=-1] (myFET_B2) {}
+
+                            (myFET_A2.S)-- (-0.5,4)
+                                        -- (+0.5,4)
+                                        -- (myFET_B2.S)
+
+                            (myFET_A2.D)-- (-0.5,2)
+                                        -- (+0.5,2)
+                                        -- (myFET_B2.D)
+
+                            (0,4) to[short, o-] ++(0,+0.5)
+                            (0,2) to[short, o-] ++(0,-0.5)
+
+                            (myFET_A1.G) node[left] {$A$}
+                            (myFET_B1.G) node[right]{$B$}
+
+                            (myFET_A2.G) node[left] {$\bar{A}$}
+                            (myFET_B2.G) node[right]{$\bar{B}$};
+                        \end{circuitikz} 
+                    \end{figure} \noindent
+                Apresente a \textbf{Tabela Verdade} deste circuito.
             \end{exercise}
             \begin{resolution}
                 1
