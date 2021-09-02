@@ -22,7 +22,7 @@
             \paragraph{Definição}Energia transferida de partículas mais energéticas para menos energéticas de uma substância devido às interações entre partículas em repouso.
 
         \subsubsection{Lei de Fourier}
-            \paragraph{Definição}Energia transferida por unidade de tempo será dado por:
+            \paragraph{Definição}Considera-se que o fluxo de energia causado pela transferência de calor, \textbf{Fluxo Térmico}, através do espaço por unidade de tempo será dado por:
                 \begin{equation}
                     \boxed{
                         q_{x}^{''} = - K \nabla T 
@@ -31,8 +31,18 @@
                     }
                 \end{equation}
             Onde:
-                \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
-                    \item \textbf{Fluxo Térmico:} $q_{x}''$ em $\left[\frac{\text{W}}{\text{m\textsuperscript{2}}}\right]$, perpedicular a direção de transferência;
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Fluxo Térmico:} $\boldsymbol{q}''$ em $\left[\frac{\text{W}}{\text{m\textsuperscript{2}}}\right]$, perpedicular a direção de transferência;
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Unidimensional:} Caso trate-se de uma dimensão está equação será simplificada:
+                                \begin{equation*}
+                                    \boxed{
+                                        q_{x}'' = - K \diff{T}{x}
+                                    }
+                                \end{equation*}
+                            Note que qualquer direção cartesiana poderia ser considerada para a equação.
+                        \end{enumerate}
+                    Considera-se durante análise de que o meio em que se dá a condução será \textbf{Isotérmico}, implicando que a \texttt{Condutividade Térmica} seja independente das direções empregadas. Além disso, a \textbf{Direção Normal} será normal a isotérmica na direção decrescente de temperatura.
 
                     \item \textbf{Condutividade Térmica:} $K$ em $\left[\frac{\text{W}}{\text{m K}}\right]$;
 
