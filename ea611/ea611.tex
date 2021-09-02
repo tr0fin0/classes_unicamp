@@ -333,4 +333,31 @@
                             f_{p} = \frac{\bar{p}}{V_{\text{ef}}\;I_{\text{ef}}} = \cos(\theta)
                         }
                     \end{equation}
+                Legislação brasileira exige que as cargas nas indústrias tenham um fator de potência mínimo para que atender as demandas de potência elétrica. Desta forma, pode ser necessário ajustar a impedância da carga $Z = R + jI$ com a inserção de uma carga paralela $Z_{i} = j I_{i}$ como mostrado pela seguinte equação:
+                    \begin{equation}
+                        \boxed{
+                            I_{i} = \frac{R^2 + I^2}{R\;\tan(\cos^{-1}(f_{p})) - I}
+                        }
+                    \end{equation}
+                    \begin{example}
+                        Seja $Z = 100 + j100$ com $\omega = 100$ e deseja-se um \textbf{Fator de Potência} $f_{p} = 0.95$. Primeiramente tem-se:
+                            \begin{align*}
+                                Z = 100 + j100 &= 141.4\phase{45^{\circ}}\\
+                                \Aboxed{
+                                    f_{p} &= \cos(45^{\circ}) = 0.707
+                                } & \text{Fator de Potência Inicial}
+                            \end{align*}
+                        Nota-se que $0.707 < 0.95$ logo será necessário inserir uma carga paralela:
+                            \begin{equation*}
+                                I_{i} = \frac{100^2 + 100^2}{100\cdot\tan(\cos^{-1}(0.95)) - 100} = -297.92 \Omega
+                            \end{equation*}
+                        Nota-se que $I_{i} < 0$ trata-se de uma carga Capacitiva, caso $I_{i} > 0$ seria uma carga Indutiva. Desta forma, tem-se: 
+                            \begin{equation*}
+                                I_{i} = -\frac{1}{\omega\;C}
+                                \qquad
+                                \boxed{
+                                    C = - \frac{1}{\omega\;I_{i}} = 33,6 \mu F
+                                }
+                            \end{equation*}
+                    \end{example}
 \end{document}
