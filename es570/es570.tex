@@ -236,4 +236,39 @@
                     }
                 \end{equation}
 
+        \subsubsection{Equação Difusão Térmica}
+            \paragraph{Definição}Equação que permite analisar a distribuição de temperatura sobre uma superfície. Primeiramente define-se um \textbf{Volume de Controle Diferencial} uma região infinitesimal do espaço analisado como definido na seguinte figura:
+                \begin{figure}[H]
+                    \begin{subfigure}[t]{0.45\textwidth}
+                        \centering
+                        \includegraphics[height = 4cm]{es570_im01.png}
+                        \caption{Coordenadas Cartesianas}
+                    \end{subfigure}
+                    \begin{subfigure}[t]{0.45\textwidth}
+                        \centering
+                        \includegraphics[height = 4cm]{es570_im02.png}
+                        \caption{Coordenadas Cilíndricas}
+                    \end{subfigure}
+                    \caption{Volume de Controle Diferencial}
+                \end{figure} \noindent
+            Na sequência substitui-se as variáveis definidas na equação \ref{eq:energyConservation}, obtendo a seguinte equação em coordenadas cartesianas:
+                \begin{equation}
+                    \boxed{
+                        \diffp{}{x}\left(k\diffp{T}{x}\right) + 
+                        \diffp{}{y}\left(k\diffp{T}{y}\right) + 
+                        \diffp{}{z}\left(k\diffp{T}{z}\right) + 
+                        \dot{q} = 
+                        p\;c_{p}\;\diffp{T}{t}
+                    }
+                \end{equation}
+            Alternativamente a mesma equação em coordenadas cilíndricas será:
+                \begin{equation}
+                    \boxed{
+                        \frac{1}{r}\diffp{}{r}\left(kr\diffp{T}{r}\right) + 
+                        \frac{1}{r^2}\diffp{}{\phi}\left(k\diffp{T}{\phi}\right) + 
+                        \diffp{}{z}\left(k\diffp{T}{z}\right) + 
+                        \dot{q} = 
+                        p\;c_{p}\;\diffp{T}{t}
+                    }
+                \end{equation}
 \end{document}
