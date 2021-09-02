@@ -25,7 +25,7 @@
             \paragraph{Definição}Considera-se que o fluxo de energia causado pela transferência de calor, \textbf{Fluxo Térmico}, através do espaço por unidade de tempo será dado por:
                 \begin{equation}
                     \boxed{
-                        q_{x}^{''} = - K \nabla T 
+                        \boldsymbol{q}'' = - K \nabla \boldsymbol{T} 
                         \quad 
                         \left[\frac{\text{W}}{\text{m\textsuperscript{2}}}\right]
                     }
@@ -45,17 +45,20 @@
                     Considera-se durante análise de que o meio em que se dá a condução será \textbf{Isotérmico}, implicando que a \texttt{Condutividade Térmica} seja independente das direções empregadas. Além disso, a \textbf{Direção Normal} será normal a isotérmica na direção decrescente de temperatura.
 
                     \item \textbf{Condutividade Térmica:} $K$ em $\left[\frac{\text{W}}{\text{m K}}\right]$;
+                        \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                            \item \texttt{Convenção:} Trata-se de um fluxo da maior para a menor temperatura dessa forma há o sinal negativo;
+                        \end{enumerate}
 
-                    \item \textbf{Gradiente de Temperatura:} $\nabla T$ em $\left[\frac{\text{K}}{\text{m}}\right]$;
+                    \item \textbf{Gradiente de Temperatura:} $\nabla \boldsymbol{T}$ em $\left[\frac{\text{K}}{\text{m}}\right]$;
                         \begin{enumerate}[noitemsep]
                             \item \texttt{Coordenadas Cartesianas:}
                                 \begin{equation}
                                     \boxed{
-                                        \nabla T = 
+                                        \nabla \boldsymbol{T} = 
                                         \left(
-                                            \hat{i}\diffp{T}{x} + 
-                                            \hat{j}\diffp{T}{y} + 
-                                            \hat{k}\diffp{T}{z}
+                                            \boldsymbol{i}\diffp{T}{x} + 
+                                            \boldsymbol{j}\diffp{T}{y} + 
+                                            \boldsymbol{k}\diffp{T}{z}
                                         \right)
                                     }
                                 \end{equation}
@@ -65,11 +68,11 @@
                             \item \texttt{Coordenadas Cilíndricas:}
                                 \begin{equation}
                                     \boxed{
-                                        \nabla T = 
+                                        \nabla \boldsymbol{T} = 
                                         \left(
-                                            \hat{i}\diffp{T}{r} + 
-                                            \hat{j}\frac{1}{r}\diffp{T}{\phi} + 
-                                            \hat{k}\diffp{T}{z}
+                                            \boldsymbol{i}\diffp{T}{r} + 
+                                            \boldsymbol{j}\frac{1}{r}\diffp{T}{\phi} + 
+                                            \boldsymbol{k}\diffp{T}{z}
                                         \right)
                                     }
                                 \end{equation}
@@ -79,11 +82,11 @@
                             \item \texttt{Coordenadas Esféricas:}
                                 \begin{equation}
                                     \boxed{
-                                        \nabla T = 
+                                        \nabla \boldsymbol{T} = 
                                         \left(
-                                            \hat{i}\diffp{T}{r} + 
-                                            \hat{j}\frac{1}{r}\diffp{T}{\phi} + 
-                                            \hat{k}\frac{1}{r\sin(\theta)}\diffp{T}{\theta}
+                                            \boldsymbol{i}\diffp{T}{r} + 
+                                            \boldsymbol{j}\frac{1}{r}\diffp{T}{\phi} + 
+                                            \boldsymbol{k}\frac{1}{r\sin(\theta)}\diffp{T}{\theta}
                                         \right)
                                     }
                                 \end{equation}
