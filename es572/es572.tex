@@ -808,4 +808,93 @@
                     \end{tikzpicture}
                 \end{figure}\noindent
             Note que este gráfico não apresenta informações dinâmicas sobre o componente, isto é, não apresenta a velocidade para se atigir o regime. Além disso, as regiões coloridas representam as \textbf{Zonas Proíbidas}, não deverá haver sinal nestas regiões.
+
+    \section{Sistemas Numéricos}
+        \paragraph{Apresentação}Há diferentes formas para se representar números utilizadas em situações distintas de acordo com as necessidades da aplicação, sendo os principais sistemas serão apresentadas a seguir e comparados com o \textbf{Sistema Decimal}.
+
+        \subsection{Binário}
+            \paragraph{Definição}Sistema numérico que utiliza 2 dígitos: \{0,1\}, sendo que com $n$ bits o maior número possível representável será $2^{n}-1$ apresentando as seguintes posições especiais:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{LSB:} Least Significative Bit, bit mais à direita;
+                    \item \textbf{MSB:} Most Significative Bit, bit mais à esquerda;
+                \end{enumerate}
+            Neste sistema será possível representar números fracionários através de potências negativas de 2 que apresenta manipulação similar as entradas inteiras.
+                \begin{example}
+                    Representação de Números Binários:
+                        \begin{table}[H]
+                            \centering  
+                            \begin{tabular}[]{r lll c rrr l}
+                                $\dots$ & $2^3$ & $2^2$ & $2^1$ & $2^0$ & $2^{-1}$ & $2^{-2}$ & $2^{-3}$ & $\dots$\\\hline
+                                        & 8     & 4     & 2     & 1     & 0.5      & 0.25     & 0.125    & \\
+                            \end{tabular}
+                            \caption{Representação de Números Binários}
+                        \end{table}\noindent
+                    Desta forma, sabe-se que:
+                        \begin{equation*}
+                            \boxed{
+                                1011.010_{2} = 
+                                1 \times 2^{ 3} + 
+                                0 \times 2^{ 2} + 
+                                1 \times 2^{ 1} + 
+                                1 \times 2^{ 0} + 
+                                0 \times 2^{-1} + 
+                                1 \times 2^{-2}
+                                 = 
+                                 11.25_{10}
+                            }
+                        \end{equation*}
+                \end{example}
+
+            \paragraph{Soma Binária}Apresenta mesmo funcionamento para o sistema decimal como apresentado pelas seguintes tabelas:
+                \begin{table}[H]
+                    \centering  
+                    \begin{tabular}[]{cc|cc}\hline
+                        Soma & \texttt{Carry-In} & Resultado & \texttt{Carry-In}\\\hline
+                        0 + 0 & 0 & 0 & 0\\
+                        0 + 1 & 0 & 1 & 0\\
+                        1 + 0 & 0 & 1 & 0\\
+                        1 + 1 & 0 & 0 & 1\\
+                        0 + 0 & 1 & 1 & 0\\
+                        0 + 1 & 1 & 0 & 1\\
+                        1 + 0 & 1 & 0 & 1\\
+                        1 + 1 & 1 & 1 & 1\\\hline
+                    \end{tabular}
+                    \caption{Representação de Soma}
+                \end{table}\noindent
+            Onde:
+                \begin{enumerate}[noitemsep]
+                    \item \texttt{Carry-In:} Representa o acúmulo de entrada da operação anterior;
+                    \item \texttt{Carry-Out:} Representa o acúmulo de saída da operação atual;
+                \end{enumerate}
+
+            \paragraph{Multiplicação Binária}Apresenta funcionamento próximo para o sistema decimal apresentando uma análise mais mecânica através da técnica de \texttt{shift-and-sum}, seguindo as seguintes regras:
+                \begin{example}
+                    Representação de $1101_{2} \times 1011_{2}$:
+                    \begin{center}
+                        \begin{arithmetic}
+                                   1101 & \\
+                            \times 1011 & \\
+                                   1101 & 1, copia\\
+                                  1101~ & 1, copia\\
+                                 0000~~ & 0, anula\\
+                            +   1101~~~ & 1, copia\\
+                               10001111 & Resultado
+                        \end{arithmetic}
+                    \end{center}
+                \end{example}
+
+        \subsubsection{Conversão Decimal-Binário}
+            \paragraph{Definição}Há dois principais métodos:
+                \begin{enumerate}[noitemsep]
+                    \item \textbf{Método de Inspeção:} Decompondo os números em soma de potências de 2;
+                    \item \textbf{Método de Divisão Sucessiva:} Realizando divisões sucessivas de 2;
+                \end{enumerate}
+                \begin{example}
+                    Método de Divisão Sucessiva:
+                    \begin{figure}[H]
+                        \centering
+                        \basetenconversiontable{8}{2}
+                        \caption{Conversão Decimal-Binário}
+                    \end{figure}
+                \end{example}
 \end{document}
