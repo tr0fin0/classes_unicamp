@@ -185,6 +185,38 @@
 
         \subsection{Fasores}
             \paragraph{Definição}Conversão de equações periódicas em \textbf{Equações Fasoriais}, isto é, equações que envolvam números complexos para representar um comportamento periódico como descrito pela seguinte equação:
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin = 0, xmax = 5.25, % Axis Coordenates
+                            ymin = 0, ymax = 5.25, % Axis Coordenates
+                            xlabel = {$\mathbb{R}$},  % Axis Labels
+                            ylabel = {$\mathbb{I}$},  % Axis Labels
+                            xtick = {4.25},  % Axis Ticks Potions
+                            ytick = {4.25},  % Axis Ticks Potions
+                            xticklabels = {$V_{R}$}, % Axis Ticks Labels
+                            yticklabels = {$V_{I}$}, % Axis Ticks Labels
+                            x label style = {at={(axis cs:{5.5,0})}, anchor=west},
+                            y label style = {at={(axis cs:{0,5.5})}, anchor=south, rotate=-90},
+                            width  = 5.0cm,
+                            height = 5.0cm,
+                            axis lines = left,
+                        ]
+                        \draw [red!60, -{Latex[round]}] (1.5,0) arc [
+                            start angle = 0,
+                            end angle   = 45,
+                            radius      = 1.5
+                        ] node [midway, right] {$\theta^{\circ}$};
+                
+                        \draw[-{Latex[round]}] (axis cs:{0,0}) -- (axis cs:{4.25,4.25}) node [above right] {$V_{M}$};
+                
+                        \draw[gray, dashed] (axis cs:{4.25,0}) -- (axis cs:{4.25,4.25});
+                        \draw[gray, dashed] (axis cs:{0,4.25}) -- (axis cs:{4.25,4.25});
+                        \end{axis}
+                    \end{tikzpicture}
+                    \caption{Represenação Fasores}
+                \end{figure}\noindent
                 \begin{equation}
                     \boxed{
                         V(t) := V_{M}\phase{\varphi^{\circ}}
