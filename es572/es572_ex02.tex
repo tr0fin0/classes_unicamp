@@ -102,7 +102,21 @@
             \end{exercise}
 
             \begin{resolution}
-                1
+                Considera-se a seguintes condições:
+                    (1) VOH - VOL > VIH - VIL
+                    (2) VOH > VIH > VIL - VOL
+                    (3) VOUT > VOH quando VIN < VIL
+                    (4) VOUT < VOL quando VIN > VIH
+                \begin{table}[H]
+                    \centering  
+                    \begin{tabular}[]{l ccc}\hline
+                            & (a) & (b)  & (c)\\\hline
+                        (1) & ok  & ok   & ok\\
+                        (2) & ok  & ok   & ok\\
+                        (3) & ok  & erro & ok\\
+                        (4) & ok  & erro & ok\\\hline
+                    \end{tabular}
+                \end{table}
             \end{resolution}
 
 \newpage
