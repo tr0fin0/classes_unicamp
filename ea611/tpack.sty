@@ -33,9 +33,10 @@
 \usepackage[hidelinks]{hyperref}                                    %
 \usepackage{bookmark, chngcntr, comment, csquotes, filecontents}    % File Manapulation
 
-\usepackage{amsmath, amssymb, amsthm, cancel, float}                % Math Presets
+\usepackage{amsmath, amssymb, amsthm, cancel, float, mathtools}     % Math Presets
 \usepackage{array, systeme}                                         % Table Presets
 \usepackage[thinc]{esdiff}                                          % Derivatives Presets
+\usepackage{steinmetz}                                              % Fasorial Representation, https://tex.stackexchange.com/questions/185079/angle-notation-for-complex-numbers-in-polar-form
 
 \usepackage{graphicx}                                               % Colors
 \usepackage[table]{xcolor}                                          % Colors
@@ -80,6 +81,9 @@
                                         % Numering Setup
 \counterwithin{figure}{section}         % Figure {section }.{figure}
 \counterwithin{equation}{subsection}    % Equation {section}.{subsection}.{equation}
+
+% \renewcommand{\labelenumi}{(\alph{enumi})}
+% \renewcommand{\labelenumii}{\roman{enumii}.}
 
 
 % ----------------------------------------------
@@ -381,6 +385,10 @@
     \newtheorem*{exercise}{Exercício}
 }
 
+\theoremstyle{mystyle}{
+    \newtheorem*{resolution}{Resolução}
+}
+
 
 \tcolorboxenvironment{definition}{
     boxrule=0.1mm,                          % Box Thickness outline
@@ -475,6 +483,55 @@
     right=12pt,
     breakable,
 }
+
+\tcolorboxenvironment{resolution}{
+    boxrule=0.1mm,
+    boxsep=2pt,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{darkgray},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
+
+
+% ----------------------------------------------
+%               Forest: Customization
+% ----------------------------------------------
+
+\tikzset{
+    iv/.style={
+        draw,
+        fill=white,
+        circle,
+        minimum size=20pt,
+        inner sep=0pt,
+        text=black
+    },
+    ev/.style={
+        draw,
+        fill=gray!50,
+        rectangle,
+        minimum size=20pt,
+        inner sep=0pt,
+        text=black
+    }
+}
+
+
+
+
+% ----------------------------------------------
+%               Tikz: Customization
+% ----------------------------------------------
+\pgfplotsset{compat=newest}
+\usetikzlibrary{patterns}
+
 
 
 
