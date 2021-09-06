@@ -166,7 +166,19 @@
                 Apresente a \textbf{Tabela Verdade} deste circuito.
             \end{exercise}
             \begin{resolution}
-                1
+                Nota-se que a rede de \texttt{pull-down} correspondente será:
+                    (A+B)//(nA+nB)
+                Implicando a seguinte \textbf{Tabela Verdade}:
+                \begin{table}[H]
+                    \centering  
+                    \begin{tabular}[]{cccc|cc}\hline
+                        $A$ & $B$ & $\bar{A}$ & $\bar{B}$ & \texttt{pull-up} & \texttt{pull-down}\\\hline
+                        0   & 0   & 1         & 1         & 0                & 1\\
+                        0   & 1   & 1         & 0         & 1                & 0\\
+                        1   & 0   & 0         & 1         & 1                & 0\\
+                        1   & 1   & 0         & 0         & 0                & 1\\\hline
+                    \end{tabular}
+                \end{table}
             \end{resolution}
 
 \newpage
