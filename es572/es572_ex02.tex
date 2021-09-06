@@ -65,7 +65,19 @@
                 Forneça valores adequados para ($V_{OL}$, $V_{IL}$, $V_{OH}$, $V_{IH}$). Forneça também as duas margens de ruído e a imunidade do ruído desta família de dispositivos.
             \end{exercise}
             \begin{resolution}
-                1
+                Análise...\\
+                Desta forma os seguintes valores, em volts, seriam adequados:
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{l|cccc}\hline
+                                     & $V_{OL}$ & $V_{IL}$ & $V_{IH}$ & $V_{OH}$\\\hline
+                            Circuito & 0.5      & 2.2      & 2.8      & 4.4\\\hline
+                        \end{tabular}
+                    \end{table}
+                Nota-se que ...
+                    $V_{OH} - V_{IH} = 1.6$
+                    $V_{IL} - V_{OL} = 1.7$
+                Implicando que a \textbf{Imunidade de Ruído} será 1.6 V
             \end{resolution}
 
 \newpage
