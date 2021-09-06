@@ -33,9 +33,10 @@
 \usepackage[hidelinks]{hyperref}                                    %
 \usepackage{bookmark, chngcntr, comment, csquotes, filecontents}    % File Manapulation
 
-\usepackage{amsmath, amssymb, amsthm, cancel, float}                % Math Presets
+\usepackage{amsmath, amssymb, amsthm, cancel, float, mathtools}     % Math Presets
 \usepackage{array, systeme}                                         % Table Presets
 \usepackage[thinc]{esdiff}                                          % Derivatives Presets
+\usepackage{steinmetz}                                              % Fasorial Representation, https://tex.stackexchange.com/questions/185079/angle-notation-for-complex-numbers-in-polar-form
 
 \usepackage{graphicx}                                               % Colors
 \usepackage[table]{xcolor}                                          % Colors
@@ -80,6 +81,9 @@
                                         % Numering Setup
 \counterwithin{figure}{section}         % Figure {section }.{figure}
 \counterwithin{equation}{subsection}    % Equation {section}.{subsection}.{equation}
+
+% \renewcommand{\labelenumi}{(\alph{enumi})}
+% \renewcommand{\labelenumii}{\roman{enumii}.}
 
 
 % ----------------------------------------------
@@ -528,6 +532,108 @@
 \pgfplotsset{compat=newest}
 \usetikzlibrary{patterns}
 
+
+
+\newcount\total
+\newcount\lasttotal
+\newcount\targetbase
+
+\def\basetenconversiontable#1#2{%
+    \begin{tikzpicture}[every node/.style={minimum width=1cm, minimum height=0.5cm}, x=1cm,y=0.5cm]
+    %
+    \total=#1%
+    \targetbase=#2
+    \def\newnumber{}
+    %
+    \pgfmathloop
+    \ifnum\total<1
+    \else
+        %
+        \ifnum\pgfmathcounter>1
+            \node at (\pgfmathcounter, -\pgfmathcounter+1) (tmp) {\the\targetbase};
+            \draw (tmp.north west) |- (tmp.south east);
+            %
+            \node at (\pgfmathcounter-1, -\pgfmathcounter) (tmp) {\pgfmathparse{int(\total*\targetbase)}\pgfmathresult};
+            \draw (tmp.south west) -- (tmp.south east);
+            %
+            \pgfmathparse{int(\lasttotal-\total*\targetbase)}%
+            \let\digit=\pgfmathresult
+            \node at (\pgfmathcounter-1, -\pgfmathcounter-1) [text=red] {\digit};
+            \edef\newnumber{\digit\newnumber}
+        \fi
+        %
+        \ifnum\total<\targetbase
+                \edef\newnumber{\the\total\newnumber}
+            \node at (\pgfmathcounter, -\pgfmathcounter) [text=red]  {\the\total};
+        \else
+            \node at (\pgfmathcounter, -\pgfmathcounter) {\the\total};
+        \fi
+        \lasttotal=\total
+        \divide\total by\targetbase
+    \repeatpgfmathloop    
+    \draw [->] (\pgfmathcounter-1,-\pgfmathcounter-1) -- ++(-0.5,0); 
+    \node [anchor=west] at (1, -\pgfmathcounter-2) {$#1_{10}=\newnumber_{\the\targetbase}$};
+    \end{tikzpicture}   
+}
+
+
+\makeatletter
+\providecommand\text\mbox
+\newenvironment{arithmetic}[1][]{\begin{tabular}[#1]{Al}}{\end{tabular}}
+\newcolumntype{A}{>{\bgroup\def~{\phantom{0}}$\@testOptor}r<{\@gobble\\$\egroup}}
+
+\def\@testOptor\ignorespaces#1#2\\{%
+    \ifx#1\times
+        \@OperatorRow{#1}{#2}\@tempa%
+    \else\ifx#1+
+        \@OperatorRow+{#2}\@tempa%
+    \else\ifx#1\discretionary% detects the soft hyphen, \-
+        \@ShortSubtractRow{#2}\@tempa%
+    \else\ifx#1-
+        \@OperatorRow-{#2}\@tempa%
+    \else
+        \@NormalRow{#1#2}\@tempa%
+    \fi\fi\fi\fi
+    \@tempa}
+
+
+    \def\@OperatorRow#1#2#3{%
+    \@IfEndRow#2\@gobble\\{%
+        \def#3{\underline{{}#1 #2}\\}%
+    }{%
+        \def#3{\underline{{}#1 #2{}}}%
+    }}
+
+\def\@NormalRow#1#2{%
+    \@IfEndRow#1\@gobble\\{%
+        \def#2{#1\\}%
+    }{%
+        \def#2{#1{}}%
+    }}
+
+\def\@IfEndRow#1\@gobble#2\\#3#4{%
+    \ifx#2\@gobble
+        #4%
+    \else
+        #3%
+    \fi}
+
+\makeatother
+
+\def\@ShortSubtractRow#1#2{\@@ShortSubtractRow#1~\end{#2}}
+\def\@@ShortSubtractRow#1#2~#3\end#4{%
+    \@IfEndRow#3\@gobble\\{%
+        \def#4{\underline{\text{--} #2}#3\\}%
+    }{%
+        \def#4{\underline{\text{--} #2{}}#3}%
+    }}
+
+    \def\Into#1\\{%
+    \@IfEndRow#1\@gobble\\{%
+        \def\@tempa{~\raisebox{0.17ex}{\parbox{0.15em}{\centering$\big|$}}\overline{~\big.#1}\\}%
+    }{%
+        \def\@tempa{~\raisebox{0.17ex}{\parbox{0.15em}{\centering$\big|$}}\overline{~\big.#1{}}}%
+    }\@tempa}
 
 
 
