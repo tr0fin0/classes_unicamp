@@ -285,17 +285,113 @@
 
             \subsubsection{Conversão Digital}
                 \paragraph{Definição}Inicialmente será necessário determinar como os sinais analógicos, medições reais, serão convertido para sinais digitais para que então possam ser trabalhados, buscando métodos que atendam as condições de codificações como a representada a seguir:
-                    \begin{equation}
-                        \boxed{
-                            V = 
-                            \begin{cases}
-                                0,                      & \text{se } V \leq V_{OL}\\
-                                \text{margem de erro},  & \text{se } V_{OL} \leq V \leq V_{IL}\\
-                                \text{zona proíbida},   & \text{se } V_{IL} \leq V \leq V_{IH}\\
-                                \text{margem de erro},  & \text{se } V_{IH} \leq V \leq V_{OH}\\
-                                1,                      & \text{se } V \geq V_{OH}\\
-                            \end{cases}
-                        }
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}
+                        \draw[-{Latex[round]}] (-0.5,0) -- (10.5,0) node[right] {volts};
+                
+                        \draw[
+                            color   =red!75,
+                            fill    =red!25,
+                            opacity =0.25
+                        ] (2.5,0) 
+                        node[
+                            below, 
+                            text=black, 
+                            opacity=1
+                        ] {$V_{OL}$} 
+                        rectangle (3.5, 1);
+                
+                        \draw[
+                            color   =gray!75,
+                            fill    =gray!25,
+                            opacity =0.25
+                        ] (3.5,0) 
+                        node[
+                            below, 
+                            text=black, 
+                            opacity=1
+                        ] {$V_{IL}$} 
+                        rectangle (6.5, 1) 
+                        node[
+                            pos=.5, 
+                            text=black, 
+                            opacity=1
+                        ] {Zona Proibida};
+                
+                        \draw[
+                            color   =red!75,
+                            fill    =red!25,
+                            opacity =0.25
+                        ] (6.5,0) 
+                        node[
+                            below, 
+                            text=black, 
+                            opacity=1
+                        ] {$V_{IH}$}
+                        rectangle (7.5, 1);
+                
+                        \node[below] at (7.5,0) {$V_{OH}$};
+                
+                        \node at ( 1.25,0.5) {0 Válido};
+                        \node at ( 8.75,0.5) {1 Válido};
+                
+                        \draw[
+                            red,
+                            decorate,
+                            decoration = {
+                                brace, 
+                                mirror, 
+                                amplitude   = 2pt,
+                                raise       = 2pt
+                            }
+                        ] (6.5, -0.5) -- (7.5, -0.5);
+                        \draw[
+                            red,
+                            decorate,
+                            decoration = {
+                                brace, 
+                                mirror, 
+                                amplitude   = 2pt,
+                                raise       = 2pt
+                            }
+                        ] (2.5, -0.5) -- (3.5, -0.5);
+                        \node[red] at (5,-1) {Margem de Ruído};
+                
+                        \draw[
+                            decorate,
+                            decoration = {
+                                brace, 
+                                mirror, 
+                                amplitude   = 2pt,
+                                raise       = 2pt
+                            }
+                        ] (0, -0.5) -- (2.5, -0.5) node[black, midway,yshift=-0.5cm] {Saída Válida};
+                        \draw[
+                            decorate,
+                            decoration = {
+                                brace, 
+                                mirror, 
+                                amplitude   = 2pt,
+                                raise       = 2pt
+                            }
+                        ] (7.5, -0.5) -- (10, -0.5) node[black, midway,yshift=-0.5cm] {Saída Válida};
+                
+                        \draw[
+                            decorate,
+                            decoration = {
+                                brace, 
+                                amplitude   = 2pt,
+                                raise       = 2pt
+                            }
+                        ] (0, 1) -- (3.5, 1) node[black, midway,yshift=0.5cm] {Entrada Válida};
+                        \draw[
+                            decorate,
+                            decoration = {
+                                brace, 
+                                amplitude   = 2pt,
+                                raise       = 2pt
+                            }
                     \end{equation}
                 Onde:
                     \begin{enumerate}[noitemsep]
