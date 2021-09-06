@@ -392,14 +392,51 @@
                                 amplitude   = 2pt,
                                 raise       = 2pt
                             }
-                    \end{equation}
-                Onde:
-                    \begin{enumerate}[noitemsep]
-                        \item \texttt{Nível Lógico 0:} Caso $V$ seja menor ou igual ao \textbf{Threshold Low} $V_{OL}$;
+                        ] (6.5, 1) -- (10, 1) node[black, midway,yshift=0.5cm] {Entrada Válida};
+                    \end{tikzpicture}
+                \end{figure}\noindent
 
-                        \item \texttt{Nível Lógico 1:} Caso $V$ seja maior ou igual ao \textbf{Threshold High} $V_{OH}$;
-                    \end{enumerate}
-                Note que desta forma o sinal estará protegido de pequenos ruídos pois não poderá passar de um nível lógico para o outro diretamente.
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin = 0, xmax = 5.25, % Axis Coordenates
+                                ymin = 0, ymax = 5.25, % Axis Coordenates
+                                xlabel = {$v_{\text{in}}$},  % Axis Labels
+                                ylabel = {$v_{\text{out}}$}, % Axis Labels
+                                xtick = {2,3},      % Axis Ticks Potions
+                                ytick = {0.5,4.5},  % Axis Ticks Potions
+                                xticklabels = {$V_{IL}$, $V_{IH}$}, % Axis Ticks Labels
+                                yticklabels = {$V_{OL}$, $V_{OH}$}, % Axis Ticks Labels
+                                x label style = {at={(axis cs:{5.5,0})}, anchor=west},
+                                y label style = {at={(axis cs:{0,5.5})}, anchor=south, rotate=-90},
+                                width  = 7.5cm,
+                                height = 7.5cm,
+                                % grid = both,
+                                % grid style       = {line width=.1pt, draw=gray!10},
+                                % major grid style = {line width=.2pt, draw=gray!50},
+                                % minor tick num=1,
+                                axis lines = left,
+                            ]
+                            \draw[
+                                color   =red!75,
+                                fill    =red!25,
+                                opacity =0.25
+                            ] (3,0.5) rectangle (5, 4.5);
+                            \draw[
+                                color   =red!75,
+                                fill    =red!25,
+                                opacity =0.25
+                            ] (0,0.5) rectangle (2, 4.5);
+                            \draw[dashed] (axis cs:{2,0}) -- (axis cs:{2,4.5});
+                            \draw[dashed] (axis cs:{3,0}) -- (axis cs:{3,4.5});
+                            \draw[dashed] (axis cs:{0,0.5}) -- (axis cs:{2,0.5});
+                            \draw[dashed] (axis cs:{3,0.5}) -- (axis cs:{5,0.5});
+                            \draw[dashed] (axis cs:{0,4.5}) -- (axis cs:{2,4.5});
+                            \draw[dashed] (axis cs:{3,4.5}) -- (axis cs:{5,4.5});
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}\noindent
 
 \newpage
         \subsubsection{Atraso de Propagação, $t_{PD}$}
