@@ -26,6 +26,6 @@ plot(t0, y0, 'linewidth', LW, 'b')
 xlabel("X", "fontsize",FS); %Legend X
 ylabel("Y", "fontsize",FS); %Legend Y
 
-axis ([0  10 0 10]); grid; set(gca , "fontsize", FS); %Format
+axis ([0 10 0 10]); grid; set(gca , "fontsize", FS); %Format
 
 legend("VC", "location", "southeast") %Legend Data
