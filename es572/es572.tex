@@ -1033,6 +1033,34 @@
 
         \subsubsection{Complemento de 2}
             \paragraph{Definição}Representação de números negativos em binário a partir de sua representação positiva de tal forma que a soma seja sempre zero, obtido através de 2 métodos:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item \textbf{Método Básico:}
+                        \begin{enumerate}[noitemsep]
+                            \item Parte-se da representação positiva;
+                            \item Inverte-se a representação;
+                            \item Soma-se um a representação;
+                        \end{enumerate}
+
+                    \item \textbf{Método Rápido:}
+                        \begin{enumerate}[noitemsep]
+                            \item Parte-se da representação positiva;
+                            \item Percorre o número da direita para esquerda até encontrar 1;
+                            \item Invere-se os \texttt{bits} a esquerda do 1;
+                        \end{enumerate}
+                \end{enumerate}
+                \begin{example}
+                    Representação de Números Binários em Decimal:
+                        \begin{table}[H]
+                            \centering  
+                            \begin{tabular}[]{cc cc cc cc}
+                                $-2^7$ & $2^6$ & $2^5$ & $2^4$ & $2^3$ & $2^2$ & $2^1$ & $2^0$\\\hline
+                                -128   & 64    & 32    & 16    & 8     & 4     & 2     & 1\\
+                            \end{tabular}
+                        \end{table}
+                \end{example}
+            Nota-se que nesta configuração será necessário ajustar as demais entradas em função da negativa para obter os números negativos desejados.
+
+            \paragraph{Erros}Fisicamente o circuito utilizado para realizar a soma e a subtração será o mesmo e portanto haverá possibilidade de operações incosistentes pelas limitações da representação, apontadas pelos seguintes \texttt{Flags}:
                 \begin{enumerate}
                     \item 
                 \end{enumerate}
