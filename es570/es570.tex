@@ -284,6 +284,288 @@
                         \diffp{}{z}\left(k\diffp{T}{z}\right) + 
                         \dot{q} = 
                         p\;c_{p}\;\diffp{T}{t}
+                    }\label{eq.DifusionCilinder}
+                \end{equation}
+
+    \section{Condução em Regime Permanente e Unidimensional}
+        \paragraph{Apresentação}Descrição de sistemas assumindo as seguintes considerações durante a análise:
+            \begin{enumerate}[noitemsep]
+                \item Unidimensional;
+                \item Regime Permanente;
+                \item Geração de Calor Nula;
+                \item Condutividade Térmica Constante;
+                \item Temperaturas Conhecidas nas Fronteiras;
+            \end{enumerate}
+
+        \subsection{Sistemas Planares}
+            \paragraph{Definição}
+                \begin{proof}
+                    Nestas condições a Equação de Difusão Térmica na forma Cartesiana dada por \ref{eq.DifusionCartesian} será simplificada à:
+                        \begin{align*}
+                            \diffp{}{x}\left(k\diffp{T}{x}\right) &= 0 & \text{Considerando (4)}\\
+                            \Aboxed{\diffp[2]{T}{x} &= 0}\\
+                            \diff{T}{x} &= c_{1}\\
+                            \Aboxed{T(x) &= c_{1}x + c_{2}}\\
+                        \end{align*}
+                    Desta forma, considera-se as condições iniciais trazidas por (5) como:
+                        \begin{equation*}
+                            T(x) = c_{1}x + c_{2} = 
+                            \begin{cases}
+                                T(0) = T_{S1} = c_{1}0 + c_{2}\\
+                                T(x) = T_{S2} = c_{1}L + c_{2}\\
+                            \end{cases}
+                            \quad
+                            \text{obtendo}
+                            \quad
+                            \boxed{
+                                T(x) = \frac{(T_{S2} - T_{S1})}{L}x + T_{S1}
+                            }
+                        \end{equation*}
+                    Finalmente, aplica-se a Equação de Fourier dada por \ref{eq.Fourier} com a condição (1) obtendo:
+                        \begin{equation*}
+                            \boxed{q_{x} = -\frac{K A}{L}(T_{S2} - T_{S1})}
+                        \end{equation*}
+                \end{proof}
+
+        \subsubsection{Resistência Térmica}
+            \paragraph{Definição}Represenação da dificuldade para o fluxo de calor ao longo de um material expressado pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        R_{\text{eq}} = \frac{T_{1} - T_{2}}{q} = 
+                        \begin{cases}
+                            R_{\text{cnd}} = \frac{L}{KA}     & \text{Condução};\\[2.5mm]
+                            R_{\text{cnv}} = \frac{1}{hA}     & \text{Convecção};\\[2.5mm]
+                            R_{\text{rad}} = \frac{1}{h_{r}A} & \text{Radiação};\\
+                        \end{cases}
                     }
                 \end{equation}
+
+        \subsubsection{Coeficiente Global de Transferência de Calor}
+            \paragraph{Definição}Obtido pela seguinte equação:
+                \begin{align}
+                    q_{x} &= U A \Delta T & \text{onde $\Delta T = T_{\infty,1} - T_{\infty,2}$}\\\nonumber
+                    \Aboxed{
+                        U     &= \frac{1}{R_{\text{eq}A}} 
+                               = \frac{
+                                   1
+                                }{
+                                    \frac{1}{h_{1}} + 
+                                    \frac{L_{A}}{K_{A}} + 
+                                    \frac{L_{B}}{K_{B}} + 
+                                    \frac{L_{C}}{K_{C}} + 
+                                    \frac{1}{h_{2}}
+                                }
+                    }
+                \end{align}
+
+            \paragraph{Definição}Considera-se
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[height = 6cm]{es570_im04.png}
+                    \caption{Coordenadas Cartesianas}
+                \end{figure} \noindent
+                \begin{equation}
+                    \boxed{
+                            q_{x} = \frac{
+                            T_{\infty,1} - T_{\infty,2}
+                        }{
+                            \frac{1}{h_{1}A} + 
+                            \frac{1}{KA} + 
+                            \frac{1}{h_{2}A}
+                        }
+                    }
+                \end{equation}
+
+            \paragraph{Definição}Considera-se
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[height = 6cm]{es570_im05.png}
+                    \caption{Coordenadas Cartesianas}
+                \end{figure} \noindent
+                \begin{equation}
+                    \boxed{
+                            q_{x} = \frac{
+                            T_{\infty,1} - T_{\infty,2}
+                        }{
+                            \frac{1}{h_{1}A} + 
+                            \frac{L_{A}}{K_{A}A} + 
+                            \frac{L_{B}}{K_{B}A} + 
+                            \frac{L_{C}}{K_{C}A} + 
+                            \frac{1}{h_{2}A}
+                        }
+                    }
+                \end{equation}
+
+        \subsubsection{Resistência de Contato}
+            \paragraph{Definição}Superfícies em contato obtido pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        R_{\text{cnt}}'' = \frac{T_{A} - T_{B}}{q_{x}''}
+                    }
+                \end{equation}
+
+        \subsection{Sistemas Radiais}
+            \paragraph{Definição}
+                \begin{proof}
+                    Nestas condições a Equação de Difusão Térmica na forma Cartesiana dada por \ref{eq.DifusionCartesian} será simplificada à:
+                        \begin{align*}
+                            \diffp{}{r}\left(Kr\diffp{T}{r}\right) &= 0 & \text{Considerando (4)}\\
+                            \Aboxed{\diffp{}{r}\left(r\diffp{T}{r}\right) &= 0}\\
+                            r\diff{T}{r} &= c_{1}\\
+                            \Aboxed{T(r) &= c_{1}\ln(r) + c_{2}}\\
+                        \end{align*}
+                    Desta forma, considera-se as condições iniciais trazidas por (5) como:
+                        \begin{equation*}
+                            T(r) = c_{1}\ln(r) + c_{2} = 
+                            \begin{cases}
+                                T(0) = T_{i} = c_{1}\ln(T_{i}) + c_{2}\\
+                                T(r) = T_{e} = c_{1}\ln(T_{e}) + c_{2}\\
+                            \end{cases}
+                            \quad
+                            \text{obtendo}
+                            \quad
+                            \boxed{
+                                T(r) = 
+                                \left(\frac{T_{i} - T_{e}}{\ln\left(\frac{r_{i}}{r_{e}}\right)}\right)
+                                \ln\left(\frac{r}{r_{e}}\right) + T_{e}
+                            }
+                        \end{equation*}
+                    Finalmente, aplica-se a Equação de Fourier dada por \ref{eq.Fourier} com a condição (1) obtendo:
+                        \begin{equation*}
+                            \boxed{q_{r} = -\frac{2\pi KL(T_{e} - T_{i})}{\ln\left(\frac{r_{e}}{r_{i}}\right)}}
+                        \end{equation*}
+                \end{proof}
+
+        \subsubsection{Resistência Térmica}
+            \paragraph{Definição}Represenação da dificuldade para o fluxo de calor ao longo de um material expressado pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        R_{\text{eq}} = \frac{T_{1} - T_{2}}{q} = 
+                        \begin{cases}
+                            R_{\text{cnd}} = \frac{\ln\left(\frac{r_{e}}{r_{i}}\right)}{2\pi KL} & \text{Condução};\\[2.5mm]
+                            R_{\text{cnv}} =                                                         & \text{Convecção};\\[2.5mm]
+                            R_{\text{rad}} =                                                         & \text{Radiação};\\
+                        \end{cases}
+                    }
+                \end{equation}
+
+        \subsubsection{Raio Crítico de Isolamento}
+            \paragraph{Definição}Isolamento ideal para superfícies cilíndricas ou cascas esféricas que causará maior discipação de calor obtido pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        r_{C} = \frac{K}{h}
+                    }
+                \end{equation}
+
+        \subsection{Sistemas Esféricos}
+            \paragraph{Definição}
+                \begin{proof}
+                    Nestas condições a Equação de Difusão Térmica na forma Cartesiana dada por \ref{eq.DifusionCartesian} será simplificada à:
+                        \begin{align*}
+                            q_{r} &= -K(4\pi r^{2})\diff{T}{r} & \text{Separação de Equações}\\
+                            \Aboxed{
+                                \frac{q_{r}}{4\pi} \int_{r_{1}}^{r_{2}} \frac{\text{d}r}{r^{2}} &= 
+                                - K \int_{T_{S1}}^{T_{S2}}\text{d}T
+                            }\\
+                            \frac{q_{r}}{4\pi} \left[\frac{-1}{r_{2}} - \frac{-1}{r_{1}}\right] &= -K(T_{S2} - T_{S1})\\
+                            \Aboxed{q_{r} &= -4\pi K \frac{T_{S2} - T_{S1}}{\frac{1}{r_{1}} - \frac{1}{r_{2}}}}\\
+                        \end{align*}
+                \end{proof}
+
+        \subsubsection{Resistência Térmica}
+            \paragraph{Definição}Represenação da dificuldade para o fluxo de calor ao longo de um material expressado pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        R_{\text{eq}} = \frac{T_{1} - T_{2}}{q} = 
+                        \begin{cases}
+                            R_{\text{cnd}} = \frac{1}{4\pi K}\left(\frac{1}{r_{1}} - \frac{1}{r_{2}}\right) & \text{Condução};\\[2.5mm]
+                            R_{\text{cnv}} =                                                                & \text{Convecção};\\[2.5mm]
+                            R_{\text{rad}} =                                                                & \text{Radiação};\\
+                        \end{cases}
+                    }
+                \end{equation}
+
+    \section{Geração de Calor em Sólido}
+        \paragraph{Apresentação}Calor originário de processos internos ao corpo análise através dos seguintes processos:
+            \begin{enumerate}[noitemsep]
+                \item Radiação;
+                \item Reações Químicas;
+                \item Reações Nucleares;
+                \item Resistência de Fios;
+            \end{enumerate}
+        Obtido ela seguintes equação:
+            \begin{equation}
+                \boxed{
+                    \dot{q} = 
+                    \frac{\dot{E}}{V}
+                    \quad
+                    \left[
+                        \frac{\text{W}}{\text{m}^{3}}
+                    \right]
+                }
+            \end{equation}
+
+        \subsubsection{Parede Plana não Isolada}
+            \paragraph{Definição}
+                \begin{enumerate}[noitemsep]
+                    \item Unidimensional;
+                    \item Regime Permanente;
+                    \item Condutividade Térmica Constante;
+                    \item Temperaturas Conhecidas nas Fronteiras;
+                \end{enumerate}
+                \begin{proof}
+                    Nestas condições a Equação de Difusão Térmica na forma Cartesiana dada por \ref{eq.DifusionCartesian} será simplificada à:
+                        \begin{align*}
+                            \diffp{}{x}\left(K\diffp{T}{x}\right) + \dot{q} &= 0 & \text{Considerando (3)}\\
+                            \Aboxed{\diffp[2]{T}{x}                         &= -\frac{\dot{q}}{K}}\\
+                            \diff{T}{x}  &= -\frac{\dot{q}}{K} x + c_{1}\\
+                            \Aboxed{T(x) &= -\frac{\dot{q}}{K}\frac{x^{2}}{2} + c_{1}x + c_{2}}\\
+                        \end{align*}
+                    Desta forma, considera-se as condições iniciais trazidas por (5) como:
+                        \begin{equation*}
+                            T(x) = -\frac{\dot{q}}{K}\frac{x^{2}}{2} + c_{1}x + c_{2} = 
+                            \begin{cases}
+                                T(0) = T_{S1} = -\frac{\dot{q}}{K} + c_{1}0 + c_{2}\\
+                                T(L) = T_{S2} = -\frac{\dot{q}}{K}\frac{L^{2}}{2} + c_{1}L + c_{2}\\
+                            \end{cases}
+                        \end{equation*}
+                    Finalmente, obtêm-se:
+                        \begin{equation}
+                            \boxed{
+                                T(x) = -\frac{\dot{q}}{2K}(x^{2} - Lx) + \frac{(T_{S2} - T_{S1})}{L}x + T_{S1}
+                            }
+                        \end{equation}
+                \end{proof}
+
+        \subsubsection{Parede Plana Semi-Isolada}
+            \paragraph{Definição}
+                \begin{enumerate}[noitemsep]
+                    \item Unidimensional;
+                    \item Regime Permanente;
+                    \item Condutividade Térmica Constante;
+                    \item Temperaturas Conhecidas nas Fronteiras;
+                \end{enumerate}
+                \begin{proof}
+                    Nestas condições a Equação de Difusão Térmica na forma Cartesiana dada por \ref{eq.DifusionCartesian} será simplificada à:
+                        \begin{align*}
+                            \diffp{}{x}\left(K\diffp{T}{x}\right) + \dot{q} &= 0 & \text{Considerando (3)}\\
+                            \Aboxed{\diffp[2]{T}{x}                         &= -\frac{\dot{q}}{K}}\\
+                        \end{align*}
+                    Desta forma, considera-se as condições iniciais trazidas por (5) como:
+                        \begin{equation*}
+                            \begin{cases}
+                                T(0) = -K\diffp{T}{x} = 0\\[2.5mm]
+                                T(L) = -K\diffp{T}{x} = h(T_{2} - T_{\infty})\\
+                            \end{cases}
+                        \end{equation*}
+                    Finalmente, obtêm-se:
+                        \begin{equation}
+                            \boxed{
+                                T(x) = T_{\infty} + \dot{q} 
+                                \left[
+                                    \frac{L}{h} + \frac{L^{2} - x^{2}}{2K}
+                                \right]
+                            }
+                        \end{equation}
+                \end{proof}
 \end{document}
