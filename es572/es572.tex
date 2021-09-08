@@ -1062,6 +1062,48 @@
 
             \paragraph{Erros}Fisicamente o circuito utilizado para realizar a soma e a subtração será o mesmo e portanto haverá possibilidade de operações incosistentes pelas limitações da representação, apontadas pelos seguintes \texttt{Flags}:
                 \begin{enumerate}
-                    \item 
+                    \item \textbf{Carry:} Erro na operação em números não sinalizados;
+                        \begin{enumerate}
+                            \item \texttt{Condição:}Acionada caso haja \texttt{mais um} na adição do \texttt{MSB};
+                        \end{enumerate}
+
+                    \item \textbf{Overflow:} Erro na operação em números em complemento de 2;
+                        \begin{enumerate}
+                            \item \texttt{Condição:}Resultado do \texttt{mais um} na adição do \texttt{MSB} diferentes das entradas;
+                        \end{enumerate}
                 \end{enumerate}
+
+            \subsubsection{Representação Ponto Flutuante}
+                \paragraph{Definição}Convenção numérica adequada proposta pelo IEEE para representação de números grandes ou pequenos representado na seguinte convenção:
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \draw[{Latex[round]}-{Latex[round]}] (0,1.5) -- (9,1.5) node[midway, yshift=0.25cm] {32 bits};
+                    
+                            \draw[color=black] 
+                            (0,0) rectangle (1, 1) node[midway] {S};
+                    
+                            \draw[color=black] 
+                            (1,0) rectangle (5, 1) node[midway] {E};
+                    
+                            \draw[color=black] 
+                            (5,0) rectangle (9, 1) node[midway] {M};
+                    
+                            \node[black] at (0.5,-0.5) {1 bit};
+                            \node[black] at (  3,-0.5) {8 bits};
+                            \node[black] at (  7,-0.5) {23 bits};
+                        \end{tikzpicture}
+                    \end{figure}\noindent
+                Obtido pela seguinte equação:
+                    \begin{equation}
+                        \boxed{
+                            X_{10} = (-1)^{S}\times(1+M)\times 2^{E-127}
+                        }
+                    \end{equation}
+                Onde:
+                    \begin{enumerate}[noitemsep]
+                        \item $S$, \texttt{bit de sinal};
+                        \item $E$, \texttt{expoente polarizado};
+                        \item $M$, \texttt{mantisa};
+                    \end{enumerate}
 \end{document}
