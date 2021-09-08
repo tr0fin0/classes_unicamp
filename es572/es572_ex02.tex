@@ -171,18 +171,49 @@
             \end{exercise}
             \begin{resolution}
                 Nota-se que a rede de \texttt{pull-down} correspondente será:
-                    (A+B)//(nA+nB)
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (-0.5, 1) node[nmos] (myFET_A1) {}
+                            (-0.5,-1) node[nmos] (myFET_B1) {}
+                    
+                            (0.5, 1) node[nmos, xscale=-1] (myFET_A2) {}
+                            (0.5,-1) node[nmos, xscale=-1] (myFET_B2) {}
+                    
+                            (myFET_A1.S) -- (myFET_B1.D)
+                            (myFET_A2.S) -- (myFET_B2.D)
+                    
+                            (myFET_A1.D) -- (-0.5, 2)
+                                        -- ( 0.5, 2)
+                                        -- (myFET_A2.D)
+                    
+                            (myFET_B1.S) -- (-0.5,-2)
+                                        -- ( 0.5,-2)
+                                        -- (myFET_B2.S)
+                    
+                            (0, 2) to[short, o-] ++(0,+0.5)
+                            (0,-2) to[short, o-] ++(0,-0.5)
+                    
+                            (myFET_A1.G) node[left] {$A$}
+                            (myFET_B1.G) node[left]{$B$}
+                    
+                            (myFET_A2.G) node[right] {$\bar{A}$}
+                            (myFET_B2.G) node[right]{$\bar{B}$};
+                        \end{circuitikz} 
+                    \end{figure} \noindent
                 Implicando a seguinte \textbf{Tabela Verdade}:
-                \begin{table}[H]
-                    \centering  
-                    \begin{tabular}[]{cccc|cc}\hline
-                        $A$ & $B$ & $\bar{A}$ & $\bar{B}$ & \texttt{pull-up} & \texttt{pull-down}\\\hline
-                        0   & 0   & 1         & 1         & 0                & 1\\
-                        0   & 1   & 1         & 0         & 1                & 0\\
-                        1   & 0   & 0         & 1         & 1                & 0\\
-                        1   & 1   & 0         & 0         & 0                & 1\\\hline
-                    \end{tabular}
-                \end{table}
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{cccc|cc}\hline
+                            $A$ & $B$ & $\bar{A}$ & $\bar{B}$ & \texttt{pull-up} & \texttt{pull-down}\\\hline
+                            0   & 0   & 1         & 1         & 0                & 1\\
+                            0   & 1   & 1         & 0         & 1                & 0\\
+                            1   & 0   & 0         & 1         & 1                & 0\\
+                            1   & 1   & 0         & 0         & 0                & 1\\\hline
+                        \end{tabular}
+                    \end{table}
             \end{resolution}
 
 \newpage
