@@ -101,21 +101,26 @@
                 Verifique se as regras estáticas estão satisfeitas. Em caso negativo, detalhe o motivo. Em caso positivo informe a \textbf{Imunidade ao Ruído}.
             \end{exercise}
             \begin{resolution}
-                Considera-se a seguintes condições:
-                    (1) VOH - VOL > VIH - VIL
-                    (2) VOH > VIH > VIL - VOL
-                    (3) VOUT > VOH quando VIN < VIL
-                    (4) VOUT < VOL quando VIN > VIH
-                \begin{table}[H]
-                    \centering  
-                    \begin{tabular}[]{l ccc}\hline
-                            & (a) & (b)  & (c)\\\hline
-                        (1) & ok  & ok   & ok\\
-                        (2) & ok  & ok   & ok\\
-                        (3) & ok  & erro & ok\\
-                        (4) & ok  & erro & ok\\\hline
-                    \end{tabular}
-                \end{table}
+                Considera-se a seguintes condições devem ser atendidas para funcionamento adequado de um inversor:
+                    \begin{enumerate}[noitemsep]
+                        \item $V_{OH} - V_{OL} > V_{IH} - V_{IL}$
+                        \item $V_{OH} > V_{IH} > V_{IL} > V_{OL}$
+                        \item $V_{OUT} >= V_{OH}$ quando $V_{IN} <= V_{IL}$
+                        \item $V_{OUT} <= V_{OL}$ quando $V_{IN} >= V_{IH}$
+                    \end{enumerate}
+                Cada condição será avaliada em cada configuração proposta e os resultados são enunciados abaixo:
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{l ccc}\hline
+                                & (a) & (b)  & (c)\\\hline
+                            (1) & ok  & ok   & ok\\
+                            (2) & ok  & ok   & ok\\
+                            (3) & ok  & erro & ok\\
+                            (4) & ok  & erro & ok\\\hline
+                        \end{tabular}
+                    \end{table}
+                Nota-se que nas configurações (a) e (c) não há erros, portanto estes apresentam 0.3V como \textbf{Imunidade a Ruído}.\\\\
+                Nota-se que na configuração (b) as condições de funcionamento do inversor não são atendidas, pois dentro dos intervalos determinados por $V_{IH}$ e $V_{IL}$ há possibilidade que $V_{OUT}$ esteja fora dos intervalos determinados por $V_{OH}$ e $V_{OL}$ em virtude dos degraus presentes.
             \end{resolution}
 
 \newpage
