@@ -41,10 +41,10 @@
                 Nota-se que o gráfico a esquerda representa um \texttt{Inversor} enquanto o gráfico a direita representa um \texttt{Buffer}. Desta forma os seguintes valores, em volts, seriam adequados:
                     \begin{table}[H]
                         \centering  
-                        \begin{tabular}[]{l|cccc}\hline
-                                     & $V_{OL}$ & $V_{IL}$ & $V_{IH}$ & $V_{OH}$\\\hline
-                            Inversor & 1.0      & 1.5      & 3.5      & 4.0\\
-                            Buffer   & 0.0      & 1.0      & 3.0      & 4.0\\\hline
+                        \begin{tabular}[]{l|cccc|cc}\hline
+                                     & $V_{OL}$ & $V_{IL}$ & $V_{IH}$ & $V_{OH}$ & Erro High & Erro Low\\\hline
+                            Inversor & 1.0      & 1.5      & 3.5      & 4.0      & 0.5       & 0.5\\
+                            Buffer   & 0.0      & 1.0      & 3.0      & 4.0      & 1         & 1\\\hline
                         \end{tabular}
                     \end{table}
             \end{resolution}
@@ -65,19 +65,41 @@
                 Forneça valores adequados para ($V_{OL}$, $V_{IL}$, $V_{IH}$, $V_{OH}$). Forneça também as duas margens de ruído e a imunidade do ruído desta família de dispositivos.
             \end{exercise}
             \begin{resolution}
-                Análise...\\
+                Analiza-se os limites estabelecidos:
+                    \begin{enumerate}[rightmargin = \leftmargin]
+                        \item \textbf{Saída} será '0' para valores de $0.4 \pm 0.1$, implicando:
+                            \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                                \item $V_{OL_{\text{min}}} = 0.3$
+                                \item $V_{OL_{\text{max}}} = 0.5$
+                            \end{enumerate}
+                        Analogamente, será '1' para valores de $4.6 \pm 0.2$, implicando:
+                            \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                                \item $V_{OH_{\text{max}}} = 4.8$
+                                \item $V_{OH_{\text{min}}} = 4.4$
+                            \end{enumerate}
+                        Desta forma nota-se que $V_{OL} = 0.5$ e $V_{OH} = 4.4$, pois a partir destes valores as saídas são garantidas.
+                        
+                        \item \textbf{Threshold} será '0' para valores de $2.0 \pm 0.2$, implicando:
+                            \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                                \item $V_{TH_{\text{min}}} = 1.8$
+                                \item $V_{TH_{\text{max}}} = 2.2$
+                            \end{enumerate}
+                        Analogamente, será '1' para valores de $3.0 \pm 0.2$, implicando:
+                            \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                                \item $V_{TH_{\text{max}}} = 3.2$
+                                \item $V_{TH_{\text{min}}} = 2.8$
+                            \end{enumerate}
+                        Desta forma nota-se que $V_{IL} = 2.2$ e $V_{IH} = 2.8$, pois a partir destes valores as entradas são garantidas.
+                    \end{enumerate}
                 Desta forma os seguintes valores, em volts, seriam adequados:
                     \begin{table}[H]
                         \centering  
-                        \begin{tabular}[]{l|cccc}\hline
-                                     & $V_{OL}$ & $V_{IL}$ & $V_{IH}$ & $V_{OH}$\\\hline
-                            Circuito & 0.5      & 2.2      & 2.8      & 4.4\\\hline
+                        \begin{tabular}[]{l|cccc|cc}\hline
+                                     & $V_{OL}$ & $V_{IL}$ & $V_{IH}$ & $V_{OH}$ & Erro High & Erro Low\\\hline
+                            Circuito & 0.5      & 2.2      & 2.8      & 4.4      & 1.6       & 1.7\\\hline
                         \end{tabular}
                     \end{table}
-                Nota-se que ...
-                    $V_{OH} - V_{IH} = 1.6$
-                    $V_{IL} - V_{OL} = 1.7$
-                Implicando que a \textbf{Imunidade de Ruído} será 1.6 V
+                Implicando que a \textbf{Imunidade de Ruído} será $\boxed{1.6 \text{ V}}$.
             \end{resolution}
 
 \newpage
@@ -230,9 +252,9 @@
             \begin{resolution}
                 Observa-se, pelas condições impostas, que:
                     \begin{enumerate}[noitemsep]
-                        \item $F(0,0,1,0)$ = não é possível saber;
+                        \item $F(0,0,1,0)$ = 1;
                         \item $F(1,1,1,0)$ = não é possível saber;
-                        \item $F(1,1,1,1)$ = 0;
+                        \item $F(1,1,1,1)$ = 0; %não é possível saber
                     \end{enumerate}
                 %caso soubesse que não há é sempre zero: 1, n e 0; mantem estado necessario para 1, alterações sem saber, não tem como garantir 1 logo 0
                 %baseado em apenas uma condição poderia haver apenas um curto circuito o que impediria de determinar qualquer saída
