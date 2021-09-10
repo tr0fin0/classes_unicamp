@@ -38,7 +38,14 @@
                 Obtenha um conjunto único de valores de ($V_{OL}$, $V_{IL}$, $V_{OH}$, $V_{IH}$) adequado para serem usados nestes dispositivos. Maximize a \textbf{Imunidade ao Ruído}, definida como a menor entre as duas margens de ruído.
             \end{exercise}
             \begin{resolution}
-                Nota-se que o gráfico a esquerda representa um \texttt{Inversor} enquanto o gráfico a direita representa um \texttt{Buffer}. Desta forma os seguintes valores, em volts, seriam adequados:
+                Nota-se que trata-se, provavelmente, de uma \texttt{Porta Inversora}, logo as seguintes condições devem ser atendidas:
+                    \begin{enumerate}[noitemsep]
+                        \item $V_{OH} - V_{OL} > V_{IH} - V_{IL}$;
+                        \item $V_{OH} > V_{IH} > V_{IL} > V_{OL}$;
+                        \item $V_{OUT} \ge V_{OH}$ quando $V_{IN} \le V_{IL}$;
+                        \item $V_{OUT} \le V_{OL}$ quando $V_{IN} \ge V_{IH}$;
+                    \end{enumerate}
+                Desta forma, propõem-se os seguines valores:
                     \begin{table}[H]
                         \centering  
                         \begin{tabular}[]{l|cccc|cc}\hline
