@@ -260,11 +260,16 @@
                 Observa-se, pelas condições impostas, que:
                     \begin{enumerate}[noitemsep]
                         \item $F(0,0,1,0)$ = 1;
-                        \item $F(1,1,1,0)$ = não é possível saber;
-                        \item $F(1,1,1,1)$ = 0; %não é possível saber
+                        \item $F(1,1,1,0)$ = \texttt{não é possível saber};
+                        \item $F(1,1,1,1)$ = 0;
                     \end{enumerate}
-                %caso soubesse que não há é sempre zero: 1, n e 0; mantem estado necessario para 1, alterações sem saber, não tem como garantir 1 logo 0
-                %baseado em apenas uma condição poderia haver apenas um curto circuito o que impediria de determinar qualquer saída
+                Note que considerou-se que \textbf{não há} curto circuito na rede \texttt{pull-up}.
+                \\\\
+                Em (1) a condição de \texttt{pull-up} se mantém, $F(A,0,C,0)$, o que garante que independente das demais entradas a saída será 1.
+                \\\\
+                Em (2) a condição de \texttt{pull-up} se altera e portanto não é possível saber qual seria o resultado de tal alteração.
+                \\\\
+                Em (3) a construção de uma CMOS com redes únicas implica que quando $F(1,1,1,1)$ deverá necessariamente haver \texttt{pull-down}, trazendo a saída a 0.
             \end{resolution}
 
 \newpage
