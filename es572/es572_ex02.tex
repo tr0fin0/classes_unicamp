@@ -293,7 +293,67 @@
                 Apresente o esquemático do circuito de uma única rede de \texttt{pull-up} por PMOS e uma única rede de \texttt{pull-down} por NMOS se puder ser implementado. Caso contrário, indique que não é possível.
             \end{exercise}
             \begin{resolution}
-                1
+                Nota-se que $F(A,B,C)$ não pode ser implementada, pois $F(1,1,1)=1$ trata-se de uma combinação impossível.
+                \\\\
+                Neste resultado obrigatoriamente algum PMOS do \texttt{pull-up} deveria estar ativo, entretanto PMOS só se aciona se a entrada for 0. Como não há nenhuma entrada zerada a saída não poderá ser 1.
+                \\\\
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (-0.5,3.5) node[pmos] (myFET_A11) {}
+                            (-0.5,1.5) node[pmos] (myFET_B11) {}
+                    
+                            ( 0.5,2.5) node[pmos, xscale=-1] (myFET_C12) {}
+                    
+                            (-0.5,-3.5) node[nmos] (myFET_B21) {}
+                            (-0.5,-1.5) node[nmos] (myFET_C21) {}
+                    
+                            ( 0.5,-3.5) node[nmos, xscale=-1] (myFET_A22) {}
+                            ( 0.5,-1.5) node[nmos, xscale=-1] (myFET_C22) {}
+                    
+                            (myFET_A11.D) -- (myFET_B11.S)
+                    
+                            (myFET_B11.D) -- (-0.5,0.5)
+                            (myFET_C12.D) -- ( 0.5,0.5)
+                            (-0.5, 0.5)   -- ( 0.5,0.5)
+                    
+                            (myFET_A11.S) -- (-0.5,4.5)
+                            (myFET_C12.S) -- ( 0.5,4.5)
+                            (-0.5, 4.5)   -- ( 0.5,4.5)
+                    
+                    
+                            (myFET_C21.S) -- (myFET_B21.D)
+                            (myFET_C22.S) -- (myFET_A22.D)
+                    
+                            (myFET_C21.D) -- (-0.5,-0.5)
+                            (myFET_C22.D) -- ( 0.5,-0.5)
+                            (-0.5,-0.5)   -- ( 0.5,-0.5)
+                    
+                            (myFET_B21.S) -- (-0.5,-4.5)
+                            (myFET_A22.S) -- ( 0.5,-4.5)
+                            (-0.5,-4.5)   -- ( 0.5,-4.5)
+                    
+                    
+                            (0, 0.5) to[short, o-o] (0,-0.5)
+                            (0,0) to[short, o-o] ++(1,0) node[right]{$G(A,B,C)$}
+                    
+                    
+                            (0, 4.5) to[short, o-] ++(0,+0.5)
+                            (0,-4.5) to[short, o-] ++(0,-0.5)
+                    
+                            (myFET_A11.G) node[left]{$A$}
+                            (myFET_B11.G) node[left]{$B$}
+                            (myFET_C12.G) node[right]{$C$}
+                    
+                            (myFET_B21.G) node[left]{$B$}
+                            (myFET_C21.G) node[left]{$C$}
+                            (myFET_A22.G) node[right]{$A$}
+                            (myFET_C22.G) node[right]{$C$}
+                            ;
+                        \end{circuitikz} 
+                    \end{figure} \noindent
             \end{resolution}
 
 \newpage
