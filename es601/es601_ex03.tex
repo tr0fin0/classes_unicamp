@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{tpack}
+
+
+\titleformat
+    {\subsection}           % Part
+    [block]                 % Part Shape
+    {\normalfont\Large}     % Font Size
+    {}                      % Label Numbering
+    {0mm}                   % Part Separation
+    {}                      % Code Before
+    []                      % Code After
+
+    \titlespacing*{\subsection}{0mm}{5mm}{2.5mm}
+
+
+\title{ES601 - Análise Linear de Sistemas}
+\author{Guilherme Nunes Trofino}
+\authorRA{217276}
+\project{Atividade Teórica}
+
+
+\begin{document}
+    \maketitle
+\newpage
+
+    \section{Atividade Teórica}
+        \paragraph{Apresentação}Resolução das questões de Análise Linear de Sistemas por Guilherme Nunes Trofino, 217276, sobre \textbf{Sistemas de Segunda Ordem} analisados por Laplace.
+
+        \subsection{Questão 1}
+            \begin{exercise}
+                Considere que os seguintes sistemas apresentem as seguines equações:
+                    \begin{enumerate}
+                        \item \textbf{Sistema A:}
+                            \begin{equation}
+                                \boxed{
+                                    0.1\diff{y}{t} + y = u
+                                }
+                                \quad
+                                \text{onde:}
+                                \quad
+                                \begin{cases}
+                                    y(0) = 10 & \text{Condição Inicial}\\
+                                \end{cases}
+                            \end{equation}
+                        \item \textbf{Sistema B:}
+                            \begin{equation}
+                                \boxed{
+                                    \diff[2]{y}{t} + 
+                                    20\diff{y}{t} + 
+                                    1\text{e}^{4} y = u
+                                }
+                                \quad
+                                \text{onde:}
+                                \quad
+                                \begin{cases}
+                                    y(0) = 0           & \text{Condição Inicial}\\
+                                    \diff{y}{t}(0) = 1 & \text{Condição Inicial}\\
+                                \end{cases}
+                            \end{equation}
+                    \end{enumerate}
+                Implemente a resposta com condições iniciais nulas em Simulink usando o \texttt{Bloco de Transferência}, exporte para o MATLAB e compare com a resposta analítica.
+                \\\\
+                Repita o desenvolvimento anterior considerando as condições iniciais apresentadas.
+            \end{exercise}
+            \begin{resolution}
+                a
+            \end{resolution}
+\end{document}
