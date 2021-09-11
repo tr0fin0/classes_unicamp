@@ -115,13 +115,14 @@
                         \int_{-\infty}^{+\infty} \delta(x) \; \text{d}x = 1
                         \quad\text{e}\quad
                         \boxed{
-                            \int_{a}^{b} f(t) \delta(t)\;\text{d}t = 
+                            \int_{a}^{b} f(t) \delta(t - \tau)\;\text{d}t = 
                             \begin{cases}
-                                f(0);   & \text{se } 0\in[a,b]\\
-                                0;      & \text{se } 0\notin[a,b]\\
+                                f(\tau);    & \text{se } \tau\in[a,b]\\
+                                0;          & \text{se } \tau\notin[a,b]\\
                             \end{cases}
                         }
                     \end{equation*}
+                Aplica-se o impulso unitário para se extrair o valor de uma função em um determinado ponto.
 
             \subsubsection{Transformada da Deriva}
                 \paragraph{Definição}Quando aplicada em uma derivada de ordem $n$ será necessário utilizar da recursão e integração por partes, obtendo a seguinte equação geral:
