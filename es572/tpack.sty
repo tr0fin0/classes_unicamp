@@ -79,8 +79,9 @@
 \definecolor{darkblue}{rgb}{0.0, 0.28, 0.67}    %
 
                                         % Numering Setup
-\counterwithin{figure}{section}         % Figure {section }.{figure}
-\counterwithin{equation}{subsection}    % Equation {section}.{subsection}.{equation}
+\counterwithin{table}{section}          % Table {section}.{table}
+\counterwithin{figure}{section}         % Figure {section}.{figure}
+\counterwithin{equation}{section}       % Equation {section}..{equation}
 
 % \renewcommand{\labelenumi}{(\alph{enumi})}
 % \renewcommand{\labelenumii}{\roman{enumii}.}
@@ -534,6 +535,8 @@
 
 
 
+% Function to Represent Sucession Division
+% Decimal to Binary Conversion
 \newcount\total
 \newcount\lasttotal
 \newcount\targetbase
@@ -577,6 +580,8 @@
 }
 
 
+% Function to Represent Binary Multiplication
+% Shift and Sum Methody
 \makeatletter
 \providecommand\text\mbox
 \newenvironment{arithmetic}[1][]{\begin{tabular}[#1]{Al}}{\end{tabular}}
