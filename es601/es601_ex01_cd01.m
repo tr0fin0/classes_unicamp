@@ -10,22 +10,22 @@ close all
 %%                    Main Code
 %%============================================================================
 
-Vin = 10            %% Inicial Coltage  
-R   = 1*10^(3)      %% Resistence
-C   = 2000*10^(-6)  %% Capacitance
+Vin = 10;           %% Inicial Coltage  
+R   = 1*10^(3);     %% Resistence
+C   = 2000*10^(-6); %% Capacitance
 
-t0 = linspace(0,10,10000);
-y0 = Vin*(1 - e.^(-(1/(R*C)).*t0));
+t0 = linspace(0,11,10000);
+y0 = Vin*(1 - exp(-(1/(R*C)).*t0))
 
 
 LW = 2;     %Line Width
-FS = 20;    %Font Size
+FS = 16;    %Font Size
 
-plot(t0, y0, 'linewidth', LW, 'b')
+plot(t0, y0, '--')
   
-xlabel("X", "fontsize",FS); %Legend X
-ylabel("Y", "fontsize",FS); %Legend Y
+xlabel("t [s]",     "fontsize",FS); %Legend X
+ylabel("V_{C} [V]", "fontsize",FS); %Legend Y
 
-axis ([0 10 0 10]); grid; set(gca , "fontsize", FS); %Format
+axis ([0  11 0 11]); grid; set(gca , "fontsize", FS); %Format
 
-legend("VC", "location", "southeast") %Legend Data
+legend("V_{C}", "location", "southeast") %Legend Data
