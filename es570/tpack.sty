@@ -79,7 +79,7 @@
 \definecolor{darkblue}{rgb}{0.0, 0.28, 0.67}    %
 
                                         % Numering Setup
-\counterwithin{table}{section}        % Table {section}.{table}
+\counterwithin{table}{section}          % Table {section}.{table}
 \counterwithin{figure}{section}         % Figure {section}.{figure}
 \counterwithin{equation}{section}       % Equation {section}..{equation}
 
@@ -379,11 +379,11 @@
 }
 
 \theoremstyle{mystyle}{
-    \newtheorem*{example}{Exemplo}
+    \newtheorem{example}{Exemplo}[section]
 }
 
 \theoremstyle{mystyle}{
-    \newtheorem*{exercise}{Exercício}
+    \newtheorem{exercise}{Exercício}[section]
 }
 
 \theoremstyle{mystyle}{
