@@ -35,13 +35,13 @@
                             m\diff[2]{x}{t} + 
                             c\diff{x}{t} +
                             kx = 
-                            f(t)
+                            u
                         }
                         \quad
                         \text{onde:}
                         \quad
                         \begin{cases}
-                            f(t),                & \text{Degrau Unitário de 1N}\\
+                            u,                   & \text{Degrau Unitário de 1N}\\
                             m = 1\text{ kg},     & \text{Massa}\\
                             k = 1000\text{ N/m}, & \text{Constante Elástica}\\
                             c = 1\text{ Ns/m},   & \text{Amortecimento}\\
@@ -52,6 +52,13 @@
                 \paragraph{Observação}Utilizar a função \texttt{array} dentro do \texttt{workspace}.
             \end{exercise}
             \begin{resolution}
-                a
+                Primeiramente será necessário rescrever a equação que descreve o sistema:
+                    \begin{align}
+                        m\diff[2]{x}{t} + c\diff{x}{t} + kx &= u & \text{Simplificação de Notação\nonumber}\\
+                        m\ddot{x} + c\dot{x} + kx           &= u & \text{Isolamento de Variável}\nonumber\\
+                        \Aboxed{\ddot{x} &= \frac{1}{m}u - \frac{c}{m}\dot{x} - \frac{k}{m}x}   & \text{Equação Simplifica}\label{eq:simulink}
+                    \end{align}
+                Desta forma, a Equação \ref{eq:simulink} será representada no Simulink com o seguinte diagrama:
+                    
             \end{resolution}
 \end{document}
