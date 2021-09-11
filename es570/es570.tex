@@ -568,4 +568,55 @@
                             }
                         \end{equation}
                 \end{proof}
+
+        \subsection{Transferência de Calor em Superfícies}
+            \begin{definition}
+                Considera-se que uma superfície com área não constante apresentará a seguinte equação:
+                    \begin{equation}
+                        \boxed{
+                            \diff{}{x} \left[A_{T}\diff{T}{x}\right]_{\substack{x}} -
+                            \frac{h}{K}\diff{A_{S}}{x}[T(x) - T_{\infty}] = 0
+                        }
+                    \end{equation}
+                Onde:
+                    \begin{enumerate}
+                        \item 
+                    \end{enumerate}
+            \end{definition}
+            \begin{definition}
+                Considera-se que uma superfície com área constante apresentará a seguinte equação:
+                    \begin{equation}
+                        \boxed{
+                            \diff[2]{T}{x} -
+                            \frac{h}{K}\frac{P}{A_{T}}[T(x) - T_{\infty}] = 0
+                        }
+                    \end{equation}
+                Apresentando a seguinte \textbf{Solução Geral}:
+                    \begin{equation}
+                        \boxed{
+                            T(x) - T_{\infty} = 
+                            c_{1}\text{e}^{mx} + c_{2}\text{e}^{-mx}
+                        }
+                    \end{equation}
+                Onde:
+                    \begin{equation*}
+                        \boxed{m := \sqrt{\frac{h P}{K A_{T}}}}
+                        \quad
+                        \text{e}
+                        \quad
+                        \boxed{\theta(x) := T(x) - T_{\infty}}
+                    \end{equation*}
+            \end{definition}
+            \begin{proof}
+            area se transforma em perimetro
+            \end{proof}
+
+        \subsubsection{Aleta Infinita}
+            \begin{definition}
+                Considera-se uma aleta muito longa como infinita implicando que sua \textbf{Distribuição de Temperatura}:
+                    \begin{equation}
+                        T(x) - T_{\infty} = 
+                        (T_{B} - T_{\infty})\text{e}^{-mx}
+                    \end{equation}
+            \end{definition}
 \end{document}
