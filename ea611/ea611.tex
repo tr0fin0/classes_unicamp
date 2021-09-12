@@ -52,9 +52,9 @@
                         Impulso Unitário & $\delta(t)$ & $1$\\
                                          & $t^{n}$     & $\frac{n!}{s^{n+1}}$\\
                                          & $e^{-at}$   & $\frac{1}{s+a}$\\
-                                         & $te^{-at}$  & $\frac{1}{(s+a)^{2}}$\\
-                                         & $\sin(at)$  & $\frac{a}{(s^2+a^2)}$\\
-                                         & $\cos(at)$  & $\frac{s}{(s^2+a^2)}$\\
+                                         & $\frac{t^{n-1}e^{-at}}{(n-1)!}$  & $\frac{1}{(s+a)^{n}}$\\
+                                         & $\sin(at + b)$  & $\frac{s\sin(b) + a\cos(b)}{(s^2+a^2)}$\\
+                                         & $\cos(at + b)$  & $\frac{s\cos(b) + a\sin(b)}{(s^2+a^2)}$\\
                         Seno Hiperbólico    & $\sinh(at)$  & $\frac{a}{(s^2-a^2)}$\\
                         Cosseno Hiperbólico & $\cosh(at)$  & $\frac{s}{(s^2-a^2)}$\\
                                          & $e^{at}\;\sin(bt)$  & $\frac{b}{(s-a)^2+b^2}$\\
@@ -122,7 +122,7 @@
                             \end{cases}
                         }
                     \end{equation*}
-                Aplica-se o impulso unitário para se extrair o valor de uma função em um determinado ponto.
+                Aplica-se o impulso unitário para se extrair uma \textbf{Amostra} do valor de uma função em um determinado ponto.
 
             \subsubsection{Transformada da Deriva}
                 \paragraph{Definição}Quando aplicada em uma derivada de ordem $n$ será necessário utilizar da recursão e integração por partes, obtendo a seguinte equação geral:
