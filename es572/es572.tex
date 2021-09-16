@@ -1106,4 +1106,284 @@
                         \item $E$, \texttt{expoente polarizado};
                         \item $M$, \texttt{mantisa};
                     \end{enumerate}
+
+    \section{Portas Lógicas}
+        \paragraph{Definição}Implementação de uma \textbf{Função Booleana} com pelo menos uma entrada e apenas uma saída.
+
+        \subsection{Porta NOT}
+            \begin{multicols}{3}
+                \begin{table}[H]
+                    \centering  
+                    \begin{tabular}[]{c|c}\hline
+                        in & out\\\hline
+                        0  & 1\\
+                        1  & 0\\\hline
+                    \end{tabular}
+                    \caption{Tabela Verdade}
+                \end{table}
+                \columnbreak\noindent
+                    \begin{equation}
+                        \boxed{
+                            S = \bar{A}
+                        }
+                    \end{equation}
+                \columnbreak\noindent
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        (0,0) node[not port] (myPort) {}
+                        (myPort.in)  node [anchor = east] {in}
+                        (myPort.out) node [anchor = west] {out};
+                    \end{circuitikz} 
+                    \caption{Representação}
+                \end{figure} \noindent
+            \end{multicols}\noindent
+            \begin{scriptsize}
+                \myStyleVHDL
+                \begin{lstlisting}
+    S <= not A;
+                \end{lstlisting}
+            \end{scriptsize}
+
+        \subsection{Porta AND}
+            \begin{multicols}{3}
+                \begin{table}[H]
+                    \centering  
+                    \begin{tabular}[]{cc|c}\hline
+                        A & B & out\\\hline
+                        0 & 0 & 0\\
+                        0 & 1 & 0\\
+                        1 & 0 & 0\\
+                        1 & 1 & 1\\\hline
+                    \end{tabular}
+                    \caption{Tabela Verdade}
+                \end{table}
+                \columnbreak\noindent
+                    \begin{equation}
+                        \boxed{
+                            S = \bar{A \dot B}
+                        }
+                    \end{equation}
+                \columnbreak\noindent
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        (0,0) node[and port] (myPort) {}
+                        (myPort.in 1)  node [anchor = east] {A}
+                        (myPort.in 2)  node [anchor = east] {B}
+                        (myPort.out) node [anchor = west] {out};
+                    \end{circuitikz} 
+                    \caption{Representação}
+                \end{figure} \noindent
+            \end{multicols}\noindent
+            \begin{scriptsize}
+                \myStyleVHDL
+                \begin{lstlisting}
+    S <= A and B;
+                \end{lstlisting}
+            \end{scriptsize}
+
+        \subsection{Porta NAND}
+            \begin{multicols}{3}
+                \begin{table}[H]
+                    \centering  
+                    \begin{tabular}[]{cc|c}\hline
+                        A & B & out\\\hline
+                        0 & 0 & 1\\
+                        0 & 1 & 1\\
+                        1 & 0 & 1\\
+                        1 & 1 & 0\\\hline
+                    \end{tabular}
+                    \caption{Tabela Verdade}
+                \end{table}
+                \columnbreak\noindent
+                    \begin{equation}
+                        \boxed{
+                            \bar{AB} = \bar{A} + \bar{B}
+                        }
+                    \end{equation}
+                \columnbreak\noindent
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        (0,0) node[nand port] (myPort) {}
+                        (myPort.in 1)  node [anchor = east] {A}
+                        (myPort.in 2)  node [anchor = east] {B}
+                        (myPort.out) node [anchor = west] {out};
+                    \end{circuitikz} 
+                    \caption{Representação}
+                \end{figure} \noindent
+            \end{multicols}\noindent
+            \begin{scriptsize}
+                \myStyleVHDL
+                \begin{lstlisting}
+    S <= A nand B;
+                \end{lstlisting}
+            \end{scriptsize}
+
+        \subsection{Porta OR}
+            \begin{multicols}{3}
+                \begin{table}[H]
+                    \centering  
+                    \begin{tabular}[]{cc|c}\hline
+                        A & B & out\\\hline
+                        0 & 0 & 0\\
+                        0 & 1 & 1\\
+                        1 & 0 & 1\\
+                        1 & 1 & 1\\\hline
+                    \end{tabular}
+                    \caption{Tabela Verdade}
+                \end{table}
+                \columnbreak\noindent
+                    \begin{equation}
+                        \boxed{
+                            S = \bar{A + B}
+                        }
+                    \end{equation}
+                \columnbreak\noindent
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        (0,0) node[or port] (myPort) {}
+                        (myPort.in 1)  node [anchor = east] {A}
+                        (myPort.in 2)  node [anchor = east] {B}
+                        (myPort.out) node [anchor = west] {out};
+                    \end{circuitikz} 
+                    \caption{Representação}
+                \end{figure} \noindent
+            \end{multicols}\noindent
+            \begin{scriptsize}
+                \myStyleVHDL
+                \begin{lstlisting}
+    S <= A or B;
+                \end{lstlisting}
+            \end{scriptsize}
+            
+        \subsection{Porta NOR}
+            \begin{multicols}{3}
+                \begin{table}[H]
+                    \centering  
+                    \begin{tabular}[]{cc|c}\hline
+                        A & B & out\\\hline
+                        0 & 0 & 1\\
+                        0 & 1 & 0\\
+                        1 & 0 & 0\\
+                        1 & 1 & 0\\\hline
+                    \end{tabular}
+                    \caption{Tabela Verdade}
+                \end{table}
+                \columnbreak\noindent
+                    \begin{equation}
+                        \boxed{
+                            \bar{A+B} = \bar{A} \bar{B}
+                        }
+                    \end{equation}
+                \columnbreak\noindent
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        (0,0) node[nor port] (myPort) {}
+                        (myPort.in 1)  node [anchor = east] {A}
+                        (myPort.in 2)  node [anchor = east] {B}
+                        (myPort.out) node [anchor = west] {out};
+                    \end{circuitikz} 
+                    \caption{Representação}
+                \end{figure} \noindent
+            \end{multicols}\noindent
+            \begin{scriptsize}
+                \myStyleVHDL
+                \begin{lstlisting}
+    S <= A nor B;
+                \end{lstlisting}
+            \end{scriptsize}
+
+        \subsection{Porta XOR}
+            \begin{multicols}{3}
+                \begin{table}[H]
+                    \centering  
+                    \begin{tabular}[]{cc|c}\hline
+                        A & B & out\\\hline
+                        0 & 0 & 0\\
+                        0 & 1 & 1\\
+                        1 & 0 & 1\\
+                        1 & 1 & 0\\\hline
+                    \end{tabular}
+                    \caption{Tabela Verdade}
+                \end{table}
+                \columnbreak\noindent
+                    \begin{equation}
+                        \boxed{
+                            S = A \oplus B
+                        }
+                    \end{equation}
+                \columnbreak\noindent
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        (0,0) node[xor port] (myPort) {}
+                        (myPort.in 1)  node [anchor = east] {A}
+                        (myPort.in 2)  node [anchor = east] {B}
+                        (myPort.out) node [anchor = west] {out};
+                    \end{circuitikz} 
+                    \caption{Representação}
+                \end{figure} \noindent
+            \end{multicols}\noindent
+            \begin{scriptsize}
+                \myStyleVHDL
+                \begin{lstlisting}
+    S <= A xor B;
+                \end{lstlisting}
+            \end{scriptsize}
+
+        \subsection{Porta XNOR}
+            \begin{multicols}{3}
+                \begin{table}[H]
+                    \centering  
+                    \begin{tabular}[]{cc|c}\hline
+                        A & B & out\\\hline
+                        0 & 0 & 1\\
+                        0 & 1 & 0\\
+                        1 & 0 & 0\\
+                        1 & 1 & 1\\\hline
+                    \end{tabular}
+                    \caption{Tabela Verdade}
+                \end{table}
+                \columnbreak\noindent
+                    \begin{equation}
+                        \boxed{
+                            S = A \oplus B
+                        }
+                    \end{equation}
+                \columnbreak\noindent
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}
+                        \draw
+                        (0,0) node[xnor port] (myPort) {}
+                        (myPort.in 1)  node [anchor = east] {A}
+                        (myPort.in 2)  node [anchor = east] {B}
+                        (myPort.out) node [anchor = west] {out};
+                    \end{circuitikz} 
+                    \caption{Representação}
+                \end{figure} \noindent
+            \end{multicols}\noindent
+            \begin{scriptsize}
+                \myStyleVHDL
+                \begin{lstlisting}
+    S <= A xnor B;
+                \end{lstlisting}
+            \end{scriptsize}
 \end{document}
