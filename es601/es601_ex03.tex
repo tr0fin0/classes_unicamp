@@ -105,6 +105,7 @@
                         \myOctave
                         \lstinputlisting{es601_ex03am.m}
                     \end{scriptsize}
+\newpage
                 Compara-se assim as soluções analíticas e simuladas com condições iniciais nulas através do seguinte gráfico:
                     \begin{figure}[H]
                         \centering
@@ -175,14 +176,41 @@
                         \includegraphics[height = 7cm]{es601_ex03_im13.png}
                         \caption{Gráfico Simulação Condições não Nulas no Simulink}
                     \end{figure}
-                Na sequência será necessário solucionar a equação analiticamente finalizando a \textbf{Transformada de Laplace}:
+                Na sequência será necessário solucionar a equação analiticamente finalizando a \textbf{Transformada de Laplace} com Frações Parciais de (\ref{eq:simulinkYsB}):
                     \begin{align}
-                        Y(s) &= \frac{1}{s(s^2 + 20s + 10^4)} + \frac{y_{0}s + 20y_{0} + y'_{0}}{(s^2 + 20s + 10^4)} & \text{Frações Parciais de (\ref{eq:simulinkYsB})}\nonumber\\
-                        Y(s) &= \frac{a}{s} - a\frac{(s+10)}{(s+10)^2 + (b)^2} - \frac{10a}{b}\frac{b}{(s+10)^2 + (b)^2} + y_{0}\frac{(s+10)}{(s+10)^2 + (b)^2} \nonumber\\
-                        Y(s) &= \frac{1}{s} - \frac{1}{s + 10} + \frac{y_{0}}{s + 10} & \text{Aplicação Inversa de Laplace}\nonumber\\
-                        y(t)         &= 1u(t) - \text{e}^{-10t} + y_{0}\text{e}^{-10t}\nonumber\\
-                        \Aboxed{y(t) &= 1u(t) + (y_{0} - 1)\text{e}^{-10t}}
+                        Y(s) &= 
+                                \frac{1}{s(s^2 + 20s + 10^4)} + 
+                                \frac{y_{0}s + 20y_{0} + y'_{0}}{(s^2 + 20s + 10^4)}\nonumber\\[1.5mm]
+                             &= \frac{A}{s} + \frac{Bs + C}{s^2 + 20s + 10^4} = 
+                             \begin{cases}
+                                 As^2 + Bs^2 = 0 &\rightarrow\boxed{B = -10^{-4}}\\
+                                 20As + Cs   = 0 &\rightarrow\boxed{C = -20\times10^{-4}}\\
+                                 10^4A       = 1 &\rightarrow\boxed{A = 10^{-4}}\\
+                             \end{cases}\nonumber\\[1.5mm]
+                        Y(s) &= 
+                                \frac{10^{-4}}{s} - 
+                                10^{-4}\frac{s+20}{s^2 + 20s + 10^4} + 
+                                y_{0}  \frac{s+20}{s^2 + 20s + 10^4} + 
+                                y'_{0} \frac{1}{s^2 + 20s + 10^4}\nonumber\\
+                        Y(s) &= 
+                                \frac{10^{-4}}{s} + 
+                                (y_{0} - 10^{-4})\frac{s+20}{s^2 + 20s + 10^4} + 
+                                y'_{0} \frac{1}{s^2 + 20s + 10^4}\nonumber\\
+                        Y(s) &= 
+                                \frac{10^{-4}}{s} + 
+                                (y_{0} - 10^{-4})\frac{s+20}{(s+10)^2 + (30\sqrt{11})^2} + 
+                                y'_{0} \frac{1}{(s+10)^2 + (30\sqrt{11})^2}\nonumber
                     \end{align}
+                Toma-se $a = 10^{-4}$ e $b = 30\sqrt{11}$:
+                    \begin{align}
+                        Y(s) &= 
+                                a\frac{1}{s} + 
+                                (y_{0} - a)\frac{(s+10)}{(s+10)^2 + (b)^2} + 
+                                \frac{10(y_{0} - a) + y'_{0}}{b}\frac{b}{(s+10)^2 + (b)^2}\nonumber\\
+                        y(t) &= au(t) + (y_{0} - a)\text{e}^{-10t}\cos(bt) + \frac{10(y_{0} - a) + y'_{0}}{b}\text{e}^{-10t}\sin(bt)\nonumber\\
+                        \Aboxed{y(t) &= 10^{-4}u(t) + (y_{0} - 10^{-4})\text{e}^{-10t}\cos(30\sqrt{11}t) + \frac{10(y_{0} - 10^{-4}) + y'_{0}}{30\sqrt{11}}\text{e}^{-10t}\sin(30\sqrt{11}t)}
+                    \end{align}
+\newpage
                 Implementando a equação analiticamente com condições iniciais nulas o seguinte gráfico será obtido:
                     \begin{figure}[H]
                         \centering
@@ -201,6 +229,7 @@
                         \myOctave
                         \lstinputlisting{es601_ex03bm.m}
                     \end{scriptsize}
+\newpage
                 Compara-se assim as soluções analíticas e simuladas com condições iniciais nulas através do seguinte gráfico:
                     \begin{figure}[H]
                         \centering
