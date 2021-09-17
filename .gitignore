@@ -12,6 +12,13 @@
 */orCAD
 */defi2
 */__pycache__
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.toc
+*.mat
+*.xml
 # *.pdf
 # */tpack.sty
 MS211 - AT2 1.pdf
