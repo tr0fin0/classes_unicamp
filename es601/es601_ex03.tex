@@ -27,43 +27,191 @@
     \section{Atividade Teórica}
         \paragraph{Apresentação}Resolução das questões de Análise Linear de Sistemas por Guilherme Nunes Trofino, 217276, sobre \textbf{Sistemas de Segunda Ordem} analisados por Laplace.
 
-        \subsection{Questão 1}
+        \subsection{Questão A}
             \begin{exercise}
-                Considere que os seguintes sistemas apresentem as seguines equações:
-                    \begin{enumerate}
-                        \item \textbf{Sistema A:}
-                            \begin{equation}
-                                \boxed{
-                                    0.1\diff{y}{t} + y = u(t)
-                                }
-                                \quad
-                                \text{onde:}
-                                \quad
-                                \begin{cases}
-                                    y(0) = 10 & \text{Condição Inicial}\\
-                                \end{cases}
-                            \end{equation}
-                        \item \textbf{Sistema B:}
-                            \begin{equation}
-                                \boxed{
-                                    \diff[2]{y}{t} + 
-                                    20\diff{y}{t} + 
-                                    1\text{e}^{4} y = u
-                                }
-                                \quad
-                                \text{onde:}
-                                \quad
-                                \begin{cases}
-                                    y(0) = 0           & \text{Condição Inicial}\\
-                                    \diff{y}{t}(0) = 1 & \text{Condição Inicial}\\
-                                \end{cases}
-                            \end{equation}
-                    \end{enumerate}
+                Considere que o seguinte sistema:
+                    \begin{equation}
+                        \boxed{
+                            0.1\diff{y}{t} + y = u(t)
+                        }
+                        \quad
+                        \text{onde:}
+                        \quad
+                        \begin{cases}
+                            y(0) = 10 & \text{Condição Inicial}\\
+                        \end{cases}
+                    \end{equation}
                 Implemente a resposta com condições iniciais nulas em Simulink usando o \texttt{Bloco de Transferência}, exporte para o MATLAB e compare com a resposta analítica.
                 \\\\
                 Repita o desenvolvimento anterior considerando as condições iniciais apresentadas.
             \end{exercise}
             \begin{resolution}
-                a
+                Primeiramente será necessário rescrever a equação que descreve o sistema para que a mesma possa ser representada no Simulink:
+                    \begin{align}
+                        0.1\diff{y}{t} + y    &= u & \text{Simplificação de Notação\nonumber}\\
+                        0.1\dot{y} + y        &= u & \text{Aplicação de Laplace}\nonumber\\
+                        0.1(Ys - y_{0}) + Y   &= \frac{1}{s}\nonumber\\
+                        Y(0.1s + 1) &= \frac{1}{s} + 0.1 y_{0}\nonumber\\
+                        Y(s) &= \frac{1}{s(0.1s + 1)} + \frac{0.1 y_{0}}{0.1s + 1} \label{eq:simulinkYsA}\\
+                        \Aboxed{Y(s) &= \frac{y_{0}s + 10}{s^2 + 10s}}
+                    \end{align}
+                Neste ponto, para obter-se a equação de Transferência será necessário realizar a seguinte manipulação:
+                    \begin{align}
+                        H(s) &= \frac{Y(s)}{X(s)} & \text{onde: $X(s) = \frac{1}{s}$, Impulso Aplicado}\nonumber\\
+                        \Aboxed{H(s) &= \frac{y_{0}s^2 + 10s}{s^2 + 10s}}
+                    \end{align}
+\newpage
+                Desta forma, a Equação será representada no Simulink com o seguinte diagrama:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 4cm]{es601_ex03_im01.png}
+                        \caption{Representação da Simulação no Simulink}
+                    \end{figure}
+                Realizando a simulação com condições iniciais nulas o seguinte gráfico será obtido:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 7cm]{es601_ex03_im02.png}
+                        \caption{Gráfico Simulação Condições Nulas no Simulink}
+                    \end{figure}
+                Realizando a simulação com condições iniciais não nulas o seguinte gráfico será obtido:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 7cm]{es601_ex03_im03.png}
+                        \caption{Gráfico Simulação Condições não Nulas no Simulink}
+                    \end{figure}
+                Na sequência será necessário solucionar a equação analiticamente finalizando a \textbf{Transformada de Laplace}:
+                    \begin{align}
+                        Y(s) &= \frac{1}{s(0.1s + 1)} + \frac{0.1 y_{0}}{0.1s + 1} & \text{Frações Parciais de (\ref{eq:simulinkYsA})}\nonumber\\
+                        Y(s) &= \frac{1}{s} - \frac{0.1}{0.1s + 1} + \frac{0.1y_{0}}{0.1s + 1}\nonumber\\
+                        Y(s) &= \frac{1}{s} - \frac{1}{s + 10} + \frac{y_{0}}{s + 10} & \text{Aplicação Inversa de Laplace}\nonumber\\
+                        y(t)         &= 1u(t) - \text{e}^{-10t} + y_{0}\text{e}^{-10t}\nonumber\\
+                        \Aboxed{y(t) &= 1u(t) + (y_{0} - 1)\text{e}^{-10t}}
+                    \end{align}
+                Implementando a equação analiticamente com condições iniciais nulas o seguinte gráfico será obtido:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 7cm]{es601_ex03_im04.png}
+                        \caption{Gráfico Analítica Condições nulas no Simulink}
+                    \end{figure}
+                Implementando a equação analiticamente com condições iniciais não nulas o seguinte gráfico será obtido:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 7cm]{es601_ex03_im05.png}
+                        \caption{Gráfico Analítica Condições não nulas no Simulink}
+                    \end{figure}
+\newpage
+                Equação acima será modelada em MATLAB através do seguinte algoritmo:
+                    \begin{scriptsize}
+                        \myOctave
+                        \lstinputlisting{es601_ex03am.m}
+                    \end{scriptsize}
+                Compara-se assim as soluções analíticas e simuladas com condições iniciais nulas através do seguinte gráfico:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 8cm]{es601_ex03_im06.png}
+                        \caption{Comparação Analítica e Simulink com Condições nulas}
+                    \end{figure}
+                Compara-se assim as soluções analíticas e simuladas com condições iniciais não nulas através do seguinte gráfico:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 8cm]{es601_ex03_im07.png}
+                        \caption{Comparação Analítica e Simulink com Condições não nulas}
+                    \end{figure}
+            \end{resolution}
+\newpage
+
+        \subsection{Questão B}
+            \begin{exercise}
+                Considere que o seguinte sistema:
+                    \begin{equation}
+                        \boxed{
+                            \diff[2]{y}{t} + 
+                            20\diff{y}{t} + 
+                            10^{4} y = u
+                        }
+                        \quad
+                        \text{onde:}
+                        \quad
+                        \begin{cases}
+                            y(0) = 0           & \text{Condição Inicial}\\
+                            \diff{y}{t}(0) = 1 & \text{Condição Inicial}\\
+                        \end{cases}
+                    \end{equation}
+                Implemente a resposta com condições iniciais nulas em Simulink usando o \texttt{Bloco de Transferência}, exporte para o MATLAB e compare com a resposta analítica.
+                \\\\
+                Repita o desenvolvimento anterior considerando as condições iniciais apresentadas.
+            \end{exercise}
+            \begin{resolution}
+                Primeiramente será necessário rescrever a equação que descreve o sistema para que a mesma possa ser representada no Simulink:
+                    \begin{align}
+                        \diff[2]{y}{t} + 20\diff{y}{t} +10^4y &= u\nonumber\\
+                        \ddot{y} + 20\dot{y} + 10^4y          &= u\nonumber\\
+                        (Ys^2 - sy_{0} - y'_{0}) + 20(Ys - y_{0}) + 10^4Y &= \frac{1}{s}\nonumber\\
+                        Y(s^2 + 20s + 10^4) &= \frac{1}{s} + y_{0}s + 20y_{0} + y'_ {0}\nonumber\\
+                        Y(s) &= \frac{1}{s(s^2 + 20s + 10^4)} + \frac{y_{0}s + 20y_{0} + y'_{0}}{(s^2 + 20s + 10^4)} \label{eq:simulinkYsB}\\
+                        \Aboxed{Y(s) &= \frac{y_{0}s^2 + 20y_{0}s + y'_{0}s + 1}{s(s^2 + 20s + 10^4)}}
+                    \end{align}
+                Neste ponto, para obter-se a equação de Transferência será necessário realizar a seguinte manipulação:
+                    \begin{align}
+                        H(s) &= \frac{Y(s)}{X(s)} & \text{onde: $X(s) = \frac{1}{s}$, Impulso Aplicado}\nonumber\\
+                        \Aboxed{H(s) &= \frac{y_{0}s^2 + 20y_{0}s + y'_{0}s + 1}{s^2 + 20s + 10^4}}
+                    \end{align}
+\newpage
+                Desta forma, a Equação será representada no Simulink com o seguinte diagrama:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 4cm]{es601_ex03_im11.png}
+                        \caption{Representação da Simulação no Simulink}
+                    \end{figure}
+                Realizando a simulação com condições iniciais nulas o seguinte gráfico será obtido:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 7cm]{es601_ex03_im12.png}
+                        \caption{Gráfico Simulação Condições Nulas no Simulink}
+                    \end{figure}
+                Realizando a simulação com condições iniciais não nulas o seguinte gráfico será obtido:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 7cm]{es601_ex03_im13.png}
+                        \caption{Gráfico Simulação Condições não Nulas no Simulink}
+                    \end{figure}
+                Na sequência será necessário solucionar a equação analiticamente finalizando a \textbf{Transformada de Laplace}:
+                    \begin{align}
+                        Y(s) &= \frac{1}{s(s^2 + 20s + 10^4)} + \frac{y_{0}s + 20y_{0} + y'_{0}}{(s^2 + 20s + 10^4)} & \text{Frações Parciais de (\ref{eq:simulinkYsB})}\nonumber\\
+                        Y(s) &= \frac{a}{s} - a\frac{(s+10)}{(s+10)^2 + (b)^2} - \frac{10a}{b}\frac{b}{(s+10)^2 + (b)^2} + y_{0}\frac{(s+10)}{(s+10)^2 + (b)^2} \nonumber\\
+                        Y(s) &= \frac{1}{s} - \frac{1}{s + 10} + \frac{y_{0}}{s + 10} & \text{Aplicação Inversa de Laplace}\nonumber\\
+                        y(t)         &= 1u(t) - \text{e}^{-10t} + y_{0}\text{e}^{-10t}\nonumber\\
+                        \Aboxed{y(t) &= 1u(t) + (y_{0} - 1)\text{e}^{-10t}}
+                    \end{align}
+                Implementando a equação analiticamente com condições iniciais nulas o seguinte gráfico será obtido:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 7cm]{es601_ex03_im14.png}
+                        \caption{Gráfico Analítica Condições nulas no Simulink}
+                    \end{figure}
+                Implementando a equação analiticamente com condições iniciais não nulas o seguinte gráfico será obtido:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 7cm]{es601_ex03_im15.png}
+                        \caption{Gráfico Analítica Condições não nulas no Simulink}
+                    \end{figure}
+\newpage
+                Equação acima será modelada em MATLAB através do seguinte algoritmo:
+                    \begin{scriptsize}
+                        \myOctave
+                        \lstinputlisting{es601_ex03bm.m}
+                    \end{scriptsize}
+                Compara-se assim as soluções analíticas e simuladas com condições iniciais nulas através do seguinte gráfico:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 8cm]{es601_ex03_im16.png}
+                        \caption{Comparação Analítica e Simulink com Condições nulas}
+                    \end{figure}
+                Compara-se assim as soluções analíticas e simuladas com condições iniciais não nulas através do seguinte gráfico:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 8cm]{es601_ex03_im17.png}
+                        \caption{Comparação Analítica e Simulink com Condições não nulas}
+                    \end{figure}
             \end{resolution}
 \end{document}
