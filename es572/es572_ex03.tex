@@ -65,7 +65,70 @@
                     \end{table}
             \end{exercise}
             \begin{resolution}
+                As seguintes conversões devem ser realizadas:
+                \begin{enumerate}[rightmargin = \leftmargin]
+                    \item Nota-se que $0110111_{(2)}$ poderá ser convertido através de \textbf{Complemento}:
+                        \begin{figure}[H]
+                            \centering
+                            \todecimal[2]{0110111}
+                        \end{figure}
 
+                    \item Nota-se que $101101010_{(2)}$ poderá ser convertido através de \textbf{Agrupamento}:
+                        \begin{equation*}
+                            \underbrace{\text{\textcolor{red}{000}1}}_{
+                                \text{1}
+                            }
+                            \quad
+                            \underbrace{\text{0110}}_{
+                                \text{6}
+                            }
+                            \quad
+                            \underbrace{\text{1010}}_{
+                                \text{A}
+                            } = 
+                            \boxed{16A_{(16)}}
+                        \end{equation*}
+
+                    \item Nota-se que $C9_{(16)}$ poderá ser convertido através de \textbf{Agrupamento}:
+                        \begin{equation*}
+                            \underbrace{\text{C9}}_{
+                                \underbrace{\text{\textcolor{red}{0}11}}_{
+                                    \text{3}
+                                }
+                                \quad
+                                \underbrace{\text{001}}_{
+                                    \text{1}
+                                }
+                                \quad
+                                \underbrace{\text{001}}_{
+                                    \text{1}
+                                }
+                            } = 
+                            \boxed{311_{(8)}}
+                        \end{equation*}
+
+                    \item Nota-se que $A7_{(16)}$ poderá ser convertido através de \textbf{Complemento}:
+                        \begin{figure}[H]
+                            \centering
+                            \todecimal[16]{A7}
+                        \end{figure}
+
+                    \item Nota-se que $743_{(10)}$ poderá ser convertido através da \textbf{Divisão Sucessiva}:
+                        \begin{figure}[H]
+                            \centering
+                            \basetenconversiontable{743}{16}
+                        \end{figure}
+                    Note que será necessário converter os valores numéricos para seus equivalentes alfabéticos, obtendo assim:
+                        \begin{equation*}
+                            \boxed{743_{(10)} = 2E7_{(16)}}
+                        \end{equation*}
+
+                    \item Nota-se que $221_{(10)}$ poderá ser convertido através da \textbf{Divisão Sucessiva}:
+                        \begin{figure}[H]
+                            \centering
+                            \basetenconversiontable{221}{2}
+                        \end{figure}
+                \end{enumerate}
             \end{resolution}
 \newpage
 
