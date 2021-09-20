@@ -198,7 +198,107 @@
                 \end{enumerate}
             \end{exercise}
             \begin{resolution}
+                As seguintes conversões devem ser realizadas:
+                \begin{enumerate}
+                    \item Conversão de 63 e 17:
+                        \begin{figure}[H]
+                            \centering
+                            \basetenconversiontable{63}{2}
+                            \basetenconversiontable{17}{2}
+                        \end{figure}
+                    Realizando ajuste de sinal:
+                        \begin{equation*}
+                            \boxed{63_{(10)} = 00111111_{(2)}}
+                            \qquad
+                            \boxed{17_{(10)} = 00010001_{(2)}}
+                        \end{equation*}
+                    Realizando soma:
+                        \begin{table}[H]
+                            \centering  
+                            \begin{tabular}[]{cr}
+                                  &  111 1110\\
+                                  & 0011 1111\\
+                                + & 0001 0001\\\hline
+                                  & 0101 0000\\
+                            \end{tabular}
+                        \end{table}
+                    Conclui-se que nenhuma flag deve ser levantada e o resultado será $\boxed{80_{(10)} = 0101\;0000_{(2)}}$.
+\newpage
 
+                    \item Conversão de 27 e 39:
+                        \begin{figure}[H]
+                            \centering
+                            \basetenconversiontable{27}{2}
+                            \basetenconversiontable{39}{2}
+                        \end{figure}
+                    Realizando ajuste de sinal:
+                        \begin{equation*}
+                            \boxed{ 27_{(10)} = 00011011_{(2)}}
+                            \qquad
+                            \boxed{-39_{(10)} = 11011001_{(2)}}
+                        \end{equation*}
+                    Realizando soma:
+                        \begin{table}[H]
+                            \centering  
+                            \begin{tabular}[]{cr}
+                                  &   11 0110\\
+                                  & 0001 1011\\
+                                + & 1101 1001\\\hline
+                                  & 1111 0100\\
+                            \end{tabular}
+                        \end{table}
+                    Conclui-se que nenhuma flag deve ser levantada e o resultado será $\boxed{-12_{(10)} = 1111\;0100_{(2)}}$.
+\newpage
+
+                    \item Conversão de 44 e 28:
+                        \begin{figure}[H]
+                            \centering
+                            \basetenconversiontable{44}{2}
+                            \basetenconversiontable{28}{2}
+                        \end{figure}
+                    Realizando ajuste de sinal:
+                        \begin{equation*}
+                            \boxed{-44_{(10)} = 11010100_{(2)}}
+                            \qquad
+                            \boxed{-28_{(10)} = 11100100_{(2)}}
+                        \end{equation*}
+                    Realizando soma:
+                        \begin{table}[H]
+                            \centering  
+                            \begin{tabular}[]{cr}
+                                  & 1000 1000\\
+                                  & 1101 0100\\
+                                + & 1110 0100\\\hline
+                                  &11011 1000\\
+                            \end{tabular}
+                        \end{table}
+                    Conclui-se que nenhuma flag deve ser levantada e o resultado será $\boxed{-72_{(10)} = 1011\;1000_{(2)}}$.
+\newpage
+
+                    \item Conversão de 102 e 95:
+                        \begin{figure}[H]
+                            \centering
+                            \basetenconversiontable{102}{2}
+                            \basetenconversiontable{95}{2}
+                        \end{figure}
+                    Realizando ajuste de sinal:
+                        \begin{equation*}
+                            \boxed{-102_{(10)} = 10011010_{(2)}}
+                            \qquad
+                            \boxed{ -95_{(10)} = 10100001_{(2)}}
+                        \end{equation*}
+                    Realizando soma:
+                        \begin{table}[H]
+                            \centering  
+                            \begin{tabular}[]{cr}
+                                  &         0\\
+                                  & 1001 1010\\
+                                + & 1010 0001\\\hline
+                                  &10011 1011\\
+                            \end{tabular}
+                        \end{table}
+                    Conclui-se que a flag de \texttt{Overflow} deve ser levantada, pois os valores dois números negativos resultaram em um positivo $\boxed{59_{(10)} = 0011\;1011_{(2)}}$.
+                \end{enumerate}
             \end{resolution}
 \newpage
 
