@@ -412,4 +412,128 @@
                                 }
                             \end{equation*}
                     \end{example}
+
+    \section{Circuitos Trifásicos}
+        \begin{definition}
+            Utilização de estruturas com três fases para produção e transmissão de energia elétrica, contornando assim as vibrações causadas pela natureza oscilatória dos sinais.
+        \end{definition}
+
+        \subsection{Sistemas Monofásicos}
+            \begin{definition}
+                Dispositivos alimentados por fontes de tensão com a mesma fase usualmente representados pela seguinte figura:
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}[american]
+                            \draw
+                            (0,-2)  coordinate (phaseB)
+                                    to[sV=$v_{BN}$] (0,0) coordinate (neutro)
+                                    to[sV=$v_{AN}$] (0,2) coordinate (phaseA)
+                                    
+                            (phaseA)to[short, -o] ++(2,0)
+                                    node[right] {$A$}
+                    
+                            (neutro)to[short, *-o] ++(1.5,0)
+                                    node[right] {$N$}
+                    
+                            (phaseB)to[short, -o] ++(2,0)
+                                    node[right] {$B$};
+                        \end{circuitikz} 
+                        \caption{Representação Circuito Monofásico}
+                    \end{figure} \noindent
+                Onde:
+                    \begin{equation}
+                        \boxed{v_{AN}(t)=V_{A}\phase{\omega^{\circ}}}
+                        \qquad
+                        \boxed{v_{BN}(t)=V_{B}\phase{\omega^{\circ}}}
+                    \end{equation}
+                Nota-se que, usualmente, as tensões apresentadas serão eficazes.
+            \end{definition}\noindent
+            Quando estes sistemas estiverem conectados a \textbf{Carga Equilibradas}, isto é, apresentam mesma impedância, não haverá corrente no ramo neutro.
+
+        \subsection{Sistemas Trifásicos}
+            \begin{definition}
+                Dispositivos alimentados por fontes de tensão com $120^{\circ}$ de variação entre fases consecutivas usualmente rerpresentados pela seguinte figura:
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}[american]
+                            \draw
+                    
+                            (0, 0)  coordinate (neutro)
+                    
+                            (neutro)to[sV_=$v_{AN}$] (  90:2) coordinate (phaseA)
+                            (neutro)to[sV_=$v_{BN}$] ( -30:2) coordinate (phaseB)
+                            (neutro)to[sV_=$v_{CN}$] (-150:2) coordinate (phaseC)
+                    
+                            (neutro)to[short, *-o] ++(2.5,0)
+                                    node[right] {$N$}
+                    
+                            (phaseA)to[short, -o] ++(3,0)
+                                    node[right] {$A$}
+                    
+                            (phaseB)to[short, -o] ++(1.25,0)
+                                    node[right] {$B$}
+                    
+                            (phaseC)to[short] ++(0,-1)
+                                    to[short, -o] ++(4.75,0)
+                                    node[right] {$C$};
+                        \end{circuitikz} 
+                        \caption{Representação Circuito Trifásico}
+                    \end{figure} \noindent
+                Onde:
+                    \begin{equation}
+                        \boxed{v_{AN}(t) = V_{P}\phase{0^{\circ}}}
+                        \qquad
+                        \boxed{v_{BN}(t) = V_{P}\phase{-120^{\circ}}}
+                        \qquad
+                        \boxed{v_{CN}(t) = V_{P}\phase{+120^{\circ}}}
+                    \end{equation}
+                Note que adota-se a primeiro nó como \textbf{referência} da fase zero, o segundo nó como fase \textbf{menos} $120^{\circ}$ e o terceiro nó como fase \textbf{mais} $120^{\circ}$ como representado no seguinte diagrama fasorial:
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin = -8.25, xmax = 8.25, % Axis Coordenates
+                                ymin = -8.25, ymax = 8.25, % Axis Coordenates
+                                xlabel = {$\mathbb{R}$},  % Axis Labels
+                                ylabel = {$\mathbb{I}$},  % Axis Labels
+                                ticks = none,
+                                xtick = {},  % Axis Ticks Potions
+                                ytick = {},  % Axis Ticks Potions
+                                xticklabels = {}, % Axis Ticks Labels
+                                yticklabels = {}, % Axis Ticks Labels
+                                x label style = {at={(axis cs:{8,0})}, anchor=east},
+                                y label style = {at={(axis cs:{0,8})}, anchor=north, rotate=-90},
+                                width  = 8.0cm,
+                                height = 8.0cm,
+                                axis lines = center,
+                            ]
+                            \draw [black, -{Latex[round]}] (1.5,0) arc [
+                                start angle = 0,
+                                end angle   = 120,
+                                radius      = 1.5
+                            ];
+                            \node[text width = 1cm] at (2,2) {$+120^{\circ}$};
+                    
+                            \draw [black, -{Latex[round]}] (1.5,0) arc [
+                                start angle = 0,
+                                end angle   = -120,
+                                radius      = 1.5
+                            ];
+                            \node[text width = 1cm] at (2,-2) {$-120^{\circ}$};
+                    
+                            \draw[blue!60, -{Latex[round]}] (0,0) -- (   0:6) node [below]      {$v_{AN}$};
+                            \draw[blue!60, -{Latex[round]}] (0,0) -- (-120:6) node [below left] {$v_{BN}$};
+                            \draw[blue!60, -{Latex[round]}] (0,0) -- (+120:6) node [above left] {$v_{CN}$};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \caption{Represenação Trifásica Fasorial}
+                    \end{figure}\noindent
+            \end{definition}
+
+        \subsubsection{Tensão entre Fases}
+            \begin{definition}
+                
+            \end{definition}
 \end{document}
