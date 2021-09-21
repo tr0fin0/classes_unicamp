@@ -426,26 +426,33 @@
                         \begin{circuitikz}
                             \ctikzset{component text=left}[american]
                             \draw
-                            (0,-2)  coordinate (phaseB)
-                                    to[sV=$v_{BN}$] (0,0) coordinate (neutro)
-                                    to[sV=$v_{AN}$] (0,2) coordinate (phaseA)
+                            (-2,-2) coordinate (pb)
+                                    to[sV=$v_{BN}$]++(0,2) coordinate (nn)
+                                    to[sV=$v_{AN}$]++(0,2) coordinate (pa)
                                     
-                            (phaseA)to[short, -o] ++(2,0)
-                                    node[right] {$A$}
+                            (pa)node[left] {$a$}
+                            (nn)node[left] {$n$}
+                            (pb)node[left] {$b$}
                     
-                            (neutro)to[short, *-o] ++(1.5,0)
-                                    node[right] {$N$}
+                            ( 2,-2) coordinate (pB)
+                                    to[R=$Z_{A}$] ++(0,2) coordinate (nN)
+                                    to[R=$Z_{B}$] ++(0,2) coordinate (pA)
                     
-                            (phaseB)to[short, -o] ++(2,0)
-                                    node[right] {$B$};
+                            (pA)node[right] {$A$}
+                            (nN)node[right] {$N$}
+                            (pB)node[right] {$B$}
+                    
+                            (pa)to[short, f=$I_{aA}$] (pA)
+                            (nn)to[short, f=$I_{nN}$, *-*] (nN)
+                            (pb)to[short, f=$I_{bB}$] (pB);
                         \end{circuitikz} 
                         \caption{Representação Circuito Monofásico}
                     \end{figure} \noindent
                 Onde:
                     \begin{equation}
-                        \boxed{v_{AN}(t)=V_{A}\phase{\omega^{\circ}}}
+                        \boxed{v_{AN}(t)=V_{A}\phase{\omega^{\circ}}\text{ V}_{ef}}
                         \qquad
-                        \boxed{v_{BN}(t)=V_{B}\phase{\omega^{\circ}}}
+                        \boxed{v_{BN}(t)=V_{B}\phase{\omega^{\circ}}\text{ V}_{ef}}
                     \end{equation}
                 Nota-se que, usualmente, as tensões apresentadas serão eficazes.
             \end{definition}\noindent
