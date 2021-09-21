@@ -456,7 +456,37 @@
                     \end{equation}
                 Nota-se que, usualmente, as tensões apresentadas serão eficazes.
             \end{definition}\noindent
-            Quando estes sistemas estiverem conectados a \textbf{Carga Equilibradas}, isto é, apresentam mesma impedância, não haverá corrente no ramo neutro.
+            \begin{theorem}
+                Quando estes sistemas estiverem conectados a cargas de mesma impedância considera-se que estas são \textbf{Carga Equilibradas} como representado abaixo:
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}[american]
+                            \draw
+                            (-2,-2) coordinate (pb)
+                                    to[sV=$v_{BN}$]++(0,2) coordinate (nn)
+                                    to[sV=$v_{AN}$]++(0,2) coordinate (pa)
+                                    
+                            (pa)node[left] {$a$}
+                            (nn)node[left] {$n$}
+                            (pb)node[left] {$b$}
+                    
+                            ( 2,-2) coordinate (pB)
+                                    to[R=$Z$] ++(0,2) coordinate (nN)
+                                    to[R=$Z$] ++(0,2) coordinate (pA)
+                    
+                            (pA)node[right] {$A$}
+                            (nN)node[right] {$N$}
+                            (pB)node[right] {$B$}
+                    
+                            (pa)to[short, f=$I_{aA}$] (pA)
+                            (nn)to[short, f=$I_{nN}$, *-*] (nN)
+                            (pb)to[short, f=$I_{bB}$] (pB);
+                        \end{circuitikz}
+                        \caption{Representação Circuito Monofásico Equilibrado}
+                    \end{figure} \noindent
+                Neste caso, não haverá corrente no ramo neutro, implicando $\boxed{I_{nN} = 0}$.
+            \end{theorem}
 
         \subsection{Sistemas Trifásicos}
             \begin{definition}
