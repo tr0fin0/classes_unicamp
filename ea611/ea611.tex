@@ -670,4 +670,59 @@
                         \caption{Representação Conexão Y-Y}
                     \end{figure}
             \end{definition}
+            \begin{theorem}
+                Quando estes sistemas estiverem conectados a cargas de mesma impedância considera-se que estas são \textbf{Carga Equilibradas} como representado abaixo:
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}[american]
+                            \draw
+                            (-3, 0)  coordinate (nn)
+                    
+                            (nn)to[sV_=$v_{AN}$] ++(  90:2) coordinate (pa)
+                            (nn)to[sV_=$v_{BN}$] ++( -30:2)
+                                to[short]        ++(0,-2)   coordinate (pb)
+                            (nn)to[sV_=$v_{CN}$] ++(-150:2)
+                                to[short]        ++(0,-1)   coordinate (pc)
+                    
+                            (nn)node[below] {$n$}
+                            (pa)node[left] {$a$}
+                            (pb)node[below] {$b$}
+                            (pc)node[left] {$c$}
+                    
+                    
+                            ( 3, 0)  coordinate (nN)
+                    
+                            (nN)to[R, l=$Z$] ++(  90:2) coordinate (pA)
+                            (nN)to[R, l=$Z$] ++( -30:2)
+                                to[short]    ++(0,-2)   coordinate (pB)
+                            (nN)to[R, l=$Z$] ++(-150:2)
+                                to[short]    ++(0,-1)   coordinate (pC)
+                    
+                            (nN)node[below] {$N$}
+                            (pA)node[above] {$A$}
+                            (pB)node[below] {$B$}
+                            (pC)node[right] {$C$}
+                    
+                            (nn)to[short, *-*, f=$I_{nN}$] (nN)
+                            (pa)to[short, f=$I_{aA}$] (pA)
+                            (pb)to[short, f_=$I_{bB}$] (pB)
+                            (pc)to[short, f_=$I_{cC}$] (pC)
+                            ;
+                        \end{circuitikz}
+                        \caption{Representação Conexão Y-Y}
+                    \end{figure}
+                Neste caso, não haverá corrente no ramo neutro, implicando $\boxed{I_{nN} = 0}$. Demais correntes podem ser obtidas através das seguintes equações:
+                    \begin{equation}
+                        \boxed{I_{aA} = \frac{v_{an}}{|Z|}\phase{-\theta^{\circ}}\text{ A}_{ef}}
+                        \quad
+                        \boxed{I_{bB} = \frac{v_{bn}}{|Z|}\phase{(-120-\theta)^{\circ}}\text{ A}_{ef}}
+                        \quad
+                        \boxed{I_{cC} = \frac{v_{cn}}{|Z|}\phase{(+120-\theta)^{\circ}}\text{ A}_{ef}}
+                    \end{equation}
+                Onde:
+                    \begin{equation*}
+                        \boxed{Z = |Z|\phase{\theta^{\circ}}}
+                    \end{equation*}
+            \end{theorem}
 \end{document}
