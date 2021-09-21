@@ -263,7 +263,7 @@
                 Considere os números abaixo para binário de 8 bits utilizando complemento de 2 e some-os. Verifique se os números são corretos e, caso contrário, indique quais \textbf{flags} devem ser ativas.
                 \begin{enumerate}[noitemsep]
                     \item 63 e 17;
-                    \item 27 e -39;
+                    \item 27 e -38;
                     \item -44 e -28;
                     \item -102 e - 95;
                 \end{enumerate}
@@ -300,25 +300,25 @@
                         \begin{figure}[H]
                             \centering
                             \basetenconversiontable{27}{2}
-                            \basetenconversiontable{39}{2}
+                            \basetenconversiontable{38}{2}
                         \end{figure}
                     Realizando ajuste de sinal:
                         \begin{equation*}
                             \boxed{ 27_{(10)} = 00011011_{(2)}}
                             \qquad
-                            \boxed{-39_{(10)} = 11011001_{(2)}}
+                            \boxed{-38_{(10)} = 11011010_{(2)}}
                         \end{equation*}
                     Realizando soma:
                         \begin{table}[H]
                             \centering  
                             \begin{tabular}[]{cr}
-                                  &   11 0110\\
+                                  &   11 0100\\
                                   & 0001 1011\\
-                                + & 1101 1001\\\hline
-                                  & 1111 0100\\
+                                + & 1101 1010\\\hline
+                                  & 1111 0101\\
                             \end{tabular}
                         \end{table}
-                    Conclui-se que nenhuma flag deve ser levantada e o resultado será $\boxed{-12_{(10)} = 1111\;0100_{(2)}}$.
+                    Conclui-se que nenhuma flag deve ser levantada e o resultado será $\boxed{-11_{(10)} = 1111\;0100_{(2)}}$.
 \newpage
 
                     \item Conversão de 44 e 28:
