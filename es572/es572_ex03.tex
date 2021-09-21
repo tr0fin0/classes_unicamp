@@ -186,16 +186,74 @@
                             \todecimal[2]{11010011}
                         \end{figure}
 
-                    \item Número em sinal-magnitude;
+                    \item Número em sinal-magnitude:
+                        \begin{figure}[H]
+                            \centering
+                            \todecimal[2]{1010011}
+                        \end{figure}
+                    Nota-se que o primeiro \texttt{bit} original era um 1, logo o número será $\boxed{-83_{(10)}}$.
 
-                    \item Número em complemento de 1;
+                    \item Número em complemento de 1: Como o \texttt{LSB} é 1, inverte-se o número como mostrado:
+                        \begin{table}[H]
+                            \centering  
+                            \begin{tabular}[]{cc cc cc cc}
+                                $2^7$ & $2^6$ & $2^5$ & $2^4$ & $2^3$ & $2^2$ & $2^1$ & $2^0$\\\hline
+                                128   & 64    & 32    & 16    & 8     & 4     & 2     & 1\\
+                                  0   &  0    &  1    &  0    & 1     & 1     & 0     & 0\\
+                            \end{tabular}
+                        \end{table}
+                    Nota-se que será necessário realizar a soma, logo o número será $\boxed{-44_{(10)}}$.
 
                     \item Número em complemento de 2;
-                        \begin{equation*}
-                            11010011
-                            00101101
-                            -45
-                        \end{equation*}
+                        \begin{table}[H]
+                            \centering  
+                            \begin{tabular}[]{cc cc cc cc}
+                                $-2^7$ & $2^6$ & $2^5$ & $2^4$ & $2^3$ & $2^2$ & $2^1$ & $2^0$\\\hline
+                                -128   & 64    & 32    & 16    & 8     & 4     & 2     & 1\\
+                                   1   &  1    &  0    &  1    & 0     & 0     & 1     & 1\\
+                            \end{tabular}
+                        \end{table}
+                    Nota-se que será necessário realizar a soma, logo o número será $\boxed{-45_{(10)}}$.
+                \end{enumerate}
+            \end{resolution}
+\newpage
+            \begin{resolution}
+                As seguintes conversões devem ser realizadas:
+                \begin{enumerate}
+                    \item Número sem sinal:
+                        \begin{figure}[H]
+                            \centering
+                            \todecimal[2]{011010011}
+                        \end{figure}
+
+                    \item Número em sinal-magnitude:
+                        \begin{figure}[H]
+                            \centering
+                            \todecimal[2]{11010011}
+                        \end{figure}
+                    Nota-se que o primeiro \texttt{bit} original era um 0, logo o número será $\boxed{211_{(10)}}$.
+
+                    \item Número em complemento de 1: Como o \texttt{LSB} é 0, não inverte-se o número como mostrado:
+                        \begin{table}[H]
+                            \centering  
+                            \begin{tabular}[]{c cc cc cc cc}
+                                $2^8$ & $2^7$ & $2^6$ & $2^5$ & $2^4$ & $2^3$ & $2^2$ & $2^1$ & $2^0$\\\hline
+                                  256 & 128   & 64    & 32    & 16    & 8     & 4     & 2     & 1\\
+                                    0 &   1   &  1    &  0    &  1    & 0     & 0     & 1     & 1\\
+                            \end{tabular}
+                        \end{table}
+                    Nota-se que será necessário realizar a soma, logo o número será $\boxed{211_{(10)}}$.
+
+                    \item Número em complemento de 2;
+                        \begin{table}[H]
+                            \centering  
+                            \begin{tabular}[]{c cc cc cc cc}
+                                $-2^8$ & $2^7$ & $2^6$ & $2^5$ & $2^4$ & $2^3$ & $2^2$ & $2^1$ & $2^0$\\\hline
+                                  -256 & 128   & 64    & 32    & 16    & 8     & 4     & 2     & 1\\
+                                     0 &   1   &  1    &  0    &  1    & 0     & 0     & 1     & 1\\
+                            \end{tabular}
+                        \end{table}
+                    Nota-se que será necessário realizar a soma, logo o número será $\boxed{211_{(10)}}$.
                 \end{enumerate}
             \end{resolution}
 \newpage
