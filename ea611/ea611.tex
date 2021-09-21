@@ -577,6 +577,97 @@
 
         \subsubsection{Tensão entre Fases}
             \begin{definition}
-                
+                Representa a diferença entre as Tensões de Fases representado geometricamente pelo seguinte diagrama fasorial:
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin = -8.25, xmax = 8.25, % Axis Coordenates
+                                ymin = -8.25, ymax = 8.25, % Axis Coordenates
+                                xlabel = {$\mathbb{R}$},  % Axis Labels
+                                ylabel = {$\mathbb{I}$},  % Axis Labels
+                                ticks = none,
+                                xtick = {},  % Axis Ticks Potions
+                                ytick = {},  % Axis Ticks Potions
+                                xticklabels = {}, % Axis Ticks Labels
+                                yticklabels = {}, % Axis Ticks Labels
+                                x label style = {at={(axis cs:{8,0})}, anchor=east},
+                                y label style = {at={(axis cs:{0,8})}, anchor=north, rotate=-90},
+                                width  = 8.0cm,
+                                height = 8.0cm,
+                                axis lines = center,
+                            ]
+                            \draw [black, -{Latex[round]}] (1.5,0) arc [
+                                start angle = 0,
+                                end angle   = 30,
+                                radius      = 1.5
+                            ];
+                            \node[text width = 1cm] at (3.25,0.75) {$30^{\circ}$};
+                    
+                            \draw[gray, -{Latex[round]}] (0,0) -- (   0:4) node [black, below]      {$v_{an}$};
+                            \draw[gray, -{Latex[round]}] (0,0) -- (-120:4) node [black, below left] {$v_{bn}$};
+                            \draw[gray, -{Latex[round]}] (0,0) -- (+120:4) node [black, above left] {$v_{cn}$};
+                    
+                            \draw[blue!60, -{Latex[round]}] (0,0) -- (+ 30:6.93) node [black, above right]{$v_{ab}$};
+                            \draw[blue!60, -{Latex[round]}] (0,0) -- (- 90:6.93) node [black, below left] {$v_{bc}$};
+                            \draw[blue!60, -{Latex[round]}] (0,0) -- (+150:6.93) node [black, above left] {$v_{ca}$};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \caption{Represenação Fasorial Tensões entre Fases}
+                    \end{figure}\noindent
+                Onde:
+                    \begin{equation}
+                        \boxed{v_{ab}(t) = \sqrt{3}V_{P}\phase{  30^{\circ}}\text{ V}_{ef}}
+                        \qquad
+                        \boxed{v_{bc}(t) = \sqrt{3}V_{P}\phase{- 90^{\circ}}\text{ V}_{ef}}
+                        \qquad
+                        \boxed{v_{ca}(t) = \sqrt{3}V_{P}\phase{+150^{\circ}}\text{ V}_{ef}}
+                    \end{equation}
+                Convenciona-se que os subescritos representam a ordem da diferença de tensão. Logo $v_{ab} = v_{an} - v_{bn}$. Nota-se, também, que, usualmente, as tensões apresentadas serão eficazes.
+            \end{definition}
+
+        \subsubsection{Conexão Y-Y}
+            \begin{definition}
+                Organização do sistema em que há ponto neutro como representado pela seguinte figura:
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}[american]
+                            \draw
+                            (-3, 0)  coordinate (nn)
+                    
+                            (nn)to[sV_=$v_{AN}$] ++(  90:2) coordinate (pa)
+                            (nn)to[sV_=$v_{BN}$] ++( -30:2)
+                                to[short]        ++(0,-2)   coordinate (pb)
+                            (nn)to[sV_=$v_{CN}$] ++(-150:2)
+                                to[short]        ++(0,-1)   coordinate (pc)
+                    
+                            (nn)node[below] {$n$}
+                            (pa)node[left] {$a$}
+                            (pb)node[below] {$b$}
+                            (pc)node[left] {$c$}
+                    
+                    
+                            ( 3, 0)  coordinate (nN)
+                    
+                            (nN)to[R, l=$Z_{A}$] ++(  90:2) coordinate (pA)
+                            (nN)to[R, l=$Z_{B}$] ++( -30:2)
+                                to[short]    ++(0,-2)   coordinate (pB)
+                            (nN)to[R, l=$Z_{C}$] ++(-150:2)
+                                to[short]    ++(0,-1)   coordinate (pC)
+                    
+                            (nN)node[below] {$N$}
+                            (pA)node[above] {$A$}
+                            (pB)node[below] {$B$}
+                            (pC)node[right] {$C$}
+                    
+                            (nn)to[short, *-*, f=$I_{nN}$] (nN)
+                            (pa)to[short, f=$I_{aA}$] (pA)
+                            (pb)to[short, f_=$I_{bB}$] (pB)
+                            (pc)to[short, f_=$I_{cC}$] (pC)
+                            ;
+                        \end{circuitikz}
+                        \caption{Representação Conexão Y-Y}
+                    \end{figure}
             \end{definition}
 \end{document}
