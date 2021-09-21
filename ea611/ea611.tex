@@ -515,18 +515,23 @@
                             (phaseC)to[short] ++(0,-1)
                                     to[short, -o] ++(4.75,0)
                                     node[right] {$C$};
-                        \end{circuitikz} 
+                        \end{circuitikz}
                         \caption{Representação Circuito Trifásico}
                     \end{figure} \noindent
                 Onde:
                     \begin{equation}
-                        \boxed{v_{AN}(t) = V_{P}\phase{0^{\circ}}}
+                        \boxed{v_{AN}(t) = V_{P}\phase{   0^{\circ}}\text{ V}_{ef}}
                         \qquad
-                        \boxed{v_{BN}(t) = V_{P}\phase{-120^{\circ}}}
+                        \boxed{v_{BN}(t) = V_{P}\phase{-120^{\circ}}\text{ V}_{ef}}
                         \qquad
-                        \boxed{v_{CN}(t) = V_{P}\phase{+120^{\circ}}}
+                        \boxed{v_{CN}(t) = V_{P}\phase{+120^{\circ}}\text{ V}_{ef}}
                     \end{equation}
-                Note que adota-se a primeiro nó como \textbf{referência} da fase zero, o segundo nó como fase \textbf{menos} $120^{\circ}$ e o terceiro nó como fase \textbf{mais} $120^{\circ}$ como representado no seguinte diagrama fasorial:
+                Nota-se que, usualmente, as tensões apresentadas serão eficazes.
+            \end{definition}
+
+        \subsubsection{Tensão de Linha}
+            \begin{definition}
+                Considera-se que o primeiro nó como \textbf{referência} da Tensão de Linha zero, o segundo nó como fase \textbf{menos} $120^{\circ}$ e o terceiro nó como fase \textbf{mais} $120^{\circ}$ como representado no seguinte diagrama fasorial:
                     \begin{figure}[H]
                         \centering
                         \begin{tikzpicture}
