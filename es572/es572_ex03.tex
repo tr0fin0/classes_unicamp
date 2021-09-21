@@ -144,12 +144,25 @@
             \end{exercise}
             \begin{resolution}
                 Nota-se que os seguintes intervalos seriam possíveis:
-                    \begin{enumerate}
-                        \item (0, $2^{n}-1$)
-                        \item (,)
-                        \item ($-2^{n}$, $2^{n-1}-1$)
-                        \item ($-2^{n-1}$, $2^{n-1}$)
-                    \end{enumerate}
+                    \begin{table}[H]
+                        \centering
+                        \begin{tabular}[]{clcr}\hline
+                            1. & ($0$          & , & $2^{N}-1$)\\
+                            2. & ($-2^{N-1}+1$ & , & $2^{N-1}-1$)\\
+                            3. & ($-2^{N-1}$   & , & $2^{N-1}-1$)\\
+                            4. & ($-2^{N-1}+1$ & , & $2^{N-1}-1$)\\\hline
+                        \end{tabular}
+                    \end{table}
+                Obtendo:
+                    \begin{table}[H]
+                        \centering
+                        \begin{tabular}[]{clcr}\hline
+                            1. & (    $0$ & , & $4095$)\\
+                            2. & ($-2047$ & , & $2047$)\\
+                            3. & ($-2048$ & , & $2047$)\\
+                            4. & ($-2047$ & , & $2047$)\\\hline
+                        \end{tabular}
+                    \end{table}
             \end{resolution}
 \newpage
 
