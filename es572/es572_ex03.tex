@@ -383,7 +383,16 @@
                     \end{enumerate}
             \end{exercise}
             \begin{resolution}
-
+                Nota-se que será necessário da conversão intermediária para conversão de Decimal para Gray, obtendo os seguintes resultados:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}[]{crrrr}
+                           & Decimal & Binário   & BCD8421   & Gray\\\hline
+                        1. & 28      & 0001 1100 & 0010 1000 &    1 0010\\
+                        2. & 71      & 0100 0111 & 0111 0001 &  110 0100\\
+                        3. & 145     & 1001 0001 & 0001 0100 0101 & 1101 1001\\\hline
+                    \end{tabular}
+                \end{table}
             \end{resolution}
 \newpage
 
