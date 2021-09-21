@@ -1,0 +1,163 @@
+\documentclass{article}
+\usepackage{tpack}
+
+
+\titleformat
+    {\subsection}           % Part
+    [block]                 % Part Shape
+    {\normalfont\Large}     % Font Size
+    {}                      % Label Numbering
+    {0mm}                   % Part Separation
+    {}                      % Code Before
+    []                      % Code After
+
+    \titlespacing*{\subsection}{0mm}{5mm}{2.5mm}
+
+
+\title{ES601 - Análise Linear de Sistemas}
+\author{Guilherme Nunes Trofino}
+\authorRA{217276}
+\project{Atividade Teórica}
+
+
+\begin{document}
+    \maketitle
+\newpage
+
+    \section{Atividade Teórica}
+        \paragraph{Apresentação}Resolução das questões de Análise Linear de Sistemas por Guilherme Nunes Trofino, 217276, sobre \textbf{Simulado da P1}.
+
+        \subsection{Questão 1}
+            \begin{exercise}
+                Circuito RC alimentado por uma fonte de tensão é um Sistema Linear Invariante no tempo regido pela seguinte equação:
+                    \begin{equation*}
+                        RC\dot{y}(t) + y(t) = u(t)
+                    \end{equation*}
+                Onde:
+                    \begin{enumerate}[noitemsep]
+                        \item $R$ é a Resistência;
+                        \item $C$ é a Capacitância;
+                            \begin{enumerate}
+                                \item Considera-se $RC$ = 1s;
+                            \end{enumerate}
+                        \item $u(t)$ é um Pulso Retangular expresso por:
+                            \begin{equation*}
+                                u(t) = 
+                                \begin{cases}
+                                    0V  & \text{quando $t < 0$ s}\\
+                                    10V & \text{quando $0 < t < 3$ s}\\
+                                    0V  & \text{quando $t > 3$ s}\\
+                                \end{cases}
+                            \end{equation*}
+                    \end{enumerate}
+                Deseja-se obter:
+                    \begin{enumerate}[label=(\alph*)]
+                        \item \label{ex:1A}Calcular a resposta forçada com condições iniciais nulas por Laplace;
+
+                        \item \label{ex:1B}Implementar uma simulação Simulink;
+
+                        \item \label{ex:1C}Comparar os resultados dos itens anteriores;
+
+                        \item \label{ex:1D}Calcular a resposta para entrada nula e condição inicial $y(0)= 10$V
+                    \end{enumerate}
+            \end{exercise}
+\newpage
+            \begin{resolution}
+                \textbf{\ref{ex:1A}.} Analisando a equação apresentada:
+                    \begin{align}
+                        \dot{y}(t) + y(t) &= u(t)\label{eq:Definition}\\
+                                          &= 10\mu(t) - 10\mu(t-3)\nonumber
+                    \end{align}
+                Note que como trata-se de um Sistema Linear Invariante no tempo as equações podem ser analisadas separadamente e posteriormente somadas como demonstrada a seguir:
+                    \begin{equation}
+                        y(t) = y_{1}(t) + y_{2}(t)
+                        \quad\text{onde:}\quad
+                        \begin{cases}
+                            y_{1}(t): & \dot{y}_{1}(t) + y_{1}(t) = 10\mu(t)\\
+                            y_{2}(t): & \dot{y}_{2}(t-3) + y_{2}(t-3) =-10\mu(t-3)\\
+                        \end{cases}
+                        \label{eq:Cases}
+                    \end{equation}
+                Nota-se que tratam-se de sistemas semelhantes salvo uma translação em $t$. Desta forma, pode-se analizar $y_{1}(t)$ e posteriomente obter $y_{2}(t)$. Desta forma obtem-se a seguinte equação:
+                    \begin{align}
+                        \dot{y}_{1}(t) + y_{1}(t) &= 10\mu(t) & \text{Aplicação de Laplace}\nonumber\\
+                        (sY_{1} - y_{01}) + Y_{1} &= 10\frac{1}{s}\nonumber\\
+                        Y_{1}(s + 1)     &= 10\frac{1}{s} + y_{01}\nonumber\\
+                        \Aboxed{Y_{1}(s) &= 10\frac{1}{s(s + 1)} + \frac{y_{01}}{s + 1}} & \text{Equação de Laplace}
+                    \end{align}
+                Nota-se que será necessário aplicar frações parciais para simplificar a equação:
+                    \begin{equation*}
+                        \frac{10}{s(s + 1)} = 
+                            \frac{A}{s} + 
+                            \frac{B}{s + 1}
+                        \quad
+                        \begin{cases}
+                            As + Bs = 0 & \rightarrow \boxed{B =-10}\\[1.5mm]
+                            A = 10      & \rightarrow \boxed{A = 10}\\
+                        \end{cases}
+                    \end{equation*}
+                Calcula-se a Anti-Transformada de Laplace:
+                    \begin{align}
+                        Y_{1}(s) &= \frac{10}{s} - \frac{10}{s + 1} + \frac{y_{01}}{s + 1}\nonumber\\
+                        y_{1}(t) &= 10\mu(t) - 10\text{e}^{-1t} + y_{01}\text{e}^{-1t}\nonumber\\
+                        \Aboxed{y_{1}(t) &=+10\mu(t) + (y_{01} - 10)\text{e}^{-1t}}\\
+                        \Aboxed{y_{2}(t) &=-10\mu(t-3) - (y_{02} - 10)\text{e}^{-1(t-3)}}
+                    \end{align}
+                Desta forma, tem-se que para Equação (\ref{eq:Cases}) sobre as condições iniciais necessárias na Alternativa \ref{ex:1A} será obtido pela seguinte equação:
+                    \begin{equation}
+                        \boxed{
+                            y(t) = 10\mu(t) - 10\text{e}^{-1t} -10\mu(t-3) + 10\text{e}^{-1(t-3)}
+                        }\label{eq:General1}
+                    \end{equation}
+            \end{resolution}
+\newpage
+            \begin{resolution}
+                \textbf{\ref{ex:1B}.} 
+            \end{resolution}
+\newpage
+            \begin{resolution}
+                \textbf{\ref{ex:1C}.} Equação (\ref{eq:General1}) será modelada em Matlab através do seguinte algoritmo:
+                \begin{scriptsize}
+                    \myOctave
+                    \lstinputlisting{es601_ex04m.m}
+                \end{scriptsize}
+            \end{resolution}
+\newpage
+            \begin{resolution}
+                \textbf{\ref{ex:1D}.} Analisando a Equação (\ref{eq:Definition}) apresenta sobre as condições necessárias para a Alternativa \ref{ex:1D}:
+                    \begin{align}
+                        \dot{y}_{1}(t) + y_{1}(t) &= 0 & \text{Aplicação de Laplace}\nonumber\\
+                        (sY_{1} - 10) + Y_{1}     &= 0\nonumber\\
+                        Y_{1}(s + 1)     &= 10\nonumber\\
+                        \Aboxed{Y_{1}(s) &= \frac{10}{s + 1}} & \text{Equação de Laplace}\\
+                        \Aboxed{y(t)     &= 10\text{e}^{-1t}}
+                    \end{align}
+            \end{resolution}
+\newpage
+
+        \subsection{Questão 2}
+            \begin{exercise}
+                Considere um sistema discreto descrito pelas seguintes equações:
+                    \begin{equation*}
+                        y(k+1) - 0.2y(k) = u(k)
+                    \end{equation*}
+                Deseja-se obter:
+                    \begin{enumerate}[label=(\alph*), rightmargin = \leftmargin]
+                        \item \label{ex:2A}Calcular por solução da equação, Homogênea e Particular, por recursão para a seguinte entrada com condições iniciais nulas:
+                            \begin{equation*}
+                                u(k) = 2r(k)\mu(k)
+                            \end{equation*}
+                        Plote o resultado usando o comando \texttt{stairs(k,y)}.
+
+                        \item \label{ex:2B}Calcular e plotar, utilizando o comando \texttt{stairs}, a reposta para entrada nula e condição inicial $y(0) = 5$.
+                    \end{enumerate}
+            \end{exercise}
+\newpage
+            \begin{resolution}
+                \textbf{\ref{ex:2A}.} Nota-se que 
+            \end{resolution}
+\newpage
+            \begin{resolution}
+                \textbf{\ref{ex:2B}.} 
+            \end{resolution}
+\end{document}
