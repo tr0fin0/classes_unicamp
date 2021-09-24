@@ -575,7 +575,7 @@
         \divide\total by\targetbase
     \repeatpgfmathloop    
     \draw [->] (\pgfmathcounter-1,-\pgfmathcounter-1) -- ++(-0.5,0); 
-    \node [anchor=west] at (1, -\pgfmathcounter-2) {$#1_{10}=\newnumber_{\the\targetbase}$};
+    \node [anchor=west] at (1, -\pgfmathcounter-2) {$\boxed{#1_{(10)}=\newnumber_{(\the\targetbase)}}$};
     \end{tikzpicture}   
 }
 
