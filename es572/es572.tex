@@ -1113,41 +1113,45 @@
         \end{definition}
 
         \subsection{Porta NOT}
-            \begin{multicols}{3}
-                \begin{table}[H]
-                    \centering  
-                    \begin{tabular}[]{c|c}\hline
-                        in & out\\\hline
-                        0  & 1\\
-                        1  & 0\\\hline
-                    \end{tabular}
-                    \caption{Tabela Verdade}
-                \end{table}
-                \columnbreak\noindent
-                    \begin{equation}
-                        \boxed{
-                            S = \bar{A}
-                        }
-                    \end{equation}
-                \columnbreak\noindent
-                \begin{figure}[H]
-                    \centering
-                    \begin{circuitikz}
-                        \ctikzset{component text=left}
-                        \draw
-                        (0,0) node[not port] (myPort) {}
-                        (myPort.in)  node [anchor = east] {in}
-                        (myPort.out) node [anchor = west] {out};
-                    \end{circuitikz} 
-                    \caption{Representação}
-                \end{figure} \noindent
-            \end{multicols}\noindent
-            \begin{scriptsize}
-                \myStyleVHDL
-                \begin{lstlisting}
-    S <= not A;
-                \end{lstlisting}
-            \end{scriptsize}
+            \begin{definition}
+                Considera-se as seguintes características:
+                \begin{multicols}{3}
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{c|c}\hline
+                            in & out\\\hline
+                            0  & 1\\
+                            1  & 0\\\hline
+                        \end{tabular}
+                        \caption{Tabela Verdade}
+                    \end{table}
+                    \columnbreak\noindent
+                        \begin{equation}
+                            \boxed{
+                                S = \bar{A}
+                            }
+                        \end{equation}
+                    \columnbreak\noindent
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (0,0) node[not port] (myPort) {}
+                            (myPort.in)  node [anchor = east] {in}
+                            (myPort.out) node [anchor = west] {out};
+                        \end{circuitikz} 
+                        \caption{Representação}
+                    \end{figure}\noindent
+                \end{multicols}\noindent
+                Implementada a nível de software através da seguinte expressão:
+                \begin{scriptsize}
+                    \myStyleVHDL
+                    \begin{lstlisting}
+        S <= not A;
+                    \end{lstlisting}
+                \end{scriptsize}
+            \end{definition}
 
         \subsection{Porta AND}
             \begin{multicols}{3}
