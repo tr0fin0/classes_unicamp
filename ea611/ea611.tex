@@ -725,4 +725,110 @@
                         \boxed{Z = |Z|\phase{\theta^{\circ}}}
                     \end{equation*}
             \end{theorem}
+            \begin{definition}
+                Nesta configuração a potência média entregue por cada fase será obtida pela seguinte equação:
+                    \begin{equation}
+                        \boxed{P_{p} = V_{p}I_{p}\cos(\theta)}
+                    \end{equation}
+                Desta forma, potência total entregue pelo sistema trifásico será obtida pela seguinte equação:
+                    \begin{equation}
+                        \boxed{P = 3P_{p}}
+                    \end{equation}
+                Nota-se que as componentes oscilatórias se anulam, gerando uma potência total constante.
+            \end{definition}
+\newpage
+
+        \subsubsection{Conexão X-X}
+            \begin{definition}
+                Organização do sistema em que não há ponto neutro entre as cargas como representado pela seguinte figura:
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}[american]
+                            \draw
+                            (-3, 0)  coordinate (pn)
+                    
+                            (pn)to[sV_=$v_{AN}$] ++(  90:2) coordinate (pa)
+                            (pn)to[sV_=$v_{BN}$] ++( -30:2) coordinate (pb)
+                            (pn)to[sV_=$v_{CN}$] ++(-150:2)
+                                to[short]        ++(0,-1)   coordinate (pc)
+                    
+                            (pn)node[below] {$n$}
+                            (pa)node[left] {$a$}
+                            (pb)node[below left] {$b$}
+                            (pc)node[left] {$c$}
+                    
+                    
+                            ( 3, 2) coordinate (pN)
+                                    to[R, l=$Z_{C}$] ++( -60:3.4641) coordinate (pC)
+                                    to[R, l=$Z_{B}$] ++(-180:3.4641) coordinate (pB)
+                                    to[R, l=$Z_{A}$] ++( +60:3.4641) coordinate (pA)
+                            (pC)to[short] ++(0,-1) coordinate (pC)
+                    
+                            (pA)node[above right] {$A$}
+                            (pB)node[below right] {$B$}
+                            (pC)node[right] {$C$}
+                    
+                            (pa)to[short, f=$I_{aA}$] (pA)
+                            (pb)to[short, f_=$I_{bB}$] (pB)
+                            (pc)to[short, f_=$I_{cC}$] (pC)
+                            ;
+                        \end{circuitikz}
+                        \caption{Representação Conexão Y-D}
+                    \end{figure}
+            \end{definition}
+            \begin{theorem}
+                Quando estes sistemas estiverem conectados a cargas de mesma impedância considera-se que estas são \textbf{Cargas Equilibradas} como representado abaixo:
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}[american]
+                            \draw
+                            (-3, 0)  coordinate (pn)
+                    
+                            (pn)to[sV_=$v_{AN}$] ++(  90:2) coordinate (pa)
+                            (pn)to[sV_=$v_{BN}$] ++( -30:2) coordinate (pb)
+                            (pn)to[sV_=$v_{CN}$] ++(-150:2)
+                                to[short]        ++(0,-1)   coordinate (pc)
+                    
+                            (pn)node[below] {$n$}
+                            (pa)node[left] {$a$}
+                            (pb)node[below left] {$b$}
+                            (pc)node[left] {$c$}
+                    
+                    
+                            ( 3, 2) coordinate (pN)
+                                    to[R, l=$Z$, f=$I$] ++( -60:3.4641) coordinate (pC)
+                                    to[R, l=$Z$, f=$I$] ++(-180:3.4641) coordinate (pB)
+                                    to[R, l=$Z$, f=$I$] ++( +60:3.4641) coordinate (pA)
+                            (pC)to[short] ++(0,-1) coordinate (pC)
+                    
+                            (pA)node[above right] {$A$}
+                            (pB)node[below right] {$B$}
+                            (pC)node[right] {$C$}
+                    
+                            (pa)to[short, f=$I_{aA}$] (pA)
+                            (pb)to[short, f_=$I_{bB}$] (pB)
+                            (pc)to[short, f_=$I_{cC}$] (pC)
+                            ;
+                        \end{circuitikz}
+                        \caption{Representação Conexão Y-D}
+                    \end{figure}
+                Neste caso as cargas estão conectadas entre duas tensões de linha e portanto as tensões entre fases devem ser consideradas para obter as correntes sobre as cargas obtidas através das seguintes equações:
+                    \begin{equation}
+                        \boxed{I_{AB} = I_{Z}\phase( 30-\theta^{\circ})\text{A}_{ef}}
+                        \quad
+                        \boxed{I_{BC} = I_{Z}\phase(-90-\theta^{\circ})\text{A}_{ef}}
+                        \quad
+                        \boxed{I_{CA} = I_{Z}\phase(150-\theta^{\circ})\text{A}_{ef}}
+                    \end{equation}
+                Onde:
+                    \begin{equation*}
+                        \boxed{I_{Z} = \frac{V_{p}\sqrt{3}}{|Z|}}
+                    \end{equation*}
+                Neste caso as correntes de linha serão obtidas pelas seguintes equações:
+                    \begin{equation}
+                        \boxed{I_{aA} = }
+                    \end{equation}
+            \end{theorem}
 \end{document}
