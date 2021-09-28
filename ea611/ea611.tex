@@ -831,4 +831,101 @@
                         \boxed{I_{aA} = }
                     \end{equation}
             \end{theorem}
+\newpage
+
+        \subsubsection{Transformação Y-$\Delta$}
+            \begin{definition}
+                Configurações são passíveis de transformações perservando equivalência de acordo com as necessidades do circuito como ilustrado pelas equações abaixo:
+                    \begin{equation}
+                        \boxed{Z_{AB} = \frac{Z_{a}\;Z_{b}}{Z_{a} + Z_{b} + Z_{c}}}
+                        \quad
+                        \boxed{Z_{BC} = \frac{Z_{b}\;Z_{c}}{Z_{a} + Z_{b} + Z_{c}}}
+                        \quad
+                        \boxed{Z_{CA} = \frac{Z_{c}\;Z_{a}}{Z_{a} + Z_{b} + Z_{c}}}
+                    \end{equation}
+            \end{definition}
+
+        \subsubsection{Transformação $\Delta$-Y}
+            \begin{definition}
+                Configurações são passíveis de transformações perservando equivalência de acordo com as necessidades do circuito como ilustrado pelas equações abaixo:
+                    \begin{equation}
+                        \boxed{Z_{A} = \frac{Z_{AB}\;Z_{CA}}{Z_{AB} + Z_{BC} + Z_{CA}}}
+                        \quad
+                        \boxed{Z_{B} = \frac{Z_{BC}\;Z_{AB}}{Z_{AB} + Z_{BC} + Z_{CA}}}
+                        \quad
+                        \boxed{Z_{C} = \frac{Z_{CA}\;Z_{BC}}{Z_{AB} + Z_{BC} + Z_{CA}}}
+                    \end{equation}
+            \end{definition}
+
+    \subsection{Componentes Simétricas}
+        \begin{definition}
+            Durante análise de Sistemas Trifásicos desequilibrados considera-se componentes em condições de simetria para facilitar análise como mostrado nas seguintes equações:
+                \begin{equation}
+                    \boxed{I_{a} = I_{a^{(+)}} + I_{a^{(-)}} + I_{a^{(0)}}}
+                    \quad
+                    \boxed{I_{b} = I_{b^{(+)}} + I_{b^{(-)}} + I_{b^{(0)}}}
+                    \quad
+                    \boxed{I_{c} = I_{c^{(+)}} + I_{c^{(-)}} + I_{c^{(0)}}}
+                \end{equation}
+            Onde:
+                \begin{equation*}
+                    I_{a^{(0)}} = I_{b^{(0)}} = I_{c^{(0)}}
+                \end{equation*}
+                \begin{align}
+                    I_{b^{(+)}} &= I_{a^{(+)}}\cdot\text{e}^{-j120^{\circ}} & I_{b^{(-)}} = I_{a^{(-)}}\cdot\text{e}^{+j120^{\circ}}\nonumber\\
+                    I_{c^{(+)}} &= I_{a^{(+)}}\cdot\text{e}^{+j120^{\circ}} & I_{c^{(-)}} = I_{a^{(-)}}\cdot\text{e}^{-j120^{\circ}}\nonumber
+                \end{align}
+        \end{definition}
+
+    \subsubsection{Matriz de Transformação}
+        \begin{definition}
+            Simplificação de notação para conversão em Componentes Simétricas como representado pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        \begin{bmatrix}
+                            I_{a}\\
+                            I_{b}\\
+                            I_{c}
+                        \end{bmatrix}
+                        = 
+                        \underbrace{
+                            \begin{bmatrix}
+                                1 & 1 & 1\\
+                                \alpha^{2} & \alpha     & 1\\
+                                \alpha     & \alpha^{2} & 1\\
+                            \end{bmatrix}
+                        }_{\text{T}}
+                        \times 
+                        \begin{bmatrix}
+                            I_{a_{(+)}}\\
+                            I_{a_{(-)}}\\
+                            I_{a_{(0)}}
+                        \end{bmatrix}
+                    }
+                    \qquad
+                    \text{onde:}
+                    \quad
+                    \alpha = \text{e}^{+j120^{\circ}}
+                \end{equation}
+        \end{definition}
+
+    \subsubsection{Matriz de Transformação Inversa}
+        \begin{definition}
+            Simplificação de notação para conversão em Componentes Simétricas como representado pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        \text{T}^{-1}
+                        = \frac{1}{3}
+                        \begin{bmatrix}
+                            1 & \alpha     & \alpha^{2}\\
+                            1 & \alpha^{2} & \alpha\\
+                            1 & 1 & 1\\
+                        \end{bmatrix}
+                    }
+                    \qquad
+                    \text{onde:}
+                    \quad
+                    \alpha = \text{e}^{+j120^{\circ}}
+                \end{equation}
+        \end{definition}
 \end{document}
