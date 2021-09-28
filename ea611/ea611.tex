@@ -786,26 +786,26 @@
                             \draw
                             (-3, 0)  coordinate (pn)
                     
-                            (pn)to[sV_=$v_{AN}$] ++(  90:2) coordinate (pa)
-                            (pn)to[sV_=$v_{BN}$] ++( -30:2) coordinate (pb)
-                            (pn)to[sV_=$v_{CN}$] ++(-150:2)
+                            (pn)to[sV_=$v_{an}$] ++(  90:2) coordinate (pa)
+                            (pn)to[sV_=$v_{bn}$] ++( -30:2) coordinate (pb)
+                            (pn)to[sV_=$v_{cn}$] ++(-150:2)
                                 to[short]        ++(0,-1)   coordinate (pc)
                     
                             (pn)node[below] {$n$}
-                            (pa)node[left] {$a$}
-                            (pb)node[below left] {$b$}
-                            (pc)node[left] {$c$}
+                            (pa)node[above] {$a$}
+                            (pb)node[below] {$b$}
+                            (pc)node[below] {$c$}
                     
                     
                             ( 3, 2) coordinate (pN)
-                                    to[R, l=$Z$, f=$I$] ++( -60:3.4641) coordinate (pC)
-                                    to[R, l=$Z$, f=$I$] ++(-180:3.4641) coordinate (pB)
-                                    to[R, l=$Z$, f=$I$] ++( +60:3.4641) coordinate (pA)
+                                    to[R, l=$Z$, f<=$I_{CA}$, *-*] ++( -60:3.4641) coordinate (pC)
+                                    to[R, l=$Z$, f<=$I_{BC}$, *-*] ++(-180:3.4641) coordinate (pB)
+                                    to[R, l=$Z$, f<=$I_{AB}$, *-*] ++( +60:3.4641) coordinate (pA)
                             (pC)to[short] ++(0,-1) coordinate (pC)
                     
-                            (pA)node[above right] {$A$}
-                            (pB)node[below right] {$B$}
-                            (pC)node[right] {$C$}
+                            (pA)node[above] {$A$}
+                            (pB)node[below] {$B$}
+                            (pC)node[below] {$C$}
                     
                             (pa)to[short, f=$I_{aA}$] (pA)
                             (pb)to[short, f_=$I_{bB}$] (pB)
