@@ -1123,12 +1123,11 @@
                             0  & 1\\
                             1  & 0\\\hline
                         \end{tabular}
-                        \caption{Tabela Verdade}
                     \end{table}
                     \columnbreak\noindent
                         \begin{equation}
                             \boxed{
-                                S = \bar{A}
+                                S = \overline{A}
                             }
                         \end{equation}
                     \columnbreak\noindent
@@ -1141,7 +1140,6 @@
                             (myPort.in)  node [anchor = east] {in}
                             (myPort.out) node [anchor = west] {out};
                         \end{circuitikz} 
-                        \caption{Representação}
                     \end{figure}\noindent
                 \end{multicols}\noindent
                 Implementada a nível de software através da seguinte expressão:
@@ -1155,6 +1153,7 @@
 
         \subsection{Porta AND}
             \begin{definition}
+                Considera-se as seguintes características:
                 \begin{multicols}{3}
                     \begin{table}[H]
                         \centering  
@@ -1165,12 +1164,11 @@
                             1 & 0 & 0\\
                             1 & 1 & 1\\\hline
                         \end{tabular}
-                        \caption{Tabela Verdade}
                     \end{table}
                     \columnbreak\noindent
                         \begin{equation}
                             \boxed{
-                                S = \bar{A \dot B}
+                                S = A \cdot B
                             }
                         \end{equation}
                     \columnbreak\noindent
@@ -1184,9 +1182,9 @@
                             (myPort.in 2)  node [anchor = east] {B}
                             (myPort.out) node [anchor = west] {out};
                         \end{circuitikz} 
-                        \caption{Representação}
                     \end{figure} \noindent
                 \end{multicols}\noindent
+                Implementada a nível de software através da seguinte expressão:
                 \begin{scriptsize}
                     \myStyleVHDL
                     \begin{lstlisting}
@@ -1197,6 +1195,7 @@
 
         \subsection{Porta NAND}
             \begin{definition}
+                Considera-se as seguintes características:
                 \begin{multicols}{3}
                     \begin{table}[H]
                         \centering  
@@ -1207,12 +1206,11 @@
                             1 & 0 & 1\\
                             1 & 1 & 0\\\hline
                         \end{tabular}
-                        \caption{Tabela Verdade}
                     \end{table}
                     \columnbreak\noindent
                         \begin{equation}
                             \boxed{
-                                \bar{AB} = \bar{A} + \bar{B}
+                                \overline{AB} = \overline{A} + \overline{B}
                             }
                         \end{equation}
                     \columnbreak\noindent
@@ -1226,9 +1224,9 @@
                             (myPort.in 2)  node [anchor = east] {B}
                             (myPort.out) node [anchor = west] {out};
                         \end{circuitikz} 
-                        \caption{Representação}
                     \end{figure} \noindent
                 \end{multicols}\noindent
+                Implementada a nível de software através da seguinte expressão:
                 \begin{scriptsize}
                     \myStyleVHDL
                     \begin{lstlisting}
@@ -1239,6 +1237,7 @@
 
         \subsection{Porta OR}
             \begin{definition}
+                Considera-se as seguintes características:
                 \begin{multicols}{3}
                     \begin{table}[H]
                         \centering  
@@ -1249,12 +1248,11 @@
                             1 & 0 & 1\\
                             1 & 1 & 1\\\hline
                         \end{tabular}
-                        \caption{Tabela Verdade}
                     \end{table}
                     \columnbreak\noindent
                         \begin{equation}
                             \boxed{
-                                S = \bar{A + B}
+                                S = A + B
                             }
                         \end{equation}
                     \columnbreak\noindent
@@ -1268,9 +1266,9 @@
                             (myPort.in 2)  node [anchor = east] {B}
                             (myPort.out) node [anchor = west] {out};
                         \end{circuitikz} 
-                        \caption{Representação}
                     \end{figure} \noindent
                 \end{multicols}\noindent
+                Implementada a nível de software através da seguinte expressão:
                 \begin{scriptsize}
                     \myStyleVHDL
                     \begin{lstlisting}
@@ -1281,6 +1279,7 @@
 
         \subsection{Porta NOR}
            \begin{definition}
+                Considera-se as seguintes características:
                 \begin{multicols}{3}
                     \begin{table}[H]
                         \centering  
@@ -1291,12 +1290,11 @@
                             1 & 0 & 0\\
                             1 & 1 & 0\\\hline
                         \end{tabular}
-                        \caption{Tabela Verdade}
                     \end{table}
                     \columnbreak\noindent
                         \begin{equation}
                             \boxed{
-                                \bar{A+B} = \bar{A} \bar{B}
+                                \overline{A+B} = \overline{A} \cdot \overline{B}
                             }
                         \end{equation}
                     \columnbreak\noindent
@@ -1310,9 +1308,9 @@
                             (myPort.in 2)  node [anchor = east] {B}
                             (myPort.out) node [anchor = west] {out};
                         \end{circuitikz} 
-                        \caption{Representação}
                     \end{figure} \noindent
                 \end{multicols}\noindent
+                Implementada a nível de software através da seguinte expressão:
                 \begin{scriptsize}
                     \myStyleVHDL
                     \begin{lstlisting}
@@ -1323,6 +1321,7 @@
 
         \subsection{Porta XOR}
             \begin{definition}
+                Considera-se as seguintes características:
                 \begin{multicols}{3}
                     \begin{table}[H]
                         \centering  
@@ -1333,12 +1332,11 @@
                             1 & 0 & 1\\
                             1 & 1 & 0\\\hline
                         \end{tabular}
-                        \caption{Tabela Verdade}
                     \end{table}
                     \columnbreak\noindent
                         \begin{equation}
                             \boxed{
-                                S = A \oplus B
+                                S = A \oplus B = A\overline{B} + \overline{A}B
                             }
                         \end{equation}
                     \columnbreak\noindent
@@ -1352,9 +1350,9 @@
                             (myPort.in 2)  node [anchor = east] {B}
                             (myPort.out) node [anchor = west] {out};
                         \end{circuitikz} 
-                        \caption{Representação}
                     \end{figure} \noindent
                 \end{multicols}\noindent
+                Implementada a nível de software através da seguinte expressão:
                 \begin{scriptsize}
                     \myStyleVHDL
                     \begin{lstlisting}
@@ -1365,6 +1363,7 @@
 
         \subsection{Porta XNOR}
             \begin{definition}
+                Considera-se as seguintes características:
                 \begin{multicols}{3}
                     \begin{table}[H]
                         \centering  
@@ -1375,12 +1374,11 @@
                             1 & 0 & 0\\
                             1 & 1 & 1\\\hline
                         \end{tabular}
-                        \caption{Tabela Verdade}
                     \end{table}
                     \columnbreak\noindent
                         \begin{equation}
                             \boxed{
-                                S = A \oplus B
+                                S = \overline{A \oplus B}
                             }
                         \end{equation}
                     \columnbreak\noindent
@@ -1394,9 +1392,9 @@
                             (myPort.in 2)  node [anchor = east] {B}
                             (myPort.out) node [anchor = west] {out};
                         \end{circuitikz} 
-                        \caption{Representação}
                     \end{figure} \noindent
                 \end{multicols}\noindent
+                Implementada a nível de software através da seguinte expressão:
                 \begin{scriptsize}
                     \myStyleVHDL
                     \begin{lstlisting}
