@@ -936,4 +936,116 @@
                     \alpha = \text{e}^{+j120^{\circ}}
                 \end{equation}
         \end{definition}
+
+    \section{Quadripolos}
+        \begin{definition}
+            Dispositivos que apresentam dois pares de terminais que adotam a convenção apresentada na seguinte figura:
+            \begin{figure}[H]
+                \centering
+                    \begin{circuitikz}[american]
+                        \tikzset{quad/.style={draw, thick, minimum height=20mm, minimum width=10mm}}
+                        \node[quad] (A) at (0,0) {Quadripolo};
+                        \draw
+                            ($(A.north west)!.25!(A.west)$) coordinate (I11)
+                            ($(A.south west)!.25!(A.west)$) coordinate (I12)
+                            ($(A.north east)!.25!(A.east)$) coordinate (I21)
+                            ($(A.south east)!.25!(A.east)$) coordinate (I22)
+
+                            (I11)   to[short, f<_=$I_{1}$, -o]  ++(-1.5,0) coordinate (O11)
+                            (I12)   to[short,-o]                ++(-1.5,0) coordinate (O12)
+                            (I21)   to[short, f<=$I_{2}$,-o]    ++(+1.5,0) coordinate (O21)
+                            (I22)   to[short,-o]                ++(+1.5,0) coordinate (O22)
+                            ;
+
+                        \draw (O11) to[open, v=$V_{1}$] (O12);
+                        \draw (O21) to[open, v=$V_{2}$] (O22);
+                    \end{circuitikz}
+                \caption{Representação Quadripolos}
+                \label{im:quadripolos}
+            \end{figure}\noindent
+            Onde:
+                \begin{align}
+                    V_{1} &= Z_{11}I_{1} + Z_{12}I_{2} \qquad \text{onde:}\quad Z_{11} = \frac{V_1}{I_1}\quad\text{e}\quad Z_{12} = \frac{V_1}{I_2}\\[1.5mm]
+                    V_{2} &= Z_{21}I_{1} + Z_{22}I_{2} \qquad \text{onde:}\quad Z_{21} = \frac{V_2}{I_1}\quad\text{e}\quad Z_{22} = \frac{V_2}{I_2}
+                \end{align}
+        \end{definition}
+
+    \subsection{Configuração $Y$}
+        \begin{theorem}
+            Configuração $Y$ do sistema como representado na seguinte figura:
+            \begin{figure}[H]
+                \centering
+                    \begin{circuitikz}[american]
+                        \tikzset{quad/.style={draw, thick, dashed, minimum height=20mm, minimum width=40mm}}
+                        \node[quad] (A) at (0,0) {};
+                        \draw   
+                            ($(A.north west)!.25!(A.west)$) coordinate (I11)
+                            ($(A.south west)!.25!(A.west)$) coordinate (I12)
+                            ($(A.north east)!.25!(A.east)$) coordinate (I21)
+                            ($(A.south east)!.25!(A.east)$) coordinate (I22)
+
+                            (I11)   to[short, f<_=$I_{1}$, -o]  ++(-1.5,0) coordinate (O11)
+                            (I12)   to[short,-o]                ++(-1.5,0) coordinate (O12)
+                            (I21)   to[short, f<=$I_{2}$,-o]    ++(+1.5,0) coordinate (O21)
+                            (I22)   to[short,-o]                ++(+1.5,0) coordinate (O22)
+
+                            (I11)   to[R, l =$Z_1$]  ++(+2,0)
+                            (I21)   to[R, l_=$Z_2$]  ++(-2,0)
+                                    to[R, l=$Z_3$, *-*] ++(0,-1.5)
+                            (I22)   to[short] (I12)
+
+                            ;
+
+                        \draw (O11) to[open, v=$V_{1}$] (O12);
+                        \draw (O21) to[open, v=$V_{2}$] (O22);
+                    \end{circuitikz}
+                \caption{Representação Quadripolos Y}
+                \label{im:quadripolosY}
+            \end{figure}\noindent
+            Onde as Impedâncias são dadas por:
+                \begin{align}
+                    V_{1} &= (Z_1 + Z_3)I_1 + Z_3I_2 \qquad \text{onde:}\quad Z_{11} = \frac{V_1}{I_1} = Z_1 + Z_3 \quad\text{e}\quad Z_{12} = \frac{V_1}{I_2} = Z_3\\[1.5mm]
+                    V_{2} &= Z_3I_1 + (Z_2 + Z_3)I_2 \qquad \text{onde:}\quad Z_{21} = \frac{V_2}{I_1} = Z_3       \quad\text{e}\quad Z_{22} = \frac{V_2}{I_2} = Z_2 + Z_3
+                \end{align}
+            Onde as Admitâncias são dadas por:
+                \begin{align}
+                    I_{1} &= Y_{11}V_1 + Y_{12}V_2 \qquad \text{onde:}\quad Y_{11} = \frac{I_1}{V_1} \quad\text{e}\quad Y_{12} = \frac{I_1}{V_2}\\[1.5mm]
+                    I_{2} &= Y_{21}V_1 + Y_{22}V_2 \qquad \text{onde:}\quad Y_{21} = \frac{I_2}{V_1} \quad\text{e}\quad Y_{22} = \frac{I_2}{V_2}
+                \end{align}
+        \end{theorem}
+
+    \subsection{Configuração $\Delta$}
+        \begin{theorem}
+            Configuração $\Delta$ do sistema como representado na seguinte figura:
+            \begin{figure}[H]
+                \centering
+                    \begin{circuitikz}[american]
+                        \tikzset{quad/.style={draw, thick, dashed, minimum height=20mm, minimum width=40mm}}
+                        \node[quad] (A) at (0,0) {};
+                        \draw   
+                            ($(A.north west)!.25!(A.west)$) coordinate (I11)
+                            ($(A.south west)!.25!(A.west)$) coordinate (I12)
+                            ($(A.north east)!.25!(A.east)$) coordinate (I21)
+                            ($(A.south east)!.25!(A.east)$) coordinate (I22)
+
+                            (I11)   to[short, f<_=$I_{1}$, -o]  ++(-1.5,0) coordinate (O11)
+                            (I12)   to[short,-o]                ++(-1.5,0) coordinate (O12)
+                            (I21)   to[short, f<=$I_{2}$,-o]    ++(+1.5,0) coordinate (O21)
+                            (I22)   to[short,-o]                ++(+1.5,0) coordinate (O22)
+
+                            (I11)   to[R, l =$Y_B$] (I21)
+                            (I11)   ++(+0.5,0)
+                                    to[R, l=$Y_A$, *-*] ++(0,-1.5)
+                            (I21)   ++(-0.5,0)
+                                    to[R, l_=$Y_C$, *-*] ++(0,-1.5)
+                            (I22)   to[short] (I12)
+                            ;
+
+                        \draw (O11) to[open, v=$V_{1}$] (O12);
+                        \draw (O21) to[open, v=$V_{2}$] (O22);
+                    \end{circuitikz}
+                \caption{Representação Quadripolos $\Delta$}
+                \label{im:quadripolosD}
+            \end{figure}\noindent
+        \end{theorem}
 \end{document}
