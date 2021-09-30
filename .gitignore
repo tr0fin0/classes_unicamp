@@ -27,12 +27,5 @@
 *.flow.*
 *.sci
 *.db_info
-# *.pdf
-# */tpack.sty
-MS211 - AT2 1.pdf
-MS211 - AT3.pdf
-MS211 - AT4.pdf
-MS211 - AT5.pdf
-Atividade8.pdf
-Marcos Eduardo Valle Aula13.pdf
-EM335 - P1 1S2021.pdf
+*.pdf
+ts000.*
