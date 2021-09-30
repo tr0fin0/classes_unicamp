@@ -1,0 +1,369 @@
+\documentclass{article}
+\usepackage{tpack}
+
+
+
+\titleformat
+    {\subsection}           % Part
+    [block]                 % Part Shape
+    {\normalfont\Large}     % Font Size
+    {}                      % Label Numbering
+    {0mm}                   % Part Separation
+    {}                      % Code Before
+    []                      % Code After
+
+    \titlespacing*{\subsection}{0mm}{5mm}{2.5mm}
+
+    \input{kvmacros}
+
+\title{ES572 - Circuitos Lógicos}
+\author{Guilherme Nunes Trofino}
+\authorRA{217276}
+\project{Atividade Teórica}
+
+
+\begin{document}
+    \maketitle
+\newpage
+
+    \section{Atividade Teórica}
+        \paragraph{Apresentação}Resolução das questões de Circuitos Lógicos por Guilherme Nunes Trofino, 217276, sobre \textbf{Simplificação de Expressões Booleanas}.
+
+        \subsection{Questão 1}
+            \begin{exercise}
+                Use o mapa de Karnaugh para reduzir cada expressão para uma forma SoP mínima:
+                \begin{enumerate}[label=(\alph*), rightmargin = \leftmargin]
+                    \item $AB + \overline{A}D + B\overline{C}D + \overline{B}D$
+                    \item $AB \oplus (C+D)$
+                    \item $ABD + A\bar{B}\bar{C} + \bar{A}BC + \bar{A}CD + \bar{A}\bar{B}\bar{D}$
+                    \item $\bar{A}B\bar{C}D + \bar{A}BCD + AB\bar{C}D + ABCD$
+                    \item $BD + A\bar{B}D + \bar{A}B\bar{C} + \bar{A}CD + \bar{A}\bar{B}\bar{D}$
+                \end{enumerate}
+            \end{exercise}
+            \begin{resolution}
+                Nota-se:
+                \begin{enumerate}[label=(\alph*), rightmargin = \leftmargin]
+                    \item $AB + \overline{A}D + B\overline{C}D + \overline{B}D$
+                        \begin{figure}[H]
+                            \centering
+                            \begin{karnaugh-map}[4][4][1][$A\;B$][$C\;D$]
+                                                            % A B C D
+                                \terms{0}{ \mycell{} { 0}}  % 0 0 0 0
+                                \terms{4}{ \mycell{1}{ 1}}  % 0 0 0 1
+                                \terms{8}{ \mycell{} { 2}}  % 0 0 1 0
+                                \terms{12}{\mycell{1}{ 3}}  % 0 0 1 1
+                                \terms{1}{ \mycell{} { 4}}  % 0 1 0 0
+                                \terms{5}{ \mycell{1}{ 5}}  % 0 1 0 1
+                                \terms{9}{ \mycell{} { 6}}  % 0 1 1 0
+                                \terms{13}{\mycell{1}{ 7}}  % 0 1 1 1
+                                \terms{2}{ \mycell{} { 8}}  % 1 0 0 0
+                                \terms{6}{ \mycell{1}{ 9}}  % 1 0 0 1
+                                \terms{10}{\mycell{} {10}}  % 1 0 1 0
+                                \terms{14}{\mycell{1}{11}}  % 1 0 1 1
+                                \terms{3}{ \mycell{1}{12}}  % 1 1 0 0
+                                \terms{7}{ \mycell{1}{13}}  % 1 1 0 1
+                                \terms{11}{\mycell{1}{14}}  % 1 1 1 0
+                                \terms{15}{\mycell{1}{15}}  % 1 1 1 1
+                                \implicant{4}{14}
+                                \implicant{3}{11}
+                            \end{karnaugh-map}
+                        \end{figure}\noindent
+                    Desta forma tem-se a seguinte simplificação:
+                        \begin{equation}
+                            \boxed{
+                                f(A,B,C,D) = AB + D
+                            }
+                        \end{equation}
+\newpage
+
+                    \item $AB \oplus (C+D) = AB\overline{(C+D)} + \overline{AB}(C+D) = AB\overline{C}\overline{D} + \overline{AB}C + \overline{AB}D$
+                        \begin{figure}[H]
+                            \centering
+                            \begin{karnaugh-map}[4][4][1][$A\;B$][$C\;D$]
+                                                            % A B C D
+                                \terms{0}{ \mycell{}{ 0}}   % 0 0 0 0
+                                \terms{4}{ \mycell{1}{ 1}}  % 0 0 0 1
+                                \terms{8}{ \mycell{1}{ 2}}  % 0 0 1 0
+                                \terms{12}{\mycell{1}{ 3}}  % 0 0 1 1
+                                \terms{1}{ \mycell{}{ 4}}   % 0 1 0 0
+                                \terms{5}{ \mycell{}{ 5}}   % 0 1 0 1
+                                \terms{9}{ \mycell{}{ 6}}   % 0 1 1 0
+                                \terms{13}{\mycell{}{ 7}}   % 0 1 1 1
+                                \terms{2}{ \mycell{}{ 8}}   % 1 0 0 0
+                                \terms{6}{ \mycell{}{ 9}}   % 1 0 0 1
+                                \terms{10}{\mycell{}{10}}   % 1 0 1 0
+                                \terms{14}{\mycell{}{11}}   % 1 0 1 1
+                                \terms{3}{ \mycell{1}{12}}  % 1 1 0 0
+                                \terms{7}{ \mycell{1}{13}}  % 1 1 0 1
+                                \terms{11}{\mycell{}{14}}   % 1 1 1 0
+                                \terms{15}{\mycell{}{15}}   % 1 1 1 1
+                                \implicant{3}{7}
+                                \implicant{4}{12}
+                                \implicant{12}{8}
+                            \end{karnaugh-map}
+                        \end{figure}\noindent
+                    Desta forma tem-se a seguinte simplificação:
+                        \begin{equation}
+                            \boxed{
+                                f(A,B,C,D) = AB\bar{C} + \bar{A}\bar{B}D + \bar{A}\bar{B}C
+                            }
+                        \end{equation}
+
+                    \item $ABD + A\bar{B}\bar{C} + \bar{A}BC + \bar{A}CD + \bar{A}\bar{B}\bar{D}$
+                        \begin{figure}[H]
+                            \centering
+                            \begin{karnaugh-map}[4][4][1][$A\;B$][$C\;D$]
+                                                            % A B C D
+                                \terms{0}{ \mycell{1}{ 0}}  % 0 0 0 0
+                                \terms{4}{ \mycell{}{ 1}}   % 0 0 0 1
+                                \terms{8}{ \mycell{1}{ 2}}  % 0 0 1 0
+                                \terms{12}{\mycell{1}{ 3}}  % 0 0 1 1
+                                \terms{1}{ \mycell{}{ 4}}   % 0 1 0 0
+                                \terms{5}{ \mycell{}{ 5}}   % 0 1 0 1
+                                \terms{9}{ \mycell{1}{ 6}}  % 0 1 1 0
+                                \terms{13}{\mycell{1}{ 7}}  % 0 1 1 1
+                                \terms{2}{ \mycell{1}{ 8}}  % 1 0 0 0
+                                \terms{6}{ \mycell{1}{ 9}}  % 1 0 0 1
+                                \terms{10}{\mycell{}{10}}   % 1 0 1 0
+                                \terms{14}{\mycell{}{11}}   % 1 0 1 1
+                                \terms{3}{ \mycell{}{12}}   % 1 1 0 0
+                                \terms{7}{ \mycell{1}{13}}  % 1 1 0 1
+                                \terms{11}{\mycell{}{14}}   % 1 1 1 0
+                                \terms{15}{\mycell{1}{15}}  % 1 1 1 1
+                                \implicantedge{0}{0}{2}{2}
+                                \implicant{12}{9}
+                                \implicant{13}{15}
+                                \implicant{7}{6}
+                            \end{karnaugh-map}
+                        \end{figure}\noindent
+                    Desta forma tem-se a seguinte simplificação:
+                        \begin{equation}
+                            \boxed{
+                                f(A,B,C,D) = A\bar{C} + BCD + A\bar{C}D + \bar{B}\bar{C}\bar{D}
+                            }
+                        \end{equation}
+\newpage
+
+                    \item $\bar{A}B\bar{C}D + \bar{A}BCD + AB\bar{C}D + ABCD$
+                        \begin{figure}[H]
+                            \centering
+                            \begin{karnaugh-map}[4][4][1][$A\;B$][$C\;D$]
+                                                            % A B C D
+                                \terms{0}{ \mycell{}{ 0}}   % 0 0 0 0
+                                \terms{4}{ \mycell{}{ 1}}   % 0 0 0 1
+                                \terms{8}{ \mycell{}{ 2}}   % 0 0 1 0
+                                \terms{12}{\mycell{}{ 3}}   % 0 0 1 1
+                                \terms{1}{ \mycell{}{ 4}}   % 0 1 0 0
+                                \terms{5}{ \mycell{1}{ 5}}  % 0 1 0 1
+                                \terms{9}{ \mycell{}{ 6}}   % 0 1 1 0
+                                \terms{13}{\mycell{1}{ 7}}  % 0 1 1 1
+                                \terms{2}{ \mycell{}{ 8}}   % 1 0 0 0
+                                \terms{6}{ \mycell{}{ 9}}   % 1 0 0 1
+                                \terms{10}{\mycell{}{10}}   % 1 0 1 0
+                                \terms{14}{\mycell{}{11}}   % 1 0 1 1
+                                \terms{3}{ \mycell{}{12}}   % 1 1 0 0
+                                \terms{7}{ \mycell{1}{13}}  % 1 1 0 1
+                                \terms{11}{\mycell{}{14}}   % 1 1 1 0
+                                \terms{15}{\mycell{1}{15}}  % 1 1 1 1
+                                \implicant{5}{15}
+                            \end{karnaugh-map}
+                        \end{figure}\noindent
+                    Desta forma tem-se a seguinte simplificação:
+                        \begin{equation}
+                            \boxed{
+                                f(A,B,C,D) = BD
+                            }
+                        \end{equation}
+
+                    \item $BD + A\bar{B}D + \bar{A}B\bar{C} + \bar{A}CD + \bar{A}\bar{B}\bar{D}$
+                        \begin{figure}[H]
+                            \centering%\minterms{0,2,3,4,5,7,9,11,13,15}
+                            \begin{karnaugh-map}[4][4][1][$A\;B$][$C\;D$]
+                                                            % A B C D
+                                \terms{0}{ \mycell{1}{ 0}}  % 0 0 0 0
+                                \terms{4}{ \mycell{}{ 1}}   % 0 0 0 1
+                                \terms{8}{ \mycell{1}{ 2}}  % 0 0 1 0
+                                \terms{12}{\mycell{1}{ 3}}  % 0 0 1 1
+                                \terms{1}{ \mycell{1}{ 4}}  % 0 1 0 0
+                                \terms{5}{ \mycell{1}{ 5}}  % 0 1 0 1
+                                \terms{9}{ \mycell{}{ 6}}   % 0 1 1 0
+                                \terms{13}{\mycell{1}{ 7}}  % 0 1 1 1
+                                \terms{2}{ \mycell{}{ 8}}   % 1 0 0 0
+                                \terms{6}{ \mycell{1}{ 9}}  % 1 0 0 1
+                                \terms{10}{\mycell{}{10}}   % 1 0 1 0
+                                \terms{14}{\mycell{1}{11}}  % 1 0 1 1
+                                \terms{3}{ \mycell{}{12}}   % 1 1 0 0
+                                \terms{7}{ \mycell{1}{13}}  % 1 1 0 1
+                                \terms{11}{\mycell{}{14}}   % 1 1 1 0
+                                \terms{15}{\mycell{1}{15}}  % 1 1 1 1
+                                \implicant{7}{14}
+                                \implicant{12}{14}
+                                \implicant{12}{8}
+                                \implicant{1}{5}
+                                \implicant{0}{1}
+                            \end{karnaugh-map}
+                        \end{figure}\noindent
+                    Desta forma tem-se a seguinte simplificação:
+                        \begin{equation}
+                            \boxed{
+                                f(A,B,C,D) = AD + \bar{C}\bar{D} + \bar{A}\bar{B}C + \bar{A}BC + \bar{A}\bar{C}\bar{D}
+                            }
+                        \end{equation}
+                \end{enumerate}
+            \end{resolution}
+\newpage
+
+        \subsection{Questão 2}
+            \begin{exercise}
+                Determine a expressão SoP de custo mínimo para a função com quatro entradas expressa pela seguinte equação:
+                    \begin{equation*}
+                        f(A,B,C,D) = \sum M(6,7,8) + \sum D(10,11,12,13,14,15)
+                    \end{equation*}
+                Onde $M(i) = M_{i}$ é o i-ésimo \texttt{Mintermo} e $D(i) = D_{i}$ representa os estados de \texttt{don't care}.
+            \end{exercise}
+            \begin{resolution}
+                Nota-se:
+                \begin{figure}[H]
+                    \centering
+                    \begin{karnaugh-map}[4][4][1][$C\;D$][$A\;B$]
+                        \minterms{6,7,8}
+                        \indeterminants{10,11,12,13,14,15}
+                        \autoterms[0]
+                        \implicant{7}{14}
+                        \implicantedge{12}{8}{14}{10}
+                    \end{karnaugh-map}
+                \end{figure}\noindent
+                Desta forma tem-se a seguinte simplicação:
+                    \begin{equation}
+                        \boxed{
+                            f(A,B,C,D) = BC + A\bar{D}
+                        }
+                    \end{equation}
+            \end{resolution}
+\newpage
+
+        \subsection{Questão 3}
+            \begin{exercise}
+                Determine a expressão SoP de custo mínimo para a função com quatro entradas expressa pela seguinte equação:
+                    \begin{equation*}
+                        f(A,B,C,D) = \sum M(0,2,4,8,10,11,15) + \sum D(1,6,14)
+                    \end{equation*}
+                Onde $M(i) = M_{i}$ é o i-ésimo \texttt{Mintermo} e $D(i) = D_{i}$ representa os estados de \texttt{don't care}.
+            \end{exercise}
+            \begin{resolution}
+                Nota-se
+                \begin{figure}[H]
+                    \centering
+                    \begin{karnaugh-map}[4][4][1][$C\;D$][$A\;B$]
+                        \minterms{0,2,4,8,10,11,15}
+                        \indeterminants{1,6,14}
+                        \autoterms[0]
+                        \implicant{15}{10}
+                        \implicantedge{0}{4}{2}{6}
+                        \implicantcorner[0]
+                    \end{karnaugh-map}
+                \end{figure}\noindent
+                Desta forma tem-se a seguinte simplicação:
+                    \begin{equation}
+                        \boxed{
+                            f(A,B,C,D) = AC + \bar{B}\bar{D} + \bar{A}\bar{D}
+                        }
+                    \end{equation}
+            \end{resolution}
+\newpage
+
+        \subsection{Questão 4}
+            \begin{exercise}
+                Determine a expressão SoP de custo mínimo para a função com quatro entradas expressa pela seguinte equação:
+                    \begin{equation*}
+                        G(X,Y,Z) = \sum M(2,7) + \sum D(0,3,5)
+                    \end{equation*}
+                Onde $M(i) = M_{i}$ é o i-ésimo \texttt{Mintermo} e $D(i) = D_{i}$ representa os estados de \texttt{don't care}.
+            \end{exercise}
+            \begin{resolution}
+                Nota-se
+                \begin{figure}[H]
+                    \centering
+                    \begin{karnaugh-map}[2][4][1][$Z$][$X\;Y$]
+                        \minterms{2,7}
+                        \indeterminants{0,3,5}
+                        \autoterms[0]
+                        \implicant{0}{2}
+                        \implicant{7}{5}
+                    \end{karnaugh-map}
+                \end{figure}\noindent
+                Desta forma tem-se a seguinte simplicação:
+                    \begin{equation}
+                        \boxed{
+                            G(X,Y,Z) = \bar{X}\bar{Z} + XZ
+                        }
+                    \end{equation}
+                Assim, a única expressão que poderá ser implementada será $G(X,Y,Z) = X \oplus \bar{Z}$, pois não a expressão não poderá depender de $Y$.
+            \end{resolution}
+\newpage
+
+        \subsection{Questão 5}
+            \begin{exercise}
+                Determine a expressão SoP de custo mínimo para a função com quatro entradas expressa pela seguinte equação:
+                    \begin{equation*}
+                        f(A,B,C,D) = \sum M(2,3,4,6,7) + \sum D(0,1,14,15)
+                    \end{equation*}
+                Onde $M(i) = M_{i}$ é o i-ésimo \texttt{Mintermo} e $D(i) = D_{i}$ representa os estados de \texttt{don't care}.
+            \end{exercise}
+            \begin{resolution}
+                Nota-se:
+                \begin{figure}[H]
+                    \centering
+                    \begin{karnaugh-map}[4][4][1][$C\;D$][$A\;B$]
+                        \minterms{2,3,4,6,7}
+                        \indeterminants{0,1,14,15}
+                        \autoterms[0]
+                    \end{karnaugh-map}
+                \end{figure}
+                \paragraph{Método de Quine-McCluskey}Inicialmente será necessário obter os Implicantes Primos da função apresenta agrupando \texttt{mintermos} pela quantidade de bits 1 presentes como ilustrado na seguinte tabela:
+                    \begin{table}[H]
+                        \centering\begin{tabular}{c cccc c}
+                            Bits 1             & A & B & C & D             & Decimal\\\hline
+                            0                  & \multicolumn{4}{c}{vazio} & \\\hline
+                            \multirow{2}{*}{1} & 0 & 0 & 1 & 0             & 2\\
+                                               & 0 & 1 & 0 & 0             & 4\\\hline
+                            \multirow{2}{*}{2} & 0 & 0 & 1 & 1             & 3\\
+                                               & 0 & 1 & 1 & 0             & 6\\\hline
+                            3                  & 0 & 1 & 1 & 1             & 7\\\hline
+                            4                  & \multicolumn{4}{c}{vazio} & \\\hline
+                        \end{tabular}
+                    \end{table}
+                Na sequência será necessário agrupar os termos que possuem distância de Hamming igual a 1 entre cada um dos grupos na tabela anterior.
+                \\\\
+                Nota-se que estes seriam vizinhos na representação do \texttt{Mapa de Karnaugh} e portanto poderiam ser agrupados. Nestes agrupamentos a propriedade $AB + A\bar{B} = A$ deve ser utilizada para simplificar os termos vizinhos a \texttt{don't care} como ilustrado nas seguintes tabelas:
+                    \begin{table}[H]
+                        \centering\begin{tabular}{c cccc c}
+                            \texttt{B}         & A & B & C & D & \texttt{D}\\\hline
+                            \multirow{2}{*}{1} & 0 & 0 & 1 & 0 & 2\\
+                                               & 0 & 1 & 0 & 0 & 4\\\hline
+                            \multirow{2}{*}{2} & 0 & 0 & 1 & 1 & 3\\
+                                               & 0 & 1 & 1 & 0 & 6\\\hline
+                            3                  & 0 & 1 & 1 & 1 & 7\\\hline
+                        \end{tabular}
+                        \qquad
+                        \centering\begin{tabular}{c cccc c}
+                            \texttt{B}         & A & B & C & D & \texttt{D}\\\hline
+                            \multirow{3}{*}{1} & 0 & 0 & 1 & x & 2,3\\
+                                               & 0 & x & 1 & 0 & 2,6\\
+                                               & 0 & 1 & x & 0 & 4,6\\\hline
+                            \multirow{2}{*}{2} & 0 & x & 1 & 1 & 3,7\\
+                                               & 0 & 1 & 1 & x & 6,7\\\hline
+                        \end{tabular}
+                        \qquad
+                        \centering\begin{tabular}{c cccc c}
+                            \texttt{B}         & A & B & C & D & \texttt{D}\\\hline
+                            \multirow{2}{*}{1} & 0 & x & 1 & x & 2,3,6,7\\
+                                               & 0 & 1 & x & 0 & 4,6\\\hline
+                        \end{tabular}
+                    \end{table}\noindent
+                Desta forma:
+                    \begin{equation}
+                        \boxed{f(A,B,C,D) = \bar{A}C + \bar{A}B\bar{D}}
+                    \end{equation}
+            \end{resolution}
+\end{document}
