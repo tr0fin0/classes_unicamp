@@ -354,7 +354,28 @@
                             G(X,Y,Z) = \bar{X}\bar{Z} + XZ
                         }
                     \end{equation}
-                Assim, a única expressão que poderá ser implementada será $G(X,Y,Z) = X \oplus \bar{Z}$, pois não a expressão não poderá depender de $Y$.
+                Assim, toma-se $A = Z + \bar{X}Y\bar{Z}$, $B = XYZ + \bar{X}Y\bar{Z}$, $C = \bar{X}Y + \bar{X}\bar{Z}$, $D = Y(\bar{X} + Z)$, $E = X\oplus \bar{Z}$ e $F = \bar{X}\bar{Z} + YZ + \bar{Y}\bar{Z}$:
+                \begin{table}[H]
+                    \centering\begin{tabular}{ccc|cccccc|c|c}
+                        X&Y&Z&$A$&$B$&$C$&$D$&$E$&$F$&$G$& Decimal\\\hline
+                        0&0&0&   &   & 1 &   & 1 & 1 & x & 0\\
+                        0&0&1& \textcolor{red}{1} &   &   &   &   &   & 0 & 1\\
+                        0&1&0& 1 & 1 & 1 & 1 & 1 & 1 & 1 & 2\\
+                        0&1&1& 1 &   & 1 & 1 &   & 1 & x & 3\\
+                        1&0&0&   &   &   &   &   & \textcolor{red}{1} & 0 & 4\\
+                        1&0&1& 1 &   &   &   & 1 &   & x & 5\\
+                        1&1&0&   &   &   &   &   &   & 0 & 6\\
+                        1&1&1& 1 & 1 & \textcolor{red}{0} & 1 & 1 & 1 & 1 & 7\\\hline
+                    \end{tabular}
+                \end{table}\noindent
+                \begin{enumerate}[noitemsep]
+                    \item $A$ é inválido pois $\overline{XY}Z$ deveria ser 0;
+                    \item $B$ é válido;
+                    \item $C$ é inválido pois $XYZ$ deveria ser 1;
+                    \item $D$ é válido;
+                    \item $E$ é válido;
+                    \item $F$ é inválido pois $X\overline{YZ}$ deveria ser 0;
+                \end{enumerate}
             \end{resolution}
 \newpage
 
