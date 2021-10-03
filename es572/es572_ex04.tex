@@ -87,7 +87,7 @@
                         \end{equation}
 \newpage
 
-                    \item $f(A,B,C,D) = AB \oplus (C+D) = AB\overline{(C+D)} + \overline{AB}(C+D) = AB\overline{C}\overline{D} + \overline{AB}C + \overline{AB}D$
+                    \item $f(A,B,C,D) = AB \oplus (C+D)$
                     \begin{multicols}{2}
                         \centering
                         \begin{table}[H]
@@ -99,13 +99,13 @@
                                 0&0&1&0& 1 &2\\
                                 0&0&1&1& 1 &3\\
                                 0&1&0&0&   &4\\
-                                0&1&0&1&   &5\\
-                                0&1&1&0&   &6\\
-                                0&1&1&1&   &7\\
+                                0&1&0&1& 1 &5\\
+                                0&1&1&0& 1 &6\\
+                                0&1&1&1& 1 &7\\
                                 1&0&0&0&   &8\\
-                                1&0&0&1&   &9\\
-                                1&0&1&0&   &10\\
-                                1&0&1&1&   &11\\
+                                1&0&0&1& 1 &9\\
+                                1&0&1&0& 1 &10\\
+                                1&0&1&1& 1 &11\\
                                 1&1&0&0& 1 &12\\
                                 1&1&0&1&   &13\\
                                 1&1&1&0&   &14\\
@@ -116,18 +116,20 @@
                         \begin{figure}[H]
                             \centering
                             \begin{karnaugh-map}[4][4][1][$C\;D$][$A\;B$]
-                                \minterms{1,2,3,12}
+                                \minterms{1,2,3,5,6,7,9,10,11,12}
                                 \autoterms[0]
                                 \implicant{12}{12}
-                                \implicant{1}{3}
-                                \implicant{3}{2}
+                                \implicant{1}{7}
+                                \implicant{3}{6}
+                                \implicantedge{1}{3}{9}{11}
+                                \implicantedge{3}{2}{11}{10}
                             \end{karnaugh-map}
                         \end{figure}
                     \end{multicols}
                     Desta forma tem-se a seguinte simplificação:
                         \begin{equation}
                             \boxed{
-                                f(A,B,C,D) = AB\overline{CD} + \overline{AB}C + \overline{AB}D
+                                f(A,B,C,D) = AB\overline{CD} + \bar{B}D + \bar{B}C + \bar{A}D + \bar{A}C
                             }
                         \end{equation}
 
@@ -416,7 +418,7 @@
                 \\\\
                 Nota-se que estes seriam vizinhos na representação do \texttt{Mapa de Karnaugh} e portanto poderiam ser agrupados. Nestes agrupamentos a propriedade $AB + A\bar{B} = A$ deve ser utilizada para simplificar os termos vizinhos a \texttt{don't care} como ilustrado nas seguintes tabelas:
                 \begin{table}[H]
-                    \centering\begin{tabular}{cccc c}
+                    \centering\begin{tabular}{cccc l}
                         A&B&C&D& Decimal\\\hline
                         0&0&0&0& 0\\\hline
                         0&0&0&1& 1\\
@@ -429,7 +431,7 @@
                         1&1&1&1& 15\\\hline
                     \end{tabular}
                     \quad
-                    \centering\begin{tabular}{cccc c}
+                    \centering\begin{tabular}{cccc l}
                         A&B&C&D& Decimal\\\hline
                         0&0&0&x& 0, 1\\
                         0&0&x&0& 0, 2\\
@@ -445,7 +447,7 @@
                         1&1&1&x& 14, 15\\\hline
                     \end{tabular}
                     \quad
-                    \centering\begin{tabular}{cccc c}
+                    \centering\begin{tabular}{cccc l}
                         A&B&C&D& Decimal\\\hline
                         0&0&x&x& 0, 1, 2, 3\\
                         0&x&x&0& 0, 2, 4, 6\\\hline
