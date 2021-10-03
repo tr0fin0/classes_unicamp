@@ -178,36 +178,48 @@
                         \end{equation}
 \newpage
 
-                    \item $\bar{A}B\bar{C}D + \bar{A}BCD + AB\bar{C}D + ABCD$
+                    \item $f(A,B,C,D) = \bar{A}B\bar{C}D + \bar{A}BCD + AB\bar{C}D + ABCD$
+                    \begin{multicols}{2}
+                        \centering
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{cccc|cr}
+                                $A$&$B$&$C$&$D$&$f(A,B,C,D)$&Binário\\\hline
+                                0&0&0&0&   &0\\
+                                0&0&0&1&   &1\\
+                                0&0&1&0&   &2\\
+                                0&0&1&1&   &3\\
+                                0&1&0&0&   &4\\
+                                0&1&0&1& 1 &5\\
+                                0&1&1&0&   &6\\
+                                0&1&1&1& 1 &7\\
+                                1&0&0&0&   &8\\
+                                1&0&0&1&   &9\\
+                                1&0&1&0&   &10\\
+                                1&0&1&1&   &11\\
+                                1&1&0&0&   &12\\
+                                1&1&0&1& 1 &13\\
+                                1&1&1&0&   &14\\
+                                1&1&1&1& 1 &15\\\hline
+                            \end{tabular}
+                        \end{table}
+                        \columnbreak
                         \begin{figure}[H]
                             \centering
-                            \begin{karnaugh-map}[4][4][1][$A\;B$][$C\;D$]
-                                                            % A B C D
-                                \terms{0}{ \mycell{}{ 0}}   % 0 0 0 0
-                                \terms{4}{ \mycell{}{ 1}}   % 0 0 0 1
-                                \terms{8}{ \mycell{}{ 2}}   % 0 0 1 0
-                                \terms{12}{\mycell{}{ 3}}   % 0 0 1 1
-                                \terms{1}{ \mycell{}{ 4}}   % 0 1 0 0
-                                \terms{5}{ \mycell{1}{ 5}}  % 0 1 0 1
-                                \terms{9}{ \mycell{}{ 6}}   % 0 1 1 0
-                                \terms{13}{\mycell{1}{ 7}}  % 0 1 1 1
-                                \terms{2}{ \mycell{}{ 8}}   % 1 0 0 0
-                                \terms{6}{ \mycell{}{ 9}}   % 1 0 0 1
-                                \terms{10}{\mycell{}{10}}   % 1 0 1 0
-                                \terms{14}{\mycell{}{11}}   % 1 0 1 1
-                                \terms{3}{ \mycell{}{12}}   % 1 1 0 0
-                                \terms{7}{ \mycell{1}{13}}  % 1 1 0 1
-                                \terms{11}{\mycell{}{14}}   % 1 1 1 0
-                                \terms{15}{\mycell{1}{15}}  % 1 1 1 1
+                            \begin{karnaugh-map}[4][4][1][$C\;D$][$A\;B$]
+                                \minterms{5,7,13,15}
+                                \autoterms[0]
                                 \implicant{5}{15}
                             \end{karnaugh-map}
-                        \end{figure}\noindent
+                        \end{figure}
+                    \end{multicols}
                     Desta forma tem-se a seguinte simplificação:
                         \begin{equation}
                             \boxed{
                                 f(A,B,C,D) = BD
                             }
                         \end{equation}
+\newpage
 
                     \item $BD + A\bar{B}D + \bar{A}B\bar{C} + \bar{A}CD + \bar{A}\bar{B}\bar{D}$
                         \begin{figure}[H]
