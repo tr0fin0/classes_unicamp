@@ -166,7 +166,6 @@
                                 \implicant{3}{6}
                                 \implicant{8}{9}
                                 \implicant{13}{15}
-                                \implicant{7}{6}
                             \end{karnaugh-map}
                         \end{figure}
                     \end{multicols}
@@ -397,50 +396,85 @@
                         \autoterms[0]
                     \end{karnaugh-map}
                 \end{figure}
-                \paragraph{Método de Quine-McCluskey}Inicialmente será necessário obter os Implicantes Primos da função apresenta agrupando \texttt{mintermos} pela quantidade de bits 1 presentes como ilustrado na seguinte tabela:
-                    \begin{table}[H]
-                        \centering\begin{tabular}{c cccc c}
-                            Bits 1             & A & B & C & D             & Decimal\\\hline
-                            0                  & \multicolumn{4}{c}{vazio} & \\\hline
-                            \multirow{2}{*}{1} & 0 & 0 & 1 & 0             & 2\\
-                                               & 0 & 1 & 0 & 0             & 4\\\hline
-                            \multirow{2}{*}{2} & 0 & 0 & 1 & 1             & 3\\
-                                               & 0 & 1 & 1 & 0             & 6\\\hline
-                            3                  & 0 & 1 & 1 & 1             & 7\\\hline
-                            4                  & \multicolumn{4}{c}{vazio} & \\\hline
-                        \end{tabular}
-                    \end{table}
+
+                \paragraph{Método de Quine-McCluskey Extendido}Inicialmente será necessário obter os Implicantes Primos da função apresenta agrupando \texttt{mintermos} pela quantidade de bits 1 presentes considerando os \texttt{don't cares} como 1 também como ilustrado na seguinte tabela:
+                \begin{table}[H]
+                    \centering\begin{tabular}{c cccc c}
+                        Bits 1             &A&B&C&D& Decimal\\\hline
+                        0                  &0&0&0&0& 0\\\hline
+                        \multirow{3}{*}{1} &0&0&0&1& 1\\
+                                           &0&0&1&0& 2\\
+                                           &0&1&0&0& 4\\\hline
+                        \multirow{2}{*}{2} &0&0&1&1& 3\\
+                                           &0&1&1&0& 6\\\hline
+                        \multirow{2}{*}{3} &0&1&1&1& 7\\
+                                           &1&1&1&0& 14\\\hline
+                        4                  &1&1&1&1& 15\\\hline
+                    \end{tabular}
+                \end{table}\noindent
                 Na sequência será necessário agrupar os termos que possuem distância de Hamming igual a 1 entre cada um dos grupos na tabela anterior.
                 \\\\
                 Nota-se que estes seriam vizinhos na representação do \texttt{Mapa de Karnaugh} e portanto poderiam ser agrupados. Nestes agrupamentos a propriedade $AB + A\bar{B} = A$ deve ser utilizada para simplificar os termos vizinhos a \texttt{don't care} como ilustrado nas seguintes tabelas:
+                \begin{table}[H]
+                    \centering\begin{tabular}{cccc c}
+                        A&B&C&D& Decimal\\\hline
+                        0&0&0&0& 0\\\hline
+                        0&0&0&1& 1\\
+                        0&0&1&0& 2\\
+                        0&1&0&0& 4\\\hline
+                        0&0&1&1& 3\\
+                        0&1&1&0& 6\\\hline
+                        0&1&1&1& 7\\
+                        1&1&1&0& 14\\\hline
+                        1&1&1&1& 15\\\hline
+                    \end{tabular}
+                    \quad
+                    \centering\begin{tabular}{cccc c}
+                        A&B&C&D& Decimal\\\hline
+                        0&0&0&x& 0, 1\\
+                        0&0&x&0& 0, 2\\
+                        0&x&0&0& 0, 4\\\hline
+                        0&0&x&1& 1, 3\\
+                        0&0&1&x& 2, 3\\
+                        0&x&1&0& 2, 6\\
+                        0&1&x&0& 4, 6\\\hline
+                        0&x&1&1& 3, 7\\
+                        0&1&1&x& 6, 7\\
+                        x&1&1&0& 6, 14\\\hline
+                        x&1&1&1& 7, 15\\
+                        1&1&1&x& 14, 15\\\hline
+                    \end{tabular}
+                    \quad
+                    \centering\begin{tabular}{cccc c}
+                        A&B&C&D& Decimal\\\hline
+                        0&0&x&x& 0, 1, 2, 3\\
+                        0&x&x&0& 0, 2, 4, 6\\\hline
+                        0&x&1&x& 2, 3, 6, 7\\\hline
+                        x&1&1&x& 6, 7, 14, 15\\\hline
+                    \end{tabular}
+                \end{table}\noindent
+                Na sequência será necessário realizar a determinação da cobertura mínima onde os \texttt{Minitermos} gerados pelos \texttt{don't cares} são ignorados:
                     \begin{table}[H]
-                        \centering\begin{tabular}{c cccc c}
-                            \texttt{B}         & A & B & C & D & \texttt{D}\\\hline
-                            \multirow{2}{*}{1} & 0 & 0 & 1 & 0 & 2\\
-                                               & 0 & 1 & 0 & 0 & 4\\\hline
-                            \multirow{2}{*}{2} & 0 & 0 & 1 & 1 & 3\\
-                                               & 0 & 1 & 1 & 0 & 6\\\hline
-                            3                  & 0 & 1 & 1 & 1 & 7\\\hline
+                        \centering\begin{tabular}{c|ccccc}
+                            \multirow{2}{*}{Implicante} & \multicolumn{5}{c}{Minitermos}\\
+                                                        &2&3&4&6&7\\\hline
+                            $p_1 = 00xx$                &x&x& & & \\
+                            \textcolor{blue!75}{$p_2=0xx0$} &x& &x&x& \\
+                            $p_3 = 0x1x$                &x&x& &x&x\\
+                            $p_4 = x11x$                & & & &x&x\\\hline
                         \end{tabular}
                         \qquad
-                        \centering\begin{tabular}{c cccc c}
-                            \texttt{B}         & A & B & C & D & \texttt{D}\\\hline
-                            \multirow{3}{*}{1} & 0 & 0 & 1 & x & 2,3\\
-                                               & 0 & x & 1 & 0 & 2,6\\
-                                               & 0 & 1 & x & 0 & 4,6\\\hline
-                            \multirow{2}{*}{2} & 0 & x & 1 & 1 & 3,7\\
-                                               & 0 & 1 & 1 & x & 6,7\\\hline
+                        \centering\begin{tabular}{c|cc}
+                            \multirow{2}{*}{Implicante} & \multicolumn{2}{c}{Minitermos}\\
+                                                        &3&7\\\hline
+                            $p_1 = 00xx$                &x& \\
+                            \textcolor{blue!75}{$p_3=0x1x$} &x&x\\
+                            $p_4 = x11x$                & &x\\\hline
                         \end{tabular}
-                        \qquad
-                        \centering\begin{tabular}{c cccc c}
-                            \texttt{B}         & A & B & C & D & \texttt{D}\\\hline
-                            \multirow{2}{*}{1} & 0 & x & 1 & x & 2,3,6,7\\
-                                               & 0 & 1 & x & 0 & 4,6\\\hline
-                        \end{tabular}
-                    \end{table}\noindent
+                    \end{table}
                 Desta forma:
                     \begin{equation}
-                        \boxed{f(A,B,C,D) = \bar{A}C + \bar{A}B\bar{D}}
+                        \boxed{f(A,B,C,D) = \bar{A}C + \overline{AD}}
                     \end{equation}
             \end{resolution}
 \end{document}
