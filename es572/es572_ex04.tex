@@ -43,31 +43,42 @@
             \begin{resolution}
                 Nota-se:
                 \begin{enumerate}[label=(\alph*), rightmargin = \leftmargin]
-                    \item $AB + \overline{A}D + B\overline{C}D + \overline{B}D$
+                    \item $f(A,B,C,D) = AB + \overline{A}D + B\overline{C}D + \overline{B}D$
+                    \begin{multicols}{2}
+                        \centering
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{cccc|cr}
+                                $A$&$B$&$C$&$D$&$f(A,B,C,D)$&Binário\\\hline
+                                0&0&0&0&   &0\\
+                                0&0&0&1& 1 &1\\
+                                0&0&1&0&   &2\\
+                                0&0&1&1& 1 &3\\
+                                0&1&0&0&   &4\\
+                                0&1&0&1& 1 &5\\
+                                0&1&1&0&   &6\\
+                                0&1&1&1& 1 &7\\
+                                1&0&0&0&   &8\\
+                                1&0&0&1& 1 &9\\
+                                1&0&1&0&   &10\\
+                                1&0&1&1& 1 &11\\
+                                1&1&0&0& 1 &12\\
+                                1&1&0&1& 1 &13\\
+                                1&1&1&0& 1 &14\\
+                                1&1&1&1& 1 &15\\\hline
+                            \end{tabular}
+                        \end{table}
+                        \columnbreak
                         \begin{figure}[H]
                             \centering
-                            \begin{karnaugh-map}[4][4][1][$A\;B$][$C\;D$]
-                                                            % A B C D
-                                \terms{0}{ \mycell{} { 0}}  % 0 0 0 0
-                                \terms{4}{ \mycell{1}{ 1}}  % 0 0 0 1
-                                \terms{8}{ \mycell{} { 2}}  % 0 0 1 0
-                                \terms{12}{\mycell{1}{ 3}}  % 0 0 1 1
-                                \terms{1}{ \mycell{} { 4}}  % 0 1 0 0
-                                \terms{5}{ \mycell{1}{ 5}}  % 0 1 0 1
-                                \terms{9}{ \mycell{} { 6}}  % 0 1 1 0
-                                \terms{13}{\mycell{1}{ 7}}  % 0 1 1 1
-                                \terms{2}{ \mycell{} { 8}}  % 1 0 0 0
-                                \terms{6}{ \mycell{1}{ 9}}  % 1 0 0 1
-                                \terms{10}{\mycell{} {10}}  % 1 0 1 0
-                                \terms{14}{\mycell{1}{11}}  % 1 0 1 1
-                                \terms{3}{ \mycell{1}{12}}  % 1 1 0 0
-                                \terms{7}{ \mycell{1}{13}}  % 1 1 0 1
-                                \terms{11}{\mycell{1}{14}}  % 1 1 1 0
-                                \terms{15}{\mycell{1}{15}}  % 1 1 1 1
-                                \implicant{4}{14}
-                                \implicant{3}{11}
+                            \begin{karnaugh-map}[4][4][1][$C\;D$][$A\;B$]
+                                \minterms{1,3,5,7,9,11,12,13,14,15}
+                                \autoterms[0]
+                                \implicant{1}{11}
+                                \implicant{12}{14}
                             \end{karnaugh-map}
-                        \end{figure}\noindent
+                        \end{figure}
+                    \end{multicols}
                     Desta forma tem-se a seguinte simplificação:
                         \begin{equation}
                             \boxed{
