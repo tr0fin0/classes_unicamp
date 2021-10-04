@@ -7,1045 +7,1177 @@
 \project{Resumo Teórico}
 
 \begin{document}
-    \maketitle
+\maketitle
 \newpage
 
-    \tableofcontents
+\tableofcontents
 \newpage
 
 
-    \section{Introdução}
-        \paragraph{Apresentação}Neste documento será descrito as informações necessárias para compreensão e solução de exercícios relacionados a disciplina \title. Note que este documento são notas realizadas por \author, em \today.
+\section{Introdução}
+    \paragraph{Apresentação}Neste documento será descrito as informações necessárias para compreensão e solução de exercícios relacionados a disciplina \title. Note que este documento são notas realizadas por \author, em \today.
 
-        \subsection{Transformada de Laplace}
-            \paragraph{Definição}Conversão de uma equação diferencial em equação algébrica e uma convolução em multiplicação. Formalmente descrita pelas seguintes equações:
+    \subsection{Transformada de Laplace}
+        \paragraph{Definição}Conversão de uma equação diferencial em equação algébrica e uma convolução em multiplicação. Formalmente descrita pelas seguintes equações:
 
-            \begin{multicols}{2}
-                \raggedcolumns
-                \paragraph{Forma Bilateral:}
-                    \begin{equation}
-                        \boxed{
-                            F(s) = \mathcal{B} \{ f(t) \} := \int_{-\infty}^{+\infty} f(t) \; e^{-st} \; \text{d}t
-                        }
-                    \end{equation}
-
-                \columnbreak
-
-                \paragraph{Forma Unilateral:}
-                    \begin{equation}
-                        \boxed{
-                            F(s) = \mathcal{L}\{ f(t) \} := \int_{0}^{+\infty} f(t) \; e^{-st} \; \text{d} t
-                        }
-                    \end{equation}
-            \end{multicols}\noindent
-            Note que a forma \texttt{Unilateral} será um caso particular da \texttt{Bilateral}. Além disso, no estudo de circuitos elétricos será conveniente a adoção do domínio dos complexos para análise. Assim $s = \sigma + \omega\text{j}$ onde $\text{j}$ será a \textbf{Unidade Imaginária}, evitando confusão com \textbf{Corrente Elétrica} causada pela notação matemática canónica.
-
-            \paragraph{Transformações}A seguir encontram-se as principais transformações pela definição \texttt{Unilateral} necessárias:
-                \begin{table}[H]
-                    \centering
-                    \begingroup
-                    % \setlength{\tabcolsep}{5mm}
-                    \renewcommand{\arraystretch}{1.25}
-                    \begin{tabular}[]{lcc}
-                                         & $f(t)$      & $\mathcal{L}\{ f(t) \}$\\\hline
-                        Degrau Unitário  & $u(t)$      & $\frac{1}{s}$\\
-                        Impulso Unitário & $\delta(t)$ & $1$\\
-                                         & $t^{n}$     & $\frac{n!}{s^{n+1}}$\\
-                                         & $e^{-at}$   & $\frac{1}{s+a}$\\
-                                         & $\frac{t^{n-1}e^{-at}}{(n-1)!}$  & $\frac{1}{(s+a)^{n}}$\\
-                                         & $\sin(at + b)$  & $\frac{s\sin(b) + a\cos(b)}{(s^2+a^2)}$\\
-                                         & $\cos(at + b)$  & $\frac{s\cos(b) + a\sin(b)}{(s^2+a^2)}$\\
-                        Seno Hiperbólico    & $\sinh(at)$  & $\frac{a}{(s^2-a^2)}$\\
-                        Cosseno Hiperbólico & $\cosh(at)$  & $\frac{s}{(s^2-a^2)}$\\
-                                         & $e^{at}\;\sin(bt)$  & $\frac{b}{(s-a)^2+b^2}$\\
-                                         & $e^{at}\;\cos(bt)$  & $\frac{s-a}{(s-a)^2+b^2}$\\
-                        Convolução       & $\int_{0}^{t} f(\varphi)\;g(t - \varphi) \text{d}\varphi$ & $F(s)\cdot G(s)$\\
-                        Integral         & $\int_{0}^{t} f(\varphi)\;u(t - \varphi) \text{d}\varphi$ & $\frac{F(s)}{s}$\\
-                        Derivada         & $\diff{f(\varphi)}{\varphi}$ & $s\cdot F(s)$\\
-                        Frequência       & $e^{-at}f(t)$          & $F(s+a)$\\
-                        Temporal         & $f(t-\tau)\mu(t-\tau)$ & $e^{-s\tau}F(s)$\\\hline
-                    \end{tabular}
-                    \endgroup
-                    \caption{Tabela de Transformadas de Laplace}\label{table:Laplace}
-                \end{table} \noindent
-            Conside que as funções \textbf{Trigonométricas Hiperbólicas} são definidas pelas equações abaixo:
+        \begin{multicols}{2}
+            \raggedcolumns
+            \paragraph{Forma Bilateral:}
                 \begin{equation}
                     \boxed{
-                        \sinh(ax) = \frac{e^{ax} - e^{-ax}}{2}
-                    }
-                    \qquad
-                    \boxed{
-                        \cosh(ax) = \frac{e^{ax} + e^{-ax}}{2}
+                        F(s) = \mathcal{B} \{ f(t) \} := \int_{-\infty}^{+\infty} f(t) \; e^{-st} \; \text{d}t
                     }
                 \end{equation}
-                % \begin{exercise}
-                %     Calcule via Definição a transformada de Laplace:
-                %         \begin{enumerate}[noitemsep, label={(\alph*)}]
-                %             \item $f(t) = (2t + 3t^2)\;u(t)$ \footnote{$F(s) =  \frac{2}{s^2} + \frac{6}{s^3}$}
-                %             \item $g(t) = \cosh(kt)\;u(t)$   \footnote{$F(s) =  \frac{s}{s^2 - k^2}$}
-                %         \end{enumerate}
-                % \end{exercise}
 
-            \subsubsection{Degrau Unitário}
-                \paragraph{Definição}Representação de descontinuidade unitária, normalmente utilizada para representar mudanças instantâneas em sistemas. Formalmente descrita pela seguinte equação:
-                    \begin{equation}
-                        \boxed{
-                            u(x - a) = 
-                            \begin{cases}
-                                0, & x < a;\\
-                                \frac{1}{2}, & x = a;\\
-                                1, & x > a;\\
-                            \end{cases}
-                        }
-                    \end{equation}
+            \columnbreak
 
-            \subsubsection{Impulso Unitário}
-                \paragraph{Definição}Distribuição infinita no ponto zero e nula no restante da reta. Formalmente descrita pela seguinte equação:
-                    \begin{equation}
-                        \boxed{
-                            \delta(x) = 
-                            \begin{cases}
-                                0, & x \neq 0;\\
-                                \infty, & x = 0;\\
-                            \end{cases}
-                            }
-                        \end{equation}
-                Obedecendo:
-                    \begin{equation*}
-                        \int_{-\infty}^{+\infty} \delta(x) \; \text{d}x = 1
-                        \quad\text{e}\quad
-                        \boxed{
-                            \int_{a}^{b} f(t) \delta(t - \tau)\;\text{d}t = 
-                            \begin{cases}
-                                f(\tau);    & \text{se } \tau\in[a,b]\\
-                                0;          & \text{se } \tau\notin[a,b]\\
-                            \end{cases}
-                        }
-                    \end{equation*}
-                Aplica-se o impulso unitário para se extrair uma \textbf{Amostra} do valor de uma função em um determinado ponto.
-
-            \subsubsection{Transformada da Deriva}
-                \paragraph{Definição}Quando aplicada em uma derivada de ordem $n$ será necessário utilizar da recursão e integração por partes, obtendo a seguinte equação geral:
-                    \begin{equation}
-                        \boxed{
-                            \mathcal{L}\left\{\diff[n]{f(\varphi)}{\varphi}\right\} = 
-                            s^{n}\cdot F(s) - 
-                            s^{n-1} \cdot f(0) - 
-                            s^{n-2} \cdot f'(0) - \dots - 
-                            s \cdot f^{n-2}(0) - 
-                            f^{n-1}(0)
-                        }
-                    \end{equation}
-
-        \subsection{Transformada de Componentes}
-            \paragraph{Definição}Substituir as equações que descrevem cada componente empregado em um circuito através de seu equivalente em \textbf{Laplace} simplificará os cálculos e poderá integrar suas condições iniciais na análise. Nesta transformação o circuito resultante será puramente resistivo e obedecerá às \textbf{Leis de Kirchhoff}.
-                \begin{table}[H]
-                    \centering
-                    \begingroup
-                    % \setlength{\tabcolsep}{5mm}
-                    \renewcommand{\arraystretch}{1.25}
-                    \begin{tabular}[]{lll}
-                                  & Equação Geral                                                         & Equação Laplace\\\hline
-                        Resistor  & $v_{R}(t) = R\;i_{R}(t)$                                              & $V_{R}(s) = R\;I_{R}(s)$\\[2.5mm]
-                        Capacitor & $v_{C}(t) = \frac{1}{C}\;\int_{0}^{t} i_{C}(t)\;\text{d}t + v_{C}(0)$ & $V_{C}(s) = \frac{1}{sC}\;I_{C}(s) + \frac{v_{C}(0)}{s}$\\[2.5mm]
-                        Indutor   & $v_{L}(t) = L\;\diff{i_{L}(t)}{t}$                                    & $V_{L}(s) = sL\;I_{L}(s) - L\;I_{L}(0)$\\[2.5mm]\hline
-                    \end{tabular}
-                    \endgroup
-                    \caption{Transformadas de Laplace de Componentes}\label{table:LaplaceComponents}
-                \end{table} \noindent
-
-        \subsection{Função de Rede}
-            \paragraph{Definição}Simplificação dos circuitos de tal forma que análise seja facilitada pela utilização de suas entradas e de suas saídas sempre presupondo que as condições iniciais nulas obtidas pelas seguintes equações:
+            \paragraph{Forma Unilateral:}
                 \begin{equation}
-                    \boxed{H(s) = \frac{I(s)}{V(s)}}
+                    \boxed{
+                        F(s) = \mathcal{L}\{ f(t) \} := \int_{0}^{+\infty} f(t) \; e^{-st} \; \text{d} t
+                    }
                 \end{equation}
-            Onde:
-                \begin{enumerate}[noitemsep]
-                    \item $V(s)$, \textbf{Entrada:} Tensão de Entrada;
-                    \item $I(s)$, \textbf{Saída:} Saída de Corrente;
+        \end{multicols}\noindent
+        Note que a forma \texttt{Unilateral} será um caso particular da \texttt{Bilateral}. Além disso, no estudo de circuitos elétricos será conveniente a adoção do domínio dos complexos para análise. Assim $s = \sigma + \omega\text{j}$ onde $\text{j}$ será a \textbf{Unidade Imaginária}, evitando confusão com \textbf{Corrente Elétrica} causada pela notação matemática canónica.
+
+        \paragraph{Transformações}A seguir encontram-se as principais transformações pela definição \texttt{Unilateral} necessárias:
+            \begin{table}[H]
+                \centering
+                \begingroup
+                % \setlength{\tabcolsep}{5mm}
+                \renewcommand{\arraystretch}{1.25}
+                \begin{tabular}[]{lcc}
+                                        & $f(t)$      & $\mathcal{L}\{ f(t) \}$\\\hline
+                    Degrau Unitário  & $u(t)$      & $\frac{1}{s}$\\
+                    Impulso Unitário & $\delta(t)$ & $1$\\
+                                        & $t^{n}$     & $\frac{n!}{s^{n+1}}$\\
+                                        & $e^{-at}$   & $\frac{1}{s+a}$\\
+                                        & $\frac{t^{n-1}e^{-at}}{(n-1)!}$  & $\frac{1}{(s+a)^{n}}$\\
+                                        & $\sin(at + b)$  & $\frac{s\sin(b) + a\cos(b)}{(s^2+a^2)}$\\
+                                        & $\cos(at + b)$  & $\frac{s\cos(b) + a\sin(b)}{(s^2+a^2)}$\\
+                    Seno Hiperbólico    & $\sinh(at)$  & $\frac{a}{(s^2-a^2)}$\\
+                    Cosseno Hiperbólico & $\cosh(at)$  & $\frac{s}{(s^2-a^2)}$\\
+                                        & $e^{at}\;\sin(bt)$  & $\frac{b}{(s-a)^2+b^2}$\\
+                                        & $e^{at}\;\cos(bt)$  & $\frac{s-a}{(s-a)^2+b^2}$\\
+                    Convolução       & $\int_{0}^{t} f(\varphi)\;g(t - \varphi) \text{d}\varphi$ & $F(s)\cdot G(s)$\\
+                    Integral         & $\int_{0}^{t} f(\varphi)\;u(t - \varphi) \text{d}\varphi$ & $\frac{F(s)}{s}$\\
+                    Derivada         & $\diff{f(\varphi)}{\varphi}$ & $s\cdot F(s)$\\
+                    Frequência       & $e^{-at}f(t)$          & $F(s+a)$\\
+                    Temporal         & $f(t-\tau)\mu(t-\tau)$ & $e^{-s\tau}F(s)$\\\hline
+                \end{tabular}
+                \endgroup
+                \caption{Tabela de Transformadas de Laplace}\label{table:Laplace}
+            \end{table} \noindent
+        Conside que as funções \textbf{Trigonométricas Hiperbólicas} são definidas pelas equações abaixo:
+            \begin{equation}
+                \boxed{
+                    \sinh(ax) = \frac{e^{ax} - e^{-ax}}{2}
+                }
+                \qquad
+                \boxed{
+                    \cosh(ax) = \frac{e^{ax} + e^{-ax}}{2}
+                }
+            \end{equation}
+            % \begin{exercise}
+            %     Calcule via Definição a transformada de Laplace:
+            %         \begin{enumerate}[noitemsep, label={(\alph*)}]
+            %             \item $f(t) = (2t + 3t^2)\;u(t)$ \footnote{$F(s) =  \frac{2}{s^2} + \frac{6}{s^3}$}
+            %             \item $g(t) = \cosh(kt)\;u(t)$   \footnote{$F(s) =  \frac{s}{s^2 - k^2}$}
+            %         \end{enumerate}
+            % \end{exercise}
+
+        \subsubsection{Degrau Unitário}
+            \paragraph{Definição}Representação de descontinuidade unitária, normalmente utilizada para representar mudanças instantâneas em sistemas. Formalmente descrita pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        u(x - a) = 
+                        \begin{cases}
+                            0, & x < a;\\
+                            \frac{1}{2}, & x = a;\\
+                            1, & x > a;\\
+                        \end{cases}
+                    }
+                \end{equation}
+
+        \subsubsection{Impulso Unitário}
+            \paragraph{Definição}Distribuição infinita no ponto zero e nula no restante da reta. Formalmente descrita pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        \delta(x) = 
+                        \begin{cases}
+                            0, & x \neq 0;\\
+                            \infty, & x = 0;\\
+                        \end{cases}
+                        }
+                    \end{equation}
+            Obedecendo:
+                \begin{equation*}
+                    \int_{-\infty}^{+\infty} \delta(x) \; \text{d}x = 1
+                    \quad\text{e}\quad
+                    \boxed{
+                        \int_{a}^{b} f(t) \delta(t - \tau)\;\text{d}t = 
+                        \begin{cases}
+                            f(\tau);    & \text{se } \tau\in[a,b]\\
+                            0;          & \text{se } \tau\notin[a,b]\\
+                        \end{cases}
+                    }
+                \end{equation*}
+            Aplica-se o impulso unitário para se extrair uma \textbf{Amostra} do valor de uma função em um determinado ponto.
+
+        \subsubsection{Transformada da Deriva}
+            \paragraph{Definição}Quando aplicada em uma derivada de ordem $n$ será necessário utilizar da recursão e integração por partes, obtendo a seguinte equação geral:
+                \begin{equation}
+                    \boxed{
+                        \mathcal{L}\left\{\diff[n]{f(\varphi)}{\varphi}\right\} = 
+                        s^{n}\cdot F(s) - 
+                        s^{n-1} \cdot f(0) - 
+                        s^{n-2} \cdot f'(0) - \dots - 
+                        s \cdot f^{n-2}(0) - 
+                        f^{n-1}(0)
+                    }
+                \end{equation}
+
+    \subsection{Transformada de Componentes}
+        \paragraph{Definição}Substituir as equações que descrevem cada componente empregado em um circuito através de seu equivalente em \textbf{Laplace} simplificará os cálculos e poderá integrar suas condições iniciais na análise. Nesta transformação o circuito resultante será puramente resistivo e obedecerá às \textbf{Leis de Kirchhoff}.
+            \begin{table}[H]
+                \centering
+                \begingroup
+                % \setlength{\tabcolsep}{5mm}
+                \renewcommand{\arraystretch}{1.25}
+                \begin{tabular}[]{lll}
+                                & Equação Geral                                                         & Equação Laplace\\\hline
+                    Resistor  & $v_{R}(t) = R\;i_{R}(t)$                                              & $V_{R}(s) = R\;I_{R}(s)$\\[2.5mm]
+                    Capacitor & $v_{C}(t) = \frac{1}{C}\;\int_{0}^{t} i_{C}(t)\;\text{d}t + v_{C}(0)$ & $V_{C}(s) = \frac{1}{sC}\;I_{C}(s) + \frac{v_{C}(0)}{s}$\\[2.5mm]
+                    Indutor   & $v_{L}(t) = L\;\diff{i_{L}(t)}{t}$                                    & $V_{L}(s) = sL\;I_{L}(s) - L\;I_{L}(0)$\\[2.5mm]\hline
+                \end{tabular}
+                \endgroup
+                \caption{Transformadas de Laplace de Componentes}\label{table:LaplaceComponents}
+            \end{table} \noindent
+
+    \subsection{Função de Rede}
+        \paragraph{Definição}Simplificação dos circuitos de tal forma que análise seja facilitada pela utilização de suas entradas e de suas saídas sempre presupondo que as condições iniciais nulas obtidas pelas seguintes equações:
+            \begin{equation}
+                \boxed{H(s) = \frac{I(s)}{V(s)}}
+            \end{equation}
+        Onde:
+            \begin{enumerate}[noitemsep]
+                \item $V(s)$, \textbf{Entrada:} Tensão de Entrada;
+                \item $I(s)$, \textbf{Saída:} Saída de Corrente;
+            \end{enumerate}
+
+\section{Circuitos Periódicos}
+    \paragraph{Definição}Circuitos que são submetidos a sinais de tensão senoidais normalmente presentes em sistemas de potência elétrica com corrente alternada que será representada pela seguinte equação:
+        \begin{equation}
+            \boxed{v(t) = V_{M}\cos(\omega t + \varphi)}
+        \end{equation}
+    Onde:
+        \begin{enumerate}
+            \item \textbf{Amplitude:} $V_{M}$, Representa a \texttt{Tensão Máxima} do sinal;
+
+            \item \textbf{Ciclo:} Características da equação:
+                \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                    \item \texttt{Frequência:} $\omega$, Representa a quantidade de \texttt{Oscilações} por intervalo de tempo;
+
+                    \item \texttt{Período:} $T$, Representa o tempo para realizar uma \texttt{Oscilação} do sinal;
                 \end{enumerate}
 
-    \section{Circuitos Periódicos}
-        \paragraph{Definição}Circuitos que são submetidos a sinais de tensão senoidais normalmente presentes em sistemas de potência elétrica com corrente alternada que será representada pela seguinte equação:
+            \item \textbf{Fase:} Indica a defasagem do sinal representada por $\varphi$;
+        \end{enumerate}
+
+    \subsection{Fasores}
+        \paragraph{Definição}Conversão de equações periódicas em \textbf{Equações Fasoriais}, isto é, equações que envolvam números complexos para representar um comportamento periódico como descrito pela seguinte equação:
+            \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                    \begin{axis}[
+                        xmin = 0, xmax = 5.25, % Axis Coordenates
+                        ymin = 0, ymax = 5.25, % Axis Coordenates
+                        xlabel = {$\mathbb{R}$},  % Axis Labels
+                        ylabel = {$\mathbb{I}$},  % Axis Labels
+                        xtick = {4.25},  % Axis Ticks Potions
+                        ytick = {4.25},  % Axis Ticks Potions
+                        xticklabels = {$V_{R}$}, % Axis Ticks Labels
+                        yticklabels = {$V_{I}$}, % Axis Ticks Labels
+                        x label style = {at={(axis cs:{5.5,0})}, anchor=west},
+                        y label style = {at={(axis cs:{0,5.5})}, anchor=south, rotate=-90},
+                        width  = 5.0cm,
+                        height = 5.0cm,
+                        axis lines = left,
+                    ]
+                    \draw [red!60, -{Latex[round]}] (1.5,0) arc [
+                        start angle = 0,
+                        end angle   = 45,
+                        radius      = 1.5
+                    ] node [midway, right] {$\theta^{\circ}$};
+            
+                    \draw[-{Latex[round]}] (axis cs:{0,0}) -- (axis cs:{4.25,4.25}) node [above right] {$V_{M}$};
+            
+                    \draw[gray, dashed] (axis cs:{4.25,0}) -- (axis cs:{4.25,4.25});
+                    \draw[gray, dashed] (axis cs:{0,4.25}) -- (axis cs:{4.25,4.25});
+                    \end{axis}
+                \end{tikzpicture}
+                \caption{Represenação Fasores}
+            \end{figure}\noindent
             \begin{equation}
-                \boxed{v(t) = V_{M}\cos(\omega t + \varphi)}
+                \boxed{
+                    V(t) := V_{M}\phase{\theta^{\circ}}
+                }
             \end{equation}
         Onde:
             \begin{enumerate}
-                \item \textbf{Amplitude:} $V_{M}$, Representa a \texttt{Tensão Máxima} do sinal;
+                \item \textbf{Módulo:} $V_{M}$, Representa a \texttt{Tensão Máxima} do sinal obtido pela seguinte equação:
+                    \begin{equation*}
+                        \boxed{
+                            V_{M} = \sqrt{
+                                V_{\text{I}}^{2} + V_{\text{R}}^{2}
+                            }
+                        }
+                    \end{equation*}
+                Onde:
+                    \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                        \item \texttt{Parcela Imaginária:} $V_{\text{I}}$;
+
+                        \item \texttt{Parcela Real:} $V_{\text{R}}$;
+                    \end{enumerate}
+
 
                 \item \textbf{Ciclo:} Características da equação:
                     \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
-                        \item \texttt{Frequência:} $\omega$, Representa a quantidade de \texttt{Oscilações} por intervalo de tempo;
-
-                        \item \texttt{Período:} $T$, Representa o tempo para realizar uma \texttt{Oscilação} do sinal;
+                        \item \texttt{Frequência:} $\omega$, Constante a todos os componentes do circuito;
                     \end{enumerate}
 
-                \item \textbf{Fase:} Indica a defasagem do sinal representada por $\varphi$;
-            \end{enumerate}
-
-        \subsection{Fasores}
-            \paragraph{Definição}Conversão de equações periódicas em \textbf{Equações Fasoriais}, isto é, equações que envolvam números complexos para representar um comportamento periódico como descrito pela seguinte equação:
-                \begin{figure}[H]
-                    \centering
-                    \begin{tikzpicture}
-                        \begin{axis}[
-                            xmin = 0, xmax = 5.25, % Axis Coordenates
-                            ymin = 0, ymax = 5.25, % Axis Coordenates
-                            xlabel = {$\mathbb{R}$},  % Axis Labels
-                            ylabel = {$\mathbb{I}$},  % Axis Labels
-                            xtick = {4.25},  % Axis Ticks Potions
-                            ytick = {4.25},  % Axis Ticks Potions
-                            xticklabels = {$V_{R}$}, % Axis Ticks Labels
-                            yticklabels = {$V_{I}$}, % Axis Ticks Labels
-                            x label style = {at={(axis cs:{5.5,0})}, anchor=west},
-                            y label style = {at={(axis cs:{0,5.5})}, anchor=south, rotate=-90},
-                            width  = 5.0cm,
-                            height = 5.0cm,
-                            axis lines = left,
-                        ]
-                        \draw [red!60, -{Latex[round]}] (1.5,0) arc [
-                            start angle = 0,
-                            end angle   = 45,
-                            radius      = 1.5
-                        ] node [midway, right] {$\theta^{\circ}$};
-                
-                        \draw[-{Latex[round]}] (axis cs:{0,0}) -- (axis cs:{4.25,4.25}) node [above right] {$V_{M}$};
-                
-                        \draw[gray, dashed] (axis cs:{4.25,0}) -- (axis cs:{4.25,4.25});
-                        \draw[gray, dashed] (axis cs:{0,4.25}) -- (axis cs:{4.25,4.25});
-                        \end{axis}
-                    \end{tikzpicture}
-                    \caption{Represenação Fasores}
-                \end{figure}\noindent
-                \begin{equation}
-                    \boxed{
-                        V(t) := V_{M}\phase{\theta^{\circ}}
-                    }
-                \end{equation}
-            Onde:
-                \begin{enumerate}
-                    \item \textbf{Módulo:} $V_{M}$, Representa a \texttt{Tensão Máxima} do sinal obtido pela seguinte equação:
-                        \begin{equation*}
-                            \boxed{
-                                V_{M} = \sqrt{
-                                    V_{\text{I}}^{2} + V_{\text{R}}^{2}
-                                }
-                            }
-                        \end{equation*}
-                    Onde:
-                        \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
-                            \item \texttt{Parcela Imaginária:} $V_{\text{I}}$;
-
-                            \item \texttt{Parcela Real:} $V_{\text{R}}$;
-                        \end{enumerate}
-
-
-                    \item \textbf{Ciclo:} Características da equação:
-                        \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
-                            \item \texttt{Frequência:} $\omega$, Constante a todos os componentes do circuito;
-                        \end{enumerate}
-
-                    \item \textbf{Fase:} Indica a defasagem do sinal representada por $\theta$ obtido pela seguinte equação:
-                        \begin{equation*}
-                            \boxed{
-                                \theta^{\circ} = \tan^{-1}
-                                \left(
-                                    \frac{V_{\text{I}}}{V_{\text{R}}}
-                                \right)
-                            }
-                            \quad
-                            \text{onde}
-                            \quad
-                            \begin{cases}
-                                \theta < 0, & \text{\texttt{Atrasado}, Fase Capacitiva}\\
-                                \theta > 0, & \text{\texttt{Adiantado}, Fase Indutiva}
-                            \end{cases}
-                        \end{equation*}
-                \end{enumerate}
-
-            \begin{multicols}{2}
-                \raggedcolumns
-                \subsubsection{Multiplicação}
-                    \paragraph{Definição}Seja $V_{1}(t) = V_{1} \phase{\theta_{1}^{\circ}}$ e $V_{2}(t) = V_{2} \phase{\theta_{2}^{\circ}}$ então a multiplicação será obtida pela seguinte equação:
-                        \begin{equation}
-                            \boxed{
-                                V_{1}(t) \cdot V_{2}(t) = 
-                                (V_{1} \cdot V_{2})\phase{(\theta_{1} + \theta_{2})^{\circ}}
-                            }
-                        \end{equation}
-
-                \columnbreak
-
-                \subsubsection{Divisão}
-                    \paragraph{Definição}Seja $V_{1}(t) = V_{1} \phase{\theta_{1}^{\circ}}$ e $V_{2}(t) = V_{2} \phase{\theta_{2}^{\circ}}$ então a multiplicação será obtida pela seguinte equação:
-                        \begin{equation}
-                            \boxed{
-                                \frac{V_{1}(t)}{V_{2}(t)} = 
-                                \frac{V_{1}}{V_{2}} \phase{(\theta_{1} - \theta_{2})^{\circ}}
-                            }
-                        \end{equation}
-            \end{multicols}
-
-        \subsection{Transformada de Componentes}
-            \paragraph{Definição}Substituir as equações que descrevem cada componente empregada em um \textbf{Circuito Periódico} através apenas de sua amplitude e sua fase. Nesta transformação o circuito resultante será puramente resistivo com componentes reais e imaginárias e obedecerá às \textbf{Leis de Kirchhoff}.
-                \begin{table}[H]
-                    \centering
-                    \begingroup
-                    % \setlength{\tabcolsep}{5mm}
-                    \renewcommand{\arraystretch}{1.25}
-                    \begin{tabular}[]{lll}
-                                  & Equação Periódica                  & Equação Fasorial\\\hline
-                        Resistor  & $v_{R}(t) = R\;i_{R}(t)$           & $V_{R}(t) = R\;I_{R}(t)$\\[2.5mm]
-                        Capacitor & $i_{C}(t) = C\;\diff{v_{C}(t)}{t}$ & $V_{C}(t) = \frac{1}{j\omega C}\;I_{C}(t)$\\[2.5mm]
-                        Indutor   & $v_{L}(t) = L\;\diff{i_{L}(t)}{t}$ & $V_{L}(s) = j\omega L\;I_{L}(t)$\\[2.5mm]\hline
-                    \end{tabular}
-                    \endgroup
-                    \caption{Transformadas de Fasorial de Componentes}\label{table:FasorialComponents}
-                \end{table} \noindent
-
-        \subsection{Potência}
-            \paragraph{Definição}Seja um sistema com uma fonte $v(t) = V_{M}\cos(\omega t)$ e $i(t) = I_{M}\cos(\omega t)$ então a potência instantânea será dada pela seguinte equação:
-                \begin{equation}
-                    p(t) = 
-                    R\;i(t)^{2} = 
-                    R\;I_{M}^{2}\cos^{2}(\omega t) = 
-                    \boxed{
-                        \frac{R I_{M}^{2}}{2}(1 + \cos(2\omega t))
-                    }
-                \end{equation}
-            Nota-se que a potência instantânea oscila com o dobro da frequência em torno de um valor constante.
-
-            \subsubsection{Potência Média}
-                \paragraph{Definição}Potência fornecida durante um ciclo $T$ de oscilação da equação periódica obtida pela seguinte equação:
-                    \begin{equation}
-                        \bar{p} = 
-                        \frac{1}{T} \int_{t}^{t+T} p(t)\;\text{d}t = 
+                \item \textbf{Fase:} Indica a defasagem do sinal representada por $\theta$ obtido pela seguinte equação:
+                    \begin{equation*}
                         \boxed{
-                            \frac{V_{M}\;I_{M}}{2} \cos(\theta)
-                        }
-                    \end{equation}
-                Onde:
-                    \begin{enumerate}
-                        \item \textbf{Fase da Carga:} $\theta$, Representando o impedância geral pelo componente analísado:
-                            \begin{equation*}
-                                \theta = 
-                                \begin{cases}
-                                    -90^{\circ}, & \text{se carga Capacitiva}\\
-                                      0^{\circ}, & \text{se carga Resistiva}\\
-                                    +90^{\circ}, & \text{se carga Indutiva}\\
-                                \end{cases}
-                            \end{equation*}
-                    \end{enumerate}
-                Desta forma define-se como valores eficazes de sinais periódicas os valores necessários em sinais contínuos para que haja a mesma entrega de potência média em um resistor obtidos pela seguinte equação:
-                    \begin{equation}
-                        \boxed{V_{\text{ef}} = \frac{V_{M}}{\sqrt{2}}}
-                        \qquad
-                        \boxed{I_{\text{ef}} = \frac{I_{M}}{\sqrt{2}}}
-                    \end{equation}
-
-            \subsubsection{Potência Complexa}
-                \paragraph{Definição}Potência total consumida por um componente qualquer em um circuito fasorial poderá ser complexa e poderá ser obtida pela seguinte equação:
-                    \begin{equation}
-                        \boxed{
-                            S = V_{\text{ef}} \cdot \bar{I}_{\text{ef}} = P + jQ
-                        }
-                    \end{equation}
-                Onde:
-                    \begin{enumerate}
-                        \item \textbf{Potência Ativa:} $P$, parte real da potência;
-                            \begin{enumerate}[noitemsep]
-                                \item \texttt{Carga Resistiva:} Apresenta apenas potência real;
-                            \end{enumerate}
-
-                        \item \textbf{Potência Reativa:} $Q$, parte complexa da potência;
-                            \begin{enumerate}[noitemsep]
-                                \item \texttt{Carga Capacitiva:} Apresenta apenas potência imaginária negaiva;
-                                \item \texttt{Carga Indutiva:} Apresenta apenas potência imaginária positiva;
-                            \end{enumerate}
-                    \end{enumerate}
-
-            \subsubsection{Potência Aparente}
-                \paragraph{Definição}Considera-se que o produto entre os valores eficazes de corrente e tensão representa o \textbf{Potência Aparente} sobre aquele componente como mostrado na equação a seguir:
-                    \begin{equation}
-                        \boxed{p_{\text{ap}} = V_{\text{ef}}\;I_{\text{ef}}}
-                    \end{equation}
-
-            \subsubsection{Fator de Potência}
-                \paragraph{Definição}Relação entre a potência média e a potência aparente como mostrado na equação a seguir:
-                    \begin{equation}
-                        \boxed{
-                            f_{p} = \frac{\bar{p}}{V_{\text{ef}}\;I_{\text{ef}}} = \cos(\theta)
-                        }
-                    \end{equation}
-                Legislação brasileira exige que as cargas nas indústrias tenham um fator de potência mínimo para que atender as demandas de potência elétrica. Desta forma, pode ser necessário ajustar a impedância da carga $Z = R + jI$ com a inserção de uma carga paralela $Z_{i} = j I_{i}$ como mostrado pela seguinte equação:
-                    \begin{equation}
-                        \boxed{
-                            I_{i} = \frac{R^2 + I^2}{R\;\tan(\cos^{-1}(f_{p})) - I}
+                            \theta^{\circ} = \tan^{-1}
+                            \left(
+                                \frac{V_{\text{I}}}{V_{\text{R}}}
+                            \right)
                         }
                         \quad
                         \text{onde}
                         \quad
                         \begin{cases}
-                            I_{i} < 0, & \text{Carga Capacitiva}\\
-                            I_{i} > 0, & \text{Carga Indutiva}
+                            \theta < 0, & \text{\texttt{Atrasado}, Fase Capacitiva}\\
+                            \theta > 0, & \text{\texttt{Adiantado}, Fase Indutiva}
                         \end{cases}
-                    \end{equation}
-                    \begin{example}
-                        Seja $Z = 100 + j100$ com $\omega = 100$ Hz e deseja-se um \textbf{Fator de Potência} $f_{p} = 0.95$. Primeiramente tem-se:
-                            \begin{align*}
-                                Z = 100 + j100 &= 141.4\phase{45^{\circ}}\\
-                                \Aboxed{
-                                    f_{p} &= \cos(45^{\circ}) = 0.707
-                                } & \text{Fator de Potência Inicial}
-                            \end{align*}
-                        Nota-se que $0.707 < 0.95$ logo será necessário inserir uma carga paralela:
-                            \begin{equation*}
-                                I_{i} = \frac{100^2 + 100^2}{100\cdot\tan(\cos^{-1}(0.95)) - 100} = -297.92 \Omega
-                            \end{equation*}
-                        Nota-se que $I_{i} < 0$ trata-se de uma carga Capacitiva desta forma, tem-se: 
-                            \begin{equation*}
-                                I_{i} = -\frac{1}{\omega\;C}
-                                \qquad
-                                \boxed{
-                                    C = - \frac{1}{\omega\;I_{i}} = 33,6 \mu F
-                                }
-                            \end{equation*}
-                    \end{example}
+                    \end{equation*}
+            \end{enumerate}
 
-    \section{Circuitos Trifásicos}
+        \begin{multicols}{2}
+            \raggedcolumns
+            \subsubsection{Multiplicação}
+                \paragraph{Definição}Seja $V_{1}(t) = V_{1} \phase{\theta_{1}^{\circ}}$ e $V_{2}(t) = V_{2} \phase{\theta_{2}^{\circ}}$ então a multiplicação será obtida pela seguinte equação:
+                    \begin{equation}
+                        \boxed{
+                            V_{1}(t) \cdot V_{2}(t) = 
+                            (V_{1} \cdot V_{2})\phase{(\theta_{1} + \theta_{2})^{\circ}}
+                        }
+                    \end{equation}
+
+            \columnbreak
+
+            \subsubsection{Divisão}
+                \paragraph{Definição}Seja $V_{1}(t) = V_{1} \phase{\theta_{1}^{\circ}}$ e $V_{2}(t) = V_{2} \phase{\theta_{2}^{\circ}}$ então a multiplicação será obtida pela seguinte equação:
+                    \begin{equation}
+                        \boxed{
+                            \frac{V_{1}(t)}{V_{2}(t)} = 
+                            \frac{V_{1}}{V_{2}} \phase{(\theta_{1} - \theta_{2})^{\circ}}
+                        }
+                    \end{equation}
+        \end{multicols}
+
+    \subsection{Transformada de Componentes}
+        \paragraph{Definição}Substituir as equações que descrevem cada componente empregada em um \textbf{Circuito Periódico} através apenas de sua amplitude e sua fase. Nesta transformação o circuito resultante será puramente resistivo com componentes reais e imaginárias e obedecerá às \textbf{Leis de Kirchhoff}.
+            \begin{table}[H]
+                \centering
+                \begingroup
+                % \setlength{\tabcolsep}{5mm}
+                \renewcommand{\arraystretch}{1.25}
+                \begin{tabular}[]{lll}
+                                & Equação Periódica                  & Equação Fasorial\\\hline
+                    Resistor  & $v_{R}(t) = R\;i_{R}(t)$           & $V_{R}(t) = R\;I_{R}(t)$\\[2.5mm]
+                    Capacitor & $i_{C}(t) = C\;\diff{v_{C}(t)}{t}$ & $V_{C}(t) = \frac{1}{j\omega C}\;I_{C}(t)$\\[2.5mm]
+                    Indutor   & $v_{L}(t) = L\;\diff{i_{L}(t)}{t}$ & $V_{L}(s) = j\omega L\;I_{L}(t)$\\[2.5mm]\hline
+                \end{tabular}
+                \endgroup
+                \caption{Transformadas de Fasorial de Componentes}\label{table:FasorialComponents}
+            \end{table} \noindent
+
+    \subsection{Potência}
+        \paragraph{Definição}Seja um sistema com uma fonte $v(t) = V_{M}\cos(\omega t)$ e $i(t) = I_{M}\cos(\omega t)$ então a potência instantânea será dada pela seguinte equação:
+            \begin{equation}
+                p(t) = 
+                R\;i(t)^{2} = 
+                R\;I_{M}^{2}\cos^{2}(\omega t) = 
+                \boxed{
+                    \frac{R I_{M}^{2}}{2}(1 + \cos(2\omega t))
+                }
+            \end{equation}
+        Nota-se que a potência instantânea oscila com o dobro da frequência em torno de um valor constante.
+
+        \subsubsection{Potência Média}
+            \paragraph{Definição}Potência fornecida durante um ciclo $T$ de oscilação da equação periódica obtida pela seguinte equação:
+                \begin{equation}
+                    \bar{p} = 
+                    \frac{1}{T} \int_{t}^{t+T} p(t)\;\text{d}t = 
+                    \boxed{
+                        \frac{V_{M}\;I_{M}}{2} \cos(\theta)
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}
+                    \item \textbf{Fase da Carga:} $\theta$, Representando o impedância geral pelo componente analísado:
+                        \begin{equation*}
+                            \theta = 
+                            \begin{cases}
+                                -90^{\circ}, & \text{se carga Capacitiva}\\
+                                    0^{\circ}, & \text{se carga Resistiva}\\
+                                +90^{\circ}, & \text{se carga Indutiva}\\
+                            \end{cases}
+                        \end{equation*}
+                \end{enumerate}
+            Desta forma define-se como valores eficazes de sinais periódicas os valores necessários em sinais contínuos para que haja a mesma entrega de potência média em um resistor obtidos pela seguinte equação:
+                \begin{equation}
+                    \boxed{V_{\text{ef}} = \frac{V_{M}}{\sqrt{2}}}
+                    \qquad
+                    \boxed{I_{\text{ef}} = \frac{I_{M}}{\sqrt{2}}}
+                \end{equation}
+
+        \subsubsection{Potência Complexa}
+            \paragraph{Definição}Potência total consumida por um componente qualquer em um circuito fasorial poderá ser complexa e poderá ser obtida pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        S = V_{\text{ef}} \cdot \bar{I}_{\text{ef}} = P + jQ
+                    }
+                \end{equation}
+            Onde:
+                \begin{enumerate}
+                    \item \textbf{Potência Ativa:} $P$, parte real da potência;
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Carga Resistiva:} Apresenta apenas potência real;
+                        \end{enumerate}
+
+                    \item \textbf{Potência Reativa:} $Q$, parte complexa da potência;
+                        \begin{enumerate}[noitemsep]
+                            \item \texttt{Carga Capacitiva:} Apresenta apenas potência imaginária negaiva;
+                            \item \texttt{Carga Indutiva:} Apresenta apenas potência imaginária positiva;
+                        \end{enumerate}
+                \end{enumerate}
+
+        \subsubsection{Potência Aparente}
+            \paragraph{Definição}Considera-se que o produto entre os valores eficazes de corrente e tensão representa o \textbf{Potência Aparente} sobre aquele componente como mostrado na equação a seguir:
+                \begin{equation}
+                    \boxed{p_{\text{ap}} = V_{\text{ef}}\;I_{\text{ef}}}
+                \end{equation}
+
+        \subsubsection{Fator de Potência}
+            \paragraph{Definição}Relação entre a potência média e a potência aparente como mostrado na equação a seguir:
+                \begin{equation}
+                    \boxed{
+                        f_{p} = \frac{\bar{p}}{V_{\text{ef}}\;I_{\text{ef}}} = \cos(\theta)
+                    }
+                \end{equation}
+            Legislação brasileira exige que as cargas nas indústrias tenham um fator de potência mínimo para que atender as demandas de potência elétrica. Desta forma, pode ser necessário ajustar a impedância da carga $Z = R + jI$ com a inserção de uma carga paralela $Z_{i} = j I_{i}$ como mostrado pela seguinte equação:
+                \begin{equation}
+                    \boxed{
+                        I_{i} = \frac{R^2 + I^2}{R\;\tan(\cos^{-1}(f_{p})) - I}
+                    }
+                    \quad
+                    \text{onde}
+                    \quad
+                    \begin{cases}
+                        I_{i} < 0, & \text{Carga Capacitiva}\\
+                        I_{i} > 0, & \text{Carga Indutiva}
+                    \end{cases}
+                \end{equation}
+                \begin{example}
+                    Seja $Z = 100 + j100$ com $\omega = 100$ Hz e deseja-se um \textbf{Fator de Potência} $f_{p} = 0.95$. Primeiramente tem-se:
+                        \begin{align*}
+                            Z = 100 + j100 &= 141.4\phase{45^{\circ}}\\
+                            \Aboxed{
+                                f_{p} &= \cos(45^{\circ}) = 0.707
+                            } & \text{Fator de Potência Inicial}
+                        \end{align*}
+                    Nota-se que $0.707 < 0.95$ logo será necessário inserir uma carga paralela:
+                        \begin{equation*}
+                            I_{i} = \frac{100^2 + 100^2}{100\cdot\tan(\cos^{-1}(0.95)) - 100} = -297.92 \Omega
+                        \end{equation*}
+                    Nota-se que $I_{i} < 0$ trata-se de uma carga Capacitiva desta forma, tem-se: 
+                        \begin{equation*}
+                            I_{i} = -\frac{1}{\omega\;C}
+                            \qquad
+                            \boxed{
+                                C = - \frac{1}{\omega\;I_{i}} = 33,6 \mu F
+                            }
+                        \end{equation*}
+                \end{example}
+
+\section{Circuitos Trifásicos}
+    \begin{definition}
+        Utilização de estruturas com três fases para produção e transmissão de energia elétrica, contornando assim as vibrações causadas pela natureza oscilatória dos sinais.
+    \end{definition}
+
+    \subsection{Sistemas Monofásicos}
         \begin{definition}
-            Utilização de estruturas com três fases para produção e transmissão de energia elétrica, contornando assim as vibrações causadas pela natureza oscilatória dos sinais.
+            Dispositivos alimentados por fontes de tensão com a mesma fase usualmente representados pela seguinte figura:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}[american]
+                        \draw
+                        (-2,-2) coordinate (pb)
+                                to[sV=$v_{BN}$]++(0,2) coordinate (nn)
+                                to[sV=$v_{AN}$]++(0,2) coordinate (pa)
+                                
+                        (pa)node[left] {$a$}
+                        (nn)node[left] {$n$}
+                        (pb)node[left] {$b$}
+                
+                        ( 2,-2) coordinate (pB)
+                                to[R=$Z_{A}$] ++(0,2) coordinate (nN)
+                                to[R=$Z_{B}$] ++(0,2) coordinate (pA)
+                
+                        (pA)node[right] {$A$}
+                        (nN)node[right] {$N$}
+                        (pB)node[right] {$B$}
+                
+                        (pa)to[short, f=$I_{aA}$] (pA)
+                        (nn)to[short, f=$I_{nN}$, *-*] (nN)
+                        (pb)to[short, f=$I_{bB}$] (pB);
+                    \end{circuitikz} 
+                    \caption{Representação Circuito Monofásico}
+                \end{figure} \noindent
+            Onde:
+                \begin{equation}
+                    \boxed{v_{AN}(t)=V_{A}\phase{\omega^{\circ}}\text{ V}_{ef}}
+                    \qquad
+                    \boxed{v_{BN}(t)=V_{B}\phase{\omega^{\circ}}\text{ V}_{ef}}
+                \end{equation}
+            Nota-se que, usualmente, as tensões apresentadas serão eficazes.
+        \end{definition}\noindent
+        \begin{theorem}
+            Quando estes sistemas estiverem conectados a cargas de mesma impedância considera-se que estas são \textbf{Carga Equilibradas} como representado abaixo:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}[american]
+                        \draw
+                        (-2,-2) coordinate (pb)
+                                to[sV=$v_{BN}$]++(0,2) coordinate (nn)
+                                to[sV=$v_{AN}$]++(0,2) coordinate (pa)
+                                
+                        (pa)node[left] {$a$}
+                        (nn)node[left] {$n$}
+                        (pb)node[left] {$b$}
+                
+                        ( 2,-2) coordinate (pB)
+                                to[R=$Z$] ++(0,2) coordinate (nN)
+                                to[R=$Z$] ++(0,2) coordinate (pA)
+                
+                        (pA)node[right] {$A$}
+                        (nN)node[right] {$N$}
+                        (pB)node[right] {$B$}
+                
+                        (pa)to[short, f=$I_{aA}$] (pA)
+                        (nn)to[short, f=$I_{nN}$, *-*] (nN)
+                        (pb)to[short, f=$I_{bB}$] (pB);
+                    \end{circuitikz}
+                    \caption{Representação Circuito Monofásico Equilibrado}
+                \end{figure} \noindent
+            Neste caso, não haverá corrente no ramo neutro, implicando $\boxed{I_{nN} = 0}$.
+        \end{theorem}
+
+    \subsection{Sistemas Trifásicos}
+        \begin{definition}
+            Dispositivos alimentados por fontes de tensão com $120^{\circ}$ de variação entre fases consecutivas usualmente rerpresentados pela seguinte figura:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}[american]
+                        \draw
+                
+                        (0, 0)  coordinate (neutro)
+                
+                        (neutro)to[sV_=$v_{AN}$] (  90:2) coordinate (phaseA)
+                        (neutro)to[sV_=$v_{BN}$] ( -30:2) coordinate (phaseB)
+                        (neutro)to[sV_=$v_{CN}$] (-150:2) coordinate (phaseC)
+                
+                        (neutro)to[short, *-o] ++(2.5,0)
+                                node[right] {$N$}
+                
+                        (phaseA)to[short, -o] ++(3,0)
+                                node[right] {$A$}
+                
+                        (phaseB)to[short, -o] ++(1.25,0)
+                                node[right] {$B$}
+                
+                        (phaseC)to[short] ++(0,-1)
+                                to[short, -o] ++(4.75,0)
+                                node[right] {$C$};
+                    \end{circuitikz}
+                    \caption{Representação Circuito Trifásico}
+                \end{figure} \noindent
+            Onde:
+                \begin{equation}
+                    \boxed{v_{AN}(t) = V_{P}\phase{   0^{\circ}}\text{ V}_{ef}}
+                    \qquad
+                    \boxed{v_{BN}(t) = V_{P}\phase{-120^{\circ}}\text{ V}_{ef}}
+                    \qquad
+                    \boxed{v_{CN}(t) = V_{P}\phase{+120^{\circ}}\text{ V}_{ef}}
+                \end{equation}
+            Nota-se que, usualmente, as tensões apresentadas serão eficazes.
         \end{definition}
 
-        \subsection{Sistemas Monofásicos}
-            \begin{definition}
-                Dispositivos alimentados por fontes de tensão com a mesma fase usualmente representados pela seguinte figura:
-                    \begin{figure}[H]
-                        \centering
-                        \begin{circuitikz}
-                            \ctikzset{component text=left}[american]
-                            \draw
-                            (-2,-2) coordinate (pb)
-                                    to[sV=$v_{BN}$]++(0,2) coordinate (nn)
-                                    to[sV=$v_{AN}$]++(0,2) coordinate (pa)
-                                    
-                            (pa)node[left] {$a$}
-                            (nn)node[left] {$n$}
-                            (pb)node[left] {$b$}
-                    
-                            ( 2,-2) coordinate (pB)
-                                    to[R=$Z_{A}$] ++(0,2) coordinate (nN)
-                                    to[R=$Z_{B}$] ++(0,2) coordinate (pA)
-                    
-                            (pA)node[right] {$A$}
-                            (nN)node[right] {$N$}
-                            (pB)node[right] {$B$}
-                    
-                            (pa)to[short, f=$I_{aA}$] (pA)
-                            (nn)to[short, f=$I_{nN}$, *-*] (nN)
-                            (pb)to[short, f=$I_{bB}$] (pB);
-                        \end{circuitikz} 
-                        \caption{Representação Circuito Monofásico}
-                    \end{figure} \noindent
-                Onde:
-                    \begin{equation}
-                        \boxed{v_{AN}(t)=V_{A}\phase{\omega^{\circ}}\text{ V}_{ef}}
-                        \qquad
-                        \boxed{v_{BN}(t)=V_{B}\phase{\omega^{\circ}}\text{ V}_{ef}}
-                    \end{equation}
-                Nota-se que, usualmente, as tensões apresentadas serão eficazes.
-            \end{definition}\noindent
-            \begin{theorem}
-                Quando estes sistemas estiverem conectados a cargas de mesma impedância considera-se que estas são \textbf{Carga Equilibradas} como representado abaixo:
-                    \begin{figure}[H]
-                        \centering
-                        \begin{circuitikz}
-                            \ctikzset{component text=left}[american]
-                            \draw
-                            (-2,-2) coordinate (pb)
-                                    to[sV=$v_{BN}$]++(0,2) coordinate (nn)
-                                    to[sV=$v_{AN}$]++(0,2) coordinate (pa)
-                                    
-                            (pa)node[left] {$a$}
-                            (nn)node[left] {$n$}
-                            (pb)node[left] {$b$}
-                    
-                            ( 2,-2) coordinate (pB)
-                                    to[R=$Z$] ++(0,2) coordinate (nN)
-                                    to[R=$Z$] ++(0,2) coordinate (pA)
-                    
-                            (pA)node[right] {$A$}
-                            (nN)node[right] {$N$}
-                            (pB)node[right] {$B$}
-                    
-                            (pa)to[short, f=$I_{aA}$] (pA)
-                            (nn)to[short, f=$I_{nN}$, *-*] (nN)
-                            (pb)to[short, f=$I_{bB}$] (pB);
-                        \end{circuitikz}
-                        \caption{Representação Circuito Monofásico Equilibrado}
-                    \end{figure} \noindent
-                Neste caso, não haverá corrente no ramo neutro, implicando $\boxed{I_{nN} = 0}$.
-            \end{theorem}
-
-        \subsection{Sistemas Trifásicos}
-            \begin{definition}
-                Dispositivos alimentados por fontes de tensão com $120^{\circ}$ de variação entre fases consecutivas usualmente rerpresentados pela seguinte figura:
-                    \begin{figure}[H]
-                        \centering
-                        \begin{circuitikz}
-                            \ctikzset{component text=left}[american]
-                            \draw
-                    
-                            (0, 0)  coordinate (neutro)
-                    
-                            (neutro)to[sV_=$v_{AN}$] (  90:2) coordinate (phaseA)
-                            (neutro)to[sV_=$v_{BN}$] ( -30:2) coordinate (phaseB)
-                            (neutro)to[sV_=$v_{CN}$] (-150:2) coordinate (phaseC)
-                    
-                            (neutro)to[short, *-o] ++(2.5,0)
-                                    node[right] {$N$}
-                    
-                            (phaseA)to[short, -o] ++(3,0)
-                                    node[right] {$A$}
-                    
-                            (phaseB)to[short, -o] ++(1.25,0)
-                                    node[right] {$B$}
-                    
-                            (phaseC)to[short] ++(0,-1)
-                                    to[short, -o] ++(4.75,0)
-                                    node[right] {$C$};
-                        \end{circuitikz}
-                        \caption{Representação Circuito Trifásico}
-                    \end{figure} \noindent
-                Onde:
-                    \begin{equation}
-                        \boxed{v_{AN}(t) = V_{P}\phase{   0^{\circ}}\text{ V}_{ef}}
-                        \qquad
-                        \boxed{v_{BN}(t) = V_{P}\phase{-120^{\circ}}\text{ V}_{ef}}
-                        \qquad
-                        \boxed{v_{CN}(t) = V_{P}\phase{+120^{\circ}}\text{ V}_{ef}}
-                    \end{equation}
-                Nota-se que, usualmente, as tensões apresentadas serão eficazes.
-            \end{definition}
-
-        \subsubsection{Tensão de Linha}
-            \begin{definition}
-                Considera-se que o primeiro nó como \textbf{referência} da Tensão de Linha zero, o segundo nó como fase \textbf{menos} $120^{\circ}$ e o terceiro nó como fase \textbf{mais} $120^{\circ}$ como representado no seguinte diagrama fasorial:
-                    \begin{figure}[H]
-                        \centering
-                        \begin{tikzpicture}
-                            \begin{axis}[
-                                xmin = -8.25, xmax = 8.25, % Axis Coordenates
-                                ymin = -8.25, ymax = 8.25, % Axis Coordenates
-                                xlabel = {$\mathbb{R}$},  % Axis Labels
-                                ylabel = {$\mathbb{I}$},  % Axis Labels
-                                ticks = none,
-                                xtick = {},  % Axis Ticks Potions
-                                ytick = {},  % Axis Ticks Potions
-                                xticklabels = {}, % Axis Ticks Labels
-                                yticklabels = {}, % Axis Ticks Labels
-                                x label style = {at={(axis cs:{8,0})}, anchor=east},
-                                y label style = {at={(axis cs:{0,8})}, anchor=north, rotate=-90},
-                                width  = 8.0cm,
-                                height = 8.0cm,
-                                axis lines = center,
-                            ]
-                            \draw [black, -{Latex[round]}] (1.5,0) arc [
-                                start angle = 0,
-                                end angle   = 120,
-                                radius      = 1.5
-                            ];
-                            \node[text width = 1cm] at (2,2) {$+120^{\circ}$};
-                    
-                            \draw [black, -{Latex[round]}] (1.5,0) arc [
-                                start angle = 0,
-                                end angle   = -120,
-                                radius      = 1.5
-                            ];
-                            \node[text width = 1cm] at (2,-2) {$-120^{\circ}$};
-                    
-                            \draw[blue!60, -{Latex[round]}] (0,0) -- (   0:6) node [below]      {$v_{AN}$};
-                            \draw[blue!60, -{Latex[round]}] (0,0) -- (-120:6) node [below left] {$v_{BN}$};
-                            \draw[blue!60, -{Latex[round]}] (0,0) -- (+120:6) node [above left] {$v_{CN}$};
-                            \end{axis}
-                        \end{tikzpicture}
-                        \caption{Represenação Fasorial Tensões de Linha}
-                    \end{figure}\noindent
-                Considera-se que a alimentação estará \textbf{Equilibrada} se todas as tensões de linha apresentarem o mesmo pico.
-            \end{definition}
-
-        \subsubsection{Tensão entre Fases}
-            \begin{definition}
-                Representa a diferença entre as Tensões de Fases representado geometricamente pelo seguinte diagrama fasorial:
-                    \begin{figure}[H]
-                        \centering
-                        \begin{tikzpicture}
-                            \begin{axis}[
-                                xmin = -8.25, xmax = 8.25, % Axis Coordenates
-                                ymin = -8.25, ymax = 8.25, % Axis Coordenates
-                                xlabel = {$\mathbb{R}$},  % Axis Labels
-                                ylabel = {$\mathbb{I}$},  % Axis Labels
-                                ticks = none,
-                                xtick = {},  % Axis Ticks Potions
-                                ytick = {},  % Axis Ticks Potions
-                                xticklabels = {}, % Axis Ticks Labels
-                                yticklabels = {}, % Axis Ticks Labels
-                                x label style = {at={(axis cs:{8,0})}, anchor=east},
-                                y label style = {at={(axis cs:{0,8})}, anchor=north, rotate=-90},
-                                width  = 8.0cm,
-                                height = 8.0cm,
-                                axis lines = center,
-                            ]
-                            \draw [black, -{Latex[round]}] (1.5,0) arc [
-                                start angle = 0,
-                                end angle   = 30,
-                                radius      = 1.5
-                            ];
-                            \node[text width = 1cm] at (3.25,0.75) {$30^{\circ}$};
-                    
-                            \draw[gray, -{Latex[round]}] (0,0) -- (   0:4) node [black, below]      {$v_{an}$};
-                            \draw[gray, -{Latex[round]}] (0,0) -- (-120:4) node [black, below left] {$v_{bn}$};
-                            \draw[gray, -{Latex[round]}] (0,0) -- (+120:4) node [black, above left] {$v_{cn}$};
-                    
-                            \draw[blue!60, -{Latex[round]}] (0,0) -- (+ 30:6.93) node [black, above right]{$v_{ab}$};
-                            \draw[blue!60, -{Latex[round]}] (0,0) -- (- 90:6.93) node [black, below left] {$v_{bc}$};
-                            \draw[blue!60, -{Latex[round]}] (0,0) -- (+150:6.93) node [black, above left] {$v_{ca}$};
-                            \end{axis}
-                        \end{tikzpicture}
-                        \caption{Represenação Fasorial Tensões entre Fases}
-                    \end{figure}\noindent
-                Onde:
-                    \begin{equation}
-                        \boxed{v_{ab}(t) = \sqrt{3}V_{P}\phase{  30^{\circ}}\text{ V}_{ef}}
-                        \qquad
-                        \boxed{v_{bc}(t) = \sqrt{3}V_{P}\phase{- 90^{\circ}}\text{ V}_{ef}}
-                        \qquad
-                        \boxed{v_{ca}(t) = \sqrt{3}V_{P}\phase{+150^{\circ}}\text{ V}_{ef}}
-                    \end{equation}
-                Convenciona-se que os subescritos representam a ordem da diferença de tensão. Logo $v_{ab} = v_{an} - v_{bn}$. Nota-se, também, que, usualmente, as tensões apresentadas serão eficazes.
-            \end{definition}
-
-        \subsubsection{Conexão Y-Y}
-            \begin{definition}
-                Organização do sistema em que há ponto neutro entre as cargas como representado pela seguinte figura:
-                    \begin{figure}[H]
-                        \centering
-                        \begin{circuitikz}
-                            \ctikzset{component text=left}[american]
-                            \draw
-                            (-3, 0)  coordinate (nn)
-                    
-                            (nn)to[sV_=$v_{AN}$] ++(  90:2) coordinate (pa)
-                            (nn)to[sV_=$v_{BN}$] ++( -30:2)
-                                to[short]        ++(0,-2)   coordinate (pb)
-                            (nn)to[sV_=$v_{CN}$] ++(-150:2)
-                                to[short]        ++(0,-1)   coordinate (pc)
-                    
-                            (nn)node[below] {$n$}
-                            (pa)node[left] {$a$}
-                            (pb)node[below] {$b$}
-                            (pc)node[left] {$c$}
-                    
-                    
-                            ( 3, 0)  coordinate (nN)
-                    
-                            (nN)to[R, l=$Z_{A}$] ++(  90:2) coordinate (pA)
-                            (nN)to[R, l=$Z_{B}$] ++( -30:2)
-                                to[short]    ++(0,-2)   coordinate (pB)
-                            (nN)to[R, l=$Z_{C}$] ++(-150:2)
-                                to[short]    ++(0,-1)   coordinate (pC)
-                    
-                            (nN)node[below] {$N$}
-                            (pA)node[above] {$A$}
-                            (pB)node[below] {$B$}
-                            (pC)node[right] {$C$}
-                    
-                            (nn)to[short, *-*, f=$I_{nN}$] (nN)
-                            (pa)to[short, f=$I_{aA}$] (pA)
-                            (pb)to[short, f_=$I_{bB}$] (pB)
-                            (pc)to[short, f_=$I_{cC}$] (pC)
-                            ;
-                        \end{circuitikz}
-                        \caption{Representação Conexão Y-Y}
-                    \end{figure}
-            \end{definition}
-            \begin{theorem}
-                Quando estes sistemas estiverem conectados a cargas de mesma impedância considera-se que estas são \textbf{Cargas Equilibradas} como representado abaixo:
-                    \begin{figure}[H]
-                        \centering
-                        \begin{circuitikz}
-                            \ctikzset{component text=left}[american]
-                            \draw
-                            (-3, 0)  coordinate (nn)
-                    
-                            (nn)to[sV_=$v_{AN}$] ++(  90:2) coordinate (pa)
-                            (nn)to[sV_=$v_{BN}$] ++( -30:2)
-                                to[short]        ++(0,-2)   coordinate (pb)
-                            (nn)to[sV_=$v_{CN}$] ++(-150:2)
-                                to[short]        ++(0,-1)   coordinate (pc)
-                    
-                            (nn)node[below] {$n$}
-                            (pa)node[left] {$a$}
-                            (pb)node[below] {$b$}
-                            (pc)node[left] {$c$}
-                    
-                    
-                            ( 3, 0)  coordinate (nN)
-                    
-                            (nN)to[R, l=$Z$] ++(  90:2) coordinate (pA)
-                            (nN)to[R, l=$Z$] ++( -30:2)
-                                to[short]    ++(0,-2)   coordinate (pB)
-                            (nN)to[R, l=$Z$] ++(-150:2)
-                                to[short]    ++(0,-1)   coordinate (pC)
-                    
-                            (nN)node[below] {$N$}
-                            (pA)node[above] {$A$}
-                            (pB)node[below] {$B$}
-                            (pC)node[right] {$C$}
-                    
-                            (nn)to[short, *-*, f=$I_{nN}$] (nN)
-                            (pa)to[short, f=$I_{aA}$] (pA)
-                            (pb)to[short, f_=$I_{bB}$] (pB)
-                            (pc)to[short, f_=$I_{cC}$] (pC)
-                            ;
-                        \end{circuitikz}
-                        \caption{Representação Conexão Y-Y}
-                    \end{figure}
-                Neste caso, não haverá corrente no ramo neutro, implicando $\boxed{I_{nN} = 0}$. Demais correntes podem ser obtidas através das seguintes equações:
-                    \begin{equation}
-                        \boxed{I_{aA} = \frac{v_{an}}{|Z|}\phase{-\theta^{\circ}}\text{ A}_{ef}}
-                        \quad
-                        \boxed{I_{bB} = \frac{v_{bn}}{|Z|}\phase{(-120-\theta)^{\circ}}\text{ A}_{ef}}
-                        \quad
-                        \boxed{I_{cC} = \frac{v_{cn}}{|Z|}\phase{(+120-\theta)^{\circ}}\text{ A}_{ef}}
-                    \end{equation}
-                Onde:
-                    \begin{equation*}
-                        \boxed{Z = |Z|\phase{\theta^{\circ}}}
-                    \end{equation*}
-            \end{theorem}
-            \begin{definition}
-                Nesta configuração a potência média entregue por cada fase será obtida pela seguinte equação:
-                    \begin{equation}
-                        \boxed{P_{p} = V_{p}I_{p}\cos(\theta)}
-                    \end{equation}
-                Desta forma, potência total entregue pelo sistema trifásico será obtida pela seguinte equação:
-                    \begin{equation}
-                        \boxed{P = 3P_{p}}
-                    \end{equation}
-                Nota-se que as componentes oscilatórias se anulam, gerando uma potência total constante.
-            \end{definition}
-\newpage
-
-        \subsubsection{Conexão Y-$\Delta$}
-            \begin{definition}
-                Organização do sistema em que não há ponto neutro entre as cargas como representado pela seguinte figura:
-                    \begin{figure}[H]
-                        \centering
-                        \begin{circuitikz}
-                            \ctikzset{component text=left}[american]
-                            \draw
-                            (-3, 0)  coordinate (pn)
-                    
-                            (pn)to[sV_=$v_{AN}$] ++(  90:2) coordinate (pa)
-                            (pn)to[sV_=$v_{BN}$] ++( -30:2) coordinate (pb)
-                            (pn)to[sV_=$v_{CN}$] ++(-150:2)
-                                to[short]        ++(0,-1)   coordinate (pc)
-                    
-                            (pn)node[below] {$n$}
-                            (pa)node[left] {$a$}
-                            (pb)node[below left] {$b$}
-                            (pc)node[left] {$c$}
-                    
-                    
-                            ( 3, 2) coordinate (pN)
-                                    to[R, l=$Z_{C}$] ++( -60:3.4641) coordinate (pC)
-                                    to[R, l=$Z_{B}$] ++(-180:3.4641) coordinate (pB)
-                                    to[R, l=$Z_{A}$] ++( +60:3.4641) coordinate (pA)
-                            (pC)to[short] ++(0,-1) coordinate (pC)
-                    
-                            (pA)node[above right] {$A$}
-                            (pB)node[below right] {$B$}
-                            (pC)node[right] {$C$}
-                    
-                            (pa)to[short, f=$I_{aA}$] (pA)
-                            (pb)to[short, f_=$I_{bB}$] (pB)
-                            (pc)to[short, f_=$I_{cC}$] (pC)
-                            ;
-                        \end{circuitikz}
-                        \caption{Representação Conexão Y-D}
-                    \end{figure}
-            \end{definition}
-            \begin{theorem}
-                Quando estes sistemas estiverem conectados a cargas de mesma impedância considera-se que estas são \textbf{Cargas Equilibradas} como representado abaixo:
-                    \begin{figure}[H]
-                        \centering
-                        \begin{circuitikz}
-                            \ctikzset{component text=left}[american]
-                            \draw
-                            (-3, 0)  coordinate (pn)
-                    
-                            (pn)to[sV_=$v_{an}$] ++(  90:2) coordinate (pa)
-                            (pn)to[sV_=$v_{bn}$] ++( -30:2) coordinate (pb)
-                            (pn)to[sV_=$v_{cn}$] ++(-150:2)
-                                to[short]        ++(0,-1)   coordinate (pc)
-                    
-                            (pn)node[below] {$n$}
-                            (pa)node[above] {$a$}
-                            (pb)node[below] {$b$}
-                            (pc)node[below] {$c$}
-                    
-                    
-                            ( 3, 2) coordinate (pN)
-                                    to[R, l=$Z$, f<=$I_{CA}$, *-*] ++( -60:3.4641) coordinate (pC)
-                                    to[R, l=$Z$, f<=$I_{BC}$, *-*] ++(-180:3.4641) coordinate (pB)
-                                    to[R, l=$Z$, f<=$I_{AB}$, *-*] ++( +60:3.4641) coordinate (pA)
-                            (pC)to[short] ++(0,-1) coordinate (pC)
-                    
-                            (pA)node[above] {$A$}
-                            (pB)node[below] {$B$}
-                            (pC)node[below] {$C$}
-                    
-                            (pa)to[short, f=$I_{aA}$] (pA)
-                            (pb)to[short, f_=$I_{bB}$] (pB)
-                            (pc)to[short, f_=$I_{cC}$] (pC)
-                            ;
-                        \end{circuitikz}
-                        \caption{Representação Conexão Y-D}
-                    \end{figure}
-                Neste caso as cargas estão conectadas entre duas tensões de linha e portanto as tensões entre fases devem ser consideradas para obter as correntes sobre as cargas obtidas através das seguintes equações:
-                    \begin{equation}
-                        \boxed{I_{AB} = I_{Z}\phase( 30-\theta^{\circ})\text{A}_{ef}}
-                        \quad
-                        \boxed{I_{BC} = I_{Z}\phase(-90-\theta^{\circ})\text{A}_{ef}}
-                        \quad
-                        \boxed{I_{CA} = I_{Z}\phase(150-\theta^{\circ})\text{A}_{ef}}
-                    \end{equation}
-                Onde:
-                    \begin{equation*}
-                        \boxed{I_{Z} = \frac{V_{p}\sqrt{3}}{|Z|}}
-                        \qquad
-                        \text{onde:}
-                        \quad
-                        Z = |Z|\phase{\theta^{\circ}}
-                    \end{equation*}
-                Neste caso as correntes de linha serão obtidas pelas seguintes equações:
-                    \begin{equation}
-                        \boxed{I_{aA} = \sqrt{3}I_{Z}\phase{(-\theta)^{\circ}}}
-                        \quad
-                        \boxed{I_{bB} = \sqrt{3}I_{Z}\phase{(-120-\theta)^{\circ}}}
-                        \quad
-                        \boxed{I_{cC} = \sqrt{3}I_{Z}\phase{(+120-\theta)^{\circ}}}
-                    \end{equation}
-            \end{theorem}
-\newpage
-
-        \subsubsection{Transformação Y-$\Delta$}
-            \begin{definition}
-                Configurações são passíveis de transformações perservando equivalência de acordo com as necessidades do circuito como ilustrado pelas equações abaixo:
-                    \begin{equation}
-                        \boxed{Z_{AB} = \frac{Z_{a}\;Z_{b}}{Z_{a} + Z_{b} + Z_{c}}}
-                        \quad
-                        \boxed{Z_{BC} = \frac{Z_{b}\;Z_{c}}{Z_{a} + Z_{b} + Z_{c}}}
-                        \quad
-                        \boxed{Z_{CA} = \frac{Z_{c}\;Z_{a}}{Z_{a} + Z_{b} + Z_{c}}}
-                    \end{equation}
-            \end{definition}
-
-        \subsubsection{Transformação $\Delta$-Y}
-            \begin{definition}
-                Configurações são passíveis de transformações perservando equivalência de acordo com as necessidades do circuito como ilustrado pelas equações abaixo:
-                    \begin{equation}
-                        \boxed{Z_{A} = \frac{Z_{AB}\;Z_{CA}}{Z_{AB} + Z_{BC} + Z_{CA}}}
-                        \quad
-                        \boxed{Z_{B} = \frac{Z_{BC}\;Z_{AB}}{Z_{AB} + Z_{BC} + Z_{CA}}}
-                        \quad
-                        \boxed{Z_{C} = \frac{Z_{CA}\;Z_{BC}}{Z_{AB} + Z_{BC} + Z_{CA}}}
-                    \end{equation}
-            \end{definition}
-
-    \subsection{Componentes Simétricas}
+    \subsubsection{Tensão de Linha}
         \begin{definition}
-            Durante análise de Sistemas Trifásicos desequilibrados considera-se componentes em condições de simetria para facilitar análise como mostrado nas seguintes equações:
+            Considera-se que o primeiro nó como \textbf{referência} da Tensão de Linha zero, o segundo nó como fase \textbf{menos} $120^{\circ}$ e o terceiro nó como fase \textbf{mais} $120^{\circ}$ como representado no seguinte diagrama fasorial:
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin = -8.25, xmax = 8.25, % Axis Coordenates
+                            ymin = -8.25, ymax = 8.25, % Axis Coordenates
+                            xlabel = {$\mathbb{R}$},  % Axis Labels
+                            ylabel = {$\mathbb{I}$},  % Axis Labels
+                            ticks = none,
+                            xtick = {},  % Axis Ticks Potions
+                            ytick = {},  % Axis Ticks Potions
+                            xticklabels = {}, % Axis Ticks Labels
+                            yticklabels = {}, % Axis Ticks Labels
+                            x label style = {at={(axis cs:{8,0})}, anchor=east},
+                            y label style = {at={(axis cs:{0,8})}, anchor=north, rotate=-90},
+                            width  = 8.0cm,
+                            height = 8.0cm,
+                            axis lines = center,
+                        ]
+                        \draw [black, -{Latex[round]}] (1.5,0) arc [
+                            start angle = 0,
+                            end angle   = 120,
+                            radius      = 1.5
+                        ];
+                        \node[text width = 1cm] at (2,2) {$+120^{\circ}$};
+                
+                        \draw [black, -{Latex[round]}] (1.5,0) arc [
+                            start angle = 0,
+                            end angle   = -120,
+                            radius      = 1.5
+                        ];
+                        \node[text width = 1cm] at (2,-2) {$-120^{\circ}$};
+                
+                        \draw[blue!60, -{Latex[round]}] (0,0) -- (   0:6) node [below]      {$v_{AN}$};
+                        \draw[blue!60, -{Latex[round]}] (0,0) -- (-120:6) node [below left] {$v_{BN}$};
+                        \draw[blue!60, -{Latex[round]}] (0,0) -- (+120:6) node [above left] {$v_{CN}$};
+                        \end{axis}
+                    \end{tikzpicture}
+                    \caption{Represenação Fasorial Tensões de Linha}
+                \end{figure}\noindent
+            Considera-se que a alimentação estará \textbf{Equilibrada} se todas as tensões de linha apresentarem o mesmo pico.
+        \end{definition}
+
+    \subsubsection{Tensão entre Fases}
+        \begin{definition}
+            Representa a diferença entre as Tensões de Fases representado geometricamente pelo seguinte diagrama fasorial:
+                \begin{figure}[H]
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin = -8.25, xmax = 8.25, % Axis Coordenates
+                            ymin = -8.25, ymax = 8.25, % Axis Coordenates
+                            xlabel = {$\mathbb{R}$},  % Axis Labels
+                            ylabel = {$\mathbb{I}$},  % Axis Labels
+                            ticks = none,
+                            xtick = {},  % Axis Ticks Potions
+                            ytick = {},  % Axis Ticks Potions
+                            xticklabels = {}, % Axis Ticks Labels
+                            yticklabels = {}, % Axis Ticks Labels
+                            x label style = {at={(axis cs:{8,0})}, anchor=east},
+                            y label style = {at={(axis cs:{0,8})}, anchor=north, rotate=-90},
+                            width  = 8.0cm,
+                            height = 8.0cm,
+                            axis lines = center,
+                        ]
+                        \draw [black, -{Latex[round]}] (1.5,0) arc [
+                            start angle = 0,
+                            end angle   = 30,
+                            radius      = 1.5
+                        ];
+                        \node[text width = 1cm] at (3.25,0.75) {$30^{\circ}$};
+                
+                        \draw[gray, -{Latex[round]}] (0,0) -- (   0:4) node [black, below]      {$v_{an}$};
+                        \draw[gray, -{Latex[round]}] (0,0) -- (-120:4) node [black, below left] {$v_{bn}$};
+                        \draw[gray, -{Latex[round]}] (0,0) -- (+120:4) node [black, above left] {$v_{cn}$};
+                
+                        \draw[blue!60, -{Latex[round]}] (0,0) -- (+ 30:6.93) node [black, above right]{$v_{ab}$};
+                        \draw[blue!60, -{Latex[round]}] (0,0) -- (- 90:6.93) node [black, below left] {$v_{bc}$};
+                        \draw[blue!60, -{Latex[round]}] (0,0) -- (+150:6.93) node [black, above left] {$v_{ca}$};
+                        \end{axis}
+                    \end{tikzpicture}
+                    \caption{Represenação Fasorial Tensões entre Fases}
+                \end{figure}\noindent
+            Onde:
                 \begin{equation}
-                    \boxed{I_{a} = I_{a^{(+)}} + I_{a^{(-)}} + I_{a^{(0)}}}
+                    \boxed{v_{ab}(t) = \sqrt{3}V_{P}\phase{  30^{\circ}}\text{ V}_{ef}}
+                    \qquad
+                    \boxed{v_{bc}(t) = \sqrt{3}V_{P}\phase{- 90^{\circ}}\text{ V}_{ef}}
+                    \qquad
+                    \boxed{v_{ca}(t) = \sqrt{3}V_{P}\phase{+150^{\circ}}\text{ V}_{ef}}
+                \end{equation}
+            Convenciona-se que os subescritos representam a ordem da diferença de tensão. Logo $v_{ab} = v_{an} - v_{bn}$. Nota-se, também, que, usualmente, as tensões apresentadas serão eficazes.
+        \end{definition}
+
+    \subsubsection{Conexão Y-Y}
+        \begin{definition}
+            Organização do sistema em que há ponto neutro entre as cargas como representado pela seguinte figura:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}[american]
+                        \draw
+                        (-3, 0)  coordinate (nn)
+                
+                        (nn)to[sV_=$v_{AN}$] ++(  90:2) coordinate (pa)
+                        (nn)to[sV_=$v_{BN}$] ++( -30:2)
+                            to[short]        ++(0,-2)   coordinate (pb)
+                        (nn)to[sV_=$v_{CN}$] ++(-150:2)
+                            to[short]        ++(0,-1)   coordinate (pc)
+                
+                        (nn)node[below] {$n$}
+                        (pa)node[left] {$a$}
+                        (pb)node[below] {$b$}
+                        (pc)node[left] {$c$}
+                
+                
+                        ( 3, 0)  coordinate (nN)
+                
+                        (nN)to[R, l=$Z_{A}$] ++(  90:2) coordinate (pA)
+                        (nN)to[R, l=$Z_{B}$] ++( -30:2)
+                            to[short]    ++(0,-2)   coordinate (pB)
+                        (nN)to[R, l=$Z_{C}$] ++(-150:2)
+                            to[short]    ++(0,-1)   coordinate (pC)
+                
+                        (nN)node[below] {$N$}
+                        (pA)node[above] {$A$}
+                        (pB)node[below] {$B$}
+                        (pC)node[right] {$C$}
+                
+                        (nn)to[short, *-*, f=$I_{nN}$] (nN)
+                        (pa)to[short, f=$I_{aA}$] (pA)
+                        (pb)to[short, f_=$I_{bB}$] (pB)
+                        (pc)to[short, f_=$I_{cC}$] (pC)
+                        ;
+                    \end{circuitikz}
+                    \caption{Representação Conexão Y-Y}
+                \end{figure}
+        \end{definition}
+        \begin{theorem}
+            Quando estes sistemas estiverem conectados a cargas de mesma impedância considera-se que estas são \textbf{Cargas Equilibradas} como representado abaixo:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}[american]
+                        \draw
+                        (-3, 0)  coordinate (nn)
+                
+                        (nn)to[sV_=$v_{AN}$] ++(  90:2) coordinate (pa)
+                        (nn)to[sV_=$v_{BN}$] ++( -30:2)
+                            to[short]        ++(0,-2)   coordinate (pb)
+                        (nn)to[sV_=$v_{CN}$] ++(-150:2)
+                            to[short]        ++(0,-1)   coordinate (pc)
+                
+                        (nn)node[below] {$n$}
+                        (pa)node[left] {$a$}
+                        (pb)node[below] {$b$}
+                        (pc)node[left] {$c$}
+                
+                
+                        ( 3, 0)  coordinate (nN)
+                
+                        (nN)to[R, l=$Z$] ++(  90:2) coordinate (pA)
+                        (nN)to[R, l=$Z$] ++( -30:2)
+                            to[short]    ++(0,-2)   coordinate (pB)
+                        (nN)to[R, l=$Z$] ++(-150:2)
+                            to[short]    ++(0,-1)   coordinate (pC)
+                
+                        (nN)node[below] {$N$}
+                        (pA)node[above] {$A$}
+                        (pB)node[below] {$B$}
+                        (pC)node[right] {$C$}
+                
+                        (nn)to[short, *-*, f=$I_{nN}$] (nN)
+                        (pa)to[short, f=$I_{aA}$] (pA)
+                        (pb)to[short, f_=$I_{bB}$] (pB)
+                        (pc)to[short, f_=$I_{cC}$] (pC)
+                        ;
+                    \end{circuitikz}
+                    \caption{Representação Conexão Y-Y}
+                \end{figure}
+            Neste caso, não haverá corrente no ramo neutro, implicando $\boxed{I_{nN} = 0}$. Demais correntes podem ser obtidas através das seguintes equações:
+                \begin{equation}
+                    \boxed{I_{aA} = \frac{v_{an}}{|Z|}\phase{-\theta^{\circ}}\text{ A}_{ef}}
                     \quad
-                    \boxed{I_{b} = I_{b^{(+)}} + I_{b^{(-)}} + I_{b^{(0)}}}
+                    \boxed{I_{bB} = \frac{v_{bn}}{|Z|}\phase{(-120-\theta)^{\circ}}\text{ A}_{ef}}
                     \quad
-                    \boxed{I_{c} = I_{c^{(+)}} + I_{c^{(-)}} + I_{c^{(0)}}}
+                    \boxed{I_{cC} = \frac{v_{cn}}{|Z|}\phase{(+120-\theta)^{\circ}}\text{ A}_{ef}}
                 \end{equation}
             Onde:
                 \begin{equation*}
-                    I_{a^{(0)}} = I_{b^{(0)}} = I_{c^{(0)}}
+                    \boxed{Z = |Z|\phase{\theta^{\circ}}}
                 \end{equation*}
-                \begin{align}
-                    I_{b^{(+)}} &= I_{a^{(+)}}\cdot\text{e}^{-j120^{\circ}} & I_{b^{(-)}} = I_{a^{(-)}}\cdot\text{e}^{+j120^{\circ}}\nonumber\\
-                    I_{c^{(+)}} &= I_{a^{(+)}}\cdot\text{e}^{+j120^{\circ}} & I_{c^{(-)}} = I_{a^{(-)}}\cdot\text{e}^{-j120^{\circ}}\nonumber
-                \end{align}
-        \end{definition}
-
-    \subsubsection{Matriz de Transformação}
+        \end{theorem}
         \begin{definition}
-            Simplificação de notação para conversão em Componentes Simétricas como representado pela seguinte equação:
+            Nesta configuração a potência média entregue por cada fase será obtida pela seguinte equação:
                 \begin{equation}
-                    \boxed{
-                        \begin{bmatrix}
-                            I_{a}\\
-                            I_{b}\\
-                            I_{c}
-                        \end{bmatrix}
-                        = 
-                        \underbrace{
-                            \begin{bmatrix}
-                                1 & 1 & 1\\
-                                \alpha^{2} & \alpha     & 1\\
-                                \alpha     & \alpha^{2} & 1\\
-                            \end{bmatrix}
-                        }_{\text{T}}
-                        \times 
-                        \begin{bmatrix}
-                            I_{a_{(+)}}\\
-                            I_{a_{(-)}}\\
-                            I_{a_{(0)}}
-                        \end{bmatrix}
-                    }
-                    \qquad
-                    \text{onde:}
-                    \quad
-                    \alpha = \text{e}^{+j120^{\circ}}
+                    \boxed{P_{p} = V_{p}I_{p}\cos(\theta)}
                 \end{equation}
-        \end{definition}
-
-    \subsubsection{Matriz de Transformação Inversa}
-        \begin{definition}
-            Simplificação de notação para conversão em Componentes Simétricas como representado pela seguinte equação:
+            Desta forma, potência total entregue pelo sistema trifásico será obtida pela seguinte equação:
                 \begin{equation}
-                    \boxed{
-                        \text{T}^{-1}
-                        = \frac{1}{3}
-                        \begin{bmatrix}
-                            1 & \alpha     & \alpha^{2}\\
-                            1 & \alpha^{2} & \alpha\\
-                            1 & 1 & 1\\
-                        \end{bmatrix}
-                    }
-                    \qquad
-                    \text{onde:}
-                    \quad
-                    \alpha = \text{e}^{+j120^{\circ}}
+                    \boxed{P = 3P_{p}}
                 \end{equation}
+            Nota-se que as componentes oscilatórias se anulam, gerando uma potência total constante.
         \end{definition}
+\newpage
 
-    \section{Quadripolos}
+    \subsubsection{Conexão Y-$\Delta$}
         \begin{definition}
-            Dispositivos que apresentam dois pares de terminais que adotam a convenção apresentada na seguinte figura:
-            \begin{figure}[H]
-                \centering
-                    \begin{circuitikz}[american]
-                        \tikzset{quad/.style={draw, thick, minimum height=20mm, minimum width=10mm}}
-                        \node[quad] (A) at (0,0) {Quadripolo};
+            Organização do sistema em que não há ponto neutro entre as cargas como representado pela seguinte figura:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}[american]
                         \draw
-                            ($(A.north west)!.25!(A.west)$) coordinate (I11)
-                            ($(A.south west)!.25!(A.west)$) coordinate (I12)
-                            ($(A.north east)!.25!(A.east)$) coordinate (I21)
-                            ($(A.south east)!.25!(A.east)$) coordinate (I22)
-
-                            (I11)   to[short, f<_=$I_{1}$, -o]  ++(-1.5,0) coordinate (O11)
-                            (I12)   to[short,-o]                ++(-1.5,0) coordinate (O12)
-                            (I21)   to[short, f<=$I_{2}$,-o]    ++(+1.5,0) coordinate (O21)
-                            (I22)   to[short,-o]                ++(+1.5,0) coordinate (O22)
-                            ;
-
-                        \draw (O11) to[open, v=$V_{1}$] (O12);
-                        \draw (O21) to[open, v=$V_{2}$] (O22);
+                        (-3, 0)  coordinate (pn)
+                
+                        (pn)to[sV_=$v_{AN}$] ++(  90:2) coordinate (pa)
+                        (pn)to[sV_=$v_{BN}$] ++( -30:2) coordinate (pb)
+                        (pn)to[sV_=$v_{CN}$] ++(-150:2)
+                            to[short]        ++(0,-1)   coordinate (pc)
+                
+                        (pn)node[below] {$n$}
+                        (pa)node[left] {$a$}
+                        (pb)node[below left] {$b$}
+                        (pc)node[left] {$c$}
+                
+                
+                        ( 3, 2) coordinate (pN)
+                                to[R, l=$Z_{C}$] ++( -60:3.4641) coordinate (pC)
+                                to[R, l=$Z_{B}$] ++(-180:3.4641) coordinate (pB)
+                                to[R, l=$Z_{A}$] ++( +60:3.4641) coordinate (pA)
+                        (pC)to[short] ++(0,-1) coordinate (pC)
+                
+                        (pA)node[above right] {$A$}
+                        (pB)node[below right] {$B$}
+                        (pC)node[right] {$C$}
+                
+                        (pa)to[short, f=$I_{aA}$] (pA)
+                        (pb)to[short, f_=$I_{bB}$] (pB)
+                        (pc)to[short, f_=$I_{cC}$] (pC)
+                        ;
                     \end{circuitikz}
-                \caption{Representação Quadripolos}
-                \label{im:quadripolos}
-            \end{figure}\noindent
+                    \caption{Representação Conexão Y-D}
+                \end{figure}
+        \end{definition}
+        \begin{theorem}
+            Quando estes sistemas estiverem conectados a cargas de mesma impedância considera-se que estas são \textbf{Cargas Equilibradas} como representado abaixo:
+                \begin{figure}[H]
+                    \centering
+                    \begin{circuitikz}
+                        \ctikzset{component text=left}[american]
+                        \draw
+                        (-3, 0)  coordinate (pn)
+                
+                        (pn)to[sV_=$v_{an}$] ++(  90:2) coordinate (pa)
+                        (pn)to[sV_=$v_{bn}$] ++( -30:2) coordinate (pb)
+                        (pn)to[sV_=$v_{cn}$] ++(-150:2)
+                            to[short]        ++(0,-1)   coordinate (pc)
+                
+                        (pn)node[below] {$n$}
+                        (pa)node[above] {$a$}
+                        (pb)node[below] {$b$}
+                        (pc)node[below] {$c$}
+                
+                
+                        ( 3, 2) coordinate (pN)
+                                to[R, l=$Z$, f<=$I_{CA}$, *-*] ++( -60:3.4641) coordinate (pC)
+                                to[R, l=$Z$, f<=$I_{BC}$, *-*] ++(-180:3.4641) coordinate (pB)
+                                to[R, l=$Z$, f<=$I_{AB}$, *-*] ++( +60:3.4641) coordinate (pA)
+                        (pC)to[short] ++(0,-1) coordinate (pC)
+                
+                        (pA)node[above] {$A$}
+                        (pB)node[below] {$B$}
+                        (pC)node[below] {$C$}
+                
+                        (pa)to[short, f=$I_{aA}$] (pA)
+                        (pb)to[short, f_=$I_{bB}$] (pB)
+                        (pc)to[short, f_=$I_{cC}$] (pC)
+                        ;
+                    \end{circuitikz}
+                    \caption{Representação Conexão Y-D}
+                \end{figure}
+            Neste caso as cargas estão conectadas entre duas tensões de linha e portanto as tensões entre fases devem ser consideradas para obter as correntes sobre as cargas obtidas através das seguintes equações:
+                \begin{equation}
+                    \boxed{I_{AB} = I_{Z}\phase( 30-\theta^{\circ})\text{A}_{ef}}
+                    \quad
+                    \boxed{I_{BC} = I_{Z}\phase(-90-\theta^{\circ})\text{A}_{ef}}
+                    \quad
+                    \boxed{I_{CA} = I_{Z}\phase(150-\theta^{\circ})\text{A}_{ef}}
+                \end{equation}
             Onde:
-                \begin{align}
-                    V_{1} &= Z_{11}I_{1} + Z_{12}I_{2} \qquad \text{onde:}\quad Z_{11} = \frac{V_1}{I_1}\quad\text{e}\quad Z_{12} = \frac{V_1}{I_2}\\[1.5mm]
-                    V_{2} &= Z_{21}I_{1} + Z_{22}I_{2} \qquad \text{onde:}\quad Z_{21} = \frac{V_2}{I_1}\quad\text{e}\quad Z_{22} = \frac{V_2}{I_2}
-                \end{align}
+                \begin{equation*}
+                    \boxed{I_{Z} = \frac{V_{p}\sqrt{3}}{|Z|}}
+                    \qquad
+                    \text{onde:}
+                    \quad
+                    Z = |Z|\phase{\theta^{\circ}}
+                \end{equation*}
+            Neste caso as correntes de linha serão obtidas pelas seguintes equações:
+                \begin{equation}
+                    \boxed{I_{aA} = \sqrt{3}I_{Z}\phase{(-\theta)^{\circ}}}
+                    \quad
+                    \boxed{I_{bB} = \sqrt{3}I_{Z}\phase{(-120-\theta)^{\circ}}}
+                    \quad
+                    \boxed{I_{cC} = \sqrt{3}I_{Z}\phase{(+120-\theta)^{\circ}}}
+                \end{equation}
+        \end{theorem}
+\newpage
+
+    \subsubsection{Transformação Y-$\Delta$}
+        \begin{definition}
+            Configurações são passíveis de transformações perservando equivalência de acordo com as necessidades do circuito como ilustrado pelas equações abaixo:
+                \begin{equation}
+                    \boxed{Z_{AB} = \frac{Z_{a}\;Z_{b}}{Z_{a} + Z_{b} + Z_{c}}}
+                    \quad
+                    \boxed{Z_{BC} = \frac{Z_{b}\;Z_{c}}{Z_{a} + Z_{b} + Z_{c}}}
+                    \quad
+                    \boxed{Z_{CA} = \frac{Z_{c}\;Z_{a}}{Z_{a} + Z_{b} + Z_{c}}}
+                \end{equation}
         \end{definition}
 
-    \subsection{Configuração $Y$}
-        \begin{theorem}
-            Configuração $Y$ do sistema como representado na seguinte figura:
-            \begin{figure}[H]
-                \centering
-                    \begin{circuitikz}[american]
-                        \tikzset{quad/.style={draw, thick, dashed, minimum height=20mm, minimum width=40mm}}
-                        \node[quad] (A) at (0,0) {};
-                        \draw   
-                            ($(A.north west)!.25!(A.west)$) coordinate (I11)
-                            ($(A.south west)!.25!(A.west)$) coordinate (I12)
-                            ($(A.north east)!.25!(A.east)$) coordinate (I21)
-                            ($(A.south east)!.25!(A.east)$) coordinate (I22)
+    \subsubsection{Transformação $\Delta$-Y}
+        \begin{definition}
+            Configurações são passíveis de transformações perservando equivalência de acordo com as necessidades do circuito como ilustrado pelas equações abaixo:
+                \begin{equation}
+                    \boxed{Z_{A} = \frac{Z_{AB}\;Z_{CA}}{Z_{AB} + Z_{BC} + Z_{CA}}}
+                    \quad
+                    \boxed{Z_{B} = \frac{Z_{BC}\;Z_{AB}}{Z_{AB} + Z_{BC} + Z_{CA}}}
+                    \quad
+                    \boxed{Z_{C} = \frac{Z_{CA}\;Z_{BC}}{Z_{AB} + Z_{BC} + Z_{CA}}}
+                \end{equation}
+        \end{definition}
 
-                            (I11)   to[short, f<_=$I_{1}$, -o]  ++(-1.5,0) coordinate (O11)
-                            (I12)   to[short,-o]                ++(-1.5,0) coordinate (O12)
-                            (I21)   to[short, f<=$I_{2}$,-o]    ++(+1.5,0) coordinate (O21)
-                            (I22)   to[short,-o]                ++(+1.5,0) coordinate (O22)
+\subsection{Componentes Simétricas}
+    \begin{definition}
+        Durante análise de Sistemas Trifásicos desequilibrados considera-se componentes em condições de simetria para facilitar análise como mostrado nas seguintes equações:
+            \begin{equation}
+                \boxed{I_{a} = I_{a^{(+)}} + I_{a^{(-)}} + I_{a^{(0)}}}
+                \quad
+                \boxed{I_{b} = I_{b^{(+)}} + I_{b^{(-)}} + I_{b^{(0)}}}
+                \quad
+                \boxed{I_{c} = I_{c^{(+)}} + I_{c^{(-)}} + I_{c^{(0)}}}
+            \end{equation}
+        Onde:
+            \begin{equation*}
+                I_{a^{(0)}} = I_{b^{(0)}} = I_{c^{(0)}}
+            \end{equation*}
+            \begin{align}
+                I_{b^{(+)}} &= I_{a^{(+)}}\cdot\text{e}^{-j120^{\circ}} & I_{b^{(-)}} = I_{a^{(-)}}\cdot\text{e}^{+j120^{\circ}}\nonumber\\
+                I_{c^{(+)}} &= I_{a^{(+)}}\cdot\text{e}^{+j120^{\circ}} & I_{c^{(-)}} = I_{a^{(-)}}\cdot\text{e}^{-j120^{\circ}}\nonumber
+            \end{align}
+    \end{definition}
 
-                            (I11)   to[R, l =$Z_1$]  ++(+2,0)
-                            (I21)   to[R, l_=$Z_2$]  ++(-2,0)
-                                    to[R, l=$Z_3$, *-*] ++(0,-1.5)
-                            (I22)   to[short] (I12)
+\subsubsection{Matriz de Transformação}
+    \begin{definition}
+        Simplificação de notação para conversão em Componentes Simétricas como representado pela seguinte equação:
+            \begin{equation}
+                \boxed{
+                    \begin{bmatrix}
+                        I_{a}\\
+                        I_{b}\\
+                        I_{c}
+                    \end{bmatrix}
+                    = 
+                    \underbrace{
+                        \begin{bmatrix}
+                            1 & 1 & 1\\
+                            \alpha^{2} & \alpha     & 1\\
+                            \alpha     & \alpha^{2} & 1\\
+                        \end{bmatrix}
+                    }_{\text{T}}
+                    \times 
+                    \begin{bmatrix}
+                        I_{a_{(+)}}\\
+                        I_{a_{(-)}}\\
+                        I_{a_{(0)}}
+                    \end{bmatrix}
+                }
+                \qquad
+                \text{onde:}
+                \quad
+                \alpha = \text{e}^{+j120^{\circ}}
+            \end{equation}
+    \end{definition}
 
-                            ;
+\subsubsection{Matriz de Transformação Inversa}
+    \begin{definition}
+        Simplificação de notação para conversão em Componentes Simétricas como representado pela seguinte equação:
+            \begin{equation}
+                \boxed{
+                    \text{T}^{-1}
+                    = \frac{1}{3}
+                    \begin{bmatrix}
+                        1 & \alpha     & \alpha^{2}\\
+                        1 & \alpha^{2} & \alpha\\
+                        1 & 1 & 1\\
+                    \end{bmatrix}
+                }
+                \qquad
+                \text{onde:}
+                \quad
+                \alpha = \text{e}^{+j120^{\circ}}
+            \end{equation}
+    \end{definition}
 
-                        \draw (O11) to[open, v=$V_{1}$] (O12);
-                        \draw (O21) to[open, v=$V_{2}$] (O22);
-                    \end{circuitikz}
-                \caption{Representação Quadripolos Y}
-                \label{im:quadripolosY}
-            \end{figure}\noindent
-            Onde as Impedâncias são dadas por:
-                \begin{align}
-                    V_{1} &= (Z_1 + Z_3)I_1 + Z_3I_2 \qquad \text{onde:}\quad Z_{11} = \frac{V_1}{I_1} = Z_1 + Z_3 \quad\text{e}\quad Z_{12} = \frac{V_1}{I_2} = Z_3\\[1.5mm]
-                    V_{2} &= Z_3I_1 + (Z_2 + Z_3)I_2 \qquad \text{onde:}\quad Z_{21} = \frac{V_2}{I_1} = Z_3       \quad\text{e}\quad Z_{22} = \frac{V_2}{I_2} = Z_2 + Z_3
-                \end{align}
-            Onde as Admitâncias são dadas por:
-                \begin{align}
-                    I_{1} &= Y_{11}V_1 + Y_{12}V_2 \qquad \text{onde:}\quad Y_{11} = \frac{I_1}{V_1} \quad\text{e}\quad Y_{12} = \frac{I_1}{V_2}\\[1.5mm]
-                    I_{2} &= Y_{21}V_1 + Y_{22}V_2 \qquad \text{onde:}\quad Y_{21} = \frac{I_2}{V_1} \quad\text{e}\quad Y_{22} = \frac{I_2}{V_2}
-                \end{align}
-        \end{theorem}
+\section{Quadripolos}
+\begin{definition}
+    Dispositivos que apresentam dois pares de terminais que adotam a convenção apresentada na seguinte figura:
+    \begin{figure}[H]
+        \centering\begin{circuitikz}[american]
+            \tikzset{quad/.style={draw, thick, minimum height=20mm, minimum width=10mm}}
+            \node[quad] (A) at (0,0) {Quadripolo};
+            \draw
+                ($(A.north west)!.25!(A.west)$) coordinate (I11)
+                ($(A.south west)!.25!(A.west)$) coordinate (I12)
+                ($(A.north east)!.25!(A.east)$) coordinate (I21)
+                ($(A.south east)!.25!(A.east)$) coordinate (I22)
 
-    \subsection{Configuração $\Delta$}
-        \begin{theorem}
-            Configuração $\Delta$ do sistema como representado na seguinte figura:
-            \begin{figure}[H]
-                \centering
-                    \begin{circuitikz}[american]
-                        \tikzset{quad/.style={draw, thick, dashed, minimum height=20mm, minimum width=40mm}}
-                        \node[quad] (A) at (0,0) {};
-                        \draw   
-                            ($(A.north west)!.25!(A.west)$) coordinate (I11)
-                            ($(A.south west)!.25!(A.west)$) coordinate (I12)
-                            ($(A.north east)!.25!(A.east)$) coordinate (I21)
-                            ($(A.south east)!.25!(A.east)$) coordinate (I22)
+                (I11)   to[short, f<_=$I_{1}$, -o]  ++(-1.5,0) coordinate (O11)
+                (I12)   to[short,-o]                ++(-1.5,0) coordinate (O12)
+                (I21)   to[short, f<=$I_{2}$,-o]    ++(+1.5,0) coordinate (O21)
+                (I22)   to[short,-o]                ++(+1.5,0) coordinate (O22)
+                ;
 
-                            (I11)   to[short, f<_=$I_{1}$, -o]  ++(-1.5,0) coordinate (O11)
-                            (I12)   to[short,-o]                ++(-1.5,0) coordinate (O12)
-                            (I21)   to[short, f<=$I_{2}$,-o]    ++(+1.5,0) coordinate (O21)
-                            (I22)   to[short,-o]                ++(+1.5,0) coordinate (O22)
+            \draw (O11) to[open, v=$V_{1}$] (O12);
+            \draw (O21) to[open, v=$V_{2}$] (O22);
+        \end{circuitikz}
+        \caption{Representação Quadripolos}
+        \label{im:quadripolos}
+    \end{figure}\noindent
+    Nesta configuração adota-se as seguintes equações para o \textbf{Modelo de Impedâncias} do quadriopolo:
+    \begin{align}
+        V_{1} &= Z_{11}I_{1} + Z_{12}I_{2}\\[1.5mm]
+        V_{2} &= Z_{21}I_{1} + Z_{22}I_{2}
+    \end{align}
+    Onde:
+    \begin{enumerate}
+        \item $Z_{11}$ e $Z_{22}$ são \textbf{Impedâncias de Entrada} obtidas por:
+        \begin{equation}
+            Z_{11} = \frac{V_1}{I_1}\quad\text{com $I_2 = 0$} \qquad
+            Z_{22} = \frac{V_2}{I_2}\quad\text{com $I_1 = 0$}
+        \end{equation}
 
-                            (I11)   to[R, l =$Y_B$] (I21)
-                            (I11)   ++(+0.5,0)
-                                    to[R, l=$Y_A$, *-*] ++(0,-1.5)
-                            (I21)   ++(-0.5,0)
-                                    to[R, l_=$Y_C$, *-*] ++(0,-1.5)
-                            (I22)   to[short] (I12)
-                            ;
+        \item $Z_{12}$ e $Z_{21}$ são \textbf{Impedâncias de Transferência} obtidas por:
+        \begin{equation}
+            Z_{12} = \frac{V_1}{I_2}\quad\text{com $I_1 = 0$} \qquad
+            Z_{21} = \frac{V_2}{I_1}\quad\text{com $I_2 = 0$}
+        \end{equation}
+    \end{enumerate}
+\end{definition}
+\subsection{Configuração $Y$}
+\begin{theorem}
+    Configuração $Y$ do sistema como representado na seguinte figura:
+    \begin{figure}[H]
+        \centering\begin{circuitikz}[american]
+            \tikzset{quad/.style={draw, thick, dashed, minimum height=20mm, minimum width=40mm}}
+            \node[quad] (A) at (0,0) {};
+            \draw   
+                ($(A.north west)!.25!(A.west)$) coordinate (I11)
+                ($(A.south west)!.25!(A.west)$) coordinate (I12)
+                ($(A.north east)!.25!(A.east)$) coordinate (I21)
+                ($(A.south east)!.25!(A.east)$) coordinate (I22)
 
-                        \draw (O11) to[open, v=$V_{1}$] (O12);
-                        \draw (O21) to[open, v=$V_{2}$] (O22);
-                    \end{circuitikz}
-                \caption{Representação Quadripolos $\Delta$}
-                \label{im:quadripolosD}
-            \end{figure}\noindent
-        \end{theorem}
+                (I11)   to[short, f<_=$I_{1}$, -o]  ++(-1.5,0) coordinate (O11)
+                (I12)   to[short,-o]                ++(-1.5,0) coordinate (O12)
+                (I21)   to[short, f<=$I_{2}$,-o]    ++(+1.5,0) coordinate (O21)
+                (I22)   to[short,-o]                ++(+1.5,0) coordinate (O22)
+
+                (I11)   to[R, l =$Z_1$]  ++(+2,0)
+                (I21)   to[R, l_=$Z_2$]  ++(-2,0)
+                        to[R, l=$Z_3$, *-*] ++(0,-1.5)
+                (I22)   to[short] (I12)
+
+                ;
+
+            \draw (O11) to[open, v=$V_{1}$] (O12);
+            \draw (O21) to[open, v=$V_{2}$] (O22);
+        \end{circuitikz}
+        \caption{Representação Quadripolos Y}
+        \label{im:quadripolosY}
+    \end{figure}\noindent
+    Nesta configuração adota-se as seguintes equações para o \textbf{Modelo de Impedâncias} do quadriopolo:
+    \begin{align}
+        V_{1} &= (Z_1 + Z_3)I_{1} + Z_3I_{2}\\[1.5mm]
+        V_{2} &= Z_3I_{1} + (Z_2 + Z_3)I_{2}
+    \end{align}
+    Onde:
+    \begin{enumerate}
+        \item $Z_{11}$ e $Z_{22}$ são \textbf{Impedâncias de Entrada} obtidas por:
+        \begin{equation}
+            Z_{11} = \frac{V_1}{I_1} = Z_1 + Z_3\quad\text{com $I_2 = 0$} \qquad
+            Z_{22} = \frac{V_2}{I_2} = Z_2 + Z_3\quad\text{com $I_1 = 0$}
+        \end{equation}
+
+        \item $Z_{12}$ e $Z_{21}$ são \textbf{Impedâncias de Transferência} obtidas por:
+        \begin{equation}
+            Z_{12} = \frac{V_1}{I_2} = Z_3\quad\text{com $I_1 = 0$} \qquad
+            Z_{21} = \frac{V_2}{I_1} = Z_3\quad\text{com $I_2 = 0$}
+        \end{equation}
+    \end{enumerate}
+    Nesta configuração adota-se as seguintes equações para o \textbf{Modelo de Admitância} do quadriopolo:
+    \begin{align}
+        I_{1} &= Y_{11}V_{1} + Y_{12}V_{2}\\[1.5mm]
+        I_{2} &= Y_{21}V_{1} + Y_{22}V_{2}
+    \end{align}
+    Onde:
+    \begin{enumerate}
+        \item $Y_{11}$ e $Y_{22}$ são \textbf{Admitância de Entrada} obtidas por:
+        \begin{equation}
+            Y_{11} = \frac{I_1}{V_1}\quad\text{com $V_2 = 0$} \qquad
+            Y_{22} = \frac{I_2}{V_2}\quad\text{com $V_1 = 0$}
+        \end{equation}
+
+        \item $Y_{12}$ e $Y_{21}$ são \textbf{Admitância de Transferência} obtidas por:
+        \begin{equation}
+            Y_{12} = \frac{I_1}{V_2}\quad\text{com $V_1 = 0$} \qquad
+            Y_{21} = \frac{I_2}{V_1}\quad\text{com $V_2 = 0$}
+        \end{equation}
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Configuração $\Delta$}
+\begin{theorem}
+    Configuração $\Delta$ do sistema como representado na seguinte figura:
+    \begin{figure}[H]
+        \centering\begin{circuitikz}[american]
+            \tikzset{quad/.style={draw, thick, dashed, minimum height=20mm, minimum width=40mm}}
+            \node[quad] (A) at (0,0) {};
+            \draw   
+                ($(A.north west)!.25!(A.west)$) coordinate (I11)
+                ($(A.south west)!.25!(A.west)$) coordinate (I12)
+                ($(A.north east)!.25!(A.east)$) coordinate (I21)
+                ($(A.south east)!.25!(A.east)$) coordinate (I22)
+
+                (I11)   to[short, f<_=$I_{1}$, -o]  ++(-1.5,0) coordinate (O11)
+                (I12)   to[short,-o]                ++(-1.5,0) coordinate (O12)
+                (I21)   to[short, f<=$I_{2}$,-o]    ++(+1.5,0) coordinate (O21)
+                (I22)   to[short,-o]                ++(+1.5,0) coordinate (O22)
+
+                (I11)   to[R, l =$Y_B$] (I21)
+                (I11)   ++(+0.5,0)
+                        to[R, l=$Y_A$, *-*] ++(0,-1.5)
+                (I21)   ++(-0.5,0)
+                        to[R, l_=$Y_C$, *-*] ++(0,-1.5)
+                (I22)   to[short] (I12)
+                ;
+
+            \draw (O11) to[open, v=$V_{1}$] (O12);
+            \draw (O21) to[open, v=$V_{2}$] (O22);
+        \end{circuitikz}
+        \caption{Representação Quadripolos $\Delta$}
+        \label{im:quadripolosD}
+    \end{figure}\noindent
+    Nesta configuração adota-se as seguintes equações para o \textbf{Modelo de Admitância} do quadriopolo:
+    \begin{align}
+        I_{1} &= (Y_A + Y_B)V_{1} + Y_BV_{2}\\[1.5mm]
+        I_{2} &= Y_BV_{1} + (Y_B + Y_C)V_{2}
+    \end{align}
+    Onde:
+    \begin{enumerate}
+        \item $Y_{11}$ e $Y_{22}$ são \textbf{Admitância de Entrada} obtidas por:
+        \begin{equation}
+            Y_{11} = \frac{I_1}{V_1} = Y_A + Y_B\quad\text{com $V_2 = 0$} \qquad
+            Y_{22} = \frac{I_2}{V_2} = Y_B + Y_C\quad\text{com $V_1 = 0$}
+        \end{equation}
+
+        \item $Y_{12}$ e $Y_{21}$ são \textbf{Admitância de Transferência} obtidas por:
+        \begin{equation}
+            Y_{12} = \frac{I_1}{V_2} = -Y_B\quad\text{com $V_1 = 0$} \qquad
+            Y_{21} = \frac{I_2}{V_1} = -Y_B\quad\text{com $V_2 = 0$}
+        \end{equation}
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Ganho de Quadripolos}
+\begin{definition}
+    Relações entre entradas e saídas dos dispositivos como representados pelo seguinte diagrama:
+    \begin{figure}[H]
+        \centering\begin{circuitikz}[american]
+            \tikzset{quad/.style={draw, thick, minimum height=20mm, minimum width=10mm}}
+            \node[quad] (A) at (0,0) {Quadripolo};
+            \draw
+                ($(A.north west)!.25!(A.west)$) coordinate (I11)
+                ($(A.south west)!.25!(A.west)$) coordinate (I12)
+                ($(A.north east)!.25!(A.east)$) coordinate (I21)
+                ($(A.south east)!.25!(A.east)$) coordinate (I22)
+
+                (I11)   to[short, f<_=$I_{1}$, -o]  ++(-1.5,0) coordinate (O11)
+                (I12)   to[short,-o]                ++(-1.5,0) coordinate (O12)
+                (I21)   to[short, f<=$I_{2}$,-o]    ++(+1.5,0) coordinate (O21)
+                (I22)   to[short,-o]                ++(+1.5,0) coordinate (O22)
+                ;
+
+            \draw (O11) to[open, v=$V_{1}$] (O12);
+            \draw (O21) to[open, v=$V_{2}$] (O22);
+        \end{circuitikz}
+    \end{figure}\noindent
+    Nesta configuração adota-se \textbf{Ganho de Tensão} como GT obtido pela seguinte equação:
+    \begin{equation}
+        GT = \frac{V_2}{V_1} = \frac{Z_{21}}{Z_{11}}\quad\text{com $I_2 = 0$}
+    \end{equation}
+    Nesta configuração adota-se \textbf{Ganho de Corrente} como GC obtido pela seguinte equação:
+    \begin{equation}
+        GT = \frac{I_2}{I_1} = \frac{Y_{21}}{Y_{11}}\quad\text{com $V_2 = 0$}
+    \end{equation}
+\end{definition}
+\subsubsection{Ganho de Quadripolos com Impedância}
+\begin{theorem}
+    Relações entre entradas e saídas dos dispositivos como representados pelo seguinte diagrama:
+    \begin{figure}[H]
+        \centering\begin{circuitikz}[american]
+            \tikzset{quad/.style={draw, thick, minimum height=20mm, minimum width=10mm}}
+            \node[quad] (A) at (0,0) {Quadripolo};
+            \draw
+                ($(A.north west)!.25!(A.west)$) coordinate (I11)
+                ($(A.south west)!.25!(A.west)$) coordinate (I12)
+                ($(A.north east)!.25!(A.east)$) coordinate (I21)
+                ($(A.south east)!.25!(A.east)$) coordinate (I22)
+
+                (I11)   to[short, f<_=$I_{1}$, -o]  ++(-1,0) coordinate (O11)
+                (I12)   to[short,-o]                ++(-1,0) coordinate (O12)
+                (I21)   to[short, f<=$I_{2}$,-o]    ++(+1,0) coordinate (O21)
+                (I22)   to[short,-o]                ++(+1,0) coordinate (O22)
+                ;
+
+                \draw (O11) to[open, v=$V_{1}$] (O12);
+                \draw (O21) to[open, v=$V_{2}$] (O22);
+
+                \draw
+                (O11)   to[R, l=$Z_G$]   ++(-2,0)
+                        to[sV, v_=$V_G$] ++(0,-1.5)
+                        to[short]        (O12);
+
+                \draw
+                (O21)   to[short] ++(+2,0)
+                        to[R, l=$Z_G$]   ++(0,-1.5)
+                        to[short]        (O22);
+        \end{circuitikz}
+    \end{figure}\noindent
+    Nesta configuração adota-se \textbf{Ganho de Tensão} como GT obtido pela seguinte equação:
+    \begin{equation}
+        GT = \frac{V_2}{V_G} = \frac{Z_{21}Z_C}{(Z_{11} + Z_G)(Z_{22} + Z_C) - Z_{12}Z_{21}}\quad\text{com $I_2 = 0$}
+    \end{equation}
+    Nesta configuração adota-se \textbf{Ganho de Corrente} como GC obtido pela seguinte equação:
+    \begin{equation}
+        GT = \frac{I_2}{I_1} = \frac{-Z_{21}}{Z_{22} + Z_C}\quad\text{com $V_2 = 0$}
+    \end{equation}
+\end{theorem}
 \end{document}
