@@ -1055,7 +1055,7 @@
     \end{enumerate}
 \end{theorem}
 
-\subsection{Configuração $\Delta$}
+\subsubsection{Configuração $\Delta$}
 \begin{theorem}
     Configuração $\Delta$ do sistema como representado na seguinte figura:
     \begin{figure}[H]
@@ -1182,4 +1182,221 @@
         GT = \frac{I_2}{I_1} = \frac{-Z_{21}}{Z_{22} + Z_C}\quad\text{com $V_2 = 0$}
     \end{equation}
 \end{theorem}
+
+\subsection{Associação}
+\subsubsection{Associação em Paralelo}
+\begin{definition}
+    Conexão de Quadripolos compartilhando entradas e saídas como representado pelo seguinte diagrama:
+    \begin{figure}[H]
+        \centering\begin{circuitikz}[american]
+            \tikzset{quad/.style={draw, thick, minimum height=20mm, minimum width=10mm}}
+            \node[quad] (A) at (0,1.5) {Quadripolo A};
+            \draw
+            ($(A.north west)!.25!(A.west)$) coordinate (IA11)
+            ($(A.south west)!.25!(A.west)$) coordinate (IA12)
+            ($(A.north east)!.25!(A.east)$) coordinate (IA21)
+            ($(A.south east)!.25!(A.east)$) coordinate (IA22)
+
+            (IA11)   to[short, f<_=$I_{1A}$, -o] ++(-1,0) coordinate (OA11)
+            (IA12)   to[short,-o]                ++(-1,0) coordinate (OA12)
+            (IA21)   to[short, f<=$I_{2A}$,-o]   ++(+1,0) coordinate (OA21)
+            (IA22)   to[short,-o]                ++(+1,0) coordinate (OA22)
+            ;
+
+            \node[quad] (B) at (0,-1.5) {Quadripolo B};
+            \draw
+            ($(B.north west)!.25!(B.west)$) coordinate (IB11)
+            ($(B.south west)!.25!(B.west)$) coordinate (IB12)
+            ($(B.north east)!.25!(B.east)$) coordinate (IB21)
+            ($(B.south east)!.25!(B.east)$) coordinate (IB22)
+
+            (IB11)   to[short, f<_=$I_{1B}$, -o] ++(-1,0) coordinate (OB11)
+            (IB12)   to[short,-o]                ++(-1,0) coordinate (OB12)
+            (IB21)   to[short, f<=$I_{2B}$,-o]   ++(+1,0) coordinate (OB21)
+            (IB22)   to[short,-o]                ++(+1,0) coordinate (OB22)
+            ;
+
+            \draw
+            (-4.5,+1.5) to[short, f=$I_{1}$, o-*] (-3.5,+1.5) coordinate (V1P)
+            (-4.5,-1.5) to[short, o-*] (-3.5,-1.5) coordinate (V1M)
+
+            (V1P) to[short] (OA11)
+            (V1P) to[short] (OB11)
+            (V1M) to[short] (OA12)
+            (V1M) to[short] (OB12)
+
+            (+4.5,+1.5) to[short, f_=$I_{2}$, o-*] (+3.5,+1.5) coordinate (V2P)
+            (+4.5,-1.5) to[short, o-*] (+3.5,-1.5) coordinate (V2M)
+
+            (V2P) to[short] (OA21)
+            (V2P) to[short] (OB21)
+            (V2M) to[short] (OA22)
+            (V2M) to[short] (OB22)
+
+            (-4.5,+1.5) to[open, v=$V_{1}$] (-4.5,-1.5)
+            (+4.5,+1.5) to[open, v=$V_{2}$] (+4.5,-1.5)
+            ;
+        \end{circuitikz}
+    \end{figure}\noindent
+    Nesta configuração adota-se as seguintes equações para o \textbf{Modelo de Admitância} do quadriopolo:
+    \begin{align}
+        I_{1} &= I_{1A} + I_{1B} = (Y_{11A} + Y_{11B})V_{1} + (Y_{12A} + Y_{12B})V_{2}\\[1.5mm]
+        I_{2} &= I_{2A} + I_{2B} = (Y_{21A} + Y_{21B})V_{1} + (Y_{22A} + Y_{22B})V_{2}
+    \end{align}
+\end{definition}
+
+\subsubsection{Associação em Série}
+\begin{definition}
+    Conexão de Quadripolos em alternância de entradas e saídas como representado pelo seguinte diagrama:
+    \begin{figure}[H]
+        \centering\begin{circuitikz}[american]
+            \tikzset{quad/.style={draw, thick, minimum height=20mm, minimum width=10mm}}
+            \node[quad] (A) at (0,1.5) {Quadripolo A};
+            \draw
+            ($(A.north west)!.25!(A.west)$) coordinate (IA11)
+            ($(A.south west)!.25!(A.west)$) coordinate (IA12)
+            ($(A.north east)!.25!(A.east)$) coordinate (IA21)
+            ($(A.south east)!.25!(A.east)$) coordinate (IA22)
+
+            (IA11)   to[short, f<_=$I_{1A}$, -o] ++(-1,0) coordinate (OA11)
+            (IA12)   to[short,-o]                ++(-1,0) coordinate (OA12)
+            (IA21)   to[short, f<=$I_{2A}$,-o]   ++(+1,0) coordinate (OA21)
+            (IA22)   to[short,-o]                ++(+1,0) coordinate (OA22)
+            ;
+
+            \node[quad] (B) at (0,-1.5) {Quadripolo B};
+            \draw
+            ($(B.north west)!.25!(B.west)$) coordinate (IB11)
+            ($(B.south west)!.25!(B.west)$) coordinate (IB12)
+            ($(B.north east)!.25!(B.east)$) coordinate (IB21)
+            ($(B.south east)!.25!(B.east)$) coordinate (IB22)
+
+            (IB11)   to[short, f<_=$I_{1B}$, -o] ++(-1,0) coordinate (OB11)
+            (IB12)   to[short,-o]                ++(-1,0) coordinate (OB12)
+            (IB21)   to[short, f<=$I_{2B}$,-o]   ++(+1,0) coordinate (OB21)
+            (IB22)   to[short,-o]                ++(+1,0) coordinate (OB22)
+            ;
+
+            \draw
+            (-4.5,+1.5) to[short, f=$I_{1}$, o-*] (-3.5,+1.5) coordinate (V1P)
+            (-4.5,-1.5) to[short, o-*] (-3.5,-1.5) coordinate (V1M)
+
+            (V1P) to[short] (OA11)
+            (V1M) to[short] (OB12)
+            (OA12)to[short] (OB11)
+
+            (+4.5,+1.5) to[short, f_=$I_{2}$, o-*] (+3.5,+1.5) coordinate (V2P)
+            (+4.5,-1.5) to[short, o-*] (+3.5,-1.5) coordinate (V2M)
+
+            (V2P) to[short] (OA21)
+            (V2M) to[short] (OB22)
+            (OA22)to[short] (OB21)
+
+            (-4.5,+1.5) to[open, v=$V_{1}$] (-4.5,-1.5)
+            (+4.5,+1.5) to[open, v=$V_{2}$] (+4.5,-1.5)
+            ;
+        \end{circuitikz}
+    \end{figure}\noindent
+    Nesta configuração adota-se as seguintes equações para o \textbf{Modelo de Impedâncias} do quadriopolo:
+    \begin{align}
+        V_{1} &= V_{1A} + V_{1B} = (Z_{11A} + Z_{11B})I_{1} + (Z_{12A} + Z_{12B})I_{2}\\[1.5mm]
+        V_{2} &= V_{2A} + V_{2B} = (Z_{21A} + Z_{21B})I_{1} + (Z_{22A} + Z_{22B})I_{2}
+    \end{align}
+\end{definition}
+
+\subsubsection{Associação em Cascata}
+\begin{definition}
+    Conexão de Quadripolos em sequência de entradas e saídas como representado pelo seguinte diagrama:
+    \begin{figure}[H]
+        \centering\begin{circuitikz}[american]
+            \tikzset{quad/.style={draw, thick, minimum height=20mm, minimum width=10mm}}
+            \node[quad] (A) at (-3,0) {Quadripolo A};
+            \draw
+            ($(A.north west)!.25!(A.west)$) coordinate (IA11)
+            ($(A.south west)!.25!(A.west)$) coordinate (IA12)
+            ($(A.north east)!.25!(A.east)$) coordinate (IA21)
+            ($(A.south east)!.25!(A.east)$) coordinate (IA22)
+
+            (IA11)   to[short, f<_=$I_{1A}$, -o] ++(-1,0) coordinate (OA11)
+            (IA12)   to[short,-o]                ++(-1,0) coordinate (OA12)
+            (IA21)   to[short, f<=$I_{2A}$,-o]   ++(+1,0) coordinate (OA21)
+            (IA22)   to[short,-o]                ++(+1,0) coordinate (OA22)
+            ;
+
+            \node[quad] (B) at (+3,0) {Quadripolo B};
+            \draw
+            ($(B.north west)!.25!(B.west)$) coordinate (IB11)
+            ($(B.south west)!.25!(B.west)$) coordinate (IB12)
+            ($(B.north east)!.25!(B.east)$) coordinate (IB21)
+            ($(B.south east)!.25!(B.east)$) coordinate (IB22)
+
+            (IB11)   to[short, f<_=$I_{1B}$, -o] ++(-1,0) coordinate (OB11)
+            (IB12)   to[short,-o]                ++(-1,0) coordinate (OB12)
+            (IB21)   to[short, f<=$I_{2B}$,-o]   ++(+1,0) coordinate (OB21)
+            (IB22)   to[short,-o]                ++(+1,0) coordinate (OB22)
+            ;
+
+            \draw
+            (OA21)  to[open, v=$V_{2A}$] (OA22)
+            (OB11)  to[open, v=$V_{1B}$] (OB12)
+
+            (OA11)  to[open, v=$V_{1}$] (OA12)
+            (OB21)  to[open, v=$V_{2}$] (OB22)
+
+            (OA21)  to[short] (OB11)
+            (OA22)  to[short] (OB12)
+            ;
+        \end{circuitikz}
+    \end{figure}\noindent
+    Nesta configuração adota-se as seguintes equações para o \textbf{Modelo de Transmissão} do quadriopolo:
+    \begin{align}
+        V_{1} &= A_{eq}V_{2} - B_{eq}I_{2}\\[1.5mm]
+        I_{1} &= C_{eq}V_{2} - D_{eq}I_{2}
+    \end{align}
+    Onde:
+        \begin{equation*}
+            \begin{bmatrix}
+                A_{eq} & B_{eq}\\
+                C_{eq} & D_{eq}
+            \end{bmatrix} =
+            \begin{bmatrix}
+                A_A & B_A\\
+                C_A & D_A
+            \end{bmatrix}\times
+            \begin{bmatrix}
+                A_B & B_B\\
+                C_B & D_B
+            \end{bmatrix}
+        \end{equation*}
+\end{definition}
+
+\section{Transformadores}
+\subsection{Construção}
+\begin{definition}
+    
+\end{definition}
+
+\subsubsection{Primário e Secundário em Carga}
+\begin{definition}
+    Considera-se 
+    \begin{figure}[H]
+        \centering\begin{circuitikz}
+            \node[transformer] (T) {};
+            \draw
+            (T.base) node{M}
+            % (T.inner dot A1) node[circ]{}
+            % (T.inner dot B1) node[circ]{}
+            % (T.outer dot A1) node[circ]{}
+            % (T.outer dot B1) node[circ]{}
+            (T.A1) node[anchor=east] {A1}
+            (T.A2) node[anchor=east] {A2}
+            (T.B1) node[anchor=west] {B1}
+            (T.B2) node[anchor=west] {B2}
+            (T.west) node{$L_1$}
+            (T.east) node{$L_2$}
+            ;
+
+        \end{circuitikz}
+    \end{figure}\noindent
+\end{definition}
 \end{document}
