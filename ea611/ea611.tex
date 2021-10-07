@@ -1369,30 +1369,89 @@
 \section{Transformadores}
 \subsection{Construção}
 \begin{definition}
-    
-\end{definition}
-
-\subsubsection{Primário e Secundário em Carga}
-\begin{definition}
-    Considera-se 
+    Dispositivos elétricos baseados na relação entre fluxo magnético e campo elétrico para transformação de energia normalmente representados pelo seguinte diagrama:
     \begin{figure}[H]
         \centering\begin{circuitikz}
             \node[transformer] (T) {};
             \draw
             (T.base) node{M}
-            % (T.inner dot A1) node[circ]{}
-            % (T.inner dot B1) node[circ]{}
-            % (T.outer dot A1) node[circ]{}
-            % (T.outer dot B1) node[circ]{}
-            (T.A1) node[anchor=east] {A1}
-            (T.A2) node[anchor=east] {A2}
-            (T.B1) node[anchor=west] {B1}
-            (T.B2) node[anchor=west] {B2}
+            (T.A1) to[short, -o] ++(-1,0) coordinate (TAP)
+            (T.A2) to[short, -o] ++(-1,0) coordinate (TAM)
+            (T.B1) to[short, -o] ++(+1,0) coordinate (TBP)
+            (T.B2) to[short, -o] ++(+1,0) coordinate (TBM)
+            (T.west) node{$L_1$}
+            (T.east) node{$L_2$}
+            ;
+        \end{circuitikz}
+    \end{figure}\noindent
+    Onde:
+    \begin{enumerate}[noitemsep]
+        \item $L_1$, Indutância Bobina 1;
+        \item $L_2$, Indutância Bobina 1;
+        \item $M$, Indutância Mútua;
+    \end{enumerate}
+\end{definition}
+
+\subsubsection{Primário e Secundário em Carga}
+\begin{definition}
+    Considera-se a seguintes configuração de Transformador supondo que há cargas anexadas como representado pela seguinte figura:
+    \begin{figure}[H]
+        \centering\begin{circuitikz}
+            \node[transformer] (T) {};
+            \draw
+            (T.base) node{M}
+            (T.A1) to[short, -o, f<_=$i_1$] ++(-1,0) coordinate (TAP)
+            (T.A2) to[short, -o] ++(-1,0) coordinate (TAM)
+            (T.B1) to[short, -o, f<=$i_2$] ++(+1,0) coordinate (TBP)
+            (T.B2) to[short, -o] ++(+1,0) coordinate (TBM)
             (T.west) node{$L_1$}
             (T.east) node{$L_2$}
             ;
 
+            \draw
+            (TAP) to[open, american, v=$V_1$] (TAM)
+            (TBP) to[open, american, v=$V_2$] (TBM)
+            ;
         \end{circuitikz}
     \end{figure}\noindent
+    Onde:
+    \begin{equation}
+        \boxed{v_1 = L_1 \diff{i_1}{t} + M \diff{i_2}{t}}
+        \qquad
+        \boxed{v_2 = M \diff{i_1}{t} + L_2 \diff{i_2}{t}}
+    \end{equation}
 \end{definition}
+
+\subsection{Convenção do Ponto}
+\begin{definition}
+    Uma corrente i que entra num terminal com ponto em um enrolamento induz uma tensão com polaridade positiva no terminal com ponto do outro enrolamento. Em outras palavras o sinal positivo será indicado pela presença do ponto como demonstrado a seguir
+    \begin{figure}[H]
+        \centering\begin{circuitikz}
+            \node[transformer] (T) {};
+            \draw
+            (T.base) node{M}
+            (T.A1) to[short, -o, f<_=$i_1$] ++(-1,0) coordinate (TAP)
+            (T.A2) to[short, -o] ++(-1,0) coordinate (TAM)
+            (T.B1) to[short, -o, f=$i_2$] ++(+1,0) coordinate (TBP)
+            (T.B2) to[short, -o] ++(+1,0) coordinate (TBM)
+            (T.west) node{$L_1$}
+            (T.east) node{$L_2$}
+            ;
+
+            \draw
+            (TAP) to[open, american, v=$V_1$] (TAM)
+            (TBP) to[open, american, v<=$V_2$] (TBM)
+            (T.outer dot B2) node[circ] {}
+            (T.outer dot A1) node[circ] {}
+            ;
+        \end{circuitikz}
+    \end{figure}\noindent
+    Onde:
+    \begin{equation}
+        \boxed{-v_1 = -L_1 \diff{i_1}{t} - M \diff{i_2}{t}}
+        \qquad
+        \boxed{v_2 = M \diff{i_1}{t} + L_2 \diff{i_2}{t}}
+    \end{equation}
+\end{definition}
+
 \end{document}
