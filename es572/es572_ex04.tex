@@ -33,7 +33,7 @@
             \begin{exercise}
                 Use o mapa de Karnaugh para reduzir cada expressão para uma forma SoP mínima:
                 \begin{enumerate}[label=(\alph*), rightmargin = \leftmargin]
-                    \item $AB + \overline{A}D + B\overline{C}D + \overline{B}D$
+                    \item $AB + \bar{A}D + B\bar{C}D + \bar{B}D$
                     \item $AB \oplus (C+D)$
                     \item $ABD + A\bar{B}\bar{C} + \bar{A}BC + \bar{A}CD + \bar{A}\bar{B}\bar{D}$
                     \item $\bar{A}B\bar{C}D + \bar{A}BCD + AB\bar{C}D + ABCD$
@@ -43,7 +43,7 @@
             \begin{resolution}
                 Nota-se:
                 \begin{enumerate}[label=(\alph*), rightmargin = \leftmargin]
-                    \item $f(A,B,C,D) = AB + \overline{A}D + B\overline{C}D + \overline{B}D$
+                    \item $f(A,B,C,D) = AB + \bar{A}D + B\bar{C}D + \bar{B}D$
                     \begin{multicols}{2}
                         \centering
                         \begin{table}[H]
@@ -129,11 +129,11 @@
                     Desta forma tem-se a seguinte simplificação:
                         \begin{equation}
                             \boxed{
-                                f(A,B,C,D) = AB\overline{CD} + \bar{B}D + \bar{B}C + \bar{A}D + \bar{A}C
+                                f(A,B,C,D) = AB\bar{C}\bar{D} + \bar{B}D + \bar{B}C + \bar{A}D + \bar{A}C
                             }
                         \end{equation}
 
-                    \item $f(A,B,C,D) = ABD + A\overline{BC} + \overline{A}BC + \overline{A}CD + \overline{ABD}$
+                    \item $f(A,B,C,D) = ABD + A\bar{B}\bar{C} + \bar{A}BC + \bar{A}CD + \bar{A}\bar{B}\bar{D}$
                     \begin{multicols}{2}
                         \centering
                         \begin{table}[H]
@@ -174,7 +174,7 @@
                     Desta forma tem-se a seguinte simplificação:
                         \begin{equation}
                             \boxed{
-                                f(A,B,C,D) = \bar{A}C + ABD + A\overline{BC} + \overline{BCD}
+                                f(A,B,C,D) = \bar{A}C + ABD + A\bar{B}\bar{C} + \bar{B}\bar{C}\bar{D}
                             }
                         \end{equation}
 \newpage
@@ -222,7 +222,7 @@
                         \end{equation}
 \newpage
 
-                    \item $f(A,B,C,D) = BD + A\bar{B}D + \bar{A}B\bar{C} + \bar{A}CD + \overline{ABD}$
+                    \item $f(A,B,C,D) = BD + A\bar{B}D + \bar{A}B\bar{C} + \bar{A}CD + \bar{A}\bar{B}\bar{D}$
                     \begin{multicols}{2}
                         \centering
                         \begin{table}[H]
@@ -263,7 +263,7 @@
                     Desta forma tem-se a seguinte simplificação:
                         \begin{equation}
                             \boxed{
-                                f(A,B,C,D) = AD + \overline{CD} + \overline{ABD} + \bar{A}B\bar{C}
+                                f(A,B,C,D) = AD + \bar{C}\bar{D} + \bar{A}\bar{B}\bar{D} + \bar{A}B\bar{C}
                             }
                         \end{equation}
                 \end{enumerate}
@@ -370,12 +370,12 @@
                     \end{tabular}
                 \end{table}\noindent
                 \begin{enumerate}[noitemsep]
-                    \item $A$ é inválido pois $\overline{XY}Z$ deveria ser 0;
+                    \item $A$ é inválido pois $\bar{X}\bar{Y}Z$ deveria ser 0;
                     \item $B$ é válido;
                     \item $C$ é inválido pois $XYZ$ deveria ser 1;
                     \item $D$ é válido;
                     \item $E$ é válido;
-                    \item $F$ é inválido pois $X\overline{YZ}$ deveria ser 0;
+                    \item $F$ é inválido pois $X\bar{Y}\bar{Z}$ deveria ser 0;
                 \end{enumerate}
             \end{resolution}
 \newpage
@@ -476,7 +476,7 @@
                     \end{table}
                 Desta forma:
                     \begin{equation}
-                        \boxed{f(A,B,C,D) = \bar{A}C + \overline{AD}}
+                        \boxed{f(A,B,C,D) = \bar{A}C + \bar{A}\bar{D}}
                     \end{equation}
             \end{resolution}
 \end{document}
