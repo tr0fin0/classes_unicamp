@@ -54,5 +54,127 @@
                                 }
                             \end{equation}
                 \end{multicols}\noindent
+\newpage
 
+\subsection{Transformada de Laplace}
+    \paragraph{Definição}Conversão de uma equação diferencial em equação algébrica e uma convolução em multiplicação. Formalmente descrita pelas seguintes equações:
+    \begin{multicols}{2}
+        \raggedcolumns
+        \paragraph{Forma Bilateral:}
+        \begin{equation}
+            \boxed{
+                F(s) = \mathcal{B} \{ f(t) \} := \int_{-\infty}^{+\infty} f(t) \; e^{-st} \; \text{d}t
+            }
+        \end{equation}
+        \columnbreak
+        \paragraph{Forma Unilateral:}
+        \begin{equation}
+            \boxed{
+                F(s) = \mathcal{L}\{ f(t) \} := \int_{0}^{+\infty} f(t) \; e^{-st} \; \text{d} t
+            }
+        \end{equation}
+    \end{multicols}\noindent
+    Note que a forma \texttt{Unilateral} será um caso particular da \texttt{Bilateral}. Além disso, no estudo de circuitos elétricos será conveniente a adoção do domínio dos complexos para análise. Assim $s = \sigma + \omega\text{j}$ onde $\text{j}$ será a \textbf{Unidade Imaginária}, evitando confusão com \textbf{Corrente Elétrica} causada pela notação matemática canónica.
+
+    \paragraph{Transformações}A seguir encontram-se as principais transformações pela definição \texttt{Unilateral} necessárias:
+    \begin{table}[H]
+        \centering\begingroup
+        % \setlength{\tabcolsep}{5mm}
+        \renewcommand{\arraystretch}{1.25}
+        \begin{tabular}[]{lcc}
+                                & $f(t)$      & $\mathcal{L}\{ f(t) \}$\\\hline
+            Degrau Unitário     & $u(t)$      & $\frac{1}{s}$\\
+            Impulso Unitário    & $\delta(t)$ & $1$\\
+            Rampa Unitário      & $r(t)$      & $\frac{1}{s^2}$\\
+                                & $t^{n}$     & $\frac{n!}{s^{n+1}}$\\
+                                & $e^{-at}$   & $\frac{1}{s+a}$\\
+                                & $\frac{t^{n-1}e^{-at}}{(n-1)!}$  & $\frac{1}{(s+a)^{n}}$\\
+                                & $\sin(at + b)$  & $\frac{s\sin(b) + a\cos(b)}{(s^2+a^2)}$\\
+                                & $\cos(at + b)$  & $\frac{s\cos(b) + a\sin(b)}{(s^2+a^2)}$\\
+            Seno Hiperbólico    & $\sinh(at)$  & $\frac{a}{(s^2-a^2)}$\\
+            Cosseno Hiperbólico & $\cosh(at)$  & $\frac{s}{(s^2-a^2)}$\\
+                                & $e^{at}\;\sin(bt)$  & $\frac{b}{(s-a)^2+b^2}$\\
+                                & $e^{at}\;\cos(bt)$  & $\frac{s-a}{(s-a)^2+b^2}$\\
+            Convolução          & $\int_{0}^{t} f(\varphi)\;g(t - \varphi) \text{d}\varphi$ & $F(s)\cdot G(s)$\\
+            Integral            & $\int_{0}^{t} f(\varphi)\;u(t - \varphi) \text{d}\varphi$ & $\frac{F(s)}{s}$\\
+            Derivada         & $\diff{f(\varphi)}{\varphi}$ & $s\cdot F(s)$\\
+            Frequência       & $e^{-at}f(t)$          & $F(s+a)$\\
+            Temporal         & $f(t-\tau)\mu(t-\tau)$ & $e^{-s\tau}F(s)$\\\hline
+        \end{tabular}
+        \endgroup
+        \caption{Tabela de Transformadas de Laplace}\label{table:Laplace}
+    \end{table} \noindent
+    Conside que as funções \textbf{Trigonométricas Hiperbólicas} são definidas pelas equações abaixo:
+    \begin{equation}
+        \boxed{
+            \sinh(ax) = \frac{e^{ax} - e^{-ax}}{2}
+        }
+        \qquad
+        \boxed{
+            \cosh(ax) = \frac{e^{ax} + e^{-ax}}{2}
+        }
+    \end{equation}
+
+\subsubsection{Degrau Unitário}
+    \paragraph{Definição}Representação de descontinuidade unitária, normalmente utilizada para representar mudanças instantâneas em sistemas. Formalmente descrita pela seguinte equação:
+    \begin{equation}
+        \boxed{
+            u(x - a) = 
+            \begin{cases}
+                0, & x < a;\\
+                \frac{1}{2}, & x = a;\\
+                1, & x > a;\\
+            \end{cases}
+        }
+    \end{equation}
+
+\subsubsection{Impulso Unitário}
+    \paragraph{Definição}Distribuição infinita no ponto zero e nula no restante da reta. Formalmente descrita pela seguinte equação:
+    \begin{equation}
+        \boxed{
+            \delta(x-a) = 
+            \begin{cases}
+                0, & x \neq a;\\
+                \infty, & x = a;\\
+            \end{cases}
+            }
+        \end{equation}
+    Obedecendo:
+    \begin{equation*}
+        \int_{-\infty}^{+\infty} \delta(x) \; \text{d}x = 1
+        \quad\text{e}\quad
+        \boxed{
+            \int_{a}^{b} f(t) \delta(t - \tau)\;\text{d}t = 
+            \begin{cases}
+                f(\tau);    & \text{se } \tau\in[a,b]\\
+                0;          & \text{se } \tau\notin[a,b]\\
+            \end{cases}
+        }
+    \end{equation*}
+    Aplica-se o impulso unitário para se extrair uma \textbf{Amostra} do valor de uma função em um determinado ponto.
+
+\subsubsection{Rampa Unitário}
+    \paragraph{Definição}Representação de uma função linear com coeficiente angular unitário. Formalmente descrita pela seguinte equação:
+    \begin{equation}
+        \boxed{
+            r(x - a) = 
+            \begin{cases}
+                0, & x < a;\\
+                x, & x > a;\\
+            \end{cases}
+        }
+    \end{equation}
+
+\subsubsection{Transformada da Deriva}
+    \paragraph{Definição}Quando aplicada em uma derivada de ordem $n$ será necessário utilizar da recursão e integração por partes, obtendo a seguinte equação geral:
+    \begin{equation}
+        \boxed{
+            \mathcal{L}\left\{\diff[n]{f(\varphi)}{\varphi}\right\} = 
+            s^{n}\cdot F(s) - 
+            s^{n-1} \cdot f(0) - 
+            s^{n-2} \cdot f'(0) - \dots - 
+            s \cdot f^{n-2}(0) - 
+            f^{n-1}(0)
+        }
+    \end{equation}
 \end{document}
