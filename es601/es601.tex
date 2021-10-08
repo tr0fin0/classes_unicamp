@@ -177,4 +177,124 @@
             f^{n-1}(0)
         }
     \end{equation}
+\newpage
+
+\subsection{Transformada $\mathcal{Z}$}
+    \paragraph{Definição}Conversão de uma equação a diferenças de um sinal discreto $f(k)$. Formalmente descrita pelas seguintes equações:
+    \begin{multicols}{2}
+        \raggedcolumns
+        \paragraph{Forma Bilateral:}
+        \begin{equation}
+            \boxed{
+                F(z) = \mathcal{B} \{ f(k) \} := \sum_{k=-\infty}^{+\infty} f(k) \; z^{-k}
+            }
+        \end{equation}
+        \columnbreak
+        \paragraph{Forma Unilateral:}
+        \begin{equation}
+            \boxed{
+                F(z) = \mathcal{Z}\{ f(k) \} := \sum_{k=0}^{+\infty} f(k) \; z^{-k}
+            }
+        \end{equation}
+    \end{multicols}\noindent
+    Note que a forma \texttt{Unilateral} será um caso particular da \texttt{Bilateral}.
+
+    \paragraph{Transformações}A seguir encontram-se as principais transformações pela definição \texttt{Unilateral} necessárias:
+    \begin{table}[H]
+        \centering\begingroup
+        % \setlength{\tabcolsep}{5mm}
+        \renewcommand{\arraystretch}{1.25}
+        \begin{tabular}[]{lcc}
+                                & $f(k)$      & $\mathcal{Z}\{ f(k) \}$\\\hline
+            Degrau Unitário     & $u(k)$      & $\frac{z}{z-1}$\\
+            Impulso Unitário    & $\delta(k)$ & $1$\\
+            Rampa Unitário      & $r(t)$      & $\frac{z}{(z-1)^2}$\\
+                                & $a^{k}$     & $\frac{z}{z-a}$\\
+                                & $e^{-aTk}$  & $\frac{z}{z-e^{-aT}}$\\
+            %                     & $\frac{t^{n-1}e^{-at}}{(n-1)!}$  & $\frac{1}{(s+a)^{n}}$\\
+                                & $\sin(\omega_0 KT)$ & $\frac{z\sin(\omega T)}{z^2 - 2z\cos(\omega T) + 1}$\\
+            %                     & $\cos(at + b)$  & $\frac{s\cos(b) + a\sin(b)}{(s^2+a^2)}$\\
+            % Seno Hiperbólico    & $\sinh(at)$  & $\frac{a}{(s^2-a^2)}$\\
+            % Cosseno Hiperbólico & $\cosh(at)$  & $\frac{s}{(s^2-a^2)}$\\
+            %                     & $e^{at}\;\sin(bt)$  & $\frac{b}{(s-a)^2+b^2}$\\
+            %                     & $e^{at}\;\cos(bt)$  & $\frac{s-a}{(s-a)^2+b^2}$\\
+            Convolução          & $f_1(k) * f_2(k)$ & $F_1(k)\cdot F_2(k)$\\
+            % Integral            & $\int_{0}^{t} f(\varphi)\;u(t - \varphi) \text{d}\varphi$ & $\frac{F(s)}{s}$\\
+            Multiplicação         & $k f(k)$ & $-z \diff{F(k)}{z}$\\
+            Frequência            & $a^{-k}f(k)$ & $F(a^{-1}z)$\\
+            Deslocamento Avançado & $f(k+n)$ &\\
+            Deslocamento Atrasado & $f(k-n)$ & $z^{-n}F(z)$\\\hline
+        \end{tabular}
+        \endgroup
+        \caption{Tabela de Transformadas $\mathcal{Z}$}\label{table:Z}
+    \end{table} \noindent
+
+
+\subsubsection{Degrau Unitário}
+    \paragraph{Definição}Representação de descontinuidade unitária, normalmente utilizada para representar mudanças instantâneas em sistemas. Formalmente descrita pela seguinte equação:
+    \begin{equation}
+        \boxed{
+            u(k - a) = 
+            \begin{cases}
+                0, & k < a;\\
+                \frac{1}{2}, & k = a;\\
+                1, & k > a;\\
+            \end{cases}
+        }
+    \end{equation}
+    Note que essa série converge para $|z| > 1$.
+
+\subsubsection{Impulso Unitário}
+    \paragraph{Definição}Distribuição infinita no ponto zero e nula no restante da reta. Formalmente descrita pela seguinte equação:
+    \begin{equation}
+        \boxed{
+            \delta(k-a) = 
+            \begin{cases}
+                0, & k \neq a;\\
+                1, & k = a;\\
+            \end{cases}
+            }
+    \end{equation}
+
+\subsubsection{Rampa Unitário}
+    \paragraph{Definição}Representação de uma função linear com coeficiente angular unitário. Formalmente descrita pela seguinte equação:
+    \begin{equation}
+        \boxed{
+            r(k - a) = 
+            \begin{cases}
+                0, & k < a;\\
+                k, & k \ge a;\\
+            \end{cases}
+        }
+    \end{equation}
+
+\subsubsection{Transformada do Deslocamento Atvanço}
+    \paragraph{Definição}Quando aplica-se um deslocamento que causa avanço na função pela ordem $n$ será necessário utilizar da recursão , obtendo a seguinte equação geral:
+    \begin{equation}
+        \boxed{
+            \mathcal{Z}\{ f(k+n) \} = 
+            z^{n}\cdot F(z) - 
+            z^{n} \cdot f(0) - 
+            z^{n-1} \cdot f(1) - \dots - 
+            z^{2} \cdot f(n-2) - 
+            z\cdot f(n-1)
+        }
+    \end{equation}
+
+\subsubsection{Transformada do Deslocamento Atrasado}
+    \paragraph{Definição}Quando aplica-se um deslocamento que causa atraso na função pela ordem $n$ será necessário utilizar da recombinação entre os somatórios, obtendo a seguinte equação geral:
+    \begin{equation}
+        \boxed{
+            \mathcal{Z}\{ f(k-n) \} = 
+            z^{-n}\cdot F(z) + 
+            z^{-n+1}\cdot f(-1) + 
+            z^{-n+2}\cdot f(-2) + \dots + 
+            z^{-1}\cdot f(-n+1) - 
+            f(-n)
+        }
+    \end{equation}
+    Note que caso trate-se de um sistema causal, isto é, um sistema descrito a partir de um instante inicial, os termos em função de pontos negativos serão nulos e consequentemente a equação se reduz a:
+    \begin{equation*}
+        \mathcal{Z}\{ f(k-n) \; u(k-n)\} = z^{-n}\cdot F(z) 
+    \end{equation*}
 \end{document}
