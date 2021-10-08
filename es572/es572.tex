@@ -1108,282 +1108,495 @@
                     \end{enumerate}
 
     \section{Portas Lógicas}
-        \paragraph{Definição}Implementação de uma \textbf{Função Booleana} com pelo menos uma entrada e apenas uma saída.
+        \begin{definition}
+            Implementação de uma \textbf{Função Booleana} com pelo menos uma entrada e apenas uma saída.
+        \end{definition}
 
         \subsection{Porta NOT}
-            \begin{multicols}{3}
-                \begin{table}[H]
-                    \centering  
-                    \begin{tabular}[]{c|c}\hline
-                        in & out\\\hline
-                        0  & 1\\
-                        1  & 0\\\hline
-                    \end{tabular}
-                    \caption{Tabela Verdade}
-                \end{table}
-                \columnbreak\noindent
-                    \begin{equation}
-                        \boxed{
-                            S = \bar{A}
-                        }
-                    \end{equation}
-                \columnbreak\noindent
-                \begin{figure}[H]
-                    \centering
-                    \begin{circuitikz}
-                        \ctikzset{component text=left}
-                        \draw
-                        (0,0) node[not port] (myPort) {}
-                        (myPort.in)  node [anchor = east] {in}
-                        (myPort.out) node [anchor = west] {out};
-                    \end{circuitikz} 
-                    \caption{Representação}
-                \end{figure} \noindent
-            \end{multicols}\noindent
-            \begin{scriptsize}
-                \myStyleVHDL
-                \begin{lstlisting}
-    S <= not A;
-                \end{lstlisting}
-            \end{scriptsize}
+            \begin{definition}
+                Considera-se as seguintes características:
+                \begin{multicols}{3}
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{c|c}\hline
+                            in & out\\\hline
+                            0  & 1\\
+                            1  & 0\\\hline
+                        \end{tabular}
+                    \end{table}
+                    \columnbreak\noindent
+                        \begin{equation}
+                            \boxed{
+                                S = \overline{A}
+                            }
+                        \end{equation}
+                    \columnbreak\noindent
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (0,0) node[not port] (myPort) {}
+                            (myPort.in)  node [anchor = east] {in}
+                            (myPort.out) node [anchor = west] {out};
+                        \end{circuitikz} 
+                    \end{figure}\noindent
+                \end{multicols}\noindent
+                Implementada a nível de software através da seguinte expressão:
+                \begin{scriptsize}
+                    \myStyleVHDL
+                    \begin{lstlisting}
+        S <= not A;
+                    \end{lstlisting}
+                \end{scriptsize}
+            \end{definition}
 
         \subsection{Porta AND}
-            \begin{multicols}{3}
-                \begin{table}[H]
-                    \centering  
-                    \begin{tabular}[]{cc|c}\hline
-                        A & B & out\\\hline
-                        0 & 0 & 0\\
-                        0 & 1 & 0\\
-                        1 & 0 & 0\\
-                        1 & 1 & 1\\\hline
-                    \end{tabular}
-                    \caption{Tabela Verdade}
-                \end{table}
-                \columnbreak\noindent
-                    \begin{equation}
-                        \boxed{
-                            S = \bar{A \dot B}
-                        }
-                    \end{equation}
-                \columnbreak\noindent
-                \begin{figure}[H]
-                    \centering
-                    \begin{circuitikz}
-                        \ctikzset{component text=left}
-                        \draw
-                        (0,0) node[and port] (myPort) {}
-                        (myPort.in 1)  node [anchor = east] {A}
-                        (myPort.in 2)  node [anchor = east] {B}
-                        (myPort.out) node [anchor = west] {out};
-                    \end{circuitikz} 
-                    \caption{Representação}
-                \end{figure} \noindent
-            \end{multicols}\noindent
-            \begin{scriptsize}
-                \myStyleVHDL
-                \begin{lstlisting}
-    S <= A and B;
-                \end{lstlisting}
-            \end{scriptsize}
+            \begin{definition}
+                Considera-se as seguintes características:
+                \begin{multicols}{3}
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{cc|c}\hline
+                            A & B & out\\\hline
+                            0 & 0 & 0\\
+                            0 & 1 & 0\\
+                            1 & 0 & 0\\
+                            1 & 1 & 1\\\hline
+                        \end{tabular}
+                    \end{table}
+                    \columnbreak\noindent
+                        \begin{equation}
+                            \boxed{
+                                S = A \cdot B
+                            }
+                        \end{equation}
+                    \columnbreak\noindent
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (0,0) node[and port] (myPort) {}
+                            (myPort.in 1)  node [anchor = east] {A}
+                            (myPort.in 2)  node [anchor = east] {B}
+                            (myPort.out) node [anchor = west] {out};
+                        \end{circuitikz} 
+                    \end{figure} \noindent
+                \end{multicols}\noindent
+                Implementada a nível de software através da seguinte expressão:
+                \begin{scriptsize}
+                    \myStyleVHDL
+                    \begin{lstlisting}
+        S <= A and B;
+                    \end{lstlisting}
+                \end{scriptsize}
+            \end{definition}
 
         \subsection{Porta NAND}
-            \begin{multicols}{3}
-                \begin{table}[H]
-                    \centering  
-                    \begin{tabular}[]{cc|c}\hline
-                        A & B & out\\\hline
-                        0 & 0 & 1\\
-                        0 & 1 & 1\\
-                        1 & 0 & 1\\
-                        1 & 1 & 0\\\hline
-                    \end{tabular}
-                    \caption{Tabela Verdade}
-                \end{table}
-                \columnbreak\noindent
-                    \begin{equation}
-                        \boxed{
-                            \bar{AB} = \bar{A} + \bar{B}
-                        }
-                    \end{equation}
-                \columnbreak\noindent
-                \begin{figure}[H]
-                    \centering
-                    \begin{circuitikz}
-                        \ctikzset{component text=left}
-                        \draw
-                        (0,0) node[nand port] (myPort) {}
-                        (myPort.in 1)  node [anchor = east] {A}
-                        (myPort.in 2)  node [anchor = east] {B}
-                        (myPort.out) node [anchor = west] {out};
-                    \end{circuitikz} 
-                    \caption{Representação}
-                \end{figure} \noindent
-            \end{multicols}\noindent
-            \begin{scriptsize}
-                \myStyleVHDL
-                \begin{lstlisting}
-    S <= A nand B;
-                \end{lstlisting}
-            \end{scriptsize}
+            \begin{definition}
+                Considera-se as seguintes características:
+                \begin{multicols}{3}
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{cc|c}\hline
+                            A & B & out\\\hline
+                            0 & 0 & 1\\
+                            0 & 1 & 1\\
+                            1 & 0 & 1\\
+                            1 & 1 & 0\\\hline
+                        \end{tabular}
+                    \end{table}
+                    \columnbreak\noindent
+                        \begin{equation}
+                            \boxed{
+                                \overline{AB} = \overline{A} + \overline{B}
+                            }
+                        \end{equation}
+                    \columnbreak\noindent
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (0,0) node[nand port] (myPort) {}
+                            (myPort.in 1)  node [anchor = east] {A}
+                            (myPort.in 2)  node [anchor = east] {B}
+                            (myPort.out) node [anchor = west] {out};
+                        \end{circuitikz} 
+                    \end{figure} \noindent
+                \end{multicols}\noindent
+                Implementada a nível de software através da seguinte expressão:
+                \begin{scriptsize}
+                    \myStyleVHDL
+                    \begin{lstlisting}
+        S <= A nand B;
+                    \end{lstlisting}
+                \end{scriptsize}
+            \end{definition}
 
         \subsection{Porta OR}
-            \begin{multicols}{3}
-                \begin{table}[H]
-                    \centering  
-                    \begin{tabular}[]{cc|c}\hline
-                        A & B & out\\\hline
-                        0 & 0 & 0\\
-                        0 & 1 & 1\\
-                        1 & 0 & 1\\
-                        1 & 1 & 1\\\hline
-                    \end{tabular}
-                    \caption{Tabela Verdade}
-                \end{table}
-                \columnbreak\noindent
-                    \begin{equation}
-                        \boxed{
-                            S = \bar{A + B}
-                        }
-                    \end{equation}
-                \columnbreak\noindent
-                \begin{figure}[H]
-                    \centering
-                    \begin{circuitikz}
-                        \ctikzset{component text=left}
-                        \draw
-                        (0,0) node[or port] (myPort) {}
-                        (myPort.in 1)  node [anchor = east] {A}
-                        (myPort.in 2)  node [anchor = east] {B}
-                        (myPort.out) node [anchor = west] {out};
-                    \end{circuitikz} 
-                    \caption{Representação}
-                \end{figure} \noindent
-            \end{multicols}\noindent
-            \begin{scriptsize}
-                \myStyleVHDL
-                \begin{lstlisting}
-    S <= A or B;
-                \end{lstlisting}
-            \end{scriptsize}
-            
+            \begin{definition}
+                Considera-se as seguintes características:
+                \begin{multicols}{3}
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{cc|c}\hline
+                            A & B & out\\\hline
+                            0 & 0 & 0\\
+                            0 & 1 & 1\\
+                            1 & 0 & 1\\
+                            1 & 1 & 1\\\hline
+                        \end{tabular}
+                    \end{table}
+                    \columnbreak\noindent
+                        \begin{equation}
+                            \boxed{
+                                S = A + B
+                            }
+                        \end{equation}
+                    \columnbreak\noindent
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (0,0) node[or port] (myPort) {}
+                            (myPort.in 1)  node [anchor = east] {A}
+                            (myPort.in 2)  node [anchor = east] {B}
+                            (myPort.out) node [anchor = west] {out};
+                        \end{circuitikz} 
+                    \end{figure} \noindent
+                \end{multicols}\noindent
+                Implementada a nível de software através da seguinte expressão:
+                \begin{scriptsize}
+                    \myStyleVHDL
+                    \begin{lstlisting}
+        S <= A or B;
+                    \end{lstlisting}
+                \end{scriptsize}
+            \end{definition}
+
         \subsection{Porta NOR}
-            \begin{multicols}{3}
-                \begin{table}[H]
-                    \centering  
-                    \begin{tabular}[]{cc|c}\hline
-                        A & B & out\\\hline
-                        0 & 0 & 1\\
-                        0 & 1 & 0\\
-                        1 & 0 & 0\\
-                        1 & 1 & 0\\\hline
-                    \end{tabular}
-                    \caption{Tabela Verdade}
-                \end{table}
-                \columnbreak\noindent
-                    \begin{equation}
-                        \boxed{
-                            \bar{A+B} = \bar{A} \bar{B}
-                        }
-                    \end{equation}
-                \columnbreak\noindent
-                \begin{figure}[H]
-                    \centering
-                    \begin{circuitikz}
-                        \ctikzset{component text=left}
-                        \draw
-                        (0,0) node[nor port] (myPort) {}
-                        (myPort.in 1)  node [anchor = east] {A}
-                        (myPort.in 2)  node [anchor = east] {B}
-                        (myPort.out) node [anchor = west] {out};
-                    \end{circuitikz} 
-                    \caption{Representação}
-                \end{figure} \noindent
-            \end{multicols}\noindent
-            \begin{scriptsize}
-                \myStyleVHDL
-                \begin{lstlisting}
-    S <= A nor B;
-                \end{lstlisting}
-            \end{scriptsize}
+           \begin{definition}
+                Considera-se as seguintes características:
+                \begin{multicols}{3}
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{cc|c}\hline
+                            A & B & out\\\hline
+                            0 & 0 & 1\\
+                            0 & 1 & 0\\
+                            1 & 0 & 0\\
+                            1 & 1 & 0\\\hline
+                        \end{tabular}
+                    \end{table}
+                    \columnbreak\noindent
+                        \begin{equation}
+                            \boxed{
+                                \overline{A+B} = \overline{A} \cdot \overline{B}
+                            }
+                        \end{equation}
+                    \columnbreak\noindent
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (0,0) node[nor port] (myPort) {}
+                            (myPort.in 1)  node [anchor = east] {A}
+                            (myPort.in 2)  node [anchor = east] {B}
+                            (myPort.out) node [anchor = west] {out};
+                        \end{circuitikz} 
+                    \end{figure} \noindent
+                \end{multicols}\noindent
+                Implementada a nível de software através da seguinte expressão:
+                \begin{scriptsize}
+                    \myStyleVHDL
+                    \begin{lstlisting}
+        S <= A nor B;
+                    \end{lstlisting}
+                \end{scriptsize}
+           \end{definition}
 
         \subsection{Porta XOR}
-            \begin{multicols}{3}
-                \begin{table}[H]
-                    \centering  
-                    \begin{tabular}[]{cc|c}\hline
-                        A & B & out\\\hline
-                        0 & 0 & 0\\
-                        0 & 1 & 1\\
-                        1 & 0 & 1\\
-                        1 & 1 & 0\\\hline
-                    \end{tabular}
-                    \caption{Tabela Verdade}
-                \end{table}
-                \columnbreak\noindent
-                    \begin{equation}
-                        \boxed{
-                            S = A \oplus B
-                        }
-                    \end{equation}
-                \columnbreak\noindent
-                \begin{figure}[H]
-                    \centering
-                    \begin{circuitikz}
-                        \ctikzset{component text=left}
-                        \draw
-                        (0,0) node[xor port] (myPort) {}
-                        (myPort.in 1)  node [anchor = east] {A}
-                        (myPort.in 2)  node [anchor = east] {B}
-                        (myPort.out) node [anchor = west] {out};
-                    \end{circuitikz} 
-                    \caption{Representação}
-                \end{figure} \noindent
-            \end{multicols}\noindent
-            \begin{scriptsize}
-                \myStyleVHDL
-                \begin{lstlisting}
-    S <= A xor B;
-                \end{lstlisting}
-            \end{scriptsize}
+            \begin{definition}
+                Considera-se as seguintes características:
+                \begin{multicols}{3}
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{cc|c}\hline
+                            A & B & out\\\hline
+                            0 & 0 & 0\\
+                            0 & 1 & 1\\
+                            1 & 0 & 1\\
+                            1 & 1 & 0\\\hline
+                        \end{tabular}
+                    \end{table}
+                    \columnbreak\noindent
+                        \begin{equation}
+                            \boxed{
+                                S = A \oplus B = A\overline{B} + \overline{A}B
+                            }
+                        \end{equation}
+                    \columnbreak\noindent
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (0,0) node[xor port] (myPort) {}
+                            (myPort.in 1)  node [anchor = east] {A}
+                            (myPort.in 2)  node [anchor = east] {B}
+                            (myPort.out) node [anchor = west] {out};
+                        \end{circuitikz} 
+                    \end{figure} \noindent
+                \end{multicols}\noindent
+                Implementada a nível de software através da seguinte expressão:
+                \begin{scriptsize}
+                    \myStyleVHDL
+                    \begin{lstlisting}
+        S <= A xor B;
+                    \end{lstlisting}
+                \end{scriptsize}
+            \end{definition}
 
         \subsection{Porta XNOR}
-            \begin{multicols}{3}
-                \begin{table}[H]
-                    \centering  
-                    \begin{tabular}[]{cc|c}\hline
-                        A & B & out\\\hline
-                        0 & 0 & 1\\
-                        0 & 1 & 0\\
-                        1 & 0 & 0\\
-                        1 & 1 & 1\\\hline
-                    \end{tabular}
-                    \caption{Tabela Verdade}
-                \end{table}
-                \columnbreak\noindent
+            \begin{definition}
+                Considera-se as seguintes características:
+                \begin{multicols}{3}
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{cc|c}\hline
+                            A & B & out\\\hline
+                            0 & 0 & 1\\
+                            0 & 1 & 0\\
+                            1 & 0 & 0\\
+                            1 & 1 & 1\\\hline
+                        \end{tabular}
+                    \end{table}
+                    \columnbreak\noindent
+                        \begin{equation}
+                            \boxed{
+                                S = \overline{A \oplus B}
+                            }
+                        \end{equation}
+                    \columnbreak\noindent
+                    \begin{figure}[H]
+                        \centering
+                        \begin{circuitikz}
+                            \ctikzset{component text=left}
+                            \draw
+                            (0,0) node[xnor port] (myPort) {}
+                            (myPort.in 1)  node [anchor = east] {A}
+                            (myPort.in 2)  node [anchor = east] {B}
+                            (myPort.out) node [anchor = west] {out};
+                        \end{circuitikz} 
+                    \end{figure} \noindent
+                \end{multicols}\noindent
+                Implementada a nível de software através da seguinte expressão:
+                \begin{scriptsize}
+                    \myStyleVHDL
+                    \begin{lstlisting}
+        S <= A xnor B;
+                    \end{lstlisting}
+                \end{scriptsize}
+            \end{definition}
+
+    \section{Álgebra Booleana}
+        \begin{definition}
+            Álgebra composta apenas por dois valores, geralmente são utilizados as seguinte notações:
+                \begin{equation}
+                    \boxed{\mathbb{B} = \{F, V\}}
+                    \qquad
+                    \boxed{\mathbb{B} = \{0, 1\}}
+                \end{equation}
+            Nota-se que os símbolos numéricos não possuem significado numérico nesta notação.
+        \end{definition}
+
+        \subsection{Opoerações Booleanas}
+            \subsubsection{Axiomas}
+            \begin{definition}
+                Considera-se as seguintes operações como canônicas:
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{cc}\hline
+                            $0\times0=0$ & $0+0=0$\\
+                            $0\times1=0$ & $0+1=1$\\
+                            $1\times0=0$ & $1+0=1$\\
+                            $1\times1=1$ & $1+1=1$\\\hline
+                            $\bar{0} =1$ & $\bar{1}=0$\\\hline
+                        \end{tabular}
+                        \caption{Axiomas Booleanos}
+                    \end{table}
+            \end{definition}
+            \subsubsection{Teoremas}
+            \begin{theorem}
+                Considera-se que dada uma variável $x\in\mathbb{B}$ as seguintes operações serão válidas:
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{lcc}\hline
+                            Aniquilação    & $x.0=0$ & $x+1=0$\\
+                            Identidade     & $x.1=x$ & $x+0=x$\\
+                            Idempotência   & $x.x=x$ & $x+x=x$\\
+                            Complementação & $x.\bar{x}=0$ & $x+\bar{x}=1$\\\hline
+                            Dupla Negação  & \multicolumn{2}{c}{$\bar{\bar{x}}=x$}\\\hline
+                        \end{tabular}
+                        \caption{Teoremas Booleanos de 1 Variável}
+                    \end{table}
+            \end{theorem}
+            \begin{theorem}
+                Considera-se que dadas três variáveis $x, y, z \in\mathbb{B}$ as seguintes operações serão válidas:
+                    \begin{table}[H]
+                        \centering  
+                        \begin{tabular}[]{lcc}\hline
+                            Comutatividade   & $x.y=y.x$          & $x+y=y+x$\\
+                            Associatividade  & $x.(y.z)=(x.y).z$  & $x+(y+z)=(x+y)+z$\\
+                            Distributividade & $x.(y+z)=x.y+x.z$  & $x+(y.z)=(x+y).(x+z)$\\
+                            Absorção         & $x+xy=x$           & $x.(x+y)=x$\\
+                            Combinação       & $xy+x\bar{y}=x$    & $(x+y).(x+\bar{y})=x$\\
+                            Identidade Comum & $x.(\bar{x}+y)=xy$ & $x+(\bar{x}.y)=x+y$\\
+                            DeMorgan         & $\overline{x.y}=\bar{x}+\bar{y}$ & $\overline{x+y}=\bar{x}.\bar{y}$\\\hline
+                        \end{tabular}
+                        \caption{Teoremas Booleanos de 2 Variáveis}
+                    \end{table}
+                Note que estes Teoremas de DeMorgan poderiam ser estendidos para qualquer conjunto finito de variáveis pertencentes ao conjunto $\mathbb{B}$ como enunciado a seguir:
+                    \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                        \item \textbf{Complemento do Produto} de variáveis é igual à \textbf{Soma dos Complementos} das variáveis;
+                        \item \textbf{Complemento da Soma} de variáveis é igual à \textbf{Produto dos Complementos} das variáveis;
+                    \end{enumerate}
+            \end{theorem}
+        \subsubsection{Princípio da Dualidade}
+            \begin{definition}
+                Dual de uma expressão verdadeira é \textbf{sempre} verdadeira, sendo obtidas ao realizar as seguintes substituições:
                     \begin{equation}
-                        \boxed{
-                            S = A \oplus B
-                        }
+                        \boxed{x \iff +}
+                        \qquad
+                        \boxed{0 \iff 1}
                     \end{equation}
-                \columnbreak\noindent
-                \begin{figure}[H]
-                    \centering
-                    \begin{circuitikz}
-                        \ctikzset{component text=left}
-                        \draw
-                        (0,0) node[xnor port] (myPort) {}
-                        (myPort.in 1)  node [anchor = east] {A}
-                        (myPort.in 2)  node [anchor = east] {B}
-                        (myPort.out) node [anchor = west] {out};
-                    \end{circuitikz} 
-                    \caption{Representação}
-                \end{figure} \noindent
-            \end{multicols}\noindent
-            \begin{scriptsize}
-                \myStyleVHDL
-                \begin{lstlisting}
-    S <= A xnor B;
-                \end{lstlisting}
-            \end{scriptsize}
+            \end{definition}
+
+    \section{Mapa de Karnaugh}
+        \begin{definition}
+            Organização geométrica das expressões obtidas pelas Tabelas Verdade de uma expressão booleana onde cada célula terá \textbf{Distância de Hamming} de 1 com relação as células vizinhas.
+        \end{definition}
+        \begin{theorem}
+            Considera-se que para simplificar os sistemas as extremidades estarão conectadas. Desta forma, deve-se buscar a região que comporte o maior número de 1's agrupados em uma potência de 2.
+        \end{theorem}
+        \subsection{Mapa de Karnaugh, 2 Variáveis}
+            \begin{definition}
+                Considera-se a seguinte representado:
+                    \begin{multicols}{2}
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{cc|c}
+                                $X_{1}$ & $X_{2}$ & \\\hline
+                                0 & 0 & $m_{0}$\\
+                                0 & 1 & $m_{1}$\\
+                                1 & 0 & $m_{2}$\\
+                                1 & 1 & $m_{3}$\\\hline
+                            \end{tabular}
+                            \caption{Tabela Verdade 2 Variáveis}
+                        \end{table}
+                        \columnbreak
+                        \begin{figure}[H]
+                            \centering
+                            \begin{karnaugh-map}[2][2][1][$X_1$][$X_2$]
+                                \terms{0}{$m_{0}$}
+                                \terms{1}{$m_{2}$}
+                                \terms{2}{$m_{1}$}
+                                \terms{3}{$m_{3}$}
+                            \end{karnaugh-map}
+                            \caption{Mapa de Karnaugh 2 Variáveis}
+                        \end{figure}
+                    \end{multicols}
+            \end{definition}
+        \subsection{Mapa de Karnaugh, 3 Variáveis}
+            \begin{definition}
+                Considera-se a seguinte representado:
+                    \begin{multicols}{2}
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{ccc|c}
+                                $X_1$ & $X_2$ & $X_3$& \\\hline
+                                0     & 0     & 0    & $m_{0}$\\
+                                0     & 0     & 1    & $m_{1}$\\
+                                0     & 1     & 0    & $m_{2}$\\
+                                0     & 1     & 1    & $m_{3}$\\
+                                1     & 0     & 0    & $m_{4}$\\
+                                1     & 0     & 1    & $m_{5}$\\
+                                1     & 1     & 0    & $m_{6}$\\
+                                1     & 1     & 1    & $m_{7}$\\\hline
+                            \end{tabular}
+                            \caption{Tabela Verdade 3 Variáveis}
+                        \end{table}
+                        \columnbreak
+                        \begin{figure}[H]
+                            \centering
+                            \begin{karnaugh-map}[4][2][1][$X_1\;X_2$][$X_3$]
+                                \terms{0}{$m_{0}$}
+                                \terms{1}{$m_{2}$}
+                                \terms{2}{$m_{4}$}
+                                \terms{3}{$m_{6}$}
+                                \terms{4}{$m_{1}$}
+                                \terms{5}{$m_{3}$}
+                                \terms{6}{$m_{5}$}
+                                \terms{7}{$m_{7}$}
+                            \end{karnaugh-map}
+                            \caption{Mapa de Karnaugh 3 Variáveis}
+                        \end{figure}
+                    \end{multicols}
+            \end{definition}
+        \subsection{Mapa de Karnaugh, 4 Variáveis}
+            \begin{definition}
+                Considera-se a seguinte representado:
+                    \begin{multicols}{2}
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{cccc|c}
+                                $X_1$ & $X_2$ & $X_3$ & $X_4$& \\\hline
+                                0     & 0     & 0     & 0    & $m_{0}$\\
+                                0     & 0     & 0     & 1    & $m_{1}$\\
+                                0     & 0     & 1     & 0    & $m_{2}$\\
+                                0     & 0     & 1     & 1    & $m_{3}$\\
+                                0     & 1     & 0     & 0    & $m_{4}$\\
+                                0     & 1     & 0     & 1    & $m_{5}$\\
+                                0     & 1     & 1     & 0    & $m_{6}$\\
+                                0     & 1     & 1     & 1    & $m_{7}$\\
+                                1     & 0     & 0     & 0    & $m_{8}$\\
+                                1     & 0     & 0     & 1    & $m_{9}$\\
+                                1     & 0     & 1     & 0    & $m_{10}$\\
+                                1     & 0     & 1     & 1    & $m_{11}$\\
+                                1     & 1     & 0     & 0    & $m_{12}$\\
+                                1     & 1     & 0     & 1    & $m_{13}$\\
+                                1     & 1     & 1     & 0    & $m_{14}$\\
+                                1     & 1     & 1     & 1    & $m_{15}$\\\hline
+                            \end{tabular}
+                            \caption{Tabela Verdade 4 Variáveis}
+                        \end{table}
+                        \columnbreak
+                        \begin{figure}[H]
+                            \centering
+                            \begin{karnaugh-map}[4][4][1][$X_1\;X_2$][$X_3\;X_4$]
+                                \terms{0}{$m_{0}$}
+                                \terms{1}{$m_{4}$}
+                                \terms{2}{$m_{8}$}
+                                \terms{3}{$m_{12}$}
+                                \terms{4}{$m_{1}$}
+                                \terms{5}{$m_{5}$}
+                                \terms{6}{$m_{9}$}
+                                \terms{7}{$m_{13}$}
+                                \terms{8}{$m_{2}$}
+                                \terms{9}{$m_{6}$}
+                                \terms{10}{$m_{10}$}
+                                \terms{11}{$m_{14}$}
+                                \terms{12}{$m_{3}$}
+                                \terms{13}{$m_{7}$}
+                                \terms{14}{$m_{11}$}
+                                \terms{15}{$m_{15}$}
+                            \end{karnaugh-map}
+                            \caption{Mapa de Karnaugh 4 Variáveis}
+                        \end{figure}
+                    \end{multicols}
+            \end{definition}
 \end{document}

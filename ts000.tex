@@ -3,50 +3,114 @@
 \pgfplotsset{compat=newest}
 \usetikzlibrary{patterns}
 \begin{document}
-    \begin{figure}[H]
-        \centering
-        \begin{tikzpicture}
-            \begin{axis}[
-                xmin = 0, xmax = 5.25, % Axis Coordenates
-                ymin = 0, ymax = 5.25, % Axis Coordenates
-                xlabel = {$v_{\text{in}}$},  % Axis Labels
-                ylabel = {$v_{\text{out}}$}, % Axis Labels
-                xtick = {2,3},      % Axis Ticks Potions
-                ytick = {0.5,4.5},  % Axis Ticks Potions
-                xticklabels = {$V_{IL}$, $V_{IH}$}, % Axis Ticks Labels
-                yticklabels = {$V_{OL}$, $V_{OH}$}, % Axis Ticks Labels
-                x label style = {at={(axis cs:{5.5,0})}, anchor=west},
-                y label style = {at={(axis cs:{0,5.5})}, anchor=south, rotate=-90},
-                width  = 7.5cm,
-                height = 7.5cm,
-                % grid = both,
-                % grid style       = {line width=.1pt, draw=gray!10},
-                % major grid style = {line width=.2pt, draw=gray!50},
-                % minor tick num=1,
-                axis lines = left,
-            ]
-            \addplot [
-                    domain=0:5, 
-                    samples=100, 
-                    color=red,
-            ] {5/(1+exp(-5*x+12.5))};
-            \draw[
-                color   =teal!75,
-                fill    =teal!25,
-                opacity =0.25
-            ] (3,0.5) rectangle (5, 4.5);
-            \draw[
-                color   =teal!75,
-                fill    =teal!25,
-                opacity =0.25
-            ] (0,0.5) rectangle (2, 4.5);
-            \draw[dashed] (axis cs:{2,0}) -- (axis cs:{2,4.5});
-            \draw[dashed] (axis cs:{3,0}) -- (axis cs:{3,4.5});
-            \draw[dashed] (axis cs:{0,0.5}) -- (axis cs:{2,0.5});
-            \draw[dashed] (axis cs:{3,0.5}) -- (axis cs:{5,0.5});
-            \draw[dashed] (axis cs:{0,4.5}) -- (axis cs:{2,4.5});
-            \draw[dashed] (axis cs:{3,4.5}) -- (axis cs:{5,4.5});
-            \end{axis}
-        \end{tikzpicture}
-    \end{figure}\noindent
+    \begin{definition}
+        Dispositivos que apresentam dois pares de terminais que adotam a convenção apresentada na seguinte figura:
+        \begin{figure}[H]
+            \centering
+                \begin{circuitikz}[american]
+                    \tikzset{quad/.style={draw, thick, minimum height=20mm, minimum width=10mm}}
+                    \node[quad] (A) at (0,0) {Quadripolo};
+                    \draw
+                        ($(A.north west)!.25!(A.west)$) coordinate (I11)
+                        ($(A.south west)!.25!(A.west)$) coordinate (I12)
+                        ($(A.north east)!.25!(A.east)$) coordinate (I21)
+                        ($(A.south east)!.25!(A.east)$) coordinate (I22)
+
+                        (I11)   to[short, f<_=$I_{1}$, -o]  ++(-1.5,0) coordinate (O11)
+                        (I12)   to[short,-o]                ++(-1.5,0) coordinate (O12)
+                        (I21)   to[short, f<=$I_{2}$,-o]    ++(+1.5,0) coordinate (O21)
+                        (I22)   to[short,-o]                ++(+1.5,0) coordinate (O22)
+                        ;
+
+                    \draw (O11) to[open, v=$V_{1}$] (O12);
+                    \draw (O21) to[open, v=$V_{2}$] (O22);
+                \end{circuitikz}
+            \caption{Representação Quadripolos}
+            \label{im:quadripolos}
+        \end{figure}\noindent
+        Onde:
+            \begin{align}
+                V_{1} &= Z_{11}I_{1} + Z_{12}I_{2} \qquad \text{onde:}\quad Z_{11} = \frac{V_1}{I_1}\quad\text{e}\quad Z_{12} = \frac{V_1}{I_2}\\[1.5mm]
+                V_{2} &= Z_{21}I_{1} + Z_{22}I_{2} \qquad \text{onde:}\quad Z_{21} = \frac{V_2}{I_1}\quad\text{e}\quad Z_{22} = \frac{V_2}{I_2}
+            \end{align}
+    \end{definition}
+
+\subsection{Configuração $Y$}
+    \begin{theorem}
+        Configuração $Y$ do sistema como representado na seguinte figura:
+        \begin{figure}[H]
+            \centering
+                \begin{circuitikz}[american]
+                    \tikzset{quad/.style={draw, thick, dashed, minimum height=20mm, minimum width=40mm}}
+                    \node[quad] (A) at (0,0) {};
+                    \draw   
+                        ($(A.north west)!.25!(A.west)$) coordinate (I11)
+                        ($(A.south west)!.25!(A.west)$) coordinate (I12)
+                        ($(A.north east)!.25!(A.east)$) coordinate (I21)
+                        ($(A.south east)!.25!(A.east)$) coordinate (I22)
+
+                        (I11)   to[short, f<_=$I_{1}$, -o]  ++(-1.5,0) coordinate (O11)
+                        (I12)   to[short,-o]                ++(-1.5,0) coordinate (O12)
+                        (I21)   to[short, f<=$I_{2}$,-o]    ++(+1.5,0) coordinate (O21)
+                        (I22)   to[short,-o]                ++(+1.5,0) coordinate (O22)
+
+                        (I11)   to[R, l =$Z_1$]  ++(+2,0)
+                        (I21)   to[R, l_=$Z_2$]  ++(-2,0)
+                                to[R, l=$Z_3$, *-*] ++(0,-1.5)
+                        (I22)   to[short] (I12)
+
+                        ;
+
+                    \draw (O11) to[open, v=$V_{1}$] (O12);
+                    \draw (O21) to[open, v=$V_{2}$] (O22);
+                \end{circuitikz}
+            \caption{Representação Quadripolos Y}
+            \label{im:quadripolosY}
+        \end{figure}\noindent
+        Onde as Impedâncias são dadas por:
+            \begin{align}
+                V_{1} &= (Z_1 + Z_3)I_1 + Z_3I_2 \qquad \text{onde:}\quad Z_{11} = \frac{V_1}{I_1} = Z_1 + Z_3 \quad\text{e}\quad Z_{12} = \frac{V_1}{I_2} = Z_3\\[1.5mm]
+                V_{2} &= Z_3I_1 + (Z_2 + Z_3)I_2 \qquad \text{onde:}\quad Z_{21} = \frac{V_2}{I_1} = Z_3       \quad\text{e}\quad Z_{22} = \frac{V_2}{I_2} = Z_2 + Z_3
+            \end{align}
+        Onde as Admitâncias são dadas por:
+            \begin{align}
+                I_{1} &= Y_{11}V_1 + Y_{12}V_2 \qquad \text{onde:}\quad Y_{11} = \frac{I_1}{V_1} \quad\text{e}\quad Y_{12} = \frac{I_1}{V_2}\\[1.5mm]
+                I_{2} &= Y_{21}V_1 + Y_{22}V_2 \qquad \text{onde:}\quad Y_{21} = \frac{I_2}{V_1} \quad\text{e}\quad Y_{22} = \frac{I_2}{V_2}
+            \end{align}
+    \end{theorem}
+
+\subsection{Configuração $\Delta$}
+    \begin{theorem}
+        Configuração $\Delta$ do sistema como representado na seguinte figura:
+        \begin{figure}[H]
+            \centering
+                \begin{circuitikz}[american]
+                    \tikzset{quad/.style={draw, thick, dashed, minimum height=20mm, minimum width=40mm}}
+                    \node[quad] (A) at (0,0) {};
+                    \draw   
+                        ($(A.north west)!.25!(A.west)$) coordinate (I11)
+                        ($(A.south west)!.25!(A.west)$) coordinate (I12)
+                        ($(A.north east)!.25!(A.east)$) coordinate (I21)
+                        ($(A.south east)!.25!(A.east)$) coordinate (I22)
+
+                        (I11)   to[short, f<_=$I_{1}$, -o]  ++(-1.5,0) coordinate (O11)
+                        (I12)   to[short,-o]                ++(-1.5,0) coordinate (O12)
+                        (I21)   to[short, f<=$I_{2}$,-o]    ++(+1.5,0) coordinate (O21)
+                        (I22)   to[short,-o]                ++(+1.5,0) coordinate (O22)
+
+                        (I11)   to[R, l =$Y_B$] (I21)
+                        (I11)   ++(+0.5,0)
+                                to[R, l=$Y_A$, *-*] ++(0,-1.5)
+                        (I21)   ++(-0.5,0)
+                                to[R, l_=$Y_C$, *-*] ++(0,-1.5)
+                        (I22)   to[short] (I12)
+                        ;
+
+                    \draw (O11) to[open, v=$V_{1}$] (O12);
+                    \draw (O21) to[open, v=$V_{2}$] (O22);
+                \end{circuitikz}
+            \caption{Representação Quadripolos $\Delta$}
+            \label{im:quadripolosD}
+        \end{figure}\noindent
+    \end{theorem}
 \end{document}

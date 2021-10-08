@@ -1,0 +1,482 @@
+\documentclass{article}
+\usepackage{tpack}
+
+
+
+\titleformat
+    {\subsection}           % Part
+    [block]                 % Part Shape
+    {\normalfont\Large}     % Font Size
+    {}                      % Label Numbering
+    {0mm}                   % Part Separation
+    {}                      % Code Before
+    []                      % Code After
+
+    \titlespacing*{\subsection}{0mm}{5mm}{2.5mm}
+
+    \input{kvmacros}
+
+\title{ES572 - Circuitos Lógicos}
+\author{Guilherme Nunes Trofino}
+\authorRA{217276}
+\project{Atividade Teórica}
+
+
+\begin{document}
+    \maketitle
+\newpage
+
+    \section{Atividade Teórica}
+        \paragraph{Apresentação}Resolução das questões de Circuitos Lógicos por Guilherme Nunes Trofino, 217276, sobre \textbf{Simplificação de Expressões Booleanas}.
+
+        \subsection{Questão 1}
+            \begin{exercise}
+                Use o mapa de Karnaugh para reduzir cada expressão para uma forma SoP mínima:
+                \begin{enumerate}[label=(\alph*), rightmargin = \leftmargin]
+                    \item $AB + \bar{A}D + B\bar{C}D + \bar{B}D$
+                    \item $AB \oplus (C+D)$
+                    \item $ABD + A\bar{B}\bar{C} + \bar{A}BC + \bar{A}CD + \bar{A}\bar{B}\bar{D}$
+                    \item $\bar{A}B\bar{C}D + \bar{A}BCD + AB\bar{C}D + ABCD$
+                    \item $BD + A\bar{B}D + \bar{A}B\bar{C} + \bar{A}CD + \bar{A}\bar{B}\bar{D}$
+                \end{enumerate}
+            \end{exercise}
+            \begin{resolution}
+                Nota-se:
+                \begin{enumerate}[label=(\alph*), rightmargin = \leftmargin]
+                    \item $f(A,B,C,D) = AB + \bar{A}D + B\bar{C}D + \bar{B}D$
+                    \begin{multicols}{2}
+                        \centering
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{cccc|cr}
+                                $A$&$B$&$C$&$D$&$f(A,B,C,D)$&Binário\\\hline
+                                0&0&0&0&   &0\\
+                                0&0&0&1& 1 &1\\
+                                0&0&1&0&   &2\\
+                                0&0&1&1& 1 &3\\
+                                0&1&0&0&   &4\\
+                                0&1&0&1& 1 &5\\
+                                0&1&1&0&   &6\\
+                                0&1&1&1& 1 &7\\
+                                1&0&0&0&   &8\\
+                                1&0&0&1& 1 &9\\
+                                1&0&1&0&   &10\\
+                                1&0&1&1& 1 &11\\
+                                1&1&0&0& 1 &12\\
+                                1&1&0&1& 1 &13\\
+                                1&1&1&0& 1 &14\\
+                                1&1&1&1& 1 &15\\\hline
+                            \end{tabular}
+                        \end{table}
+                        \columnbreak
+                        \begin{figure}[H]
+                            \centering
+                            \begin{karnaugh-map}[4][4][1][$C\;D$][$A\;B$]
+                                \minterms{1,3,5,7,9,11,12,13,14,15}
+                                \autoterms[0]
+                                \implicant{1}{11}
+                                \implicant{12}{14}
+                            \end{karnaugh-map}
+                        \end{figure}
+                    \end{multicols}
+                    Desta forma tem-se a seguinte simplificação:
+                        \begin{equation}
+                            \boxed{
+                                f(A,B,C,D) = AB + D
+                            }
+                        \end{equation}
+\newpage
+
+                    \item $f(A,B,C,D) = AB \oplus (C+D)$
+                    \begin{multicols}{2}
+                        \centering
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{cccc|cr}
+                                $A$&$B$&$C$&$D$&$f(A,B,C,D)$&Binário\\\hline
+                                0&0&0&0&   &0\\
+                                0&0&0&1& 1 &1\\
+                                0&0&1&0& 1 &2\\
+                                0&0&1&1& 1 &3\\
+                                0&1&0&0&   &4\\
+                                0&1&0&1& 1 &5\\
+                                0&1&1&0& 1 &6\\
+                                0&1&1&1& 1 &7\\
+                                1&0&0&0&   &8\\
+                                1&0&0&1& 1 &9\\
+                                1&0&1&0& 1 &10\\
+                                1&0&1&1& 1 &11\\
+                                1&1&0&0& 1 &12\\
+                                1&1&0&1&   &13\\
+                                1&1&1&0&   &14\\
+                                1&1&1&1&   &15\\\hline
+                            \end{tabular}
+                        \end{table}
+                        \columnbreak
+                        \begin{figure}[H]
+                            \centering
+                            \begin{karnaugh-map}[4][4][1][$C\;D$][$A\;B$]
+                                \minterms{1,2,3,5,6,7,9,10,11,12}
+                                \autoterms[0]
+                                \implicant{12}{12}
+                                \implicant{1}{7}
+                                \implicant{3}{6}
+                                \implicantedge{1}{3}{9}{11}
+                                \implicantedge{3}{2}{11}{10}
+                            \end{karnaugh-map}
+                        \end{figure}
+                    \end{multicols}
+                    Desta forma tem-se a seguinte simplificação:
+                        \begin{equation}
+                            \boxed{
+                                f(A,B,C,D) = AB\bar{C}\bar{D} + \bar{B}D + \bar{B}C + \bar{A}D + \bar{A}C
+                            }
+                        \end{equation}
+
+                    \item $f(A,B,C,D) = ABD + A\bar{B}\bar{C} + \bar{A}BC + \bar{A}CD + \bar{A}\bar{B}\bar{D}$
+                    \begin{multicols}{2}
+                        \centering
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{cccc|cr}
+                                $A$&$B$&$C$&$D$&$f(A,B,C,D)$&Binário\\\hline
+                                0&0&0&0& 1 &0\\
+                                0&0&0&1&   &1\\
+                                0&0&1&0& 1 &2\\
+                                0&0&1&1& 1 &3\\
+                                0&1&0&0&   &4\\
+                                0&1&0&1&   &5\\
+                                0&1&1&0& 1 &6\\
+                                0&1&1&1& 1 &7\\
+                                1&0&0&0& 1 &8\\
+                                1&0&0&1& 1 &9\\
+                                1&0&1&0&   &10\\
+                                1&0&1&1&   &11\\
+                                1&1&0&0&   &12\\
+                                1&1&0&1& 1 &13\\
+                                1&1&1&0&   &14\\
+                                1&1&1&1& 1 &15\\\hline
+                            \end{tabular}
+                        \end{table}
+                        \columnbreak
+                        \begin{figure}[H]
+                            \centering
+                            \begin{karnaugh-map}[4][4][1][$C\;D$][$A\;B$]
+                                \minterms{0,2,3,6,7,8,9,13,15}
+                                \autoterms[0]
+                                \implicantedge{0}{0}{8}{8}
+                                \implicant{3}{6}
+                                \implicant{8}{9}
+                                \implicant{13}{15}
+                            \end{karnaugh-map}
+                        \end{figure}
+                    \end{multicols}
+                    Desta forma tem-se a seguinte simplificação:
+                        \begin{equation}
+                            \boxed{
+                                f(A,B,C,D) = \bar{A}C + ABD + A\bar{B}\bar{C} + \bar{B}\bar{C}\bar{D}
+                            }
+                        \end{equation}
+\newpage
+
+                    \item $f(A,B,C,D) = \bar{A}B\bar{C}D + \bar{A}BCD + AB\bar{C}D + ABCD$
+                    \begin{multicols}{2}
+                        \centering
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{cccc|cr}
+                                $A$&$B$&$C$&$D$&$f(A,B,C,D)$&Binário\\\hline
+                                0&0&0&0&   &0\\
+                                0&0&0&1&   &1\\
+                                0&0&1&0&   &2\\
+                                0&0&1&1&   &3\\
+                                0&1&0&0&   &4\\
+                                0&1&0&1& 1 &5\\
+                                0&1&1&0&   &6\\
+                                0&1&1&1& 1 &7\\
+                                1&0&0&0&   &8\\
+                                1&0&0&1&   &9\\
+                                1&0&1&0&   &10\\
+                                1&0&1&1&   &11\\
+                                1&1&0&0&   &12\\
+                                1&1&0&1& 1 &13\\
+                                1&1&1&0&   &14\\
+                                1&1&1&1& 1 &15\\\hline
+                            \end{tabular}
+                        \end{table}
+                        \columnbreak
+                        \begin{figure}[H]
+                            \centering
+                            \begin{karnaugh-map}[4][4][1][$C\;D$][$A\;B$]
+                                \minterms{5,7,13,15}
+                                \autoterms[0]
+                                \implicant{5}{15}
+                            \end{karnaugh-map}
+                        \end{figure}
+                    \end{multicols}
+                    Desta forma tem-se a seguinte simplificação:
+                        \begin{equation}
+                            \boxed{
+                                f(A,B,C,D) = BD
+                            }
+                        \end{equation}
+\newpage
+
+                    \item $f(A,B,C,D) = BD + A\bar{B}D + \bar{A}B\bar{C} + \bar{A}CD + \bar{A}\bar{B}\bar{D}$
+                    \begin{multicols}{2}
+                        \centering
+                        \begin{table}[H]
+                            \centering
+                            \begin{tabular}[]{cccc|cr}
+                                $A$&$B$&$C$&$D$&$f(A,B,C,D)$&Binário\\\hline
+                                0&0&0&0& 1 &0\\
+                                0&0&0&1&   &1\\
+                                0&0&1&0& 1 &2\\
+                                0&0&1&1& 1 &3\\
+                                0&1&0&0& 1 &4\\
+                                0&1&0&1& 1 &5\\
+                                0&1&1&0&   &6\\
+                                0&1&1&1& 1 &7\\
+                                1&0&0&0&   &8\\
+                                1&0&0&1& 1 &9\\
+                                1&0&1&0&   &10\\
+                                1&0&1&1& 1 &11\\
+                                1&1&0&0&   &12\\
+                                1&1&0&1& 1 &13\\
+                                1&1&1&0&   &14\\
+                                1&1&1&1& 1 &15\\\hline
+                            \end{tabular}
+                        \end{table}
+                        \columnbreak
+                        \begin{figure}[H]
+                            \centering
+                            \begin{karnaugh-map}[4][4][1][$C\;D$][$A\;B$]
+                                \minterms{0,2,3,4,5,7,9,11,13,15}
+                                \autoterms[0]
+                                \implicant{3}{11}
+                                \implicant{13}{11}
+                                \implicant{4}{5}
+                                \implicantedge{0}{0}{2}{2}
+                            \end{karnaugh-map}
+                        \end{figure}
+                    \end{multicols}
+                    Desta forma tem-se a seguinte simplificação:
+                        \begin{equation}
+                            \boxed{
+                                f(A,B,C,D) = AD + \bar{C}\bar{D} + \bar{A}\bar{B}\bar{D} + \bar{A}B\bar{C}
+                            }
+                        \end{equation}
+                \end{enumerate}
+            \end{resolution}
+\newpage
+
+        \subsection{Questão 2}
+            \begin{exercise}
+                Determine a expressão SoP de custo mínimo para a função com quatro entradas expressa pela seguinte equação:
+                    \begin{equation*}
+                        f(A,B,C,D) = \sum M(6,7,8) + \sum D(10,11,12,13,14,15)
+                    \end{equation*}
+                Onde $M(i) = M_{i}$ é o i-ésimo \texttt{Mintermo} e $D(i) = D_{i}$ representa os estados de \texttt{don't care}.
+            \end{exercise}
+            \begin{resolution}
+                Nota-se:
+                \begin{figure}[H]
+                    \centering
+                    \begin{karnaugh-map}[4][4][1][$C\;D$][$A\;B$]
+                        \minterms{6,7,8}
+                        \indeterminants{10,11,12,13,14,15}
+                        \autoterms[0]
+                        \implicant{7}{14}
+                        \implicantedge{12}{8}{14}{10}
+                    \end{karnaugh-map}
+                \end{figure}\noindent
+                Desta forma tem-se a seguinte simplicação:
+                    \begin{equation}
+                        \boxed{
+                            f(A,B,C,D) = BC + A\bar{D}
+                        }
+                    \end{equation}
+            \end{resolution}
+\newpage
+
+        \subsection{Questão 3}
+            \begin{exercise}
+                Determine a expressão SoP de custo mínimo para a função com quatro entradas expressa pela seguinte equação:
+                    \begin{equation*}
+                        f(A,B,C,D) = \sum M(0,2,4,8,10,11,15) + \sum D(1,6,14)
+                    \end{equation*}
+                Onde $M(i) = M_{i}$ é o i-ésimo \texttt{Mintermo} e $D(i) = D_{i}$ representa os estados de \texttt{don't care}.
+            \end{exercise}
+            \begin{resolution}
+                Nota-se
+                \begin{figure}[H]
+                    \centering
+                    \begin{karnaugh-map}[4][4][1][$C\;D$][$A\;B$]
+                        \minterms{0,2,4,8,10,11,15}
+                        \indeterminants{1,6,14}
+                        \autoterms[0]
+                        \implicant{15}{10}
+                        \implicantedge{0}{4}{2}{6}
+                        \implicantcorner[0]
+                    \end{karnaugh-map}
+                \end{figure}\noindent
+                Desta forma tem-se a seguinte simplicação:
+                    \begin{equation}
+                        \boxed{
+                            f(A,B,C,D) = AC + \bar{B}\bar{D} + \bar{A}\bar{D}
+                        }
+                    \end{equation}
+            \end{resolution}
+\newpage
+
+        \subsection{Questão 4}
+            \begin{exercise}
+                Determine a expressão SoP de custo mínimo para a função com quatro entradas expressa pela seguinte equação:
+                    \begin{equation*}
+                        G(X,Y,Z) = \sum M(2,7) + \sum D(0,3,5)
+                    \end{equation*}
+                Onde $M(i) = M_{i}$ é o i-ésimo \texttt{Mintermo} e $D(i) = D_{i}$ representa os estados de \texttt{don't care}.
+            \end{exercise}
+            \begin{resolution}
+                Nota-se
+                \begin{figure}[H]
+                    \centering
+                    \begin{karnaugh-map}[2][4][1][$Z$][$X\;Y$]
+                        \minterms{2,7}
+                        \indeterminants{0,3,5}
+                        \autoterms[0]
+                        \implicant{0}{2}
+                        \implicant{7}{5}
+                    \end{karnaugh-map}
+                \end{figure}\noindent
+                Desta forma tem-se a seguinte simplicação:
+                    \begin{equation}
+                        \boxed{
+                            G(X,Y,Z) = \bar{X}\bar{Z} + XZ
+                        }
+                    \end{equation}
+                Assim, toma-se $A = Z + \bar{X}Y\bar{Z}$, $B = XYZ + \bar{X}Y\bar{Z}$, $C = \bar{X}Y + \bar{X}\bar{Z}$, $D = Y(\bar{X} + Z)$, $E = X\oplus \bar{Z}$ e $F = \bar{X}\bar{Z} + YZ + \bar{Y}\bar{Z}$:
+                \begin{table}[H]
+                    \centering\begin{tabular}{ccc|cccccc|c|c}
+                        X&Y&Z&$A$&$B$&$C$&$D$&$E$&$F$&$G$& Decimal\\\hline
+                        0&0&0&   &   & 1 &   & 1 & 1 & x & 0\\
+                        0&0&1& \textcolor{red}{1} &   &   &   &   &   & 0 & 1\\
+                        0&1&0& 1 & 1 & 1 & 1 & 1 & 1 & 1 & 2\\
+                        0&1&1& 1 &   & 1 & 1 &   & 1 & x & 3\\
+                        1&0&0&   &   &   &   &   & \textcolor{red}{1} & 0 & 4\\
+                        1&0&1& 1 &   &   &   & 1 &   & x & 5\\
+                        1&1&0&   &   &   &   &   &   & 0 & 6\\
+                        1&1&1& 1 & 1 & \textcolor{red}{0} & 1 & 1 & 1 & 1 & 7\\\hline
+                    \end{tabular}
+                \end{table}\noindent
+                \begin{enumerate}[noitemsep]
+                    \item $A$ é inválido pois $\bar{X}\bar{Y}Z$ deveria ser 0;
+                    \item $B$ é válido;
+                    \item $C$ é inválido pois $XYZ$ deveria ser 1;
+                    \item $D$ é válido;
+                    \item $E$ é válido;
+                    \item $F$ é inválido pois $X\bar{Y}\bar{Z}$ deveria ser 0;
+                \end{enumerate}
+            \end{resolution}
+\newpage
+
+        \subsection{Questão 5}
+            \begin{exercise}
+                Determine a expressão SoP de custo mínimo para a função com quatro entradas expressa pela seguinte equação:
+                    \begin{equation*}
+                        f(A,B,C,D) = \sum M(2,3,4,6,7) + \sum D(0,1,14,15)
+                    \end{equation*}
+                Onde $M(i) = M_{i}$ é o i-ésimo \texttt{Mintermo} e $D(i) = D_{i}$ representa os estados de \texttt{don't care}.
+            \end{exercise}
+            \begin{resolution}
+                Nota-se:
+                \begin{figure}[H]
+                    \centering
+                    \begin{karnaugh-map}[4][4][1][$C\;D$][$A\;B$]
+                        \minterms{2,3,4,6,7}
+                        \indeterminants{0,1,14,15}
+                        \autoterms[0]
+                    \end{karnaugh-map}
+                \end{figure}
+
+                \paragraph{Método de Quine-McCluskey Extendido}Inicialmente será necessário obter os Implicantes Primos da função apresenta agrupando \texttt{mintermos} pela quantidade de bits 1 presentes considerando os \texttt{don't cares} como 1 também como ilustrado na seguinte tabela:
+                \begin{table}[H]
+                    \centering\begin{tabular}{c cccc c}
+                        Bits 1             &A&B&C&D& Decimal\\\hline
+                        0                  &0&0&0&0& 0\\\hline
+                        \multirow{3}{*}{1} &0&0&0&1& 1\\
+                                           &0&0&1&0& 2\\
+                                           &0&1&0&0& 4\\\hline
+                        \multirow{2}{*}{2} &0&0&1&1& 3\\
+                                           &0&1&1&0& 6\\\hline
+                        \multirow{2}{*}{3} &0&1&1&1& 7\\
+                                           &1&1&1&0& 14\\\hline
+                        4                  &1&1&1&1& 15\\\hline
+                    \end{tabular}
+                \end{table}\noindent
+                Na sequência será necessário agrupar os termos que possuem distância de Hamming igual a 1 entre cada um dos grupos na tabela anterior.
+                \\\\
+                Nota-se que estes seriam vizinhos na representação do \texttt{Mapa de Karnaugh} e portanto poderiam ser agrupados. Nestes agrupamentos a propriedade $AB + A\bar{B} = A$ deve ser utilizada para simplificar os termos vizinhos a \texttt{don't care} como ilustrado nas seguintes tabelas:
+                \begin{table}[H]
+                    \centering\begin{tabular}{cccc l}
+                        A&B&C&D& Decimal\\\hline
+                        0&0&0&0& 0\\\hline
+                        0&0&0&1& 1\\
+                        0&0&1&0& 2\\
+                        0&1&0&0& 4\\\hline
+                        0&0&1&1& 3\\
+                        0&1&1&0& 6\\\hline
+                        0&1&1&1& 7\\
+                        1&1&1&0& 14\\\hline
+                        1&1&1&1& 15\\\hline
+                    \end{tabular}
+                    \quad
+                    \centering\begin{tabular}{cccc l}
+                        A&B&C&D& Decimal\\\hline
+                        0&0&0&x& 0, 1\\
+                        0&0&x&0& 0, 2\\
+                        0&x&0&0& 0, 4\\\hline
+                        0&0&x&1& 1, 3\\
+                        0&0&1&x& 2, 3\\
+                        0&x&1&0& 2, 6\\
+                        0&1&x&0& 4, 6\\\hline
+                        0&x&1&1& 3, 7\\
+                        0&1&1&x& 6, 7\\
+                        x&1&1&0& 6, 14\\\hline
+                        x&1&1&1& 7, 15\\
+                        1&1&1&x& 14, 15\\\hline
+                    \end{tabular}
+                    \quad
+                    \centering\begin{tabular}{cccc l}
+                        A&B&C&D& Decimal\\\hline
+                        0&0&x&x& 0, 1, 2, 3\\
+                        0&x&x&0& 0, 2, 4, 6\\\hline
+                        0&x&1&x& 2, 3, 6, 7\\\hline
+                        x&1&1&x& 6, 7, 14, 15\\\hline
+                    \end{tabular}
+                \end{table}\noindent
+                Na sequência será necessário realizar a determinação da cobertura mínima onde os \texttt{Minitermos} gerados pelos \texttt{don't cares} são ignorados:
+                    \begin{table}[H]
+                        \centering\begin{tabular}{c|ccccc}
+                            \multirow{2}{*}{Implicante} & \multicolumn{5}{c}{Minitermos}\\
+                                                        &2&3&4&6&7\\\hline
+                            $p_1 = 00xx$                &x&x& & & \\
+                            \textcolor{blue!75}{$p_2=0xx0$} &x& &x&x& \\
+                            $p_3 = 0x1x$                &x&x& &x&x\\
+                            $p_4 = x11x$                & & & &x&x\\\hline
+                        \end{tabular}
+                        \qquad
+                        \centering\begin{tabular}{c|cc}
+                            \multirow{2}{*}{Implicante} & \multicolumn{2}{c}{Minitermos}\\
+                                                        &3&7\\\hline
+                            $p_1 = 00xx$                &x& \\
+                            \textcolor{blue!75}{$p_3=0x1x$} &x&x\\
+                            $p_4 = x11x$                & &x\\\hline
+                        \end{tabular}
+                    \end{table}
+                Desta forma:
+                    \begin{equation}
+                        \boxed{f(A,B,C,D) = \bar{A}C + \bar{A}\bar{D}}
+                    \end{equation}
+            \end{resolution}
+\end{document}
