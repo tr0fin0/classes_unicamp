@@ -50,6 +50,7 @@
                                          & $f(t)$      & $\mathcal{L}\{ f(t) \}$\\\hline
                         Degrau Unitário  & $u(t)$      & $\frac{1}{s}$\\
                         Impulso Unitário & $\delta(t)$ & $1$\\
+                        Rampa Unitário   & $r(t)$      & $\frac{1}{s^2}$\\
                                          & $t^{n}$     & $\frac{n!}{s^{n+1}}$\\
                                          & $e^{-at}$   & $\frac{1}{s+a}$\\
                                          & $\frac{t^{n-1}e^{-at}}{(n-1)!}$  & $\frac{1}{(s+a)^{n}}$\\
@@ -103,10 +104,10 @@
                 \paragraph{Definição}Distribuição infinita no ponto zero e nula no restante da reta. Formalmente descrita pela seguinte equação:
                     \begin{equation}
                         \boxed{
-                            \delta(x) = 
+                            \delta(x-a) = 
                             \begin{cases}
-                                0, & x \neq 0;\\
-                                \infty, & x = 0;\\
+                                0, & x \neq a;\\
+                                \infty, & x = a;\\
                             \end{cases}
                             }
                         \end{equation}
@@ -123,6 +124,18 @@
                         }
                     \end{equation*}
                 Aplica-se o impulso unitário para se extrair uma \textbf{Amostra} do valor de uma função em um determinado ponto.
+
+            \subsubsection{Rampa Unitário}
+                \paragraph{Definição}Representação de uma função linear com coeficiente angular unitário. Formalmente descrita pela seguinte equação:
+                    \begin{equation}
+                        \boxed{
+                            r(x - a) = 
+                            \begin{cases}
+                                0, & x < a;\\
+                                x, & x > a;\\
+                            \end{cases}
+                        }
+                    \end{equation}
 
             \subsubsection{Transformada da Deriva}
                 \paragraph{Definição}Quando aplicada em uma derivada de ordem $n$ será necessário utilizar da recursão e integração por partes, obtendo a seguinte equação geral:
