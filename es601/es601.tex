@@ -203,32 +203,34 @@
     \begin{table}[H]
         \centering\begingroup
         % \setlength{\tabcolsep}{5mm}
-        \renewcommand{\arraystretch}{1.25}
+        \renewcommand{\arraystretch}{1.5}
         \begin{tabular}[]{lcc}
                                 & $f(k)$      & $\mathcal{Z}\{ f(k) \}$\\\hline
             Degrau Unitário     & $u(k)$      & $\frac{z}{z-1}$\\
             Impulso Unitário    & $\delta(k)$ & $1$\\
-            Rampa Unitário      & $r(t)$      & $\frac{z}{(z-1)^2}$\\
+            Rampa Unitário      & $r(k)$      & $\frac{z}{(z-1)^2}$\\
                                 & $a^{k}$     & $\frac{z}{z-a}$\\
-                                & $e^{-aTk}$  & $\frac{z}{z-e^{-aT}}$\\
-            %                     & $\frac{t^{n-1}e^{-at}}{(n-1)!}$  & $\frac{1}{(s+a)^{n}}$\\
-                                & $\sin(\omega_0 KT)$ & $\frac{z\sin(\omega T)}{z^2 - 2z\cos(\omega T) + 1}$\\
-            %                     & $\cos(at + b)$  & $\frac{s\cos(b) + a\sin(b)}{(s^2+a^2)}$\\
-            % Seno Hiperbólico    & $\sinh(at)$  & $\frac{a}{(s^2-a^2)}$\\
-            % Cosseno Hiperbólico & $\cosh(at)$  & $\frac{s}{(s^2-a^2)}$\\
-            %                     & $e^{at}\;\sin(bt)$  & $\frac{b}{(s-a)^2+b^2}$\\
-            %                     & $e^{at}\;\cos(bt)$  & $\frac{s-a}{(s-a)^2+b^2}$\\
+                                & $e^{-\omega_0k}$  & $\frac{z}{z-e^{-\omega_0}}$\\
+                                & $\sin(\omega_0 k)$ & $\frac{z\sin(\omega_0)}{z^2 - 2z\cos(\omega_0) + 1}$\\
+                                & $\cos(\omega_0 k)$ & $\frac{z^2 - z\cos(\omega_0)}{z^2 - 2z\cos(\omega_0) + 1}$\\
+                                & $a^k\;\sin(\omega_0 k)$ & $\frac{za\sin(\omega_0)}{z^2 - 2za\cos(\omega_0) + a^2}$\\
+                                & $a^k\;\cos(\omega_0 k)$ & $\frac{z^2 - za\cos(\omega_0)}{z^2 - 2za\cos(\omega_0) + a^2}$\\
             Convolução          & $f_1(k) * f_2(k)$ & $F_1(k)\cdot F_2(k)$\\
-            % Integral            & $\int_{0}^{t} f(\varphi)\;u(t - \varphi) \text{d}\varphi$ & $\frac{F(s)}{s}$\\
-            Multiplicação         & $k f(k)$ & $-z \diff{F(k)}{z}$\\
-            Frequência            & $a^{-k}f(k)$ & $F(a^{-1}z)$\\
+            Multiplicação       & $k f(k)$ & $-z \diff{F(k)}{z}$\\
+            Frequência          & $a^{-k}f(k)$ & $F(a^{-1}z)$\\
             Deslocamento Avançado & $f(k+n)$ &\\
-            Deslocamento Atrasado & $f(k-n)$ & $z^{-n}F(z)$\\\hline
+                                  & $f(k+1)$ & \multicolumn{1}{l}{$z^1\cdot F(z) - z^1\cdot f(0)$}\\
+                                  & $f(k+2)$ & \multicolumn{1}{l}{$z^2\cdot F(z) - z^2\cdot f(0) - z^1\cdot f(1)$}\\
+                                  & $f(k+3)$ & \multicolumn{1}{l}{$z^3\cdot F(z) - z^3\cdot f(0) - z^2\cdot f(1) - z^1\cdot f(2)$}\\
+            Deslocamento Atrasado & $f(k-n)$ &\\
+                                  & $f(k-1)$ & \multicolumn{1}{l}{$z^{-1}\cdot F(z) - z^{+0}\cdot f(-1)$}\\
+                                  & $f(k-2)$ & \multicolumn{1}{l}{$z^{-2}\cdot F(z) - z^{-1}\cdot f(-1) - z^{+0}\cdot f(-2)$}\\
+                                  & $f(k-3)$ & \multicolumn{1}{l}{$z^{-3}\cdot F(z) - z^{-2}\cdot f(-1) - z^{-1}\cdot f(-2) - z^{+0}\cdot f(-3)$}\\\hline
         \end{tabular}
         \endgroup
         \caption{Tabela de Transformadas $\mathcal{Z}$}\label{table:Z}
     \end{table} \noindent
-
+    Note que a expressão $\omega_0$ representa a periodicidade da função a ser transformada. Há possibilidade de que o período da função modifique sua interpretação após a transformação por coincidir com o periodo de amostragem da função.
 
 \subsubsection{Degrau Unitário}
     \paragraph{Definição}Representação de descontinuidade unitária, normalmente utilizada para representar mudanças instantâneas em sistemas. Formalmente descrita pela seguinte equação:
@@ -268,7 +270,7 @@
         }
     \end{equation}
 
-\subsubsection{Transformada do Deslocamento Atvanço}
+\subsubsection{Transformada do Deslocamento Avançado}
     \paragraph{Definição}Quando aplica-se um deslocamento que causa avanço na função pela ordem $n$ será necessário utilizar da recursão , obtendo a seguinte equação geral:
     \begin{equation}
         \boxed{
