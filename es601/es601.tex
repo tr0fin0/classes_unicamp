@@ -179,8 +179,18 @@
     \end{equation}
 \newpage
 
+\subsection{Frações Parcias}
+\subsubsection{\texttt{Residue Function}}
+\href{https://www.mathworks.com/help/matlab/ref/residue.html}{\texttt{residue function}}
+
+\subsubsection{Heaviside Cover-Up}
+\href{https://en.wikipedia.org/wiki/Heaviside_cover-up_method}{Heaviside Cover-Up}
+
+\href{https://www.mathworks.com/matlabcentral/answers/55210-discrete-system-solving-with-matlab}{Sistemas Discretos}
+
+\newpage
 \subsection{Transformada $\mathcal{Z}$}
-    \paragraph{Definição}Conversão de uma equação a diferenças de um sinal discreto $f(k)$. Formalmente descrita pelas seguintes equações:
+    \paragraph{Definição}Conversão de uma equação a diferenças de um sinal discreto $f(k)$. \href{https://en.wikipedia.org/wiki/Z-transform}{Formalmente} descrita pelas seguintes equações:
     \begin{multicols}{2}
         \raggedcolumns
         \paragraph{Forma Bilateral:}
@@ -207,7 +217,7 @@
         \begin{tabular}[]{lcc}
                                 & $f(k)$      & $\mathcal{Z}\{ f(k) \}$\\\hline
             Degrau Unitário     & $u(k)$      & $\frac{z}{z-1}$\\
-            Impulso Unitário    & $\delta(k)$ & $1$\\
+            Impulso Unitário    & $\delta(k-k_0)$ & $z^{-k_0}$\\
             Rampa Unitário      & $r(k)$      & $\frac{z}{(z-1)^2}$\\
                                 & $a^{k}$     & $\frac{z}{z-a}$\\
                                 & $e^{-\omega_0k}$  & $\frac{z}{z-e^{-\omega_0}}$\\
@@ -215,17 +225,18 @@
                                 & $\cos(\omega_0 k)$ & $\frac{z^2 - z\cos(\omega_0)}{z^2 - 2z\cos(\omega_0) + 1}$\\
                                 & $a^k\;\sin(\omega_0 k)$ & $\frac{za\sin(\omega_0)}{z^2 - 2za\cos(\omega_0) + a^2}$\\
                                 & $a^k\;\cos(\omega_0 k)$ & $\frac{z^2 - za\cos(\omega_0)}{z^2 - 2za\cos(\omega_0) + a^2}$\\
-            Convolução          & $f_1(k) * f_2(k)$ & $F_1(k)\cdot F_2(k)$\\
-            Multiplicação       & $k f(k)$ & $-z \diff{F(k)}{z}$\\
-            Frequência          & $a^{-k}f(k)$ & $F(a^{-1}z)$\\
+            Convolução          & $f_1(k) * f_2(k)$ & $F_1(z)\cdot F_2(z)$\\
+            Multiplicação       & $k f(k)$ & $-z \diff{F(z)}{z}$\\
+            Escalamento         & $a^{-k}f(k)$ & $F(a^{-1}z)$\\
+            Tempo Reverso       & $f(-k)$ & $F(z^{-1})$\\
             Deslocamento Avançado & $f(k+n)$ &\\
                                   & $f(k+1)$ & \multicolumn{1}{l}{$z^1\cdot F(z) - z^1\cdot f(0)$}\\
                                   & $f(k+2)$ & \multicolumn{1}{l}{$z^2\cdot F(z) - z^2\cdot f(0) - z^1\cdot f(1)$}\\
                                   & $f(k+3)$ & \multicolumn{1}{l}{$z^3\cdot F(z) - z^3\cdot f(0) - z^2\cdot f(1) - z^1\cdot f(2)$}\\
             Deslocamento Atrasado & $f(k-n)$ &\\
-                                  & $f(k-1)$ & \multicolumn{1}{l}{$z^{-1}\cdot F(z) - z^{+0}\cdot f(-1)$}\\
-                                  & $f(k-2)$ & \multicolumn{1}{l}{$z^{-2}\cdot F(z) - z^{-1}\cdot f(-1) - z^{+0}\cdot f(-2)$}\\
-                                  & $f(k-3)$ & \multicolumn{1}{l}{$z^{-3}\cdot F(z) - z^{-2}\cdot f(-1) - z^{-1}\cdot f(-2) - z^{+0}\cdot f(-3)$}\\\hline
+                                  & $f(k-1)$ & \multicolumn{1}{l}{$z^{-1}\cdot F(z) - f(-1)$}\\
+                                  & $f(k-2)$ & \multicolumn{1}{l}{$z^{-2}\cdot F(z) - z^{-1}\cdot f(-1) - f(-2)$}\\
+                                  & $f(k-3)$ & \multicolumn{1}{l}{$z^{-3}\cdot F(z) - z^{-2}\cdot f(-1) - z^{-1}\cdot f(-2) - f(-3)$}\\\hline
         \end{tabular}
         \endgroup
         \caption{Tabela de Transformadas $\mathcal{Z}$}\label{table:Z}
@@ -282,6 +293,11 @@
             z\cdot f(n-1)
         }
     \end{equation}
+    Note que caso trate-se de condições iniciais nulas o resultado se resumirá à:
+    \begin{equation*}
+        \mathcal{Z}\{ f(k+n) \} = 
+        z^{n}\cdot F(z)
+    \end{equation*}
 
 \subsubsection{Transformada do Deslocamento Atrasado}
     \paragraph{Definição}Quando aplica-se um deslocamento que causa atraso na função pela ordem $n$ será necessário utilizar da recombinação entre os somatórios, obtendo a seguinte equação geral:
