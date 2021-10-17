@@ -1441,7 +1441,120 @@
 
 \subsection{Convenção do Ponto}
 \begin{definition}
-    Uma corrente i que entra num terminal com ponto em um enrolamento induz uma tensão com polaridade positiva no terminal com ponto do outro enrolamento. Em outras palavras o sinal positivo será indicado pela presença do ponto como demonstrado a seguir
+    Denota qual será o sinal aplicado para \textbf{Indutância Mutua} nas equações de Transformadores de acordo com as seguintes combinações:
+        \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+            \item Correntes $i_1$ e $i_2$ entrem, ou saiam, dos pontos na mesma direção, então $+M$.
+            \item Correntes $i_1$ e $i_2$ entrem, ou saiam, dos pontos em direções contrárias, então $-M$.
+        \end{enumerate}
+    Considera as seguintes ilustrações:
+    \begin{figure}[H]
+        \centering\begin{circuitikz}
+            \node[transformer] (T) {};
+            \draw
+            (T.base) node{M}
+            (T.A1) to[short, -o, f<_=$i_1$] ++(-1,0) coordinate (TAP)
+            (T.A2) to[short, -o] ++(-1,0) coordinate (TAM)
+            (T.B1) to[short, -o, f<=$i_2$] ++(+1,0) coordinate (TBP)
+            (T.B2) to[short, -o] ++(+1,0) coordinate (TBM)
+            (T.west) node{$L_1$}
+            (T.east) node{$L_2$}
+            ;
+
+            \draw
+            (TAP) to[open, american, v=$V_1$] (TAM)
+            (TBP) to[open, american, v=$V_2$] (TBM)
+            (T.outer dot B1) node[circ] {}
+            (T.outer dot A1) node[circ] {}
+            ;
+        \end{circuitikz}
+        \qquad
+        \begin{circuitikz}
+            \node[transformer] (T) {};
+            \draw
+            (T.base) node{M}
+            (T.A1) to[short, -o, f<_=$i_1$] ++(-1,0) coordinate (TAP)
+            (T.A2) to[short, -o] ++(-1,0) coordinate (TAM)
+            (T.B1) to[short, -o, f<=$i_2$] ++(+1,0) coordinate (TBP)
+            (T.B2) to[short, -o] ++(+1,0) coordinate (TBM)
+            (T.west) node{$L_1$}
+            (T.east) node{$L_2$}
+            ;
+
+            \draw
+            (TAP) to[open, american, v=$V_1$] (TAM)
+            (TBP) to[open, american, v=$V_2$] (TBM)
+            (T.outer dot B2) node[circ] {}
+            (T.outer dot A2) node[circ] {}
+            ;
+        \end{circuitikz}
+    \end{figure}\noindent
+    \begin{equation}
+        \boxed{v_1 = L_1 \diff{i_1}{t} + M   \diff{i_2}{t}}
+        \qquad
+        \boxed{v_2 = M   \diff{i_1}{t} + L_2 \diff{i_2}{t}}
+    \end{equation}
+    \begin{figure}[H]
+        \centering\begin{circuitikz}
+            \node[transformer] (T) {};
+            \draw
+            (T.base) node{M}
+            (T.A1) to[short, -o, f<_=$i_1$] ++(-1,0) coordinate (TAP)
+            (T.A2) to[short, -o] ++(-1,0) coordinate (TAM)
+            (T.B1) to[short, -o, f<=$i_2$] ++(+1,0) coordinate (TBP)
+            (T.B2) to[short, -o] ++(+1,0) coordinate (TBM)
+            (T.west) node{$L_1$}
+            (T.east) node{$L_2$}
+            ;
+
+            \draw
+            (TAP) to[open, american, v=$V_1$] (TAM)
+            (TBP) to[open, american, v=$V_2$] (TBM)
+            (T.outer dot B1) node[circ] {}
+            (T.outer dot A2) node[circ] {}
+            ;
+        \end{circuitikz}
+        \qquad
+        \begin{circuitikz}
+            \node[transformer] (T) {};
+            \draw
+            (T.base) node{M}
+            (T.A1) to[short, -o, f<_=$i_1$] ++(-1,0) coordinate (TAP)
+            (T.A2) to[short, -o] ++(-1,0) coordinate (TAM)
+            (T.B1) to[short, -o, f<=$i_2$] ++(+1,0) coordinate (TBP)
+            (T.B2) to[short, -o] ++(+1,0) coordinate (TBM)
+            (T.west) node{$L_1$}
+            (T.east) node{$L_2$}
+            ;
+
+            \draw
+            (TAP) to[open, american, v=$V_1$] (TAM)
+            (TBP) to[open, american, v=$V_2$] (TBM)
+            (T.outer dot B2) node[circ] {}
+            (T.outer dot A1) node[circ] {}
+            ;
+        \end{circuitikz}
+    \end{figure}\noindent
+    Onde:
+    \begin{equation}
+        \boxed{
+        \begin{cases}
+            v_1 = + L_1 \diff{i_1}{t} - M   \diff{i_2}{t}\\
+            v_2 = + M   \diff{i_1}{t} + L_2 \diff{i_2}{t}
+        \end{cases}
+        }
+        \qquad
+        \boxed{
+            \begin{cases}
+                v_1 = + L_1 \diff{i_1}{t} + M   \diff{i_2}{t}\\
+                v_2 = - M   \diff{i_1}{t} + L_2 \diff{i_2}{t}
+            \end{cases}
+        }
+    \end{equation}
+\end{definition}
+
+\subsection{Impedância Refletida}
+\begin{definition}
+    Impedância percebida pelo primário operando em \textbf{Corrente Alternada} quando o secundário estiver alimentando uma carga $Z$ como ilustrado na seguinte figura:
     \begin{figure}[H]
         \centering\begin{circuitikz}
             \node[transformer] (T) {};
@@ -1457,18 +1570,52 @@
 
             \draw
             (TAP) to[open, american, v=$V_1$] (TAM)
-            (TBP) to[open, american, v<=$V_2$] (TBM)
-            (T.outer dot B2) node[circ] {}
+            (TBP) to[R, american, l=$Z$] (TBM)
+            (T.outer dot B1) node[circ] {}
             (T.outer dot A1) node[circ] {}
             ;
         \end{circuitikz}
     \end{figure}\noindent
-    Onde:
+    Desta forma, aplicando as equações para um Transformador obtem-se:
     \begin{equation}
-        \boxed{-v_1 = -L_1 \diff{i_1}{t} - M \diff{i_2}{t}}
-        \qquad
-        \boxed{v_2 = M \diff{i_1}{t} + L_2 \diff{i_2}{t}}
+        \boxed{V_1 = \left(j\omega L_1 + \frac{\omega^2 M^2}{Z + j\omega L_2}\right) I_1}
     \end{equation}
+    Define-se:
+    \begin{equation}
+        \boxed{
+            Z_e = 
+            \underbrace{j\omega L_1}_{\text{Impedância Própria}} + 
+            \underbrace{\frac{\omega^2 M^2}{Z + j\omega L_2}}_{\text{Impedância Refletida}}
+        }
+    \end{equation}
+\end{definition}
+
+\subsection{Energia Acumulada}
+\begin{definition}
+    Obtem-se a energia total acumulada em um Transformador através da seguinte expressão:
+    \begin{equation}
+    \boxed{
+        W = \frac{1}{2} L_1I^2_1 \mp MI_1I_2 + \frac{1}{2}L_2I^2_2
+    }
+    \end{equation}
+    Onde $M$ dependerá da convenção de pontos empregada no transformador.
+\end{definition}
+
+\subsection{Coeficiente de Acoplamento}
+\begin{definition}
+    Define-se a interação entre as fases através da seguinte equação:
+    \begin{equation}
+    \boxed{
+        k = \frac{M}{\sqrt{L_1L_2}}
+    }\quad \text{limitado por:} \quad 0 \le k \le 1
+    \end{equation}
+    Onde:
+    \begin{enumerate}[noitemsep]
+        \item $k=0$ Bobinas não Acopladas;
+        \item $k\le 0.5$ Bobinas Fracamente Acopladas;
+        \item $k  > 0.5$ Bobinas Fortemente Acopladas;
+        \item $k=1$ Bobinas Totalmente Acopladas;
+    \end{enumerate}
 \end{definition}
 
 \end{document}
