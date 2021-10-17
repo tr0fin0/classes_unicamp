@@ -1534,7 +1534,6 @@
             ;
         \end{circuitikz}
     \end{figure}\noindent
-    Onde:
     \begin{equation}
         \boxed{
         \begin{cases}
@@ -1618,4 +1617,50 @@
     \end{enumerate}
 \end{definition}
 
+\subsection{Transformador Ideal}
+\begin{definition}
+    Dispositivos que apresentam as seguintes características:
+    \begin{enumerate}[noitemsep]
+        \item Não há Perdas;
+        \item Bobinas Totalmente Acompladas;
+        \item Indutâncias Infinitas, porém com relação Finita; 
+    \end{enumerate}
+    Considera-se que Transformadores de Núcleo de Ferro aproximam-se desta características e serão representados pelo seguinte ilustração:
+    \begin{figure}[H]
+        \centering\begin{circuitikz}
+            \node[transformer core] (T) {};
+            \draw
+            (T.base) node{}
+            (T.A1) to[short, -o, f<_=$i_1$] ++(-1,0) coordinate (TAP)
+            (T.A2) to[short, -o] ++(-1,0) coordinate (TAM)
+            (T.B1) to[short, -o, f<=$i_2$] ++(+1,0) coordinate (TBP)
+            (T.B2) to[short, -o] ++(+1,0) coordinate (TBM)
+            (T.west) node{$L_1\;n_1$}
+            (T.east) node{$n_2\;L_2$}
+            ;
+
+            \draw
+            (TAP) to[open, american, v=$V_1$] (TAM)
+            (TBP) to[open, american, v=$V_2$] (TBM)
+            (T.outer dot B1) node[circ] {}
+            (T.outer dot A1) node[circ] {}
+            ;
+        \end{circuitikz}
+        \caption{Representação Transformador Ideal}
+        \label{image:idealTransformer}
+    \end{figure}\noindent
+    Nesta configuração as seguintes equações serão válidas:
+    \begin{equation}
+    \boxed{
+        \frac{L_2}{L_1} = \left(\frac{n_2}{n_1}\right)^2
+    }\qquad
+    \boxed{
+        \frac{V_2}{V_1} = \frac{n_2}{n_1}
+    }\qquad
+    \boxed{
+        \frac{I_2}{I_1} = \frac{n_1}{n_2}
+    }
+    \end{equation}
+    Nota-se que neste caso basta considerar a quantidade de voltas no enrolamento de cada bobina para que obter as relações entre as propriedades na entrada e na saida do circuito.
+\end{definition}
 \end{document}
