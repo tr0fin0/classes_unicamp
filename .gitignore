@@ -28,4 +28,5 @@
 *.sci
 *.db_info
 *.pdf
+*.slx
 ts000.*
