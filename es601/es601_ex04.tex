@@ -100,27 +100,50 @@
                     \begin{align}
                         Y_{1}(s) &= \frac{10}{s} - \frac{10}{s + 1} + \frac{y_{01}}{s + 1}\nonumber\\
                         y_{1}(t) &= 10\mu(t) - 10\text{e}^{-1t} + y_{01}\text{e}^{-1t}\nonumber\\
-                        \Aboxed{y_{1}(t) &=+10\mu(t) + (y_{01} - 10)\text{e}^{-1t}}\\
-                        \Aboxed{y_{2}(t) &=-10\mu(t-3) - (y_{02} - 10)\text{e}^{-1(t-3)}}
+                        \Aboxed{y_{1}(t) &=(+10 + (y_{01} - 10)\text{e}^{-1t})\mu(t)}\\
+                        \Aboxed{y_{2}(t) &=(-10 - (y_{02} - 10)\text{e}^{-1(t-3)})\mu(t-3)}
                     \end{align}
                 Desta forma, tem-se que para Equação (\ref{eq:Cases}) sobre as condições iniciais necessárias na Alternativa \ref{ex:1A} será obtido pela seguinte equação:
                     \begin{equation}
                         \boxed{
-                            y(t) = 10\mu(t) - 10\text{e}^{-1t} -10\mu(t-3) + 10\text{e}^{-1(t-3)}
+                            y(t) = (10 - 10\text{e}^{-1t})\mu(t) + (-10 +P 10\text{e}^{-1(t-3)})\mu(t-3)
                         }\label{eq:General1}
                     \end{equation}
             \end{resolution}
 \newpage
             \begin{resolution}
-                \textbf{\ref{ex:1B}.} 
+                \textbf{\ref{ex:1B}.} Desta forma, a Equação (\ref{eq:General1}) será modelada no Simulink com o seguinte diagrama:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 5cm]{es601_ex04_im01.png}
+                        \caption{Representação da Simulação no Simulink}
+                    \end{figure}
+                Obtem-se assim a seguinte entrada:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 5cm]{es601_ex04_im02.png}
+                        \caption{Entrada Simulação no Simulink}
+                    \end{figure}
+                Obtem-se assim a seguinte saída:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 5cm]{es601_ex04_im03.png}
+                        \caption{Saída Simulação no Simulink}
+                    \end{figure}
             \end{resolution}
 \newpage
             \begin{resolution}
                 \textbf{\ref{ex:1C}.} Equação (\ref{eq:General1}) será modelada em Matlab através do seguinte algoritmo:
-                \begin{scriptsize}
-                    \myOctave
-                    \lstinputlisting{es601_ex04m.m}
-                \end{scriptsize}
+                    \begin{scriptsize}
+                        \myOctave
+                        \lstinputlisting{es601_ex04_01m.m}
+                    \end{scriptsize}
+                Obtem-se assim a seguinte saída:
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 5cm]{es601_ex04_im04.png}
+                        \caption{Comparação Matlab e Simulink}
+                    \end{figure}
             \end{resolution}
 \newpage
             \begin{resolution}
@@ -130,7 +153,7 @@
                         (sY_{1} - 10) + Y_{1}     &= 0\nonumber\\
                         Y_{1}(s + 1)     &= 10\nonumber\\
                         \Aboxed{Y_{1}(s) &= \frac{10}{s + 1}} & \text{Equação de Laplace}\\
-                        \Aboxed{y(t)     &= 10\text{e}^{-1t}}
+                        \Aboxed{y(t)     &= 10\text{e}^{-1t}\mu(t)}
                     \end{align}
             \end{resolution}
 \newpage
@@ -147,17 +170,110 @@
                             \begin{equation*}
                                 u(k) = 2r(k)\mu(k)
                             \end{equation*}
-                        Plote o resultado usando o comando \texttt{stairs(k,y)}.
+                        Onde $r(k)$ representa a \textbf{Função Rampa}. Plote o resultado usando o comando \texttt{stairs(k,y)}.
 
                         \item \label{ex:2B}Calcular e plotar, utilizando o comando \texttt{stairs}, a reposta para entrada nula e condição inicial $y(0) = 5$.
                     \end{enumerate}
             \end{exercise}
 \newpage
             \begin{resolution}
-                \textbf{\ref{ex:2A}.} Nota-se que 
+                \textbf{\ref{ex:2A}.} Analisando a equação apresentada:
+                    \begin{equation*}
+                        y(k+1) -ay(k) = u(k)
+                        \quad
+                        \text{onde: }
+                        \begin{cases}
+                            u(k) = 2r(k) \mu(k)\\
+                            a    = 0.2\\
+                            y(0) = 0
+                        \end{cases}
+                    \end{equation*}
+                Desta forma propõem-se a seguinte solução:
+                    \begin{equation*}
+                        y(k) = y_{h}(k) + y_{p}(k)
+                        \quad
+                        \text{onde: }
+                        \begin{cases}
+                            y_{h}(k), & \text{Solução Homogênea}\\
+                            y_{p}(k), & \text{Solução Particular}\\
+                        \end{cases}
+                    \end{equation*}
+                Primeiramente propõem-se a seguinte solução homogênea $y_{h}(k) = C\lambda^{k}$:
+                    \begin{align}
+                        C\lambda^{k + 1} - aC\lambda^{k} &= 0 \nonumber\\
+                        C\lambda^{k} \underbrace{(\lambda - a)}_{=0} &= 0 \nonumber\\
+                        \Aboxed{\lambda &= a}
+                    \end{align}
+                Desta forma obtêm-se a seguinte solução homogênea $y_{h}(k) = C0.2^{k}$.
+                \\\\
+                Na sequência será necessário analisar a solução particular. Nota-se que $r(k)$ é a função rampa e $r(k)\mu(k)$ será um polinômio descrito para $k\ge0$. Desta forma, propõem-se a seguinte solução particular $y_{p}(k) = Br(k) + D$:
+                    \begin{align}
+                        Br(k+1) + C - aBr(k) - aC &= 2r(k)\mu(k) & \text{Considerando \texttt{Heaviside}}\nonumber\\
+                        B(k+1)  + C - aBk - aC    &= 2k\nonumber\\
+                        \underbrace{(B-aB-2)}_{=0}k + \underbrace{(B+C-aC)}_{=0} &= 0\nonumber
+                    \end{align}
+                Onde:
+                    \begin{equation*}
+                        B=\frac{2}{1-a}
+                        \quad\text{e}\quad
+                        C=\frac{-B}{1-a}=\frac{-2}{(1-a)^2}
+                        \qquad\text{logo:}\quad
+                        \boxed{B=2.5}\quad\text{e}\quad\boxed{C=-3.125}
+                    \end{equation*}
+                Desta forma obtêm-se a seguinte solução particular $y_{p}(k) = 2.5k - 3.125$.
+                \\\\
+                Finalmente têm-se:
+                    \begin{align}
+                        y(k) = y_{h}(k) + y_{p}(k) &= C0.2^{k} + 2.5k - 3.125 & \text{Aplica-se Condições Iniciais Nulas}\nonumber\\
+                        y(0) = 0 &= C - 3.125\nonumber\\
+                        C &= 3.125\nonumber\\
+                        \Aboxed{y(k) &= 3.125 (0.2)^{k} + 2.5k - 3.125}\label{eq:1A}
+                    \end{align}
+            \end{resolution}
+            \begin{resolution}
+                Obtêm-se o seguinte gráfico a partir da Equação (\ref{eq:1A}):
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[height = 7cm]{es601_ex04_im05.png}
+                    \caption{Gráfico \texttt{stairs}}
+                \end{figure}
+                Implementa-se o seguinte algoritmo:
+                \begin{scriptsize}
+                    \myOctave
+                    \lstinputlisting{es601_ex04_02m.m}
+                \end{scriptsize}
             \end{resolution}
 \newpage
             \begin{resolution}
-                \textbf{\ref{ex:2B}.} 
+                \textbf{\ref{ex:2B}.}  Analisando a equação apresentada:
+                    \begin{equation*}
+                        y(k+1) -ay(k) = 0
+                        \quad
+                        \text{onde: }
+                        \begin{cases}
+                            a    = 0.2\\
+                            y(0) = 5
+                        \end{cases}
+                    \end{equation*}
+                Desta forma propõem-se apenas a solução homogênea $y_{h}(k) = C\lambda^{k}$:
+                    \begin{align}
+                        C\lambda^{k + 1} - aC\lambda^{k} &= 0 \nonumber\\
+                        C\lambda^{k} \underbrace{(\lambda - a)}_{=0} &= 0 \nonumber\\
+                        \Aboxed{\lambda &= a}
+                    \end{align}
+                Desta forma obtêm-se a seguinte solução homogênea $y_{h}(k) = C0.2^{k}$.
+                \\\\
+                Finalmente têm-se:
+                    \begin{align}
+                        y(k) = y_{p}(k) &= C0.2^{k} & \text{Aplica-se Condições Iniciais Nulas}\nonumber\\
+                        y(0) = 5 &= C \nonumber\\
+                        \Aboxed{y(k) &= 5 (0.2)^{k}}
+                    \end{align}
+                Obtêm-se o seguinte gráfico a partir da Equação (\ref{eq:1A}):
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[height = 7cm]{es601_ex04_im06.png}
+                        \caption{Gráfico \texttt{stairs} Entrada Nula}
+                    \end{figure}
             \end{resolution}
 \end{document}
