@@ -54,9 +54,9 @@
                     }
                 \end{equation}
     \end{multicols}\noindent
-\newpage
 
-\subsection{Transformada de Laplace}
+
+\section{Transformada de Laplace}
     \paragraph{Definição}Conversão de uma equação diferencial em equação algébrica e uma convolução em multiplicação. Formalmente descrita pelas seguintes equações:
     \begin{multicols}{2}
         \raggedcolumns
@@ -115,7 +115,7 @@
         }
     \end{equation}
 
-\subsubsection{Degrau Unitário}
+\subsection{Degrau Unitário}
     \paragraph{Definição}Representação de descontinuidade unitária, normalmente utilizada para representar mudanças instantâneas em sistemas. Formalmente descrita pela seguinte equação:
     \begin{equation}
         \boxed{
@@ -128,7 +128,7 @@
         }
     \end{equation}
 
-\subsubsection{Impulso Unitário}
+\subsection{Impulso Unitário}
     \paragraph{Definição}Distribuição infinita no ponto zero e nula no restante da reta. Formalmente descrita pela seguinte equação:
     \begin{equation}
         \boxed{
@@ -153,7 +153,7 @@
     \end{equation*}
     Aplica-se o impulso unitário para se extrair uma \textbf{Amostra} do valor de uma função em um determinado ponto.
 
-\subsubsection{Rampa Unitário}
+\subsection{Rampa Unitário}
     \paragraph{Definição}Representação de uma função linear com coeficiente angular unitário. Formalmente descrita pela seguinte equação:
     \begin{equation}
         \boxed{
@@ -165,7 +165,7 @@
         }
     \end{equation}
 
-\subsubsection{Transformada da Deriva}
+\subsection{Transformada da Deriva}
     \paragraph{Definição}Quando aplicada em uma derivada de ordem $n$ será necessário utilizar da recursão e integração por partes, obtendo a seguinte equação geral:
     \begin{equation}
         \boxed{
@@ -177,9 +177,9 @@
             f^{n-1}(0)
         }
     \end{equation}
-\newpage
 
-\subsection{Frações Parcias}
+
+\section{Frações Parcias}
 \subsubsection{\texttt{Residue Function}}
 \href{https://www.mathworks.com/help/matlab/ref/residue.html}{\texttt{residue function}}
 
@@ -188,8 +188,8 @@
 
 \href{https://www.mathworks.com/matlabcentral/answers/55210-discrete-system-solving-with-matlab}{Sistemas Discretos}
 
-\newpage
-\subsection{Transformada $\mathcal{Z}$}
+
+\section{Transformada $\mathcal{Z}$}
     \paragraph{Definição}Conversão de uma equação a diferenças de um sinal discreto $f(k)$. \href{https://en.wikipedia.org/wiki/Z-transform}{Formalmente} descrita pelas seguintes equações:
     \begin{multicols}{2}
         \raggedcolumns
@@ -207,7 +207,6 @@
             }
         \end{equation}
     \end{multicols}\noindent
-    Note que a forma \texttt{Unilateral} será um caso particular da \texttt{Bilateral}.
 
     \paragraph{Transformações}A seguir encontram-se as principais transformações pela definição \texttt{Unilateral} necessárias:
     \begin{table}[H]
@@ -243,7 +242,7 @@
     \end{table} \noindent
     Note que a expressão $\omega_0$ representa a periodicidade da função a ser transformada. Há possibilidade de que o período da função modifique sua interpretação após a transformação por coincidir com o periodo de amostragem da função.
 
-\subsubsection{Degrau Unitário}
+\subsection{Degrau Unitário}
     \paragraph{Definição}Representação de descontinuidade unitária, normalmente utilizada para representar mudanças instantâneas em sistemas. Formalmente descrita pela seguinte equação:
     \begin{equation}
         \boxed{
@@ -257,7 +256,7 @@
     \end{equation}
     Note que essa série converge para $|z| > 1$.
 
-\subsubsection{Impulso Unitário}
+\subsection{Impulso Unitário}
     \paragraph{Definição}Distribuição infinita no ponto zero e nula no restante da reta. Formalmente descrita pela seguinte equação:
     \begin{equation}
         \boxed{
@@ -269,7 +268,7 @@
             }
     \end{equation}
 
-\subsubsection{Rampa Unitário}
+\subsection{Rampa Unitário}
     \paragraph{Definição}Representação de uma função linear com coeficiente angular unitário. Formalmente descrita pela seguinte equação:
     \begin{equation}
         \boxed{
@@ -281,7 +280,7 @@
         }
     \end{equation}
 
-\subsubsection{Transformada do Deslocamento Avançado}
+\subsection{Transformada do Deslocamento Avançado}
     \paragraph{Definição}Quando aplica-se um deslocamento que causa avanço na função pela ordem $n$ será necessário utilizar da recursão , obtendo a seguinte equação geral:
     \begin{equation}
         \boxed{
@@ -299,7 +298,7 @@
         z^{n}\cdot F(z)
     \end{equation*}
 
-\subsubsection{Transformada do Deslocamento Atrasado}
+\subsection{Transformada do Deslocamento Atrasado}
     \paragraph{Definição}Quando aplica-se um deslocamento que causa atraso na função pela ordem $n$ será necessário utilizar da recombinação entre os somatórios, obtendo a seguinte equação geral:
     \begin{equation}
         \boxed{
