@@ -315,4 +315,48 @@
     \begin{equation*}
         \mathcal{Z}\{ f(k-n) \; u(k-n)\} = z^{-n}\cdot F(z) 
     \end{equation*}
+
+\section{Análise de Fourrier}
+    \paragraph{Definição}Conversão de uma equação periódica qualquer como um somatório de senos e cossenos. 
+
+\subsection{Série de Fourrier}
+    \paragraph{Definição}Polinômio trigonométrico obtido pela soma finita da seguinte equação:
+    \begin{equation}
+    \boxed{S_N = \frac{a_0}{2} + \sum_{k=1}^{N} [a_k\;\cos(k\omega_0\;t) + b_k\;\sin(k\omega_0\;t)]}
+    \end{equation}
+    Onde:
+    \begin{align*}
+        a_k &= \frac{2}{T}\int_{-T/2}^{+T/2} x(t)\;\cos(k\omega_0\;t)\;\mathrm{d}t, \text{ onde: } k = 0, 1, 2, 3,...\\
+        b_k &= \frac{2}{T}\int_{-T/2}^{+T/2} x(t)\;\sin(k\omega_0\;t)\;\mathrm{d}t, \text{ onde: } k = 1, 2, 3, 4,...\\
+    \end{align*}
+
+
+\subsection{Transformada de Fourrier}
+    \paragraph{Definição}\href{https://en.wikipedia.org/wiki/Fourier_transform}{Formalmente} descrita pelas seguintes equações:
+
+\subsubsection{Transformada de Fourrier Discreta}
+    \paragraph{Definição}Caso particular em que o sinal analisado será discretizado para que possa ser obtido numericamente como expresso pela seguinte equação:
+    \begin{equation}
+        \boxed{X_k = \frac{1}{N} \sum_{n=0}^{N-1} x(n)\;\text{e}^{j\;2\pi \frac{kn}{N}}}
+    \end{equation}
+    Note que esta função é implementada em \href{https://www.mathworks.com/help/matlab/ref/fft.html}{Matlab}. Caso deseja-se implementar o cálculo manualmente recomenda-se utilizar $N = 1024$ ou $N = 2048$.
+
+\subsubsection{Função sinc}
+    \paragraph{Definição}Função matemática comumente utilizada na análise de sinais. \href{https://en.wikipedia.org/wiki/Sinc_function}{Formalmente} definida pelas seguintes equações:
+    \begin{multicols}{2}
+        \raggedcolumns
+        \paragraph{Não Normalizada:}
+        \begin{equation}
+        \boxed{\text{sinc}(x) = \frac{\sin(x)}{x}}
+        \end{equation}
+        \columnbreak
+        \paragraph{Normalizada:}
+        \begin{equation}
+        \boxed{\text{sinc}(x) = \frac{\sin(\pi x)}{\pi x}}
+        \end{equation}
+    \end{multicols}\noindent
+    Independente do caso, quando avaliada em $x = 0$ obtem-se:
+    \begin{equation*}
+        \text{sinc}(0) := \lim_{x\to 0}\frac{\sin(ax)}{ax} = 1 \quad\forall a\neq 0 \in\mathbb{R}
+    \end{equation*}
 \end{document}
