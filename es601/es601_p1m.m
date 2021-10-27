@@ -54,13 +54,13 @@ t = linspace(0,10,10000);   % Analysis Interval
 % Equation in the Laplace Domain
 [r2, p2, k2] = residue([0     0 (K*I)],  [(M*M) 0 (3*K*M) 0 (K*K) 0]);
 [r1, p1, k1] = residue([(I*M) 0 (2*K*I)],[(M*M) 0 (3*K*M) 0 (K*K) 0]);
-%            r(0)                 r(i)                 r(n)
-% f(s) = ------------ + ... + ------------ + ... + ------------ + k(s)
-%          x - p(0)             x - p(i)             x - p(n)
+%            r[0]                 r[i]                 r[n]
+% f(x) = ------------ + ... + ------------ + ... + ------------ + k(x)
+%          x - p[0]             x - p[i]             x - p[n]
 
-% r(i): Complex Number, residue i of Function
-% p(i): Complex Number, pole i of Function
-% k(s): Function,
+% r[i]: Complex Number, residue i of Function
+% p[i]: Complex Number, pole i of Function
+% k(x): Function,
 
 % Inverse of Laplace with Complex Numbers
 yI1 = r1(1)*exp(p1(1)*t) + r1(2)*exp(p1(2)*t) + r1(3)*exp(p1(3)*t) + r1(4)*exp(p1(4)*t) + r1(5)*exp(p1(5)*t);
