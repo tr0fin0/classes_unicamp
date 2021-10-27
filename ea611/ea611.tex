@@ -365,11 +365,15 @@
             \paragraph{Definição}Potência total consumida por um componente qualquer em um circuito fasorial poderá ser complexa e poderá ser obtida pela seguinte equação:
                 \begin{equation}
                     \boxed{
-                        S = V_{\text{ef}} \cdot \bar{I}_{\text{ef}} = P + jQ
+                        S_1 = \frac{V_1 \cdot \bar{I}_1}{2} = P + jQ \quad \left[\text{VA}\right]
                     }
                 \end{equation}
             Onde:
                 \begin{enumerate}
+                    \item \textbf{Fasor de Tensão:} $V_1$, em Volts;
+
+                    \item \textbf{Fasor de Corrente Conjudado:} $\bar{I}_1$, em Amperes;
+
                     \item \textbf{Potência Ativa:} $P$, parte real da potência;
                         \begin{enumerate}[noitemsep]
                             \item \texttt{Carga Resistiva:} Apresenta apenas potência real;
@@ -537,11 +541,11 @@
                 \end{figure} \noindent
             Onde:
                 \begin{equation}
-                    \boxed{v_{AN}(t) = V_{P}\phase{   0^{\circ}}\text{ V}_{ef}}
+                    \boxed{v_{AN}(t) = V_{P}\phase{(    \alpha)^{\circ}}\text{ V}_{ef}}
                     \qquad
-                    \boxed{v_{BN}(t) = V_{P}\phase{-120^{\circ}}\text{ V}_{ef}}
+                    \boxed{v_{BN}(t) = V_{P}\phase{(\alpha-120)^{\circ}}\text{ V}_{ef}}
                     \qquad
-                    \boxed{v_{CN}(t) = V_{P}\phase{+120^{\circ}}\text{ V}_{ef}}
+                    \boxed{v_{CN}(t) = V_{P}\phase{(\alpha+120)^{\circ}}\text{ V}_{ef}}
                 \end{equation}
             Nota-se que, usualmente, as tensões apresentadas serão eficazes.
         \end{definition}
@@ -589,7 +593,7 @@
                     \end{tikzpicture}
                     \caption{Represenação Fasorial Tensões de Linha}
                 \end{figure}\noindent
-            Considera-se que a alimentação estará \textbf{Equilibrada} se todas as tensões de linha apresentarem o mesmo pico.
+            Considera-se que a alimentação estará \textbf{Equilibrada} se todas as tensões de linha apresentarem o mesmo pico. Note que nesta representação considera-se $\alpha = 0^{\circ}$
         \end{definition}
 
     \subsubsection{Tensão entre Fases}
@@ -634,11 +638,11 @@
                 \end{figure}\noindent
             Onde:
                 \begin{equation}
-                    \boxed{v_{ab}(t) = \sqrt{3}V_{P}\phase{  30^{\circ}}\text{ V}_{ef}}
+                    \boxed{v_{ab}(t) = \sqrt{3}V_{P}\phase{(\alpha + 30)^{\circ}}\text{ V}_{ef}}
                     \qquad
-                    \boxed{v_{bc}(t) = \sqrt{3}V_{P}\phase{- 90^{\circ}}\text{ V}_{ef}}
+                    \boxed{v_{bc}(t) = \sqrt{3}V_{P}\phase{(\alpha - 90)^{\circ}}\text{ V}_{ef}}
                     \qquad
-                    \boxed{v_{ca}(t) = \sqrt{3}V_{P}\phase{+150^{\circ}}\text{ V}_{ef}}
+                    \boxed{v_{ca}(t) = \sqrt{3}V_{P}\phase{(\alpha +150)^{\circ}}\text{ V}_{ef}}
                 \end{equation}
             Convenciona-se que os subescritos representam a ordem da diferença de tensão. Logo $v_{ab} = v_{an} - v_{bn}$. Nota-se, também, que, usualmente, as tensões apresentadas serão eficazes.
         \end{definition}
@@ -729,11 +733,11 @@
     \end{figure}
     Neste caso, não haverá corrente no ramo neutro, implicando $\boxed{I_{nN} = 0}$. Demais correntes podem ser obtidas através das seguintes equações:
     \begin{equation}
-        \boxed{I_{aA} = \frac{v_{an}}{|Z|}\phase{-\theta^{\circ}}\text{ A}_{ef}}
+        \boxed{I_{aA} = \frac{v_{an}}{|Z|}\phase{(\alpha -\theta)^{\circ}}\text{ A}_{ef}}
         \quad
-        \boxed{I_{bB} = \frac{v_{bn}}{|Z|}\phase{(-120-\theta)^{\circ}}\text{ A}_{ef}}
+        \boxed{I_{bB} = \frac{v_{bn}}{|Z|}\phase{(\alpha -120-\theta)^{\circ}}\text{ A}_{ef}}
         \quad
-        \boxed{I_{cC} = \frac{v_{cn}}{|Z|}\phase{(+120-\theta)^{\circ}}\text{ A}_{ef}}
+        \boxed{I_{cC} = \frac{v_{cn}}{|Z|}\phase{(\alpha +120-\theta)^{\circ}}\text{ A}_{ef}}
     \end{equation}
     Onde:
     \begin{equation*}
@@ -829,11 +833,11 @@
     \end{figure}
     Neste caso as cargas estão conectadas entre duas tensões de linha e portanto as tensões entre fases devem ser consideradas para obter as correntes sobre as cargas obtidas através das seguintes equações:
     \begin{equation}
-        \boxed{I_{AB} = I_{Z}\phase( 30-\theta^{\circ})\text{A}_{ef}}
+        \boxed{I_{AB} = I_{Z}\phase{(\alpha + 30-\theta)^{\circ}}\text{A}_{ef}}
         \quad
-        \boxed{I_{BC} = I_{Z}\phase(-90-\theta^{\circ})\text{A}_{ef}}
+        \boxed{I_{BC} = I_{Z}\phase{(\alpha -90-\theta)^{\circ}}\text{A}_{ef}}
         \quad
-        \boxed{I_{CA} = I_{Z}\phase(150-\theta^{\circ})\text{A}_{ef}}
+        \boxed{I_{CA} = I_{Z}\phase{(\alpha 150-\theta^{\circ})}\text{A}_{ef}}
     \end{equation}
     Onde:
     \begin{equation*}
@@ -845,11 +849,11 @@
     \end{equation*}
     Neste caso as correntes de linha serão obtidas pelas seguintes equações:
     \begin{equation}
-        \boxed{I_{aA} = \sqrt{3}I_{Z}\phase{(-\theta)^{\circ}}}
+        \boxed{I_{aA} = \sqrt{3}I_{Z}\phase{(\alpha -\theta)^{\circ}}}
         \quad
-        \boxed{I_{bB} = \sqrt{3}I_{Z}\phase{(-120-\theta)^{\circ}}}
+        \boxed{I_{bB} = \sqrt{3}I_{Z}\phase{(\alpha -120-\theta)^{\circ}}}
         \quad
-        \boxed{I_{cC} = \sqrt{3}I_{Z}\phase{(+120-\theta)^{\circ}}}
+        \boxed{I_{cC} = \sqrt{3}I_{Z}\phase{(\alpha +120-\theta)^{\circ}}}
     \end{equation}
 \end{theorem}
 \newpage
