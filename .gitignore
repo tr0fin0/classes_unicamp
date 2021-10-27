@@ -29,4 +29,5 @@
 *.db_info
 *.pdf
 *.slx
+*.slxc
 ts000.*
