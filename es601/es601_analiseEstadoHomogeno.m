@@ -38,7 +38,11 @@ RA = 217276;
 
 %   Forma Padrão em Estados
 %   | dX(t) = A*X(t) + B*u(t) [2]
-%   |  Y(y) = C*X(t) + D*u(t) [3]
+%   |  Y(t) = C*X(t) + D*u(t) [3]
+
+%   x: n x 1  A: n x n  B: n x r
+%   y: p x 1  C: p x n  D: p x r
+%   u: r x 1
 
 %   Na sequência calcula-se a princípio a Solução Homogênea (u(t) = 0)
 %   como:
@@ -82,11 +86,11 @@ YC  = C  * XC;
 
 n   = length(A);           % Size of Matrix
 
-%   M = size(X,DIM) returns the length of the dimension specified
+% M = size(X,DIM) returns the length of the dimension specified
 %   by the scalar DIM.  For example, size(X,1) returns the number
 %   of rows. If DIM > NDIMS(X), M will be 1.
 
-%   length(X) returns the length of vector X.  It is equivalent
+% length(X) returns the length of vector X.  It is equivalent
 %   to MAX(SIZE(X)) for non-empty arrays and 0 for empty ones.
 
 %   Note também que expm(A) poderá ser calculado através dos Autovalores e
@@ -95,14 +99,14 @@ n   = length(A);           % Size of Matrix
 
 [V,D]= eig(A);
 
-%   [V,D] = eig(A) produces a diagonal matrix D of eigenvalues and 
+% [V,D] = eig(A) produces a diagonal matrix D of eigenvalues and 
 %   a full matrix V whose columns are the corresponding eigenvectors  
 %   so that A*V = V*D.
 
 
 AA  = V*D*inv(V);   % Matriz de Coeficientes
 
-%   inv(X) is the inverse of the square matrix X.
+% inv(X) is the inverse of the square matrix X.
 %   A warning message is printed if X is badly scaled or
 %   nearly singular.
 
@@ -112,7 +116,7 @@ AA  = V*D*inv(V);   % Matriz de Coeficientes
 
 eAA = V*diag(exp(diag(D)))*inv(V);  % Exponencial Matricial
 
-%   diag(V,K) when V is a vector with N components is a square matrix
+% diag(V,K) when V is a vector with N components is a square matrix
 %   of order N+ABS(K) with the elements of V on the K-th diagonal. K = 0
 %   is the main diagonal, K > 0 is above the main diagonal and K < 0
 %   is below the main diagonal.
@@ -137,11 +141,11 @@ YA  = C    * XA;
 syms s
 I   = eye(n);                           % Matriz Identidade
 
-%   eye(N) is the N-by-N identity matrix.
+% eye(N) is the N-by-N identity matrix.
 
 eALt= ilaplace( inv( s*I - A ));        % Função Exponencial Matricial
 
-%   F = ilaplace(L) is the inverse Laplace transform of the sym L
+% F = ilaplace(L) is the inverse Laplace transform of the sym L
 %   with default independent variable s.  The default return is a
 %   function of t.  If L = L(t), then ilaplace returns a function of x:
 %   F = F(x).
@@ -158,7 +162,7 @@ YL  = C    * XL;
 %   p   = x^3 - x*y^2 + 1;
 %   d   = x + y;
 
-%   [R,Q] = polynomialReduce(P,D) also produces the vector Q of
+% [R,Q] = polynomialReduce(P,D) also produces the vector Q of
 %   polynomials satisfying P = sum(Q.*D) + R.
 
 %   Note também que expm(A) poderá ser calculado através de expressões
@@ -171,10 +175,10 @@ L   = diag(D);              % Vetor de Autovalores
 VM  = fliplr(vander(L));    % Matriz de Vandermonde
 VMi = inv(VM);
 
-%   Y = fliplr(X) returns X with the order of elements flipped left to right
+% Y = fliplr(X) returns X with the order of elements flipped left to right
 %   along the second dimension
 
-%   A = vander(V), for a vector of length n, returns the n-by-n
+% A = vander(V), for a vector of length n, returns the n-by-n
 %   Vandermonde matrix A. The columns of A are powers of the vector V,
 %   such that the j-th column is A(:,j) = V(:).^(n-j)
 
@@ -218,12 +222,12 @@ YAV = eval(YA);
 YLV = eval(YL);
 YPV = eval(YP);
 
-%   eval(EXPRESSION) evaluates the MATLAB code in EXPRESSION. Specify
+% eval(EXPRESSION) evaluates the MATLAB code in EXPRESSION. Specify
 %   EXPRESSION as a character vector or string scalar.
 
 
 figure
-plot(t, YCV, t, YAV, '*', t, YLV, '+', t, YPV, 'o')
+plot(t, YCV, t, YAV, 's', t, YLV, '+', t, YPV, 'o')
 title('Comparação Métodos')
 xlabel('t [s]')
 ylabel('y(t)')
