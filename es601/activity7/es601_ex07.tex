@@ -1,0 +1,157 @@
+\documentclass{article}
+\usepackage{tpack}
+
+
+% \usepgfplotslibrary{external} 
+% \tikzexternalize
+
+
+% \titleformat
+%     {\subsection}           % Part
+%     [block]                 % Part Shape
+%     {\normalfont\Large}     % Font Size
+%     {}                      % Label Numbering
+%     {0mm}                   % Part Separation
+%     {}                      % Code Before
+%     []                      % Code After
+
+%     \titlespacing*{\subsection}{0mm}{5mm}{2.5mm}
+
+
+\title{ES601 - Análise Linear de Sistemas}
+\author{Guilherme Nunes Trofino}
+\authorRA{217276}
+\project{Atividade Teórica}
+
+
+\begin{document}
+    \maketitle
+\newpage
+
+\section{Atividade Teórica}
+    \paragraph{Apresentação}Resolução das questões de Análise Linear de Sistemas por Guilherme Nunes Trofino, 217276, sobre a Identificação de um Sistema de Estados através do Método  \href{https://en.wikipedia.org/wiki/Eigensystem_realization_algorithm}{\textbf{ERA}}.
+    \begin{exercise}
+        Considerar o modelo Simulink em anexo, pede-se para identificar o sistema usando o Método ERA. Sugere-se:
+        \begin{enumerate}[rightmargin = \leftmargin]
+            \item\label{1} Realizar uma aproximação do \texttt{Impulso Simulado} com dois degraus $u(t) - u(t-\tau)$ com $\tau$ pequeno. Normalizar a amplitude da Resposta para obter área unitária, como o Impulso Teórico.
+            \item\label{2} Validar o sistema identificado comparando a resposta ao Degrau do sistema fornecido e do sistema identificado;
+        \end{enumerate}
+    \end{exercise}
+\newpage
+    \begin{resolution}
+        (\ref{1}) Solução será proposta em Matlab. Inicialmente define-se as seguintes variáveis necessárias para descrição do problema:
+        \begin{scriptsize}
+            \myOctave\lstinputlisting[firstline=1,  lastline= 8]{identificacao.m}
+            \myOctave\lstinputlisting[firstline=16, lastline=35]{identificacao.m}
+        \end{scriptsize}
+        Na sequência utiliza-se o Simulink para construção do \texttt{Impulso Simulado} e a obtenção da resposta do sistema desconhecido cujos resultados foram importados para o \texttt{workspace} através do bloco \texttt{simuout} como ilustrado a seguir:
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 15cm]{images/ERAsimulink.png}
+            \caption{Diagrama Simulink}
+        \end{figure}
+\newpage
+        Desta forma, executa-se o código em \ref{append.ERA} e na sequência realiza-se a conversão das matrizes retornadas para obter uma descrição de Sistema de Estados Contínuos:
+        \begin{scriptsize}
+            \myOctave\lstinputlisting[firstline=37,  lastline= 45]{identificacao.m}
+        \end{scriptsize}
+        Neste caso considerou-se que a Matriz de Hankel teria 350 linhas e 350 colunas como ilustrado a seguir:
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 10cm]{images/ERAterminal.png}
+        \end{figure}
+        Obtem-se o seguinte gráfico:
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[H]{0.45\textwidth}
+                \centering
+                \includegraphics[width = 7.5cm]{images/ERAsingularValues.png}
+            \end{subfigure}
+            \begin{subfigure}[H]{0.45\textwidth}
+                \centering
+                \includegraphics[width = 7.5cm]{images/ERAsingularValuesZoom.png}
+            \end{subfigure}
+            \caption{Valores Singulares da Matriz de Hankel}
+        \end{figure}
+        Nota-se que 4 valores singulares são suficientes para descrever o sistema, pois os demais valores singulares tendem a zero e portanto não contribuem para a solução final.
+\newpage
+        Finalmente obtêm-se as seguintes matrizes como descrição do sistema desconhecido:
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[H]{0.45\textwidth}
+                \centering
+                \includegraphics[width = 6cm]{images/ERAmatrixDiscrete.png}
+                \caption{Estado Discreto}
+            \end{subfigure}
+            \begin{subfigure}[H]{0.45\textwidth}
+                \centering
+                \includegraphics[width = 6cm]{images/ERAmatrixContinue.png}
+                \caption{Estado Contínuo}
+            \end{subfigure}
+            \caption{Matrizes Identificadas}
+        \end{figure}
+        Após substituídas no Simulink os resultados são ilustrados pelo código em \ref{append.ide} obtendo:
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[H]{0.45\textwidth}
+                \centering
+                \includegraphics[width = 7.5cm]{images/ERAdiscrete.png}
+                \caption{Estado Discreto}
+            \end{subfigure}
+            \begin{subfigure}[H]{0.45\textwidth}
+                \centering
+                \includegraphics[width = 7.5cm]{images/ERAcontinuos.png}
+                \caption{Estado Contínuo}
+            \end{subfigure}
+            \caption{Respostas ao Impulso Simulado}
+        \end{figure}
+        Nota-se que as matrizes obtidas são identificações adequadas para representação do sistema desconhecido.
+    \end{resolution}
+\newpage
+    \begin{resolution}
+        (\ref{2}) Será necessário comparar a resposta do sistema identificado e do sistema não identificado à um \texttt{step} para comprovar a congruência da solução anteriormente obtida através do Simulink como ilustrado a seguir:
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 15cm]{images/ERAsimulinkStep.png}
+            \caption{Diagrama Simulink Step}
+        \end{figure}
+        Após substituídas no Simulink os resultados são ilustrados pela seguinte figura:
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 10cm]{images/ERAcontinuosStep.png}
+        \end{figure}
+        Nota-se novamente que as matrizes obtidas são identificações adequadas para representação do sistema desconhecido.
+    \end{resolution}
+
+\appendix
+\section{Apêndice}
+\subsection{\texttt{eraSISO.m}}\label{append.ERA}
+    \paragraph{Definição}Implementação \textbf{Eigenvalues Realization Algorithm}:
+
+    \begin{resolution}
+        Inicialmente o algoritmo deverá avaliar o vetor de dados experimentais, \texttt{Y}, e receber as dimensões da \href{https://en.wikipedia.org/wiki/Hankel_matrix}{\textbf{Matriz de Hankel}} que o usuário deseja:
+        \begin{scriptsize}
+            \myOctave\lstinputlisting[firstline=1, lastline=40]{eraSISO.m}
+        \end{scriptsize}
+\newpage
+        Depois de construídas as Matrizes de Hankel, será necessário selecionar a ordem da Identificação através da visualização da quantidade de \href{https://en.wikipedia.org/wiki/Singular_value}{\textbf{Valores Singulares}} relevantes:
+        \begin{scriptsize}
+            \myOctave\lstinputlisting[firstline=43, lastline=54]{eraSISO.m}
+        \end{scriptsize}
+        \newpage
+        Finalmente a decomposição em valores singulares será reduzida a quantidade de valores singulares desejada pelo usuário e as matrizes do Sistema de Estados calculadas:
+        \begin{scriptsize}
+            \myOctave\lstinputlisting[firstline=57, lastline=76]{eraSISO.m}
+        \end{scriptsize}
+    \end{resolution}
+\newpage
+
+\subsection{\texttt{identificacao.m}}\label{append.ide}
+    \paragraph{Definição}Implementação da solução em Matlab:
+        \begin{resolution}
+            Realização de \texttt{plots}:
+            \begin{scriptsize}
+                \myOctave\lstinputlisting[firstline=49, lastline=73]{identificacao.m}
+            \end{scriptsize}
+        \end{resolution}
+\end{document}
