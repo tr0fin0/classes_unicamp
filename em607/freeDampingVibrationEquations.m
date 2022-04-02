@@ -12,6 +12,12 @@ feature('DefaultCharacterSet','UTF-8')
 pPath = 'C:\Users\Admin-PC\Documents\gitRepos\classes\em607\images';
 pSize = [0 0 18 18];
 
+%   TODO
+%    transformar equações em funções
+%    deduzir dependência em condiÇões inciais para A, B e C
+%    implementar condiçoes iniciais
+%    dúvida constante a no caso subcrítico
+
 
 %%  1 Grau de Liberdade
 %
@@ -77,7 +83,7 @@ t = linspace(0,1,10000);
 
 fprintf('\n\n  System Information\n');
 if     zeta  < 1
-    fprintf('    Amortecimento Subcritico, phi = %2.2f\n', zeta);
+    fprintf('    Amortecimento Subcritico, zeta = %2.2f\n', zeta);
     
     c1C = 2;        % variaveis corrigidas manualmente
     c2C = +pi/2;    % phi
@@ -86,28 +92,32 @@ if     zeta  < 1
     eqE = -c1C * exp(-zeta*wn * t);
     
     figure; plot(t, eqA, t, eqB, 'o', t, eqC, '+', t, eqD, '--', t, eqE, '--')
-    title('Amortecimento Subcritico');
+    mytitleText = ['Amortecimento Subcritico, \zeta = ',num2str(zeta)];
+    title(mytitleText,'Interpreter','tex');
+    
     xlabel('t [s]'); ylabel('x(t)');
     legend("eqA", "eqB", "eqC", "location", "southeast")
     set(gcf, 'PaperPosition', pSize);
     saveas(gca, fullfile(pPath, 'freeDampingVibration'), 'png');
 
 elseif zeta == 1
-    fprintf('    Amortecimento Critico, phi = %2.2f\n', zeta);
+    fprintf('    Amortecimento Critico, zeta = %2.2f\n', zeta);
 
     c1C = 1;
     c2C = 1;
     eqC = c1C * exp(-wn * t) + c2C * t .* exp(-wn * t);
     
     figure; plot(t, eqA, t, eqB, 'o', t, eqC, '+')
-    title('Amortecimento Subcritico');
+    mytitleText = ['Amortecimento Critico, \zeta = ',num2str(zeta)];
+    title(mytitleText,'Interpreter','tex');
+    
     xlabel('t [s]'); ylabel('x(t)');
     legend("eqA", "eqB", "eqC", "location", "southeast")
     set(gcf, 'PaperPosition', pSize);
     saveas(gca, fullfile(pPath, 'freeDampingVibration'), 'png');
 
 else
-    fprintf('    Amortecimento Supercritico, phi = %2.2f\n', zeta);
+    fprintf('    Amortecimento Supercritico, zeta = %2.2f\n', zeta);
 
     c1C = 1;
     c2C = 1;
@@ -118,7 +128,9 @@ else
     eqC = c1C * exp(s1 * t) + c2C * exp(s2 * t);
     
     figure; plot(t, eqA, t, eqB, 'o', t, eqC, '+')
-    title('Amortecimento Subcritico');
+    mytitleText = ['Amortecimento Supercritico, \zeta = ',num2str(zeta)];
+    title(mytitleText,'Interpreter','tex');
+    
     xlabel('t [s]'); ylabel('x(t)');
     legend("eqA", "eqB", "eqC", "location", "southeast")
     set(gcf, 'PaperPosition', pSize);
