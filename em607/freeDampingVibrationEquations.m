@@ -30,6 +30,8 @@ pSize = [0 0 18 18];
 m   = 1;                    % Massa
 c   = 10;                   % Constante Amortecimento
 k   = 100;                  % Constante Elástica
+x0  = 10;                    % Deslocamento Inicial
+v0  = 10;                    % Velocidade Inicial
 
 wn  = sqrt(k/m);            % Frequência Natural        (omega)
 cc  = 2*m*wn;               % Amortecimento Crítico     
@@ -38,8 +40,6 @@ zeta= c/cc;                 % Fator de Amortecimento    (zeta)
 sh  = wn*zeta;               % 
 wd  = wn*sqrt(1 - zeta^2);   % Frequência Natural
 
-x0  = 10;                    % Deslocamento Inicial
-v0  = 10;                    % Velocidade Inicial
 
 
 
