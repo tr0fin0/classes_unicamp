@@ -14,9 +14,6 @@ pSize = [0 0 18 18];
 
 %   TODO
 
-%    deduzir dependência em condiÇões inciais para A, B e C
-%    implementar condiçoes iniciais
-%    dúvida constante a no caso subcrítico
 
 
 
@@ -42,6 +39,8 @@ zeta= c/cc;                 % Fator de Amortecimento    (zeta)
 sh  = wn*zeta;               % 
 wd  = wn*sqrt(1 - zeta^2);   % Frequência Natural
 
+x0  = 10;                    % Deslocamento Inicial
+v0  = 10;                    % Velocidade Inicial
 
 
 
@@ -50,6 +49,9 @@ fprintf('  Input Information\n');
 fprintf('    Massa,                      m = %2.2f\n',   m);
 fprintf('    Constante Amortecimento,    c = %2.2f\n',   c);
 fprintf('    Constante Elastica,         k = %2.2f\n\n', k);
+
+fprintf('    Deslocamento Inicial,      x0 = %2.2f [m]\n', x0);
+fprintf('    Velocidade Inicial,        v0 = %2.2f [m/s]\n\n', v0);
 
 fprintf('    Frequencia Natural,        wn = %2.2f\n', wn);
 fprintf('    Amortecimento Critico,     cc = %2.2f\n', cc);
@@ -61,8 +63,8 @@ fprintf('    Fator de Amortecimento,  zeta = %2.2f\n', zeta);
 %       s^2  + c/m s + k/m = 0
 s1A = -c/(2*m) + sqrt( (c/(2*m))^2 - k/m );
 s2A = -c/(2*m) - sqrt( (c/(2*m))^2 - k/m );
-c1A = 1;
-c2A = 1;
+c1A = x0 - (v0 - x0*s1A)/(s2A - s1A);
+c2A =      (v0 - x0*s1A)/(s2A - s1A);
 
 syms t
 eqA = c1A * exp(s1A*t) + c2A * exp(s2A*t);
@@ -72,21 +74,22 @@ eqA = c1A * exp(s1A*t) + c2A * exp(s2A*t);
 %       s^2  + 2 phi wn s + wn^2 = 0
 s1B = -zeta*wn + wn*sqrt( zeta^2 - 1 );
 s2B = -zeta*wn - wn*sqrt( zeta^2 - 1 );
-c1B = 1;
-c2B = 1;
+c1B = x0 - (v0 - x0*s1A)/(s2A - s1A);
+c2B =      (v0 - x0*s1A)/(s2A - s1A);
 
 syms t
 eqB = c1B * exp(s1B*t) + c2B * exp(s2B*t);
 
 
 %   Representação Gráfica
+tt = linspace(0,1,1000);
 
 fprintf('\n\n  System Information\n');
 if     zeta  < 1
     fprintf('    Amortecimento Subcritico, zeta = %2.2f\n', zeta);
-    
-    c1C = 2;        % variaveis corrigidas manualmente
-    c2C = +pi/2;    % phi
+
+    c1C = sqrt( ((v0 + x0*zeta*wn)^2 + (x0*wd)^2)/(wd^2) );
+    c2C = atan((wd*x0)/(v0 + x0*zeta*wn));
 
     syms t
     eqC =  c1C * exp(-zeta*wn * t) * sin(wd * t + c2C);
@@ -94,7 +97,7 @@ if     zeta  < 1
     eqE = -c1C * exp(-zeta*wn * t);
 
 
-    t = linspace(0,1,10000);
+    t = tt;
     eqAt = eval(eqA);
     eqBt = eval(eqB);
     eqCt = eval(eqC);
@@ -114,33 +117,35 @@ if     zeta  < 1
 elseif zeta == 1
     fprintf('    Amortecimento Critico, zeta = %2.2f\n', zeta);
 
-    c1C = 1;
-    c2C = 1;
+    c1C = x0;
+    c2C = v0 + x0*wn;
+    % c1C = 1;
+    % c2C = 1;
 
     syms t
     eqC = c1C * exp(-wn * t) + c2C * t .* exp(-wn * t);
 
 
-    t = linspace(0,1,10000);
-    eqAt = eval(eqA);
-    eqBt = eval(eqB);
+    t = tt;
     eqCt = eval(eqC);
 
-    figure; plot(t, eqAt, t, eqBt, 'o', t, eqCt, '+')
+    figure; plot(t, eqCt)
 
     mytitleText = ['Amortecimento Critico, \zeta = ',num2str(zeta)];
     title(mytitleText,'Interpreter','tex');
 
     xlabel('t [s]'); ylabel('x(t)');
-    legend("eqA", "eqB", "eqC", "location", "southeast")
+    legend("eqC", "location", "southeast")
     set(gcf, 'PaperPosition', pSize);
     saveas(gca, fullfile(pPath, 'freeDampingVibration'), 'png');
 
 else
     fprintf('    Amortecimento Supercritico, zeta = %2.2f\n', zeta);
 
-    c1C = 1;
-    c2C = 1;
+    % c1C = 1;
+    % c2C = 1;
+    c1C = x0 - (v0 - x0*s1A)/(s2A - s1A);
+    c2C =      (v0 - x0*s1A)/(s2A - s1A);
     
     s1 = wn* (-zeta + sqrt(zeta^2 - 1)); % -1/tal1
     s2 = wn* (-zeta - sqrt(zeta^2 - 1)); % -1/tal1
@@ -149,7 +154,7 @@ else
     eqC = c1C * exp(s1 * t) + c2C * exp(s2 * t);
 
 
-    t = linspace(0,1,10000);
+    t = tt;
     eqAt = eval(eqA);
     eqBt = eval(eqB);
     eqCt = eval(eqC);
