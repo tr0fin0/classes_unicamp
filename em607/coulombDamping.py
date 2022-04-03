@@ -43,4 +43,4 @@ plt.xlabel('time')
 plt.legend(loc='best')
 plt.show()
 
-https://stackoverflow.com/questions/64678603/python-different-function-depending-on-value-coulomb-damping-diagram
+# https://stackoverflow.com/questions/64678603/python-different-function-depending-on-value-coulomb-damping-diagram
