@@ -24,68 +24,91 @@ pSize = [0 0 18 18];
 %   Neste cenário a seguinte equação descreve seu movimento:
 %       ddx + c/m dx + k/m x = 0
 
-m   = 1;                     % Massa
-cA  = 20;                   % Constante Amortecimento
-k   = 100;                  % Constante Elástica
+m   = 1;                    % Massa
+c   = 20;                   % Constante Amortecimento
+zeta= 1;                    % Fator de Amortecimento    (zeta)
+x0  = 10;                   % Deslocamento Inicial
+v0  = 10;                   % Velocidade Inicial
 
-wn   = sqrt(k/m);           % Frequência Natural        (omega)
-cc   = 2*m*wn;              % Amortecimento Crítico     
-zetaA= cA/cc;               % Fator de Amortecimento    (zeta)
+cc  = c/zeta;               % Amortecimento Crítico
+wn  = cc/(2*m);             % Frequência Natural        (omega)
+k   = (wn^2) * m;           % Constante Elástica
 
-sh  = wn*zetaA;               % 
-wd  = wn*sqrt(1 - zetaA^2);   % Frequência Natural
+sh  = wn*zeta;             %
+wd  = wn*sqrt(1 - zeta^2); % Frequência Natural
 
 
 
 fprintf('data______________________________________________________________\n');
 fprintf('  Input Information\n');
 fprintf('    Massa,                      m = %2.2f\n',   m);
-fprintf('    Constante Amortecimento,    c = %2.2f\n',   cA);
-fprintf('    Constante Elastica,         k = %2.2f\n\n', k);
+fprintf('    Constante Amortecimento,    c = %2.2f\n',   c);
+fprintf('    Fator de Amortecimento,  zeta = %2.2f\n\n', zeta);
 
-fprintf('    Frequencia Natural,        wn = %2.2f\n', wn);
 fprintf('    Amortecimento Critico,     cc = %2.2f\n', cc);
-fprintf('    Fator de Amortecimento,  zeta = %2.2f\n', zetaA);
+fprintf('    Frequencia Natural,        wn = %2.2f\n', wn);
+fprintf('    Constante Elastica,         k = %2.2f\n', k);
 
 
-
-t = linspace(0,1,10000);
 
 %   via Polinômio Característico:
 %       s^2  + 2 phi wn s + wn^2 = 0
-s1A = -zetaA*wn + wn*sqrt( zetaA^2 - 1 );
-s2A = -zetaA*wn - wn*sqrt( zetaA^2 - 1 );
-c1A = 1;
-c2A = 1;
+c1C = x0;
+c2C = v0 + x0*wn;
 
-eqA = c1A * exp(s1A*t) + c2A * exp(s2A*t);
+syms t
+eqC = c1C * exp(-wn * t) + c2C * t .* exp(-wn * t);
 
-cB   = cA/2;                  % Constante Amortecimento
-zetaB= cB/cc;                 % Fator de Amortecimento    (phi)
 
-s1B = -zetaB*wn + wn*sqrt( zetaB^2 - 1 );
-s2B = -zetaB*wn - wn*sqrt( zetaB^2 - 1 );
-c1B = 1;
-c2B = 1;
 
-eqB = c1B * exp(s1B*t) + c2B * exp(s2B*t);
+zetaU   = zeta*0.25;
+ccU     = c/zetaU;               % Amortecimento Crítico
+wnU     = ccU/(2*m);             % Frequência Natural        (omega)
+wdU     = wnU*sqrt(1 - zetaU^2); % Frequência Natural
 
-cC   = 2*cA;                  % Constante Amortecimento
-zetaC= cC/cc;                 % Fator de Amortecimento    (phi)
+c1U = sqrt( ((v0 + x0*zetaU*wnU)^2 + (x0*wdU)^2)/(wdU^2) );
+c2U = atan((wdU*x0)/(v0 + x0*zetaU*wnU));
 
-s1C = -zetaC*wn + wn*sqrt( zetaC^2 - 1 );
-s2C = -zetaC*wn - wn*sqrt( zetaC^2 - 1 );
-c1C = 1;
-c2C = 1;
+syms t
+eqU =  c1U * exp(-zetaU*wnU * t) * sin(wdU * t + c2U);
 
-eqC = c1C * exp(s1C*t) + c2C * exp(s2C*t);
 
+
+zetaO   = zeta*1.5;
+ccO     = c/zetaO;               % Amortecimento Crítico
+wnO     = ccO/(2*m);             % Frequência Natural        (omega)
+wdO     = wnO*sqrt(1 - zetaO^2); % Frequência Natural
+kO      = (wnO^2) * m;           % Constante Elástica
+
+s1A = -c/(2*m) + sqrt( (c/(2*m))^2 - kO/m );
+s2A = -c/(2*m) - sqrt( (c/(2*m))^2 - kO/m );
+
+c1O = x0 - (v0 - x0*s1A)/(s2A - s1A);
+c2O =      (v0 - x0*s1A)/(s2A - s1A);
+
+s1 = wnO* (-zetaO + sqrt(zetaO^2 - 1)); % -1/tal1
+s2 = wnO* (-zetaO - sqrt(zetaO^2 - 1)); % -1/tal1
+
+syms t
+eqO = c1O * exp(s1 * t) + c2O * exp(s2 * t);
+
+
+t = linspace(0,1,10000);
+eqCt = eval(eqC);
+eqUt = eval(eqU);
+eqOt = eval(eqO);
 
 
 %   Representação Gráfica
-figure; plot(t, eqA, t, eqB, t, eqC)
-title('Comparacao Amortecimento');
+figure; plot(t, eqCt, t, eqUt, t, eqOt)
+
+mytitleText = ['Comparação Amortecimento'];
+title(mytitleText,'Interpreter','tex');
+
 xlabel('t [s]'); ylabel('x(t)');
-legend("critico", "subcriico", "supercritico", "location", "southeast")
+criticoStr      = ['\zeta = ', num2str(zeta),  ', critico'];
+subcriticoStr   = ['\zeta = ', num2str(zetaU), ', subcritico'];
+supercriticoStr = ['\zeta = ', num2str(zetaO), ', supercritico'];
+legend(criticoStr, subcriticoStr, supercriticoStr, "location", "southeast", 'Interpreter', 'tex')
 set(gcf, 'PaperPosition', pSize);
 saveas(gca, fullfile(pPath, 'freeDampingVibrationComparison'), 'png');
