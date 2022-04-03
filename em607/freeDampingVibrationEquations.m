@@ -13,10 +13,11 @@ pPath = 'C:\Users\Admin-PC\Documents\gitRepos\classes\em607\images';
 pSize = [0 0 18 18];
 
 %   TODO
-%    transformar equações em funções
+
 %    deduzir dependência em condiÇões inciais para A, B e C
 %    implementar condiçoes iniciais
 %    dúvida constante a no caso subcrítico
+
 
 
 %%  1 Grau de Liberdade
@@ -42,7 +43,6 @@ sh  = wn*zeta;               %
 wd  = wn*sqrt(1 - zeta^2);   % Frequência Natural
 
 
-t = linspace(0,1,10000);
 
 
 fprintf('data______________________________________________________________\n');
@@ -64,6 +64,7 @@ s2A = -c/(2*m) - sqrt( (c/(2*m))^2 - k/m );
 c1A = 1;
 c2A = 1;
 
+syms t
 eqA = c1A * exp(s1A*t) + c2A * exp(s2A*t);
 
 
@@ -74,12 +75,11 @@ s2B = -zeta*wn - wn*sqrt( zeta^2 - 1 );
 c1B = 1;
 c2B = 1;
 
+syms t
 eqB = c1B * exp(s1B*t) + c2B * exp(s2B*t);
 
 
 %   Representação Gráfica
-t = linspace(0,1,10000);
-
 
 fprintf('\n\n  System Information\n');
 if     zeta  < 1
@@ -87,14 +87,25 @@ if     zeta  < 1
     
     c1C = 2;        % variaveis corrigidas manualmente
     c2C = +pi/2;    % phi
-    eqC = c1C * exp(-zeta*wn * t) .* sin(wd * t + c2C);
+
+    syms t
+    eqC =  c1C * exp(-zeta*wn * t) * sin(wd * t + c2C);
     eqD = +c1C * exp(-zeta*wn * t);
     eqE = -c1C * exp(-zeta*wn * t);
-    
-    figure; plot(t, eqA, t, eqB, 'o', t, eqC, '+', t, eqD, '--', t, eqE, '--')
+
+
+    t = linspace(0,1,10000);
+    eqAt = eval(eqA);
+    eqBt = eval(eqB);
+    eqCt = eval(eqC);
+    eqDt = eval(eqD);
+    eqEt = eval(eqE);
+
+    figure; plot(t, eqAt, t, eqBt, 'o', t, eqCt, '+', t, eqDt, '--', t, eqEt, '--')
+
     mytitleText = ['Amortecimento Subcritico, \zeta = ',num2str(zeta)];
     title(mytitleText,'Interpreter','tex');
-    
+
     xlabel('t [s]'); ylabel('x(t)');
     legend("eqA", "eqB", "eqC", "location", "southeast")
     set(gcf, 'PaperPosition', pSize);
@@ -105,12 +116,21 @@ elseif zeta == 1
 
     c1C = 1;
     c2C = 1;
+
+    syms t
     eqC = c1C * exp(-wn * t) + c2C * t .* exp(-wn * t);
-    
-    figure; plot(t, eqA, t, eqB, 'o', t, eqC, '+')
+
+
+    t = linspace(0,1,10000);
+    eqAt = eval(eqA);
+    eqBt = eval(eqB);
+    eqCt = eval(eqC);
+
+    figure; plot(t, eqAt, t, eqBt, 'o', t, eqCt, '+')
+
     mytitleText = ['Amortecimento Critico, \zeta = ',num2str(zeta)];
     title(mytitleText,'Interpreter','tex');
-    
+
     xlabel('t [s]'); ylabel('x(t)');
     legend("eqA", "eqB", "eqC", "location", "southeast")
     set(gcf, 'PaperPosition', pSize);
@@ -124,10 +144,18 @@ else
     
     s1 = wn* (-zeta + sqrt(zeta^2 - 1)); % -1/tal1
     s2 = wn* (-zeta - sqrt(zeta^2 - 1)); % -1/tal1
-    
+
+    syms t
     eqC = c1C * exp(s1 * t) + c2C * exp(s2 * t);
-    
-    figure; plot(t, eqA, t, eqB, 'o', t, eqC, '+')
+
+
+    t = linspace(0,1,10000);
+    eqAt = eval(eqA);
+    eqBt = eval(eqB);
+    eqCt = eval(eqC);
+
+    figure; plot(t, eqAt, t, eqBt, 'o', t, eqCt, '+')
+
     mytitleText = ['Amortecimento Supercritico, \zeta = ',num2str(zeta)];
     title(mytitleText,'Interpreter','tex');
     
