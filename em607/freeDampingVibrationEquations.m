@@ -16,7 +16,6 @@ pSize = [0 0 18 18];
 
 
 
-
 %%  1 Grau de Liberdade
 %
 %   Considera-se um carrinho fixado a uma mola e a um amortecedor capaz de
@@ -119,8 +118,6 @@ elseif zeta == 1
 
     c1C = x0;
     c2C = v0 + x0*wn;
-    % c1C = 1;
-    % c2C = 1;
 
     syms t
     eqC = c1C * exp(-wn * t) + c2C * t .* exp(-wn * t);
@@ -142,8 +139,6 @@ elseif zeta == 1
 else
     fprintf('    Amortecimento Supercritico, zeta = %2.2f\n', zeta);
 
-    % c1C = 1;
-    % c2C = 1;
     c1C = x0 - (v0 - x0*s1A)/(s2A - s1A);
     c2C =      (v0 - x0*s1A)/(s2A - s1A);
     
@@ -169,4 +164,3 @@ else
     set(gcf, 'PaperPosition', pSize);
     saveas(gca, fullfile(pPath, 'freeDampingVibrationEquations'), 'png');
 end
-
