@@ -407,6 +407,108 @@
                 {Î}{{\^{I}}}1
                 {í}{{\'{i}}}1
                 {Í}{{\~{Í}}}1
+                {ü}{{\"{u}}}1
+                {Ü}{{\"{U}}}1
+    }
+}
+
+\lstdefinelanguage[RISC-V]{Assembler}{ %https://gist.github.com/AntonLydike/e339c3c3a4dcab8bc3c620b3fa436cda
+  alsoletter={.},       % allow dots in keywords
+  alsodigit={0x},       % hex numbers are numbers too!
+  morekeywords=[1]{     % instructions
+    lb, lh, lw, lbu, lhu,
+    sb, sh, sw,
+    sll, slli, srl, srli, sra, srai,
+    add, addi, sub, lui, auipc,
+    xor, xori, or, ori, and, andi,
+    slt, slti, sltu, sltiu,
+    beq, bne,  blt, bge, bltu, bgeu,
+    j, jr, jal, jalr, ret,
+    scall, break, nop
+  },
+  morekeywords=[2]{     % sections of our code and other directives
+    .align, .ascii, .asciiz, .byte, .data, .double, .extern,
+    .float, .globl, .half, .kdata, .ktext, .set, .space, .text, .word
+  },
+  morekeywords=[3]{     % registers
+    zero, ra, sp, gp, tp, s0, fp,
+    t0, t1, t2, t3, t4, t5, t6,
+    s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11,
+    a0, a1, a2, a3, a4, a5, a6, a7,
+    ft0, ft1, ft2, ft3, ft4, ft5, ft6, ft7,
+    fs0, fs1, fs2, fs3, fs4, fs5, fs6, fs7, fs8, fs9, fs10, fs11,
+    fa0, fa1, fa2, fa3, fa4, fa5, fa6, fa7
+  },
+  morecomment=[l]{;},   % mark ; as line comment start
+  morecomment=[l]{\#},  % as well as # (even though it is unconventional)
+  morestring=[b]",      % mark " as string start/end
+  morestring=[b]'       % also mark ' as string start/end
+}
+
+\newcommand{\myStyleRISCV}{
+    \lstset{
+        language=[RISC-V]Assembler,                % Code Language
+        basicstyle=\ttfamily\small,                 % Code Font Size
+        keywordstyle=[1]\color{blue!80!black},      % instructions are blue
+        keywordstyle=[2]\color{orange!80!black},    % sections/other directives are orange
+        keywordstyle=[3]\color{red!50!black},       % registers are red
+        stringstyle=\color{mauve},                  % Color String
+        identifierstyle=\color{teal},               % user declared addresses are teal
+        commentstyle=\color{darkgreen},     % Color Comment
+        morecomment=[s][\color{blue}]{/**}{*/},     % Color Comment
+        extendedchars=true,                         % 
+        showtabs=false,                             % Show Tabs within Strings
+        showspaces=false,                           % Show Spaces Code
+        showstringspaces=false,                     % Show Spaces Strings
+        numbers=left,                               % Line Number Position
+        numberstyle=\tiny\color{gray},              % Line Number Style
+        stepnumber=1,                               % Line Number Step
+        numbersep=5pt,                              % Line Number Distance from Code
+        frame=l,                                    % Frame
+        rulecolor=\color{black},                    % Frame Color
+        breaklines=true,                            % Background Color
+        backgroundcolor=\color{white},              % Break Automatic Line
+        breakatwhitespace=true,                     % Break Automatic Spaces 
+        breakautoindent=false,                      % Break Automatic Indent
+        captionpos=b,                               % Caption Position
+        xleftmargin=0pt,                            % Left Margin
+        tabsize=4,                                  % Tab Size
+        inputencoding=latin1,                       % Encoding
+        literate=                                   % Including Especial Charects
+                {é}{{\'{e}}}1
+                {è}{{\`{e}}}1
+                {ê}{{\^{e}}}1
+                {ë}{{\¨{e}}}1
+                {É}{{\'{E}}}1
+                {Ê}{{\^{E}}}1
+                {û}{{\^{u}}}1
+                {ù}{{\`{u}}}1
+                {ú}{{\'{u}}}1
+                {â}{{\^{a}}}1
+                {à}{{\`{a}}}1
+                {á}{{\'{a}}}1
+                {ã}{{\~{a}}}1
+                {ä}{{\"{a}}}1
+                {Á}{{\'{A}}}1
+                {Â}{{\^{A}}}1
+                {Ã}{{\~{A}}}1
+                {Ä}{{\"{A}}}1
+                {ç}{{\c{c}}}1
+                {Ç}{{\c{C}}}1
+                {õ}{{\~{o}}}1
+                {ó}{{\'{o}}}1
+                {ô}{{\^{o}}}1
+                {ö}{{\"{o}}}1
+                {Õ}{{\~{O}}}1
+                {Ó}{{\'{O}}}1
+                {Ô}{{\^{O}}}1
+                {Ö}{{\"{O}}}1
+                {î}{{\^{i}}}1
+                {Î}{{\^{I}}}1
+                {í}{{\'{i}}}1
+                {Í}{{\~{Í}}}1
+                {ü}{{\"{u}}}1
+                {Ü}{{\"{U}}}1
     }
 }
 
