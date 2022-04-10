@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{tpack}
+
+
+\title{MC732 - Projeto Sistemas Computacionais}
+\author{Guilherme Nunes Trofino}
+\authorRA{217276}
+\project{Resumo Teórico}
+
+
+\begin{document}
+    \maketitle
+\newpage
+
+    \tableofcontents
+\newpage
+
+\section{RISC-V Processors}
+\subsection{Design Principles}
+    \begin{enumerate}
+        \item \textbf{Simplicity} favours regularity;
+        \item \textbf{Smaller} is faster;
+        \item Good design demands good \textbf{Compromises};
+    \end{enumerate}
+
+\subsection{Registers}
+    \begin{table}[H]
+        \centering\begin{tabular}{rl | l}\hline
+            x0              & zero  & Constant Value 0\\
+            x1              & ra    & Return Address\\
+            x2              & sp    & Stack Pointer\\
+            x3              & gp    & Global Pointer\\
+            x4              & tp    & Thread Pointer\\
+            x5-x7, x28-x31  & t0-t6 & Temporaries\\
+            x8              & fp    & Frame Pointer\\
+            x9,    x18-x27  & s0-s11& Saved Registers\\
+            x10-x17         & a0-a7 & Function Arguments\\\hline
+        \end{tabular}
+        \caption{RISC-V Registers}
+        \label{tab:riscvRegisers}
+    \end{table}
+\noindent Note que os temporaries registers podem ser manipulados livremente e não preocupa-se com "sujá-los".\\
+
+\noindent Por outro lado, saved registers devem ser salvos e restaurados caso estes sejam utilizados pela função callee.
+
+\subsection{Functions}
+    \begin{enumerate}[rightmargin = \leftmargin]
+        \item \textbf{Function Arguments:} Place parameters in registers x10 to x17;
+        \item \textbf{Procedure Call:} Transfer control to procedure;
+        \begin{scriptsize}
+            \myStyleRISCV
+            \begin{lstlisting}
+    jal x1, ProcedureLabel  # jal ra, ProcedureLabel
+            \end{lstlisting}
+        \end{scriptsize}
+        \item \textbf{Heap Store:} Acquire storage for procedure;
+        \begin{scriptsize}
+            \myStyleRISCV
+            \begin{lstlisting}
+    addi sp, sp, -16   # 16 = 4 * n, n: number of words
+    sw   x20, 0(sp)
+    sw   x19, 4(sp)
+    sw   x18, 8(sp)
+    sw   ra, 12(sp)
+            \end{lstlisting}
+        \end{scriptsize}
+        \item \textbf{Function Execution:} Perform procedure's operations;
+        \item \textbf{Heap Restore:} Place result in register for caller;
+        \begin{scriptsize}
+            \myStyleRISCV
+            \begin{lstlisting}
+    lw   ra, 12(sp)
+    lw   x18, 8(sp)
+    lw   x19, 4(sp)
+    lw   x20, 0(sp)
+    addi sp, sp, +16   # 16 = 4 * n, n: number of words
+            \end{lstlisting}
+        \end{scriptsize}
+        \item \textbf{Procedure Return:} Return to place of call;
+        \begin{scriptsize}
+            \myStyleRISCV
+            \begin{lstlisting}
+    jalr x0, 0(x1)  # jalr zero, 0(ra)
+            \end{lstlisting}
+        \end{scriptsize}
+    \end{enumerate}
+
+\end{document}
