@@ -167,6 +167,40 @@ def theta(r: float, zeta: float):
 
 
 
+def MFdr(r: float, zeta: float):
+    """
+    Magnification Factor of a 1DOF Forced Vibration System with Viscosity Damping and Harmonic excitation by a Rotation Desbalance.
+
+
+    Parameters
+    ----------
+    r : float
+        Frequency Ratio
+                  omega
+            r = ---------
+                 omega_n
+
+    zeta : float
+        Equation Constant
+                          c
+            zeta = ---------------
+                    (2 m omega_n)
+
+
+    Returns
+    -------
+    Function
+
+
+    Reference
+    ---------
+        [1] 
+    """
+
+    return  r**2 / np.sqrt( (1 - r**2)**2 + (2*zeta*r)**2 )
+
+
+
 
 def MFvalues(r :float, zetaRef: float, zetaValues: float) -> None:
 
