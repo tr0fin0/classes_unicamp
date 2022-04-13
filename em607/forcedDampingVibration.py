@@ -85,11 +85,12 @@ def plotGraph(
     plt.grid(which = "minor", color='#999999', linestyle='--', linewidth=0.25)
 
 
-    mypath = os.path.dirname(__file__)
-    plt.savefig(os.path.join(mypath, plotLabel+".png"))
-
-    if showPlot:
+    if showPlot == True:
         plt.show()
+
+    if savePlot == True:
+        mypath = os.path.dirname(__file__)
+        plt.savefig(os.path.join(mypath, plotLabel+".png"))
 
 
     return None
