@@ -247,6 +247,36 @@ def thetaValues(r: float, zetaValues: float) -> None:
 
 
 
+def MFdrvalues(r :float, zetaRef: float, zetaValues: float) -> None:
+
+    plt.close()
+    for zeta in zetaValues:
+        MFdrzeta  = MFdr(r, zeta)
+
+        infinityUnicode = "\u221e"
+        zetaUnicode     = "\u03B6"
+        zetaStr         = str(round(zeta,3))
+
+
+        # plotGraph(r, MFzeta, "$\zeta$ = "+zetaStr, "r", "MF","MFzeta:"+zetaStr)
+        plotGraph(r, MFdrzeta, "$\zeta$ = "+zetaStr, "r", "$\\frac{X}{ml/M}$","MFdr:"+zetaStr, axis=[0,5, 0,5], showPlot=False, savePlot=False)
+
+        if  zeta  < zetaRef:
+            rPico = 1 / np.sqrt(1-2*zeta**2)
+            MFmax = MFdr(rPico, zeta)
+            print(f"r = 0 é Mínimo, MFmax = {MFmax:.3f} em rPico = {rPico:.3f}, pois {zetaUnicode} = {zeta:.3f}  < {zetaRef:.3f}")
+
+        else:
+            print(f"r = 0 é Mínimo, MFmax = 1.000 em r = {infinityUnicode}, pois {zetaUnicode} = {zeta:.3f} >= {zetaRef:.3f}")
+
+    plt.show()
+
+    return 
+
+
+
+
+
 
 def main():
 
