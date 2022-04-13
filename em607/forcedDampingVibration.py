@@ -15,7 +15,8 @@ def plotGraph(
 
         plotLabel: str = "plotGraph", 
         axis:      int = [0,0, 0,0],
-        showPlot: bool = True
+        showPlot: bool = True,
+        savePlot: bool = True
     ) -> None:
     """
     Plot Graph based on given data and saves a PNG
@@ -286,16 +287,20 @@ def main():
     zetaValues  = [0, 0.15, 0.2, 0.5, zetaRef, 1]
     # zetaValues  = np.linspace(0, 1, 8)
 
-    if True:
-    # if False:
+    # if True:
+    if False:
         MFvalues(r, zetaRef, zetaValues)
 
     # if True:
     if False:
         thetaValues(r, zetaValues)
 
-    return
 
+    if True:
+    # if False:
+        MFdrvalues(r, zetaRef, zetaValues)
+
+    return
 
 
 main()
