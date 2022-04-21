@@ -200,6 +200,38 @@ def MFdr(r: float, zeta: float):
 
     return  r**2 / np.sqrt( (1 - r**2)**2 + (2*zeta*r)**2 )
 
+def TR(r: float, zeta: float):
+    """
+    Transibilite Factor of a 1DOF Forced Vibration System with Viscosity Damping and Harmonic excitation.
+
+
+    Parameters
+    ----------
+    r : float
+        Frequency Ratio
+                  omega
+            r = ---------
+                 omega_n
+
+    zeta : float
+        Equation Constant
+                          c
+            zeta = ---------------
+                    (2 m omega_n)
+
+
+    Returns
+    -------
+    Function
+
+
+    Reference
+    ---------
+        [1] 
+    """
+
+    return  (np.sqrt(1 + (2*zeta*r)**2)) / np.sqrt( (1 - r**2)**2 + (2*zeta*r)**2 )
+
 
 
 
@@ -274,6 +306,26 @@ def MFdrvalues(r :float, zetaRef: float, zetaValues: float) -> None:
 
     return 
 
+def TRvalues(r :float, zetaRef: float, zetaValues: float) -> None:
+
+    plt.close()
+    for zeta in zetaValues:
+        TRzeta  = TR(r, zeta)
+
+        infinityUnicode = "\u221e"
+        zetaUnicode     = "\u03B6"
+        zetaStr         = str(round(zeta,3))
+
+
+        plotGraph(r, TRzeta, "$\zeta$ = "+zetaStr, "r", "$\\frac{F\_T}{F\_0}$","TR:"+zetaStr, axis=[0,5, 0,5], showPlot=False, savePlot=False)
+
+        rPico = np.sqrt(-1 + np.sqrt(1 + 8*zeta**2)) / (2*zeta)
+        TRmax = TR(rPico, zeta)
+        print(f"r = 0 é Mínimo Local, TRmax = {TRmax:.3f} em rPico = {rPico:.3f}, pois {zetaUnicode} = {zeta:.3f} > {zetaRef:.3f}")
+
+    plt.show()
+
+    return 
 
 
 
@@ -296,9 +348,13 @@ def main():
         thetaValues(r, zetaValues)
 
 
+    # if True:
+    if False:
+        MFdrvalues(r, zetaRef, zetaValues)
+
     if True:
     # if False:
-        MFdrvalues(r, zetaRef, zetaValues)
+        TRvalues(r, 0, zetaValues)
 
     return
 
