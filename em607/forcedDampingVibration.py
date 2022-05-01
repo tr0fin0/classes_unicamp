@@ -317,11 +317,15 @@ def TRvalues(r :float, zetaRef: float, zetaValues: float) -> None:
         zetaStr         = str(round(zeta,3))
 
 
-        plotGraph(r, TRzeta, "$\zeta$ = "+zetaStr, "r", "$\\frac{F\_T}{F\_0}$","TR:"+zetaStr, axis=[0,5, 0,5], showPlot=False, savePlot=False)
+        plotGraph(r, TRzeta, "$\zeta$ = "+zetaStr, "r", "$\\frac{F_T}{F_0}$","TR:"+zetaStr, axis=[0,5, 0,5], showPlot=False, savePlot=False)
 
-        rPico = np.sqrt(-1 + np.sqrt(1 + 8*zeta**2)) / (2*zeta)
-        TRmax = TR(rPico, zeta)
-        print(f"r = 0 é Mínimo Local, TRmax = {TRmax:.3f} em rPico = {rPico:.3f}, pois {zetaUnicode} = {zeta:.3f} > {zetaRef:.3f}")
+        if zeta == 0:
+            print(f"r = 0 é Mínimo Local, TRmax = {infinityUnicode} em rPico = {1.000}, pois {zetaUnicode} = {zeta:.3f} = {zetaRef:.3f}")
+            
+        else:
+            rPico = np.sqrt(-1 + np.sqrt(1 + 8*zeta**2)) / (2*zeta)
+            TRmax = TR(rPico, zeta)
+            print(f"r = 0 é Mínimo Local, TRmax = {TRmax:.3f} em rPico = {rPico:.3f}, pois {zetaUnicode} = {zeta:.3f} > {zetaRef:.3f}")
 
     plt.show()
 
