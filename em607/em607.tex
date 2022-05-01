@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage{tpack}
+
+
+\title{EM607 - Vibrações Mecânicas}
+\author{Guilherme Nunes Trofino}
+\authorRA{217276}
+\project{Resumo Teórico}
+
+
+\begin{document}
+    \maketitle
+
+\newpage\tableofcontents
+
+\newpage\section{Vibração em 1 Grau de Liberdade}
+    \paragraph{Definição}Sistemas de 1 Grau de Liberdade necessitam de \textbf{uma} coordenada para serem descritos. Classifica-se sistemas nessas condições como:
+    \begin{enumerate}[rightmargin = \leftmargin]
+        \item \textbf{Livres}: não apresenta Forças Externas;
+        \begin{enumerate}[noitemsep]
+            \item \texttt{Amortecidos}: apresenta Dissipação de Energia;
+            \item \texttt{Não Amortecidos}: não apresenta Dissipação de Energia;
+        \end{enumerate}
+
+        \item \textbf{Forçados}: apresenta Forças Externas;
+        \begin{enumerate}[noitemsep]
+            \item \texttt{Amortecidos}: apresenta Dissipação de Energia;
+            \item \texttt{Não Amortecidos}: não apresenta Dissipação de Energia;
+        \end{enumerate}
+
+    \end{enumerate}\noindent
+    Note que 1 Grau de Liberdade também será nomeado \textbf{1 DOF} do inglês Degree of Freedom.
+
+\subsection{Molas}
+    \paragraph{Definição}
+    \begin{enumerate}[rightmargin = \leftmargin]
+        \item \textbf{Paralelo}: Compartilham Deslocamento obtida pela seguinte equação:
+        \begin{equation}
+            k_{\text{eq}} = \Sigma k_i
+        \end{equation}
+
+        \item \textbf{Série}: Compartilham Força obtida pela seguinte equação:
+        \begin{equation}
+            k_{\text{eq}} = \left( \Sigma \frac{1}{k_{i}} \right)^{-1}
+        \end{equation}
+    \end{enumerate}
+
+\newpage\subsection{Formulação}
+    \paragraph{Definição}Quando procura-se descrever o comportamento de um sistema qualquer o seguinte raciocínio deve ser realizado:
+    \begin{enumerate}[rightmargin = \leftmargin]
+        \item \textbf{Coordenada}: Definição de uma coordenada adequada para descrição do movimento:
+        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+            \item \texttt{Linear}: Comumente $x$;
+            \item \texttt{Rotacional}: Comumente $\theta$;
+        \end{enumerate}\noindent
+        Note que essa coordenada poderá ser definida a partir de uma condição inicial ou uma condição de equilíbrio. No caso de condição inicial deverá ser considerado o necessário até o equilíbrio.
+
+        \item \textbf{Diagrama}: Análise dos corpos envolvidos no movimento incluindo Forças causadas por um deslocamento arbitrário, e normalmente pequeno, das variáveis analisada no Diagrama de Corpo Livre;
+
+        \item \textbf{Equação}: Aplica-se a 2\textsuperscript{a} Lei de Newton sobre o Diagrama de Corpo Livre realizado anteriormente coerente com a Coordenada selecionada:
+        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+            \item \texttt{Linear}:
+            \begin{equation}
+                m \ddot{x} = \Sigma F
+            \end{equation}\noindent
+            Onde:
+            \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                \item $x$, Deslocamento Linear em \unit{\meter};
+                \item $m$, Massa em \unit{\kilogram};
+                \item $F$, Força em \unit{\newton};
+            \end{enumerate}
+            \item \texttt{Rotacional}:
+            \begin{equation}
+                J_O \ddot{\theta} = \Sigma M_O
+            \end{equation}\noindent
+            Onde:
+            \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+                \item $\theta$, Deslocamento Angular em \unit{\rad};
+                \item $J_O$, Momento de Inercia no ponto O em \unit{\kilogram\square\meter};
+                \item $M_O$, Momento no ponto O em \unit{\newton\meter};
+            \end{enumerate}\noindent
+            Note que quando considera-se \textbf{Pequenas Oscilações} têm-se as seguintes aproximações:
+            \begin{equation}
+                \sin(\theta) \approx \theta
+                \qquad \text{e} \qquad
+                \cos(\theta) \approx 1
+            \end{equation}\noindent
+            Note também que o Ponto O não necessariamente será o Ponto G, Centro de Massa, do objeto analisado. Dessa forma deve-se considerar aplicar o \textbf{Teorema dos Eixos Paralelos} o que demandará o conhecimento dos principais Momentos de Inerciais.\\
+            
+            Ambas as informações se encontram em EM404 - Dinâmica.
+        \end{enumerate}
+
+        \item \textbf{Análise}: Finalmente considerar a Equação obtida e revisá-la para garantir:
+        \begin{enumerate}[rightmargin = \leftmargin, noitemsep]
+            \item \texttt{Coerência}: Unidades e Variáveis adequadas;
+            \item \texttt{Condições Iniciais}: Inclusão das Condições Iniciais do sistema;
+        \end{enumerate}
+    \end{enumerate}
+
+
+
+
+\newpage\subsection{Livre}
+    \paragraph{Definição}Sistemas de 1 Grau de Liberdade Livres necessitam de \textbf{uma} coordenada para serem descritos e \textbf{não} apresentam forças externas atuando, denotada como \texttt{Resposta Natural} do sistema.
+
+\subsubsection{Amortecido Viscoso}
+    \paragraph{Definição}Sistemas de 1 Grau de Liberdade Livres não Amortecidos necessitam de \textbf{uma} coordenada para serem descritos, \textbf{não} apresentam forças externas atuando e apresentam dissipação de energia.
+
+\subsubsection{Não Amortecido}
+    \paragraph{Definição}Sistemas de 1 Grau de Liberdade Livres não Amortecidos necessitam de \textbf{uma} coordenada para serem descritos, \textbf{não} apresentam forças externas atuando e \textbf{não} apresentam dissipação de energia.
+
+
+
+
+\newpage\subsection{Forçada}
+
+
+
+\newpage\section{Vibrações em 2 Graus de Liberdade}
+\end{document}
