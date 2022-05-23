@@ -101,7 +101,7 @@ class oneDOF:
     class forced:
 
 
-        def harmonic_excitement(r: float, zeta: float):
+        def harmonic_excitement(r: float, zeta: float) -> list:
             """
             Magnification Factor of a 1DOF Forced Vibration System with Viscous Damping and Harmonic excitation.
 
