@@ -4,97 +4,97 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+class graph:
+
+    def plot(
+            x: int, y: int, 
+
+            dataLabel: str = "", 
+            xlabel:    str = "",
+            ylabel:    str = "", 
+
+            plotLabel: str = "plotGraph", 
+            axis:      int = [0, 0, 0, 0],
+            showPlot: bool = True,
+            savePlot: bool = True
+        ) -> None:
+        """
+        Plot Graph based on given data and saves a PNG
 
 
-def plotGraph(
-        x: int, y: int, 
+        Parameters
+        ----------
+        x : vector of int
+            Input Values
 
-        dataLabel: str = "", 
-        xlabel:    str = "",
-        ylabel:    str = "", 
+        y : vector of int
+            Output Values
 
-        plotLabel: str = "plotGraph", 
-        axis:      int = [0, 0, 0, 0],
-        showPlot: bool = True,
-        savePlot: bool = True
-    ) -> None:
-    """
-    Plot Graph based on given data and saves a PNG
+        dataLabel : string
+            Label of data x and y
 
+        xlabel : string
+            Label of X axis
 
-    Parameters
-    ----------
-    x : vector of int
-        Input Values
+        ylabel : string
+            Label of Y axis
 
-    y : vector of int
-        Output Values
+        plotLabel : string
+            Name of exported PNG file
 
-    dataLabel : string
-        Label of data x and y
+        axis : vector of int
+            Determines dimensions of Graph
 
-    xlabel : string
-        Label of X axis
-
-    ylabel : string
-        Label of Y axis
-
-    plotLabel : string
-        Name of exported PNG file
-
-    axis : vector of int
-        Determines dimensions of Graph
-
-    showPlot : bool
-        Show Graph?
+        showPlot : bool
+            Show Graph?
 
 
 
 
-    Returns
-    -------
-    Plot of Data : None
+        Returns
+        -------
+        Plot of Data : None
 
 
-    Reference
-    ---------
-        [1] https://matplotlib.org/3.5.0/tutorials/introductory/pyplot.html
+        Reference
+        ---------
+            [1] https://matplotlib.org/3.5.0/tutorials/introductory/pyplot.html
 
-        [2] https://matplotlib.org/3.5.1/gallery/widgets/slider_demo.html
+            [2] https://matplotlib.org/3.5.1/gallery/widgets/slider_demo.html
 
-        [3] https://stackoverflow.com/questions/14016217/how-do-i-write-a-latex-formula-in-the-legend-of-a-plot-using-matplotlib-inside-a
+            [3] https://stackoverflow.com/questions/14016217/how-do-i-write-a-latex-formula-in-the-legend-of-a-plot-using-matplotlib-inside-a
 
-        [4] https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.legend.html
+            [4] https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.legend.html
 
-        [5] https://riptutorial.com/matplotlib/example/14063/plot-with-gridlines
-    """
+            [5] https://riptutorial.com/matplotlib/example/14063/plot-with-gridlines
+        """
 
-    plt.plot(x, y, label = dataLabel)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.legend(loc = "upper right")
-
-
-    if axis is [0, 0, 0, 0]:
-        axis = [min(x),max(x), min(y),max(y)]
-
-    plt.axis(axis)
+        plt.plot(x, y, label = dataLabel)
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+        plt.legend(loc = "upper right")
 
 
-    plt.grid(which = "major", color='#666666', linestyle='-',  linewidth=0.5)
-    plt.minorticks_on()
-    plt.grid(which = "minor", color='#999999', linestyle='--', linewidth=0.25)
+        if axis is [0, 0, 0, 0]:
+            axis = [min(x),max(x), min(y),max(y)]
+
+        plt.axis(axis)
 
 
-    if showPlot is True:
-        plt.show()
-
-    if savePlot is True:
-        mypath = os.path.dirname(__file__)
-        plt.savefig(os.path.join(mypath, plotLabel+".png"))
+        plt.grid(which = "major", color='#666666', linestyle='-',  linewidth=0.5)
+        plt.minorticks_on()
+        plt.grid(which = "minor", color='#999999', linestyle='--', linewidth=0.25)
 
 
-    return None
+        if showPlot is True:
+            plt.show()
+
+        if savePlot is True:
+            mypath = os.path.dirname(__file__)
+            plt.savefig(os.path.join(mypath, plotLabel+".png"))
+
+
+        return None
 
 
 
@@ -246,7 +246,7 @@ def MFvalues(r :float, zetaRef: float, zetaValues: float) -> None:
 
 
         # plotGraph(r, MFzeta, "$\zeta$ = "+zetaStr, "r", "MF","MFzeta:"+zetaStr)
-        plotGraph(r, MFzeta, "$\zeta$ = "+zetaStr, "r", "MF","MF:"+zetaStr, axis=[0,5, 0,5], showPlot=False)
+        graph.plot(r, MFzeta, "$\zeta$ = "+zetaStr, "r", "MF","MF:"+zetaStr, axis=[0,5, 0,5], showPlot=False)
 
         if  zeta  < zetaRef:
             rPico = np.sqrt(1-2*zeta**2)
@@ -272,7 +272,7 @@ def thetaValues(r: float, zetaValues: float) -> None:
 
 
         # plotGraph(r, thetaZeta, "$\zeta$ = "+zetaStr, "r", "MF","MFzeta:"+zetaStr)
-        plotGraph(r, thetaZeta, "$\zeta$ = "+zetaStr, "r", "$\\theta$","theta:"+zetaStr, axis=[0,5, 0,5], showPlot=False)
+        graph.plot(r, thetaZeta, "$\zeta$ = "+zetaStr, "r", "$\\theta$","theta:"+zetaStr, axis=[0,5, 0,5], showPlot=False)
 
     plt.show()
 
@@ -292,7 +292,7 @@ def MFdrvalues(r :float, zetaRef: float, zetaValues: float) -> None:
 
 
         # plotGraph(r, MFzeta, "$\zeta$ = "+zetaStr, "r", "MF","MFzeta:"+zetaStr)
-        plotGraph(r, MFdrzeta, "$\zeta$ = "+zetaStr, "r", "$\\frac{X}{ml/M}$","MFdr:"+zetaStr, axis=[0,5, 0,5], showPlot=False, savePlot=False)
+        graph.plot(r, MFdrzeta, "$\zeta$ = "+zetaStr, "r", "$\\frac{X}{ml/M}$","MFdr:"+zetaStr, axis=[0,5, 0,5], showPlot=False, savePlot=False)
 
         if  zeta  < zetaRef:
             rPico = 1 / np.sqrt(1-2*zeta**2)
@@ -317,7 +317,7 @@ def TRvalues(r :float, zetaRef: float, zetaValues: float) -> None:
         zetaStr         = str(round(zeta,3))
 
 
-        plotGraph(r, TRzeta, "$\zeta$ = "+zetaStr, "r", "$\\frac{F_T}{F_0}$","TR:"+zetaStr, axis=[0,5, 0,5], showPlot=False, savePlot=False)
+        graph.plot(r, TRzeta, "$\zeta$ = "+zetaStr, "r", "$\\frac{F_T}{F_0}$","TR:"+zetaStr, axis=[0,5, 0,5], showPlot=False, savePlot=False)
 
         if zeta == 0:
             print(f"r = 0 é Mínimo Local, TRmax = {infinityUnicode} em rPico = {1.000}, pois {zetaUnicode} = {zeta:.3f} = {zetaRef:.3f}")
