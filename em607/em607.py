@@ -284,26 +284,17 @@ def TRvalues(r :float, zetaRef: float, zetaValues: float) -> None:
 
 
 def main():
-
     r    = np.linspace(0, 5, 10000)
 
     zetaRef     = np.sqrt(2)/2
     zetaValues  = [0, 0.15, 0.2, 0.5, zetaRef, 1]
-    # zetaValues  = np.linspace(0, 1, 8)
 
-    if True:
-    # if False:
-        MFvalues(r, zetaRef, zetaValues)
-
-    if True:
-    # if False:
-        MFdrvalues(r, zetaRef, zetaValues)
-
-    if True:
-    # if False:
-        TRvalues(r, 0, zetaValues)
-
-    return
+    print("="*80+"\n\n")
+    figure17(r, zetaRef, zetaValues)
+    print("="*80+"\n\n")
+    figure20(r, zetaRef, zetaValues)
+    print("="*80+"\n\n")
+    figure22(r, zetaRef, zetaValues)
 
 #%%
 if __name__ == '__main__':
