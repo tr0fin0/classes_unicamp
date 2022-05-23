@@ -167,10 +167,21 @@ class oneDOF:
             ---------
                 [1] 
             """
+            zetaRef = np.sqrt(2)/2
 
-            return  r**2 / np.sqrt( (1 - r**2)**2 + (2*zeta*r)**2 )
+            X = r**2 / np.sqrt( (1 - r**2)**2 + (2*zeta*r)**2 )
 
-        def transmissibility(r: float, zeta: float):
+            rPico = np.infty
+            if zeta < zetaRef:
+                rPico = 1 / np.sqrt(1-2*zeta**2)
+
+            Xmax = 1
+            if zeta < zetaRef:
+                Xmax = rPico**2 / np.sqrt( (1 - rPico**2)**2 + (2*zeta*rPico)**2 )
+
+            return rPico, X, Xmax
+
+        def transmissibility(r: float, zeta: float) -> list:
             """
             Transibilite Factor of a 1DOF Forced Vibration System with Viscosity Damping and Harmonic excitation.
 
