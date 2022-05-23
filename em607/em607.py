@@ -183,27 +183,23 @@ class oneDOF:
 
         def transmissibility(r: float, zeta: float) -> list:
             """
-            Transibilite Factor of a 1DOF Forced Vibration System with Viscosity Damping and Harmonic excitation.
+            Transmissibility of a 1DOF Forced Vibration System with Viscosity Damping and Harmonic excitement.
 
 
             Parameters
             ----------
-            r : float
-                Frequency Ratio
-                        omega
-                    r = ---------
-                        omega_n
+            r : float, Frequency Ratio    : r = omega / omega_n
 
-            zeta : float
-                Equation Constant
-                                c
-                    zeta = ---------------
-                            (2 m omega_n)
+            zeta : float, Damping Factor  : zeta = c / (2 m omega_n)
 
 
             Returns
             -------
-            Function
+            rPico : float, Peak Frequency Ratio
+
+            TR    : float, Transmissibility Relation  : TR = FT / F0
+
+            TRmax : float, Maximum Transmissibility Relation
 
 
             Reference
