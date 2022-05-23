@@ -14,7 +14,7 @@ def plotGraph(
         ylabel:    str = "", 
 
         plotLabel: str = "plotGraph", 
-        axis:      int = [0,0, 0,0],
+        axis:      int = [0, 0, 0, 0],
         showPlot: bool = True,
         savePlot: bool = True
     ) -> None:
@@ -75,7 +75,7 @@ def plotGraph(
     plt.legend(loc = "upper right")
 
 
-    if axis == [0,0, 0,0]:
+    if axis is [0, 0, 0, 0]:
         axis = [min(x),max(x), min(y),max(y)]
 
     plt.axis(axis)
@@ -86,10 +86,10 @@ def plotGraph(
     plt.grid(which = "minor", color='#999999', linestyle='--', linewidth=0.25)
 
 
-    if showPlot == True:
+    if showPlot is True:
         plt.show()
 
-    if savePlot == True:
+    if savePlot is True:
         mypath = os.path.dirname(__file__)
         plt.savefig(os.path.join(mypath, plotLabel+".png"))
 
@@ -343,17 +343,17 @@ def main():
     zetaValues  = [0, 0.15, 0.2, 0.5, zetaRef, 1]
     # zetaValues  = np.linspace(0, 1, 8)
 
-    # if True:
-    if False:
+    if True:
+    # if False:
         MFvalues(r, zetaRef, zetaValues)
 
-    # if True:
-    if False:
+    if True:
+    # if False:
         thetaValues(r, zetaValues)
 
 
-    # if True:
-    if False:
+    if True:
+    # if False:
         MFdrvalues(r, zetaRef, zetaValues)
 
     if True:
@@ -362,5 +362,6 @@ def main():
 
     return
 
-
-main()
+#%%
+if __name__ == '__main__':
+    main()
