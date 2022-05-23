@@ -127,10 +127,22 @@ class oneDOF:
                 [1] https://stackoverflow.com/questions/22725421/typeerror-with-ufunc-bitwise-xor
             """
 
-            return  1 / np.sqrt( (1 - r**2)**2 + (2*zeta*r)**2 )
+            zetaRef = np.sqrt(2)/2
+
+            MF = 1 / np.sqrt( (1 - r**2)**2 + (2*zeta*r)**2 )
+
+            rPico = 0
+            if zeta < zetaRef:
+                rPico = np.sqrt(1-2*zeta**2)
+
+            MFmax = 1
+            if zeta < zetaRef:
+                MFmax = 1 / (2*zeta * np.sqrt(1 - zeta**2))
+
+            return  rPico, MF, MFmax
 
 
-        def rotary_unbalance(r: float, zeta: float):
+        def rotary_unbalance(r: float, zeta: float) -> list:
             """
             Magnification Factor of a 1DOF Forced Vibration System with Viscosity Damping and Harmonic excitation by a Rotation Desbalance.
 
