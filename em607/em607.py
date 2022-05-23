@@ -103,27 +103,23 @@ class oneDOF:
 
         def harmonic_excitement(r: float, zeta: float) -> list:
             """
-            Magnification Factor of a 1DOF Forced Vibration System with Viscous Damping and Harmonic excitation.
+            1DOF Forced Vibration System with Viscous Damping and Harmonic excitement.
 
 
             Parameters
             ----------
-            r : float
-                Frequency Ratio
-                        omega
-                    r = ---------
-                        omega_n
+            r : float, Frequency Ratio    : r = omega / omega_n
 
-            zeta : float
-                Equation Constant
-                                c
-                    zeta = ---------------
-                            (2 m omega_n)
+            zeta : float, Damping Factor  : zeta = c / (2 m omega_n)
 
 
             Returns
             -------
-            Function
+            rPico : float, Peak Frequency Ratio
+
+            MF    : float, Amplification Factor
+
+            MFmax : float, Maximum Amplification Factor
 
 
             Reference
