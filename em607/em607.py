@@ -207,8 +207,11 @@ class oneDOF:
                 [1] 
             """
 
-            return  (np.sqrt(1 + (2*zeta*r)**2)) / np.sqrt( (1 - r**2)**2 + (2*zeta*r)**2 )
+            rPico = np.sqrt(-1 + np.sqrt(1 + 8*zeta**2)) / (2*zeta)
+            TR    = (np.sqrt(1 + (2*zeta*r)**2)) / np.sqrt( (1 - r**2)**2 + (2*zeta*r)**2 )
+            TRmax = (np.sqrt(1 + (2*zeta*rPico)**2)) / np.sqrt( (1 - rPico**2)**2 + (2*zeta*rPico)**2 )
 
+            return rPico, TR, TRmax
 
 
 
