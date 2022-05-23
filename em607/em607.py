@@ -215,30 +215,25 @@ class oneDOF:
 
 
 
-def MFvalues(r :float, zetaRef: float, zetaValues: float) -> None:
+
+def figure17(r :float, zetaRef: float, zetaValues: float) -> None:
 
     plt.close()
     for zeta in zetaValues:
-        MFzeta  = oneDOF.forced.harmonic_excitement(r, zeta)
+        rPico, MF, MFmax  = oneDOF.forced.harmonic_excitement(r, zeta)
 
         zetaUnicode = "\u03B6"
         zetaStr     = str(round(zeta,3))
 
-
-        # plotGraph(r, MFzeta, "$\zeta$ = "+zetaStr, "r", "MF","MFzeta:"+zetaStr)
-        graph.plot(r, MFzeta, "$\zeta$ = "+zetaStr, "r", "MF","MF:"+zetaStr, axis=[0,5, 0,5], showPlot=False)
+        graph.plot(r, MF, "$\zeta$ = "+zetaStr, "r", "MF","figure17:"+zetaStr, axis=[0,5, 0,5], showPlot=False)
 
         if  zeta  < zetaRef:
-            rPico = np.sqrt(1-2*zeta**2)
-            MFmax = 1 / (2*zeta * np.sqrt(1 - zeta**2))
             print(f"r = 0 é Mínimo, pois {zetaUnicode} = {zeta:.3f}  < {zetaRef:.3f}\t   rPico = {rPico:.3f} e MFmax = {MFmax:.3f}")
 
         else:
             print(f"r = 0 é Máximo, pois {zetaUnicode} = {zeta:.3f} >= {zetaRef:.3f}\t   rPico = 0.000 e MFmax = 1.000")
 
-    plt.show()
-
-    return 
+    return
 
 
 
