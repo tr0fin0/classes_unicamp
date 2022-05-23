@@ -97,140 +97,106 @@ class graph:
         return None
 
 
-
-def MF(r: float, zeta: float):
-    """
-    Magnification Factor of a 1DOF Forced Vibration System with Viscosity Damping and Harmonic excitation.
+class oneDOF:
+    class forced:
 
 
-    Parameters
-    ----------
-    r : float
-        Frequency Ratio
-                  omega
-            r = ---------
-                 omega_n
-
-    zeta : float
-        Equation Constant
-                          c
-            zeta = ---------------
-                    (2 m omega_n)
+        def harmonic_excitement(r: float, zeta: float):
+            """
+            Magnification Factor of a 1DOF Forced Vibration System with Viscous Damping and Harmonic excitation.
 
 
-    Returns
-    -------
-    Function
+            Parameters
+            ----------
+            r : float
+                Frequency Ratio
+                        omega
+                    r = ---------
+                        omega_n
+
+            zeta : float
+                Equation Constant
+                                c
+                    zeta = ---------------
+                            (2 m omega_n)
 
 
-    Reference
-    ---------
-        [1] https://stackoverflow.com/questions/22725421/typeerror-with-ufunc-bitwise-xor
-    """
-
-    return  1 / np.sqrt( (1 - r**2)**2 + (2*zeta*r)**2 )
+            Returns
+            -------
+            Function
 
 
+            Reference
+            ---------
+                [1] https://stackoverflow.com/questions/22725421/typeerror-with-ufunc-bitwise-xor
+            """
 
-def theta(r: float, zeta: float):
-    """
-    Theta Phase of a 1DOF Forced Vibration System with Viscosity Damping and Harmonic excitation.
-
-
-    Parameters
-    ----------
-    r : float
-        Frequency Ratio
-                  omega
-            r = ---------
-                 omega_n
-
-    zeta : float
-        Equation Constant
-                          c
-            zeta = ---------------
-                    (2 m omega_n)
+            return  1 / np.sqrt( (1 - r**2)**2 + (2*zeta*r)**2 )
 
 
-
-    Returns
-    -------
-    Function
-
-
-    Reference
-    ---------
-        [1] https://stackoverflow.com/questions/22725421/typeerror-with-ufunc-bitwise-xor
-    """
-
-    return np.arctan((2*zeta*r)/(1 - r**2)) 
-    # return math.atan( (2*zeta*r)/(1 - r**2) ) 
+        def rotary_unbalance(r: float, zeta: float):
+            """
+            Magnification Factor of a 1DOF Forced Vibration System with Viscosity Damping and Harmonic excitation by a Rotation Desbalance.
 
 
+            Parameters
+            ----------
+            r : float
+                Frequency Ratio
+                        omega
+                    r = ---------
+                        omega_n
 
-def MFdr(r: float, zeta: float):
-    """
-    Magnification Factor of a 1DOF Forced Vibration System with Viscosity Damping and Harmonic excitation by a Rotation Desbalance.
-
-
-    Parameters
-    ----------
-    r : float
-        Frequency Ratio
-                  omega
-            r = ---------
-                 omega_n
-
-    zeta : float
-        Equation Constant
-                          c
-            zeta = ---------------
-                    (2 m omega_n)
+            zeta : float
+                Equation Constant
+                                c
+                    zeta = ---------------
+                            (2 m omega_n)
 
 
-    Returns
-    -------
-    Function
+            Returns
+            -------
+            Function
 
 
-    Reference
-    ---------
-        [1] 
-    """
+            Reference
+            ---------
+                [1] 
+            """
 
-    return  r**2 / np.sqrt( (1 - r**2)**2 + (2*zeta*r)**2 )
+            return  r**2 / np.sqrt( (1 - r**2)**2 + (2*zeta*r)**2 )
 
-def TR(r: float, zeta: float):
-    """
-    Transibilite Factor of a 1DOF Forced Vibration System with Viscosity Damping and Harmonic excitation.
-
-
-    Parameters
-    ----------
-    r : float
-        Frequency Ratio
-                  omega
-            r = ---------
-                 omega_n
-
-    zeta : float
-        Equation Constant
-                          c
-            zeta = ---------------
-                    (2 m omega_n)
+        def transmissibility(r: float, zeta: float):
+            """
+            Transibilite Factor of a 1DOF Forced Vibration System with Viscosity Damping and Harmonic excitation.
 
 
-    Returns
-    -------
-    Function
+            Parameters
+            ----------
+            r : float
+                Frequency Ratio
+                        omega
+                    r = ---------
+                        omega_n
+
+            zeta : float
+                Equation Constant
+                                c
+                    zeta = ---------------
+                            (2 m omega_n)
 
 
-    Reference
-    ---------
-        [1] 
-    """
+            Returns
+            -------
+            Function
 
-    return  (np.sqrt(1 + (2*zeta*r)**2)) / np.sqrt( (1 - r**2)**2 + (2*zeta*r)**2 )
+
+            Reference
+            ---------
+                [1] 
+            """
+
+            return  (np.sqrt(1 + (2*zeta*r)**2)) / np.sqrt( (1 - r**2)**2 + (2*zeta*r)**2 )
 
 
 
@@ -239,7 +205,7 @@ def MFvalues(r :float, zetaRef: float, zetaValues: float) -> None:
 
     plt.close()
     for zeta in zetaValues:
-        MFzeta  = MF(r, zeta)
+        MFzeta  = oneDOF.forced.harmonic_excitement(r, zeta)
 
         zetaUnicode = "\u03B6"
         zetaStr     = str(round(zeta,3))
@@ -262,29 +228,11 @@ def MFvalues(r :float, zetaRef: float, zetaValues: float) -> None:
 
 
 
-def thetaValues(r: float, zetaValues: float) -> None:
-
-    plt.close()
-
-    for zeta in zetaValues:
-        thetaZeta  = theta(r, zeta)
-        zetaStr = str(round(zeta,3))
-
-
-        # plotGraph(r, thetaZeta, "$\zeta$ = "+zetaStr, "r", "MF","MFzeta:"+zetaStr)
-        graph.plot(r, thetaZeta, "$\zeta$ = "+zetaStr, "r", "$\\theta$","theta:"+zetaStr, axis=[0,5, 0,5], showPlot=False)
-
-    plt.show()
-
-    return
-
-
-
 def MFdrvalues(r :float, zetaRef: float, zetaValues: float) -> None:
 
     plt.close()
     for zeta in zetaValues:
-        MFdrzeta  = MFdr(r, zeta)
+        MFdrzeta  = oneDOF.forced.rotary_unbalance(r, zeta)
 
         infinityUnicode = "\u221e"
         zetaUnicode     = "\u03B6"
@@ -296,7 +244,7 @@ def MFdrvalues(r :float, zetaRef: float, zetaValues: float) -> None:
 
         if  zeta  < zetaRef:
             rPico = 1 / np.sqrt(1-2*zeta**2)
-            MFmax = MFdr(rPico, zeta)
+            MFmax = oneDOF.forced.rotary_unbalance(rPico, zeta)
             print(f"r = 0 é Mínimo, MFmax = {MFmax:.3f} em rPico = {rPico:.3f}, pois {zetaUnicode} = {zeta:.3f}  < {zetaRef:.3f}")
 
         else:
@@ -310,7 +258,7 @@ def TRvalues(r :float, zetaRef: float, zetaValues: float) -> None:
 
     plt.close()
     for zeta in zetaValues:
-        TRzeta  = TR(r, zeta)
+        TRzeta  = oneDOF.forced.transmissibility(r, zeta)
 
         infinityUnicode = "\u221e"
         zetaUnicode     = "\u03B6"
@@ -324,7 +272,7 @@ def TRvalues(r :float, zetaRef: float, zetaValues: float) -> None:
             
         else:
             rPico = np.sqrt(-1 + np.sqrt(1 + 8*zeta**2)) / (2*zeta)
-            TRmax = TR(rPico, zeta)
+            TRmax = oneDOF.forced.transmissibility(rPico, zeta)
             print(f"r = 0 é Mínimo Local, TRmax = {TRmax:.3f} em rPico = {rPico:.3f}, pois {zetaUnicode} = {zeta:.3f} > {zetaRef:.3f}")
 
     plt.show()
@@ -346,11 +294,6 @@ def main():
     if True:
     # if False:
         MFvalues(r, zetaRef, zetaValues)
-
-    if True:
-    # if False:
-        thetaValues(r, zetaValues)
-
 
     if True:
     # if False:
