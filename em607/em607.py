@@ -144,27 +144,23 @@ class oneDOF:
 
         def rotary_unbalance(r: float, zeta: float) -> list:
             """
-            Magnification Factor of a 1DOF Forced Vibration System with Viscosity Damping and Harmonic excitation by a Rotation Desbalance.
+            1DOF Forced Vibration System with Viscosity Damping and Harmonic excitement by a Rotary Unbalance.
 
 
             Parameters
             ----------
-            r : float
-                Frequency Ratio
-                        omega
-                    r = ---------
-                        omega_n
+            r : float, Frequency Ratio    : r = omega / omega_n
 
-            zeta : float
-                Equation Constant
-                                c
-                    zeta = ---------------
-                            (2 m omega_n)
+            zeta : float, Damping Factor  : zeta = c / (2 m omega_n)
 
 
             Returns
             -------
-            Function
+            rPico : float, Peak Frequency Ratio
+
+            X     : float, Range of Motion: X = (X M) / (m l)
+
+            Xmax  : float, Maximum Range of Motion
 
 
             Reference
