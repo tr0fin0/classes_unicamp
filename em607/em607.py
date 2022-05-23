@@ -237,31 +237,25 @@ def figure17(r :float, zetaRef: float, zetaValues: float) -> None:
 
 
 
-def MFdrvalues(r :float, zetaRef: float, zetaValues: float) -> None:
+def figure20(r :float, zetaRef: float, zetaValues: float) -> None:
 
     plt.close()
     for zeta in zetaValues:
-        MFdrzeta  = oneDOF.forced.rotary_unbalance(r, zeta)
+        rPico, X, Xmax  = oneDOF.forced.rotary_unbalance(r, zeta)
 
         infinityUnicode = "\u221e"
         zetaUnicode     = "\u03B6"
         zetaStr         = str(round(zeta,3))
 
-
-        # plotGraph(r, MFzeta, "$\zeta$ = "+zetaStr, "r", "MF","MFzeta:"+zetaStr)
-        graph.plot(r, MFdrzeta, "$\zeta$ = "+zetaStr, "r", "$\\frac{X}{ml/M}$","MFdr:"+zetaStr, axis=[0,5, 0,5], showPlot=False, savePlot=False)
+        graph.plot(r, X, "$\zeta$ = "+zetaStr, "r", "$\\frac{X}{ml/M}$","figure20:"+zetaStr, axis=[0,5, 0,5], showPlot=False)
 
         if  zeta  < zetaRef:
-            rPico = 1 / np.sqrt(1-2*zeta**2)
-            MFmax = oneDOF.forced.rotary_unbalance(rPico, zeta)
-            print(f"r = 0 é Mínimo, MFmax = {MFmax:.3f} em rPico = {rPico:.3f}, pois {zetaUnicode} = {zeta:.3f}  < {zetaRef:.3f}")
+            print(f"r = 0 é Mínimo, Xmax = {Xmax:.3f} em rPico = {rPico:.3f}, pois {zetaUnicode} = {zeta:.3f}  < {zetaRef:.3f}")
 
         else:
-            print(f"r = 0 é Mínimo, MFmax = 1.000 em r = {infinityUnicode}, pois {zetaUnicode} = {zeta:.3f} >= {zetaRef:.3f}")
+            print(f"r = 0 é Mínimo, Xmax = 1.000 em r = {infinityUnicode}, pois {zetaUnicode} = {zeta:.3f} >= {zetaRef:.3f}")
 
-    plt.show()
-
-    return 
+    return
 
 def TRvalues(r :float, zetaRef: float, zetaValues: float) -> None:
 
