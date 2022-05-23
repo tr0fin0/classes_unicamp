@@ -257,30 +257,25 @@ def figure20(r :float, zetaRef: float, zetaValues: float) -> None:
 
     return
 
-def TRvalues(r :float, zetaRef: float, zetaValues: float) -> None:
+def figure22(r :float, zetaRef: float, zetaValues: float) -> None:
 
     plt.close()
     for zeta in zetaValues:
-        TRzeta  = oneDOF.forced.transmissibility(r, zeta)
+        rPico, TR, TRmax  = oneDOF.forced.transmissibility(r, zeta)
 
         infinityUnicode = "\u221e"
         zetaUnicode     = "\u03B6"
         zetaStr         = str(round(zeta,3))
 
-
-        graph.plot(r, TRzeta, "$\zeta$ = "+zetaStr, "r", "$\\frac{F_T}{F_0}$","TR:"+zetaStr, axis=[0,5, 0,5], showPlot=False, savePlot=False)
+        graph.plot(r, TR, "$\zeta$ = "+zetaStr, "r", "$\\frac{F_T}{F_0}$","figure22:"+zetaStr, axis=[0,5, 0,5], showPlot=False)
 
         if zeta == 0:
             print(f"r = 0 é Mínimo Local, TRmax = {infinityUnicode} em rPico = {1.000}, pois {zetaUnicode} = {zeta:.3f} = {zetaRef:.3f}")
-            
+
         else:
-            rPico = np.sqrt(-1 + np.sqrt(1 + 8*zeta**2)) / (2*zeta)
-            TRmax = oneDOF.forced.transmissibility(rPico, zeta)
             print(f"r = 0 é Mínimo Local, TRmax = {TRmax:.3f} em rPico = {rPico:.3f}, pois {zetaUnicode} = {zeta:.3f} > {zetaRef:.3f}")
 
-    plt.show()
-
-    return 
+    return
 
 
 
