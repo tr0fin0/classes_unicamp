@@ -114,4 +114,76 @@
 
 \noindent Implementações mais otimizadas, mostradas posteriormente, obtêm o resultado adequado em estágios anteriores ao utilizar-se de mais hardware.
 
+\subsection{Hazards}
+\paragraph{Definição}Situações inesperadas que podem impossibilitar o início do processamento da próxima instrução no próximo ciclo sendo classificadas como:
+\begin{enumerate}[rightmargin = \leftmargin]
+    \item \textbf{Structure Hazards}: Recurso ocupado com a instrução anterior;
+    \begin{enumerate}[rightmargin = \leftmargin]
+        \item \texttt{Separate Memory}: Hardware extra é implementado para evitar conflito para acessar memória;
+    \end{enumerate}
+
+    \item \textbf{Data Hazards}: Dado dependente da instrução anterior;
+    \begin{enumerate}[rightmargin = \leftmargin]
+        \item \texttt{Forwarding}: Ocorre entre duas R Instructions:
+        \begin{scriptsize}
+            \myStyleRISCV
+            \begin{lstlisting}
+    add  x2, x1, x0 # R Instruction  add1
+    add  x4, x3, x2 # R Instruction  add2
+            \end{lstlisting}
+        \end{scriptsize}
+        Inicialmente considera-se que a próxima instrução, \texttt{add2}, só teria acesso ao dado em \texttt{x2} quando \texttt{add1} finalizasse o último estágio do pipeline e houvesse escrita no banco de registradores.\\
+
+        \noindent Isso causaria 2 bubbles até que a instrução \texttt{add2} possa operar como representado abaixo:
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 0.8\textwidth]{images/hazard_data.png}
+            \caption{Data Hazard}
+            \label{hazardData}
+        \end{figure}
+        
+        Entretanto o dado de \texttt{x2} já está calculado ao finalizar a etapa de execução. Dessa forma uma conexão entre a saída da ALU e a entrada da ALU eliminaria o atraso como representado abaixo:
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 0.8\textwidth]{images/hazard_data_forwarding.png}
+            \caption{Data Hazard Forwarding}
+            \label{hazardDataForwarding}
+        \end{figure}
+        Nota-se que para que isso seja realizado será necessário hardware para interpretar adequadamente os \texttt{Forwardings}. Posteriormente será mostrada sua implementação.
+
+        \item \texttt{Load-Use}: Ocorre entre uma Load Instruction e uma R-Instruction:
+        \begin{scriptsize}
+            \myStyleRISCV
+            \begin{lstlisting}
+    ld   x1,  0(x0) # Load Instruction
+    add  x3, x2, x1 # R    Instruction
+            \end{lstlisting}
+        \end{scriptsize}
+        Apesar de \texttt{Forwarding} evitar atrasos neste caso o atraso é apenas reduzido, pois a próxima instrução, \texttt{add}, só terá acesso ao dado em \texttt{x1} quando \texttt{ld} finalizar o penúltimo estágio do pipeline e houver escrita na memória como representado abaixo:
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 0.75\textwidth]{images/hazard_data_load_use.png}
+            \caption{Data Hazard Load-Use}
+            \label{hazardDataLoadUse}
+        \end{figure}
+    \end{enumerate}
+
+    \item \textbf{Control Hazards}: Execução dependente da instrução anterior;
+    \begin{enumerate}[rightmargin = \leftmargin]
+        \item \texttt{Stall}: Interrompimento da Execução;
+
+        \item \texttt{Prediction}: Suposição do resultado:
+        \begin{enumerate}
+            \item \texttt{Static}:
+            \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                \item Taken:
+                \item Not Taken: Branch não executado;
+            \end{enumerate}
+            \item \texttt{Dynamic}:
+            \begin{enumerate}[noitemsep, rightmargin = \leftmargin]
+                \item 
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
 \end{document}
