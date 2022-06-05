@@ -91,5 +91,27 @@
 \newpage\section{RISC-V Datapath}
 
 
+\newpage\section{RISC-V Pipelining}
+\paragraph{Definição}Performance de processadores RISC-V, quando mono ciclo, será determinado por seu caminho crítico: \texttt{load instruction}. Variar o período de ciclo para diferentes instruções violaria o design principle:
+\begin{phrase}
+    Making the common case \textbf{Fast}
+\end{phrase}
+\noindent Dessa forma implementa-se Pipelining para aprimorar o tempo de execução dos processadores RISC-V.\\
+
+\noindent Isso só é possível pois a ISA, Instruction Set Architecture, do RISC-V é desenvolvida para o Pipelining. Todas suas instruções são 32-bits o que permite decodificá-las independentemente de forma direta e previsível.
+
+\subsection{Estágios}
+\paragraph{Definição}Considera-se que a cada ciclo cada instrução será analisada nos seguintes estágios:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 1\linewidth]{images/datapath_pipelined_1.png}
+    \caption{Datapath Pipelined}
+    \label{datapath_pipelined}
+\end{figure}
+\noindent Note que as setas em azul representa informações que vão da direita para esquerda, retornam ao longo do datapath podendo gerar Hazards.\\
+
+\noindent Note também que, nesta implementação inicial, o resultado do \texttt{branch} será resolvido no quarto estágio do datapath.\\
+
+\noindent Implementações mais otimizadas, mostradas posteriormente, obtêm o resultado adequado em estágios anteriores ao utilizar-se de mais hardware.
 
 \end{document}
