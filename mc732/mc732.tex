@@ -216,4 +216,67 @@
     \end{lstlisting}
 \end{scriptsize}
 Note que tanto no Ciclo 4 e 9 não é necessário \texttt{forwarding} pois o estágio de WB realiza a escrita dos registradores na primeira metade do ciclo enquanto o estágio de EX realiza a leitura dos registradores na segunda metade do ciclo.
+
+\paragraph{Exemplo 2}Considere que \texttt{branch} é resolvido no quarto estágio, ME, que \texttt{branch prediction} é estática e \texttt{not taken}, qua há uma unidade de detecção de \texttt{hazard} e todos os \texttt{forwarding} são possíveis:
+\begin{scriptsize}
+    \myStyleRISCV
+    \begin{lstlisting}
+    main:   addi    t0, zero, 0x80      # addi0
+            addi    t1, zero, X         # addi1         X=11
+            add     t2, zero, zero      #       add0
+    loop:   addi    t1, t1, -1          # addi2
+            lw      t3, 0(t0)           #           lw
+            add     t2, t2, t3          #       add1
+            addi    t0, t0, 4           # addi3
+            bne     t1, zero, loop      #           bne
+            add     a0, t2, zero        #       add1
+            add     t0, zero, zero      #       add2
+            addi    t1, zero, 1         # addi4
+
+
+#   ciclo   estágio
+#           IF      ID      EX      ME      WB      execuções
+#   1       addi0   -       -       -       -       : 1
+#   2       addi1   addi0   -       -       -       : 1
+#   3       add0    addi1   addi0   -       -       : 1
+
+#   4       addi2   add0    addi1   addi0   -       : 1     #
+#   5       lw      addi2   add0    addi1   addi0   : 1     #
+#   6       add1    lw      addi2   add0    addi1   : 1     #   no forwarding
+#   7       addi3   add1    lw      addi2   add0    : 1     #   no forwarding
+#   8       addi3   add1    <>      lw      addi2   : 1     #   data hazard
+#   9       bne     addi3   add1    <>      lw      : 1     #   no forwarding
+#  10       add1    bne     addi3   add1    <>      : 1     #
+#  11       add2    add1    bne     addi3   add1    : 1     #
+
+#  11.1     <>      <>      <>      bne     addi3   : X-1   #   branch not taken loop (stage 4)
+#  11.2     addi2   <>      <>      <>      bne     : X-1   #
+#  11.3     lw      addi2   <>      <>      <>      : X-1   #
+#  11.4     add1    lw      addi2   <>      <>      : X-1   #
+#  11.5     addi3   add1    lw      addi2   <>      : X-1   #
+#  11.6     addi3   add1    <>      lw      addi2   : X-1   #
+#  11.7     bne     addi3   add1    <>      lw      : X-1   #
+#  11.8     add1    bne     addi3   add1    <>      : X-1   #
+#  11.9     add2    add1    bne     addi3   add1    : X-1   #
+
+#  12       addi4   add2    add1    bne     addi3   : 1     #   branch not taken pass
+#  13       -       addi4   add2    add1    bne     : 1     #
+#  14       -       -       addi4   add2    add1    : 1     #
+#  15       -       -       -       addi4   add2    : 1     #
+#  16       -       -       -       -       addi4   : 1     #
+
+#                                                   : 3 + 8*1 + 9*(X-1) + 5 = 9X + 7
+    \end{lstlisting}
+\end{scriptsize}
+Note que no Ciclo 6, 7 e 9 não é necessário \texttt{forwarding} pois o estágio de WB realiza a escrita dos registradores na primeira metade do ciclo enquanto o estágio de EX realiza a leitura dos registradores na segunda metade do ciclo.\\
+
+\noindent Note que quando o \texttt{branch} erra haverá descarte das operações nos estágios de IF, ID e EX gerando três \texttt{bubbles}. Apenas na última comparação não haverá descarte como ilustrado no ciclo 12.\\
+
+\noindent Quando o \texttt{branch} é resolvido no estágio N a instrução correta só será buscada no estágio N+1.\\
+
+\noindent Note que dessa forma, são necessários 106 Ciclos para que o programa seja inteiramente executado sobre as condições inicialmente propostas.\\
+
+\noindent Caso o \texttt{branch} fosse resolvido no estágio ID 20 ciclos seriam economizados.\\
+
+\noindent Caso \texttt{addi3} estivesse reordenada imediatamente antes de \texttt{add1} não haveria \texttt{data hazard} do Ciclo 8 e consequentemente 11 ciclos seriam economizados.\\
 \end{document}
