@@ -42,12 +42,14 @@
 \usepackage[table]{xcolor}                                          % Colors
 \usepackage[many]{tcolorbox}                                        % Enviroment
 
-\usepackage{circuitikz, forest, tikz, pgfplots, listings, karnaugh-map}           % Illustration
+\usepackage{circuitikz, tikz}                                       % Illustration
+\usepackage{forest, karnaugh-map, pgfplots}
+\usepackage{accsupp, listings}
 
 \usetikzlibrary{matrix}                                             % Matrix
 \usepgfplotslibrary{statistics}                                     % Necessary for Boxplot
 \usepackage{siunitx}                                                % Units Package
-\DeclareSIUnit{\rad}{rad}
+
 
 % ----------------------------------------------
 %               Packages: Customization
@@ -178,6 +180,18 @@
 % ----------------------------------------------
 %               Listings: Customization
 % ----------------------------------------------
+
+% \renewcommand{\thelstnumber}{% Line number printing mechanism
+%   \protect\BeginAccSupp{ActualText={}}\arabic{lstnumber}\protect\EndAccSupp{}%
+% }
+
+% \newcommand{\noncopynumber}[1]{
+%     \BeginAccSupp{method=escape,ActualText={}}
+%     #1
+%     \EndAccSupp{}
+% }
+
+
 
 \newcommand{\myOctave}{                             % Name after the Language used
     \lstset{
@@ -436,68 +450,71 @@
 }
 
 \lstdefinelanguage[RISC-V]{Assembler}{ %https://gist.github.com/AntonLydike/e339c3c3a4dcab8bc3c620b3fa436cda
-  alsoletter={.},       % allow dots in keywords
-  alsodigit={0x},       % hex numbers are numbers too!
-  morekeywords=[1]{     % instructions
-    lb, lh, lw, lbu, lhu,
-    sb, sh, sw,
-    sll, slli, srl, srli, sra, srai,
-    add, addi, sub, lui, auipc,
-    xor, xori, or, ori, and, andi,
-    slt, slti, sltu, sltiu,
-    beq, bne,  blt, bge, bltu, bgeu,
-    j, jr, jal, jalr, ret,
-    scall, break, nop
-  },
-  morekeywords=[2]{     % sections of our code and other directives
-    .align, .ascii, .asciiz, .byte, .data, .double, .extern,
-    .float, .globl, .half, .kdata, .ktext, .set, .space, .text, .word
-  },
-  morekeywords=[3]{     % registers
-    zero, ra, sp, gp, tp, s0, fp,
-    t0, t1, t2, t3, t4, t5, t6,
-    s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11,
-    a0, a1, a2, a3, a4, a5, a6, a7,
-    ft0, ft1, ft2, ft3, ft4, ft5, ft6, ft7,
-    fs0, fs1, fs2, fs3, fs4, fs5, fs6, fs7, fs8, fs9, fs10, fs11,
-    fa0, fa1, fa2, fa3, fa4, fa5, fa6, fa7
-  },
-  morecomment=[l]{;},   % mark ; as line comment start
-  morecomment=[l]{\#},  % as well as # (even though it is unconventional)
-  morestring=[b]",      % mark " as string start/end
-  morestring=[b]'       % also mark ' as string start/end
+    alsoletter={.},       % allow dots in keywords
+    alsodigit={0x},       % hex numbers are numbers too!
+    morekeywords=[1]{     % instructions
+        lb, lh, lw, lbu, lhu,
+        sb, sh, sw,
+        sll, slli, srl, srli, sra, srai,
+        add, addi, sub, lui, auipc,
+        xor, xori, or, ori, and, andi,
+        slt, slti, sltu, sltiu,
+        beq, bne,  blt, bge, bltu, bgeu,
+        j, jr, jal, jalr, ret,
+        scall, break, nop, not
+    },
+    morekeywords=[2]{     % sections of our code and other directives
+        .align, .ascii, .asciiz, .byte, .data, .double, .extern,
+        .float, .globl, .half, .kdata, .ktext, .set, .space, .text, .word
+    },
+    morekeywords=[3]{     % registers
+        zero, ra, sp, gp, tp, s0, fp,
+        t0, t1, t2, t3, t4, t5, t6,
+        s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11,
+        a0, a1, a2, a3, a4, a5, a6, a7,
+        ft0, ft1, ft2, ft3, ft4, ft5, ft6, ft7,
+        fs0, fs1, fs2, fs3, fs4, fs5, fs6, fs7, fs8, fs9, fs10, fs11,
+        fa0, fa1, fa2, fa3, fa4, fa5, fa6, fa7
+    },
+    morecomment=[l]{;},   % mark ; as line comment start
+    morecomment=[l]{\#},  % as well as # (even though it is unconventional)
+    morestring=[b]",      % mark " as string start/end
+    morestring=[b]'       % also mark ' as string start/end
 }
 
 \newcommand{\myStyleRISCV}{
     \lstset{
-        language=[RISC-V]Assembler,                % Code Language
-        basicstyle=\ttfamily\small,                 % Code Font Size
-        keywordstyle=[1]\color{blue!80!black},      % instructions are blue
-        keywordstyle=[2]\color{orange!80!black},    % sections/other directives are orange
-        keywordstyle=[3]\color{red!50!black},       % registers are red
-        stringstyle=\color{mauve},                  % Color String
-        identifierstyle=\color{teal},               % user declared addresses are teal
-        commentstyle=\color{darkgreen},     % Color Comment
-        morecomment=[s][\color{blue}]{/**}{*/},     % Color Comment
-        extendedchars=true,                         % 
-        showtabs=false,                             % Show Tabs within Strings
-        showspaces=false,                           % Show Spaces Code
-        showstringspaces=false,                     % Show Spaces Strings
-        numbers=left,                               % Line Number Position
-        numberstyle=\tiny\color{gray},              % Line Number Style
-        stepnumber=1,                               % Line Number Step
-        numbersep=5pt,                              % Line Number Distance from Code
-        frame=l,                                    % Frame
-        rulecolor=\color{black},                    % Frame Color
-        breaklines=true,                            % Background Color
-        backgroundcolor=\color{white},              % Break Automatic Line
-        breakatwhitespace=true,                     % Break Automatic Spaces 
-        breakautoindent=false,                      % Break Automatic Indent
-        captionpos=b,                               % Caption Position
-        xleftmargin=0pt,                            % Left Margin
-        tabsize=4,                                  % Tab Size
-        inputencoding=latin1,                       % Encoding
-        literate=                                   % Including Especial Charects
+        language=[RISC-V]Assembler,
+        basicstyle=\ttfamily\small,
+        keywordstyle=[1]\color{blue!80!black},
+        keywordstyle=[2]\color{orange!80!black},
+        keywordstyle=[3]\color{red!50!black},
+        stringstyle=\color{mauve},
+        identifierstyle=\color{teal},
+        commentstyle=\color{darkgreen},
+        morecomment=[s][\color{blue}]{/**}{*/},
+        captionpos=b,
+        % xleftmargin=0pt,
+        xleftmargin=\dimexpr\fboxsep+\fboxrule\relax,
+        xrightmargin=\dimexpr\fboxsep+\fboxrule\relax,
+        tabsize=4,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        breaklines=true,
+        breakatwhitespace=true,
+        breakautoindent=false,
+        numbers=left,
+        numbersep=5pt,
+        numberstyle=\tiny\color{gray},
+        stepnumber=1,
+        columns=flexible,
+        frame=l,
+        rulecolor=\color{black},
+        backgroundcolor=\color{white},
+        extendedchars=true,
+        inputencoding=latin1,
+        literate=
                 {é}{{\'{e}}}1
                 {è}{{\`{e}}}1
                 {ê}{{\^{e}}}1
@@ -624,6 +641,10 @@
 }
 
 \theoremstyle{mystyle}{
+    \newtheorem*{phrase}{Phrase}
+}
+
+\theoremstyle{mystyle}{
     \newtheorem{example}{Exemplo}[section]
 }
 
@@ -702,6 +723,21 @@
     breakable,
 }
 
+\tcolorboxenvironment{phrase}{
+    boxrule=0.1mm,
+    boxsep=2pt,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{red},
+    borderline east={1mm}{0pt}{red},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
 \tcolorboxenvironment{example}{
     boxrule=0.1mm,
     boxsep=2pt,
@@ -769,20 +805,6 @@
     }
 }
 
-
-
-% ----------------------------------------------
-%               Tikz: Customization
-%               State Machine
-% ----------------------------------------------
-\usetikzlibrary{arrows, automata, positioning}  % Automata simplifes SM
-\tikzset{
-    ->,                                         % makes the edges directed
-    >=latex,                                    % makes the arrow heads bold
-    node distance=2.5cm,                          % specifies the minimum distance between two nodes. Change if necessary.
-    every state/.style={thick, fill=gray!10},   % sets the properties for each ’state’ node
-    initial text=$ $,                           % sets the text that appears on the start arrow
-}
 
 
 
