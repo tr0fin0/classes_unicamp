@@ -179,6 +179,18 @@
 %               Listings: Customization
 % ----------------------------------------------
 
+% \renewcommand{\thelstnumber}{% Line number printing mechanism
+%   \protect\BeginAccSupp{ActualText={}}\arabic{lstnumber}\protect\EndAccSupp{}%
+% }
+
+% \newcommand{\noncopynumber}[1]{
+%     \BeginAccSupp{method=escape,ActualText={}}
+%     #1
+%     \EndAccSupp{}
+% }
+
+
+
 \newcommand{\myOctave}{                             % Name after the Language used
     \lstset{
         language=Octave,                            % Code Language
