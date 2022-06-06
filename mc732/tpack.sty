@@ -624,6 +624,10 @@
 }
 
 \theoremstyle{mystyle}{
+    \newtheorem*{phrase}{Phrase}
+}
+
+\theoremstyle{mystyle}{
     \newtheorem{example}{Exemplo}[section]
 }
 
@@ -694,6 +698,21 @@
     enhanced jigsaw,
     colback={white},
     borderline west={1mm}{0pt}{brown},
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+    left=12pt,
+    right=12pt,
+    breakable,
+}
+
+\tcolorboxenvironment{phrase}{
+    boxrule=0.1mm,
+    boxsep=2pt,
+    enhanced jigsaw,
+    colback={white},
+    borderline west={1mm}{0pt}{red},
+    borderline east={1mm}{0pt}{red},
     sharp corners,
     before skip=10pt,
     after skip=10pt,
