@@ -186,4 +186,34 @@
         \end{enumerate}
     \end{enumerate}
 \end{enumerate}
+
+\subsection{Execução}
+\paragraph{Definição}Será realizado simulações da execução de códigos para identificar como funcionará o pipeline em diferentes configurações.
+\paragraph{Exemplo 1}
+\begin{scriptsize}
+    \myStyleRISCV
+    \begin{lstlisting}
+    add     x1, x2, x3
+    sub     x4, x5, x6
+    lw      x7, 0(x1)
+    xor     x8, x1, x7
+    not     x9, x7, x1
+    sw      x4, 0(x8)
+
+#   ciclo   estágio
+#           IF      ID      EX      ME      WB  
+#   1       add     -       -       -       -   
+#   2       sub     add     -       -       -   
+#   3       lw      sub     add     -       -       add e sub:  no forwarding no bubble
+#   4       xor     lw      sub     add     -   
+#   5       not     xor     lw      sub     add     add e lw:   no forwarding no bubble
+#   6       not     xor     <>      lw      sub     lw e xor:   no forwarding one bubble data hazard
+#   7       sw      not     xor     <>      lw  
+#   8       -       sw      not     xor     <>  
+#   9       -       -       sw      not     xor     xor e sw:   no forwarding no bubble
+#  10       -       -       -       sw      not 
+#  11       -       -       -       -       sw  
+    \end{lstlisting}
+\end{scriptsize}
+Note que tanto no Ciclo 4 e 9 não é necessário \texttt{forwarding} pois o estágio de WB realiza a escrita dos registradores na primeira metade do ciclo enquanto o estágio de EX realiza a leitura dos registradores na segunda metade do ciclo.
 \end{document}
