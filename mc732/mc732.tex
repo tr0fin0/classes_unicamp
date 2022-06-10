@@ -299,4 +299,26 @@ Note que no Ciclo 6, 7 e 9 não é necessário \texttt{forwarding} pois o estág
 \noindent Além disso, o bloco de Memória realiza suas operações apenas durante a segunda metade do ciclo.
 
 
+
+\subsection{Controle de Pipeline}
+\paragraph{Definição}Necessita-se de unidades de controle para determinar o que o Pipeline deverá fazer para garantir o fluxo adequado de comandos. Dessa forma considera-se as seguintes adições no Pipeline para inclusão de Controle:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{images/control_simplefied_pipeline.png}
+    \caption{Sinais de Controle do Pipeline}
+    \label{controlSimplifyPipeline}
+\end{figure}
+\noindent Isso representa apenas as entradas e as saídas, porém será necessário que haja uma unidade capaz de operar sobre essas entradas e saídas para que operação seja concretizada. Dessa forma implementa-se a seguinte unidade de controle:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{images/control_pipeline.png}
+    \caption{Sinais de Controle do Pipeline}
+    \label{controlPipeline}
+\end{figure}
+\noindent Nota-se que, assim como para os dados das instruções são passados ao longo do Pipeline através dos Registradores também será necessário incluir os sinais de controle no fluxo para funcionamento adequado.\\
+
+\noindent Nota-se que a unidade de controle só consegue codificar como o Pipeline deve se comportar na etapa de Instruction Decode e a cada etapa será necessário propagar as informações necessárias para as próximas etapas.
+
+
 \end{document}
