@@ -321,4 +321,109 @@ Note que no Ciclo 6, 7 e 9 não é necessário \texttt{forwarding} pois o estág
 \noindent Nota-se que a unidade de controle só consegue codificar como o Pipeline deve se comportar na etapa de Instruction Decode e a cada etapa será necessário propagar as informações necessárias para as próximas etapas.
 
 
+\subsection{Detecção de Forward}
+\paragraph{Definição}Realização de adiamentamentos de dados, Forwarding, dependerá de condições especificadas para que possam utilizar as informações utilizadas entre diferentes estágios do Pipeline fora do ciclo usual de execução. Dessa forma considera-se o seguinte exemplo:
+\begin{scriptsize}
+    \myStyleRISCV
+    \begin{lstlisting}
+    sub     $2,     $1, $3
+    and     $12,    $2, $5
+    or      $13,    $6, $2
+    add     $14,    $2, $2
+    sw      $15,    100($2)
+    \end{lstlisting}
+\end{scriptsize}
+\noindent Nota-se que há dependência, entre todas as instruções, do resultado do valor do registrador 2. Além disso, relembra-se a estrutura de R-Instructions:
+\begin{scriptsize}
+    \myStyleRISCV
+    \begin{lstlisting}
+    instr   rd, rs, rt  # rs registrador fonte
+                        # rt registrador fonte
+                        # rd registrador destino
+    \end{lstlisting}
+\end{scriptsize}
+\noindent Além disso, toma-se a seguinte notação:
+\begin{scriptsize}
+    \myStyleRISCV
+    \begin{lstlisting}
+    ID/EX.RegisterRs    # Registrador RS da instrução que está no registrador do pipeline ID/EX.
+                        # Estágio EX/ALU
+    \end{lstlisting}
+\end{scriptsize}
+\noindent Nota-se que, independente do conflito, o Forwarding deve ser direcionado para o estágio de execução, EX, onde a ALU irá realizar as operações. Origem dos dados pode ser reduzido a dois casos:
+\begin{enumerate}
+    \item \texttt{EX/MEM}:
+\begin{scriptsize}
+    \myStyleRISCV
+    \begin{lstlisting}
+    if (
+        and (
+            EX/MEM.RegWrite == 1;                   # Instrução escreve no Registrador Destino?
+            EX/MEM.RegisterRd != 0;                 # Registrador Destino não é zero?
+            EX/MEM.RegisterRd == ID/EX.RegisterRs   # Resultado do EX/MEM usada no Rs do ID/EX
+        )
+        forwardA = 10
+    ) else (
+        forwardA = 00
+    )
+
+    if (
+        and (
+            EX/MEM.RegWrite == 1;                   # Instrução escreve no Registrador Destino?
+            EX/MEM.RegisterRd != 0;                 # Registrador Destino não é zero?
+            EX/MEM.RegisterRd == ID/EX.RegisterRt   # Resultado do EX/MEM usada no Rt do ID/EX
+        )
+        forwardB = 10
+    ) else (
+        forwardB = 00
+    )
+
+    \end{lstlisting}
+\end{scriptsize}
+    \item \texttt{MEM/WB}:
+\begin{scriptsize}
+    \myStyleRISCV
+    \begin{lstlisting}
+    if (
+        and (
+            MEM/WB.RegWrite == 1;                   # Instrução escreve no Registrador Destino?
+            MEM/WB.RegisterRd != 0;                 # Registrador Destino não é zero?
+            MEM/WB.RegisterRd == ID/EX.RegisterRs   # Resultado no EX/MEM usada no Rs do ID/EX
+        )
+        forwardA = 01
+    ) else (
+        forwardA = 00
+    )
+
+    if (
+        and (
+            MEM/WB.RegWrite == 1;                   # Instrução escreve no Registrador Destino?
+            MEM/WB.RegisterRd != 0;                 # Registrador Destino não é zero?
+            MEM/WB.RegisterRd == ID/EX.RegisterRt   # Resultado no EX/MEM usada no Rt do ID/EX
+        )
+        forwardB = 01
+    ) else (
+        forwardB = 00
+    )
+
+    \end{lstlisting}
+\end{scriptsize}
+\end{enumerate}
+\noindent Nota-se que há duas condições pois há duas entradas que possíveis para a ALU que precisam ser consideradas separadamente implicando no seguinte diagrama:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{images/forwarding_unit_pipelined.png}
+    \caption{Caminhos Forwarding no Pipeline}
+    \label{forwardingPath}
+\end{figure}
+\noindent Nesse caso o código apresentado para os sinais de \texttt{forwarding} querem dizer a origem para o multiplexadores necessários.\\
+
+\noindent Nota-se que essas condições necessitam de alterações para que os resultados sejam adequados quando uma instrução de \texttt{load} estiver sendo trata no Pipeline. Dessa forma a seguinte alteração deve ser realizada para que qualquer operação seja corretamente operada:
+\begin{scriptsize}
+    \myStyleRISCV
+    \begin{lstlisting}
+    ID/EX.RegisterRS    # Registrador RS da instrução que está no registrador do pipeline ID/EX.
+                        # Estágio EX/ALU
+    \end{lstlisting}
+\end{scriptsize}
 \end{document}
