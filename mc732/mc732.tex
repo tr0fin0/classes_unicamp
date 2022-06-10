@@ -279,4 +279,24 @@ Note que no Ciclo 6, 7 e 9 não é necessário \texttt{forwarding} pois o estág
 \noindent Caso o \texttt{branch} fosse resolvido no estágio ID 20 ciclos seriam economizados.\\
 
 \noindent Caso \texttt{addi3} estivesse reordenada imediatamente antes de \texttt{add1} não haveria \texttt{data hazard} do Ciclo 8 e consequentemente 11 ciclos seriam economizados.\\
+
+\subsection{Registradores}
+\paragraph{Definição}Durante a execução de funções do Pipeline será necessário armazenar os dados das diferentes ações tomadas ao longo do Datapath para que as informações utilizadas sejam precisas e adequadas. Dessa forma implementam-se Registradores entre cada ciclo de execução para armazenar temporariamente dados necessários para garantir o funcionamento.
+
+\paragraph{Representação}Dessa forma deve-se alterar o Pipeline para que memórias intermediárias sejam incluidas como demonstrado na seguinte figura:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{images/register_pipeline.png}
+    \caption{Pipeline Registers}
+    \label{pipelineRegisters}
+\end{figure}
+\noindent Durante uma etapa qualquer, na primeira metade do ciclo, haverá escrita no próximo registrador e, na segunda metade do ciclo, haverá leitura no registrador anterior.\\
+
+\noindent Além disso, o bloco de Instruction Fetch será realizada na segunda metade do ciclo durante a etapa de Instrução Fetch.\\
+
+\noindent Além disso, o bloco de Registers realiza leitura dos registradores durante a primeira metade do ciclo e a realiza escrita dos registradores durante a segunda metade do ciclo. Isso permite a atualização dos dados sem a necessidade de Forwarding a depender da ordenação das instruções no Pipeline.\\
+
+\noindent Além disso, o bloco de Memória realiza suas operações apenas durante a segunda metade do ciclo.
+
+
 \end{document}
