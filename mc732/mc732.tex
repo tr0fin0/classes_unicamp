@@ -426,12 +426,38 @@ Note que no Ciclo 6, 7 e 9 não é necessário \texttt{forwarding} pois o estág
 \end{figure}
 \noindent Nesse caso o código apresentado para os sinais de \texttt{forwarding} querem dizer a origem para o multiplexadores necessários.\\
 
-\noindent Nota-se que essas condições necessitam de alterações para que os resultados sejam adequados quando uma instrução de \texttt{load} estiver sendo trata no Pipeline. Dessa forma a seguinte alteração deve ser realizada para que qualquer operação seja corretamente operada:
+
+\subsection{Detecção Load-Use}
+\paragraph{Definição}Quando houver dependência de dados entre uma instrução de \texttt{load} e a próxima instrução será necessário interromper o Pipeline para realinhar as informações necessárias. Dessa forma considera-se o seguinte exemplo:
 \begin{scriptsize}
     \myStyleRISCV
     \begin{lstlisting}
-    ID/EX.RegisterRS    # Registrador RS da instrução que está no registrador do pipeline ID/EX.
-                        # Estágio EX/ALU
+    lw      $10,    100($8)
+    add     $11,    $10,    $9
     \end{lstlisting}
 \end{scriptsize}
+\noindent Nota-se que há dependência, entre a informação armazenada no registrador 10 dessa forma identifica-se a situação através da seguinte condição:
+\begin{scriptsize}
+    \myStyleRISCV
+    \begin{lstlisting}
+    if ( and (
+            ID/EX.MemRead == 1;                       # Instrução escreve no Registrador Destino?
+            or (
+                ID/EX.RegisterRd = IF/ID.RegisterRs1;
+                ID/EX.RegisterRd = IF/ID.RegisterRs2
+            )
+        )
+
+    ) else (
+
+    )
+    \end{lstlisting}
+\end{scriptsize}
+\noindent Quando ocorrer deve-se forçar os valores do registrador ID/EX para zero, inserçõa de bolha, e não atualizar o valor de PC e dos registradores IF/ID durante um ciclo criando assim uma bolha. Finalmente obtêm-se o seguinte diagrama:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{images/forwarding_detection_pipelined.png}
+    \caption{Controle de Hazards no Pipeline}
+    \label{controlHazardsPipeline}
+\end{figure}
 \end{document}
