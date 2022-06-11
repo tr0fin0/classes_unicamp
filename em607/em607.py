@@ -214,6 +214,12 @@ class oneDOF:
             return rPico, TR, TRmax
 
 
+class twoDOF:
+    class forced:
+
+        def a(): ...
+
+
 
 
 def figure17(r :float, zetaRef: float, zetaValues: float) -> None:
