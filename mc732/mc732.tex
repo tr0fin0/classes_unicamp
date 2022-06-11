@@ -415,6 +415,8 @@ Note que no Ciclo 6, 7 e 9 não é necessário \texttt{forwarding} pois o estág
     \end{lstlisting}
 \end{scriptsize}
 \end{enumerate}
+\noindent Nota-se que no caso de \texttt{MEM/WB} haverá adicionamento a negação da condição do caso de \texttt{EX/MEM} para que, quando houver \texttt{double data hazard} a informação utilizada seja a mais recente dentro do Pipeline, garantindo o corretude do resultado.\\
+
 \noindent Nota-se que há duas condições pois há duas entradas que possíveis para a ALU que precisam ser consideradas separadamente implicando no seguinte diagrama:
 \begin{figure}[H]
     \centering
