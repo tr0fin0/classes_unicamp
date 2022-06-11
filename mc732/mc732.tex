@@ -104,7 +104,7 @@
 \paragraph{Definição}Considera-se que a cada ciclo cada instrução será analisada nos seguintes estágios:
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 1\linewidth]{images/datapath_pipelined_1.png}
+    \includegraphics[width = 1\textwidth]{images/datapath_pipelined_1.png}
     \caption{Datapath Pipelined}
     \label{datapath_pipelined}
 \end{figure}
@@ -206,11 +206,11 @@
 #   2       sub     add     -       -       -   
 #   3       lw      sub     add     -       -       add e sub:  no forwarding no bubble
 #   4       xor     lw      sub     add     -   
-#   5       not     xor     lw      sub     add     add e lw:   no forwarding no bubble
+#   5       not     xor     lw      sub     add     add e lw:      forwarding no bubble
 #   6       not     xor     <>      lw      sub     lw e xor:   no forwarding one bubble data hazard
-#   7       sw      not     xor     <>      lw  
+#   7       sw      not     xor     <>      lw      lw e sub:      forwarding no bubble
 #   8       -       sw      not     xor     <>  
-#   9       -       -       sw      not     xor     xor e sw:   no forwarding no bubble
+#   9       -       -       sw      not     xor     xor e sw:      forwarding no bubble
 #  10       -       -       -       sw      not 
 #  11       -       -       -       -       sw  
     \end{lstlisting}
