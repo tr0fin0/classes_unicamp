@@ -356,22 +356,20 @@ Note que no Ciclo 6, 7 e 9 não é necessário \texttt{forwarding} pois o estág
 \begin{scriptsize}
     \myStyleRISCV
     \begin{lstlisting}
-    if (
-        and (
-            EX/MEM.RegWrite == 1;                   # Instrução escreve no Registrador Destino?
-            EX/MEM.RegisterRd != 0;                 # Registrador Destino não é zero?
-            EX/MEM.RegisterRd == ID/EX.RegisterRs   # Resultado do EX/MEM usada no Rs do ID/EX
+    if ( and (
+            EX/MEM.RegWrite == 1;                       # Instrução escreve no Registrador Destino?
+            EX/MEM.RegisterRd != 0;                     # Registrador Destino não é zero?
+            EX/MEM.RegisterRd == ID/EX.RegisterRs       # Resultado do EX/MEM usada no Rs do ID/EX
         )
         forwardA = 10
     ) else (
         forwardA = 00
     )
 
-    if (
-        and (
-            EX/MEM.RegWrite == 1;                   # Instrução escreve no Registrador Destino?
-            EX/MEM.RegisterRd != 0;                 # Registrador Destino não é zero?
-            EX/MEM.RegisterRd == ID/EX.RegisterRt   # Resultado do EX/MEM usada no Rt do ID/EX
+    if ( and (
+            EX/MEM.RegWrite == 1;                       # Instrução escreve no Registrador Destino?
+            EX/MEM.RegisterRd != 0;                     # Registrador Destino não é zero?
+            EX/MEM.RegisterRd == ID/EX.RegisterRt       # Resultado do EX/MEM usada no Rt do ID/EX
         )
         forwardB = 10
     ) else (
@@ -384,22 +382,30 @@ Note que no Ciclo 6, 7 e 9 não é necessário \texttt{forwarding} pois o estág
 \begin{scriptsize}
     \myStyleRISCV
     \begin{lstlisting}
-    if (
-        and (
-            MEM/WB.RegWrite == 1;                   # Instrução escreve no Registrador Destino?
-            MEM/WB.RegisterRd != 0;                 # Registrador Destino não é zero?
-            MEM/WB.RegisterRd == ID/EX.RegisterRs   # Resultado no EX/MEM usada no Rs do ID/EX
+    if ( and (
+            MEM/WB.RegWrite == 1;                       # Instrução escreve no Registrador Destino?
+            MEM/WB.RegisterRd != 0;                     # Registrador Destino não é zero?
+            MEM/WB.RegisterRd == ID/EX.RegisterRs;      # Resultado no EX/MEM usada no Rs do ID/EX
+            not and (                                   # Double Data Hazard?
+                EX/MEM.RegWrite == 1;
+                EX/MEM.RegisterRd != 0;
+                EX/MEM.RegisterRd == ID/EX.RegisterRs
+            )
         )
         forwardA = 01
     ) else (
         forwardA = 00
     )
 
-    if (
-        and (
-            MEM/WB.RegWrite == 1;                   # Instrução escreve no Registrador Destino?
-            MEM/WB.RegisterRd != 0;                 # Registrador Destino não é zero?
-            MEM/WB.RegisterRd == ID/EX.RegisterRt   # Resultado no EX/MEM usada no Rt do ID/EX
+    if ( and (
+            MEM/WB.RegWrite == 1;                       # Instrução escreve no Registrador Destino?
+            MEM/WB.RegisterRd != 0;                     # Registrador Destino não é zero?
+            MEM/WB.RegisterRd == ID/EX.RegisterRt;      # Resultado no EX/MEM usada no Rt do ID/EX
+            not and (                                   # Double Data Hazard?
+                EX/MEM.RegWrite == 1;
+                EX/MEM.RegisterRd != 0;
+                EX/MEM.RegisterRd == ID/EX.RegisterRt
+            )
         )
         forwardB = 01
     ) else (
