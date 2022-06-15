@@ -16,7 +16,7 @@ class graph:
             axis:      int = [0, 0, 0, 0],
             showPlot: bool = True,
             savePlot: bool = True,
-            pathPlot:  str = "/images/"
+            pathPlot:  str = "\images\\"
         ) -> None:
         """
         Plot Graph based on given data and saves a PNG
@@ -91,7 +91,10 @@ class graph:
 
         if savePlot is True:
             mypath = os.path.dirname(__file__) + pathPlot
-            plt.savefig(os.path.join(mypath, plotLabel + ".png"))
+            plotName = plotLabel + ".png"
+            print(plotName)
+            print(os.path.join(mypath, plotName))
+            plt.savefig(os.path.join(mypath, plotName))
 
 
         return None
