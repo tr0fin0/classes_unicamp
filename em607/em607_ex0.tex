@@ -1,0 +1,295 @@
+\documentclass{article}
+\usepackage{tpack}
+
+
+% \usepgfplotslibrary{external} 
+% \tikzexternalize
+
+
+% \titleformat
+%     {\subsection}           % Part
+%     [block]                 % Part Shape
+%     {\normalfont\Large}     % Font Size
+%     {}                      % Label Numbering
+%     {0mm}                   % Part Separation
+%     {}                      % Code Before
+%     []                      % Code After
+
+%     \titlespacing*{\subsection}{0mm}{5mm}{2.5mm}
+
+
+\title{EM607 - Vibrações Mecânicas}
+\author{Guilherme Nunes Trofino}
+\authorRA{217276}
+\project{Atividade Teórica}
+
+
+\begin{document}
+    \maketitle
+\newpage
+
+\section{Atividade Teórica}
+\paragraph{Apresentação}Resolução das questões de Vibrações Mecânicas por Guilherme Nunes Trofino, 217276, sobre a \textbf{Resposta em Frequência} de um Sistema de 1-DOF com Amortecimento Viscoso Forçado.
+
+\paragraph{Considere}Inicialmente $m = c = k = F = 1$.
+\begin{exercise}\label{ex1}
+    Verifique que a Receptância é dada por:
+    \begin{equation}
+        \alpha (\omega) = \frac{1}{k - \omega^2 m + j\omega c}
+    \end{equation}
+\end{exercise}
+\begin{resolution}
+    Considera-se a seguinte equação para um sistema de 1-DOF com Amortecimento Viscoso Forçado:
+    \begin{equation}
+        m\ddot{x} + c\dot{x} + k x = f e^{j\omega t}\label{eq:1DOFAF}
+    \end{equation}
+    \noindent Propõem-se a seguinte solução: $x(t) = X e^{j\omega t}$. Na sequência substitui-se na equação \ref{eq:1DOFAF} obtendo:
+    \begin{align*}
+        (-\omega^2 m + j \omega c + k) X e^{j\omega t} &= f e^{j\omega t}\\
+        \frac{X}{f} &= \frac{1}{(k -\omega^2 m) + j \omega c}
+    \end{align*}
+    Nota-se que há o Deslocamento Harmônico dividiu pelo módulo da Força Harmônica o que configura a Receptância. Dessa forma conclui-se que:
+    \begin{equation}
+        \boxed{
+            \alpha (\omega) = 
+            \frac{x(t)}{f(t)} = 
+            \frac{1}{(k -\omega^2 m) + j \omega c}
+        }
+    \end{equation}
+\end{resolution}
+
+\newpage
+\begin{exercise}\label{ex2}
+    Determine a Receptância e Plote os respectivos gráficos de módulo e fase.
+\end{exercise}
+\begin{resolution}
+    Parte-se da dedução apresentada no Exercício \ref{ex1} e implementa-se a função \texttt{receptivity} em MATLAB:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{receptivity.m}
+    \end{scriptsize}
+    Na sequência implementa-se o seguinte algoritmo para determinar os gráficos de módulo e fase:
+    \begin{scriptsize}
+        % \myMatlab\lstinputlisting[firstline = 22,lastline = 28]{FRF.m}
+    \end{scriptsize}
+    Nota-se que é necessário utilizar a escala \href{https://www.mathworks.com/help/matlab/ref/loglog.html}{\texttt{loglog}} nos gráficos devido a elevada escala empregada. Além disso é necessário extrair a Magnitude através da função \href{https://www.mathworks.com/help/matlab/ref/abs.html}{\texttt{abs}} e o Ângulo através da função \href{https://www.mathworks.com/help/matlab/ref/angle.html}{\texttt{angle}} obtendo os seguintes gráficos:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{images/receptivityAbs1.png}
+        \includegraphics[width=0.45\textwidth]{images/receptivityAngle1.png}
+        \caption{Análise Receptância}
+    \end{figure}
+    Nota-se que a função \href{https://www.mathworks.com/help/control/ref/lti.bode.html}{\texttt{bode}} poderia ser utilizada ao se adaptar como o sistema está descrito.
+\end{resolution}
+
+\newpage
+\begin{exercise}\label{ex3}
+    Determine a Mobilidade e Plote os respectivos gráficos de módulo e fase.
+\end{exercise}
+\begin{resolution}
+    Define-se a Mobilidade como a razão entre a Velocidade e a amplitude da Força Harmônica que exita o sistema. Dessa forma tem-se que:
+    \begin{equation}
+        \boxed{
+            y (\omega) = 
+            \frac{\dot{x}(t)}{f(t)} = 
+            -j\omega \cdot \alpha(\omega) = 
+            \frac{-j\omega}{(k -\omega^2 m) + j \omega c}
+        }
+    \end{equation}
+    Dessa forma implementa-se a função \texttt{mobility} em MATLAB:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{mobility.m}
+    \end{scriptsize}
+    Na sequência implementa-se o seguinte algoritmo para determinar os gráficos de módulo e fase:
+    \begin{scriptsize}
+        % \myMatlab\lstinputlisting[firstline = 54,lastline = 60]{FRF.m}
+    \end{scriptsize}
+    Observações realizadas para o Exercício \ref{ex2} seguem pertinentes aqui obtendo os seguintes gráficos:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{images/mobilityAbs1.png}
+        \includegraphics[width=0.45\textwidth]{images/mobilityAngle1.png}
+        \caption{Análise Mobilidade}
+    \end{figure}
+\end{resolution}
+
+\newpage
+\begin{exercise}\label{ex4}
+    Determine a Inertância e Plote os respectivos gráficos de módulo e fase.
+\end{exercise}
+\begin{resolution}
+    Define-se a Mobilidade como a razão entre a Velocidade e a amplitude da Força Harmônica que exita o sistema. Dessa forma tem-se que:
+    \begin{equation}
+        \boxed{
+            A (\omega) = 
+            \frac{\ddot{x}(t)}{f(t)} = 
+            -j\omega   \cdot     y (\omega) = 
+            - \omega^2 \cdot \alpha(\omega) = 
+            \frac{-\omega^2}{(k -\omega^2 m) + j \omega c}
+        }
+    \end{equation}
+    Dessa forma implementa-se a função \texttt{inertia} em MATLAB:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{inertia.m}
+    \end{scriptsize}
+    Na sequência implementa-se o seguinte algoritmo para determinar os gráficos de módulo e fase:
+    \begin{scriptsize}
+        % \myMatlab\lstinputlisting[firstline = 80,lastline = 86]{FRF.m}
+    \end{scriptsize}
+    Observações realizadas para o Exercício \ref{ex2} seguem pertinentes aqui obtendo os seguintes gráficos:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{images/inertiaAbs1.png}
+        \includegraphics[width=0.45\textwidth]{images/inertiaAngle1.png}
+        \caption{Análise Inertância}
+    \end{figure}
+\end{resolution}
+
+\newpage
+\begin{exercise}\label{ex5}
+    Identifica-se as respectivas assíntotas de baixa e alta frequência nas curvas de Receptância, Mobilidade e Inertância?
+\end{exercise}
+\begin{resolution}
+    Analisa-se a Receptância, Mobilidade e Inertância a partir dos extremos de frequência:
+    \begin{enumerate}
+        \item \textbf{Receptância}:
+        \begin{equation}
+            \alpha(\omega) = \frac{1}{k - \omega^2m} = 
+            \begin{cases}\nonumber
+                \text{quando } \omega\to 0,     \;\alpha(\omega) \approx \frac{1}{k}         & \log_{10} |\alpha(\omega)| = -1\log_{10} k\\
+                \text{quando } \omega\to \infty,\;\alpha(\omega) \approx \frac{1}{\omega^2m} & \log_{10} |\alpha(\omega)| = -1\log_{10} m -2\log_{10} \omega\\
+            \end{cases}
+        \end{equation}
+
+        \item \textbf{Mobilidade}:
+        \begin{equation}
+            y(\omega) = \frac{i\omega}{k - \omega^2m} = 
+            \begin{cases}\nonumber
+                \text{quando } \omega\to 0,     \;y(\omega) \approx \frac{i\omega}{k}   & \log_{10} |y(\omega)| = -1\log_{10} k +1\log_{10} \omega \\
+                \text{quando } \omega\to \infty,\;y(\omega) \approx \frac{-i}{\omega m} & \log_{10} |y(\omega)| = -1\log_{10} m -1\log_{10} \omega\\
+            \end{cases}
+        \end{equation}
+
+        \item \textbf{Inertância}:
+        \begin{equation}
+            A(\omega) = \frac{-\omega^2}{k - \omega^2m} = 
+            \begin{cases}\nonumber
+                \text{quando } \omega\to 0,     \;A(\omega) \approx \frac{-\omega^2}{k} & \log_{10} |A(\omega)| = -1\log_{10} k +2\log_{10} \omega\\
+                \text{quando } \omega\to \infty,\;A(\omega) \approx \frac{1}{m}         & \log_{10} |A(\omega)| = -1\log_{10} m\\
+            \end{cases}
+        \end{equation}
+    \end{enumerate}
+    Assíntota de Baixa Frequência está em vermelho enquanto a Assíntota de Alta Frequência está laranja como representado abaixo:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.40\textwidth]{images/receptivityAbs1.png}
+        \includegraphics[width=0.40\textwidth]{images/mobilityAbs1.png}
+        \includegraphics[width=0.40\textwidth]{images/inertiaAbs1.png}
+        \caption{Comparação Assíntotas}
+    \end{figure}
+\end{resolution}
+
+\newpage
+\begin{exercise}\label{ex6}
+    Varie o Fator de Amortecimento e Observe o comportamento dos gráficos de módulo e fase.
+\end{exercise}
+\begin{resolution}
+    Nota-se que o Fator de Amortecimento $\xi$ será obtido através da seguinte expressão:
+    \begin{equation*}
+        \xi = \frac{c}{2 \cdot \omega_n \cdot m}, 
+        \quad \text{onde:} \quad
+        \omega_n = \sqrt{\frac{k}{m}}
+    \end{equation*}
+    Dessa forma, altera-se a Constante Elástica $k$, mantendo as demais variáveis constantes, para se estudar o comportamento dos gráficos de Módulo e Fase para a Receptância, Mobilidade e Inertância. Obtêm-se os seguintes gráficos:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.40\textwidth]{images/receptivityAbs10.png}
+        \includegraphics[width=0.40\textwidth]{images/receptivityAbs100.png}
+        \caption{Comparação Módulo Receptância}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.40\textwidth]{images/receptivityAngle10.png}
+        \includegraphics[width=0.40\textwidth]{images/receptivityAngle100.png}
+        \caption{Comparação Ângulo Receptância}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.40\textwidth]{images/mobilityAbs10.png}
+        \includegraphics[width=0.40\textwidth]{images/mobilityAbs100.png}
+        \caption{Comparação Módulo Mobilidade}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.40\textwidth]{images/mobilityAngle10.png}
+        \includegraphics[width=0.40\textwidth]{images/mobilityAngle100.png}
+        \caption{Comparação Ângulo Mobilidade}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.40\textwidth]{images/inertiaAbs10.png}
+        \includegraphics[width=0.40\textwidth]{images/inertiaAbs100.png}
+        \caption{Comparação Módulo Inertância}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.40\textwidth]{images/inertiaAngle10.png}
+        \includegraphics[width=0.40\textwidth]{images/inertiaAngle100.png}
+        \caption{Comparação Ângulo Inertância}
+    \end{figure}
+\end{resolution}
+
+\newpage
+\begin{exercise}\label{ex7}
+    Varie os parâmetros de massa e rigidez e verifique a mudança nas assíntotas da Receptância, Mobilidade e Inertância.
+\end{exercise}
+
+\newpage
+\begin{exercise}\label{ex8}
+    Determine a função de transferência que relaciona a força ao deslocamento.
+\end{exercise}
+
+\newpage
+\begin{exercise}\label{ex9}
+    Determine a função de transferência que relationa a força à velocidade.
+\end{exercise}
+
+\newpage
+\begin{exercise}\label{ex10}
+    Determine a função de transferência que relationa a força à aceleração.
+\end{exercise}
+
+\newpage
+\begin{exercise}\label{ex11}
+    Gere os respectivos diagramas de Bode dessas funções.
+\end{exercise}
+
+\newpage
+\begin{exercise}\label{ex12}
+    Compare os resultados desses diagramas de Bode com as respectivas Receptância, Mobilidade e Inertância. Discuta seus resultados. Note que a função Bode apresenta o eixo das ordenadas em dB. 
+\end{exercise}
+
+\newpage
+\begin{exercise}\label{ex13}
+    Pode-se concluir sobre o paralelo de que $s = j\omega$, relacionando Transformada de Laplace com resposta em frequência? Comente sua resposta.
+\end{exercise}
+
+\newpage
+\begin{exercise}\label{ex14}
+    Montar o respectivo Modelo de Estados tendo como entrada a força e como saídas a Posição, Velocidade e Aceleração.
+\end{exercise}
+
+\newpage
+\begin{exercise}\label{ex15}
+    Plotar os respectivos diagramas de Bode desse Modelo de Estados.
+\end{exercise}
+
+\newpage
+\begin{exercise}\label{ex16}
+    Comparar eses diagramas de Bode com os resultados anteriores. É possível verificar que as saídas são as mesmas que as respectivas Receptância, Mobilidade e Inertância?
+\end{exercise}
+
+\newpage
+\begin{exercise}\label{ex17}
+    Caso a amplitude da Força Harmônica seja $F = 10$, o que precisa ser adaptado nas formulações anteriores?
+\end{exercise}
+\end{document}
