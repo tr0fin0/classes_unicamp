@@ -1,13 +1,11 @@
-function m = mobility(m, c, k)
+function [w, wL, wH, mbl, asymL, asymH] = mobility(step, m, c, k)
     % mobility - This function computes the mobility of 1DOF Forced 
     % Vibration Vibration System with Viscous Damping
-    %
-    % Syntax: m = mobility(m, c, k)
-    %
-    % Long description
-    % Mobility is the ratio of the Velocity over the Force Module
 
-    syms omega
-    m = 1i * omega * receptivity(m, c, k);
-    % m = (1i * omega) / (k - omega^2 * m + 1i*omega*c);
+
+    [w, wL, wH, rcp, asymL, asymH] = receptivity(step, m, c, k);
+
+    mbl   = 1i .* w .* rcp;                 % Mobility
+    asymL = ( (1i .* wL) ./ k );            % Low  Frequency Asymptote
+    asymH = ( (-1i) ./ (wH .* m) );         % High Frequency Asymptote
 end
