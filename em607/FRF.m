@@ -16,10 +16,11 @@ pSize = [0 0 18 18];
 
 %   1DOF Forced Vibration Vibration System with Viscous Damping
 %   mddx + cdx + kx = f e^(iwt)
-m = 1;  % mass
-c = 1;  % dampclcing coeficient
-k = 100;  % elastic coeficient
-f = 1;  % force magnitude
+m   = 1;    % mass
+c   = 1;    % dampling coeficient
+k   = 1;    % elastic coeficient
+f   = 1;    % force magnitude
+step= 0.01; % step of 
 
 wn          = sqrt(k/m);        % natural frequency
 phi         = c / (2 * wn * m); % damping coeficient
