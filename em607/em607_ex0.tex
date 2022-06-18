@@ -296,6 +296,25 @@
 \begin{exercise}\label{ex9}
     Determine a função de transferência que relationa a força à velocidade.
 \end{exercise}
+\begin{resolution}
+    Baseado na solução apresentada no Exercício \ref{ex8} nota-se que, quando as condições iniciais são nulas, a Transformada de Laplace será simplificada para:
+    \begin{equation}
+        \mathcal{L} \lbrace\dot{x}\rbrace = sX 
+    \end{equation}
+    Observa-se que, ao multiplicar o valor de $X$ por $s$ será obtido, no espaço de Laplace, a derivada de $x$ que neste caso será a Velocidade. Assim têm-se que:
+    \begin{equation}
+        \boxed{G_{1}(s) = s G(s) = \frac{s}{s^2m + sc + k}}
+    \end{equation}
+    Dessa forma implementa-se a função \texttt{ex9} em MATLAB:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{ex9.m}
+    \end{scriptsize}
+    Obtém-se o seguinte gráfico:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.50\textwidth]{images/m1c1k1_tf_speed.png}
+    \end{figure}
+\end{resolution}
 
 \newpage
 \begin{exercise}\label{ex10}
