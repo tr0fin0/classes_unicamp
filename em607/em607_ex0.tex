@@ -386,6 +386,26 @@
 \begin{exercise}\label{ex13}
     Pode-se concluir sobre o paralelo de que $s = j\omega$, relacionando Transformada de Laplace com resposta em frequência? Comente sua resposta.
 \end{exercise}
+\begin{resolution}
+    Parte-se das Funções de Transferência obtidas nos Exercícios \ref{ex8}, \ref{ex9} e \ref{ex10} e realiza-se a substituição de $s = j\omega$ obtendo as seguintes equações:
+    \begin{enumerate}
+        \item \textbf{Receptância}:
+        \begin{equation}
+            G(s) = \frac{1}{s^2m + sc + k} \to \boxed{G(j\omega) = \frac{1}{-\omega^2m + j\omega c + k} = \alpha(\omega)}
+        \end{equation}
+
+        \item \textbf{Mobilidade}:
+        \begin{equation}
+            G_1(s) = \frac{s}{s^2m + sc + k} \to \boxed{G_1(j\omega) = \frac{j\omega}{-\omega^2m + j\omega c + k} = y(\omega)}
+        \end{equation}
+
+        \item \textbf{Inertância}:
+        \begin{equation}
+            G_2(s) = \frac{s^2}{s^2m + sc + k} \to \boxed{G_2(j\omega) = \frac{-\omega^2}{-\omega^2m + j\omega c + k} = A(\omega)}
+        \end{equation}
+    \end{enumerate}
+    Nota-se que ao aplicar a substituição saísse da Transformada de Laplace e chegasse na Resposta em Frequência. Isso ocorre por uma mudança de base saindo do espaço de Laplace e chegando no espaço do plano complexo.
+\end{resolution}
 
 \newpage
 \begin{exercise}\label{ex14}
