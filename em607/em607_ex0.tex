@@ -99,11 +99,12 @@
     Determine a Mobilidade e Plote os respectivos gráficos de módulo e fase.
 \end{exercise}
 \begin{resolution}
-    Define-se a Mobilidade como a razão entre a Velocidade e a amplitude da Força Harmônica que exita o sistema. Dessa forma tem-se que:
+    Define-se a Mobilidade como a razão entre a Velocidade e a amplitude da Força Harmônica que exita o sistema. Dessa forma tem-se, a partir do Exercício \ref{ex1}, que:
     \begin{equation}
         \boxed{
             y (\omega) = 
             \frac{\dot{x}(t)}{f(t)} = 
+            -j\omega\frac{X}{F} = 
             -j\omega \cdot \alpha(\omega) = 
             \frac{-j\omega}{(k -\omega^2 m) + j \omega c}
         }
@@ -116,12 +117,11 @@
     \begin{scriptsize}
         \myMatlab\lstinputlisting[]{ex3.m}
     \end{scriptsize}
-    Observações realizadas para o Exercício \ref{ex2} seguem pertinentes aqui obtendo os seguintes gráficos:
+    Observações realizadas para o Exercício \ref{ex2} seguem pertinentes, obtendo os seguintes gráficos:
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.45\textwidth]{images/m1c5k100_mblAbs.png}
-        \includegraphics[width=0.45\textwidth]{images/m1c5k100_mblAng.png}
-        \caption{Análise Mobilidade}
+        \includegraphics[width=0.45\textwidth]{images/m1c1k1_mblAbs.png}
+        \includegraphics[width=0.45\textwidth]{images/m1c1k1_mblAng.png}
     \end{figure}
 \end{resolution}
 
