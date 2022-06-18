@@ -3,7 +3,7 @@ function [w, wL, wH, inr, asymL, asymH] = inertia(step, m, c, k)
     % Vibration Vibration System with Viscous Damping
 
 
-    [w, wL, wH, mbl, asymL, asymH] = mobility(step, M, C, K);
+    [w, wL, wH, mbl, asymL, asymH] = mobility(step, m, c, k);
 
     inr   = 1i .* w .* mbl;                 % Inertia
     asymL = ( (-wL.^2) ./ k );              % Low  Frequency Asymptote
