@@ -411,6 +411,63 @@
 \begin{exercise}\label{ex14}
     Montar o respectivo Modelo de Estados tendo como entrada a força e como saídas a Posição, Velocidade e Aceleração.
 \end{exercise}
+\begin{resolution}
+    Define-se o Modelo de Estados como um sistema de equações matriciais capaz de descreve a relação entre os Estados, conjunto arbitrário de variáveis do sistema estudado, e as derivadas desses Estados; e a relação entre os Estados, a Entrada e Saída. Genericamente representado através de:
+    \begin{equation}
+    \begin{cases}
+    \begin{aligned}
+        \lbrace \dot{x}(t) \rbrace &= 
+        \lbrack A \rbrack \lbrace x(t) \rbrace + \lbrack B \rbrack f(t)\\
+        \lbrace y(t) \rbrace &= 
+        \lbrack C \rbrack \lbrace x(t) \rbrace + \lbrack D \rbrack f(t)
+    \end{aligned}
+    \end{cases}
+    \end{equation}
+    Onde:
+    \begin{enumerate}
+        \item \textbf{Vetores}:
+        \begin{enumerate}
+            \item $\lbrace x(t) \rbrace_{n\times i}$: Vetor de Estados;
+            \item $\lbrace y(t) \rbrace_{j\times i}$: Vetor de Saídas;
+        \end{enumerate}
+        \item \textbf{Matrizes}:
+        \begin{enumerate}
+            \item $[A]_{n\times n}$: ;
+            \item $[B]_{n\times i}$: ;
+            \item $[C]_{j\times n}$: ;
+            \item $[D]_{j\times i}$: ;
+        \end{enumerate}
+        \item \textbf{Dimensões}:
+        \begin{enumerate}[noitemsep]
+            \item $n$: Número de Estados;
+            \item $i$: Número de Entradas;
+            \item $j$: Número de Saídas;
+        \end{enumerate}
+    \end{enumerate}
+    No caso de um Sistema de 1DOF Forçado com Amortecimento Viscoso será válida a seguinte expressão:
+    \begin{equation}
+    \begin{cases}
+    \begin{aligned}
+        \begin{Bmatrix} \dot{x}\\ \ddot{x} \end{Bmatrix} &=
+        \begin{bmatrix} 0 & 1\\ -k/m & -c/m\end{bmatrix}\begin{Bmatrix} x\\ \dot{x} \end{Bmatrix} + 
+        \begin{bmatrix} 0\\ 1/m \end{bmatrix} f\\
+        \begin{Bmatrix} x\\ \dot{x}\\ \ddot{x} \end{Bmatrix} &=
+        \begin{bmatrix} 1 & 0\\ 0 & 1\\ -k/m & -c/m\end{bmatrix}\begin{Bmatrix} x\\ \dot{x} \end{Bmatrix} + 
+        \begin{bmatrix} 0\\ 0\\ 1/m \end{bmatrix} f\\
+    \end{aligned}
+    \end{cases}
+    \end{equation}
+    Nota-se que neste caso tomou-se como Vetor de Estados:
+    \begin{equation*}
+        \lbrace x(t) \rbrace = \begin{Bmatrix} x\\ \dot{x} \end{Bmatrix} 
+        \to \begin{cases} x(t), &\text{Espaço}\\ \dot{x}(t),&\text{Velocidade} \end{cases}
+    \end{equation*}
+    Nota-se que neste caso tomou-se como Vetor de Saídas:
+    \begin{equation*}
+        \lbrace y(t) \rbrace = \begin{Bmatrix} x\\ \dot{x}\\ \ddot{x} \end{Bmatrix} 
+        \to \begin{cases} x, &\text{Espaço}\\ \dot{x},&\text{Velocidade}\\ \ddot{x},&\text{Aceleração} \end{cases}
+    \end{equation*}
+\end{resolution}
 
 \newpage
 \begin{exercise}\label{ex15}
