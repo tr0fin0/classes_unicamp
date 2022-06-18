@@ -43,20 +43,24 @@
     \end{equation}
 \end{exercise}
 \begin{resolution}
-    Considera-se a seguinte equação para um sistema de 1-DOF com Amortecimento Viscoso Forçado:
+    Considera-se a seguinte equação para um sistema de 1-DOF com Amortecimento Viscoso Forçado por $f(t) = F e^{j\omega t}$:
     \begin{equation}
-        m\ddot{x} + c\dot{x} + k x = f e^{j\omega t}\label{eq:1DOFAF}
+        m\ddot{x} + c\dot{x} + k x = F e^{j\omega t}\label{eq:1DOFAF}
     \end{equation}
-    \noindent Propõem-se a seguinte solução: $x(t) = X e^{j\omega t}$. Na sequência substitui-se na equação \ref{eq:1DOFAF} obtendo:
+    \noindent Propõem-se a seguinte solução: $x(t) = X e^{j\omega t}$. Na sequência substitui-se na Equação \ref{eq:1DOFAF} obtendo:
     \begin{align*}
-        (-\omega^2 m + j \omega c + k) X e^{j\omega t} &= f e^{j\omega t}\\
-        \frac{X}{f} &= \frac{1}{(k -\omega^2 m) + j \omega c}
+        m\ddot{x}(t) + c\dot{x}(t) + k x(t) &= f(t)\\
+        (-\omega^2 m + j \omega c + k) X e^{j\omega t} &= F e^{j\omega t}\\
+        (-\omega^2 m + j \omega c + k) X \cancel{e^{j\omega t}} &= F \cancel{e^{j\omega t}}\\
+        \frac{X}{F} &= \frac{1}{(k -\omega^2 m) + j \omega c}
     \end{align*}
-    Nota-se que há o Deslocamento Harmônico dividiu pelo módulo da Força Harmônica o que configura a Receptância. Dessa forma conclui-se que:
+    Nota-se que há o Deslocamento Harmônico divido pelo módulo da Força Harmônica o que configura a Receptância. Dessa forma conclui-se que:
     \begin{equation}
         \boxed{
             \alpha (\omega) = 
             \frac{x(t)}{f(t)} = 
+            \frac{X e^{j\omega t}}{F e^{j\omega t}} = 
+            \frac{X}{F} = 
             \frac{1}{(k -\omega^2 m) + j \omega c}
         }
     \end{equation}
@@ -75,12 +79,17 @@
     \begin{scriptsize}
         \myMatlab\lstinputlisting[]{ex2.m}
     \end{scriptsize}
-    Nota-se que é necessário utilizar a escala \href{https://www.mathworks.com/help/matlab/ref/loglog.html}{\texttt{loglog}} nos gráficos devido a elevada escala empregada. Além disso é necessário extrair a Magnitude através da função \href{https://www.mathworks.com/help/matlab/ref/abs.html}{\texttt{abs}} e o Ângulo através da função \href{https://www.mathworks.com/help/matlab/ref/angle.html}{\texttt{angle}} obtendo os seguintes gráficos:
+    Nota-se que a Magnitude será extraída através da função \href{https://www.mathworks.com/help/matlab/ref/abs.html}{\texttt{abs}} e o Ângulo através da função \href{https://www.mathworks.com/help/matlab/ref/angle.html}{\texttt{angle}}.\\
+
+    Nota-se que, no caso da Magnitude, é necessário utilizar a escala \href{https://www.mathworks.com/help/matlab/ref/loglog.html}{\texttt{loglog}} nos eixos X e Y do gráfico devido a seus valores.\\
+
+    Nota-se que, no caso do Ângulo, é necessário utilizar a conversão \href{https://www.mathworks.com/help/matlab/ref/rad2deg.html}{\texttt{rad2deg}} para converter os ângulos de radianos, padrão do MATLAB, para graus. Nesse caso o eixo X estará na escala \href{https://www.mathworks.com/help/matlab/ref/loglog.html}{\texttt{loglog}} enquanto o eixo Y estará na escala de graus.\\
+
+    \noindent Obtêm-se os seguintes gráficos:
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.45\textwidth]{images/m1c5k100_rcpAbs.png}
-        \includegraphics[width=0.45\textwidth]{images/m1c5k100_rcpAng.png}
-        \caption{Análise Receptância}
+        \includegraphics[width=0.45\textwidth]{images/m1c1k1_rcpAbs.png}
+        \includegraphics[width=0.45\textwidth]{images/m1c1k1_rcpAng.png}
     \end{figure}
     Nota-se que a função \href{https://www.mathworks.com/help/control/ref/lti.bode.html}{\texttt{bode}} poderia ser utilizada ao se adaptar como o sistema está descrito.
 \end{resolution}
