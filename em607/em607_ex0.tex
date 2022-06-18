@@ -265,6 +265,32 @@
 \begin{exercise}\label{ex8}
     Determine a função de transferência que relaciona a força ao deslocamento.
 \end{exercise}
+\begin{resolution}
+    Define-se a Função de Transferência como a razão entre a Entrada e Saída para sistemas SISO, Single Input Single Output. Usualmente trabalha-se no espaço de Laplace para essa dedução. Dessa forma tem-se que:
+    \begin{align*}
+        m\ddot{x}(t) + c\dot{x}(t) + k x(t) &= f(t)\\
+        m(s^2 X - sx(0) - \dot{x}(0)) + c(s X - x(0)) + kX &= F(s)\\
+        X(s)(s^2m + sc + k) &= F(s) + x(0)(sm + c) + \dot{x}(0)m\\
+        X(s) &= 
+        \underbrace{\frac{1}{s^2m + sc + k}}_{G(s)} F(s) + 
+        \underbrace{\frac{x(0)(sm + c) + \dot{x}(0)m}{s^2m + sc + k}}_{W(s)}
+    \end{align*}
+    Considera-se que $G(s)$, Função de Transferência, representa a Resposta Forçada da solução, Regime Permanente, enquanto $W(s)$ representa a Resposta Livre da solução, Regime Transiente.
+    \begin{equation}
+        \boxed{G(s) = \frac{X}{F} = \frac{1}{s^2m + sc + k}}
+    \end{equation}
+    Neste caso, considera-se condições iniciais nulas implicando em $W(s) = 0$. Dessa forma implementa-se a função \texttt{ex8} em MATLAB:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{ex8.m}
+    \end{scriptsize}
+    Note que a Função de Transferência implementada em MATLAB através da função \href{https://www.mathworks.com/help/control/ref/tf.html}{\texttt{tf}} necessita de 2 vetores representando os coeficientes do Numerador e do Denominador, respectivamente. Detalhes através do \texttt{help} do MATLAB.\\
+
+    Obtém-se o seguinte gráfico:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.50\textwidth]{images/m1c1k1_tf_space.png}
+    \end{figure}
+\end{resolution}
 
 \newpage
 \begin{exercise}\label{ex9}
