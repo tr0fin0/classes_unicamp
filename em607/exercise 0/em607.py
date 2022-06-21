@@ -234,13 +234,14 @@ def figure17(r :float, zetaRef: float, zetaValues: float) -> None:
         zetaUnicode = "\u03B6"
         zetaStr     = str(round(zeta,3))
 
-        graph.plot(r, MF, "$\zeta$ = "+zetaStr, "r", "MF","figure17:"+zetaStr, axis=[0,5, 0,5], showPlot=False)
+        graph.plot(r, MF, "$\zeta$ = "+zetaStr, "r", "MF","figure17_"+zetaStr, axis=[0,5, 0,5], showPlot=False)
 
         if  zeta  < zetaRef:
             print(f"r = 0 é Mínimo, pois {zetaUnicode} = {zeta:.3f}  < {zetaRef:.3f}\t   rPico = {rPico:.3f} e MFmax = {MFmax:.3f}")
 
         else:
             print(f"r = 0 é Máximo, pois {zetaUnicode} = {zeta:.3f} >= {zetaRef:.3f}\t   rPico = 0.000 e MFmax = 1.000")
+    plt.show()
 
     return
 
@@ -256,13 +257,14 @@ def figure20(r :float, zetaRef: float, zetaValues: float) -> None:
         zetaUnicode     = "\u03B6"
         zetaStr         = str(round(zeta,3))
 
-        graph.plot(r, X, "$\zeta$ = "+zetaStr, "r", "$\\frac{X}{ml/M}$","figure20:"+zetaStr, axis=[0,5, 0,5], showPlot=False)
+        graph.plot(r, X, "$\zeta$ = "+zetaStr, "r", "$\\frac{X}{ml/M}$","figure20_"+zetaStr, axis=[0,5, 0,5], showPlot=False)
 
         if  zeta  < zetaRef:
             print(f"r = 0 é Mínimo, Xmax = {Xmax:.3f} em rPico = {rPico:.3f}, pois {zetaUnicode} = {zeta:.3f}  < {zetaRef:.3f}")
 
         else:
             print(f"r = 0 é Mínimo, Xmax = 1.000 em r = {infinityUnicode}, pois {zetaUnicode} = {zeta:.3f} >= {zetaRef:.3f}")
+    plt.show()
 
     return
 
@@ -276,13 +278,14 @@ def figure22(r :float, zetaRef: float, zetaValues: float) -> None:
         zetaUnicode     = "\u03B6"
         zetaStr         = str(round(zeta,3))
 
-        graph.plot(r, TR, "$\zeta$ = "+zetaStr, "r", "$\\frac{F_T}{F_0}$","figure22:"+zetaStr, axis=[0,5, 0,5], showPlot=False)
+        graph.plot(r, TR, "$\zeta$ = "+zetaStr, "r", "$\\frac{F_T}{F_0}$","figure22_"+zetaStr, axis=[0,5, 0,5], showPlot=False)
 
         if zeta == 0:
             print(f"r = 0 é Mínimo Local, TRmax = {infinityUnicode} em rPico = {1.000}, pois {zetaUnicode} = {zeta:.3f} = {zetaRef:.3f}")
 
         else:
             print(f"r = 0 é Mínimo Local, TRmax = {TRmax:.3f} em rPico = {rPico:.3f}, pois {zetaUnicode} = {zeta:.3f} > {zetaRef:.3f}")
+    plt.show()
 
     return
 
