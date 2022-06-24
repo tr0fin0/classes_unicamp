@@ -36,81 +36,274 @@
     \item $k_1$, \textbf{Constante Elástica}: 1 N/m;
 \end{enumerate}
 
-\newpage\begin{exercise}\label{ex1}
-    Determinar o Modelo de Estados com a força de entrada $f(t)$ e as saídas posição, velocidade e aceleração de $m_1$ seguindo o seguinte procedimento:
-    \begin{enumerate}
-        \item Equações de Equilíbrio;
-        \item Definir Estados;
-        \item Estabelecer a relação entre os Estados;
-        \item Substituir os Estados nas Equações de Equilíbrio;
-        \item Colocar na forma matricial de Estados;
-        \item Explicitar as Matrizes $\mathbf{A}$, $\mathbf{B}$, $\mathbf{C}$ e $\mathbf{D}$;
-    \end{enumerate}
+\begin{exercise}\label{ex1}
+    Determinar o Modelo de Estados com a força de entrada $f(t)$ e as saídas posição, velocidade e aceleração de $m_1$.
 \end{exercise}
 \begin{resolution}
+    Considera-se a seguinte equação para um sistema de 1-DOF com Amortecimento Viscoso Forçado por uma Entrada Harmônica dada por $f(t) = F e^{j\omega t}$. Realiza-se o seguinte procedimento:\\
 
+    \textbf{Equações de Equilíbrio}: Depois de realizado o DCL do sistema obtêm-se as seguintes equações de equilíbrio através da 2\textsuperscript{a} Lei de Newton:
+    \begin{equation}\label{eq1}
+        m\ddot{y} + c\dot{y} + k y = f(t)
+        \to
+        \ddot{y} = -\frac{c}{m} \dot{y} -\frac{k}{m} y +\frac{1}{m}f(t)
+    \end{equation}
+
+    \textbf{Definição de Estados}: Buscando evitar confusões entre as variáveis do sistema propõem-se o seguinte Vetor de Estados:
+    \begin{equation*}
+        \lbrace x(t) \rbrace = \begin{Bmatrix} e_1\\ e_2 \end{Bmatrix} 
+        \to \begin{cases} e_1 = y(t), &\text{Espaço}\\ e_2 = \dot{y}(t),&\text{Velocidade} \end{cases}
+    \end{equation*}
+    \textbf{Relação entre Estados}: Nota-se que, nesta realização, obtém-se a seguinte relação: $e_2 = \dot{e}_1$.\\
+
+    \textbf{Substituição nas Equações}: Realiza-se os Estados dentro da Equação \ref{eq1} obtendo a seguinte equação:
+    \begin{equation*}
+        \dot{e}_2 = -\frac{c}{m} e_2 -\frac{k}{m} e_1 +\frac{1}{m}f(t)
+    \end{equation*}
+
+    \textbf{Equações Matriciais}: Deseja-se obter o Deslocamento, a Velocidade e a Aceleração da massa. Dessa forma tomou-se como Vetor de Saídas:
+    \begin{equation*}
+        \lbrace y(t) \rbrace = \begin{Bmatrix} y\\ \dot{y}\\ \ddot{y} \end{Bmatrix} 
+        \to \begin{cases} y(t), &\text{Espaço}\\ \dot{y}(t),&\text{Velocidade}\\ \ddot{y}(t),&\text{Aceleração} \end{cases}
+    \end{equation*}
+    Dessa forma obtêm-se a seguinte realização de Estados:
+    \begin{equation}
+        \begin{cases}
+        \begin{aligned}
+            \begin{Bmatrix} \dot{e}_{1}\\ \dot{e}_{2} \end{Bmatrix} &=
+            \underbrace{\begin{bmatrix} 0 & 1\\ -k/m & -c/m\end{bmatrix}}_{\mathbf{A}} \begin{Bmatrix} e_{1}\\ e_{2} \end{Bmatrix} + 
+            \underbrace{\begin{bmatrix} 0\\ 1/m \end{bmatrix}}_{\mathbf{B}} f\\
+            \begin{Bmatrix} y\\ \dot{y}\\ \ddot{y} \end{Bmatrix} &=
+            \underbrace{\begin{bmatrix} 1 & 0\\ 0 & 1\\ -k/m & -c/m\end{bmatrix}}_{\mathbf{C}} \begin{Bmatrix} e_{1}\\ e_{2} \end{Bmatrix} + 
+            \underbrace{\begin{bmatrix} 0\\ 0\\ 1/m \end{bmatrix}}_{\mathbf{D}} f\\
+        \end{aligned}
+        \end{cases}
+        \end{equation}
 \end{resolution}
 
 \newpage\begin{exercise}\label{ex2}
-    Implementar o Modelo de Estados no MATLAB usando o comando \texttt{ss}.
+    Implementar o Modelo de Estados no MATLAB usando o comando \href{https://www.mathworks.com/help/control/ref/ss.html}{\texttt{ss}}.
 \end{exercise}
 \begin{resolution}
-
+    Parte-se da dedução apresentada no Exercício \ref{ex1} e implementa-se a função \texttt{ex2} em MATLAB:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{ex2.m}
+    \end{scriptsize}
+    Nota-se que o seguinte resultado será obtido:
+    \begin{scriptsize}
+        \myMatlab\begin{lstlisting}
+    sys20 =
+        
+        A = 
+             y  dy
+        y    0   1
+        dy  -1  -1
+        
+        B = 
+                f(\omega)
+        y               0
+        dy              1
+        
+        C = 
+             y  dy
+        y    1   0
+        dy   0   1
+        ddy -1  -1
+        
+        D = 
+                f(\omega)
+        y               0
+        dy              0
+        ddy             1
+    \end{lstlisting}
+    \end{scriptsize}
+    Houve o retorno tanto das matrizes quanto do modelo de Estados, pois no modelo de Estados foram modificadas variáveis visando aprimorar a visualização do problema.
 \end{resolution}
 
 \newpage\begin{exercise}\label{ex3}
-    Obter a matriz de transferência do sistema usando o comando \texttt{tf}.
+    Obter a matriz de transferência do sistema usando o comando \href{https://www.mathworks.com/help/control/ref/tf.html}{\texttt{tf}}.
 \end{exercise}
 \begin{resolution}
+    Parte-se dos Estados retornados pela função \texttt{ex2} e implementa-se a função \texttt{ex3} em MATLAB:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{ex3.m}
+    \end{scriptsize}
+    Nota-se que o seguinte resultado será obtido:
+    \begin{scriptsize}
+        \myMatlab\begin{lstlisting}
+    tf30 =
+ 
+        From input "f(\omega)" to output...
+                 1
+        y:  -----------
+            s^2 + s + 1
+        
+                  s
+        dy:  -----------
+             s^2 + s + 1
+        
+                   s^2
+        ddy:  -----------
+              s^2 + s + 1
+    \end{lstlisting}
+    \end{scriptsize}
+    Nota-se que trata-se de uma Matriz de Transferência $\mathbf{M}$ onde cada linha $i$ representa uma saída e cada coluna $j$ representa uma entrada.\\
+    
+    Dessa forma a entrada $m_{ij}$ representa a Função de Transferência entre a Saída $j$ e a Entrada $i$.\\
 
+    Nessa implementação há apenas uma entrada, logo $j = 1$, e três saídas, logo $i = 3$. Conclui-se que a Matriz de Transferência será $3 \times 1$.\\
+
+    Note que o MATLAB imprimiu cada entrada da matriz separadamente no terminal para facilitar a visualização das respectivas Funções de Transferência.
 \end{resolution}
 
 \newpage\begin{exercise}\label{ex4}
     Utilize a matriz de transferência para obter o modelo de Estados correspondente usando o comando \texttt{ss}. Verifique se o sistema obtido é igual ao inicial.\\
 
-    Utilize o comando \texttt{damp} para verificar as propriedades dos sistemas. Verifique os polos do sistema usando o comando \texttt{eig}.
+    Utilize o comando \href{https://www.mathworks.com/help/control/ref/lti.damp.html}{\texttt{damp}} para verificar as propriedades dos sistemas. Verifique os polos do sistema usando o comando \href{https://www.mathworks.com/help/matlab/ref/eig.html}{\texttt{eig}}.
 \end{exercise}
 \begin{resolution}
+    Parte-se da solução apresentada no Exercício \ref{ex3} e implementa-se a função \texttt{ex4} em MATLAB:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{ex4.m}
+    \end{scriptsize}
+    Nota-se que o seguinte resultado será obtido:
+    \begin{scriptsize}
+        \myMatlab\begin{lstlisting}
+    sys20 =                 sys40 =
+                            
+        A =                     A = 
+             y  dy                  x1  x2
+        y    0   1              x1  -1  -1
+        dy  -1  -1              x2   1   0
+                            
+        B =                     B = 
+            f(\omega)               f(\omega)
+        y           0           x1          2
+        dy          1           x2          0
+                            
+        C =                     C = 
+             y  dy                    x1    x2
+        y    1   0              y      0   0.5
+        dy   0   1              dy   0.5     0
+        ddy -1  -1              ddy -0.5  -0.5
+                                
+        D =                     D = 
+            f(\omega)               f(\omega)
+        y           0           y           0
+        dy          0           dy          0
+        ddy         1           ddy         1
+        \end{lstlisting}
+    \end{scriptsize}
+    Nota-se que as realizações de Estados são diferentes, pois o MATLAB, provavelmente, definiu outros Estados. Na sequência obtêm-se as seguientes informações sobre as propriedades do sistema, independente da realização de Estados, através das funções \href{https://www.mathworks.com/help/control/ref/lti.damp.html}{\texttt{damp}} e \href{https://www.mathworks.com/help/matlab/ref/eig.html}{\texttt{eig}}: 
+    \begin{scriptsize}
+        \myMatlab\begin{lstlisting}
+    wn40 =          zeta40 =        p40 =                       e40 =
 
+        1.0000          0.5000          -0.5000 + 0.8660i           -0.5000 + 0.8660i
+        1.0000          0.5000          -0.5000 - 0.8660i           -0.5000 - 0.8660i
+        \end{lstlisting}
+    \end{scriptsize}
+    Nota-se que \texttt{poles} é um vetor que trás os polos do sistema. Ou seja, os valores que tornam o denominador da função de transferência nulo.\\
+    
+    Nota-se que \texttt{eigen} é um vetor que trás os autovalores do sistema. Ou seja, os valores que solucionam o autoproblema: $|\mathbf{K} - \omega^2\mathbf{M}| = 0$ onde $\mathbf{K}$ representa a Matriz de Rigidez e $\mathbf{M}$ representa a Matriz de Massa.\\
+
+    Nota-se que \texttt{wn} é um vetor que trás as Frequências Naturais $\omega_{n}$ de cada polo do sistema.\\
+
+    Nota-se que \texttt{zeta} é um vetor que trás os Fatores de Amortecimento $\zeta$ de cada polo do sistema.
 \end{resolution}
 
 \newpage\begin{exercise}\label{ex5}
-    Obter a resposta do sistema ao impulso unitário e ao degrau unitário usando os comandos \texttt{impulse} e \texttt{step} respectivamente.
+    Obter a resposta do sistema ao impulso unitário e ao degrau unitário usando os comandos \href{https://www.mathworks.com/help/control/ref/lti.impulse.html}{\texttt{impulse}} e \href{https://www.mathworks.com/help/control/ref/lti.step.html}{\texttt{step}} respectivamente.
 \end{exercise}
 \begin{resolution}
+    Parte-se do sistema obtido no Exercício \ref{ex4} e implementa-se a função \texttt{ex5} em MATLAB:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{ex5.m}
+    \end{scriptsize}
+    Obtendo as seguintes figuras:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{images/m1c1k1sys40_impl.png}
+        \includegraphics[width=0.45\textwidth]{images/m1c1k1sys40_step.png}
+    \end{figure}
+    Nota-se que após um período suficiente para que o transiente seja superado o sistema retorna a seu estado original antes da aplicação do Impulso.\\
 
+    Nota-se que após um período suficiente para que o transiente seja superado o sistema altera sua posição para à posição da magnitude do degrau, no caso unitário, enquanto tanto a velocidade quanto a aceleração retornam a zero.
 \end{resolution}
 
 \newpage\begin{exercise}\label{ex6}
-    Obter a resposta do sistema a rampa unitária usando o comando \texttt{lsim} e usando artificialmente o comando \texttt{step}. Compare as respostas.
+    Obter a resposta do sistema a rampa unitária usando o comando \href{https://www.mathworks.com/help/control/ref/lti.lsim.html}{\texttt{lsim}} e usando artificialmente o comando \href{https://www.mathworks.com/help/control/ref/lti.step.html}{\texttt{step}}. Compare as respostas.
 \end{exercise}
 \begin{resolution}
+    Parte-se do sistema obtido no Exercício \ref{ex4} e implementa-se a função \texttt{ex6} em MATLAB:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{ex6.m}
+    \end{scriptsize}
+    Obtendo as seguintes figuras:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{images/m1c1k1sys40_ramp.png}
+        \includegraphics[width=0.45\textwidth]{images/m1c1k1sys40_ramp.png}
+    \end{figure}
+    Nota-se que não há uma implementação pronta de rampa dentro do MATLAB e por isso criou-se os vetores \texttt{t} e \texttt{ramp} para simular esta entrada, pois a função \texttt{lsim} realiza a simulação de um sistema para uma entrada arbitrária.\\
 
+    % TODO realizar a modificação com a função step
 \end{resolution}
 
 \newpage\begin{exercise}\label{ex7}
-    Verifique os diagramas de Bode do sistema usando os comandos \texttt{bode} e \texttt{bodemag}.
+    Verifique os diagramas de Bode do sistema usando os comandos \href{https://www.mathworks.com/help/control/ref/lti.bode.html}{\texttt{bode}} e \href{https://www.mathworks.com/help/ident/ref/lti.bodemag.html}{\texttt{bodemag}}.
 \end{exercise}
 \begin{resolution}
-
+    Parte-se do sistema obtido no Exercício \ref{ex4} e implementa-se a função \texttt{ex7} em MATLAB:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{ex7.m}
+    \end{scriptsize}
+    Obtendo as seguintes figuras:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{images/m1c1k1sys40_bode.png}
+        \includegraphics[width=0.45\textwidth]{images/m1c1k1sys40_bodemag.png}
+    \end{figure}
+    Observa-se que estes são os resultados esperados para o sistema de 1DOF com Amortecimento Viscoso Forçado por uma Entrada Harmônica apresenta. Recordar resultados do arquivo \texttt{em607\_ex02.pdf}.
 \end{resolution}
 
 \newpage\begin{exercise}\label{ex8}
     Verifique analiticamente a matriz de transferência através da relação:
     \begin{equation}
-        \boxed{\mathbf{C}(s\mathbf{I} - \mathbf{A})^{-1} \mathbf{B} + \mathbf{D}}
+        \boxed{G(s) = \mathbf{C}(s\mathbf{I} - \mathbf{A})^{-1} \mathbf{B} + \mathbf{D}}
     \end{equation}
 \end{exercise}
 \begin{resolution}
+    Deseja-se verificar esta propriedade. Inicialmente considera-se as seguintes matrizes:
+    \begin{equation*}
+        \mathbf{A} = \begin{bmatrix} 0 & 1\\ -k/m & -c/m\end{bmatrix}
+        \qquad
+        \mathbf{B} = \begin{bmatrix} 0\\ 1/m \end{bmatrix}
+        \qquad
+        \mathbf{C} = \begin{bmatrix} 1 & 0\\ 0 & 1\\ -k/m & -c/m\end{bmatrix}
+        \qquad
+        \mathbf{D} = \begin{bmatrix} 0\\ 0\\ 1/m \end{bmatrix}
+    \end{equation*}
+    Na sequência realiza-se o seguinte procedimento:
+    \begin{align*}
+        s\mathbf{I} - \mathbf{A} &= \begin{bmatrix} s & -1\\ +k/m & s+c/m\end{bmatrix}\\
+        (s\mathbf{I} - \mathbf{A})^{-1} &= \frac{1}{s^2 + s c/m + k/m}\begin{bmatrix} s + c/m & +1\\ -k/m & s\end{bmatrix}\\
+        \mathbf{C}(s\mathbf{I} - \mathbf{A})^{-1} &= \frac{1}{s^2 + s c/m + k/m}\begin{bmatrix} s + c/m & +1\\ -k/m & s\\ -s k/m & -k/m - s c/m\end{bmatrix}\\
+        \mathbf{C}(s\mathbf{I} - \mathbf{A})^{-1}\mathbf{B} &= \frac{1}{s^2 + s c/m + k/m}\begin{bmatrix} 1/m\\ s/m\\ -k/m^2 -sc/m^2\end{bmatrix}\\
+        \mathbf{C}(s\mathbf{I} - \mathbf{A})^{-1}\mathbf{B} + \mathbf{D} &= \frac{1}{s^2 + s c/m + k/m}\begin{bmatrix} 1/m\\ s/m\\ s^2/m\end{bmatrix}\\
+        \Aboxed{G(s) = \mathbf{C}(s\mathbf{I} - \mathbf{A})^{-1}\mathbf{B} + \mathbf{D} &= \begin{bmatrix} \frac{1/m}{s^2 + s c/m + k/m}\\ \frac{s/m}{s^2 + s c/m + k/m}\\ \frac{s^2/m}{s^2 + s c/m + k/m}\end{bmatrix}}
+    \end{align*}
+    Nota-se que este é o mesmo resultado obtido no Exercício \ref{ex3} onde $m = 1$, $c = 1$ e $k = 1$. Esse será o cálculo implementado pelo MATLAB para obter a Matriz de Transferência do sistema de Estados.\\
 
+    Nota-se que no Exercício \ref{ex4} a função \texttt{poles} irá calcular quais são os valores que tornam o denominador da Matriz de Transferência nulo. Isso traz uma condição de que: um sistema MIMO contínuo será estável se, e somente se, todos os polos possuem parte Real negativa.
 \end{resolution}
 
-\newpage\begin{remark}\label{ex9}
+\begin{remark}\label{ex9}
     Nota-se:
     \begin{enumerate}
         \item É possível a conversão entre modelo de estados e função de transferência;
         \item Os polos correspondem aos autovalores da matriz dinâmica do sistema;
-        \item A representação de estados de um mesmo sistema não é única. é preciso saber o que significam os estados em cada modelo para nào cometer erros de interpretação;
+        \item A representação de estados de um mesmo sistema não é única. é preciso saber o que significam os estados em cada modelo para não cometer erros de interpretação;
     \end{enumerate}
 \end{remark}
 \end{document}
