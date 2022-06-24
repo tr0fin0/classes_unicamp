@@ -1,10 +1,10 @@
 function plotAbs(X, Y, line)
 
     if not(isempty(line))
-        plot(X, abs(Y), line)
+        plot(X, mag2db(abs(Y)), line)
     else
-        plot(X, abs(Y))
+        plot(X, mag2db(abs(Y)))
     end
 
-    set(gca, 'XScale', 'log', 'YScale', 'log');
+    set(gca, 'XScale', 'log');
 end
