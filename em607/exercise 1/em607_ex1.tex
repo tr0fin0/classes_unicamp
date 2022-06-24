@@ -85,11 +85,11 @@
     \begin{scriptsize}
         \myMatlab\lstinputlisting[]{ex2.m}
     \end{scriptsize}
-    Nota-se que a Magnitude será extraída através da função \href{https://www.mathworks.com/help/matlab/ref/abs.html}{\texttt{abs}} e o Ângulo através da função \href{https://www.mathworks.com/help/matlab/ref/angle.html}{\texttt{angle}}.\\
+    Nota-se que a Magnitude será extraída através da função \href{https://www.mathworks.com/help/matlab/ref/abs.html}{\texttt{abs}} e o Ângulo através da função \href{https://www.mathworks.com/help/matlab/ref/angle.html}{\texttt{angle}}. Em ambos o eixo X estará na escala \href{https://www.mathworks.com/help/matlab/ref/loglog.html}{\texttt{loglog}}\\
 
-    Nota-se que, no caso da Magnitude, é necessário utilizar a escala \href{https://www.mathworks.com/help/matlab/ref/loglog.html}{\texttt{loglog}} nos eixos X e Y do gráfico devido a seus valores.\\
+    Nota-se que, no caso da Magnitude, é necessário utilizar a conversão \href{https://www.mathworks.com/help/signal/ref/mag2db.html}{\texttt{mag2db}} para converter a magnitude em decibels. Nesse caso o eixo Y estará na escala decibels.\\
 
-    Nota-se que, no caso do Ângulo, é necessário utilizar a conversão \href{https://www.mathworks.com/help/matlab/ref/rad2deg.html}{\texttt{rad2deg}} para converter os ângulos de radianos, padrão do MATLAB, para graus. Nesse caso o eixo X estará na escala \href{https://www.mathworks.com/help/matlab/ref/loglog.html}{\texttt{loglog}} enquanto o eixo Y estará na escala de graus.\\
+    Nota-se que, no caso do Ângulo, é necessário utilizar a conversão \href{https://www.mathworks.com/help/matlab/ref/rad2deg.html}{\texttt{rad2deg}} para converter os ângulos de radianos, padrão do MATLAB, para graus. Nesse caso o eixo Y estará na escala de graus.\\
 
     \noindent Obtêm-se os seguintes gráficos:
     \begin{figure}[H]
