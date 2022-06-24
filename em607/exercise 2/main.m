@@ -26,13 +26,28 @@ phi = c / (2 * wn * m); % damping coeficient
 % %%                    Exercices
 % %%============================================================================
 
-% ex2(step, 1, 1, 1);
-% ex3(step, 1, 1, 1);
-% ex4(step, 1, 1, 1);
-% ex5(step, 1, 1, 1);
-% ex6(step, 1, 5, 100);
-% ex7(step, 10, 5, 100);
-% ex8(step, 1, 1, 1);
-% ex9(step, 1, 1, 1);
-% ex10(step, 1, 1, 1);
-% ex15(1, 1, 1);
+[sys20, A, B, C, D] = ex2(m, c, k)
+
+[tf30, tf31] = ex3(sys20, A, B, C, D)
+
+[sys40, wn40, zeta40, p40, e40] = ex4(tf30)
+
+ex5(sys40, m, c, k)
+% ex6(sys40, m, c, k)
+% ex7(sys40, m, c, k)
+
+
+
+% ex1 procedimento realizado correto?
+% ex2
+% ex3 não encontrei, modificações no código são a causa?
+%       o que uma matriz de transferência representa?
+% ex4 o que os poles significam?
+% ex5 
+% ex6 o que quer dizer com artificialmentee?
+% ex7 existe um comando bodeang?
+% ex8 (trabalhoso)
+
+
+% explorar arquivo de pacote para matlab
+% agrupar funções especiais personalizadas no matlab
