@@ -519,6 +519,12 @@
     Caso a amplitude da Força Harmônica seja $F = 10$, o que precisa ser adaptado nas formulações anteriores?
 \end{exercise}
 \begin{resolution}
-    Nada precisaria ser alterado, pois nas soluções apresentadas não é considerada, pelo menos durante as deduções, as características da Entrada do sistema.
+    Nota-se que o comando \href{https://www.mathworks.com/help/control/ref/lti.bode.html}{\texttt{bode}} considera que o sistema estará sujeito a uma entrada Harmônica dada por uma senoide de amplitude unitária, por isso os resultados concidem.\\
+
+    Caso a amplitude da entrada Harmônica seja alterada, no caso da abordagem de Estados, será necessário alterar a constante \texttt{f} presente nas matrizes $\mathbf{B}$ e $\mathbf{D}$.\\
+
+    Caso a amplitude da entrada Harmônica seja alterada, no caso da abordagem de Funções de Transferência, será necessário alterar a constante \texttt{f} presente nos denominadores das funções $G(s)$, $G_1(s)$ e $G_2(s)$.\\
+
+    Caso a amplitude da entrada Harmônica seja alterada, no caso de Funções Resposta em Frequência, será necessário alterar a constante \texttt{f} presente nos denominadores $\alpha(\omega)$, $y(\omega)$ e $A(\omega)$.
 \end{resolution}
 \end{document}
