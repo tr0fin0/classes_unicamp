@@ -196,7 +196,7 @@
             \end{cases}
         \end{equation}
     \end{enumerate}
-    Nota-se que, neste caso, a Constante de Amortecimento foi considerada como zero sem perda de generalidade.\\
+    Desconsidera-se a Constante de Amortecimento pois esta influência apenas a concavidade da Assíntota vertical entorno da Frequência Natural do sistema.\\
 
     Na sequência implementa-se o seguinte algoritmo para determinar os gráficos de módulo e fase:
     \begin{scriptsize}
@@ -272,7 +272,7 @@
     Determine a função de transferência que relaciona a força ao deslocamento.
 \end{exercise}
 \begin{resolution}
-    Define-se a Função de Transferência como a razão entre a Entrada e Saída para sistemas SISO, Single Input Single Output. Usualmente trabalha-se no espaço de Laplace para essa dedução. Dessa forma tem-se que:
+    Define-se a Função de Transferência como a razão entre uma Entrada e uma Saída para sistemas SISO, Single Input Single Output. Usualmente trabalha-se no espaço de Laplace para essa dedução. Dessa forma tem-se que:
     \begin{align*}
         m\ddot{x}(t) + c\dot{x}(t) + k x(t) &= f(t)\\
         m(s^2 X - sx(0) - \dot{x}(0)) + c(s X - x(0)) + kX &= F(s)\\
@@ -285,7 +285,7 @@
     \begin{equation}
         \boxed{G(s) = \frac{X}{F} = \frac{1}{s^2m + sc + k}}
     \end{equation}
-    Neste caso, considera-se condições iniciais nulas implicando em $W(s) = 0$. Dessa forma implementa-se a função \texttt{ex8} em MATLAB:
+    Usualmente considera-se condições iniciais nulas implicando em $W(s) = 0$. Dessa forma implementa-se a função \texttt{ex8} em MATLAB:
     \begin{scriptsize}
         \myMatlab\lstinputlisting[]{ex8.m}
     \end{scriptsize}
