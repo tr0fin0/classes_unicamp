@@ -26,13 +26,14 @@ phi = c / (2 * wn * m); % damping coeficient
 % %%                    Exercices
 % %%============================================================================
 
-% ex2(step, 1, 1, 1);
-% ex3(step, 1, 1, 1);
-% ex4(step, 1, 1, 1);
-% ex5(step, 1, 1, 1);
-% ex6(step, 1, 5, 100);
-% ex7(step, 10, 5, 100);
-% ex8(step, 1, 1, 1);
-% ex9(step, 1, 1, 1);
-% ex10(step, 1, 1, 1);
-% ex15(1, 1, 1);
+% ex2(step, 100.17, 1250, 90000);
+% ex2(step, m, c, k);
+% ex3(step, m, c, k);
+% ex4(step, m, c, k);
+% ex5(step, m, c, k);
+% ex6(step, m, 5*c, 100*k);
+% ex7(step, 10*m, 5*c, 100*k);
+% ex8(step, m, c, k);
+% ex9(step, m, c, k);
+% ex10(step, m, c, k);
+% ex15(m, c, k);
