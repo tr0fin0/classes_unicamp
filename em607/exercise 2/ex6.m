@@ -2,9 +2,7 @@ function ex6(sys, m, c, k)
 
     inputName = inputname(1);
 
-    % wn = sqrt(k/m);
-
-    t    = 0 : 0.01 : 5;
+    t    = 0 : 0.01 : 20;
     a    = 1;
     ramp = a*t; % unitary ramp
 
