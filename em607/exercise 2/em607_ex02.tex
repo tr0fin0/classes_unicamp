@@ -197,10 +197,10 @@
     Nota-se que as realizações de Estados são diferentes, pois o MATLAB, provavelmente, definiu outros Estados. Na sequência obtêm-se as seguientes informações sobre as propriedades do sistema, independente da realização de Estados, através das funções \href{https://www.mathworks.com/help/control/ref/lti.damp.html}{\texttt{damp}} e \href{https://www.mathworks.com/help/matlab/ref/eig.html}{\texttt{eig}}: 
     \begin{scriptsize}
         \myMatlab\begin{lstlisting}
-    wn40 =          zeta40 =        p40 =                       e40 =
+    wn40 =          zeta40 =        p40 =                           e40 =
 
-        1.0000          0.5000          -0.5000 + 0.8660i           -0.5000 + 0.8660i
-        1.0000          0.5000          -0.5000 - 0.8660i           -0.5000 - 0.8660i
+        1.0000          0.5000          -0.5000 + 0.8660i               -0.5000 + 0.8660i
+        1.0000          0.5000          -0.5000 - 0.8660i               -0.5000 - 0.8660i
         \end{lstlisting}
     \end{scriptsize}
     Nota-se que \texttt{poles} é um vetor que trás os polos do sistema. Ou seja, os valores que tornam o denominador da função de transferência nulo.\\
@@ -243,10 +243,9 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.45\textwidth]{images/m1c1k1sys40_ramp.png}
-        \includegraphics[width=0.45\textwidth]{images/m1c1k1sys40_ramp.png}
+        \includegraphics[width=0.45\textwidth]{images/m1c1k1sys40_ramp_zoom.png}
     \end{figure}
     Nota-se que não há uma implementação pronta de rampa dentro do MATLAB e por isso criou-se os vetores \texttt{t} e \texttt{ramp} para simular esta entrada, pois a função \texttt{lsim} realiza a simulação de um sistema para uma entrada arbitrária.\\
-
     % TODO realizar a modificação com a função step
 \end{resolution}
 
