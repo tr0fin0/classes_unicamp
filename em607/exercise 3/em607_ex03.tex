@@ -44,7 +44,69 @@
     \end{enumerate}
 \end{exercise}
 \begin{resolution}
-    
+    Considera-se as seguintes equações para o sistema de 2-DOF sem Amortecimento Viscoso Forçado por duas Entradas Harmônicas dadas por $f_1(t) = F_1 e^{j\omega t}$ e $f_2(t) = F_2 e^{j\omega t}$:
+    \begin{equation*}
+        \begin{cases}
+            m_1 \ddot{x}_1 = -k_1 x_1 + k_2 (x_2 - x_1) + f_1\\
+            m_2 \ddot{x}_2 = -k_3 x_2 - k_2 (x_2 - x_1) + f_2\\
+        \end{cases}
+        \to
+        \underbrace{\begin{bmatrix} m_1 & 0\\ 0 & m_2\end{bmatrix}}_{\mathbf{M}} 
+        \begin{Bmatrix} \ddot{x}_1\\ \ddot{x}_2\end{Bmatrix} + 
+        \underbrace{\begin{bmatrix} k_1 + k_2 & -k_2\\ -k_2 & k_2 + k_3\end{bmatrix}}_{\mathbf{K}}
+        \begin{Bmatrix} x_1\\ x_2\end{Bmatrix} =
+        \begin{Bmatrix} f_1\\f_2\end{Bmatrix} 
+    \end{equation*}
+    Deseja-se encontrar as matrizes do Modelo Modal, dessa forma será necessário solucionar o seguinte Autoproblema $|\mathbf{K} - \omega^2\mathbf{M}| = 0$ como demonstrado a seguir:
+    \begin{equation*}
+        \begin{vmatrix}
+            \begin{bmatrix} k_1 + k_2 & -k_2\\ -k_2 & k_2 + k_3\end{bmatrix} 
+            -\omega^2 \begin{bmatrix} m_1 & 0\\ 0 & m_2\end{bmatrix}
+        \end{vmatrix} = 0
+        \quad\to\quad
+        \begin{vmatrix}
+            (k_1 + k_2) - \omega^2 m_1 & -k_2\\
+            -k_2 & (k_2 + k_3) - \omega^2 m_2\\
+        \end{vmatrix} = 0
+    \end{equation*}
+    Obtém-se a seguinte equação:
+    \begin{equation*}
+        \omega^4 m_1 m_2 - \omega^2 (m_2(k_1 + k_2) + m_1(k_2 + k_3)) + k_1 k_3 + k_2 k_3 + k_1 k_2 = 0
+    \end{equation*}
+    Quando considera-se os valores do exercício têm-se:
+    \begin{equation*}
+        \omega^4 - 2.4\cdot 10^{6} \omega^2 + 0.8\cdot 10^{12} = 0
+        \quad \to \quad
+        \begin{cases}
+            \omega_1^2 = 0.4\cdot 10^{6}\text{ rad/s}\\
+            \omega_2^2 = 2.0\cdot 10^{6}\text{ rad/s}
+        \end{cases}
+    \end{equation*}
+    Na sequência será necessário substituir as Frequências Naturais obtidas na equação para determinar os respectivos Autovalores capazes de solucionar a seguinte equação $[\mathbf{K} - \omega^2\mathbf{M}]{x} = {0}$ como demonstrado a seguir:
+    \begin{equation*}
+        \begin{bmatrix} (k_1 + k_2) - \omega^2 m_1 & -k_2\\ -k_2 & (k_2 + k_3) - \omega^2 m_2\\\end{bmatrix} 
+        \begin{Bmatrix} x_1 \\ x_2\end{Bmatrix} =
+        \begin{Bmatrix} 0 \\ 0\end{Bmatrix}
+        \quad \to \quad
+        \begin{cases}
+            \text{quando } \omega_1^2 \to x_1 = +x_2 & \psi_1 = \begin{Bmatrix} +1\\ +1\end{Bmatrix}\\
+            \text{quando } \omega_2^2 \to x_1 = -x_2 & \psi_2 = \begin{Bmatrix} +1\\ -1\end{Bmatrix}
+        \end{cases}
+    \end{equation*}
+    Dessa forma têm-se:
+    \begin{equation}
+        \boxed{
+            [\bar{\omega}_n] = 
+            \begin{bmatrix} \omega_1^2 & 0\\ 0 & \omega_2^2\end{bmatrix} = 
+            \begin{bmatrix} 0.4 & 0\\ 0 & 2.0\end{bmatrix} \cdot 10^6
+        }
+        \quad\text{e}\quad
+        \boxed{
+            [\psi] = 
+            \begin{bmatrix} \psi_1 & \psi_2\end{bmatrix} = 
+            \begin{bmatrix} +1 & +1\\ +1 & -1\end{bmatrix}
+        }
+    \end{equation}
 \end{resolution}
 
 
