@@ -300,7 +300,47 @@
     Determine as Funções de Transferência da força para os deslocamentos de $m_1$ e $m_2$.
 \end{exercise}
 \begin{resolution}
+    Considera-se a seguinte equação para um sistema de n-DOF com Amortecimento Viscoso Forçado por Entradas Harmônicas dada pela Equação \ref{eq:nDOFAF}:
+    \begin{equation*}
+        \mathbf{M}\{\ddot{x}(t)\} + \mathbf{C}\{\dot{x}(t)\} + \mathbf{K}\{x(t)\} = \{f(t)\}
+    \end{equation*}
+    Na sequência aplica-se Laplace considerando condições iniciais nulas para obter a Matriz de Transferência
+    \begin{align*}
+        \mathbf{M}\{\ddot{x}(t)\} + \mathbf{C}\{\dot{x}(t)\} + \mathbf{K}\{x(t)\} &= \{f(t)\}\\
+        \{X(s)\}(\mathbf{M}s^2 + \mathbf{C}s + \mathbf{K}) &= \{F(s)\}\\
+        \{X(s)\} &= \underbrace{(\mathbf{M}s^2 + \mathbf{C}s + \mathbf{K})^{-1}}_{\mathbf{G}(s)}\{F(s)\}
+    \end{align*}
+    Considera-se que $\mathbf{G}(s)$ será a Matriz de Transferência onde $G(s)_{ij}$ representa a Função de Transferência entre a Saída $i$ e a Entrada $j$.\\
     
+    No caso do Exercício \ref{ex1} na condição do Exercício \ref{ex3} tém-se:
+    \begin{align*}
+        \mathbf{G}(s) &= \begin{bmatrix} s^2 m_1 + k_1 + k_2 & -k_2\\ -k_2 & s^2 m_2 + k_2 + k_3\end{bmatrix}^{-1}\\
+        \mathbf{G}(s) &= 
+        \frac{1}{|\mathbf{M}s^2 + \mathbf{K}|}
+        \begin{bmatrix} s^2 m_2 + k_2 + k_3 & +k_2\\ +k_2 & s^2 m_1 + k_1 + k_3\end{bmatrix}\\
+        \mathbf{G}(s) &= 
+        \frac{1}{s^4 + 2.4\cdot 10^6 s^2 + 0.8\cdot 10^{12}}
+        \begin{bmatrix} s^2 + 1.2\cdot 10^6 & 0.8\cdot 10^6\\ 0.8\cdot 10^6 & s^2 + 1.2\cdot 10^6\end{bmatrix}
+    \end{align*}
+    Nesse caso a Função de Transferência para $x_1$ e $x_2$ são, respectivamente:
+    \begin{equation*}
+        \boxed{G(s)_{11} = \frac{s^2 + 1.2\cdot 10^6}{s^4 + 2.4\cdot 10^6 s^2 + 0.8\cdot 10^{12}}}
+        \qquad
+        \boxed{G(s)_{21} = \frac{      0.8\cdot 10^6}{s^4 + 2.4\cdot 10^6 s^2 + 0.8\cdot 10^{12}}}
+    \end{equation*}
+    Na sequência implementa-se o seguinte algoritmo para determinar os gráficos de módulo e fase:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{ex6.m}
+    \end{scriptsize}
+    Obtém-se seguinte resultado será obtido:
+    \begin{scriptsize}
+        \myMatlab\begin{lstlisting}
+    GS =
+
+    [ (s^2 + 1.2e6)/(s^4 + 2.4e6*s^2 + 0.8e12),         0.8e6/(s^4 + 2.4e6*s^2 + 0.8e12)]
+    [         0.8e6/(s^4 + 2.4e6*s^2 + 0.8e12), (s^2 + 1.2e6)/(s^4 + 2.4e6*s^2 + 0.8e12)]
+    \end{lstlisting}
+    \end{scriptsize}
 \end{resolution}
 
 
