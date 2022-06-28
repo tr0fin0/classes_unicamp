@@ -186,7 +186,38 @@
     Determine as respectivas Equações do Movimento Desacopladas.
 \end{exercise}
 \begin{resolution}
+    Considera-se genericamente as seguintes equações Matriciais para um sistema de n-DOF com Amortecimento Viscoso Forçado por Entradas Harmônicas:
+    \begin{equation}
+        \mathbf{M}\{\ddot{x}(t)\} + \mathbf{C}\{\dot{x}(t)\} + \mathbf{K}\{x(t)\} = \{f(t)\}\label{eq:nDOFAF}
+    \end{equation}
+    Na sequência realiza-se a seguinte Mudança de Base: $\{x\} = [\psi] \{p\}$, onde $[\psi]$ representa a Matriz de Autovalores não Normalizada. Dessa forma obtém-se:
+    \begin{equation*}
+        \mathbf{M}[\psi]\{\ddot{p}\} + \mathbf{C}[\psi]\{\dot{p}\} + \mathbf{K}[\psi]\{p\} = \{f\} \to
+        \underbrace{[\psi]^\intercal\mathbf{M}[\psi]}_{[\bar{m}_{r}]}\{\ddot{p}\} + 
+        \underbrace{[\psi]^\intercal\mathbf{C}[\psi]}_{[\bar{c}_{r}]}\{\dot{p}\} + 
+        \underbrace{[\psi]^\intercal\mathbf{K}[\psi]}_{[\bar{k}_{r}]}\{p\} = 
+        [\psi]^\intercal\{f\}
+    \end{equation*}
+    Nota-se que cada coordenada possui uma equação de um grau de liberdade, onde cada coordenada terá uma entrada composta por todas as entradas do sistema.\\
     
+    Nota-se que a equação acima só será válida quando o Amortecimento for Proporcional, isto é, quando $[\bar{c}_r] = \alpha [\bar{m}_r] + \beta [\bar{k}_r]$.\\
+
+    No caso do Exercício \ref{ex1} na condição do Exercício \ref{ex3} tém-se:
+    \begin{equation*}
+        \begin{bmatrix} 2 & 0\\ 0 & 2\end{bmatrix}\{\ddot{p}\} + 
+        \begin{bmatrix} 0.8 & 0\\ 0 & 4.0\end{bmatrix}\cdot 10^6 \{p\} = 
+        \begin{bmatrix} 1 & 1\\ 1 & -1\end{bmatrix}\begin{Bmatrix} f_1\\ 0\end{Bmatrix} \to
+        \begin{cases}
+            2 \ddot{p}_1 + 0.8 \cdot 10^6 p_1 = f_1(t)\\
+            2 \ddot{p}_2 + 4.0 \cdot 10^6 p_2 = f_1(t)\\
+        \end{cases}
+    \end{equation*}
+    Nota-se que neste caso $\alpha = \beta = 0$ para que o Desacoplamento seja possível.\\
+
+    Na sequência implementa-se o seguinte algoritmo para determinar os gráficos de módulo e fase:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{ex4.m}
+    \end{scriptsize}
 \end{resolution}
 
 
