@@ -390,7 +390,34 @@
     Nota-se o efeito da Superposição Modal em Frequência?
 \end{exercise}
 \begin{resolution}
-    
+    % \begin{figure}[H]
+    %     \centering
+    %     \includegraphics[width=0.45\textwidth]{images/m1c0k2000000_rcpAbs_unc_zoom.png}
+    %     \includegraphics[width=0.45\textwidth]{images/alpha21_rcpAbs_cpl_zoom.png}
+    % \end{figure}
+    Primeiramente considera-se as seguintes imagens obtidas a partir das Coordenadas Originais do problema:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{images/alpha11_rcpAbs_cpl_zoom.png}
+        \includegraphics[width=0.45\textwidth]{images/alpha21_rcpAbs_cpl_zoom.png}
+    \end{figure}
+    Na sequência considera-se a seguinte imagem obtida a partir das Coordenadas Desacopladas:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{images/mkc_rcpAbs_unc_zoom.png}
+    \end{figure}
+    Nota-se que as Coordenadas Originais estão relacionadas pela seguinte relação $\{x\} = [\phi] \{p\}$, onde $[\phi]$ representa a Matriz de Autovalores Normalizada. Dessa forma tém-se:
+    \begin{equation*}
+        \begin{Bmatrix} x_1 \\ x_2\end{Bmatrix} = 
+        \begin{bmatrix} +\sqrt{2}/2 & +\sqrt{2}/2\\ +\sqrt{2}/2 & -\sqrt{2}/2\end{bmatrix} \begin{Bmatrix} p_1\\ p_2\end{Bmatrix} = 
+        -\frac{\sqrt{2}}{2} \begin{bmatrix} p_1 + p_2\\ p_1 - p_2\end{bmatrix}
+    \end{equation*}
+    Nota-se que, como esperado para uma mudança de base, as Coordenadas Originais são descritas como uma combinação linear das Coordenadas Desacopladas. Assumindo a que o sistema seja Linear Invariante no Tempo tém-se:
+    \begin{equation*}
+        \begin{Bmatrix} \alpha_{x_1} \\ \alpha_{x_2}\end{Bmatrix} = 
+        -\frac{\sqrt{2}}{2} \begin{bmatrix} \alpha_{p_1} + \alpha_{p_2}\\ \alpha_{p_1} - \alpha_{p_2}\end{bmatrix}
+    \end{equation*}
+    Nota-se que, como demonstrado no gráfico, a Receptância nas Coordenadas Originais será uma combinação linear das Receptâncias nas Coordenadas Desacopladas.
 \end{resolution}
 
 
