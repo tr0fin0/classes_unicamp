@@ -509,7 +509,16 @@
     Determine as curvas de Receptância de $m_1$ e $m_2$ no Modelo de Estados. (\ref{ex3})
 \end{exercise}
 \begin{resolution}
-    
+    Na sequência implementa-se o seguinte algoritmo:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{ex10.m}
+    \end{scriptsize}
+    Obtém-se o seguinte gráfico:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\textwidth]{images/rcpAbs_ss.png}
+    \end{figure}
+    Nota-se que não resultado causado pela força $f_2(\omega)$ pois esta foi considerada como zero para o desenvolvimento do exercício.
 \end{resolution}
 
 
