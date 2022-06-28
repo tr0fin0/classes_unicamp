@@ -33,8 +33,8 @@ phi = c / (2 * wn * m); % damping coeficient
 [sys40, wn40, zeta40, p40, e40] = ex4(tf30)
 
 ex5(sys40, m, c, k)
-% ex6(sys40, m, c, k)
-% ex7(sys40, m, c, k)
+ex6(sys40, m, c, k)
+ex7(sys40, m, c, k)
 
 
 
