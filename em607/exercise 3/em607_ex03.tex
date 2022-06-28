@@ -425,7 +425,83 @@
     Formule o sistema no Modelo de Estados.
 \end{exercise}
 \begin{resolution}
+    Considera-se a Equação \ref{eq:nDOFAF} para um sistema de n-DOF com Amortecimento Viscoso Forçado por uma Entrada Harmônica. Realiza-se o seguinte procedimento:\\
+
+    \textbf{Equações de Equilíbrio}: Depois de realizado o DCL do sistema obtêm-se as seguintes equações de equilíbrio através da 2\textsuperscript{a} Lei de Newton:
+    \begin{equation}\label{eq1}
+        \begin{dcases}
+            m_1 \ddot{x}_1 +k_1 x_1 - k_2 (x_2 - x_1) = f_1 & 
+            \ddot{x}_1 = -\frac{k_1}{m_1} x_1 +\frac{k_2}{m_1} (x_2 - x_1) + f_1\\
+            m_2 \ddot{x}_2 = +k_3 x_2 + k_2 (x_2 - x_1) = f_2 &
+            \ddot{x}_2 = -\frac{k_3}{m_2} x_2 -\frac{k_2}{m_2} (x_2 - x_1) + f_2\\
+        \end{dcases}
+    \end{equation}
+
+    \textbf{Definição de Estados}: Buscando evitar confusões entre as variáveis do sistema propõem-se o seguinte Vetor de Estados:
+    \begin{equation*}
+        \lbrace x(t) \rbrace = \begin{Bmatrix} e_1\\ e_2\\ e_3\\ e_4 \end{Bmatrix} 
+        \to
+        \begin{cases}
+            e_1 = x_1(t), &\text{Deslocamento } m_1\\
+            e_2 = x_2(t), &\text{Deslocamento } m_2\\
+            e_3 = \dot{x}_1(t),&\text{Velocidade } m_1\\
+            e_4 = \dot{x}_2(t),&\text{Velocidade } m_2
+        \end{cases}
+    \end{equation*}
+    \textbf{Relação entre Estados}: Nota-se que, nesta realização, obtém-se as seguintes relações: $e_3 = \dot{e}_1$ e $e_4 = \dot{e}_2$.\\
+
+    \textbf{Substituição nas Equações}: Realiza-se os Estados dentro da Equação \ref{eq1} obtendo a seguinte equação:
+    \begin{equation*}
+        \begin{dcases}
+            \dot{e}_3 = -\frac{k_1}{m_1} e_1 +\frac{k_2}{m_1} (e_2 - e_1) + f_1\\
+            \dot{e}_4 = -\frac{k_3}{m_2} e_2 -\frac{k_2}{m_2} (e_2 - e_1) + f_2\\
+        \end{dcases}
+    \end{equation*}
     
+    \textbf{Equações Matriciais}: Deseja-se obter os Deslocamentos das massas. Dessa forma tomou-se como Vetor de Saídas:
+    \begin{equation*}
+        \lbrace y(t) \rbrace = 
+        \begin{Bmatrix} y_1\\ y_2 \end{Bmatrix} 
+        \to 
+        \begin{cases}
+            y_1(t), &\text{Deslocamento $m_1$}\\
+            y_2(t), &\text{Deslocamento $m_2$}
+        \end{cases}
+    \end{equation*}
+    Dessa forma obtêm-se a seguinte realização de Estados:
+    \begin{equation}
+        \begin{cases}
+        \begin{aligned}
+            \begin{Bmatrix} \dot{e}_{1}\\ \dot{e}_{2}\\ \dot{e}_{3}\\ \dot{e}_{4} \end{Bmatrix} &=
+            \underbrace{
+            \begin{bmatrix}
+                0 & 0 & 1 & 0\\
+                0 & 0 & 0 & 1\\
+                -(k_1 + k_2)/m_1 & +k_2/m_1 & 0 & 0\\
+                +k_2/m_2 & -(k_2 + k_3)/m_2 & 0 & 0
+            \end{bmatrix}}_{\mathbf{A}}
+            \begin{Bmatrix} e_{1}\\ e_{2}\\ e_{3}\\ e_{4} \end{Bmatrix} + 
+            \underbrace{
+                \begin{bmatrix}
+                    0 & 0\\
+                    0 & 0\\
+                    1/m_1 & 0\\
+                    0 & 1/m_2\\
+                \end{bmatrix}}_{\mathbf{B}}
+            \begin{Bmatrix} f_1\\f_2 \end{Bmatrix}\\
+
+            \begin{Bmatrix} y_1\\ y_2 \end{Bmatrix} &=
+            \underbrace{
+                \begin{bmatrix}
+                    1 & 0 & 0 & 0\\
+                    0 & 1 & 0 & 0\\
+                \end{bmatrix}}_{\mathbf{C}}
+            \begin{Bmatrix} e_{1}\\ e_{2}\\ e_{3}\\ e_{4} \end{Bmatrix} + 
+            \underbrace{\begin{bmatrix} 0 & 0\\ 0 & 0 \end{bmatrix}}_{\mathbf{D}}
+            \begin{Bmatrix} f_1\\f_2 \end{Bmatrix}\\
+        \end{aligned}
+        \end{cases}
+    \end{equation}
 \end{resolution}
 
 
