@@ -348,7 +348,41 @@
     Determine as curvas de Receptância de $m_1$ e $m_2$ das Equações Desacopladas. (\ref{ex3})
 \end{exercise}
 \begin{resolution}
-    
+    Considera-se a seguinte equação para um sistema de n-DOF com Amortecimento Viscoso Forçado por Entradas Harmônicas dada por $\{f(t)\} = \{F\} e^{i\omega t}$:
+    \begin{equation}
+        \mathbf{M}\{\ddot{x}(t)\} + \mathbf{C}\{\dot{x}(t)\} + \mathbf{K}\{x(t)\} = \{f(t)\}
+    \end{equation}
+    \noindent Propõem-se a seguinte solução: $\{x\}(t) = \{X\} e^{i\omega t}$. Na sequência substitui-se na Equação \ref{eq:nDOFAF} obtendo:
+    \begin{align*}
+        \mathbf{M}\{\ddot{x}(t)\} + \mathbf{C}\{\dot{x}(t)\} + \mathbf{K}\{x(t)\} &= \{f(t)\}\\
+        (-\omega^2\mathbf{M} + i\omega\mathbf{C} + \mathbf{K}) \{X\} e^{i\omega t} &= \{X\}e^{i\omega t}\\
+        (-\omega^2\mathbf{M} + i\omega\mathbf{C} + \mathbf{K}) \{X\} \cancel{e^{i\omega t}} &= \{X\}\cancel{e^{i\omega t}}\\
+        \{X\} &= \underbrace{(-\omega^2\mathbf{M} + i\omega\mathbf{C} + \mathbf{K})^{-1}}_{[\alpha(\omega)]} \{F\}
+    \end{align*}
+    Nota-se que a Matriz de Receptância $[\alpha(\omega)]$ será dada pela seguinte equação:
+    \begin{equation}
+        [\alpha(\omega)] = (-\omega^2\mathbf{M} + i\omega\mathbf{C} + \mathbf{K})^{-1}
+    \end{equation}
+    Onde $\alpha_{jk}$ representa a Receptância entre a Saída $j$ e a Entrada $k$ será dada pela seguinte equação:
+    \begin{equation}
+        \alpha_{jk} (\omega) = 
+        \sum_{r=1}^{n} \frac{(\psi_{rj})(\psi_{rk})}{(k_r -\omega^2 m_r) + i\omega c_r}
+    \end{equation}
+    Nesse caso a Receptância para $x_1$ e $x_2$ são, respectivamente:
+    \begin{equation*}
+        \alpha_{11} = \frac{x_1}{f_1} = \frac{0.5}{0.4\cdot 10^6 -\omega^2} + \frac{0.5}{2.0\cdot 10^6 -\omega^2}
+        \qquad
+        \alpha_{21} = \frac{x_2}{f_1} = \frac{0.5}{0.4\cdot 10^6 -\omega^2} + \frac{-0.5}{2.0\cdot 10^6 -\omega^2}
+    \end{equation*}
+    \begin{equation*}
+        \boxed{\alpha_{11} = \frac{-\omega^2 + 1.2\cdot 10^6}{\omega^4 - 2.4\cdot 10^6 \omega^2 + 0.8\cdot 10^{12}}}
+        \qquad
+        \boxed{\alpha_{21} = \frac{0.8\cdot 10^6}{\omega^4 - 2.4\cdot 10^6 \omega^2 + 0.8\cdot 10^{12}}}
+    \end{equation*}
+    Na sequência implementa-se o seguinte algoritmo:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{ex7.m}
+    \end{scriptsize}
 \end{resolution}
 
 
