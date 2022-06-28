@@ -1,7 +1,7 @@
 function savePlot(titleText, legendText, saveName, xLabel, yLabel)
     fileType = 'png';
     legendLocation = "southeast";
-    pPath = 'C:\Users\Admin-PC\Documents\gitRepos\classes\em607\exercise 2\images';
+    pPath = 'C:\Users\Admin-PC\Documents\gitRepos\classes\em607\exercise 3\images';
     pSize = [0 0 18 18];
 
 
