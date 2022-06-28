@@ -225,7 +225,74 @@
     Verifique as curvas de Resposta em Frequência associadas a cada Equação Desacopladas.
 \end{exercise}
 \begin{resolution}
-    
+    Considera-se a seguinte equação para um sistema de 1-DOF com Amortecimento Viscoso Forçado por uma Entrada Harmônica dada por $f(t) = F e^{j\omega t}$:
+    \begin{equation}
+        m_{ri}\ddot{p} + c_{ri}\dot{p} + k_{ri} p = f(t)\label{eq:1DOFAF}
+    \end{equation}
+    \noindent Propõem-se a seguinte solução: $p(t) = P e^{j\omega t}$. Na sequência substitui-se na Equação \ref{eq:1DOFAF} obtendo:
+    \begin{align*}
+        m\ddot{p}(t) + c\dot{p}(t) + k p(t) &= f(t)\\
+        (-\omega^2 m + j \omega c + k) P e^{j\omega t} &= F e^{j\omega t}\\
+        (-\omega^2 m + j \omega c + k) P \cancel{e^{j\omega t}} &= F \cancel{e^{j\omega t}}\\
+        \frac{P}{F} &= \frac{1}{(k -\omega^2 m) + j \omega c}
+    \end{align*}
+    Nota-se que há o Deslocamento Harmônico divido pelo módulo da Força Harmônica o que configura a Receptância. Dessa forma conclui-se que:
+    \begin{equation}
+        \boxed{
+            \alpha (\omega) = 
+            \frac{p(t)}{f(t)} = 
+            \frac{P e^{j\omega t}}{F e^{j\omega t}} = 
+            \frac{P}{F} = 
+            \frac{1}{(k -\omega^2 m) + j \omega c}
+        }
+    \end{equation}
+    Define-se a Mobilidade como a razão entre a Velocidade e a amplitude da Força Harmônica que exita o sistema. Dessa forma tem-se, a partir da Equação \ref{eq:1DOFAF}, que:
+    \begin{equation}
+        \boxed{
+            y (\omega) = 
+            \frac{\dot{p}(t)}{f(t)} = 
+            -j\omega\frac{P}{F} = 
+            -j\omega \cdot \alpha(\omega) = 
+            \frac{-j\omega}{(k -\omega^2 m) + j \omega c}
+        }
+    \end{equation}
+    Define-se a Inertância como a razão entre a Aceleração e a amplitude da Força Harmônica que exita o sistema. Dessa forma tem-se, a partir da Equação \ref{eq:1DOFAF}, que:
+    \begin{equation}
+        \boxed{
+            A (\omega) = 
+            \frac{\ddot{p}(t)}{f(t)} = 
+            -j\omega   \cdot     y (\omega) = 
+            - \omega^2 \cdot \alpha(\omega) = 
+            \frac{-\omega^2}{(k -\omega^2 m) + j \omega c}
+        }
+    \end{equation}
+    Neste caso têm-se:
+    \begin{equation*}
+        \alpha_1(\omega) = \frac{1}{-2\omega^2 + 0.8\cdot 10^6} \qquad
+         y_1(\omega) = \frac{j\omega}{-2\omega^2 + 0.8\cdot 10^6} \qquad
+          A_1(\omega) = \frac{-\omega^2}{-2\omega^2 + 0.8\cdot 10^6}
+    \end{equation*}    \begin{equation*}
+        \alpha_2(\omega) = \frac{1}{-2\omega^2 + 4.0\cdot 10^6} \qquad
+         y_2(\omega) = \frac{j\omega}{-2\omega^2 + 4.0\cdot 10^6} \qquad
+          A_2(\omega) = \frac{-\omega^2}{-2\omega^2 + 4.0\cdot 10^6}
+    \end{equation*}
+    Na sequência implementa-se o seguinte algoritmo para determinar os gráficos de módulo e fase:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{ex5.m}
+    \end{scriptsize}
+    Obtêm-se os seguintes gráficos:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.30\textwidth]{images/m1c0k2000000_rcpAbs_unc.png}
+        \includegraphics[width=0.30\textwidth]{images/m1c0k2000000_mblAbs_unc.png}
+        \includegraphics[width=0.30\textwidth]{images/m1c0k2000000_inrAbs_unc.png}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.30\textwidth]{images/m1c0k2000000_rcpAng_unc.png}
+        \includegraphics[width=0.30\textwidth]{images/m1c0k2000000_mblAng_unc.png}
+        \includegraphics[width=0.30\textwidth]{images/m1c0k2000000_inrAng_unc.png}
+    \end{figure}
 \end{resolution}
 
 
