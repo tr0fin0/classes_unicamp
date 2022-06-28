@@ -118,7 +118,64 @@
     \end{enumerate}
 \end{exercise}
 \begin{resolution}
+    Parte-se da solução obtida no Exercício \ref{ex1} e realiza-se as seguintes operações:
+    \begin{equation*}
+        [\psi]^\intercal \mathbf{M} [\psi] = [\bar{m}_r] \to 
+        \begin{bmatrix} +1 & +1\\ +1 & -1\end{bmatrix} 
+        \begin{bmatrix} m_1 & 0\\ 0 & m_2\end{bmatrix} 
+        \begin{bmatrix} +1 & +1\\ +1 & -1\end{bmatrix}
+    \end{equation*}
+    \begin{equation*}
+        [\psi]^\intercal \mathbf{K} [\psi] = [\bar{k}_r] \to 
+        \begin{bmatrix} +1 & +1\\ +1 & -1\end{bmatrix} 
+        \begin{bmatrix} k_1 + k_2 & -k_2\\ -k_2 & k_2 + k_3\end{bmatrix} 
+        \begin{bmatrix} +1 & +1\\ +1 & -1\end{bmatrix}
+    \end{equation*}
+    Dessa forma obtêm-se os seguintes resultados quando considera-se os valores do exercício:
+    \begin{equation*}
+        [\bar{m}_r] = 
+        \begin{bmatrix} m_1+m_2 & m_1-m_2\\ m_1-m_2 & m_1+m_2\end{bmatrix} \to 
+        \boxed{[\bar{m}_r] = \begin{bmatrix} 2 & 0\\ 0 & 2\end{bmatrix}}
+    \end{equation*}
+    \begin{equation*}
+        [\bar{k}_r] = 
+        \begin{bmatrix} k_1+k_3 & k_1-k_3\\ k_1-k_3 & k_1 + 4k_2 + k_3\end{bmatrix} \to 
+        \boxed{[\bar{k}_r] = \begin{bmatrix} 0.8 & 0\\ 0 & 4.0\end{bmatrix}\cdot 10^6}
+    \end{equation*}
+    Nota-se que a Matriz dos Autovalores $[\psi]$ já considera os valores numéricos propostos pelo exercício. Dessa forma, os termos fora da diagonal principal devem ser zerados ao longo da dedução.\\
+
+    Evidência-se que a Matriz dos Autovetores $[\psi]$ será sujeita a fatores de escala arbitrários. Dessa forma padroniza-se estas grandezas através da Normalização da Massa definida pela seguintes relação:
+    \begin{equation}
+        \boxed{[\phi] = [\psi] \times [\bar{m}_r]^{-1/2}}
+        \quad \to \quad
+        \boxed{[\phi]^\intercal \mathbf{M} [\phi] = [I]}
+        \quad\text{e}\quad
+        \boxed{[\phi]^\intercal \mathbf{K} [\phi] = [\bar{\omega}_r]}
+    \end{equation}
+    Onde $[\phi]$ será a Matriz de Autovetores Normalizada que será dada por:
+    \begin{equation*}
+        [\phi] = [\psi] \times [\bar{m}_r]^{-1/2}
+        \to
+        [\phi] = \begin{bmatrix} +1 & +1\\ +1 & -1\end{bmatrix} \begin{bmatrix} 1/\sqrt{2} & 0\\ 0 & 1/\sqrt{2}\end{bmatrix}
+        \to 
+        \boxed{[\phi] = \begin{bmatrix} \sqrt{2}/2 & \sqrt{2}/2\\ \sqrt{2}/2 & -\sqrt{2}/2\end{bmatrix}}
+    \end{equation*}
+    Na sequência implementa-se o seguinte algoritmo para determinar os gráficos de módulo e fase:
+    \begin{scriptsize}
+        \myMatlab\lstinputlisting[]{ex2.m}
+    \end{scriptsize}
+    Obtém-se seguinte resultado será obtido:
+    \begin{scriptsize}
+        \myMatlab\begin{lstlisting}
+    MR =                KR = 1.0e+06 *          WR =                        PHI =
     
+    1.0000         0        0.4000         0        400000           0          -0.7071   -0.7071
+         0    1.0000             0    2.0000             0     2000000          -0.7071    0.7071
+    \end{lstlisting}
+    \end{scriptsize}
+    Nota-se que o MATLAB já retorna a solução Normalizada do Autoproblema visto que a Matriz da Massa Normalizada será igual a Identidade e a Matriz da Rigidez será igual a Matriz das Frequências Naturais.\\
+
+    Nota-se que a Matriz dos Autovalores Normalizada pela Massa possui o sinal oposto da obtida por cálculos. Entretanto isso não influenciou os resultados finais, pois a Normalização garante a compatibilidade dos resultados.
 \end{resolution}
 
 
