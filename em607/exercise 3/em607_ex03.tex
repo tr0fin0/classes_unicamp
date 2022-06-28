@@ -36,9 +36,9 @@
     \item $k_1$ e $k_3$, \textbf{Constante Elástica}: 0.4 MN/m;
 \end{enumerate}
 
-\begin{exercise}\label{ex1}
+\newpage\begin{exercise}\label{ex1}
     Determine as respectivas matrizes do Modelo Modal:
-    \begin{enumerate}
+    \begin{enumerate}[noitemsep]
         \item Matriz dos Autovalores: $[\bar{\omega}_n]$;
         \item Matriz dos Autovetores: $[\psi]$;
     \end{enumerate}
@@ -112,9 +112,9 @@
 
 \newpage\begin{exercise}\label{ex2}
     Determine as respectivas matrizes na Base Modal:
-    \begin{enumerate}
-        \item Matriz de Massa Diagonalizadas: $\bar{m}_r$;
-        \item Matriz de Rigidez Diagonalizadas: $\bar{k}_r$;
+    \begin{enumerate}[noitemsep]
+        \item Matriz de Massa Diagonalizadas: $[\bar{m}_r]$;
+        \item Matriz de Rigidez Diagonalizadas: $[\bar{k}_r]$;
     \end{enumerate}
 \end{exercise}
 \begin{resolution}
@@ -168,7 +168,7 @@
     \begin{scriptsize}
         \myMatlab\begin{lstlisting}
     MR =                KR = 1.0e+06 *          WR =                        PHI =
-    
+
     1.0000         0        0.4000         0        400000           0          -0.7071   -0.7071
          0    1.0000             0    2.0000             0     2000000          -0.7071    0.7071
     \end{lstlisting}
@@ -199,7 +199,7 @@
         [\psi]^\intercal\{f\}
     \end{equation*}
     Nota-se que cada coordenada possui uma equação de um grau de liberdade, onde cada coordenada terá uma entrada composta por todas as entradas do sistema.\\
-    
+
     Nota-se que a equação acima só será válida quando o Amortecimento for Proporcional, isto é, quando $[\bar{c}_r] = \alpha [\bar{m}_r] + \beta [\bar{k}_r]$.\\
 
     No caso do Exercício \ref{ex1} na condição do Exercício \ref{ex3} tém-se:
@@ -311,7 +311,7 @@
         \{X(s)\} &= \underbrace{(\mathbf{M}s^2 + \mathbf{C}s + \mathbf{K})^{-1}}_{\mathbf{G}(s)}\{F(s)\}
     \end{align*}
     Considera-se que $\mathbf{G}(s)$ será a Matriz de Transferência onde $G(s)_{ij}$ representa a Função de Transferência entre a Saída $i$ e a Entrada $j$.\\
-    
+
     No caso do Exercício \ref{ex1} na condição do Exercício \ref{ex3} tém-se:
     \begin{align*}
         \mathbf{G}(s) &= \begin{bmatrix} s^2 m_1 + k_1 + k_2 & -k_2\\ -k_2 & s^2 m_2 + k_2 + k_3\end{bmatrix}^{-1}\\
@@ -345,7 +345,7 @@
 
 
 \newpage\begin{exercise}\label{ex7}
-    Determine as curvas de Receptância de $m_1$ e $m_2$ das Equações Desacopladas. (\ref{ex3})
+    Determine as curvas de Receptância de $m_1$ e $m_2$ nas Coordenadas $x_1$ e $x_2$. (\ref{ex3})
 \end{exercise}
 \begin{resolution}
     Considera-se a seguinte equação para um sistema de n-DOF com Amortecimento Viscoso Forçado por Entradas Harmônicas dada por $\{f(t)\} = \{F\} e^{i\omega t}$:
@@ -457,7 +457,7 @@
             \dot{e}_4 = -\frac{k_3}{m_2} e_2 -\frac{k_2}{m_2} (e_2 - e_1) + f_2\\
         \end{dcases}
     \end{equation*}
-    
+
     \textbf{Equações Matriciais}: Deseja-se obter os Deslocamentos das massas. Dessa forma tomou-se como Vetor de Saídas:
     \begin{equation*}
         \lbrace y(t) \rbrace = 
@@ -537,7 +537,7 @@
         \includegraphics[width=0.65\textwidth]{images/rcpAbs_ss.png}
     \end{figure}
     Construiu-se o Modelo de Estados para retornar a Magnitude o Ângulo da Receptância de cada uma das massas nas Coordenadas Originais.\\
-    
+
     Nota-se que as Curvas de Magnitude são equivalentes como justificado no Exercício \ref{ex8} entretanto os Ângulos verificados não foram os mesmos.
 \end{resolution}
 
