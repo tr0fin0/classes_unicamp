@@ -8,7 +8,7 @@ close all
 RA = 217276;
 feature('DefaultCharacterSet','UTF-8')
 
-%   Frequency Analysis
+%   States Analysis
 %   1DOF Forced Vibration Vibration System with Viscous Damping
 %   mddx + cdx + kx = f e^(iwt)
 m   = 1;    % mass
