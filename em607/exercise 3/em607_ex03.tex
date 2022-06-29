@@ -158,7 +158,8 @@
         \to
         [\phi] = \begin{bmatrix} +1 & +1\\ +1 & -1\end{bmatrix} \begin{bmatrix} 1/\sqrt{2} & 0\\ 0 & 1/\sqrt{2}\end{bmatrix}
         \to 
-        \boxed{[\phi] = \begin{bmatrix} \sqrt{2}/2 & \sqrt{2}/2\\ \sqrt{2}/2 & -\sqrt{2}/2\end{bmatrix}}
+        \boxed{[\phi] = \begin{bmatrix} 0.7071 & 0.7071\\ 0.7071 & -0.7071\end{bmatrix}}
+        % \boxed{[\phi] = \begin{bmatrix} \sqrt{2}/2 & \sqrt{2}/2\\ \sqrt{2}/2 & -\sqrt{2}/2\end{bmatrix}}
     \end{equation*}
     Na sequência implementa-se o seguinte algoritmo para determinar os gráficos de módulo e fase:
     \begin{scriptsize}
@@ -190,13 +191,13 @@
     \begin{equation}
         \mathbf{M}\{\ddot{x}(t)\} + \mathbf{C}\{\dot{x}(t)\} + \mathbf{K}\{x(t)\} = \{f(t)\}\label{eq:nDOFAF}
     \end{equation}
-    Na sequência realiza-se a seguinte Mudança de Base: $\{x\} = [\psi] \{p\}$, onde $[\psi]$ representa a Matriz de Autovalores não Normalizada. Dessa forma obtém-se:
+    Na sequência realiza-se a seguinte Mudança de Base: $\{x\} = [\phi] \{p\}$, onde $[\phi]$ representa a Matriz de Autovalores Normalizada. Dessa forma obtém-se:
     \begin{equation*}
-        \mathbf{M}[\psi]\{\ddot{p}\} + \mathbf{C}[\psi]\{\dot{p}\} + \mathbf{K}[\psi]\{p\} = \{f\} \to
-        \underbrace{[\psi]^\intercal\mathbf{M}[\psi]}_{[\bar{m}_{r}]}\{\ddot{p}\} + 
-        \underbrace{[\psi]^\intercal\mathbf{C}[\psi]}_{[\bar{c}_{r}]}\{\dot{p}\} + 
-        \underbrace{[\psi]^\intercal\mathbf{K}[\psi]}_{[\bar{k}_{r}]}\{p\} = 
-        [\psi]^\intercal\{f\}
+        \mathbf{M}[\phi]\{\ddot{p}\} + \mathbf{C}[\phi]\{\dot{p}\} + \mathbf{K}[\phi]\{p\} = \{f\} \to
+        \underbrace{[\phi]^\intercal\mathbf{M}[\phi]}_{\mathbf{I}}\{\ddot{p}\} + 
+        \underbrace{[\phi]^\intercal\mathbf{C}[\phi]}_{[\bar{c}_{r}]}\{\dot{p}\} + 
+        \underbrace{[\phi]^\intercal\mathbf{K}[\phi]}_{[\bar{\omega}_{r}]}\{p\} = 
+        [\phi]^\intercal\{f\}
     \end{equation*}
     Nota-se que cada coordenada possui uma equação de um grau de liberdade, onde cada coordenada terá uma entrada composta por todas as entradas do sistema.\\
 
@@ -204,12 +205,12 @@
 
     No caso do Exercício \ref{ex1} na condição do Exercício \ref{ex3} tém-se:
     \begin{equation*}
-        \begin{bmatrix} 2 & 0\\ 0 & 2\end{bmatrix}\{\ddot{p}\} + 
-        \begin{bmatrix} 0.8 & 0\\ 0 & 4.0\end{bmatrix}\cdot 10^6 \{p\} = 
-        \begin{bmatrix} 1 & 1\\ 1 & -1\end{bmatrix}\begin{Bmatrix} f_1\\ 0\end{Bmatrix} \to
+        \begin{bmatrix} 1 & 0\\ 0 & 1\end{bmatrix}\{\ddot{p}\} + 
+        \begin{bmatrix} 0.4 & 0\\ 0 & 2.0\end{bmatrix}\cdot 10^6 \{p\} = 
+        \begin{bmatrix} 0.7071 & 0.7071\\ 0.7071 & -0.7071\end{bmatrix}\begin{Bmatrix} f_1\\ 0\end{Bmatrix} \to
         \begin{cases}
-            2 \ddot{p}_1 + 0.8 \cdot 10^6 p_1 = f_1(t)\\
-            2 \ddot{p}_2 + 4.0 \cdot 10^6 p_2 = f_1(t)\\
+            \ddot{p}_1 + 0.4 \cdot 10^6 p_1 = 0.7071 f_1(t)\\
+            \ddot{p}_2 + 2.0 \cdot 10^6 p_2 = 0.7071 f_1(t)\\
         \end{cases}
     \end{equation*}
     Nota-se que neste caso $\alpha = \beta = 0$ para que o Desacoplamento seja possível.\\
@@ -268,13 +269,13 @@
     \end{equation}
     Neste caso têm-se:
     \begin{equation*}
-        \alpha_1(\omega) = \frac{1}{-2\omega^2 + 0.8\cdot 10^6} \qquad
-         y_1(\omega) = \frac{j\omega}{-2\omega^2 + 0.8\cdot 10^6} \qquad
-          A_1(\omega) = \frac{-\omega^2}{-2\omega^2 + 0.8\cdot 10^6}
+        \alpha_1(\omega) = \frac{1}{-1\omega^2 + 0.4\cdot 10^6} \qquad
+        y_1(\omega) = \frac{j\omega}{-1\omega^2 + 0.4\cdot 10^6} \qquad
+        A_1(\omega) = \frac{-\omega^2}{-1\omega^2 + 0.4\cdot 10^6}
     \end{equation*}    \begin{equation*}
-        \alpha_2(\omega) = \frac{1}{-2\omega^2 + 4.0\cdot 10^6} \qquad
-         y_2(\omega) = \frac{j\omega}{-2\omega^2 + 4.0\cdot 10^6} \qquad
-          A_2(\omega) = \frac{-\omega^2}{-2\omega^2 + 4.0\cdot 10^6}
+        \alpha_2(\omega) = \frac{1}{-1\omega^2 + 2.0\cdot 10^6} \qquad
+        y_2(\omega) = \frac{j\omega}{-1\omega^2 + 2.0\cdot 10^6} \qquad
+        A_2(\omega) = \frac{-\omega^2}{-1\omega^2 + 2.0\cdot 10^6}
     \end{equation*}
     Na sequência implementa-se o seguinte algoritmo para determinar os gráficos de módulo e fase:
     \begin{scriptsize}
@@ -410,12 +411,12 @@
     \begin{equation*}
         \begin{Bmatrix} x_1 \\ x_2\end{Bmatrix} = 
         \begin{bmatrix} +\sqrt{2}/2 & +\sqrt{2}/2\\ +\sqrt{2}/2 & -\sqrt{2}/2\end{bmatrix} \begin{Bmatrix} p_1\\ p_2\end{Bmatrix} = 
-        -\frac{\sqrt{2}}{2} \begin{bmatrix} p_1 + p_2\\ p_1 - p_2\end{bmatrix}
+        -0.7071 \begin{bmatrix} p_1 + p_2\\ p_1 - p_2\end{bmatrix}
     \end{equation*}
     Nota-se que, como esperado para uma mudança de base, as Coordenadas Originais são descritas como uma combinação linear das Coordenadas Desacopladas. Assumindo a que o sistema seja Linear Invariante no Tempo tém-se:
     \begin{equation*}
         \begin{Bmatrix} \alpha_{x_1} \\ \alpha_{x_2}\end{Bmatrix} = 
-        -\frac{\sqrt{2}}{2} \begin{bmatrix} \alpha_{p_1} + \alpha_{p_2}\\ \alpha_{p_1} - \alpha_{p_2}\end{bmatrix}
+        -0.7071 \begin{bmatrix} \alpha_{p_1} + \alpha_{p_2}\\ \alpha_{p_1} - \alpha_{p_2}\end{bmatrix}
     \end{equation*}
     Nota-se que, como demonstrado no gráfico, a Receptância nas Coordenadas Originais será uma combinação linear das Receptâncias nas Coordenadas Desacopladas.
 \end{resolution}
@@ -502,6 +503,7 @@
         \end{aligned}
         \end{cases}
     \end{equation}
+    Note que para implementação no MATLAB será necessário considerar $B_{42} = 0$ pela condição imposta no Exercício \ref{ex3}.
 \end{resolution}
 
 
@@ -554,7 +556,52 @@
     Inclua Amortecimento Proporcional e verifique a Diagonalização das Matrizes de Massa e de Rigidez.
 \end{exercise}
 \begin{resolution}
+    Considera-se genericamente as seguintes equações Matriciais para um sistema de n-DOF com Amortecimento Viscoso Forçado por Entradas Harmônicas:
+    \begin{equation}
+        \mathbf{M}\{\ddot{x}(t)\} + \mathbf{C}\{\dot{x}(t)\} + \mathbf{K}\{x(t)\} = \{f(t)\}
+    \end{equation}
+    Na sequência realiza-se a seguinte Mudança de Base: $\{x\} = [\phi] \{p\}$, onde $[\phi]$ representa a Matriz de Autovalores Normalizada. Dessa forma obtém-se:
+    \begin{equation*}
+        \mathbf{M}[\phi]\{\ddot{p}\} + \mathbf{C}[\phi]\{\dot{p}\} + \mathbf{K}[\phi]\{p\} = \{f\} \to
+        \underbrace{[\phi]^\intercal\mathbf{M}[\phi]}_{[\bar{m}_{r}]}\{\ddot{p}\} + 
+        \underbrace{[\phi]^\intercal\mathbf{C}[\phi]}_{[\bar{c}_{r}]}\{\dot{p}\} + 
+        \underbrace{[\phi]^\intercal\mathbf{K}[\phi]}_{[\bar{k}_{r}]}\{p\} = 
+        [\phi]^\intercal\{f\}
+    \end{equation*}
+    Nota-se que cada coordenada possui uma equação de um grau de liberdade, onde cada coordenada terá uma entrada composta por todas as entradas do sistema.\\
+
+    Nota-se que a equação acima só será válida quando o Amortecimento for Proporcional, isto é, quando $[\bar{c}_r] = \alpha [\bar{m}_r] + \beta [\bar{k}_r]$.\\
+
+    Deseja-se verificar essa propriedade. Dessa forma toma-se $\alpha = 1$ e $\beta = 10^{-6}$ logo:
+    \begin{equation*}
+        \mathbf{C} =  
+        \begin{bmatrix} c_1 & c_2\\ c_3 & c_4\end{bmatrix} =
+        \begin{bmatrix} 2.2 & -0.8\\ -0.8 & 2.2\end{bmatrix}
+    \end{equation*}
     
+    Realiza-se as seguintes operações:
+    \begin{equation*}
+        [\phi]^\intercal \mathbf{M} [\phi] = [\mathbf{I}] \to 
+        \begin{bmatrix} \sqrt{2}/2 & \sqrt{2}/2\\ \sqrt{2}/2 & -\sqrt{2}/2 \end{bmatrix} 
+        \begin{bmatrix} m_1 & 0\\ 0 & m_2\end{bmatrix} 
+        \begin{bmatrix} \sqrt{2}/2 & \sqrt{2}/2\\ \sqrt{2}/2 & -\sqrt{2}/2 \end{bmatrix} =
+        \begin{bmatrix} 1 & 0\\ 0 & 1\end{bmatrix}
+    \end{equation*}
+    \begin{equation*}
+        [\phi]^\intercal \mathbf{C} [\phi] = [\bar{c}_r] \to 
+        \begin{bmatrix} \sqrt{2}/2 & \sqrt{2}/2\\ \sqrt{2}/2 & -\sqrt{2}/2 \end{bmatrix} 
+        \begin{bmatrix} c_1 & c_2\\ c_3 & c_4\end{bmatrix}
+        \begin{bmatrix} \sqrt{2}/2 & \sqrt{2}/2\\ \sqrt{2}/2 & -\sqrt{2}/2 \end{bmatrix} =
+        \begin{bmatrix} 1.4 & 0\\ 0 & 3.0\end{bmatrix}
+    \end{equation*}
+    \begin{equation*}
+        [\phi]^\intercal \mathbf{K} [\phi] = [\bar{\omega}_r] \to 
+        \begin{bmatrix} \sqrt{2}/2 & \sqrt{2}/2\\ \sqrt{2}/2 & -\sqrt{2}/2 \end{bmatrix} 
+        \begin{bmatrix} k_1 + k_2 & -k_2\\ -k_2 & k_2 + k_3\end{bmatrix} 
+        \begin{bmatrix} \sqrt{2}/2 & \sqrt{2}/2\\ \sqrt{2}/2 & -\sqrt{2}/2 \end{bmatrix} =
+        \begin{bmatrix} 0.4 & 0\\ 0 & 2.0\end{bmatrix} \cdot 10^{6}
+    \end{equation*}
+    Nota-se que as matrizes foram diagonilizadas e portanto a proposta inicial estava adequada.
 \end{resolution}
 
 
