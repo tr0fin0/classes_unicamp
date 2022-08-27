@@ -7,7 +7,7 @@ feature('DefaultCharacterSet','UTF-8')
 
 
 % Q1________________________________________________________
-if false
+if true
     k1 = 1; k2 = 2;
     J1 = 1; J2 = 6; m = 2;
     r1 = 2; r2 = 1;
@@ -23,7 +23,7 @@ end
 
 
 % Q2________________________________________________________
-if true
+if false
     % identificação gráfico
     magdbp = -92.8; % magnitude  pico (gráfico magnitude)
     wp = 28.1;      % frequência pico (gráfico magnitude)

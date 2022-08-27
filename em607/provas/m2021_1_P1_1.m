@@ -7,7 +7,7 @@ feature('DefaultCharacterSet','UTF-8')
 
 
 % Q1________________________________________________________ 
-if true
+if false
     F0 = 15.076     % 15.0XX, últimos digitos do RA
     % nota-se algumas diferenças do resultado teórico visto a diferença nos
     % arredondamentos utilizados nas contas realizadas na teoria.
@@ -70,6 +70,26 @@ if true
     figure;
     plot(t, x)
     grid on
+end
+
+
+% Q2________________________________________________________ 
+if true
+    Xinf = 0.1;     % amplitude infinito
+    Xmax = 1.0076;  % amplitude máxima
+
+
+    syms qsi
+    eqn = Xmax == Xinf * 1 / (2*qsi * sqrt(1-qsi^2));
+
+    vQsi  = vpa(simplify(solve(eqn)), 8)   % all possible values
+    vpQsi = vQsi( vQsi > 0);                % all real values
+    qsi   = vpQsi( vpQsi < sqrt(2)/2)       % all valid values
+    
+    
+    qsi = 1/sqrt(1.5) * qsi;
+    
+    Xmax = vpa(Xinf * 1 / ( 2*qsi * sqrt(1-qsi^2)), 6)
 end
 
 
