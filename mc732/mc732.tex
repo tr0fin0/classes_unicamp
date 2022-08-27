@@ -104,7 +104,7 @@
 \paragraph{Definição}Considera-se que a cada ciclo cada instrução será analisada nos seguintes estágios:
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 1\textwidth]{images/datapath_pipelined_1.png}
+    % \includegraphics[width = 1\textwidth]{images/datapath_pipelined_1.png}
     \caption{Datapath Pipelined}
     \label{datapath_pipelined}
 \end{figure}
@@ -137,7 +137,7 @@
         \noindent Isso causaria 2 bubbles até que a instrução \texttt{add2} possa operar como representado abaixo:
         \begin{figure}[H]
             \centering
-            \includegraphics[width = 0.8\textwidth]{images/hazard_data.png}
+            % \includegraphics[width = 0.8\textwidth]{images/hazard_data.png}
             \caption{Data Hazard}
             \label{hazardData}
         \end{figure}
@@ -145,7 +145,7 @@
         Entretanto o dado de \texttt{x2} já está calculado ao finalizar a etapa de execução. Dessa forma uma conexão entre a saída da ALU e a entrada da ALU eliminaria o atraso como representado abaixo:
         \begin{figure}[H]
             \centering
-            \includegraphics[width = 0.8\textwidth]{images/hazard_data_forwarding.png}
+            % \includegraphics[width = 0.8\textwidth]{images/hazard_data_forwarding.png}
             \caption{Data Hazard Forwarding}
             \label{hazardDataForwarding}
         \end{figure}
@@ -162,7 +162,7 @@
         Apesar de \texttt{Forwarding} evitar atrasos neste caso o atraso é apenas reduzido, pois a próxima instrução, \texttt{add}, só terá acesso ao dado em \texttt{x1} quando \texttt{ld} finalizar o penúltimo estágio do pipeline e houver escrita na memória como representado abaixo:
         \begin{figure}[H]
             \centering
-            \includegraphics[width = 0.75\textwidth]{images/hazard_data_load_use.png}
+            % \includegraphics[width = 0.75\textwidth]{images/hazard_data_load_use.png}
             \caption{Data Hazard Load-Use}
             \label{hazardDataLoadUse}
         \end{figure}
@@ -249,7 +249,7 @@ Note que tanto no Ciclo 4 e 9 não é necessário \texttt{forwarding} pois o est
 #  10       add1    bne     addi3   add1    <>      : 1     #
 #  11       add2    add1    bne     addi3   add1    : 1     #
 
-#  11.1     <>      <>      <>      bne     addi3   : X-1   #   branch not taken loop (stage 4)
+#  11.1     <>      <>      <>      bne     addi3   : X-1   #   branch taken    loop (stage 4)
 #  11.2     addi2   <>      <>      <>      bne     : X-1   #
 #  11.3     lw      addi2   <>      <>      <>      : X-1   #
 #  11.4     add1    lw      addi2   <>      <>      : X-1   #
@@ -280,13 +280,59 @@ Note que no Ciclo 6, 7 e 9 não é necessário \texttt{forwarding} pois o estág
 
 \noindent Caso \texttt{addi3} estivesse reordenada imediatamente antes de \texttt{add1} não haveria \texttt{data hazard} do Ciclo 8 e consequentemente 11 ciclos seriam economizados.\\
 
+\paragraph{Exemplo 3}Considere que \texttt{branch} é resolvido no quarto estágio, ME, que \texttt{branch prediction} é estática e \texttt{not taken}, qua há uma unidade de detecção de \texttt{hazard} e todos os \texttt{forwarding} são possíveis. Além disso, registradores x$i = 10\times i$ e MEM$[i] = 100\times i$:
+\begin{scriptsize}
+    \myStyleRISCV
+    \begin{lstlisting}
+1000    L1: subi    x2,     x2,     10  # 
+1004        sub     x4,     x5,     x6  # 
+1008        and     x7,     x3,     x4  # 
+1012        bne     x2,     zero,   L1  # 
+1016        or      x10,    x1,     x5  # 
+1020        sw      x1,     20(x6)      # 
+1024        add     x4,     x2,     x9  # 
+1028        lw      x2,     20(x20)     # 
+1032        addi    x2,     x2,     20  # 
+
+#   ciclo   estágio
+#           IF      ID      EX      ME      WB      execuções
+#   1       subi    -       -       -       -       : 1
+#   2       sub     subi    -       -       -       : 1
+#   3       and     sub     subi    -       -       : 1
+#   4       bne     and     sub     subi    -       : 1
+#   5       or      bne     and     sub     subi    : 1     # forwarding
+#   6       sw      or      bne     and     sub     : 1
+
+#   7       <>      <>      <>      bne     and     : 1     #   branch taken    loop (stage 1)
+#   8       subi    <>      <>      <>      bne     : 1
+#   9       sub     subi    <>      <>      <>      : 1
+#  10       and     sub     subi    <>      <>      : 1
+#  11       bne     and     sub     subi    <>      : 1
+#  12       or      bne     and     sub     subi    : 1     # forwarding
+#  13       sw      or      bne     and     sub     : 1
+
+#  14       add     sw      or      bne     and     : 1
+#  15       lw      add     sw      or      bne     : 1
+
+#  16       addi    lw      add     sw      or      : 1
+#  17       -       addi    lw      add     sw      : 1
+#  18       -       -       addi    lw      add     : 1
+#  19       -       -       -       addi    lw      : 1
+#  20       -       -       -       -       addi    : 1
+
+10: 001010
+50: 110010
+58: 111010
+    \end{lstlisting}
+\end{scriptsize}
+
 \subsection{Registradores}
 \paragraph{Definição}Durante a execução de funções do Pipeline será necessário armazenar os dados das diferentes ações tomadas ao longo do Datapath para que as informações utilizadas sejam precisas e adequadas. Dessa forma implementam-se Registradores entre cada ciclo de execução para armazenar temporariamente dados necessários para garantir o funcionamento.
 
 \paragraph{Representação}Dessa forma deve-se alterar o Pipeline para que memórias intermediárias sejam incluidas como demonstrado na seguinte figura:
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.8\textwidth]{images/register_pipeline.png}
+    % \includegraphics[width = 0.8\textwidth]{images/register_pipeline.png}
     \caption{Pipeline Registers}
     \label{pipelineRegisters}
 \end{figure}
@@ -304,7 +350,7 @@ Note que no Ciclo 6, 7 e 9 não é necessário \texttt{forwarding} pois o estág
 \paragraph{Definição}Necessita-se de unidades de controle para determinar o que o Pipeline deverá fazer para garantir o fluxo adequado de comandos. Dessa forma considera-se as seguintes adições no Pipeline para inclusão de Controle:
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.8\textwidth]{images/control_simplefied_pipeline.png}
+    % \includegraphics[width = 0.8\textwidth]{images/control_simplefied_pipeline.png}
     \caption{Sinais de Controle do Pipeline}
     \label{controlSimplifyPipeline}
 \end{figure}
@@ -312,7 +358,7 @@ Note que no Ciclo 6, 7 e 9 não é necessário \texttt{forwarding} pois o estág
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.8\textwidth]{images/control_pipeline.png}
+    % \includegraphics[width = 0.8\textwidth]{images/control_pipeline.png}
     \caption{Sinais de Controle do Pipeline}
     \label{controlPipeline}
 \end{figure}
@@ -420,7 +466,7 @@ Note que no Ciclo 6, 7 e 9 não é necessário \texttt{forwarding} pois o estág
 \noindent Nota-se que há duas condições pois há duas entradas que possíveis para a ALU que precisam ser consideradas separadamente implicando no seguinte diagrama:
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.8\textwidth]{images/forwarding_unit_pipelined.png}
+    % \includegraphics[width = 0.8\textwidth]{images/forwarding_unit_pipelined.png}
     \caption{Caminhos Forwarding no Pipeline}
     \label{forwardingPath}
 \end{figure}
@@ -456,7 +502,7 @@ Note que no Ciclo 6, 7 e 9 não é necessário \texttt{forwarding} pois o estág
 \noindent Quando ocorrer deve-se forçar os valores do registrador ID/EX para zero, inserçõa de bolha, e não atualizar o valor de PC e dos registradores IF/ID durante um ciclo criando assim uma bolha. Finalmente obtêm-se o seguinte diagrama:
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.8\textwidth]{images/forwarding_detection_pipelined.png}
+    % \includegraphics[width = 0.8\textwidth]{images/forwarding_detection_pipelined.png}
     \caption{Controle de Hazards no Pipeline}
     \label{controlHazardsPipeline}
 \end{figure}
